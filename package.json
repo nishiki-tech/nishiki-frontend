@@ -9,7 +9,8 @@
     "lint": "eslint --ext .ts,.js,.tsx . && prettier --check \"./**/*.{ts,js,tsx}\"",
     "lint:fix": "eslint --ext .ts,.js,.tsx . --fix && prettier --write \"./**/*.{ts,js,tsx,scss}\"",
     "format": "prettier --write './**/*.{js,ts,tsx,scss}'",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "next": "13.5.4",
