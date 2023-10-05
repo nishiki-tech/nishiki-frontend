@@ -32,7 +32,7 @@
     "typescript": "^5"
   },
   "lint-staged": {
-    "**/*.{ts,tsx,js,jsx,scss}": "npm run lint",
-    "**/*.{md,yml,json,babelrc,prettierrc}": "npm run lint"
+    "**/*.{ts,tsx,js,jsx,scss}": "npm run lint:fix",
+    "**/*.{md,yml,json,babelrc,prettierrc}": "npm run lint:fix"
   }
 }
