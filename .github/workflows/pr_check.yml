@@ -19,14 +19,17 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: setup bun
-        uses: oven-sh/setup-bun@v1
+      - name: setup node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
 
       - name: install
-        run: bun install --frozen-lockfile
+        run: npm ci
 
       - name: typecheck
-        run: bun run typecheck
+        run: npm run typecheck
 
       - name: lint
-        run: bun run lint
+        run: npm run lint
