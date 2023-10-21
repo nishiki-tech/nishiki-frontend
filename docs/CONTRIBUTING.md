@@ -6,20 +6,14 @@ Thank you for your interest in contributing to Nishiki! This document outlines t
 
 - [Contributing to Nishiki](#contributing-to-nishiki)
   - [Table of Contents](#table-of-contents)
-  - [Getting Started](#getting-started)
   - [Branching Rules](#branching-rules)
     - [Types of Branches](#types-of-branches)
     - [Branch Naming Conventions](#branch-naming-conventions)
       - [Examples](#examples)
   - [Testing](#testing)
   - [Pull Requests](#pull-requests)
-
-## Getting Started
-
-1. Fork the repository
-2. Clone your fork
-3. Set up the development environment
-4. Create a new branch
+    - [For Team Members:](#for-team-members)
+    - [For External Contributors:](#for-external-contributors)
 
 ## Branching Rules
 
@@ -27,7 +21,7 @@ Thank you for your interest in contributing to Nishiki! This document outlines t
 
 - `main`: For production use. Only accepts PRs from `develop` (and `hotfix` in emergencies).
 - `develop`: Accepts PRs from `feature` branches.
-- `feature/`: Individual branches for each issue.
+- `feature/`: Branches for developing new features or improvements.
 - `hotfix/`: Branches for urgent fixes.
 - `docs/`: Branches for documentation updates.
 
@@ -54,6 +48,24 @@ Thank you for your interest in contributing to Nishiki! This document outlines t
 
 ## Pull Requests
 
-1. Make sure all tests pass.
-2. Update the documentation if necessary.
-3. Submit a pull request to the appropriate branch according to the branching rules.
+### For Team Members:
+
+1. Create a new branch from the `develop` branch, or from the `main` branch if you're working on a hotfix.
+2. Follow the [Branch Naming Conventions](#branch-naming-conventions) while naming your branch.
+3. Work on your changes locally.
+4. Ensure that all [tests](#testing) pass.
+6. Push your branch to the repository.
+7. Create a Pull Request against the original branch you branched from.
+8. Await code review, and address any comments as necessary.
+
+### For External Contributors:
+
+1. Fork the repository to your own GitHub account.
+2. Clone your forked repository locally.
+3. Create a new branch from the `develop` branch on your fork.
+4. Follow the [Branch Naming Conventions](#branch-naming-conventions) while naming your branch.
+5. Work on your changes locally.
+6. Ensure that all [tests](#testing) pass.
+8. Push your branch to your forked repository.
+9. Create a Pull Request against the `develop` branch of the original repository.
+10. Await code review, and address any comments as necessary.
