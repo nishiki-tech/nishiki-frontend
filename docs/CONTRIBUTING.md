@@ -56,7 +56,7 @@ When you create a commit we kindly ask you to follow the convention
 `category(scope or module): message` in your commit message while using one of
 the following categories:
 
-- `feat / feature`: all changes that introduce completely new code or new
+- `feat`: all changes that introduce completely new code or new
   features
 - `fix`: changes that fix a bug (ideally you will additionally reference an
   issue if present)
