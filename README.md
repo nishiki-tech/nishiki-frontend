@@ -28,6 +28,12 @@ Run the WebAPI mock server:
 npm run mock
 ```
 
+Stop the WebAPI mock server:
+
+```bash
+npm run mock:down
+```
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

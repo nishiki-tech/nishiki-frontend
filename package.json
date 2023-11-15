@@ -11,7 +11,8 @@
     "format": "prettier --write './**/*.{js,ts,tsx,scss}'",
     "prepare": "husky install",
     "typecheck": "tsc --noEmit",
-    "mock": "docker compose up --build"
+    "mock": "docker compose up --build",
+    "mock:down": "docker compose down"
   },
   "dependencies": {
     "next": "13.5.4",
