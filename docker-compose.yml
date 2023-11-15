@@ -1,0 +1,10 @@
+version: '3'
+services:
+  prism:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: 'mock -h 0.0.0.0 /tmp/api.yml'
+    ports:
+      # Serve the mocked API locally as available on port 8080
+      - '8080:4010'
