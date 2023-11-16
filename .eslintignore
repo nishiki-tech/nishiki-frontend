@@ -4,6 +4,6 @@ out
 public
 .prettierrc.js
 .eslintrc.js
-tailwind.config.js
+tailwind.config.ts
 next.config.js
 postcss.config.js
