@@ -1,4 +1,6 @@
 export { Button, buttonVariants } from './button';
-export { default as IconLink } from './icons/IconLink';
-export { default as MeatballButton } from './icons/MeatballButton';
-export { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+export { default as BackArrowIconButton } from './icons/buttons/BackArrowIconButton';
+export { default as MeatballIconButton } from './icons/buttons/MeatballIconButton';
+export { default as FoodsIconLink } from './icons/links/FoodsIconLink';
+export { default as GroupsIconLink } from './icons/links/GroupsIconLink';
+export { default as ProfileIconLink } from './icons/links/ProfileIconLink';
