@@ -1,7 +1,8 @@
 import '@/styles/globals.css';
 
+import MobileLayout from '@/components/base/layouts/MobileLayout';
 import { fontInter } from '@/const/fonts/fonts';
-import { siteConfig } from '@/const/site/site';
+import { siteConfig } from '@/const/site/siteConfig';
 import { cn } from '@/lib/tailwind/utils';
 
 import { Metadata } from 'next';
@@ -37,9 +38,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <body
           className={cn('min-h-screen bg-background font-sans antialiased', fontInter.variable)}
         >
-          <div className="relative flex min-h-screen flex-col">
-            <div className="flex-1">{children}</div>
-          </div>
+          <MobileLayout>{children}</MobileLayout>
         </body>
       </html>
     </>

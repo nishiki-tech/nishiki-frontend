@@ -1,5 +1,7 @@
 import React from 'react';
 
-export const FoodsPage = () => {
+const FoodsPage = () => {
   return <div>FoodsPage</div>;
 };
+
+export default FoodsPage;

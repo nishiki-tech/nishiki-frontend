@@ -1,5 +1,7 @@
 import React from 'react';
 
-export const GroupsPage = () => {
+const GroupsPage = () => {
   return <div>GroupsPage</div>;
 };
+
+export default GroupsPage;
