@@ -1,3 +1,11 @@
+## Outline
+
+- [Outline](#outline)
+  - [Colors](#colors)
+  - [Radius](#radius)
+  - [Font size](#font-size)
+  - [dark theme](#dark-theme)
+
 ### Colors
 
 - **All the colors are defined in @/styles/globals.css, and applied to tailwind in @/tailwind.config.ts**
