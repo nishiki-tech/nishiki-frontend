@@ -1,7 +1,7 @@
 ### Colors
 
 - **All the colors are defined in @/styles/globals.css, and applied to tailwind in @/tailwind.config.ts**
-- Almost all of the color name are used in pre-made components from [shadcnUI](https://ui.shadcn.com/docs).**Deleting or changing any of them might get you in trouble.**
+- Almost all of the color name are used in pre-made components from [shadcnUI](https://ui.shadcn.com/docs). **Deleting or changing any of them might get you in trouble.**
 - muted color is soften, less bright primary color
 - secondary color wasn't defined in wireframe, so set it #777777(light gray) for now.
 - destructive is a color for error

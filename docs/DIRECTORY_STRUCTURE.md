@@ -1,5 +1,31 @@
 # Project Directory Structure
 
+## Directory Structure Outline
+
+- [Project Directory Structure](#project-directory-structure)
+  - [Directory Structure Outline](#directory-structure-outline)
+  - [app/](#app)
+  - [components/](#components)
+    - [base/](#base)
+      - [layouts/](#layouts)
+      - [parts/](#parts)
+      - [ui/](#ui)
+      - [page/](#page)
+  - [const/](#const)
+  - [features/](#features)
+    - [/\*\* (name of each feature)](#-name-of-each-feature)
+      - [/api](#api)
+      - [/components](#components-1)
+      - [/hooks](#hooks)
+      - [/types](#types)
+  - [/hooks](#hooks-1)
+  - [/lib](#lib)
+  - [/stores](#stores)
+    - [/slices](#slices)
+  - [/styles](#styles)
+  - [/types](#types-1)
+- [Room for improvements, notes](#room-for-improvements-notes)
+
 This is a doc for developers who just joined this project.
 This project adheres to the **"Feature-Driven Folder Structure".**
 For better understanding please refer to this [English article](https://dev.to/profydev/screaming-architecture-evolution-of-a-react-folder-structure-4g25#indexjs-as-public-api)
@@ -84,7 +110,7 @@ Each feature in the application has its own directory, following the feature-dri
 
 - **All the shared types across the features** belongs to this directory.
 
-## **Room for improvements, notes**
+# Room for improvements, notes
 
 - Global "util" directory might be needed.
 - "util" directory for each of feature might be needed.
