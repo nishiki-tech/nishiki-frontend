@@ -13,17 +13,17 @@
       - [page/](#page)
   - [const/](#const)
   - [features/](#features)
-    - [/\*\* (name of each feature)](#-name-of-each-feature)
-      - [/api](#api)
-      - [/components](#components-1)
-      - [/hooks](#hooks)
-      - [/types](#types)
-  - [/hooks](#hooks-1)
+    - [/\<name_of_feature\>](#name_of_feature)
+      - [\<name_of_feature\>/api](#name_of_featureapi)
+      - [\<name_of_feature\>/components](#name_of_featurecomponents)
+      - [\<name_of_feature\>/hooks](#name_of_featurehooks)
+      - [\<name_of_feature\>/types](#name_of_featuretypes)
+  - [/hooks](#hooks)
   - [/lib](#lib)
   - [/stores](#stores)
     - [/slices](#slices)
   - [/styles](#styles)
-  - [/types](#types-1)
+  - [/types](#types)
 - [Room for improvements, notes](#room-for-improvements-notes)
 
 This is a doc for developers who just joined this project.
@@ -68,21 +68,21 @@ or [Japanese article](https://zenn.dev/necscat/articles/d5d9b7a3f859d7)
 
 Each feature in the application has its own directory, following the feature-driven approach.
 
-### /\*\* (name of each feature)
+### /<name_of_feature>
 
-#### /api
+#### <name_of_feature>/api
 
 - api related files
 
-#### /components
+#### <name_of_feature>/components
 
 - **Non shared components**, which is only used to do anything related to this feature.
 
-#### /hooks
+#### <name_of_feature>/hooks
 
 - **Non Shared custom hooks**,which is only used to do anything related to this feature.
 
-#### /types
+#### <name_of_feature>/types
 
 - **Non Shared types**,which is only used to do anything related to this feature.
 
