@@ -23,7 +23,10 @@ const ProfileIconLink: React.FC<Props> = ({ isSelected, className }) => {
         width="24"
         height="24"
         viewBox="0 0 48 48"
-        className={cn(isSelected ? 'fill-primary' : 'fill-secondary', className)}
+        className={cn(
+          isSelected ? 'fill-primary stroke-primary' : 'fill-secondary stroke-secondary',
+          className,
+        )}
       >
         <g fill-rule="evenodd" clip-rule="evenodd">
           <path d="M24 27a8 8 0 1 0 0-16a8 8 0 0 0 0 16Zm0-2a6 6 0 1 0 0-12a6 6 0 0 0 0 12Z" />
