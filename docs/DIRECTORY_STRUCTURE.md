@@ -38,15 +38,15 @@ or [Japanese article](https://zenn.dev/necscat/articles/d5d9b7a3f859d7)
 
 ## components/
 
-- **All the shared components across the features** belongs to this directory.
+**All the shared components across the features** belongs to this directory.
 
 ### base/
 
-- Relatively bigger shared components and layouts (Layouts,header,footer,navigationTab,etc)
+Relatively bigger shared components and layouts (Layouts,header,footer,navigationTab,etc)
 
 #### layouts/
 
-- All the layouts, is mostly combination of parts(headers, footers, or navigationTab) from "parts" directory
+All the layouts, is mostly combination of parts(headers, footers, or navigationTab) from "parts" directory
 
 #### parts/
 
@@ -54,15 +54,15 @@ or [Japanese article](https://zenn.dev/necscat/articles/d5d9b7a3f859d7)
 
 #### ui/
 
-- Shared UI components. Recommended to use ones from [shadcnUI](https://ui.shadcn.com/docs)
+Shared UI components. Recommended to use ones from [shadcnUI](https://ui.shadcn.com/docs)
 
 #### page/
 
-- The actual implementations of each page, which will be imported in each of "page.tsx" in @/app directory
+The actual implementations of each page, which will be imported in each of "page.tsx" in @/app directory
 
 ## const/
 
-- All the constant values
+All the constant values
 
 ## features/
 
@@ -72,43 +72,43 @@ Each feature in the application has its own directory, following the feature-dri
 
 #### <name_of_feature>/api
 
-- api related files
+api related files
 
 #### <name_of_feature>/components
 
-- **Non shared components**, which is only used to do anything related to this feature.
+**Non shared components**, which is only used to do anything related to this feature.
 
 #### <name_of_feature>/hooks
 
-- **Non Shared custom hooks**,which is only used to do anything related to this feature.
+**Non Shared custom hooks**,which is only used to do anything related to this feature.
 
 #### <name_of_feature>/types
 
-- **Non Shared types**,which is only used to do anything related to this feature.
+**Non Shared types**,which is only used to do anything related to this feature.
 
 ## /hooks
 
-- **All the shared custom hooks across the features** belongs to this directory.
+**All the shared custom hooks across the features** belongs to this directory.
 
 ## /lib
 
-- Third party library related files. Create directory for each of the library.
+Third party library related files. Create directory for each of the library.
 
 ## /stores
 
-- Global state related files. Using Redux Tool Kit
+Global state related files. Using Redux Tool Kit
 
 ### /slices
 
-- All [slices](https://redux.js.org/tutorials/essentials/part-2-app-structure#:~:text=Redux%20Slices%E2%80%8B,multiple%20%22slices%22%20of%20state.) created with RDK.
+All [slices](https://redux.js.org/tutorials/essentials/part-2-app-structure#:~:text=Redux%20Slices%E2%80%8B,multiple%20%22slices%22%20of%20state.) created with RDK.
 
 ## /styles
 
-- Global css
+Global css
 
 ## /types
 
-- **All the shared types across the features** belongs to this directory.
+**All the shared types across the features** belongs to this directory.
 
 # Room for improvements, notes
 
