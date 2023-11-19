@@ -7,7 +7,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-const MobileLayout: React.FC<Props> = ({ children }) => {
+export const MobileLayout: React.FC<Props> = ({ children }) => {
   return (
     <div className="relative flex min-h-screen flex-col">
       <MobileHeader />
@@ -16,5 +16,3 @@ const MobileLayout: React.FC<Props> = ({ children }) => {
     </div>
   );
 };
-
-export default MobileLayout;

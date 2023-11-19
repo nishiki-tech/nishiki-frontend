@@ -10,12 +10,10 @@ interface Props {
   onClick?: () => void;
 }
 
-const BackArrowIconButton: React.FC<Props> = ({ className, onClick }) => {
+export const BackArrowIconButton: React.FC<Props> = ({ className, onClick }) => {
   return (
     <Button variant="ghost" size="icon" onClick={onClick} className="hover:bg-popover">
       <ChevronLeft className={cn('stroke-popover-foreground fill-none', className)} />
     </Button>
   );
 };
-
-export default BackArrowIconButton;

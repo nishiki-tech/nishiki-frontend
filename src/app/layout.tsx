@@ -1,6 +1,6 @@
 import '@/styles/globals.css';
 
-import MobileLayout from '@/components/base/layouts/MobileLayout';
+import { MobileLayout } from '@/components/base/layouts/MobileLayout';
 import { fontInter } from '@/const/fonts/fonts';
 import { siteConfig } from '@/const/site/siteConfig';
 import { cn } from '@/lib/tailwind/utils';

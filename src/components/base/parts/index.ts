@@ -1,2 +1,2 @@
-export { default as BottomTab } from './mobile/BottomTab';
-export { default as MobileHeader } from './mobile/MobileHeader';
+export { BottomTab } from './mobile/BottomTab';
+export { MobileHeader } from './mobile/MobileHeader';

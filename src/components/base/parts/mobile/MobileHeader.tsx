@@ -4,7 +4,7 @@ import { BackArrowIconButton, MeatballIconButton } from '@/components/ui';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 
-const MobileHeader = () => {
+export const MobileHeader = () => {
   const router = useRouter();
 
   return (
@@ -18,5 +18,3 @@ const MobileHeader = () => {
     </header>
   );
 };
-
-export default MobileHeader;
