@@ -1,116 +1,104 @@
 # Project Directory Structure
 
-## Directory Structure Outline
+Welcome to the team! This document provides an overview of our project's directory structure, following a "Feature-Driven Folder Structure" approach. For a deeper understanding, you can refer to [this articles](https://dev.to/profydev/screaming-architecture-evolution-of-a-react-folder-structure-4g25#indexjs-as-public-api).
+
+##
 
 - [Project Directory Structure](#project-directory-structure)
-  - [Directory Structure Outline](#directory-structure-outline)
-  - [app/](#app)
-  - [components/](#components)
-    - [base/](#base)
-      - [layouts/](#layouts)
-      - [parts/](#parts)
-      - [ui/](#ui)
-      - [page/](#page)
-  - [const/](#const)
-  - [features/](#features)
-    - [/\<name_of_feature\>](#name_of_feature)
-      - [\<name_of_feature\>/api](#name_of_featureapi)
-      - [\<name_of_feature\>/components](#name_of_featurecomponents)
-      - [\<name_of_feature\>/hooks](#name_of_featurehooks)
-      - [\<name_of_feature\>/types](#name_of_featuretypes)
-  - [/hooks](#hooks)
-  - [/lib](#lib)
-  - [/stores](#stores)
-    - [/slices](#slices)
-  - [/styles](#styles)
-  - [/types](#types)
-- [Room for improvements, notes](#room-for-improvements-notes)
+  - [](#)
+    - [app/](#app)
+    - [components/](#components)
+    - [components/base/](#componentsbase)
+    - [components/base/layouts/](#componentsbaselayouts)
+    - [components/base/parts/](#componentsbaseparts)
+    - [components/base/ui/](#componentsbaseui)
+    - [components/base/page/](#componentsbasepage)
+    - [const/](#const)
+    - [features/](#features)
+    - [features/\<name_of_feature\>/](#featuresname_of_feature)
+    - [features/\<name_of_feature\>/api/](#featuresname_of_featureapi)
+    - [features/\<name_of_feature\>/components/](#featuresname_of_featurecomponents)
+    - [features/\<name_of_feature\>/hooks/](#featuresname_of_featurehooks)
+    - [features/\<name_of_feature\>/types/](#featuresname_of_featuretypes)
+    - [hooks/](#hooks)
+    - [lib/](#lib)
+    - [styles/](#styles)
+    - [types/](#types)
+  - [Considerations for Improvement](#considerations-for-improvement)
 
-This is a doc for developers who just joined this project.
-This project adheres to the **"Feature-Driven Folder Structure".**
-For better understanding please refer to this [English article](https://dev.to/profydev/screaming-architecture-evolution-of-a-react-folder-structure-4g25#indexjs-as-public-api)
-or [Japanese article](https://zenn.dev/necscat/articles/d5d9b7a3f859d7)
+### app/
 
-## app/
+Mainly for routing, shared layout, loading, and error displays, utilizing [Next.js app router](https://nextjs.org/docs/app). We will try to write as less as possible under this directory.
 
-- Basic directory structure using [next.js ver 13 app router](https://nextjs.org/docs/app)
-- We will try to write as less as possible under this directory. This directory is mainly and only responsible for **routing** and **shared layout**, **Loading** and **error display**, using app router's feature.
+### components/
 
-## components/
+Contains all shared components across features.
 
-**All the shared components across the features** belongs to this directory.
+### components/base/
 
-### base/
+For larger shared components and layouts (e.g. Layouts, header, footer,navigation tabs, etc.).
 
-Relatively bigger shared components and layouts (Layouts,header,footer,navigationTab,etc)
+### components/base/layouts/
 
-#### layouts/
+Combinations of parts from the parts/ directory for creating layouts.
 
-All the layouts, is mostly combination of parts(headers, footers, or navigationTab) from "parts" directory
+### components/base/parts/
 
-#### parts/
+Shared components larger than UI components (e.g., headers, footers).
 
-- Shard components, bigger compared to ui components. (ex : header,footer)
+### components/base/ui/
 
-#### ui/
+Shared UI components, preferably from [shadcnUI](https://ui.shadcn.com/docs).
 
-Shared UI components. Recommended to use ones from [shadcnUI](https://ui.shadcn.com/docs)
+### components/base/page/
 
-#### page/
+Actual page implementations, imported into page.tsx files under the app/ directory.
 
-The actual implementations of each page, which will be imported in each of "page.tsx" in @/app directory
+### const/
 
-## const/
+Stores all constant values.
 
-All the constant values
+### features/
 
-## features/
+Each feature of the application has its own directory, following the feature-driven approach.
 
-Each feature in the application has its own directory, following the feature-driven approach.
+### features/<name_of_feature>/
 
-### /<name_of_feature>
+Feature-specific directories.
 
-#### <name_of_feature>/api
+### features/<name_of_feature>/api/
 
-api related files
+API related files.
 
-#### <name_of_feature>/components
+### features/<name_of_feature>/components/
 
-**Non shared components**, which is only used to do anything related to this feature.
+Non-shared components specific to the feature.
 
-#### <name_of_feature>/hooks
+### features/<name_of_feature>/hooks/
 
-**Non Shared custom hooks**,which is only used to do anything related to this feature.
+Non-shared custom hooks for the feature.
 
-#### <name_of_feature>/types
+### features/<name_of_feature>/types/
 
-**Non Shared types**,which is only used to do anything related to this feature.
+Non-shared types for the feature.
 
-## /hooks
+### hooks/
 
-**All the shared custom hooks across the features** belongs to this directory.
+Shared custom hooks across features.
 
-## /lib
+### lib/
 
-Third party library related files. Create directory for each of the library.
+Files related to third-party libraries. Create a directory for each library.
 
-## /stores
+### styles/
 
-Global state related files. Using Redux Tool Kit
+Global CSS.
 
-### /slices
+### types/
 
-All [slices](https://redux.js.org/tutorials/essentials/part-2-app-structure#:~:text=Redux%20Slices%E2%80%8B,multiple%20%22slices%22%20of%20state.) created with RDK.
+Shared types across features.
 
-## /styles
+## Considerations for Improvement
 
-Global css
-
-## /types
-
-**All the shared types across the features** belongs to this directory.
-
-# Room for improvements, notes
-
-- Global "util" directory might be needed.
-- "util" directory for each of feature might be needed.
+- Consider adding a global "util" directory for utility functions and shared logic.
+- Each feature might benefit from its own "util" directory for feature-specific utility functions.
