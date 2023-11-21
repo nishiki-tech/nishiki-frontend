@@ -1,11 +1,11 @@
 # Project Directory Structure
 
-Welcome to the team! This document provides an overview of our project's directory structure, following a "Feature-Driven Folder Structure" approach. For a deeper understanding, you can refer to [this articles](https://dev.to/profydev/screaming-architecture-evolution-of-a-react-folder-structure-4g25#indexjs-as-public-api).
+Welcome to our project! This document outlines our project's directory structure, adhering to a "Feature-Driven Folder Structure" approach. For more insights, refer to [this detailed article](https://dev.to/profydev/screaming-architecture-evolution-of-a-react-folder-structure-4g25#indexjs-as-public-api).
 
-##
+## Directory Structure Overview
 
 - [Project Directory Structure](#project-directory-structure)
-  - [](#)
+  - [Directory Structure Overview](#directory-structure-overview)
     - [app/](#app)
     - [components/](#components)
     - [components/base/](#componentsbase)
@@ -28,77 +28,77 @@ Welcome to the team! This document provides an overview of our project's directo
 
 ### app/
 
-Mainly for routing, shared layout, loading, and error displays, utilizing [Next.js app router](https://nextjs.org/docs/app). We will try to write as less as possible under this directory.
+Handles routing, shared layouts, loading, and error displays, using the [Next.js app router](https://nextjs.org/docs/app). Minimal code is written here, focusing on routing and layout management.
 
 ### components/
 
-Contains all shared components across features.
+Houses all shared components used across different features.
 
 ### components/base/
 
-For larger shared components and layouts (e.g. Layouts, header, footer,navigation tabs, etc.).
+Contains larger shared components and layouts like Layouts, headers, footers, and navigation tabs.
 
 ### components/base/layouts/
 
-Combinations of parts from the parts/ directory for creating layouts.
+Combines parts from the 'parts/' directory to create various layouts.
 
 ### components/base/parts/
 
-Shared components larger than UI components (e.g., headers, footers).
+Features shared components that are larger than basic UI components, such as headers and footers.
 
 ### components/base/ui/
 
-Shared UI components, preferably from [shadcnUI](https://ui.shadcn.com/docs).
+Includes shared UI components, with a recommendation to use [shadcnUI](https://ui.shadcn.com/docs) components.
 
 ### components/base/page/
 
-Actual page implementations, imported into page.tsx files under the app/ directory.
+Implements actual pages, which are then imported into 'page.tsx' files in the 'app/' directory.
 
 ### const/
 
-Stores all constant values.
+Stores all constant values utilized in the project.
 
 ### features/
 
-Each feature of the application has its own directory, following the feature-driven approach.
+Each application feature has a dedicated directory, following a feature-driven structure.
 
 ### features/<name_of_feature>/
 
-Feature-specific directories.
+Directories specific to each feature.
 
 ### features/<name_of_feature>/api/
 
-API related files.
+Contains API related files.
 
 ### features/<name_of_feature>/components/
 
-Non-shared components specific to the feature.
+Houses non-shared components unique to the feature.
 
 ### features/<name_of_feature>/hooks/
 
-Non-shared custom hooks for the feature.
+Includes non-shared custom hooks relevant to the feature.
 
 ### features/<name_of_feature>/types/
 
-Non-shared types for the feature.
+Stores non-shared types specific to the feature.
 
 ### hooks/
 
-Shared custom hooks across features.
+Shared custom hooks utilized across various features.
 
 ### lib/
 
-Files related to third-party libraries. Create a directory for each library.
+Manages files related to third-party libraries, with a separate directory for each library.
 
 ### styles/
 
-Global CSS.
+Global CSS files for the project.
 
 ### types/
 
-Shared types across features.
+Shared types used across different features.
 
 ## Considerations for Improvement
 
-- Consider adding a global "util" directory for utility functions and shared logic.
-- Each feature might benefit from its own "util" directory for feature-specific utility functions.
+- A global "utils/" directory for common utility functions and shared logic could enhance the project structure.
+- Individual "utils/" directories within each feature directory can aid in managing feature-specific utility functions.
