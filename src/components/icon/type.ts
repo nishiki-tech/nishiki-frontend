@@ -1,4 +1,4 @@
-import { IconSize } from '@/components/icon/iconSizeConfig';
+import { IconSize } from '@/components/icon/config';
 
 export interface IconProps {
   size?: IconSize;

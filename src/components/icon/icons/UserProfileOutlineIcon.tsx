@@ -1,4 +1,4 @@
-import { iconSizeConfig } from '@/components/icon/iconSizeConfig';
+import { iconSizeConfig } from '@/components/icon/config';
 import { cn } from '@/lib/tailwind/utils';
 
 import React from 'react';
