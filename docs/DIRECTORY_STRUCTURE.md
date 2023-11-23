@@ -1,116 +1,110 @@
 # Project Directory Structure
 
-## Directory Structure Outline
+Welcome to our project! This document outlines our project's directory structure, adhering to a "Feature-Driven Folder Structure" approach. The structure is inspired by insights from both an [English article](https://dev.to/profydev/screaming-architecture-evolution-of-a-react-folder-structure-4g25#indexjs-as-public-api) and a [Japanese article](https://zenn.dev/necscat/articles/d5d9b7a3f859d7).
+
+## Directory Structure Overview
 
 - [Project Directory Structure](#project-directory-structure)
-  - [Directory Structure Outline](#directory-structure-outline)
-  - [app/](#app)
-  - [components/](#components)
-    - [base/](#base)
-      - [layouts/](#layouts)
-      - [parts/](#parts)
-      - [ui/](#ui)
-      - [page/](#page)
-  - [const/](#const)
-  - [features/](#features)
-    - [/\<name_of_feature\>](#name_of_feature)
-      - [\<name_of_feature\>/api](#name_of_featureapi)
-      - [\<name_of_feature\>/components](#name_of_featurecomponents)
-      - [\<name_of_feature\>/hooks](#name_of_featurehooks)
-      - [\<name_of_feature\>/types](#name_of_featuretypes)
-  - [/hooks](#hooks)
-  - [/lib](#lib)
-  - [/stores](#stores)
-    - [/slices](#slices)
-  - [/styles](#styles)
-  - [/types](#types)
-- [Room for improvements, notes](#room-for-improvements-notes)
+  - [Directory Structure Overview](#directory-structure-overview)
+    - [`app/`](#app)
+    - [`components/`](#components)
+    - [`components/layouts/`](#componentslayouts)
+    - [`components/icons/`](#componentsicons)
+    - [`components/pages/`](#componentspages)
+    - [`components/parts/`](#componentsparts)
+    - [`components/ui/`](#componentsui)
+    - [`const/`](#const)
+    - [`features/`](#features)
+    - [`features/<feature_name>/`](#featuresfeature_name)
+    - [`features/<feature_name>/api/`](#featuresfeature_nameapi)
+    - [`features/<feature_name>/components/`](#featuresfeature_namecomponents)
+    - [`features/<feature_name>/hooks/`](#featuresfeature_namehooks)
+    - [`features/<feature_name>/types/`](#featuresfeature_nametypes)
+    - [`features/<feature_name>/utils/`](#featuresfeature_nameutils)
+    - [`hooks/`](#hooks)
+    - [`lib/`](#lib)
+    - [`styles/`](#styles)
+    - [`types/`](#types)
+    - [`utils/`](#utils)
 
-This is a doc for developers who just joined this project.
-This project adheres to the **"Feature-Driven Folder Structure".**
-For better understanding please refer to this [English article](https://dev.to/profydev/screaming-architecture-evolution-of-a-react-folder-structure-4g25#indexjs-as-public-api)
-or [Japanese article](https://zenn.dev/necscat/articles/d5d9b7a3f859d7)
+The following is a brief overview of the project's directory structure under the `src/` directory.
 
-## app/
+### `app/`
 
-- Basic directory structure using [next.js ver 13 app router](https://nextjs.org/docs/app)
-- We will try to write as less as possible under this directory. This directory is mainly and only responsible for **routing** and **shared layout**, **Loading** and **error display**, using app router's feature.
+Handles routing, shared layouts, loading, and error displays, using the [Next.js app router](https://nextjs.org/docs/app). Minimal code is written here, focusing on routing and layout management.
 
-## components/
+### `components/`
 
-**All the shared components across the features** belongs to this directory.
+Houses all shared components used across different features.
 
-### base/
+### `components/layouts/`
 
-Relatively bigger shared components and layouts (Layouts,header,footer,navigationTab,etc)
+Combines parts from the 'parts/' directory to create various layouts.
 
-#### layouts/
+### `components/icons/`
 
-All the layouts, is mostly combination of parts(headers, footers, or navigationTab) from "parts" directory
+Houses icon components, primarily as SVG wrappers or components.
 
-#### parts/
+### `components/pages/`
 
-- Shard components, bigger compared to ui components. (ex : header,footer)
+Implements actual pages, which are then imported into 'page.tsx' files in the 'app/' directory.
 
-#### ui/
+### `components/parts/`
 
-Shared UI components. Recommended to use ones from [shadcnUI](https://ui.shadcn.com/docs)
+Features shared components that are larger than basic UI components, such as headers and footers.
 
-#### page/
+### `components/ui/`
 
-The actual implementations of each page, which will be imported in each of "page.tsx" in @/app directory
+Includes shared UI components, such as buttons, cards, text fields. Recommended to use [shadcnUI](https://ui.shadcn.com/docs) components.
 
-## const/
+### `const/`
 
-All the constant values
+Stores all constant values utilized in the project.
 
-## features/
+### `features/`
 
-Each feature in the application has its own directory, following the feature-driven approach.
+Each application feature has a dedicated directory, following a feature-driven structure.
 
-### /<name_of_feature>
+### `features/<feature_name>/`
 
-#### <name_of_feature>/api
+Directories specific to each feature.
 
-api related files
+### `features/<feature_name>/api/`
 
-#### <name_of_feature>/components
+Contains API related files.
 
-**Non shared components**, which is only used to do anything related to this feature.
+### `features/<feature_name>/components/`
 
-#### <name_of_feature>/hooks
+Houses non-shared components unique to the feature.
 
-**Non Shared custom hooks**,which is only used to do anything related to this feature.
+### `features/<feature_name>/hooks/`
 
-#### <name_of_feature>/types
+Includes non-shared custom hooks relevant to the feature.
 
-**Non Shared types**,which is only used to do anything related to this feature.
+### `features/<feature_name>/types/`
 
-## /hooks
+Stores non-shared types specific to the feature.
 
-**All the shared custom hooks across the features** belongs to this directory.
+### `features/<feature_name>/utils/`
 
-## /lib
+Contains non-shared utility functions relevant to the feature.
 
-Third party library related files. Create directory for each of the library.
+### `hooks/`
 
-## /stores
+Shared custom hooks utilized across various features.
 
-Global state related files. Using Redux Tool Kit
+### `lib/`
 
-### /slices
+Manages files related to third-party libraries, with a separate directory for each library.
 
-All [slices](https://redux.js.org/tutorials/essentials/part-2-app-structure#:~:text=Redux%20Slices%E2%80%8B,multiple%20%22slices%22%20of%20state.) created with RDK.
+### `styles/`
 
-## /styles
+Global CSS files for the project.
 
-Global css
+### `types/`
 
-## /types
+Shared types used across different features.
 
-**All the shared types across the features** belongs to this directory.
+### `utils/`
 
-# Room for improvements, notes
-
-- Global "util" directory might be needed.
-- "util" directory for each of feature might be needed.
+Contains shared utility functions used across different features.
