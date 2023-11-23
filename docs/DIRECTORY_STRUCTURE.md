@@ -1,6 +1,6 @@
 # Project Directory Structure
 
-Welcome to our project! This document outlines our project's directory structure, adhering to a "Feature-Driven Folder Structure" approach. For more insights, refer to [this detailed article](https://dev.to/profydev/screaming-architecture-evolution-of-a-react-folder-structure-4g25#indexjs-as-public-api).
+Welcome to our project! This document outlines our project's directory structure, adhering to a "Feature-Driven Folder Structure" approach. The structure is inspired by insights from both an [English article](https://dev.to/profydev/screaming-architecture-evolution-of-a-react-folder-structure-4g25#indexjs-as-public-api) and a [Japanese article](https://zenn.dev/necscat/articles/d5d9b7a3f859d7).
 
 ## Directory Structure Overview
 
