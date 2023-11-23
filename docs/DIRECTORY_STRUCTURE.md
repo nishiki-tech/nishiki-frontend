@@ -6,97 +6,109 @@ Welcome to our project! This document outlines our project's directory structure
 
 - [Project Directory Structure](#project-directory-structure)
   - [Directory Structure Overview](#directory-structure-overview)
-    - [app/](#app)
-    - [components/](#components)
-    - [components/base/](#componentsbase)
-    - [components/base/layouts/](#componentsbaselayouts)
-    - [components/base/parts/](#componentsbaseparts)
-    - [components/base/ui/](#componentsbaseui)
-    - [components/base/page/](#componentsbasepage)
-    - [const/](#const)
-    - [features/](#features)
-    - [features/\<name_of_feature\>/](#featuresname_of_feature)
-    - [features/\<name_of_feature\>/api/](#featuresname_of_featureapi)
-    - [features/\<name_of_feature\>/components/](#featuresname_of_featurecomponents)
-    - [features/\<name_of_feature\>/hooks/](#featuresname_of_featurehooks)
-    - [features/\<name_of_feature\>/types/](#featuresname_of_featuretypes)
-    - [hooks/](#hooks)
-    - [lib/](#lib)
-    - [styles/](#styles)
-    - [types/](#types)
+    - [`app/`](#app)
+    - [`components/`](#components)
+    - [`components/layouts/`](#componentslayouts)
+    - [`components/icons/`](#componentsicons)
+    - [`components/pages/`](#componentspages)
+    - [`components/parts/`](#componentsparts)
+    - [`components/ui/`](#componentsui)
+    - [`const/`](#const)
+    - [`features/`](#features)
+    - [`features/<feature_name>/`](#featuresfeature_name)
+    - [`features/<feature_name>/api/`](#featuresfeature_nameapi)
+    - [`features/<feature_name>/components/`](#featuresfeature_namecomponents)
+    - [`features/<feature_name>/hooks/`](#featuresfeature_namehooks)
+    - [`features/<feature_name>/types/`](#featuresfeature_nametypes)
+    - [`features/<feature_name>/utils/`](#featuresfeature_nameutils)
+    - [`hooks/`](#hooks)
+    - [`lib/`](#lib)
+    - [`styles/`](#styles)
+    - [`types/`](#types)
+    - [`utils/`](#utils)
   - [Considerations for Improvement](#considerations-for-improvement)
 
-### app/
+The following is a brief overview of the project's directory structure under the `src/` directory.
+
+### `app/`
 
 Handles routing, shared layouts, loading, and error displays, using the [Next.js app router](https://nextjs.org/docs/app). Minimal code is written here, focusing on routing and layout management.
 
-### components/
+### `components/`
 
 Houses all shared components used across different features.
 
-### components/base/
-
-Contains larger shared components and layouts like Layouts, headers, footers, and navigation tabs.
-
-### components/base/layouts/
+### `components/layouts/`
 
 Combines parts from the 'parts/' directory to create various layouts.
 
-### components/base/parts/
+### `components/icons/`
 
-Features shared components that are larger than basic UI components, such as headers and footers.
+Houses icon components, primarily as SVG wrappers or components.
 
-### components/base/ui/
-
-Includes shared UI components, with a recommendation to use [shadcnUI](https://ui.shadcn.com/docs) components.
-
-### components/base/page/
+### `components/pages/`
 
 Implements actual pages, which are then imported into 'page.tsx' files in the 'app/' directory.
 
-### const/
+### `components/parts/`
+
+Features shared components that are larger than basic UI components, such as headers and footers.
+
+### `components/ui/`
+
+Includes shared UI components, such as buttons, cards, text fields. Recommended to use [shadcnUI](https://ui.shadcn.com/docs) components.
+
+### `const/`
 
 Stores all constant values utilized in the project.
 
-### features/
+### `features/`
 
 Each application feature has a dedicated directory, following a feature-driven structure.
 
-### features/<name_of_feature>/
+### `features/<feature_name>/`
 
 Directories specific to each feature.
 
-### features/<name_of_feature>/api/
+### `features/<feature_name>/api/`
 
 Contains API related files.
 
-### features/<name_of_feature>/components/
+### `features/<feature_name>/components/`
 
 Houses non-shared components unique to the feature.
 
-### features/<name_of_feature>/hooks/
+### `features/<feature_name>/hooks/`
 
 Includes non-shared custom hooks relevant to the feature.
 
-### features/<name_of_feature>/types/
+### `features/<feature_name>/types/`
 
 Stores non-shared types specific to the feature.
 
-### hooks/
+### `features/<feature_name>/utils/`
+
+Contains non-shared utility functions relevant to the feature.
+
+### `hooks/`
 
 Shared custom hooks utilized across various features.
 
-### lib/
+### `lib/`
 
 Manages files related to third-party libraries, with a separate directory for each library.
 
-### styles/
+### `styles/`
 
 Global CSS files for the project.
 
-### types/
+### `types/`
 
 Shared types used across different features.
+
+### `utils/`
+
+Contains shared utility functions used across different features.
 
 ## Considerations for Improvement
 
