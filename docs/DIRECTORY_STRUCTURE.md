@@ -26,7 +26,6 @@ Welcome to our project! This document outlines our project's directory structure
     - [`styles/`](#styles)
     - [`types/`](#types)
     - [`utils/`](#utils)
-  - [Considerations for Improvement](#considerations-for-improvement)
 
 The following is a brief overview of the project's directory structure under the `src/` directory.
 
@@ -109,8 +108,3 @@ Shared types used across different features.
 ### `utils/`
 
 Contains shared utility functions used across different features.
-
-## Considerations for Improvement
-
-- A global "utils/" directory for common utility functions and shared logic could enhance the project structure.
-- Individual "utils/" directories within each feature directory can aid in managing feature-specific utility functions.
