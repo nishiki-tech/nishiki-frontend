@@ -1,5 +1,5 @@
 ---
-name: Question (Comunity)
+name: Question (Community)
 about: Ask a question or seek clarification on project-related matters (External Use)
 labels: question, external
 ---

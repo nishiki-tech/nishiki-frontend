@@ -1,5 +1,5 @@
 ---
-name: New Feature Request (Comunity)
+name: New Feature Request (Community)
 about: Suggest a new feature to enhance the project
 labels: enhancement, external
 ---

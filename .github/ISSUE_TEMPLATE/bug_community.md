@@ -1,5 +1,5 @@
 ---
-name: Bug Report (Comunity)
+name: Bug Report (Community)
 about: Report a bug to help us improve
 labels: bug, external
 ---
