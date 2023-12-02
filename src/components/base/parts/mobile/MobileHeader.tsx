@@ -1,6 +1,6 @@
 // not using "use client" since it's a child of MobileLayout, which is already using "use client"
-import { ChevronBackIcon, MeatballIcon } from '@/components/icon';
-import { Button } from '@/components/ui';
+
+import { Button, Icon } from '@/components/ui';
 
 import { useRouter } from 'next/navigation';
 import React from 'react';
@@ -17,10 +17,10 @@ export const MobileHeader = () => {
           onClick={() => router.back()}
           className="hover:bg-popover"
         >
-          <ChevronBackIcon />
+          <Icon iconName="chevronBack" className="fill-popover-foreground" />
         </Button>
         <Button variant="ghost" size="icon" onClick={() => {}} className="hover:bg-popover">
-          <MeatballIcon />
+          <Icon iconName="meatball" className="fill-popover-foreground" />
         </Button>
       </div>
     </header>
