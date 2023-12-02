@@ -17,10 +17,10 @@ export const MobileHeader = () => {
           onClick={() => router.back()}
           className="hover:bg-popover"
         >
-          <Icon iconName="chevronBack" className="fill-popover-foreground" />
+          <Icon iconName="chevronBack" fill="popover-foreground" />
         </Button>
         <Button variant="ghost" size="icon" onClick={() => {}} className="hover:bg-popover">
-          <Icon iconName="meatball" className="fill-popover-foreground" />
+          <Icon iconName="meatball" fill="popover-foreground" />
         </Button>
       </div>
     </header>

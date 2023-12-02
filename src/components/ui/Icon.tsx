@@ -63,13 +63,23 @@ export type IconName = keyof typeof icons;
 
 type IconProps = {
   iconName: IconName;
+  stroke?: string;
+  fill?: string;
   className?: string;
   size?: IconSize;
 };
 
-export const Icon: React.FC<IconProps> = ({ iconName, className, size = 'md' }) => {
+export const Icon: React.FC<IconProps> = ({
+  iconName,
+  className,
+  stroke = 'none',
+  fill = 'none',
+  size = 'md',
+}) => {
   const IconComponent = icons[iconName];
+  const strokeStyle = 'stroke-' + stroke;
+  const fillStyle = 'fill-' + fill;
   const iconSize = iconSizeConfig[size];
 
-  return <IconComponent className={cn(iconSize, className)} />;
+  return <IconComponent className={cn(strokeStyle, fillStyle, iconSize, className)} />;
 };
