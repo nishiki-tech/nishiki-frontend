@@ -20,15 +20,15 @@ export const BottomTabIconLink: React.FC<Props> = ({ name, isSelected }) => {
   // Icon component based on "isSelected" and "name" variable
   const iconName: IconName = isSelected
     ? name === 'groups'
-      ? 'fillHomeSmile'
+      ? 'home_on'
       : name === 'foods'
-      ? 'fillFoodApple'
-      : 'fillUserProfile'
+      ? 'food_on'
+      : 'profile_on'
     : name === 'groups'
-    ? 'homeSmile'
+    ? 'home_off'
     : name === 'foods'
-    ? 'foodApple'
-    : 'userProfile';
+    ? 'food_off'
+    : 'profile_off';
 
   // icon color based on "isSelected" variable
   const fillStyle = isSelected ? 'primary' : 'secondary';
