@@ -32,7 +32,7 @@ const icons = {
   calendar: CalendarIcon,
   container: ContainerIcon,
   close: CrossIcon,
-  deleteTrash: DeleteIcon,
+  delete: DeleteIcon,
   filter: FilterIcon,
   link: LinkIcon,
   logout: LogoutIcon,
@@ -63,23 +63,19 @@ export type IconName = keyof typeof icons;
 
 type IconProps = {
   iconName: IconName;
-  stroke?: string;
-  fill?: string;
-  className?: string;
+  color?: string;
   size?: IconSize;
+  className?: string;
 };
 
-export const Icon: React.FC<IconProps> = ({
-  iconName,
-  className,
-  stroke = 'none',
-  fill = 'none',
-  size = 'md',
-}) => {
+export const Icon: React.FC<IconProps> = ({ iconName, color, size = 'md', className }) => {
   const IconComponent = icons[iconName];
-  const strokeStyle = 'stroke-' + stroke;
-  const fillStyle = 'fill-' + fill;
+
+  // stroke style doesn't work if you set it stroke-colorname,
+  // but it works if you set it text-colorname
+  // and it work also without fill style
+  const colorStyle = 'text-' + color;
   const iconSize = iconSizeConfig[size];
 
-  return <IconComponent className={cn(strokeStyle, fillStyle, iconSize, className)} />;
+  return <IconComponent className={cn(colorStyle, iconSize, className)} />;
 };
