@@ -9,6 +9,6 @@
 ## Steps to use an icon
 
 1. Use the Icon component defined in src/components/ui/icon.tsx.
-2. Define the size with the "size" property of the component.
+2. Define the size with the "size" property of the component By default it's set to be md.
 3. Define the color with "color" property.
-4. Define additional styling with "className" property if it's needed.
+4. Define additional styling with "className" property if it's needed. You can overwrite size and color.
