@@ -17,18 +17,18 @@ export const BottomTabIconLink: React.FC<Props> = ({ name, isSelected }) => {
   const path = mainRouteConfig[name].path;
   const title = mainRouteConfig[name].title;
 
-  // Icon component based on "isSelected" and "name" variable
-  const iconName: IconName = isSelected
-    ? name === 'groups'
-      ? 'home_on'
-      : name === 'foods'
-      ? 'food_on'
-      : 'profile_on'
-    : name === 'groups'
-    ? 'home_off'
-    : name === 'foods'
-    ? 'food_off'
-    : 'profile_off';
+  // Icon component based on "name" and "isSelected" variable
+  let iconName: IconName;
+  switch (name) {
+    case 'groups':
+      iconName = isSelected ? 'home_on' : 'home_off';
+      break;
+    case 'foods':
+      iconName = isSelected ? 'food_on' : 'food_off';
+      break;
+    default:
+      iconName = isSelected ? 'profile_on' : 'profile_off';
+  }
 
   // icon color based on "isSelected" variable
   // const fillStyle = isSelected ? 'primary' : 'secondary';
