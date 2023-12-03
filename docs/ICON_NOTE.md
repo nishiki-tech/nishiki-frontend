@@ -10,5 +10,5 @@
 
 1. Use the Icon component defined in src/components/ui/icon.tsx.
 2. Define the size with the "size" property of the component.
-3. Define the color with the "stroke" or/and "fill" property of the component. Follow how it's styled in wireframe.
+3. Define the color with "color" property.
 4. Define additional styling with "className" property if it's needed.
