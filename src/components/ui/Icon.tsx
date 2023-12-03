@@ -49,17 +49,17 @@ const icons = {
   search: SearchIcon,
   triangleDown: TriangleDownIcon,
   triangleRight: TriangleRightIcon,
-};
+} as const;
 
-const iconSizeConfig = {
+const iconSize = {
   sm: 'w-6 h-6',
   md: 'w-8 h-8',
   lg: 'w-10 h-10',
 } as const;
 
-export type IconSize = keyof typeof iconSizeConfig;
-
 export type IconName = keyof typeof icons;
+
+export type IconSize = keyof typeof iconSize;
 
 type IconProps = {
   iconName: IconName;
@@ -75,7 +75,7 @@ export const Icon: React.FC<IconProps> = ({ iconName, color, size = 'md', classN
   // but it works if you set it text-colorname
   // and it work also without fill style
   const colorStyle = 'text-' + color;
-  const iconSize = iconSizeConfig[size];
+  const sizeStyle = iconSize[size];
 
-  return <IconComponent className={cn(colorStyle, iconSize, className)} />;
+  return <IconComponent className={cn(colorStyle, sizeStyle, className)} />;
 };
