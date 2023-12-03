@@ -1,3 +1,4 @@
+'use client';
 import { BottomTabIconLink } from '@/components/ui';
 import { mainRouteConfig } from '@/const/site/mainRouteConfig';
 

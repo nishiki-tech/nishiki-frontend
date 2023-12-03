@@ -31,14 +31,15 @@ export const BottomTabIconLink: React.FC<Props> = ({ name, isSelected }) => {
     : 'profile_off';
 
   // icon color based on "isSelected" variable
-  const fillStyle = isSelected ? 'primary' : 'secondary';
+  // const fillStyle = isSelected ? 'primary' : 'secondary';
 
   // text color based on "isSelected" variable
-  const textColorStyle = isSelected ? 'text-primary' : 'text-secondary';
+  const color = isSelected ? 'primary' : 'secondary';
+  const textColorStyle = `text-${color}`;
 
   return (
     <Link href={path} className="inline-flex flex-col items-center justify-center px-5">
-      <Icon iconName={iconName} className={'mb-1'} fill={fillStyle} />
+      <Icon iconName={iconName} className={'mb-1'} color={color} />
       <span className={cn('text-xs', textColorStyle)}>{title}</span>
     </Link>
   );
