@@ -31,9 +31,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       {/* Reducing hydration error. Reference : https://nextjs.org/docs/messages/react-hydration-error */}
       <html lang="en" suppressHydrationWarning>
         <head />
-        <body
-          className={cn('min-h-screen bg-background font-sans antialiased', fontInter.variable)}
-        >
+        <body className={cn('min-h-screen bg-primary-lightest antialiased', fontInter.variable)}>
           <MobileLayout>{children}</MobileLayout>
         </body>
       </html>
