@@ -34,7 +34,7 @@ export const BottomTabIconLink: React.FC<Props> = ({ name, isSelected }) => {
   // const fillStyle = isSelected ? 'primary' : 'secondary';
 
   // text color based on "isSelected" variable
-  const color = isSelected ? 'primary' : 'secondary';
+  const color = isSelected ? 'primary' : 'gray-dark';
   const textColorStyle = `text-${color}`;
 
   return (

@@ -1,20 +1,32 @@
 'use client';
 
-import { Button, Icon } from '@/components/ui';
+import { Icon } from '@/components/ui';
 
 import React from 'react';
 
 export const MobileHeader = () => {
   return (
-    <header className="bg-popover sticky top-0 z-40 w-full">
-      <div className="flex h-16 items-center justify-between px-5">
-        <Button variant="ghost" size="icon" onClick={() => {}} className="hover:bg-popover">
-          <Icon iconName="arrowLeft" color="popover-foreground" />
+    <header className="bg-white sticky top-0 z-40 w-full">
+      <div className="flex px-2 h-12 items-center justify-between">
+        <Button>
+          <Icon iconName="arrowLeft" color="black" />
         </Button>
-        <Button variant="ghost" size="icon" onClick={() => {}} className="hover:bg-popover">
-          <Icon iconName="menuCircle" color="popover-foreground" />
+        <Button>
+          <Icon iconName="menuCircle" color="black" />
         </Button>
       </div>
     </header>
+  );
+};
+
+interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  children: React.ReactNode;
+}
+
+const Button: React.FC<IButtonProps> = ({ children, ...props }) => {
+  return (
+    <button className="h-full aspect-square flex items-center justify-center" {...props}>
+      {children}
+    </button>
   );
 };

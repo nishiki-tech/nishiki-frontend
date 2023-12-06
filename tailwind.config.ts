@@ -1,82 +1,28 @@
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
-  darkMode: ['class'],
-  content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-  ],
+  content: ['./src/**/*.{ts,tsx}'],
   theme: {
-    container: {
-      center: true,
-      padding: '2rem',
-      screens: {
-        '2xl': '1400px',
-      },
-      fontSize: {
-        sm: ['0.75rem', '1rem'],
-        md: ['1rem', '1.5rem'],
-        lg: ['1.125rem', '1.75rem'],
-      },
-    },
     extend: {
-      flexGrow: {
-        4: '0.4',
-      },
-
       colors: {
-        border: 'var(--border)',
-        input: 'var(--input)',
-        ring: 'var(--ring)',
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
-        primary: {
-          DEFAULT: 'var(--primary)',
-          foreground: 'var(--primary-foreground)',
-        },
-        secondary: {
-          DEFAULT: 'var(--secondary)',
-          foreground: 'var(--secondary-foreground)',
-        },
-        tertiary: {
-          DEFAULT: 'var(--tertiary)',
-          foreground: 'var(--tertiary-foreground)',
-        },
-        quaternary: {
-          DEFAULT: 'var(--quaternary)',
-          foreground: 'var(--quaternary-foreground)',
-        },
-        successful: {
-          DEFAULT: 'var(--successful)',
-          foreground: 'var(--successful-foreground)',
-        },
-        destructive: {
-          DEFAULT: 'var(--destructive)',
-          foreground: 'var(--destructive-foreground)',
-        },
-        muted: {
-          DEFAULT: 'var(--muted)',
-          foreground: 'var(--muted-foreground)',
-        },
-        accent: {
-          DEFAULT: 'var(--accent)',
-          foreground: 'var(--accent-foreground)',
-        },
-        popover: {
-          DEFAULT: 'var(--popover)',
-          foreground: 'var(--popover-foreground)',
-        },
-        card: {
-          DEFAULT: 'var(--card)',
-          foreground: 'var(--card-foreground)',
-        },
+        'primary-lightest': '#e6f2f1',
+        'primary-light': '#abd4cf',
+        primary: '#6ab3ab',
+        'primary-dark': '#5fa19a',
+        accent: '#fcd884',
+        danger: '#cd5a5a',
+        'danger-dark': '#b95151',
+        'gray-lightest': '#f8f8f8',
+        'gray-light': '#eeeeee',
+        gray: '#bdbdbd',
+        'gray-dark': '#777777',
+        white: '#ffffff',
+        black: '#222222',
       },
       borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 30px)',
-        sm: 'calc(var(--radius) - 40px)',
+        xs: '0.125rem', // 2px
+        sm: '0.25rem', // 4px
+        DEFAULT: '0.625rem', // 10px
       },
       keyframes: {
         'accordion-down': {
