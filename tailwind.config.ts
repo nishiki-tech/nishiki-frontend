@@ -20,7 +20,7 @@ module.exports = {
         black: '#222222',
       },
       borderRadius: {
-        xl: '0.125rem', // 2px
+        xs: '0.125rem', // 2px
         sm: '0.25rem', // 4px
         DEFAULT: '0.625rem', // 10px
       },
