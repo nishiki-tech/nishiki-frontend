@@ -7,12 +7,12 @@ import React from 'react';
 export const MobileHeader = () => {
   return (
     <header className="bg-white sticky top-0 z-40 w-full">
-      <div className="flex h-12 items-center justify-between">
+      <div className="flex px-2 h-12 items-center justify-between">
         <Button>
-          <Icon iconName="arrowLeft" color="gray-dark" />
+          <Icon iconName="arrowLeft" color="black" />
         </Button>
         <Button>
-          <Icon iconName="menuCircle" color="gray-dark" />
+          <Icon iconName="menuCircle" color="black" />
         </Button>
       </div>
     </header>
