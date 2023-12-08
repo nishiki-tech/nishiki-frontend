@@ -2,6 +2,7 @@
 import { Amplify } from 'aws-amplify';
 import { getCurrentUser, signInWithRedirect, signOut } from 'aws-amplify/auth';
 import { AuthUser } from 'aws-amplify/auth';
+import { fetchAuthSession } from 'aws-amplify/auth';
 import { Hub } from 'aws-amplify/utils';
 import React, { useEffect, useState } from 'react';
 
@@ -49,6 +50,7 @@ export const LoginForm = () => {
     });
 
     getUser();
+    currentSession();
 
     return unsubscribe;
   }, []);
@@ -56,12 +58,22 @@ export const LoginForm = () => {
   const getUser = async (): Promise<void> => {
     try {
       const currentUser = await getCurrentUser();
+      console.log('currentUser', currentUser);
       setUser(currentUser);
     } catch (error) {
       console.error(error);
       console.log('Not signed in');
     }
   };
+
+  async function currentSession() {
+    try {
+      const { accessToken, idToken } = (await fetchAuthSession()).tokens ?? {};
+      console.log('accessToken, idToken', accessToken, idToken);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return (
     <div className="login-form">
