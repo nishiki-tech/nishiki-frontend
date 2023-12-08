@@ -1,8 +1,7 @@
 'use client';
 import { Amplify } from 'aws-amplify';
 import { getCurrentUser, signInWithRedirect, signOut } from 'aws-amplify/auth';
-import { AuthUser } from 'aws-amplify/auth';
-import { fetchAuthSession } from 'aws-amplify/auth';
+import { AuthUser, fetchAuthSession } from 'aws-amplify/auth';
 import { Hub } from 'aws-amplify/utils';
 import React, { useEffect, useState } from 'react';
 

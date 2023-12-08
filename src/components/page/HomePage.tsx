@@ -1,10 +1,10 @@
-import { LoginForm } from '@/components/ui/login-form';
+import { LoginForm } from '@/components/ui/LoginForm';
 
 export const HomePage = () => {
   return (
     <div>
       HomePage
-      <LoginForm></LoginForm>
+      <LoginForm />
     </div>
   );
 };
