@@ -7,9 +7,9 @@ import React from 'react';
 export async function GroupsPage() {
   const groups: IGroup[] = await fetchGroupList();
   return (
-    <div>
+    <>
       GroupsPage
       <GroupList groups={groups} />
-    </div>
+    </>
   );
 }
