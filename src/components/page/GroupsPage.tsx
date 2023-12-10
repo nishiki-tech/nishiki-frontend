@@ -1,12 +1,11 @@
 import GroupList from '@/features/group/components/GroupList';
-import { Group } from '@/features/group/types/definition';
+import { IGroup } from '@/features/group/types/definition';
 import { fetchGroupList } from '@/lib/api/data';
 
 import React from 'react';
 
-const groups: Group[] = await fetchGroupList();
-
-export function GroupsPage() {
+export async function GroupsPage() {
+  const groups: IGroup[] = await fetchGroupList();
   return (
     <div>
       GroupsPage
