@@ -1,6 +1,8 @@
-import { IUser } from '../types/definition';
+import { fetchUserList } from '@/lib/api/data';
 
-export default function MemberList({ users }: { users: IUser[] }) {
+import { IUser } from '../types/definition';
+export default async function MemberList({ id }: { id: string }) {
+  const users: IUser[] = await fetchUserList(id);
   return (
     <div>
       Member

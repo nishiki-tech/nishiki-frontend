@@ -1,19 +1,11 @@
 import ContainerList from '@/features/group/components/ContainerList';
 import MemberList from '@/features/group/components/MemberList';
-import { IUser } from '@/features/group/types/definition';
-import { IContainer } from '@/features/group/types/definition';
 
-export function GroupSinglePage({
-  users,
-  containers,
-}: {
-  users: IUser[];
-  containers: IContainer[];
-}) {
+export function GroupSinglePage({ id }: { id: string }) {
   return (
     <div>
-      <MemberList users={users} />
-      <ContainerList containers={containers} />
+      <MemberList id={id} />
+      <ContainerList id={id} />
     </div>
   );
 }

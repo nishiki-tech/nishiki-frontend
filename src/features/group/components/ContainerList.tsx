@@ -1,6 +1,8 @@
-import { IContainer } from '../types/definition';
+import { fetchContainerList } from '@/lib/api/data';
 
-export default function ContainerList({ containers }: { containers: IContainer[] }) {
+import { IContainer } from '../types/definition';
+export default async function ContainerList({ id }: { id: string }) {
+  const containers: IContainer[] = await fetchContainerList(id);
   return (
     <div>
       Container
