@@ -1,24 +1,24 @@
-import { Group } from '@/features/group/types/definition';
-import { Container } from '@/features/group/types/definition';
-import { User } from '@/features/group/types/definition';
+import { IGroup } from '@/features/group/types/definition';
+import { IContainer } from '@/features/group/types/definition';
+import { IUser } from '@/features/group/types/definition';
 
 import axios from 'axios';
 
 const APIDOMAIN = 'http://localhost:8080';
 
 interface IGroupsResponse {
-  groups: Group[];
+  groups: IGroup[];
 }
 
 interface IContainersResponse {
-  containers: Container[];
+  containers: IContainer[];
 }
 
 interface IUsersResponse {
-  users: User[];
+  users: IUser[];
 }
 
-export async function fetchGroupList(): Promise<Group[]> {
+export async function fetchGroupList(): Promise<IGroup[]> {
   try {
     const res = await axios.get<IGroupsResponse>(APIDOMAIN + '/groups');
     return res.data.groups;
@@ -27,7 +27,7 @@ export async function fetchGroupList(): Promise<Group[]> {
   }
 }
 
-export async function fetchContainerList(groupId: string): Promise<Container[]> {
+export async function fetchContainerList(groupId: string): Promise<IContainer[]> {
   try {
     const res = await axios.get<IContainersResponse>(
       APIDOMAIN + '/groups/' + groupId + '/containers',
@@ -38,7 +38,7 @@ export async function fetchContainerList(groupId: string): Promise<Container[]> 
   }
 }
 
-export async function fetchUserList(groupId: string): Promise<User[]> {
+export async function fetchUserList(groupId: string): Promise<IUser[]> {
   try {
     const res = await axios.get<IUsersResponse>(APIDOMAIN + '/groups/' + groupId + '/users');
     return res.data.users;

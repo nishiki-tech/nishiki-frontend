@@ -1,14 +1,14 @@
-import { Container } from '@/features/group/types/definition';
-import { User } from '@/features/group/types/definition';
+import { IContainer } from '@/features/group/types/definition';
+import { IUser } from '@/features/group/types/definition';
 import { fetchContainerList } from '@/lib/api/data';
 import { fetchUserList } from '@/lib/api/data';
 
-import { Group } from '../types/definition';
+import { IGroup } from '../types/definition';
 import ContainersCnt from './ContainersCnt';
 import UserCnt from './UserCnt';
-export default async function GroupItem({ group }: { group: Group }) {
-  const containers: Container[] = await fetchContainerList(group.groupId);
-  const users: User[] = await fetchUserList(group.groupId);
+export default async function GroupItem({ group }: { group: IGroup }) {
+  const containers: IContainer[] = await fetchContainerList(group.groupId);
+  const users: IUser[] = await fetchUserList(group.groupId);
   return (
     <div key={group.groupId}>
       <span>{group.groupId} </span>

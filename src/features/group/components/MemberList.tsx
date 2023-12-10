@@ -1,6 +1,6 @@
-import { User } from '../types/definition';
+import { IUser } from '../types/definition';
 
-export default function MemberList({ users }: { users: User[] }) {
+export default function MemberList({ users }: { users: IUser[] }) {
   return (
     <div>
       Member

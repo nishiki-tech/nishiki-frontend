@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
-import { Group } from '../types/definition';
+import { IGroup } from '../types/definition';
 import GroupItem from './GroupItem';
-export default async function GroupList({ groups }: { groups: Group[] }) {
+export default async function GroupList({ groups }: { groups: IGroup[] }) {
   return (
     <div>
       {groups.map((group) => (

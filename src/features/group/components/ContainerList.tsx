@@ -1,6 +1,6 @@
-import { Container } from '../types/definition';
+import { IContainer } from '../types/definition';
 
-export default function ContainerList({ containers }: { containers: Container[] }) {
+export default function ContainerList({ containers }: { containers: IContainer[] }) {
   return (
     <div>
       Container
