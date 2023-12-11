@@ -1,5 +1,5 @@
-import { IContainer } from '@/features/group/types/definition';
-import { IUser } from '@/features/group/types/definition';
+import { IContainer } from '@/features/groups/types/definition';
+import { IUser } from '@/features/groups/types/definition';
 import { fetchContainerList } from '@/lib/api/data';
 import { fetchUserList } from '@/lib/api/data';
 

@@ -1,5 +1,5 @@
-import GroupList from '@/features/group/components/GroupList';
-import { IGroup } from '@/features/group/types/definition';
+import GroupList from '@/features/groups/components/GroupList';
+import { IGroup } from '@/features/groups/types/definition';
 import { fetchGroupList } from '@/lib/api/data';
 
 import React from 'react';
