@@ -1,4 +1,16 @@
 export { BottomTabIconLink } from './BottomTabIconLink';
 export { Button, buttonVariants } from './Button';
-export * as Dialog from './Dialog';
+export {
+  DialogBody,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  DialogPortal,
+  DialogRoot,
+  DialogTitle,
+  DialogTrigger,
+} from './Dialog';
 export { Icon } from './Icon';

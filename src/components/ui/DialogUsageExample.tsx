@@ -4,7 +4,17 @@
  */
 'use client';
 
-import { Button, Dialog } from '@/components/ui';
+import {
+  Button,
+  DialogBody,
+  DialogClose,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogRoot,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui';
 
 import { useState } from 'react';
 
@@ -17,28 +27,30 @@ export const DialogUsageExample = () => {
   };
 
   return (
-    <Dialog.Root open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-      <Dialog.Trigger asChild>
-        <Button>Open</Button>
-      </Dialog.Trigger>
-      <Dialog.Content>
-        <Dialog.Header>
-          <Dialog.Title>Delete Container</Dialog.Title>
-        </Dialog.Header>
-        <Dialog.Body>
-          <p>Are you sure you want to delete containers?</p>
-        </Dialog.Body>
-        <Dialog.Footer>
-          <Dialog.Close asChild>
-            <Button variant="cancel" size="sm">
-              Cancel
+    <>
+      <DialogRoot open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogTrigger asChild>
+          <Button>Open</Button>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Delete Container</DialogTitle>
+          </DialogHeader>
+          <DialogBody>
+            <p>Are you sure you want to delete containers?</p>
+          </DialogBody>
+          <DialogFooter>
+            <DialogClose asChild>
+              <Button variant="cancel" size="sm">
+                Cancel
+              </Button>
+            </DialogClose>
+            <Button variant="error" size="sm" onClick={handleDelete}>
+              Delete
             </Button>
-          </Dialog.Close>
-          <Button variant="error" size="sm" onClick={handleDelete}>
-            Delete
-          </Button>
-        </Dialog.Footer>
-      </Dialog.Content>
-    </Dialog.Root>
+          </DialogFooter>
+        </DialogContent>
+      </DialogRoot>
+    </>
   );
 };

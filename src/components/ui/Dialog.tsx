@@ -5,25 +5,33 @@
  * shadcn/ui: https://ui.shadcn.com/docs/components/dialog
  * Radix UI: https://www.radix-ui.com/themes/docs/components/dialog
  */
-
 'use client';
 
 import { Icon } from '@/components/ui';
 import { cn } from '@/lib/tailwind/utils';
 
-import * as DialogPrimitive from '@radix-ui/react-dialog';
-import * as React from 'react';
+import {
+  Close as PrimitiveClose,
+  Content as PrimitiveContent,
+  Description as PrimitiveDescription,
+  Overlay as PrimitiveOverlay,
+  Portal as PrimitivePortal,
+  Root as PrimitiveRoot,
+  Title as PrimitiveTitle,
+  Trigger as PrimitiveTrigger,
+} from '@radix-ui/react-dialog';
+import { ComponentPropsWithoutRef, ElementRef, forwardRef, HTMLAttributes } from 'react';
 
-export const Root = DialogPrimitive.Root;
-export const Trigger = DialogPrimitive.Trigger;
-export const Portal = DialogPrimitive.Portal;
-export const Close = DialogPrimitive.Close;
+const DialogRoot = PrimitiveRoot;
+const DialogTrigger = PrimitiveTrigger;
+const DialogPortal = PrimitivePortal;
+const DialogClose = PrimitiveClose;
 
-export const Overlay = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Overlay>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
+const DialogOverlay = forwardRef<
+  ElementRef<typeof PrimitiveOverlay>,
+  ComponentPropsWithoutRef<typeof PrimitiveOverlay>
 >(({ className, ...props }, ref) => (
-  <DialogPrimitive.Overlay
+  <PrimitiveOverlay
     ref={ref}
     className={cn(
       'fixed inset-0 z-50',
@@ -34,15 +42,15 @@ export const Overlay = React.forwardRef<
     {...props}
   />
 ));
-Overlay.displayName = DialogPrimitive.Overlay.displayName;
+DialogOverlay.displayName = PrimitiveOverlay.displayName;
 
-export const Content = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
+const DialogContent = forwardRef<
+  ElementRef<typeof PrimitiveContent>,
+  ComponentPropsWithoutRef<typeof PrimitiveContent>
 >(({ className, children, ...props }, ref) => (
-  <Portal>
-    <Overlay />
-    <DialogPrimitive.Content
+  <DialogPortal>
+    <DialogOverlay />
+    <PrimitiveContent
       ref={ref}
       className={cn(
         'fixed z-50 left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]',
@@ -54,50 +62,64 @@ export const Content = React.forwardRef<
       {...props}
     >
       {children}
-      <DialogPrimitive.Close className={cn('absolute right-2 top-2')}>
+      <DialogClose className={cn('absolute right-2 top-2')}>
         <Icon iconName="close" color="black" size="sm" />
         <span className="sr-only">Close</span>
-      </DialogPrimitive.Close>
-    </DialogPrimitive.Content>
-  </Portal>
+      </DialogClose>
+    </PrimitiveContent>
+  </DialogPortal>
 ));
-Content.displayName = DialogPrimitive.Content.displayName;
+DialogContent.displayName = PrimitiveContent.displayName;
 
-export const Header = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+const DialogHeader = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn('h-12 px-4 border-b border-gray-light', 'flex items-center', className)}
     {...props}
   />
 );
-Header.displayName = 'DialogHeader';
+DialogHeader.displayName = 'DialogHeader';
 
-export const Footer = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+const DialogFooter = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => (
   <div className={cn('px-4 pb-4 flex justify-end gap-4', className)} {...props} />
 );
-Footer.displayName = 'DialogFooter';
+DialogFooter.displayName = 'DialogFooter';
 
-export const Title = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Title>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
+const DialogTitle = forwardRef<
+  ElementRef<typeof PrimitiveTitle>,
+  ComponentPropsWithoutRef<typeof PrimitiveTitle>
 >(({ className, ...props }, ref) => (
-  <DialogPrimitive.Title ref={ref} className={cn('text-2xl', className)} {...props} />
+  <PrimitiveTitle ref={ref} className={cn('text-2xl', className)} {...props} />
 ));
-Title.displayName = DialogPrimitive.Title.displayName;
+DialogTitle.displayName = PrimitiveTitle.displayName;
 
-export const Description = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Description>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
+const DialogDescription = forwardRef<
+  ElementRef<typeof PrimitiveDescription>,
+  ComponentPropsWithoutRef<typeof PrimitiveDescription>
 >(({ className, ...props }, ref) => (
-  <DialogPrimitive.Description ref={ref} className={cn('', className)} {...props} />
+  <PrimitiveDescription ref={ref} className={cn('', className)} {...props} />
 ));
-Description.displayName = DialogPrimitive.Description.displayName;
+DialogDescription.displayName = PrimitiveDescription.displayName;
 
 /**
  * This is a custom component that we use to wrap the body (between header and footer) of the dialog.
  */
-export const Body = React.forwardRef<React.ElementRef<'div'>, React.HTMLAttributes<HTMLDivElement>>(
+const DialogBody = forwardRef<ElementRef<'div'>, HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (
     <div ref={ref} className={cn('px-6 py-4', className)} {...props} />
   ),
 );
-Body.displayName = 'DialogBody';
+DialogBody.displayName = 'DialogBody';
+
+export {
+  DialogBody,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  DialogPortal,
+  DialogRoot,
+  DialogTitle,
+  DialogTrigger,
+};
