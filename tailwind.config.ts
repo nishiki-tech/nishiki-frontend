@@ -16,6 +16,7 @@ module.exports = {
         'gray-light': '#eeeeee',
         gray: '#bdbdbd',
         'gray-dark': '#777777',
+        overlay: 'rgba(0, 0, 0, 0.25)',
         white: '#ffffff',
         black: '#222222',
       },
@@ -25,6 +26,14 @@ module.exports = {
         DEFAULT: '0.625rem', // 10px
       },
       keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        fadeOut: {
+          '0%': { opacity: '1' },
+          '100%': { opacity: '0' },
+        },
         'accordion-down': {
           from: { height: 0 },
           to: { height: 'var(--radix-accordion-content-height)' },
@@ -39,6 +48,8 @@ module.exports = {
         },
       },
       animation: {
+        fadeIn: 'fadeIn 0.3s ease-in-out',
+        fadeOut: 'fadeOut 0.3s ease-in-out',
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         pulse: 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
