@@ -23,12 +23,11 @@ const iconSize = {
   16: 'w-16',
 } as const;
 
-// This might not be the best way in terms of SOLID principle(Open-close principle)
-// ,but since text-`${variable}` is not allowed in tailwind
 const iconColor = {
   black: 'text-black',
   primary: 'text-primary',
   danger: 'text-danger',
+  gray: 'text-gray',
   'gray-dark': 'text-gray-dark',
 };
 
