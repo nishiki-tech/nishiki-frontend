@@ -1,8 +1,8 @@
-export default function UsersCount({ userCount }: { userCount: number }) {
+export const UserCount = ({ userCount }: { userCount: number }) => {
   return (
     <>
       {/* <UserIcon /> */}
       userIcon count: {userCount}
     </>
   );
-}
+};

@@ -1,8 +1,8 @@
-export default function ContainersCount({ containerCount }: { containerCount: number }) {
+export const ContainerCount = ({ containerCount }: { containerCount: number }) => {
   return (
     <>
       {/* <ContainerIcon /> */}
       containerIcon count: {containerCount}
     </>
   );
-}
+};
