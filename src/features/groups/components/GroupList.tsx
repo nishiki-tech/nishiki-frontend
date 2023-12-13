@@ -1,6 +1,7 @@
 import { IGroup } from '../types/definition';
-import GroupItem from './GroupItem';
-export default async function GroupList({ groups }: { groups: IGroup[] }) {
+import { GroupItem } from './GroupItem';
+
+export const GroupList = async ({ groups }: { groups: IGroup[] }) => {
   return (
     <>
       {groups.map((group) => (
@@ -8,4 +9,4 @@ export default async function GroupList({ groups }: { groups: IGroup[] }) {
       ))}
     </>
   );
-}
+};

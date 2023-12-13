@@ -1,5 +1,6 @@
 export { BottomTabIconLink } from './BottomTabIconLink';
 export { Button, buttonVariants } from './Button';
+export { Card } from './Card';
 export {
   DialogBody,
   DialogClose,
