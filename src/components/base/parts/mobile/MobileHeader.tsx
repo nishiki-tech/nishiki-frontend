@@ -6,8 +6,6 @@ import { Icon } from '@/components/ui';
 import React from 'react';
 
 export const MobileHeader = () => {
-  console.log(ArrowLeftIcon);
-
   return (
     <header className="bg-white sticky top-0 z-40 w-full">
       <div className="flex px-2 h-12 items-center justify-between">

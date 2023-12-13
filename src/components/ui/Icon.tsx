@@ -4,9 +4,8 @@ import React from 'react';
 
 // reference for icon size: https://tailwindcss.com/docs/width
 const iconSize = {
-  1: 'w-1',
-  2: 'w-2',
   3: 'w-3',
+  3.5: 'w-3.5',
   4: 'w-4',
   5: 'w-5',
   6: 'w-6',
@@ -42,10 +41,10 @@ type Props = {
   className?: string;
 };
 
-export const Icon: React.FC<Props> = ({ icon, color = 'black', size = 1, className }) => {
+export const Icon: React.FC<Props> = ({ icon, color = 'black', size = 3, className }) => {
   const IconComponent = icon;
-  const colorStyle = color ? iconColor[color] : '';
-  const sizeStyle = size ? iconSize[size] : '';
+  const colorStyle = iconColor[color];
+  const sizeStyle = iconSize[size];
 
   // adding "sizeStyle" as last argument to make sure it overrides any sizing written in "className"
   return <IconComponent className={cn(colorStyle, className, sizeStyle, 'aspect-square')} />;
