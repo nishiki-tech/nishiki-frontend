@@ -3,6 +3,8 @@ import { cn } from '@/lib/tailwind/utils';
 import React from 'react';
 
 // reference for icon size: https://tailwindcss.com/docs/width
+// Since some of the icons in the design are not following 4px grid, and to be fixed in the future,
+// If the size in the design is not in the list, you can assign the closest size from this list.
 const iconSize = {
   3: 'w-3',
   3.5: 'w-3.5',
