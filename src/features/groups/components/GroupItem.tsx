@@ -8,7 +8,8 @@ import Link from 'next/link';
 import { IGroup } from '../types/definition';
 import ContainersCount from './ContainersCount';
 import UserCount from './UserCount';
-export default async function GroupItem({ group }: { group: IGroup }) {
+
+export const GroupItem = async ({ group }: { group: IGroup }) => {
   const containers: IContainer[] = await fetchContainerList(group.groupId);
   const users: IUser[] = await fetchUserList(group.groupId);
   return (
@@ -19,4 +20,4 @@ export default async function GroupItem({ group }: { group: IGroup }) {
       <UserCount userCount={users.length} />
     </Link>
   );
-}
+};
