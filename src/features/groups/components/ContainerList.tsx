@@ -3,7 +3,8 @@ import { fetchContainerList } from '@/lib/api/data';
 
 import { IContainer } from '../types/definition';
 
-export default async function ContainerList({ id }: { id: string }) {
+
+export const ContainerList = async ({ id }: { id: string }) => {
   const containers: IContainer[] = await fetchContainerList(id);
   return (
     <>
@@ -22,4 +23,4 @@ export default async function ContainerList({ id }: { id: string }) {
       ))}
     </>
   );
-}
+};
