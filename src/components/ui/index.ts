@@ -13,4 +13,4 @@ export {
   DialogTitle,
   DialogTrigger,
 } from './Dialog';
-export { Icon } from './Icon';
+export { Icon, type IconColor, type IconSize } from './Icon';

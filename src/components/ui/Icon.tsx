@@ -1,81 +1,52 @@
-import {
-  ArrowLeftIcon,
-  BagIcon,
-  CalendarIcon,
-  ContainerIcon,
-  CrossIcon,
-  DeleteIcon,
-  FilterIcon,
-  FoodIcon_Off,
-  FoodIcon_On,
-  HomeIcon_Off,
-  HomeIcon_On,
-  LinkIcon,
-  LogoutIcon,
-  MenuCircleIcon,
-  MenuMeatballIcon,
-  PenIcon,
-  PlusIcon,
-  ProfileIcon_Off,
-  ProfileIcon_On,
-  SearchIcon,
-  TriangleDownIcon,
-  TriangleRightIcon,
-} from '@/assets/images/icons';
 import { cn } from '@/lib/tailwind/utils';
 
 import React from 'react';
 
-const icons = {
-  arrowLeft: ArrowLeftIcon,
-  bag: BagIcon,
-  calendar: CalendarIcon,
-  container: ContainerIcon,
-  close: CrossIcon,
-  delete: DeleteIcon,
-  filter: FilterIcon,
-  link: LinkIcon,
-  logout: LogoutIcon,
-  menuCircle: MenuCircleIcon,
-  menuMeatball: MenuMeatballIcon,
-  food_off: FoodIcon_Off,
-  home_off: HomeIcon_Off,
-  profile_off: ProfileIcon_Off,
-  food_on: FoodIcon_On,
-  home_on: HomeIcon_On,
-  profile_on: ProfileIcon_On,
-  pen: PenIcon,
-  plus: PlusIcon,
-  search: SearchIcon,
-  triangleDown: TriangleDownIcon,
-  triangleRight: TriangleRightIcon,
-} as const;
-
+// reference for icon size: https://tailwindcss.com/docs/width
 const iconSize = {
-  sm: 'w-6 h-6',
-  md: 'w-8 h-8',
-  lg: 'w-10 h-10',
+  1: 'w-1',
+  2: 'w-2',
+  3: 'w-3',
+  4: 'w-4',
+  5: 'w-5',
+  6: 'w-6',
+  7: 'w-7',
+  8: 'w-8',
+  9: 'w-9',
+  10: 'w-10',
+  11: 'w-11',
+  12: 'w-12',
+  13: 'w-13',
+  14: 'w-14',
+  15: 'w-15',
+  16: 'w-16',
 } as const;
 
-export type IconName = keyof typeof icons;
+// This might not be the best way in terms of SOLID principle(Open-close principle)
+// ,but since text-`${variable}` is not allowed in tailwind
+const iconColor = {
+  black: 'text-black',
+  primary: 'text-primary',
+  danger: 'text-danger',
+  'gray-dark': 'text-gray-dark',
+};
 
 export type IconSize = keyof typeof iconSize;
 
-type IconProps = {
-  iconName: IconName;
-  color?: string;
+export type IconColor = keyof typeof iconColor;
+
+type Props = {
+  icon: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
+  color?: IconColor;
   size?: IconSize;
   className?: string;
 };
 
-export const Icon: React.FC<IconProps> = ({ iconName, color, size = 'md', className }) => {
-  const IconComponent = icons[iconName];
+export const Icon: React.FC<Props> = ({ icon, color = 'black', size = 1, className }) => {
+  const IconComponent = icon;
+  const colorStyle = color ? iconColor[color] : '';
+  const sizeStyle = size ? iconSize[size] : '';
 
-  // stroke style doesn't work if you set it stroke-colorname,
-  // but it works if you set it text-colorname
-  // and it work also without fill style
-  const colorStyle = 'text-' + color;
-  const sizeStyle = iconSize[size];
-
-  return <IconComponent className={cn(colorStyle, sizeStyle, className)} />;
+  // adding "sizeStyle" as last argument to make sure it overrides any sizing written in "className"
+  return <IconComponent className={cn(colorStyle, className, sizeStyle, 'aspect-square')} />;
 };
