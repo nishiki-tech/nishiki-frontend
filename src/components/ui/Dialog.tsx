@@ -7,6 +7,7 @@
  */
 'use client';
 
+import { CrossIcon } from '@/assets/images/icons';
 import { Icon } from '@/components/ui';
 import { cn } from '@/lib/tailwind/utils';
 
@@ -63,7 +64,7 @@ const DialogContent = forwardRef<
     >
       {children}
       <DialogClose className={cn('absolute right-2 top-2')}>
-        <Icon iconName="close" color="black" size="sm" />
+        <Icon icon={CrossIcon} color="black" size={3.5} />
         <span className="sr-only">Close</span>
       </DialogClose>
     </PrimitiveContent>
