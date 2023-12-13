@@ -1,8 +1,9 @@
-import { Card, CardContent, CardDescription } from '@/components/ui';
+import { Card } from '@/components/ui';
 import { Icon } from '@/components/ui';
 import { fetchContainerList } from '@/lib/api/data';
 
 import { IContainer } from '../types/definition';
+
 export default async function ContainerList({ id }: { id: string }) {
   const containers: IContainer[] = await fetchContainerList(id);
   return (
@@ -12,12 +13,12 @@ export default async function ContainerList({ id }: { id: string }) {
       {/* <MenuPlus /> */}
       {containers.map((container) => (
         <Card key={container.id}>
-          <CardContent>
-            <div className="flex items-center justify-center bg-accent rounded-full w-12 h-12">
+          <div className="flex gap-4 items-center">
+            <span className="flex items-center justify-center bg-accent rounded-full w-11 h-11">
               <Icon iconName="container" color="black" />
-            </div>
-            <CardDescription>{container.name}</CardDescription>
-          </CardContent>
+            </span>
+            <span>{container.name}</span>
+          </div>
         </Card>
       ))}
     </>
