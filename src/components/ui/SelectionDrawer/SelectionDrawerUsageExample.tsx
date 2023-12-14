@@ -58,10 +58,8 @@ export const SelectionDrawerWithRadioGroup = () => {
                 <Label
                   key={i}
                   htmlFor={option.id}
-                  className={cn(
-                    'h-12 pl-4 flex items-center w-full gap-4 text-lg',
-                    i !== 0 && 'border-t border-gray-light',
-                  )}
+                  variant="selectionDrawer"
+                  className={cn(i !== 0 && 'border-t border-gray-light')}
                 >
                   <SelectionDrawerRadioGroupItem
                     value={option.id}
