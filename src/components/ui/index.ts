@@ -13,4 +13,18 @@ export {
   DialogTitle,
   DialogTrigger,
 } from './Dialog';
+export {
+  DrawerBody,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerPortal,
+  DrawerRoot,
+  DrawerTitle,
+  DrawerTrigger,
+  DrawerVariants,
+} from './Drawer';
 export { Icon } from './Icon';
