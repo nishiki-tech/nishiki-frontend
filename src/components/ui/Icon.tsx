@@ -24,7 +24,7 @@ import {
 } from '@/assets/images/icons';
 import { cn } from '@/lib/tailwind/utils';
 
-import React, { FC } from 'react';
+import { FC } from 'react';
 
 const icons = {
   arrowLeft: ArrowLeftIcon,
