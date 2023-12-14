@@ -12,7 +12,7 @@ import { cn } from '@/lib/tailwind/utils';
 import Link from 'next/link';
 import React from 'react';
 
-import { Icon, IconColor, IconSize } from '.';
+import { Icon } from '.';
 
 interface Props {
   name: MainRouteName;
@@ -24,35 +24,31 @@ export const BottomTabIconLink: React.FC<Props> = ({ name, isSelected }) => {
   const path = mainRouteConfig[name].path;
   const title = mainRouteConfig[name].title;
 
-  const size: IconSize = 6;
+  const size = 6;
 
-  const color: IconColor = isSelected ? 'primary' : 'gray-dark';
+  const color = isSelected ? 'primary' : 'gray-dark';
 
   const className = 'mb-1';
+
+  type BottomTabIconMap = {
+    [key: string]: {
+      [key: string]: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
+    };
+  };
+  const map: BottomTabIconMap = {
+    groups: { on: HomeIcon_On, off: HomeIcon_Off },
+    foods: { on: FoodIcon_On, off: FoodIcon_Off },
+    profile: { on: ProfileIcon_On, off: ProfileIcon_Off },
+  };
   // Icon component based on "name" and "isSelected" variable
-  let IconComponent: React.ReactNode;
-  switch (name) {
-    case 'groups':
-      IconComponent = isSelected ? (
-        <Icon icon={HomeIcon_On} size={size} color={color} className={className} />
-      ) : (
-        <Icon icon={HomeIcon_Off} size={size} color={color} className={className} />
-      );
-      break;
-    case 'foods':
-      IconComponent = isSelected ? (
-        <Icon icon={FoodIcon_On} size={size} color={color} className={className} />
-      ) : (
-        <Icon icon={FoodIcon_Off} size={size} color={color} className={className} />
-      );
-      break;
-    default:
-      IconComponent = isSelected ? (
-        <Icon icon={ProfileIcon_On} size={size} color={color} className={className} />
-      ) : (
-        <Icon icon={ProfileIcon_Off} size={size} color={color} className={className} />
-      );
-  }
+  const IconComponent: React.ReactNode = (
+    <Icon
+      icon={map[name][isSelected ? 'on' : 'off']}
+      size={size}
+      color={color}
+      className={className}
+    />
+  );
 
   // text color based on "isSelected" variable
   const textColorStyle = isSelected ? `text-primary` : 'text-gray-dark';
