@@ -1,5 +1,6 @@
 'use client';
 
+import { ArrowLeftIcon, MenuCircleIcon } from '@/assets/images/icons';
 import { Icon } from '@/components/ui';
 
 import { ButtonHTMLAttributes, FC, ReactNode } from 'react';
@@ -9,10 +10,10 @@ export const MobileHeader = () => {
     <header className="bg-white sticky top-0 z-40 w-full">
       <div className="flex px-2 h-12 items-center justify-between">
         <Button>
-          <Icon iconName="arrowLeft" color="black" />
+          <Icon icon={ArrowLeftIcon} color="black" size={4} />
         </Button>
         <Button>
-          <Icon iconName="menuCircle" color="black" />
+          <Icon icon={MenuCircleIcon} color="black" size={6} />
         </Button>
       </div>
     </header>
