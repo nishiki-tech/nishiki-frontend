@@ -1,4 +1,5 @@
-import { IGroup } from '../types/definition';
+import { IGroup } from '@/types/definition';
+
 import { GroupItem } from './GroupItem';
 
 export const GroupList = async ({ groups }: { groups: IGroup[] }) => {

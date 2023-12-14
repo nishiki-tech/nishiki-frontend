@@ -1,8 +1,7 @@
 import { ContainerIcon } from '@/assets/images/icons';
 import { Card, Icon } from '@/components/ui';
 import { fetchContainerList } from '@/lib/api/data';
-
-import { IContainer } from '../types/definition';
+import { IContainer } from '@/types/definition';
 
 export const ContainerList = async ({ id }: { id: string }) => {
   const containers: IContainer[] = await fetchContainerList(id);

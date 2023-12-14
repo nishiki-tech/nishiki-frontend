@@ -65,11 +65,11 @@ const DrawerVariants = cva(cn('fixed z-50 bg-white flex flex-col'), {
   },
 });
 
-interface DrawerContentProps
+interface IDrawerContentProps
   extends ComponentPropsWithoutRef<typeof PrimitiveContent>,
     VariantProps<typeof DrawerVariants> {}
 
-const DrawerContent = forwardRef<ElementRef<typeof PrimitiveContent>, DrawerContentProps>(
+const DrawerContent = forwardRef<ElementRef<typeof PrimitiveContent>, IDrawerContentProps>(
   ({ side, className, children, ...props }, ref) => (
     <DrawerPortal>
       <DrawerOverlay />

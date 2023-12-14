@@ -3,7 +3,7 @@
 import { ArrowLeftIcon, MenuCircleIcon } from '@/assets/images/icons';
 import { Icon } from '@/components/ui';
 
-import React, { ButtonHTMLAttributes, FC, ReactNode } from 'react';
+import { ButtonHTMLAttributes, FC, ReactNode } from 'react';
 
 export const MobileHeader = () => {
   return (

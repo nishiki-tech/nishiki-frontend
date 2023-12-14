@@ -1,7 +1,7 @@
 import { cn } from '@/lib/tailwind/utils';
 
 import { cva, type VariantProps } from 'class-variance-authority';
-import React, { FC, FunctionComponent, SVGAttributes } from 'react';
+import { FC, FunctionComponent, SVGAttributes } from 'react';
 
 const iconVariants = cva('', {
   variants: {
