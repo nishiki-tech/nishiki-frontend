@@ -1,52 +1,51 @@
 import { cn } from '@/lib/tailwind/utils';
 
+import { cva, type VariantProps } from 'class-variance-authority';
 import React from 'react';
 
-// reference for icon size: https://tailwindcss.com/docs/width
-// Since some of the icons in the design are not following 4px grid, and to be fixed in the future,
-// If the size in the design is not in the list, you can assign the closest size from this list.
-const iconSize = {
-  3: 'w-3',
-  3.5: 'w-3.5',
-  4: 'w-4',
-  5: 'w-5',
-  6: 'w-6',
-  7: 'w-7',
-  8: 'w-8',
-  9: 'w-9',
-  10: 'w-10',
-  11: 'w-11',
-  12: 'w-12',
-  13: 'w-13',
-  14: 'w-14',
-  15: 'w-15',
-  16: 'w-16',
-} as const;
+const iconVariants = cva('', {
+  variants: {
+    // reference for icon size: https://tailwindcss.com/docs/width
+    // Since some of the icons in the design are not following 4px grid, and to be fixed in the future,
+    // If the size in the design is not in the list, you can assign the closest size from this list.
+    size: {
+      3: 'w-3 h-3',
+      3.5: 'w-3.5 h-3.5',
+      4: 'w-4 h-4',
+      5: 'w-5 h-5',
+      6: 'w-6 h-6',
+      7: 'w-7 h-7',
+      8: 'w-8 h-8',
+      9: 'w-9 h-9',
+      10: 'w-10 h-10',
+      11: 'w-11 h-11',
+      12: 'w-12 h-12',
+      13: 'w-13 h-13',
+      14: 'w-14 h-14',
+      15: 'w-15 h-15',
+      16: 'w-16 h-16',
+    },
+    color: {
+      black: 'text-black',
+      primary: 'text-primary',
+      danger: 'text-danger',
+      gray: 'text-gray',
+      'gray-dark': 'text-gray-dark',
+    },
+  },
+  defaultVariants: {
+    size: 3,
+    color: 'black',
+  },
+});
 
-const iconColor = {
-  black: 'text-black',
-  primary: 'text-primary',
-  danger: 'text-danger',
-  gray: 'text-gray',
-  'gray-dark': 'text-gray-dark',
-};
-
-export type IconSize = keyof typeof iconSize;
-
-export type IconColor = keyof typeof iconColor;
-
-type Props = {
+interface IIconProps extends VariantProps<typeof iconVariants> {
   icon: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
-  color?: IconColor;
-  size?: IconSize;
   className?: string;
-};
+}
 
-export const Icon: React.FC<Props> = ({ icon, color = 'black', size = 3, className }) => {
+export const Icon: React.FC<IIconProps> = ({ icon, className, size, color }) => {
   const IconComponent = icon;
-  const colorStyle = iconColor[color];
-  const sizeStyle = iconSize[size];
 
-  // adding "sizeStyle" as last argument to make sure it overrides any sizing written in "className"
-  return <IconComponent className={cn(colorStyle, className, sizeStyle, 'aspect-square')} />;
+  return <IconComponent className={cn(iconVariants({ color, size, className }))} />;
 };
