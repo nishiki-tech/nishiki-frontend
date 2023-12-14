@@ -29,3 +29,4 @@ export {
   DrawerVariants,
 } from './Drawer';
 export { Icon } from './Icon';
+export { Label } from './Label';
