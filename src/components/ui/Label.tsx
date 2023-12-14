@@ -1,3 +1,10 @@
+/**
+ * This file is based on the Label component from shadcn and customized for our needs.
+ *
+ * See the official docs for more info:
+ * shadcn/ui: https://ui.shadcn.com/docs/components/label
+ * Radix UI: https://www.radix-ui.com/primitives/docs/components/label
+ */
 import { cn } from '@/lib/tailwind/utils';
 
 import { Root as PrimitiveRoot } from '@radix-ui/react-label';

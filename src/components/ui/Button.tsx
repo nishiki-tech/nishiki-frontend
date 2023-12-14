@@ -1,3 +1,9 @@
+/**
+ * This file is based on the Button component from shadcn and customized for our needs.
+ *
+ * See the official docs for more info:
+ * shadcn/ui: https://ui.shadcn.com/docs/components/button
+ */
 import { cn } from '@/lib/tailwind/utils';
 
 import { Slot } from '@radix-ui/react-slot';

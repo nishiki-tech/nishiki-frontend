@@ -1,3 +1,9 @@
+/**
+ * This file is based on the Button component from shadcn and customized for our needs.
+ *
+ * See the official docs for more info:
+ * shadcn/ui: https://ui.shadcn.com/docs/components/button
+ */
 import { cn } from '@/lib/tailwind/utils';
 
 import { Slot } from '@radix-ui/react-slot';
@@ -32,6 +38,9 @@ interface ISelectionDrawerIconProps {
   className?: string;
 }
 
+/**
+ * This is a custom component that we use to wrap the Icon in the button.
+ */
 const SelectionDrawerButtonIcon = forwardRef<HTMLDivElement, ISelectionDrawerIconProps>(
   ({ children, className }, ref) => {
     return (
@@ -51,6 +60,9 @@ interface ISelectionDrawerLabelProps {
   className?: string;
 }
 
+/**
+ * This is a custom component that we use to wrap the text in the button.
+ */
 const SelectionDrawerButtonText = forwardRef<HTMLSpanElement, ISelectionDrawerLabelProps>(
   ({ children, className }, ref) => {
     return (
