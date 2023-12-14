@@ -1,6 +1,4 @@
-import { IGroup } from '@/features/groups/types/definition';
-import { IContainer } from '@/features/groups/types/definition';
-import { IUser } from '@/features/groups/types/definition';
+import { IContainer, IGroup, IUser } from '@/types/definition';
 
 import axios from 'axios';
 
@@ -36,6 +34,15 @@ export async function fetchContainerList(groupId: string): Promise<IContainer[]>
   } catch (err) {
     throw new Error('API response is invalid');
   }
+}
+
+export function fetchAllContainerList(): Promise<IContainer[]> {
+  return axios
+    .get<IContainersResponse>(APIDOMAIN + '/containers')
+    .then((res) => res.data.containers)
+    .catch((err) => {
+      throw new Error('API response is invalid', err);
+    });
 }
 
 export async function fetchUserList(groupId: string): Promise<IUser[]> {
