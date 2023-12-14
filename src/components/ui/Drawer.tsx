@@ -8,6 +8,7 @@
  */
 'use client';
 
+import { CrossIcon } from '@/assets/images/icons';
 import { Icon } from '@/components/ui';
 import { cn } from '@/lib/tailwind/utils';
 
@@ -64,18 +65,18 @@ const DrawerVariants = cva(cn('fixed z-50 bg-white flex flex-col'), {
   },
 });
 
-interface DrawerContentProps
+interface IDrawerContentProps
   extends ComponentPropsWithoutRef<typeof PrimitiveContent>,
     VariantProps<typeof DrawerVariants> {}
 
-const DrawerContent = forwardRef<ElementRef<typeof PrimitiveContent>, DrawerContentProps>(
+const DrawerContent = forwardRef<ElementRef<typeof PrimitiveContent>, IDrawerContentProps>(
   ({ side, className, children, ...props }, ref) => (
     <DrawerPortal>
       <DrawerOverlay />
       <PrimitiveContent ref={ref} className={cn(DrawerVariants({ side }), className)} {...props}>
         {children}
         <DrawerClose className={cn('absolute right-3 top-3')}>
-          <Icon iconName="close" color="black" size="sm" />
+          <Icon icon={CrossIcon} color="black" size={3.5} />
           <span className="sr-only">Close</span>
         </DrawerClose>
       </PrimitiveContent>

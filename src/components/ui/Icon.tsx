@@ -1,81 +1,51 @@
-import {
-  ArrowLeftIcon,
-  BagIcon,
-  CalendarIcon,
-  ContainerIcon,
-  CrossIcon,
-  DeleteIcon,
-  FilterIcon,
-  FoodIcon_Off,
-  FoodIcon_On,
-  HomeIcon_Off,
-  HomeIcon_On,
-  LinkIcon,
-  LogoutIcon,
-  MenuCircleIcon,
-  MenuMeatballIcon,
-  PenIcon,
-  PlusIcon,
-  ProfileIcon_Off,
-  ProfileIcon_On,
-  SearchIcon,
-  TriangleDownIcon,
-  TriangleRightIcon,
-} from '@/assets/images/icons';
 import { cn } from '@/lib/tailwind/utils';
 
-import React from 'react';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { FC, FunctionComponent, SVGAttributes } from 'react';
 
-const icons = {
-  arrowLeft: ArrowLeftIcon,
-  bag: BagIcon,
-  calendar: CalendarIcon,
-  container: ContainerIcon,
-  close: CrossIcon,
-  delete: DeleteIcon,
-  filter: FilterIcon,
-  link: LinkIcon,
-  logout: LogoutIcon,
-  menuCircle: MenuCircleIcon,
-  menuMeatball: MenuMeatballIcon,
-  food_off: FoodIcon_Off,
-  home_off: HomeIcon_Off,
-  profile_off: ProfileIcon_Off,
-  food_on: FoodIcon_On,
-  home_on: HomeIcon_On,
-  profile_on: ProfileIcon_On,
-  pen: PenIcon,
-  plus: PlusIcon,
-  search: SearchIcon,
-  triangleDown: TriangleDownIcon,
-  triangleRight: TriangleRightIcon,
-} as const;
+const iconVariants = cva('', {
+  variants: {
+    // reference for icon size: https://tailwindcss.com/docs/width
+    // Since some of the icons in the design are not following 4px grid, and to be fixed in the future,
+    // If the size in the design is not in the list, you can assign the closest size from this list.
+    size: {
+      3: 'w-3 h-3',
+      3.5: 'w-3.5 h-3.5',
+      4: 'w-4 h-4',
+      5: 'w-5 h-5',
+      6: 'w-6 h-6',
+      7: 'w-7 h-7',
+      8: 'w-8 h-8',
+      9: 'w-9 h-9',
+      10: 'w-10 h-10',
+      11: 'w-11 h-11',
+      12: 'w-12 h-12',
+      13: 'w-13 h-13',
+      14: 'w-14 h-14',
+      15: 'w-15 h-15',
+      16: 'w-16 h-16',
+    },
+    color: {
+      black: 'text-black',
+      primary: 'text-primary',
+      danger: 'text-danger',
+      gray: 'text-gray',
+      'gray-dark': 'text-gray-dark',
+    },
+  },
+  defaultVariants: {
+    size: 3,
+    color: 'black',
+  },
+});
 
-const iconSize = {
-  sm: 'w-6 h-6',
-  md: 'w-8 h-8',
-  lg: 'w-10 h-10',
-} as const;
-
-export type IconName = keyof typeof icons;
-
-export type IconSize = keyof typeof iconSize;
-
-type IconProps = {
-  iconName: IconName;
-  color?: string;
-  size?: IconSize;
+interface IIconProps extends VariantProps<typeof iconVariants> {
+  icon: FunctionComponent<SVGAttributes<SVGElement>>;
   className?: string;
-};
+}
 
-export const Icon: React.FC<IconProps> = ({ iconName, color, size = 'md', className }) => {
-  const IconComponent = icons[iconName];
+export const Icon: FC<IIconProps> = ({ icon, className, size, color }) => {
+  const IconComponent = icon;
 
-  // stroke style doesn't work if you set it stroke-colorname,
-  // but it works if you set it text-colorname
-  // and it work also without fill style
-  const colorStyle = 'text-' + color;
-  const sizeStyle = iconSize[size];
-
-  return <IconComponent className={cn(colorStyle, sizeStyle, className)} />;
+  return <IconComponent className={cn(iconVariants({ color, size, className }))} />;
 };

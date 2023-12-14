@@ -6,6 +6,7 @@ import { siteConfig } from '@/const/site/siteConfig';
 import { cn } from '@/lib/tailwind/utils';
 
 import { Metadata } from 'next';
+import { ReactNode } from 'react';
 
 export const metadata: Metadata = {
   title: {
@@ -21,11 +22,11 @@ export const metadata: Metadata = {
   },
 };
 
-interface RootLayoutProps {
-  children: React.ReactNode;
+interface IRootLayoutProps {
+  children: ReactNode;
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({ children }: IRootLayoutProps) {
   return (
     <>
       {/* Reducing hydration error. Reference : https://nextjs.org/docs/messages/react-hydration-error */}
