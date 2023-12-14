@@ -3,7 +3,6 @@ import { BottomTabIconLink } from '@/components/ui';
 import { mainRouteConfig } from '@/const/site/mainRouteConfig';
 
 import { usePathname } from 'next/navigation';
-import React from 'react';
 
 export const BottomTab = () => {
   const pathName = usePathname();
