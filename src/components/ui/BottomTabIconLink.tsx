@@ -2,7 +2,7 @@ import { mainRouteConfig, MainRouteName } from '@/const/site/mainRouteConfig';
 import { cn } from '@/lib/tailwind/utils';
 
 import Link from 'next/link';
-import React from 'react';
+import React, { FC } from 'react';
 
 import { Icon } from '.';
 import { IconName } from './Icon';
@@ -12,7 +12,7 @@ interface Props {
   isSelected: boolean;
 }
 
-export const BottomTabIconLink: React.FC<Props> = ({ name, isSelected }) => {
+export const BottomTabIconLink: FC<Props> = ({ name, isSelected }) => {
   // Path and link title based on "mainRouteConfig" variable
   const path = mainRouteConfig[name].path;
   const title = mainRouteConfig[name].title;

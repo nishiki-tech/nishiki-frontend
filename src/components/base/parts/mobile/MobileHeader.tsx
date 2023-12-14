@@ -2,7 +2,7 @@
 
 import { Icon } from '@/components/ui';
 
-import React from 'react';
+import React, { ButtonHTMLAttributes, FC, ReactNode } from 'react';
 
 export const MobileHeader = () => {
   return (
@@ -19,11 +19,11 @@ export const MobileHeader = () => {
   );
 };
 
-interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode;
+interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  children: ReactNode;
 }
 
-const Button: React.FC<IButtonProps> = ({ children, ...props }) => {
+const Button: FC<IButtonProps> = ({ children, ...props }) => {
   return (
     <button className="h-full aspect-square flex items-center justify-center" {...props}>
       {children}
