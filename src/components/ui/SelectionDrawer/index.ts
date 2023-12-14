@@ -9,7 +9,7 @@ export {
 export {
   SelectionDrawerButton,
   SelectionDrawerButtonIcon,
-  SelectionDrawerButtonLabel,
+  SelectionDrawerButtonText,
 } from './SelectionDrawerButton';
 export {
   SelectionDrawerRadioGroup,

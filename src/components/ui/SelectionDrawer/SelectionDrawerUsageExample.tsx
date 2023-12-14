@@ -11,7 +11,7 @@ import {
   Label,
   SelectionDrawerButton,
   SelectionDrawerButtonIcon,
-  SelectionDrawerButtonLabel,
+  SelectionDrawerButtonText,
   SelectionDrawerContent,
   SelectionDrawerRadioGroup,
   SelectionDrawerRadioGroupItem,
@@ -99,7 +99,7 @@ export const SelectionDrawerWithButtons = () => {
             <SelectionDrawerButtonIcon>
               <Icon icon={PenIcon} size={5} color="primary" />
             </SelectionDrawerButtonIcon>
-            <SelectionDrawerButtonLabel>Rename Containers</SelectionDrawerButtonLabel>
+            <SelectionDrawerButtonText>Rename Containers</SelectionDrawerButtonText>
           </SelectionDrawerButton>
           <SelectionDrawerButton
             className={cn('border-t border-gray-light')}
@@ -108,7 +108,7 @@ export const SelectionDrawerWithButtons = () => {
             <SelectionDrawerButtonIcon>
               <Icon icon={DeleteIcon} size={5} color="danger" />
             </SelectionDrawerButtonIcon>
-            <SelectionDrawerButtonLabel>Delete Containers</SelectionDrawerButtonLabel>
+            <SelectionDrawerButtonText>Delete Containers</SelectionDrawerButtonText>
           </SelectionDrawerButton>
         </SelectionDrawerContent>
       </SelectionDrawerRoot>

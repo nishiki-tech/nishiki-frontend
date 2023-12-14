@@ -51,7 +51,7 @@ interface ISelectionDrawerLabelProps {
   className?: string;
 }
 
-const SelectionDrawerButtonLabel = forwardRef<HTMLSpanElement, ISelectionDrawerLabelProps>(
+const SelectionDrawerButtonText = forwardRef<HTMLSpanElement, ISelectionDrawerLabelProps>(
   ({ children, className }, ref) => {
     return (
       <span className={cn(className)} ref={ref}>
@@ -60,6 +60,6 @@ const SelectionDrawerButtonLabel = forwardRef<HTMLSpanElement, ISelectionDrawerL
     );
   },
 );
-SelectionDrawerButtonLabel.displayName = 'SelectionDrawerButtonLabel';
+SelectionDrawerButtonText.displayName = 'SelectionDrawerButtonLabel';
 
-export { SelectionDrawerButton, SelectionDrawerButtonIcon, SelectionDrawerButtonLabel };
+export { SelectionDrawerButton, SelectionDrawerButtonIcon, SelectionDrawerButtonText };

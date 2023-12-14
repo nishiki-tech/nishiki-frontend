@@ -33,7 +33,7 @@ export { Label } from './Label';
 export {
   SelectionDrawerButton,
   SelectionDrawerButtonIcon,
-  SelectionDrawerButtonLabel,
+  SelectionDrawerButtonText,
   SelectionDrawerContent,
   SelectionDrawerOverlay,
   SelectionDrawerPortal,
