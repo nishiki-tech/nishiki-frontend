@@ -4,7 +4,7 @@ import { fetchGroupList } from '@/lib/api/data';
 
 import React from 'react';
 
-export async function GroupsPage() {
+export const GroupsPage = async () => {
   const groups: IGroup[] = await fetchGroupList();
   return (
     <>
@@ -12,4 +12,4 @@ export async function GroupsPage() {
       <GroupList groups={groups} />
     </>
   );
-}
+};
