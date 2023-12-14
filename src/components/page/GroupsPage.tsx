@@ -1,6 +1,6 @@
 import { GroupList } from '@/features/groups/components/GroupList';
+import { IGroup } from '@/features/groups/types/definition';
 import { fetchGroupList } from '@/lib/api/data';
-import { IGroup } from '@/types/definition';
 
 import React from 'react';
 
