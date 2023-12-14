@@ -7,8 +7,8 @@
 
 ## Steps to use an icon
 
-1. Use the Icon component defined in src/components/ui/icon.tsx as a wrapper.
-2. Define which icon to use by importing SVG as an Icon component from src/assets/images/icons, and pass it to "icon" property.
-3. Define the size with the "size" property of the component. By default it's set to be w-3.
+1. Use the Icon component defined in src/components/ui/icon.tsx as a wrapper. (Import it from @/components/ui/)
+2. Define which icon to use by importing SVG as an Icon component from src/assets/images/icons/index.ts, and pass it to "icon" property.
+3. Define the size with the "size" property of the component. By default it's set to be "w-3 h-3".
 4. Define the color with "color" property. By default it's set to be black.
-5. Define additional styling with "className" property if it's needed. **You can overwrite color, but not size**. Size will always be defined with "size" property to keep it square.
+5. Define additional styling with "className" property if it's needed. You can overwrite color and size.
