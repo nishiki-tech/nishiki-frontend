@@ -7,12 +7,12 @@ import React from 'react';
 import { Icon } from '.';
 import { IconName } from './Icon';
 
-interface Props {
+interface IBottomTabIconLinkProps {
   name: MainRouteName;
   isSelected: boolean;
 }
 
-export const BottomTabIconLink: React.FC<Props> = ({ name, isSelected }) => {
+export const BottomTabIconLink: React.FC<IBottomTabIconLinkProps> = ({ name, isSelected }) => {
   // Path and link title based on "mainRouteConfig" variable
   const path = mainRouteConfig[name].path;
   const title = mainRouteConfig[name].title;

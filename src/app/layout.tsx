@@ -21,11 +21,11 @@ export const metadata: Metadata = {
   },
 };
 
-interface RootLayoutProps {
+interface IRootLayoutProps {
   children: React.ReactNode;
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({ children }: IRootLayoutProps) {
   return (
     <>
       {/* Reducing hydration error. Reference : https://nextjs.org/docs/messages/react-hydration-error */}
