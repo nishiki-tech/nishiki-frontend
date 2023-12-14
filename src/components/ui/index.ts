@@ -30,3 +30,16 @@ export {
 } from './Drawer';
 export { Icon } from './Icon';
 export { Label } from './Label';
+export {
+  SelectionDrawerButton,
+  SelectionDrawerButtonIcon,
+  SelectionDrawerButtonLabel,
+  SelectionDrawerContent,
+  SelectionDrawerOverlay,
+  SelectionDrawerPortal,
+  SelectionDrawerRadioGroup,
+  SelectionDrawerRadioGroupItem,
+  SelectionDrawerRoot,
+  SelectionDrawerTrigger,
+  SelectionDrawerVariants,
+} from './SelectionDrawer';
