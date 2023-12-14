@@ -1,11 +1,9 @@
-import { IContainer } from '@/features/groups/types/definition';
-import { IUser } from '@/features/groups/types/definition';
 import { fetchContainerList } from '@/lib/api/data';
 import { fetchUserList } from '@/lib/api/data';
+import { IContainer, IGroup, IUser } from '@/types/definition';
 
 import Link from 'next/link';
 
-import { IGroup } from '../types/definition';
 import { ContainerCount } from './ContainerCount';
 import { UserCount } from './UserCount';
 

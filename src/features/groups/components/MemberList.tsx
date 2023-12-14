@@ -1,6 +1,5 @@
 import { fetchUserList } from '@/lib/api/data';
-
-import { IUser } from '../types/definition';
+import { IUser } from '@/types/definition';
 
 export const MemberList = async ({ id }: { id: string }) => {
   const users: IUser[] = await fetchUserList(id);

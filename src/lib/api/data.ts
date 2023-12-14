@@ -1,6 +1,4 @@
-import { IGroup } from '@/features/groups/types/definition';
-import { IContainer } from '@/features/groups/types/definition';
-import { IUser } from '@/features/groups/types/definition';
+import { IContainer, IGroup, IUser } from '@/types/definition';
 
 import axios from 'axios';
 
