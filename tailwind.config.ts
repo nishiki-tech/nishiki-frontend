@@ -34,6 +34,22 @@ module.exports = {
           '0%': { opacity: '1' },
           '100%': { opacity: '0' },
         },
+        slideInFromBottom: {
+          '0%': { transform: 'translateY(100%)' },
+          '100%': { transform: 'translateY(0)' },
+        },
+        slideOutToBottom: {
+          '0%': { transform: 'translateY(0)' },
+          '100%': { transform: 'translateY(100%)' },
+        },
+        slideInFromRight: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+        slideOutToRight: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(100%)' },
+        },
         'accordion-down': {
           from: { height: 0 },
           to: { height: 'var(--radix-accordion-content-height)' },
@@ -50,6 +66,10 @@ module.exports = {
       animation: {
         fadeIn: 'fadeIn 0.3s ease-in-out',
         fadeOut: 'fadeOut 0.3s ease-in-out',
+        slideInFromBottom: 'slideInFromBottom 0.3s ease-in-out',
+        slideOutToBottom: 'slideOutToBottom 0.3s ease-in-out',
+        slideInFromRight: 'slideInFromRight 0.3s ease-in-out',
+        slideOutToRight: 'slideOutToRight 0.3s ease-in-out',
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         pulse: 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
