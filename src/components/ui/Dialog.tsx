@@ -62,7 +62,7 @@ const DialogContent = forwardRef<
       {...props}
     >
       {children}
-      <DialogClose className={cn('absolute right-2 top-2')}>
+      <DialogClose className={cn('absolute right-3 top-3')}>
         <Icon iconName="close" color="black" size="sm" />
         <span className="sr-only">Close</span>
       </DialogClose>
@@ -78,6 +78,16 @@ const DialogHeader = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) =
   />
 );
 DialogHeader.displayName = 'DialogHeader';
+
+/**
+ * This is a custom component that we use to wrap the body (between header and footer) of the dialog.
+ */
+const DialogBody = forwardRef<ElementRef<'div'>, HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => (
+    <div ref={ref} className={cn('px-6 py-4', className)} {...props} />
+  ),
+);
+DialogBody.displayName = 'DialogBody';
 
 const DialogFooter = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => (
   <div className={cn('px-4 pb-4 flex justify-end gap-4', className)} {...props} />
@@ -99,16 +109,6 @@ const DialogDescription = forwardRef<
   <PrimitiveDescription ref={ref} className={cn('', className)} {...props} />
 ));
 DialogDescription.displayName = PrimitiveDescription.displayName;
-
-/**
- * This is a custom component that we use to wrap the body (between header and footer) of the dialog.
- */
-const DialogBody = forwardRef<ElementRef<'div'>, HTMLAttributes<HTMLDivElement>>(
-  ({ className, ...props }, ref) => (
-    <div ref={ref} className={cn('px-6 py-4', className)} {...props} />
-  ),
-);
-DialogBody.displayName = 'DialogBody';
 
 export {
   DialogBody,
