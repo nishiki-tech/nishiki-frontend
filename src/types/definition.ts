@@ -12,7 +12,7 @@ export interface IContainer {
   id: string;
   name: string;
   group: string;
-  food: IFood[];
+  food: IFood;
 }
 
 export interface IFood {
