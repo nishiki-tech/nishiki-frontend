@@ -24,7 +24,7 @@ import {
 } from '@/assets/images/icons';
 import { cn } from '@/lib/tailwind/utils';
 
-import React from 'react';
+import React, { FC } from 'react';
 
 const icons = {
   arrowLeft: ArrowLeftIcon,
@@ -68,7 +68,7 @@ type IconProps = {
   className?: string;
 };
 
-export const Icon: React.FC<IconProps> = ({ iconName, color, size = 'md', className }) => {
+export const Icon: FC<IconProps> = ({ iconName, color, size = 'md', className }) => {
   const IconComponent = icons[iconName];
 
   // stroke style doesn't work if you set it stroke-colorname,
