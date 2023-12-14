@@ -8,6 +8,7 @@
  */
 'use client';
 
+import { CrossIcon } from '@/assets/images/icons';
 import { Icon } from '@/components/ui';
 import { cn } from '@/lib/tailwind/utils';
 
@@ -75,7 +76,7 @@ const DrawerContent = forwardRef<ElementRef<typeof PrimitiveContent>, DrawerCont
       <PrimitiveContent ref={ref} className={cn(DrawerVariants({ side }), className)} {...props}>
         {children}
         <DrawerClose className={cn('absolute right-3 top-3')}>
-          <Icon iconName="close" color="black" size="sm" />
+          <Icon icon={CrossIcon} color="black" size={3.5} />
           <span className="sr-only">Close</span>
         </DrawerClose>
       </PrimitiveContent>
