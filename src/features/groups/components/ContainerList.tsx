@@ -1,3 +1,4 @@
+import { ContainerIcon } from '@/assets/images/icons';
 import { Card, Icon } from '@/components/ui';
 import { fetchContainerList } from '@/lib/api/data';
 import { IContainer } from '@/types/definition';
@@ -13,7 +14,7 @@ export const ContainerList = async ({ id }: { id: string }) => {
         <Card key={container.id}>
           <div className="flex gap-4 items-center">
             <div className="flex items-center justify-center bg-accent rounded-full w-11 h-11">
-              <Icon iconName="container" color="black" />
+              <Icon icon={ContainerIcon} color="black" size={5} />
             </div>
             {container.name}
           </div>

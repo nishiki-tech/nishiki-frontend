@@ -1,12 +1,12 @@
-import React, { FC, ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 
 import { BottomTab, MobileHeader } from '../parts';
 
-interface Props {
+interface IMobileLayoutProps {
   children: ReactNode;
 }
 
-export const MobileLayout: FC<Props> = ({ children }) => {
+export const MobileLayout: FC<IMobileLayoutProps> = ({ children }) => {
   return (
     <div className="relative flex min-h-screen flex-col">
       <MobileHeader />

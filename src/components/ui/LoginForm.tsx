@@ -8,7 +8,7 @@ import {
   signOut,
 } from 'aws-amplify/auth';
 import { Hub } from 'aws-amplify/utils';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const OAUTH_DOMAIN: string = process.env.NEXT_PUBLIC_OAUTH_DOMAIN || '';
 const LOCALHOST_URL: string = process.env.NEXT_PUBLIC_LOCALHOST_URL || '';
