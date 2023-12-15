@@ -5,6 +5,8 @@
  * shadcn/ui:https://ui.shadcn.com/docs/components/radio-group
  * Radix UI: https://www.radix-ui.com/primitives/docs/components/radio-group
  */
+'use client';
+
 import { cn } from '@/lib/tailwind/utils';
 
 import {
