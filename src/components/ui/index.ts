@@ -29,3 +29,17 @@ export {
   DrawerVariants,
 } from './Drawer';
 export { Icon } from './Icon';
+export { Label } from './Label';
+export {
+  SelectionDrawerButton,
+  SelectionDrawerButtonIcon,
+  SelectionDrawerButtonText,
+  SelectionDrawerContent,
+  SelectionDrawerOverlay,
+  SelectionDrawerPortal,
+  SelectionDrawerRadioGroup,
+  SelectionDrawerRadioGroupItem,
+  SelectionDrawerRoot,
+  SelectionDrawerTrigger,
+  SelectionDrawerVariants,
+} from './SelectionDrawer';
