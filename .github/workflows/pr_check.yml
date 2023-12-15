@@ -2,7 +2,7 @@ name: PR Workflow
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened, ready_for_review]
+    types: [opened, synchronize, reopened]
     branches:
       - develop
       - main
@@ -11,7 +11,6 @@ jobs:
   check:
     timeout-minutes: 30
     runs-on: ubuntu-latest
-    if: github.event.pull_request.draft == false
 
     steps:
       - name: checkout
