@@ -65,7 +65,7 @@ jobs:
         run: npm ci
 
       - name: Run mock server
-        run: npm run mock
+        run: npm run mock:bg
 
       - name: Build
         run: npm run build
