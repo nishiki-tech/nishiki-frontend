@@ -12,7 +12,8 @@
     "prepare": "husky install",
     "typecheck": "tsc --noEmit",
     "mock": "docker compose up --build",
-    "mock:down": "docker compose down"
+    "mock:bg": "docker compose up --build -d",
+    "mock-down": "docker compose down"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.5",
