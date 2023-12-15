@@ -1,4 +1,4 @@
-name: PR Workflow
+name: PR Checks
 
 on:
   pull_request:
@@ -8,27 +8,33 @@ on:
       - main
 
 jobs:
-  check:
-    timeout-minutes: 30
+  test:
+    timeout-minutes: 5
     runs-on: ubuntu-latest
 
     steps:
-      - name: checkout
+      - name: Get Source Code
         uses: actions/checkout@v3
         with:
           fetch-depth: 2
 
-      - name: setup node.js environment
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
           cache: 'npm'
 
-      - name: install
+      - name: Cache npm
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install Dependencies
         run: npm ci
 
-      - name: typecheck
+      - name: Typecheck
         run: npm run typecheck
 
-      - name: lint
+      - name: Lint
         run: npm run lint
