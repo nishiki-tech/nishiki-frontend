@@ -9,6 +9,7 @@ export function InputUsageExample() {
   return (
     <div className="grid w-full max-w-sm items-center gap-1.5">
       <Input type="text" id="groupName" placeholder="Group name" />
+      <Input variant={'square'} type="text" id="groupName" />
       <SearchInput placeholder="Search Foods" />
       <div className="w-1/2">
         <NumberInput id="quantity" placeholder="Quantity" />
