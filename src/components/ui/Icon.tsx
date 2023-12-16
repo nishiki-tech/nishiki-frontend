@@ -44,8 +44,10 @@ interface IIconProps extends VariantProps<typeof iconVariants> {
   className?: string;
 }
 
-export const Icon: FC<IIconProps> = ({ icon, className, size, color }) => {
+const Icon: FC<IIconProps> = ({ icon, className, size, color }) => {
   const IconComponent = icon;
 
   return <IconComponent className={cn(iconVariants({ color, size, className }))} />;
 };
+
+export { Icon, iconVariants };
