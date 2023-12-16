@@ -23,7 +23,7 @@ module.exports = {
       borderRadius: {
         xs: '0.125rem', // 2px
         sm: '0.25rem', // 4px
-        full: '3.125rem', // 50px
+        full: '9999px',
         DEFAULT: '0.625rem', // 10px
       },
       keyframes: {
