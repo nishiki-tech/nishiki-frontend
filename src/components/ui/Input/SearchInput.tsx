@@ -9,15 +9,17 @@ import { SearchIcon } from '@/assets/images/icons';
 import { cn } from '@/lib/tailwind/utils';
 
 import { VariantProps } from 'class-variance-authority';
-import { FC, InputHTMLAttributes, ReactNode } from 'react';
+import { FC, InputHTMLAttributes, SVGAttributes } from 'react';
 
 import { Icon, iconVariants } from '..';
 import { Input, inputVariants } from './Input';
 
 interface ISearchInputProps extends InputHTMLAttributes<HTMLInputElement> {
-  icon?: ReactNode;
+  icon?: FC<SVGAttributes<SVGElement>>;
   iconProps?: VariantProps<typeof iconVariants>;
 }
+
+const defaultType = 'search';
 
 const defaultIcon = SearchIcon;
 
@@ -27,7 +29,7 @@ const defaultIconProps: VariantProps<typeof iconVariants> = {
 };
 
 export const SearchInput: FC<ISearchInputProps> = (
-  { className, type = 'search', icon = defaultIcon, iconProps = defaultIconProps, ...props },
+  { className, type = defaultType, icon = defaultIcon, iconProps = defaultIconProps, ...props },
   ref,
 ) => {
   const { color: iconColor, size: iconSize } = iconProps;
