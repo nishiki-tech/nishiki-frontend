@@ -29,7 +29,7 @@ export {
   DrawerVariants,
 } from './Drawer';
 export { Icon, iconVariants } from './Icon';
-export { Input, SearchInput } from './Input';
+export { Input, NumberInput, SearchInput } from './Input';
 export { Label } from './Label';
 export {
   SelectionDrawerButton,

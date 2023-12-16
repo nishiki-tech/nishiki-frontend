@@ -3,7 +3,7 @@
  * Once you're done with the example, you can delete this file.
  */
 
-import { Input, SearchInput } from '..';
+import { Input, NumberInput, SearchInput } from '..';
 
 export function InputUsageExample() {
   return (
@@ -11,8 +11,7 @@ export function InputUsageExample() {
       <Input type="text" id="groupName" placeholder="Group name" />
       <SearchInput placeholder="Search Foods" />
       <div className="w-1/2">
-        {/* When it's type number, it allows input like 01111 */}
-        <Input type="number" id="quantity" placeholder="Quantity" />
+        <NumberInput id="quantity" placeholder="Quantity" />
       </div>
     </div>
   );
