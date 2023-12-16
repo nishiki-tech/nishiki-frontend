@@ -23,6 +23,7 @@ module.exports = {
       borderRadius: {
         xs: '0.125rem', // 2px
         sm: '0.25rem', // 4px
+        full: '3.125rem', // 50px
         DEFAULT: '0.625rem', // 10px
       },
       keyframes: {
@@ -76,5 +77,12 @@ module.exports = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [
+    require('tailwindcss-animate'),
+    require('tailwindcss/plugin')(function ({ addBase }) {
+      addBase({
+        '[type="search"]::-webkit-search-cancel-button': { display: 'none' },
+      });
+    }),
+  ],
 };
