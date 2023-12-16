@@ -5,6 +5,8 @@
  * shadcn/ui: https://ui.shadcn.com/docs/components/label
  * Radix UI: https://www.radix-ui.com/primitives/docs/components/label
  */
+
+'use client';
 import { cn } from '@/lib/tailwind/utils';
 
 import { Root as PrimitiveRoot } from '@radix-ui/react-label';
