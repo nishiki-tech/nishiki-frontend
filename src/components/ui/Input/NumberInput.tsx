@@ -56,9 +56,12 @@ const handleExceptionSymbols = (
     event.preventDefault();
   }
 };
+
+const defaultVariant = 'rounded';
+
 export const NumberInput: FC<INumberInputProps> = ({
   className,
-  variant = 'rounded',
+  variant = defaultVariant,
   onKeyDown = handleExceptionSymbols,
   exceptDot = true,
   exceptE = true,
