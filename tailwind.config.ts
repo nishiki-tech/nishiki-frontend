@@ -77,12 +77,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require('tailwindcss-animate'),
-    require('tailwindcss/plugin')(function ({ addBase }) {
-      addBase({
-        '[type="search"]::-webkit-search-cancel-button': { display: 'none' },
-      });
-    }),
-  ],
+  plugins: [require('tailwindcss-animate')],
 };
