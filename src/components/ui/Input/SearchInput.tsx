@@ -1,10 +1,3 @@
-/**
- * This file is based on the Input component from shadcn and customized for our needs.
- *
- * See the official docs for more info:
- * shadcn/ui: https://ui.shadcn.com/docs/components/input
- */
-
 'use client';
 
 import { SearchIcon } from '@/assets/images/icons';
