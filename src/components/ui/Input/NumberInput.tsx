@@ -17,8 +17,9 @@ interface IExceptionSymbolsProps {
 
 interface INumberInputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type'>,
-    VariantProps<typeof inputVariants>,
-    IExceptionSymbolsProps {}
+    VariantProps<typeof inputVariants> {
+  exceptionSymbolsProps?: Partial<IExceptionSymbolsProps>;
+}
 
 const SYMBOLS = {
   zero: '0',
@@ -48,16 +49,19 @@ const handleExceptionSymbols = (
 
 const defaultVariant = 'rounded';
 
+const defaultExceptionSymbols: IExceptionSymbolsProps = {
+  exceptDot: false,
+  exceptE: true,
+  exceptLeadingZero: true,
+  exceptNegative: true,
+  exceptPlusOperator: true,
+};
+
 export const NumberInput: FC<INumberInputProps> = ({
   className,
   variant = defaultVariant,
   onKeyDown = handleExceptionSymbols,
-  // accept decimal numbers by default
-  exceptDot = false,
-  exceptE = true,
-  exceptLeadingZero = true,
-  exceptNegative = true,
-  exceptPlusOperator = true,
+  exceptionSymbolsProps = defaultExceptionSymbols,
   ...props
 }) => {
   return (
@@ -65,9 +69,7 @@ export const NumberInput: FC<INumberInputProps> = ({
       type="number"
       variant={variant}
       className={cn('flex-1', className)}
-      onKeyDown={(e) =>
-        onKeyDown(e, { exceptDot, exceptE, exceptLeadingZero, exceptNegative, exceptPlusOperator })
-      }
+      onKeyDown={(e) => onKeyDown(e, exceptionSymbolsProps)}
       {...props}
     />
   );
