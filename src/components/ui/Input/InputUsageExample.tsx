@@ -16,7 +16,11 @@ export function InputUsageExample() {
         <Label htmlFor="quantity">Quantity</Label>
         <NumberInput id="quantity" placeholder="Quantity" />
         {/* By default input component is excluding dot, but you can modify it  */}
-        <NumberInput id="quantity" placeholder="Quantity" exceptionSymbols={{ exceptDot: true }} />
+        <NumberInput
+          id="quantity"
+          placeholder="Quantity"
+          exceptionSymbolsProps={{ exceptDot: true }}
+        />
       </div>
     </div>
   );
