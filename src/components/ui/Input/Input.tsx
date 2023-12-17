@@ -10,33 +10,36 @@ import { cn } from '@/lib/tailwind/utils';
 import { cva, VariantProps } from 'class-variance-authority';
 import { forwardRef, InputHTMLAttributes } from 'react';
 
-const inputVariants = cva(
-  'flex w-full h-full text-base focus:outline-none disabled:cursor-not-allowed',
-  {
-    variants: {
-      variant: {
-        // naming of each variant should be aligned with the design team
-        rounded: 'rounded-full bg-white border border-gray px-6 py-4 placeholder:text-gray',
-        muted: 'border-none placeholder:text-gray',
-        square: 'bg-gray-lightest border-b border-primary pr-2 py-2',
-      },
+const inputVariants = cva('flex w-full text-base focus:outline-none disabled:cursor-not-allowed', {
+  variants: {
+    variant: {
+      // naming of each variant should be aligned with the design team
+      rounded: 'rounded-full bg-white border border-gray px-6 py-4 placeholder:text-gray',
+      muted: 'bg-transparent border-none placeholder:text-gray',
+      square: 'bg-gray-lightest border-b border-primary pr-2 py-2',
     },
-    defaultVariants: {
-      variant: 'rounded',
+    h: {
+      sm: 'h-10',
+      md: 'h-12',
     },
   },
-);
+
+  defaultVariants: {
+    variant: 'rounded',
+    h: 'md',
+  },
+});
 
 export interface IInputProps
   extends InputHTMLAttributes<HTMLInputElement>,
     VariantProps<typeof inputVariants> {}
 
 const Input = forwardRef<HTMLInputElement, IInputProps>(
-  ({ className, variant, type, ...props }, ref) => {
+  ({ className, variant, type, h, ...props }, ref) => {
     return (
       <input
         type={type}
-        className={cn(inputVariants({ variant, className }))}
+        className={cn(inputVariants({ variant, h, className }))}
         ref={ref}
         {...props}
       />
