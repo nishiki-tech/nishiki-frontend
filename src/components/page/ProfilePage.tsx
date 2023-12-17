@@ -1,3 +1,10 @@
+import { SelectScrollableUsageExample, SelectUsageExample } from '../ui/SelectUsageExample';
+
 export const ProfilePage = () => {
-  return <>ProfilePage</>;
+  return (
+    <>
+      <SelectUsageExample />
+      <SelectScrollableUsageExample />
+    </>
+  );
 };
