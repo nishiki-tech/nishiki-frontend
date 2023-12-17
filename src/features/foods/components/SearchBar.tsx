@@ -1,10 +1,23 @@
+import { Route } from 'next';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React from 'react';
+import { useDebouncedCallback } from 'use-debounce';
 
-interface SearchBarProps {
-  onSearch: (text: string) => void;
-}
+export const SearchBar = () => {
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
 
-export const SearchBar = ({ onSearch }: SearchBarProps) => {
+  const handleSearch = useDebouncedCallback((term: string) => {
+    console.log(`Searching... ${term}`);
+    const params = new URLSearchParams(searchParams);
+    if (term) {
+      params.set('query', term);
+    } else {
+      params.delete('query');
+    }
+    replace(`${pathname}?${params.toString()}` as Route);
+  }, 300);
   return (
     <div>
       <label htmlFor="search" className="">
@@ -13,7 +26,7 @@ export const SearchBar = ({ onSearch }: SearchBarProps) => {
       <input
         className=""
         placeholder="Search food..."
-        onChange={(e) => onSearch(e.target.value)}
+        onChange={(e) => handleSearch(e.target.value)}
         defaultValue=""
       />
     </div>
