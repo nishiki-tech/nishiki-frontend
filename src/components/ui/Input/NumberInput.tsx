@@ -1,10 +1,3 @@
-/**
- * This file is based on the Input component from shadcn and customized for our needs.
- *
- * See the official docs for more info:
- * shadcn/ui: https://ui.shadcn.com/docs/components/input
- */
-
 'use client';
 
 import { cn } from '@/lib/tailwind/utils';
@@ -27,32 +20,28 @@ interface INumberInputProps
     VariantProps<typeof inputVariants>,
     IExceptionSymbolsProps {}
 
-const zero = '0';
-const negative = '-';
-const plus = '+';
-const e = ['e', 'E'];
-const dot = '.';
+const SYMBOLS = {
+  zero: '0',
+  negative: '-',
+  plus: '+',
+  e: ['e', 'E'],
+  dot: '.',
+};
 
 const handleExceptionSymbols = (
   event: React.KeyboardEvent<HTMLInputElement>,
   exceptionSymbolsProps: IExceptionSymbolsProps,
 ) => {
-  const { key } = event;
+  const { key, currentTarget } = event;
   const { exceptDot, exceptE, exceptLeadingZero, exceptNegative, exceptPlusOperator } =
     exceptionSymbolsProps;
-  if (exceptDot && key === dot) {
-    event.preventDefault();
-  }
-  if (exceptE && e.includes(key)) {
-    event.preventDefault();
-  }
-  if (exceptLeadingZero && key === zero && event.currentTarget.value === zero) {
-    event.preventDefault();
-  }
-  if (exceptNegative && key === negative) {
-    event.preventDefault();
-  }
-  if (exceptPlusOperator && key === plus) {
+  if (
+    (exceptDot && key === SYMBOLS.dot) ||
+    (exceptE && SYMBOLS.e.includes(key)) ||
+    (exceptLeadingZero && key === SYMBOLS.zero && currentTarget.value === SYMBOLS.zero) ||
+    (exceptNegative && key === SYMBOLS.negative) ||
+    (exceptPlusOperator && key === SYMBOLS.plus)
+  ) {
     event.preventDefault();
   }
 };
@@ -63,7 +52,8 @@ export const NumberInput: FC<INumberInputProps> = ({
   className,
   variant = defaultVariant,
   onKeyDown = handleExceptionSymbols,
-  exceptDot = true,
+  // accept decimal numbers by default
+  exceptDot = false,
   exceptE = true,
   exceptLeadingZero = true,
   exceptNegative = true,
@@ -72,7 +62,7 @@ export const NumberInput: FC<INumberInputProps> = ({
 }) => {
   return (
     <Input
-      type={'number'}
+      type="number"
       variant={variant}
       className={cn('flex-1', className)}
       onKeyDown={(e) =>
