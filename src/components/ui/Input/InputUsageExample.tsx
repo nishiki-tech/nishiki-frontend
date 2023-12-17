@@ -1,5 +1,5 @@
 /**
- * This file is used as an example for the Dialog component.
+ * This file is used as an example for the Input component.
  * Once you're done with the example, you can delete this file.
  */
 
