@@ -3,7 +3,7 @@
  * Once you're done with the example, you can delete this file.
  */
 
-import { Input, NumberInput, SearchInput } from '..';
+import { Input, Label, NumberInput, SearchInput } from '..';
 
 export function InputUsageExample() {
   return (
@@ -12,6 +12,7 @@ export function InputUsageExample() {
       <Input variant={'square'} type="text" id="groupName" />
       <SearchInput placeholder="Search Foods" />
       <div className="w-1/2">
+        <Label>aaaa</Label>
         <NumberInput id="quantity" placeholder="Quantity" />
       </div>
     </div>
