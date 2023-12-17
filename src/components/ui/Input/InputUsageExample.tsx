@@ -1,6 +1,6 @@
 /**
- * This file is used as an example for the Input component.
- * Once you're done with the example, you can delete this file.
+ * This file is used as an example for the Input components.
+ * Once we're done with the example, we can delete this file.
  */
 
 import { Label } from '../';
@@ -13,7 +13,7 @@ export function InputUsageExample() {
       <Input variant="square" type="text" id="groupName" />
       <SearchInput placeholder="Search Foods" />
       <div className="w-1/2">
-        <Label>aaaa</Label>
+        <Label htmlFor="quantity">Quantity</Label>
         <NumberInput id="quantity" placeholder="Quantity" />
       </div>
     </div>
