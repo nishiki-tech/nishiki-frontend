@@ -23,8 +23,6 @@ export const SearchInput: FC<ISearchInputProps> = ({
   iconProps = defaultIconProps,
   ...props
 }) => {
-  const { color: iconColor, size: iconSize } = iconProps;
-
   // logic to focus the input when the user clicks on the container
   const ref = useRef<HTMLInputElement>(null);
   const focusInput = () => {
@@ -41,7 +39,7 @@ export const SearchInput: FC<ISearchInputProps> = ({
       )}
       onClick={focusInput}
     >
-      <Icon icon={SearchIcon} color={iconColor} size={iconSize} className="mr-2" />
+      <Icon icon={SearchIcon} {...iconProps} className="mr-2" />
       <Input type="search" variant="muted" className="flex-1" {...props} ref={ref} />
     </div>
   );
