@@ -1,8 +1,8 @@
 import ArrowLeftIcon from './icon_arrow-left.svg';
 import BagIcon from './icon_bag.svg';
 import CalendarIcon from './icon_calendar.svg';
-import TriangleDownIcon from './icon_caret-down.svg';
-import TriangleRightIcon from './icon_caret-right.svg';
+import CaretDownIcon from './icon_caret-down.svg';
+import CaretRightIcon from './icon_caret-right.svg';
 import ContainerIcon from './icon_container.svg';
 import CrossIcon from './icon_cross.svg';
 import DeleteIcon from './icon_delete.svg';
@@ -25,6 +25,8 @@ export {
   ArrowLeftIcon,
   BagIcon,
   CalendarIcon,
+  CaretDownIcon,
+  CaretRightIcon,
   ContainerIcon,
   CrossIcon,
   DeleteIcon,
@@ -42,6 +44,4 @@ export {
   ProfileIcon_Off,
   ProfileIcon_On,
   SearchIcon,
-  TriangleDownIcon,
-  TriangleRightIcon,
 };
