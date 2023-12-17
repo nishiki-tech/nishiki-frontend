@@ -3,7 +3,8 @@
  * Once you're done with the example, you can delete this file.
  */
 
-import { Input, Label, NumberInput, SearchInput } from '..';
+import { Label } from '../';
+import { Input, NumberInput, SearchInput } from './';
 
 export function InputUsageExample() {
   return (
