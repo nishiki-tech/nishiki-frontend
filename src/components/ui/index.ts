@@ -39,7 +39,7 @@ export {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from './Select/Select';
+} from './Select';
 export {
   SelectionDrawerButton,
   SelectionDrawerButtonIcon,

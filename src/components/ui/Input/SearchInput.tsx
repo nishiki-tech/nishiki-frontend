@@ -42,7 +42,7 @@ export const SearchInput: FC<ISearchInputProps> = ({
       onClick={focusInput}
     >
       <Icon icon={SearchIcon} color={iconColor} size={iconSize} className="mr-2" />
-      <Input type="search" variant="muted" className={'flex-1'} {...props} ref={ref} />
+      <Input type="search" variant="muted" className="flex-1" {...props} ref={ref} />
     </div>
   );
 };

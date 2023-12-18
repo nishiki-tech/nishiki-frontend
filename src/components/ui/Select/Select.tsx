@@ -1,52 +1,26 @@
 'use client';
 
-import { CaretDownIcon } from '@/assets/images/icons';
 import { cn } from '@/lib/tailwind/utils';
 
 import {
   Content as PrimitiveContent,
   Group as PrimitiveGroup,
-  Icon as PrimitiveIcon,
   Item as PrimitiveItem,
   ItemIndicator as PrimitiveItemIndicator,
   ItemText as PrimitiveItemText,
   Label as PrimitiveLabel,
   Portal as PrimitivePortal,
   Root as PrimitiveRoot,
-  Trigger as PrimitiveTrigger,
   Value as PrimitiveValue,
   Viewport as PrimitiveViewport,
 } from '@radix-ui/react-select';
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react';
-
-// import { Check, ChevronDown, ChevronUp } from 'lucide-react';
-import { Icon } from '../Icon';
 
 const Select = PrimitiveRoot;
 
 const SelectGroup = PrimitiveGroup;
 
 const SelectValue = PrimitiveValue;
-
-const SelectTrigger = forwardRef<
-  ElementRef<typeof PrimitiveTrigger>,
-  ComponentPropsWithoutRef<typeof PrimitiveTrigger>
->(({ className, children, ...props }, ref) => (
-  <PrimitiveTrigger
-    ref={ref}
-    className={cn(
-      'flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1',
-      className,
-    )}
-    {...props}
-  >
-    {children}
-    <PrimitiveIcon asChild>
-      <Icon icon={CaretDownIcon} size={4} color="gray-dark" />
-    </PrimitiveIcon>
-  </PrimitiveTrigger>
-));
-SelectTrigger.displayName = PrimitiveTrigger.displayName;
 
 const SelectContent = forwardRef<
   ElementRef<typeof PrimitiveContent>,
@@ -111,4 +85,4 @@ const SelectItem = forwardRef<
 ));
 SelectItem.displayName = PrimitiveItem.displayName;
 
-export { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue };
+export { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectValue };
