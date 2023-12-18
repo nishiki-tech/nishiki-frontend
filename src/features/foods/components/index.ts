@@ -1,0 +1,1 @@
+export { FilterBadge } from './FilterBadge';
