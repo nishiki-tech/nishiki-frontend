@@ -14,7 +14,8 @@ const inputVariants = cva('flex w-full text-base focus:outline-none disabled:cur
   variants: {
     variant: {
       // naming of each variant should be aligned with the design team
-      rounded: 'rounded-full bg-white border border-gray px-6 py-4 placeholder:text-gray',
+      rounded:
+        'rounded-full bg-white border border-gray px-6 py-4 placeholder:text-gray focus:border-2 focus:border-primary-dark ',
       muted: 'bg-transparent border-none placeholder:text-gray ',
       square: 'bg-gray-lightest border-b border-primary p-2',
     },
