@@ -1,7 +1,7 @@
 import { cn } from '@/lib/tailwind/utils';
 
 import { cva, type VariantProps } from 'class-variance-authority';
-import { FC, FunctionComponent, SVGAttributes } from 'react';
+import { FC, SVGAttributes } from 'react';
 
 const iconVariants = cva('', {
   variants: {
@@ -40,12 +40,14 @@ const iconVariants = cva('', {
 });
 
 interface IIconProps extends VariantProps<typeof iconVariants> {
-  icon: FunctionComponent<SVGAttributes<SVGElement>>;
+  icon: FC<SVGAttributes<SVGElement>>;
   className?: string;
 }
 
-export const Icon: FC<IIconProps> = ({ icon, className, size, color }) => {
+const Icon: FC<IIconProps> = ({ icon, className, size, color }) => {
   const IconComponent = icon;
 
   return <IconComponent className={cn(iconVariants({ color, size, className }))} />;
 };
+
+export { Icon, iconVariants };

@@ -28,4 +28,19 @@ export {
   DrawerTrigger,
   DrawerVariants,
 } from './Drawer';
-export { Icon } from './Icon';
+export { Icon, iconVariants } from './Icon';
+export { Input, NumberInput, SearchInput } from './Input';
+export { Label } from './Label';
+export {
+  SelectionDrawerButton,
+  SelectionDrawerButtonIcon,
+  SelectionDrawerButtonText,
+  SelectionDrawerContent,
+  SelectionDrawerOverlay,
+  SelectionDrawerPortal,
+  SelectionDrawerRadioGroup,
+  SelectionDrawerRadioGroupItem,
+  SelectionDrawerRoot,
+  SelectionDrawerTrigger,
+  SelectionDrawerVariants,
+} from './SelectionDrawer';
