@@ -9,6 +9,7 @@ const iconVariants = cva('', {
     // Since some of the icons in the design are not following 4px grid, and to be fixed in the future,
     // If the size in the design is not in the list, you can assign the closest size from this list.
     size: {
+      2: 'w-2 h-2',
       3: 'w-3 h-3',
       3.5: 'w-3.5 h-3.5',
       4: 'w-4 h-4',
