@@ -7,7 +7,7 @@ import { VariantProps } from 'class-variance-authority';
 import { FC, InputHTMLAttributes, useRef } from 'react';
 
 import { Icon, iconVariants } from '../';
-import { Input, inputVariants } from './Input';
+import { Input } from './Input';
 
 interface ISearchInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> {
   iconProps?: VariantProps<typeof iconVariants>;
@@ -30,17 +30,11 @@ export const SearchInput: FC<ISearchInputProps> = ({
       ref.current.focus();
     }
   };
+
   return (
-    <div
-      className={cn(
-        'flex items-center cursor-text',
-        inputVariants({ variant: 'rounded' }),
-        className,
-      )}
-      onClick={focusInput}
-    >
-      <Icon icon={SearchIcon} {...iconProps} className="mr-2" />
-      <Input type="search" variant="muted" className="flex-1" {...props} ref={ref} />
+    <div className={cn('relative', className)} onClick={focusInput}>
+      <Icon icon={SearchIcon} {...iconProps} className="absolute top-4 left-6" />
+      <Input type="search" variant="rounded" className="pl-12" ref={ref} {...props} />
     </div>
   );
 };

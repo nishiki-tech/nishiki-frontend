@@ -8,7 +8,7 @@ import { Input, NumberInput, SearchInput } from './';
 
 export function InputUsageExample() {
   return (
-    <div className="grid w-full max-w-sm items-center gap-1.5">
+    <div className="grid w-full max-w-sm items-center gap-1.5 py-4">
       <Input type="text" id="groupName" placeholder="Group name" />
       <Input variant="square" type="text" id="groupName" />
       <SearchInput placeholder="Search Foods" />
