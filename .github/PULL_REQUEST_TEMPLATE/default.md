@@ -1,8 +1,3 @@
----
-name: Default
-title: 'Write a title according to the naming conventions below'
----
-
 <!--
 
 Title Naming Conventions:
