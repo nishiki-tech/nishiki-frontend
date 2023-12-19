@@ -56,6 +56,7 @@ Example:
 
 - [ ] The base branch is correct (See: [Types of Branches](https://github.com/genesis-tech-tribe/nishiki-frontend/blob/develop/docs/CONTRIBUTING.md#types-of-branches))
 - [ ] The branch name follows the [Branch Naming Conventions](https://github.com/genesis-tech-tribe/nishiki-frontend/blob/develop/docs/CONTRIBUTING.md#branch-naming-conventions)
+- [ ] The correct assignees and reviewers have been designated for this PR
 - [ ] The coding style follows the [Coding Style Guide](https://github.com/genesis-tech-tribe/nishiki-frontend/blob/develop/docs/STYLEGUIDE.md)
 - [ ] All the related issues are associated with this PR
 - [ ] All criteria in the associated issues are met (please tick the checkboxes)
