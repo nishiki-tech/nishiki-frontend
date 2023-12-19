@@ -27,7 +27,7 @@ title: 'Write a title as brief (yet descriptive) as possible'
 - Browser: <!-- Delete this line if not applicable -->
 - Device: <!-- Delete this line if not applicable -->
 
-## Note
+## Notes
 
 <!-- Write any note or comment. You can share your thoughts or ideas. -->
 <!-- Delete this section if not needed -->

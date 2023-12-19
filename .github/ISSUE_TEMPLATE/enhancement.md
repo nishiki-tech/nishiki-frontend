@@ -8,12 +8,11 @@ title: 'Write a title as brief (yet descriptive) as possible'
 
 <!-- Provide a detailed description of the ides, new feature or enhancement you are proposing. -->
 
-## Note
+## Notes
 
 <!-- Write any note or comment. You can share your thoughts or ideas. -->
-<!-- Delete this section if not needed -->
 
--
+## <!-- Delete this section if not needed -->
 
 ## Additional Context
 

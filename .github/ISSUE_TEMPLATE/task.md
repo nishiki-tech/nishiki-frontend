@@ -13,7 +13,7 @@ title: 'Write a title as brief (yet descriptive) as possible'
 - [ ] Criterion 1
 - [ ] Criterion 2
 
-## Note
+## Notes
 
 <!-- Write any note or comment. You can share your thoughts or ideas. -->
 <!-- Delete this section if not needed -->
