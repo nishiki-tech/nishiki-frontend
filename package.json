@@ -41,6 +41,8 @@
     "@typescript-eslint/eslint-plugin": "^6.7.4",
     "@typescript-eslint/parser": "^6.7.4",
     "autoprefixer": "^10.4.16",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8",
     "eslint-config-next": "^14.0.3",
     "eslint-config-prettier": "^9.0.0",
@@ -55,5 +57,10 @@
   "lint-staged": {
     "**/*.{ts,tsx,js,jsx,scss}": "npm run lint:fix",
     "**/*.{md,yml,json,babelrc,prettierrc}": "npm run lint:fix"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
