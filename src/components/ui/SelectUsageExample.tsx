@@ -12,6 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui';
+
 export function SelectUsageExample() {
   return (
     <div className="w-full px-4">
@@ -36,54 +37,56 @@ export function SelectUsageExample() {
 
 export function SelectScrollableUsageExample() {
   return (
-    <Select>
-      <SelectTrigger className="w-[280px]">
-        {/* <SelectValue placeholder="Select a timezone" /> */}
-      </SelectTrigger>
-      <SelectContent>
-        <SelectGroup>
-          <SelectLabel>North America</SelectLabel>
-          <SelectItem value="est">Eastern Standard Time (EST)</SelectItem>
-          <SelectItem value="cst">Central Standard Time (CST)</SelectItem>
-          <SelectItem value="mst">Mountain Standard Time (MST)</SelectItem>
-          <SelectItem value="pst">Pacific Standard Time (PST)</SelectItem>
-          <SelectItem value="akst">Alaska Standard Time (AKST)</SelectItem>
-          <SelectItem value="hst">Hawaii Standard Time (HST)</SelectItem>
-        </SelectGroup>
-        <SelectGroup>
-          <SelectLabel>Europe & Africa</SelectLabel>
-          <SelectItem value="gmt">Greenwich Mean Time (GMT)</SelectItem>
-          <SelectItem value="cet">Central European Time (CET)</SelectItem>
-          <SelectItem value="eet">Eastern European Time (EET)</SelectItem>
-          <SelectItem value="west">Western European Summer Time (WEST)</SelectItem>
-          <SelectItem value="cat">Central Africa Time (CAT)</SelectItem>
-          <SelectItem value="eat">East Africa Time (EAT)</SelectItem>
-        </SelectGroup>
-        <SelectGroup>
-          <SelectLabel>Asia</SelectLabel>
-          <SelectItem value="msk">Moscow Time (MSK)</SelectItem>
-          <SelectItem value="ist">India Standard Time (IST)</SelectItem>
-          <SelectItem value="cst_china">China Standard Time (CST)</SelectItem>
-          <SelectItem value="jst">Japan Standard Time (JST)</SelectItem>
-          <SelectItem value="kst">Korea Standard Time (KST)</SelectItem>
-          <SelectItem value="ist_indonesia">Indonesia Central Standard Time (WITA)</SelectItem>
-        </SelectGroup>
-        <SelectGroup>
-          <SelectLabel>Australia & Pacific</SelectLabel>
-          <SelectItem value="awst">Australian Western Standard Time (AWST)</SelectItem>
-          <SelectItem value="acst">Australian Central Standard Time (ACST)</SelectItem>
-          <SelectItem value="aest">Australian Eastern Standard Time (AEST)</SelectItem>
-          <SelectItem value="nzst">New Zealand Standard Time (NZST)</SelectItem>
-          <SelectItem value="fjt">Fiji Time (FJT)</SelectItem>
-        </SelectGroup>
-        <SelectGroup>
-          <SelectLabel>South America</SelectLabel>
-          <SelectItem value="art">Argentina Time (ART)</SelectItem>
-          <SelectItem value="bot">Bolivia Time (BOT)</SelectItem>
-          <SelectItem value="brt">Brasilia Time (BRT)</SelectItem>
-          <SelectItem value="clt">Chile Standard Time (CLT)</SelectItem>
-        </SelectGroup>
-      </SelectContent>
-    </Select>
+    <div className="flex">
+      <Select>
+        <SelectTrigger className="w-[280px]">
+          <SelectValue placeholder="Select a timezone" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            <SelectLabel>North America</SelectLabel>
+            <SelectItem value="est">Eastern (EST)</SelectItem>
+            <SelectItem value="cst">Central (CST)</SelectItem>
+            <SelectItem value="mst">Mountain (MST)</SelectItem>
+            <SelectItem value="pst">Pacific (PST)</SelectItem>
+            <SelectItem value="akst">Alaska (AKST)</SelectItem>
+            <SelectItem value="hst">Hawaii (HST)</SelectItem>
+          </SelectGroup>
+          <SelectGroup>
+            <SelectLabel>Europe & Africa</SelectLabel>
+            <SelectItem value="gmt">Greenwich Mean(GMT)</SelectItem>
+            <SelectItem value="cet">Central European(CET)</SelectItem>
+            <SelectItem value="eet">Eastern European(EET)</SelectItem>
+            <SelectItem value="west">We</SelectItem>
+            <SelectItem value="cat">Cen</SelectItem>
+            <SelectItem value="eat">Eas</SelectItem>
+          </SelectGroup>
+          <SelectGroup>
+            <SelectLabel>Asia</SelectLabel>
+            <SelectItem value="msk">Mo</SelectItem>
+            <SelectItem value="ist">I</SelectItem>
+            <SelectItem value="cst_china">Ch </SelectItem>
+            <SelectItem value="jst">Ja</SelectItem>
+            <SelectItem value="kst">Ko</SelectItem>
+            <SelectItem value="ist_indonesia">Ind</SelectItem>
+          </SelectGroup>
+          <SelectGroup>
+            <SelectLabel>Australia & Pacific</SelectLabel>
+            <SelectItem value="awst">Aus</SelectItem>
+            <SelectItem value="acst">Aus</SelectItem>
+            <SelectItem value="aest">Au</SelectItem>
+            <SelectItem value="nzst">Ne</SelectItem>
+            <SelectItem value="fjt">Fi</SelectItem>
+          </SelectGroup>
+          <SelectGroup>
+            <SelectLabel>South America</SelectLabel>
+            <SelectItem value="art">Ar</SelectItem>
+            <SelectItem value="bot">Bo</SelectItem>
+            <SelectItem value="brt">Br</SelectItem>
+            <SelectItem value="clt">Ch</SelectItem>
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+    </div>
   );
 }

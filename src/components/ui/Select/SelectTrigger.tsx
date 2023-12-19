@@ -21,11 +21,14 @@ const selectTriggerVariants = cva(
         sm: 'h-10',
         md: 'h-12',
       },
+      placeHolderColor: {
+        gray: 'data-[placeholder]:text-gray',
+      },
     },
-
     defaultVariants: {
       variant: 'rounded',
       h: 'md',
+      placeHolderColor: 'gray',
     },
   },
 );
@@ -42,11 +45,13 @@ const defaultIconProps: VariantProps<typeof iconVariants> = {
 };
 
 const SelectTrigger = forwardRef<ElementRef<typeof PrimitiveTrigger>, ISelectTriggerProps>(
-  ({ className, children, variant, h, iconProps = defaultIconProps, ...props }, ref) => (
+  (
+    { className, children, variant, h, placeHolderColor, iconProps = defaultIconProps, ...props },
+    ref,
+  ) => (
     <PrimitiveTrigger
       ref={ref}
-      className={cn(selectTriggerVariants({ variant, h, className }))}
-      data-placeholder="gray"
+      className={cn(selectTriggerVariants({ variant, h, placeHolderColor, className }))}
       {...props}
     >
       {children}
