@@ -9,7 +9,9 @@ export default async function Foods({
     query?: string;
     page?: string;
     sort?: string;
-    filter?: string;
+    container?: string;
+    group?: string;
+    category?: string;
   };
 }) {
   const containers: IContainer[] = await fetchAllContainerList();

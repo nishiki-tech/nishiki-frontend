@@ -1,3 +1,5 @@
+import { SearchInput } from '@/components/ui';
+
 import { Route } from 'next';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React from 'react';
@@ -20,12 +22,8 @@ export const SearchBar = () => {
   }, 300);
   return (
     <div>
-      <label htmlFor="search" className="">
-        Search
-      </label>
-      <input
-        className=""
-        placeholder="Search food..."
+      <SearchInput
+        placeholder="Search Foods..."
         onChange={(e) => handleSearch(e.target.value)}
         defaultValue=""
       />

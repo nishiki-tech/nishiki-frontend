@@ -19,6 +19,7 @@ export interface IFood {
   id: string;
   name: string;
   quantity: number;
+  category: string;
   unit: string;
   expiry: Date;
 }
