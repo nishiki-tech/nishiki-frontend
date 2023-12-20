@@ -76,9 +76,7 @@ export const FoodFilterDrawer = ({ containers }: { containers: Record<string, st
     setSelectedGroup('');
     setSelectedContainer('');
     setSelectedCategories({});
-    console.log('query1', query);
     setQuery('');
-    console.log('query2', query);
   };
 
   const toggleCategory = (key: string) => {
@@ -98,12 +96,12 @@ export const FoodFilterDrawer = ({ containers }: { containers: Record<string, st
 
   return (
     <DrawerRoot open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
-      <SearchBar />
-      <DrawerTrigger asChild>
-        <Button>
-          <Icon icon={FilterIcon} color="black" size={4} />
-        </Button>
-      </DrawerTrigger>
+      <div className="relative">
+        <SearchBar />
+        <DrawerTrigger>
+          <Icon icon={FilterIcon} size={4} className="absolute top-4 right-8" />
+        </DrawerTrigger>
+      </div>
       <DrawerContent side="bottom">
         <DrawerHeader>
           <DrawerTitle>Filter Food</DrawerTitle>
@@ -157,7 +155,7 @@ export const FoodFilterDrawer = ({ containers }: { containers: Record<string, st
               selectedCategories={selectedCategories}
               toggleCategory={toggleCategory}
             />
-            <div className="flex flex-wrap gap-1 mb-1">
+            <div className="flex flex-wrap gap-1.5 mb-1">
               {Object.entries(selectedCategories)
                 .filter(([, value]) => {
                   return value;

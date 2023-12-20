@@ -1,11 +1,13 @@
 'use client';
 
-import { ContainerIcon, HomeIcon_Off } from '@/assets/images/icons';
+import { ContainerIcon, HomeIcon_Off, MenuMeatballIcon } from '@/assets/images/icons';
+import { Icon } from '@/components/ui';
 import { foodCategories } from '@/const/foodCategory';
 import { FilterBadge } from '@/features/foods/components';
 import { FoodFilterDrawer } from '@/features/foods/components/FoodFilterDrawer';
 import { FoodList } from '@/features/foods/components/FoodList';
 import { FoodSort } from '@/features/foods/components/FoodSort';
+import { IFoodView } from '@/features/foods/types/utils';
 import { SortMode } from '@/features/foods/types/utils';
 import { IContainer, IFood } from '@/types/definition';
 
@@ -30,11 +32,11 @@ export const FoodsPage = ({
   const pathname = usePathname();
   const params = new URLSearchParams(searchParams);
   const { replace } = useRouter();
-  const [displayedFoods, setDisplayedFoods] = useState<IFood[]>([]);
-  const query = searchParams?.query || '';
+  const [displayedFoods, setDisplayedFoods] = useState<IFoodView[]>([]);
   const sort = searchParams?.sort || '';
   const group = searchParams?.group || '';
   const container = searchParams?.container || '';
+  const [query, setQuery] = useState(searchParams?.query || '');
   const [categoryList, setCategoryList] = useState(searchParams?.category?.split(',') || []);
 
   const groupContainersByGroupId = (data: IContainer[]): Record<string, string[]> => {
@@ -71,6 +73,7 @@ export const FoodsPage = ({
   useEffect(() => {
     const categoryList = searchParams?.category?.split(',') || [];
     setCategoryList(categoryList);
+    setQuery(searchParams?.query || '');
 
     const filterByGroup = (row: { group: string }) => group === '' || group === row.group;
     const filterByContainer = (row: { name: string }) => container === '' || container === row.name;
@@ -81,8 +84,13 @@ export const FoodsPage = ({
     const filterByName = (food: { name: string | string[] }) => food.name.includes(query);
 
     const filteredContainers = containers.filter(filterByGroup).filter(filterByContainer);
-    const initialFoods = filteredContainers.flatMap((row) => row.foods);
-    const filteredFoods = initialFoods.filter(filterByName).filter(filterByCategory);
+    const initialFoodsView: IFoodView[] = filteredContainers.flatMap((container) =>
+      container.foods.map((food) => ({
+        ...food,
+        container: container.name,
+      })),
+    );
+    const filteredFoods = initialFoodsView.filter(filterByName).filter(filterByCategory);
 
     const sortFoods = (a: IFood, b: IFood) => {
       switch (sort) {
@@ -101,8 +109,10 @@ export const FoodsPage = ({
 
   return (
     <>
-      <FoodFilterDrawer containers={containersGroupByGroups} />
-      <div className="flex gap-1 mb-1 overflow-x-auto">
+      <div>
+        <FoodFilterDrawer containers={containersGroupByGroups} />
+      </div>
+      <div className="flex gap-1.5 mx-4 mt-2 mb-1.5">
         {group ? (
           <FilterBadge icon={HomeIcon_Off} text={group} onCrossClick={() => removeGroupFilter()} />
         ) : (
@@ -128,7 +138,12 @@ export const FoodsPage = ({
           );
         })}
       </div>
-      <FoodSort />
+      <div className="flex items-center justify-end mr-">
+        <FoodSort />
+        <div className="px-3.5">
+          <Icon icon={MenuMeatballIcon} size={4} />
+        </div>
+      </div>
       <FoodList foods={displayedFoods} />
     </>
   );

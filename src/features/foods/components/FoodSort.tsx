@@ -1,5 +1,6 @@
+import { TriangleDownIcon } from '@/assets/images/icons';
 import {
-  Button,
+  Icon,
   Label,
   SelectionDrawerContent,
   SelectionDrawerRadioGroup,
@@ -57,7 +58,10 @@ export const FoodSort = () => {
     <>
       <SelectionDrawerRoot open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
         <SelectionDrawerTrigger asChild>
-          <Button>SelectionDrawerRadios</Button>
+          <div className="flex items-center gap-2">
+            Name(A→Z)
+            <Icon icon={TriangleDownIcon} className="m-5" />
+          </div>
         </SelectionDrawerTrigger>
         <SelectionDrawerContent>
           <SelectionDrawerRadioGroup defaultValue={selectedOption} onValueChange={onValueChange}>

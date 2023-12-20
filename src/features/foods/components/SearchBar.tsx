@@ -23,6 +23,7 @@ export const SearchBar = () => {
   return (
     <div>
       <SearchInput
+        className="mx-4 mt-6 mb-2"
         placeholder="Search Foods..."
         onChange={(e) => handleSearch(e.target.value)}
         defaultValue={searchParams?.get('query') || ''}

@@ -1,13 +1,14 @@
 'use client';
 
+import { TriangleRightIcon } from '@/assets/images/icons';
 import {
-  Button,
   DrawerBody,
   DrawerContent,
   DrawerHeader,
   DrawerRoot,
   DrawerTitle,
   DrawerTrigger,
+  Icon,
 } from '@/components/ui';
 import { Card } from '@/components/ui';
 import { foodCategories } from '@/const/foodCategory';
@@ -24,12 +25,14 @@ export const FoodFilterCategoryDrawer = ({
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   return (
     <div>
-      <label>category : </label>
       <DrawerRoot open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
         <DrawerTrigger asChild>
-          <Button>Open</Button>
+          <div className="flex items-center">
+            Category
+            <Icon icon={TriangleRightIcon} className="absolute right-6" />
+          </div>
         </DrawerTrigger>
-        <DrawerContent side="bottom">
+        <DrawerContent side="right">
           <DrawerHeader>
             <DrawerTitle>Category</DrawerTitle>
           </DrawerHeader>
