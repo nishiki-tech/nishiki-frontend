@@ -25,7 +25,7 @@ export const SearchBar = () => {
       <SearchInput
         placeholder="Search Foods..."
         onChange={(e) => handleSearch(e.target.value)}
-        defaultValue=""
+        defaultValue={searchParams?.get('query') || ''}
       />
     </div>
   );

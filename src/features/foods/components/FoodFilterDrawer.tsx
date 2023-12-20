@@ -12,52 +12,63 @@ import {
   DrawerTitle,
   DrawerTrigger,
   Icon,
+  SearchInput,
 } from '@/components/ui';
 import { foodCategories } from '@/const/foodCategory';
 import { SearchBar } from '@/features/foods/components/SearchBar';
 
 import { Route } from 'next';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { CategoryBadge } from '.';
 import { FoodFilterCategoryDrawer } from './FoodFilterCategoryDrawer';
 
 export const FoodFilterDrawer = ({ containers }: { containers: Record<string, string[]> }) => {
-  const [selectedGroup, setSelectedGroup] = useState('');
-  const [selectedContainer, setSelectedContainer] = useState('');
-  const [selectedCategories, setSelectedCategories] = useState<{ [key: string]: boolean }>({});
-
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
 
+  const [selectedGroup, setSelectedGroup] = useState('');
+  const [selectedContainer, setSelectedContainer] = useState('');
+  const [query, setQuery] = useState('');
+  const [selectedCategories, setSelectedCategories] = useState<{ [key: string]: boolean }>({});
+  useEffect(() => {
+    setSelectedGroup(searchParams?.get('group') || '');
+    setSelectedContainer(searchParams?.get('container') || '');
+    setQuery(searchParams?.get('query') || '');
+    const initialCategory: { [key: string]: boolean } = {};
+    (searchParams?.get('category') || '').split(',').forEach((item) => {
+      if (!item) return;
+      initialCategory[item] = true;
+    });
+    setSelectedCategories(initialCategory);
+  }, [searchParams]);
+
   const handleFilter = () => {
     const params = new URLSearchParams(searchParams);
-    // group
-    if (selectedGroup && selectedGroup.length > 0) {
-      params.set('group', selectedGroup);
-    } else {
-      params.delete('group');
-    }
-    replace(`${pathname}?${params.toString()}` as Route);
-    // container
-    if (selectedContainer && selectedContainer.length > 0) {
-      params.set('container', selectedContainer);
-    } else {
-      params.delete('container');
-    }
-    replace(`${pathname}?${params.toString()}` as Route);
+
+    // helper method for update params
+    const updateSearchParams = (paramName: string, value: string) => {
+      if (value && value.length > 0) {
+        params.set(paramName, value);
+      } else {
+        params.delete(paramName);
+      }
+    };
+
+    // Update Each parameters
+    updateSearchParams('group', selectedGroup);
+    updateSearchParams('container', selectedContainer);
+
     const concatedSelectedCategories = Object.entries(selectedCategories)
       .filter(([, value]) => value)
       .map(([key]) => key)
       .join(',');
 
-    if (concatedSelectedCategories && concatedSelectedCategories.length > 0) {
-      params.set('category', concatedSelectedCategories);
-    } else {
-      params.delete('category');
-    }
+    updateSearchParams('category', concatedSelectedCategories);
+    updateSearchParams('query', query);
+
     replace(`${pathname}?${params.toString()}` as Route);
   };
 
@@ -65,7 +76,9 @@ export const FoodFilterDrawer = ({ containers }: { containers: Record<string, st
     setSelectedGroup('');
     setSelectedContainer('');
     setSelectedCategories({});
-    console.log('selectedCategories', selectedCategories);
+    console.log('query1', query);
+    setQuery('');
+    console.log('query2', query);
   };
 
   const toggleCategory = (key: string) => {
@@ -96,11 +109,20 @@ export const FoodFilterDrawer = ({ containers }: { containers: Record<string, st
           <DrawerTitle>Filter Food</DrawerTitle>
         </DrawerHeader>
         <DrawerBody>
-          <SearchBar />
+          <SearchInput
+            placeholder="Search Foods..."
+            onChange={(e) => setQuery(e.target.value)}
+            value={query}
+          />
           <div>
             Filter
             <label>Group :</label>
-            <select name="groups" onChange={(event) => handleSelectGroup(event)} id="groups">
+            <select
+              name="groups"
+              onChange={(event) => handleSelectGroup(event)}
+              id="groups"
+              value={selectedGroup}
+            >
               <option key="any" value="">
                 Select a Group
               </option>
@@ -115,6 +137,7 @@ export const FoodFilterDrawer = ({ containers }: { containers: Record<string, st
               name="containers"
               onChange={(event) => handleSelectContainer(event)}
               id="containers"
+              value={selectedContainer}
             >
               <option key="any" value="">
                 Select a Container
@@ -123,7 +146,7 @@ export const FoodFilterDrawer = ({ containers }: { containers: Record<string, st
                 <React.Fragment key={group}>
                   {group}
                   {containers.map((container) => (
-                    <option key={container} value={container}>
+                    <option key={container} value={container} selected>
                       {container}
                     </option>
                   ))}
@@ -143,8 +166,8 @@ export const FoodFilterDrawer = ({ containers }: { containers: Record<string, st
                   return (
                     <CategoryBadge
                       key={key}
-                      emoji={foodCategories[key].emoji}
-                      text={foodCategories[key].name}
+                      emoji={foodCategories[key]?.emoji}
+                      text={foodCategories[key]?.name}
                       onCrossClick={() => toggleCategory(key)}
                     ></CategoryBadge>
                   );
