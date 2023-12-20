@@ -10,7 +10,7 @@ import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react';
 import { Icon, iconVariants } from '../Icon';
 
 const selectTriggerVariants = cva(
-  'flex items-center justify-between w-full text-base focus:outline-none disabled:cursor-not-allowed data-[placeholder]:text-gray',
+  'flex items-center justify-between w-full text-base focus:outline-none disabled:cursor-not-allowed data-[placeholder]:text-gray data-[placeholder]:select-none',
   {
     variants: {
       variant: {
