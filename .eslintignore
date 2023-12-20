@@ -7,3 +7,4 @@ public
 tailwind.config.ts
 next.config.js
 postcss.config.js
+commitlint.config.js

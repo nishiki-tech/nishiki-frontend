@@ -1,7 +1,7 @@
 import '@/styles/globals.css';
 
 import { MobileLayout } from '@/components/base/layouts/MobileLayout';
-import { fontInter } from '@/const/fonts/fonts';
+import { fontOutfit } from '@/const/fonts';
 import { siteConfig } from '@/const/site/siteConfig';
 import { cn } from '@/lib/tailwind/utils';
 
@@ -30,9 +30,9 @@ export default function RootLayout({ children }: IRootLayoutProps) {
   return (
     <>
       {/* Reducing hydration error. Reference : https://nextjs.org/docs/messages/react-hydration-error */}
-      <html lang="en" suppressHydrationWarning>
+      <html lang="en" className={fontOutfit.variable} suppressHydrationWarning>
         <head />
-        <body className={cn('min-h-screen bg-primary-lightest antialiased', fontInter.variable)}>
+        <body className={cn('min-h-screen bg-primary-lightest antialiased font-outfit')}>
           <MobileLayout>{children}</MobileLayout>
         </body>
       </html>
