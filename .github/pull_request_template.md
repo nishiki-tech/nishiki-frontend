@@ -2,7 +2,7 @@
 
 Title Naming Conventions:
 
-- Start with a capitalized prefix followed by a imperative form of a verb just like a commit message.
+- Start with a capitalized prefix followed by an imperative form of a verb, just like a commit message.
 - Refer to the "Commit Convention" for the prefix:
   https://github.com/genesis-tech-tribe/nishiki-frontend/blob/develop/docs/CONTRIBUTING.md#commit-convention.
 
