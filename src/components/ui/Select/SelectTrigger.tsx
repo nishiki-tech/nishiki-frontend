@@ -1,13 +1,12 @@
 'use client';
 
 import { CaretDownIcon } from '@/assets/images/icons';
+import { Icon, iconVariants } from '@/components/ui';
 import { cn } from '@/lib/tailwind/utils';
 
 import { Icon as PrimitiveIcon, Trigger as PrimitiveTrigger } from '@radix-ui/react-select';
 import { cva, VariantProps } from 'class-variance-authority';
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react';
-
-import { Icon, iconVariants } from '../Icon';
 
 const selectTriggerVariants = cva(
   'flex items-center justify-between w-full text-base focus:outline-none disabled:cursor-not-allowed data-[placeholder]:text-gray data-[placeholder]:select-none',
