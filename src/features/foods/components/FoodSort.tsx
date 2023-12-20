@@ -12,7 +12,7 @@ import { cn } from '@/lib/tailwind/utils';
 
 import { useState } from 'react';
 
-const radioOptions = [
+export const sortOptions = [
   {
     id: 'name',
     label: 'Name (A → Z)',
@@ -33,7 +33,7 @@ import React from 'react';
 
 export const FoodSort = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(radioOptions[0].id);
+  const [selectedOption, setSelectedOption] = useState(sortOptions[0].id);
 
   const onValueChange = (value: string) => {
     setSelectedOption(value);
@@ -65,7 +65,7 @@ export const FoodSort = () => {
         </SelectionDrawerTrigger>
         <SelectionDrawerContent>
           <SelectionDrawerRadioGroup defaultValue={selectedOption} onValueChange={onValueChange}>
-            {radioOptions.map((option, i) => {
+            {sortOptions.map((option, i) => {
               return (
                 <Label
                   key={i}

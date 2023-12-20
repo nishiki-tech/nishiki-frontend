@@ -22,4 +22,5 @@ export interface IFood {
   category: string;
   unit: string;
   expiry: Date;
+  createdAt: Date;
 }

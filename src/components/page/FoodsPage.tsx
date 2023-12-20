@@ -8,7 +8,6 @@ import { FoodFilterDrawer } from '@/features/foods/components/FoodFilterDrawer';
 import { FoodList } from '@/features/foods/components/FoodList';
 import { FoodSort } from '@/features/foods/components/FoodSort';
 import { IFoodView } from '@/features/foods/types/utils';
-import { SortMode } from '@/features/foods/types/utils';
 import { IContainer, IFood } from '@/types/definition';
 
 import { Route } from 'next';
@@ -94,10 +93,12 @@ export const FoodsPage = ({
 
     const sortFoods = (a: IFood, b: IFood) => {
       switch (sort) {
-        case SortMode.NAME:
+        case 'name':
           return a.name.localeCompare(b.name);
-        case SortMode.EXPIRY:
+        case 'expiry':
           return a.expiry < b.expiry ? -1 : 1;
+        case 'createdAt':
+          return a.createdAt < b.createdAt ? -1 : 1;
         default:
           return 0;
       }
