@@ -32,8 +32,6 @@ const SelectContent = forwardRef<
         'relative z-50 max-h-96 min-w-32 max-w-full overflow-hidden rounded',
         ' bg-white text-black shadow-md',
         'data-[state=open]:animate-fadeIn',
-        // Close animation is not working
-        'data-[state=closed]:animate-fadeOut',
         className,
       )}
       position={position}
@@ -72,7 +70,7 @@ const SelectItem = forwardRef<
     ref={ref}
     className={cn(
       'relative flex items-center',
-      'w-full rounded-sm text-sm outline-none  focus:bg-primary focus:text-white',
+      'w-full rounded-sm text-sm outline-none  focus:bg-gray-light',
       ' py-2 pl-6 pr-2 ',
       'cursor-default select-none',
       ' data-[disabled]:pointer-events-none data-[disabled]:opacity-50',

@@ -10,25 +10,20 @@ import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react';
 import { Icon, iconVariants } from '../Icon';
 
 const selectTriggerVariants = cva(
-  'flex items-center justify-between w-full text-base focus:outline-none disabled:cursor-not-allowed',
+  'flex items-center justify-between w-full text-base focus:outline-none disabled:cursor-not-allowed data-[placeholder]:text-gray',
   {
     variants: {
       variant: {
-        rounded: 'rounded-full bg-white border border-gray pl-6 pr-4 py-4',
-        muted: 'bg-transparent border-none',
+        rounded:
+          'rounded-full bg-white border border-gray pl-6 pr-4 py-4 focus:ring-2 focus:ring-primary-dark focus:border-transparent',
       },
       h: {
-        sm: 'h-10',
         md: 'h-12',
-      },
-      placeHolderColor: {
-        gray: 'data-[placeholder]:text-gray',
       },
     },
     defaultVariants: {
       variant: 'rounded',
       h: 'md',
-      placeHolderColor: 'gray',
     },
   },
 );
@@ -45,13 +40,10 @@ const defaultIconProps: VariantProps<typeof iconVariants> = {
 };
 
 const SelectTrigger = forwardRef<ElementRef<typeof PrimitiveTrigger>, ISelectTriggerProps>(
-  (
-    { className, children, variant, h, placeHolderColor, iconProps = defaultIconProps, ...props },
-    ref,
-  ) => (
+  ({ className, children, variant, h, iconProps = defaultIconProps, ...props }, ref) => (
     <PrimitiveTrigger
       ref={ref}
-      className={cn(selectTriggerVariants({ variant, h, placeHolderColor, className }))}
+      className={cn(selectTriggerVariants({ variant, h, className }))}
       {...props}
     >
       {children}
