@@ -71,9 +71,9 @@ const SelectItem = forwardRef<
     className={cn(
       'relative flex items-center',
       'w-full rounded-sm text-sm outline-none  focus:bg-gray-light',
-      ' py-2 pl-6 pr-2 ',
+      'py-2 pl-6 pr-2',
       'cursor-default select-none',
-      ' data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+      'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       className,
     )}
     {...props}
