@@ -12,7 +12,7 @@ export const FoodList = ({ foods }: { foods: IFoodView[] }) => {
         <Card key={food.id} className={'bg-white m-2'}>
           <div className="flex gap-4 items-center">
             <div className="bg-white w-10 h-10 rounded-full flex items-center justify-center border border-primary text-lg">
-              {foodCategories[food.category].emoji}
+              {foodCategories[food.category]?.emoji}
             </div>
             <div>
               {food.name}

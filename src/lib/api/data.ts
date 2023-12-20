@@ -2,7 +2,7 @@ import { IContainer, IGroup, IUser } from '@/types/definition';
 
 import axios from 'axios';
 
-const APIDOMAIN = 'http://localhost:8080';
+let APIDOMAIN = 'http://localhost:8080';
 
 interface IGroupsResponse {
   groups: IGroup[];
@@ -37,6 +37,7 @@ export async function fetchContainerList(groupId: string): Promise<IContainer[]>
 }
 
 export function fetchAllContainerList(): Promise<IContainer[]> {
+  APIDOMAIN = 'http://localhost:8001';
   return axios
     .get<IContainersResponse>(APIDOMAIN + '/containers')
     .then((res) => res.data.containers)
