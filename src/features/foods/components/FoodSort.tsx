@@ -44,7 +44,6 @@ export const FoodSort = () => {
   const { replace } = useRouter();
 
   const handleSort = (term: string) => {
-    console.log(`Sort... ${term}`);
     const params = new URLSearchParams(searchParams);
     if (term) {
       params.set('sort', term);
