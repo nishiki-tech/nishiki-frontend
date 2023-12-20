@@ -11,32 +11,20 @@ import { IFoodView } from '@/features/foods/types/utils';
 import { IContainer, IFood } from '@/types/definition';
 
 import { Route } from 'next';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
-export const FoodsPage = ({
-  containers,
-  searchParams,
-}: {
-  containers: IContainer[];
-  searchParams?: {
-    query?: string;
-    page?: string;
-    sort?: string;
-    group?: string;
-    category?: string;
-    container?: string;
-  };
-}) => {
+export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams);
   const { replace } = useRouter();
+  const sort = searchParams?.get('sort') || '';
+  const group = searchParams?.get('group') || '';
+  const container = searchParams?.get('container') || '';
   const [displayedFoods, setDisplayedFoods] = useState<IFoodView[]>([]);
-  const sort = searchParams?.sort || '';
-  const group = searchParams?.group || '';
-  const container = searchParams?.container || '';
-  const [query, setQuery] = useState(searchParams?.query || '');
-  const [categoryList, setCategoryList] = useState(searchParams?.category?.split(',') || []);
+  const [query, setQuery] = useState(searchParams?.get('query') || '');
+  const [categoryList, setCategoryList] = useState(searchParams?.get('category')?.split(',') || []);
 
   const groupContainersByGroupId = (data: IContainer[]): Record<string, string[]> => {
     return data.reduce(
@@ -47,32 +35,35 @@ export const FoodsPage = ({
       {} as Record<string, string[]>,
     );
   };
+  const containersGroupByGroups = groupContainersByGroupId(containers);
 
-  const removeGroupFilter = () => {
-    params.delete('group');
-    replace(`${pathname}?${params.toString()}` as Route);
-  };
-
-  const removeContainerFilter = () => {
-    params.delete('container');
-    replace(`${pathname}?${params.toString()}` as Route);
-  };
-
-  const removeCategoryFilter = (key: string) => {
-    const c = categoryList.filter((category) => key != category);
-    setCategoryList(c);
-    params.delete('category');
-    if (c.length) {
-      params.set('category', c.join(','));
+  const updateUrlParams = (key: string, value?: string | string[]) => {
+    if (!value || (Array.isArray(value) && value.length === 0)) {
+      params.delete(key);
+    } else {
+      params.set(key, Array.isArray(value) ? value.join(',') : value);
     }
     replace(`${pathname}?${params.toString()}` as Route);
   };
 
-  const containersGroupByGroups = groupContainersByGroupId(containers);
+  const removeGroupFilter = () => {
+    updateUrlParams('group');
+  };
+
+  const removeContainerFilter = () => {
+    updateUrlParams('container');
+  };
+
+  const removeCategoryFilter = (key: string) => {
+    const updatedCategoryList = categoryList.filter((category) => category !== key);
+    setCategoryList(updatedCategoryList);
+    updateUrlParams('category', updatedCategoryList);
+  };
+
   useEffect(() => {
-    const categoryList = searchParams?.category?.split(',') || [];
+    const categoryList = searchParams?.get('category')?.split(',') || [];
     setCategoryList(categoryList);
-    setQuery(searchParams?.query || '');
+    setQuery(searchParams?.get('query') || '');
 
     const filterByGroup = (row: { group: string }) => group === '' || group === row.group;
     const filterByContainer = (row: { name: string }) => container === '' || container === row.name;

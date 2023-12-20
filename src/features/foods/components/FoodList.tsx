@@ -14,8 +14,8 @@ export const FoodList = ({ foods }: { foods: IFoodView[] }) => {
             <div className="bg-white w-10 h-10 rounded-full flex items-center justify-center border border-primary text-lg">
               {foodCategories[food.category].emoji}
             </div>
-            <p>
-              <div className="">{food.name}</div>
+            <div>
+              {food.name}
               <div className="text-3xs text-gray flex items-center gap-1 my-1.5">
                 <Icon icon={ContainerIcon} color="gray" size={4} />
                 {food.container}
@@ -25,7 +25,7 @@ export const FoodList = ({ foods }: { foods: IFoodView[] }) => {
                 {food.unit}
                 <span className="absolute right-6">{formatDate(new Date(food.expiry))}</span>
               </div>
-            </p>
+            </div>
           </div>
         </Card>
       ))}

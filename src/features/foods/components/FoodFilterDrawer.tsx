@@ -98,8 +98,10 @@ export const FoodFilterDrawer = ({ containers }: { containers: Record<string, st
     <DrawerRoot open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
       <div className="relative">
         <SearchBar />
-        <DrawerTrigger>
-          <Icon icon={FilterIcon} size={4} className="absolute top-4 right-8" />
+        <DrawerTrigger asChild>
+          <div>
+            <Icon icon={FilterIcon} size={4} className="absolute top-4 right-8" />
+          </div>
         </DrawerTrigger>
       </div>
       <DrawerContent side="bottom">
@@ -144,7 +146,7 @@ export const FoodFilterDrawer = ({ containers }: { containers: Record<string, st
                 <React.Fragment key={group}>
                   {group}
                   {containers.map((container) => (
-                    <option key={container} value={container} selected>
+                    <option key={container} value={container}>
                       {container}
                     </option>
                   ))}

@@ -2,18 +2,7 @@ import { FoodsPage } from '@/components/page/FoodsPage';
 import { fetchAllContainerList } from '@/lib/api/data';
 import { IContainer } from '@/types/definition';
 
-export default async function Foods({
-  searchParams,
-}: {
-  searchParams?: {
-    query?: string;
-    page?: string;
-    sort?: string;
-    container?: string;
-    group?: string;
-    category?: string;
-  };
-}) {
+export default async function Foods() {
   const containers: IContainer[] = await fetchAllContainerList();
-  return <FoodsPage containers={containers} searchParams={searchParams} />;
+  return <FoodsPage containers={containers} />;
 }
