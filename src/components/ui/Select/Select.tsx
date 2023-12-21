@@ -1,11 +1,21 @@
+/**
+ * This file is based on the Select component from shadcn and customized for our needs.
+ * "SelectTrigger" component is separated to another file.
+ *
+ * See the official docs for more info:
+ * shadcn/ui: https://ui.shadcn.com/docs/components/select
+ */
+
 'use client';
 
+import { CaretDownIcon } from '@/assets/images/icons';
 import { cn } from '@/lib/tailwind/utils';
 
 import {
   Content as PrimitiveContent,
   Group as PrimitiveGroup,
   Item as PrimitiveItem,
+  ItemIndicator as PrimitiveItemIndicator,
   ItemText as PrimitiveItemText,
   Label as PrimitiveLabel,
   Portal as PrimitivePortal,
@@ -14,6 +24,8 @@ import {
   Viewport as PrimitiveViewport,
 } from '@radix-ui/react-select';
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react';
+
+import { Icon } from '..';
 
 const Select = PrimitiveRoot;
 
@@ -71,13 +83,18 @@ const SelectItem = forwardRef<
     className={cn(
       'relative flex items-center',
       'w-full rounded-sm text-sm outline-none  focus:bg-gray-light',
-      'py-2 pl-6 pr-2',
+      'py-2 pl-8 pr-2',
       'cursor-default select-none',
-      'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       className,
     )}
     {...props}
   >
+    <span className="absolute left-2">
+      <PrimitiveItemIndicator>
+        {/* TODO:Create a new icon to use in here */}
+        <Icon icon={CaretDownIcon} size={4} />
+      </PrimitiveItemIndicator>
+    </span>
     <PrimitiveItemText>{children}</PrimitiveItemText>
   </PrimitiveItem>
 ));
