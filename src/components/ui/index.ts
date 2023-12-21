@@ -1,6 +1,7 @@
 export { Badge, badgeVariants } from './Badge';
 export { BottomTabIconLink } from './BottomTabIconLink';
 export { Button, buttonVariants } from './Button';
+export { Calendar } from './Calendar';
 export { Card } from './Card';
 export {
   DialogBody,
