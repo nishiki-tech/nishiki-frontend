@@ -108,7 +108,7 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
       <div
         className={`flex ${
           group || container || categoryList.length > 0
-            ? 'gap-1.5 mt-4 mb-1.5 overflow-scroll whitespace-nowrap'
+            ? 'gap-1.5 mt-4 mb-1.5 sm:overflow-auto sm:whitespace-normal overflow-scroll whitespace-nowrap'
             : ''
         }`}
       >
