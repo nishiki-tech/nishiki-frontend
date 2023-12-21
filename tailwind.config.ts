@@ -9,6 +9,9 @@ module.exports = {
       '4xs': '0.875rem', // 14px
     },
     extend: {
+      fontFamily: {
+        outfit: ['var(--font-outfit)', 'sans-serif'],
+      },
       colors: {
         'primary-lightest': '#e6f2f1',
         'primary-light': '#abd4cf',
