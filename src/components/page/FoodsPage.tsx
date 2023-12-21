@@ -29,8 +29,10 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
   const group = searchParams?.get('group') || '';
   const container = searchParams?.get('container') || '';
   const [displayedFoods, setDisplayedFoods] = useState<IFoodView[]>([]);
-  const [query, setQuery] = useState(searchParams?.get('query') || '');
-  const [categoryList, setCategoryList] = useState(searchParams?.get('category')?.split(',') || []);
+  const [query, setQuery] = useState<string>(searchParams?.get('query') || '');
+  const [categoryList, setCategoryList] = useState<string[]>(
+    searchParams?.get('category')?.split(',') || [],
+  );
 
   const containersGroupByGroups = groupContainersByGroupId(containers);
   const containerIdMap = createContainerIdNameMap(containers);
@@ -65,15 +67,16 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
 
     const filterByGroup = (row: { groupId: string }) => group === '' || group === row.groupId;
     const filterByContainer = (row: { id: string }) => container === '' || container === row.id;
-    const filterByCategory = (food: { category: string | string[] }) => {
+    const filterByCategory = (food: { category: string }) => {
       if (!categoryList.length) return true;
       return categoryList.some((c) => food.category.includes(c));
     };
-    const filterByName = (food: { name: string | string[] }) => food.name.includes(query);
+    const filterByName = (food: { name: string }) =>
+      food.name.toLowerCase().includes(query.toLowerCase());
 
     const filteredContainers = containers.filter(filterByGroup).filter(filterByContainer);
-    const initialFoodsView: IFoodView[] = filteredContainers.flatMap((container) =>
-      container.foods.map((food) => ({
+    const initialFoodsView: IFoodView[] = filteredContainers.flatMap((container: IContainer) =>
+      container.foods.map((food: IFood) => ({
         ...food,
         container: container.name,
       })),
