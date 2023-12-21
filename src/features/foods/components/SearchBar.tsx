@@ -24,13 +24,11 @@ export const SearchBar = () => {
     setQuery(term);
   };
   return (
-    <div>
-      <SearchInput
-        className="mx-4 mt-6 mb-2"
-        placeholder="Search Foods..."
-        onChange={(e) => handleSearch(e.target.value)}
-        value={query}
-      />
-    </div>
+    <SearchInput
+      placeholder="Search Foods..."
+      className="mb-2"
+      onChange={(e) => handleSearch(e.target.value)}
+      value={query}
+    />
   );
 };

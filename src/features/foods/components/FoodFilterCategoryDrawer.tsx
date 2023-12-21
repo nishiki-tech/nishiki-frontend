@@ -37,19 +37,17 @@ export const FoodFilterCategoryDrawer = ({
             <DrawerTitle>Category</DrawerTitle>
           </DrawerHeader>
           <DrawerBody>
-            <div className="">
+            <div className="flex flex-col gap-2">
               {Object.entries(foodCategories).map(([key, value]) => {
                 const isSelected = selectedCategories[key] || false;
                 return (
                   <Card
                     key={key}
-                    className={`border border-primary m-1 ${
-                      isSelected ? 'bg-primary' : 'bg-white'
-                    }`}
+                    className={`border border-primary ${isSelected ? 'bg-primary' : 'bg-white'}`}
                     onClick={() => toggleCategory(key)}
                   >
                     <div className="flex gap-4 items-center">
-                      <div className="bg-white w-8 h-8 rounded-full flex items-center justify-center border border-primary">
+                      <div className="bg-white w-8 h-8 rounded-full flex items-center justify-center border border-primary select-none">
                         {value.emoji}
                       </div>
                       {value.name}

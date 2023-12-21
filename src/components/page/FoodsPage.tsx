@@ -4,9 +4,10 @@ import { ContainerIcon, HomeIcon_Off, MenuMeatballIcon } from '@/assets/images/i
 import { Icon } from '@/components/ui';
 import { foodCategories } from '@/const/foodCategory';
 import { FilterBadge } from '@/features/foods/components';
-import { FoodFilterDrawer } from '@/features/foods/components/FoodFilterDrawer';
+import { FilterButton } from '@/features/foods/components/FilterButton';
 import { FoodList } from '@/features/foods/components/FoodList';
 import { FoodSort } from '@/features/foods/components/FoodSort';
+import { SearchBar } from '@/features/foods/components/SearchBar';
 import { IFoodView } from '@/features/foods/types/utils';
 import { IContainer, IFood } from '@/types/definition';
 
@@ -88,10 +89,8 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
           return a.name.localeCompare(b.name);
         case 'expiry':
           return a.expiry < b.expiry ? -1 : 1;
-        case 'createdAt':
-          return a.createdAt < b.createdAt ? -1 : 1;
         default:
-          return 0;
+          return a.createdAt > b.createdAt ? -1 : 1; // default is createdAt desc order
       }
     };
 
@@ -100,11 +99,18 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
   }, [containers, query, sort, group, container, searchParams]);
 
   return (
-    <>
-      <div>
-        <FoodFilterDrawer containers={containersGroupByGroups} />
+    <div className="mt-6 mx-4 mb-2">
+      <div className="relative">
+        <SearchBar />
+        <FilterButton containers={containersGroupByGroups} />
       </div>
-      <div className="flex gap-1.5 mx-4 mt-2 mb-1.5">
+      <div
+        className={`flex ${
+          group || container || categoryList.length > 0
+            ? 'gap-1.5 mt-4 mb-1.5 overflow-scroll whitespace-nowrap'
+            : ''
+        }`}
+      >
         {group ? (
           <FilterBadge icon={HomeIcon_Off} text={group} onCrossClick={() => removeGroupFilter()} />
         ) : (
@@ -130,13 +136,13 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
           );
         })}
       </div>
-      <div className="flex items-center justify-end mr-">
+      <div className="flex items-center justify-end">
         <FoodSort />
         <div className="px-3.5">
           <Icon icon={MenuMeatballIcon} size={4} />
         </div>
       </div>
       <FoodList foods={displayedFoods} />
-    </>
+    </div>
   );
 };

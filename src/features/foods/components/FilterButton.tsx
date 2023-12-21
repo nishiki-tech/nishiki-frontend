@@ -15,7 +15,6 @@ import {
   SearchInput,
 } from '@/components/ui';
 import { foodCategories } from '@/const/foodCategory';
-import { SearchBar } from '@/features/foods/components/SearchBar';
 
 import { Route } from 'next';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
@@ -24,7 +23,7 @@ import React, { useEffect, useState } from 'react';
 import { CategoryBadge } from '.';
 import { FoodFilterCategoryDrawer } from './FoodFilterCategoryDrawer';
 
-export const FoodFilterDrawer = ({ containers }: { containers: Record<string, string[]> }) => {
+export const FilterButton = ({ containers }: { containers: Record<string, string[]> }) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -96,14 +95,11 @@ export const FoodFilterDrawer = ({ containers }: { containers: Record<string, st
 
   return (
     <DrawerRoot open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
-      <div className="relative">
-        <SearchBar />
-        <DrawerTrigger asChild>
-          <div>
-            <Icon icon={FilterIcon} size={4} className="absolute top-4 right-8" />
-          </div>
-        </DrawerTrigger>
-      </div>
+      <DrawerTrigger asChild>
+        <button className="flex justify-center items-center absolute top-0 right-1 h-12 w-12">
+          <Icon icon={FilterIcon} size={4} className="justify-center" />
+        </button>
+      </DrawerTrigger>
       <DrawerContent side="bottom">
         <DrawerHeader>
           <DrawerTitle>Filter Food</DrawerTitle>
@@ -114,65 +110,63 @@ export const FoodFilterDrawer = ({ containers }: { containers: Record<string, st
             onChange={(e) => setQuery(e.target.value)}
             value={query}
           />
-          <div>
-            Filter
-            <label>Group :</label>
-            <select
-              name="groups"
-              onChange={(event) => handleSelectGroup(event)}
-              id="groups"
-              value={selectedGroup}
-            >
-              <option key="any" value="">
-                Select a Group
+          Filter
+          <label>Group :</label>
+          <select
+            name="groups"
+            onChange={(event) => handleSelectGroup(event)}
+            id="groups"
+            value={selectedGroup}
+          >
+            <option key="any" value="">
+              Select a Group
+            </option>
+            {Object.keys(containers).map((group) => (
+              <option key={group} value={group}>
+                {group}
               </option>
-              {Object.keys(containers).map((group) => (
-                <option key={group} value={group}>
-                  {group}
-                </option>
-              ))}
-            </select>
-            <label>container :</label>
-            <select
-              name="containers"
-              onChange={(event) => handleSelectContainer(event)}
-              id="containers"
-              value={selectedContainer}
-            >
-              <option key="any" value="">
-                Select a Container
-              </option>
-              {Object.entries(containers).map(([group, containers]) => (
-                <React.Fragment key={group}>
-                  {group}
-                  {containers.map((container) => (
-                    <option key={container} value={container}>
-                      {container}
-                    </option>
-                  ))}
-                </React.Fragment>
-              ))}
-            </select>
-            <FoodFilterCategoryDrawer
-              selectedCategories={selectedCategories}
-              toggleCategory={toggleCategory}
-            />
-            <div className="flex flex-wrap gap-1.5 mb-1">
-              {Object.entries(selectedCategories)
-                .filter(([, value]) => {
-                  return value;
-                })
-                .map(([key]) => {
-                  return (
-                    <CategoryBadge
-                      key={key}
-                      emoji={foodCategories[key]?.emoji}
-                      text={foodCategories[key]?.name}
-                      onCrossClick={() => toggleCategory(key)}
-                    ></CategoryBadge>
-                  );
-                })}
-            </div>
+            ))}
+          </select>
+          <label>container :</label>
+          <select
+            name="containers"
+            onChange={(event) => handleSelectContainer(event)}
+            id="containers"
+            value={selectedContainer}
+          >
+            <option key="any" value="">
+              Select a Container
+            </option>
+            {Object.entries(containers).map(([group, containers]) => (
+              <React.Fragment key={group}>
+                {group}
+                {containers.map((container) => (
+                  <option key={container} value={container}>
+                    {container}
+                  </option>
+                ))}
+              </React.Fragment>
+            ))}
+          </select>
+          <FoodFilterCategoryDrawer
+            selectedCategories={selectedCategories}
+            toggleCategory={toggleCategory}
+          />
+          <div className="flex flex-wrap gap-1.5 whitespace-nowrap">
+            {Object.entries(selectedCategories)
+              .filter(([, value]) => {
+                return value;
+              })
+              .map(([key]) => {
+                return (
+                  <CategoryBadge
+                    key={key}
+                    emoji={foodCategories[key]?.emoji}
+                    text={foodCategories[key]?.name}
+                    onCrossClick={() => toggleCategory(key)}
+                  ></CategoryBadge>
+                );
+              })}
           </div>
         </DrawerBody>
         <DrawerFooter>

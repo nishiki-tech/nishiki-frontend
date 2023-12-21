@@ -14,16 +14,16 @@ import { useState } from 'react';
 
 export const sortOptions = [
   {
+    id: 'createdAt',
+    label: 'Created At (Newest → Oldest)',
+  },
+  {
     id: 'name',
     label: 'Name (A → Z)',
   },
   {
     id: 'expiry',
     label: 'Expiry (Oldest → Newest)',
-  },
-  {
-    id: 'createdAt',
-    label: 'Created At (Oldest → Newest)',
   },
 ];
 
@@ -57,10 +57,10 @@ export const FoodSort = () => {
     <>
       <SelectionDrawerRoot open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
         <SelectionDrawerTrigger asChild>
-          <div className="flex items-center gap-2">
+          <button className="flex items-center gap-2">
             Name(A→Z)
             <Icon icon={TriangleDownIcon} className="m-5" />
-          </div>
+          </button>
         </SelectionDrawerTrigger>
         <SelectionDrawerContent>
           <SelectionDrawerRadioGroup defaultValue={selectedOption} onValueChange={onValueChange}>

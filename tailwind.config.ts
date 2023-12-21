@@ -3,11 +3,6 @@
 module.exports = {
   content: ['./src/**/*.{ts,tsx}'],
   theme: {
-    fontSize: {
-      '2xs': '0.625rem', // 10px
-      '3xs': '0.813rem', // 13px
-      '4xs': '0.875rem', // 14px
-    },
     extend: {
       fontFamily: {
         outfit: ['var(--font-outfit)', 'sans-serif'],

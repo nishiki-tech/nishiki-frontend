@@ -17,5 +17,5 @@ export const formatDate = (date: Date): string => {
   const monthIndex = date.getMonth();
   const year = date.getFullYear();
 
-  return `${months[monthIndex]} ${day}, ${year}`;
+  return `${months[monthIndex].substr(0, 3)} ${day}, ${year}`;
 };
