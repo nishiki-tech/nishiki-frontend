@@ -23,7 +23,15 @@ import React, { useEffect, useState } from 'react';
 import { CategoryBadge } from '.';
 import { FoodFilterCategoryDrawer } from './FoodFilterCategoryDrawer';
 
-export const FilterButton = ({ containers }: { containers: Record<string, string[]> }) => {
+export const FilterButton = ({
+  containers,
+  containerIdMap,
+  groupIdMap,
+}: {
+  containers: Record<string, string[]>;
+  containerIdMap: { [key: string]: string };
+  groupIdMap: { [key: string]: string };
+}) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -123,7 +131,7 @@ export const FilterButton = ({ containers }: { containers: Record<string, string
             </option>
             {Object.keys(containers).map((group) => (
               <option key={group} value={group}>
-                {group}
+                {groupIdMap[group]}
               </option>
             ))}
           </select>
@@ -142,7 +150,7 @@ export const FilterButton = ({ containers }: { containers: Record<string, string
                 {group}
                 {containers.map((container) => (
                   <option key={container} value={container}>
-                    {container}
+                    {containerIdMap[container]}
                   </option>
                 ))}
               </React.Fragment>

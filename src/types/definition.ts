@@ -11,7 +11,8 @@ export interface IUser {
 export interface IContainer {
   id: string;
   name: string;
-  group: string;
+  groupId: string;
+  groupName: string;
   foods: IFood[];
 }
 

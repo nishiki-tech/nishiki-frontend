@@ -9,6 +9,11 @@ import { FoodList } from '@/features/foods/components/FoodList';
 import { FoodSort } from '@/features/foods/components/FoodSort';
 import { SearchBar } from '@/features/foods/components/SearchBar';
 import { IFoodView } from '@/features/foods/types/utils';
+import {
+  createContainerIdNameMap,
+  createGroupIdNameMap,
+  groupContainersByGroupId,
+} from '@/features/foods/utils/containerMapping';
 import { IContainer, IFood } from '@/types/definition';
 
 import { Route } from 'next';
@@ -27,17 +32,9 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
   const [query, setQuery] = useState(searchParams?.get('query') || '');
   const [categoryList, setCategoryList] = useState(searchParams?.get('category')?.split(',') || []);
 
-  const groupContainersByGroupId = (data: IContainer[]): Record<string, string[]> => {
-    return data.reduce(
-      (acc, { group, name }) => ({
-        ...acc,
-        [group]: acc[group] ? [...acc[group], name] : [name],
-      }),
-      {} as Record<string, string[]>,
-    );
-  };
   const containersGroupByGroups = groupContainersByGroupId(containers);
-
+  const containerIdMap = createContainerIdNameMap(containers);
+  const groupIdMap = createGroupIdNameMap(containers);
   const updateUrlParams = (key: string, value?: string | string[]) => {
     if (!value || (Array.isArray(value) && value.length === 0)) {
       params.delete(key);
@@ -66,8 +63,8 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
     setCategoryList(categoryList);
     setQuery(searchParams?.get('query') || '');
 
-    const filterByGroup = (row: { group: string }) => group === '' || group === row.group;
-    const filterByContainer = (row: { name: string }) => container === '' || container === row.name;
+    const filterByGroup = (row: { groupId: string }) => group === '' || group === row.groupId;
+    const filterByContainer = (row: { id: string }) => container === '' || container === row.id;
     const filterByCategory = (food: { category: string | string[] }) => {
       if (!categoryList.length) return true;
       return categoryList.some((c) => food.category.includes(c));
@@ -102,7 +99,11 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
     <div className="mt-6 mx-4 mb-16">
       <div className="relative">
         <SearchBar />
-        <FilterButton containers={containersGroupByGroups} />
+        <FilterButton
+          containers={containersGroupByGroups}
+          containerIdMap={containerIdMap}
+          groupIdMap={groupIdMap}
+        />
       </div>
       <div
         className={`flex ${
@@ -112,14 +113,18 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
         }`}
       >
         {group ? (
-          <FilterBadge icon={HomeIcon_Off} text={group} onCrossClick={() => removeGroupFilter()} />
+          <FilterBadge
+            icon={HomeIcon_Off}
+            text={groupIdMap[group]}
+            onCrossClick={() => removeGroupFilter()}
+          />
         ) : (
           <></>
         )}
         {container ? (
           <FilterBadge
             icon={ContainerIcon}
-            text={container}
+            text={containerIdMap[container]}
             onCrossClick={() => removeContainerFilter()}
           />
         ) : (
