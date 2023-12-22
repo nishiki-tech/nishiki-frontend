@@ -3,7 +3,10 @@
  * Once you're done with the example, you can delete this file.
  */
 
+'use client';
+
 import {
+  Button,
   Select,
   SelectContent,
   SelectGroup,
@@ -12,6 +15,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui';
+
+import { useState } from 'react';
 
 const groups = [
   {
@@ -125,10 +130,24 @@ const groups = [
 ];
 
 export function SelectUsageExample() {
+  const [selectedGroup, setSelectedGroup] = useState('');
+  const [selectedContainer, setSelectedContainer] = useState('');
+
+  const handleSelectGroup = (groupName: string) => {
+    setSelectedGroup(groupName);
+  };
+  const handleSelectContainer = (containerName: string) => {
+    setSelectedContainer(containerName);
+  };
+
+  const handleSubmit = () => {
+    alert(`Selected Group: ${selectedGroup} \nSelected Container: ${selectedContainer}`);
+  };
+
   return (
-    <div className="w-full px-4">
-      <div className="my-4">
-        <Select>
+    <>
+      <div className="w-full flex flex-col gap-4 pt-4">
+        <Select name="groups" onValueChange={(groupName) => handleSelectGroup(groupName)}>
           <SelectTrigger>
             <SelectValue placeholder="Select a Group" />
           </SelectTrigger>
@@ -143,25 +162,32 @@ export function SelectUsageExample() {
             </SelectGroup>
           </SelectContent>
         </Select>
+        <Select
+          name="containers"
+          onValueChange={(containerName) => handleSelectContainer(containerName)}
+        >
+          <SelectTrigger>
+            <SelectValue placeholder="Select a Container" />
+          </SelectTrigger>
+          <SelectContent>
+            {groups.map((group) => (
+              <SelectGroup key={group.id}>
+                <SelectLabel>{group.group}</SelectLabel>
+                {group.containers.map((container) => (
+                  <SelectItem key={container.id} value={container.container}>
+                    {container.container}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            ))}
+          </SelectContent>
+        </Select>
+        <div>
+          <Button variant="primary" size="sm" onClick={() => handleSubmit()}>
+            Submit
+          </Button>
+        </div>
       </div>
-
-      <Select>
-        <SelectTrigger>
-          <SelectValue placeholder="Select a Container" />
-        </SelectTrigger>
-        <SelectContent>
-          {groups.map((group) => (
-            <SelectGroup key={group.id}>
-              <SelectLabel>{group.group}</SelectLabel>
-              {group.containers.map((container) => (
-                <SelectItem key={container.id} value={container.container}>
-                  {container.container}
-                </SelectItem>
-              ))}
-            </SelectGroup>
-          ))}
-        </SelectContent>
-      </Select>
-    </div>
+    </>
   );
 }
