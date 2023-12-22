@@ -41,9 +41,12 @@ const SelectContent = forwardRef<
     <PrimitiveContent
       ref={ref}
       className={cn(
-        'relative z-50 max-h-96 min-w-32 max-w-full overflow-hidden rounded',
+        'flex justify-center items-center',
+        'z-50 max-h-96 min-w-32 max-w-full overflow-hidden rounded',
         ' bg-white text-black shadow-md',
         'data-[state=open]:animate-fadeIn',
+        // space between the SelectTrigger and SelectContent
+        'my-1',
         className,
       )}
       position={position}
