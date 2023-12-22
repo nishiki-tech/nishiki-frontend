@@ -51,6 +51,8 @@ const SelectContent = forwardRef<
         className,
       )}
       position={position}
+      // This line is needed to fix the default left padding
+      collisionPadding={0}
       {...props}
     >
       <PrimitiveViewport

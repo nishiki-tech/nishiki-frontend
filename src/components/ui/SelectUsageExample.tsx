@@ -146,7 +146,7 @@ export function SelectUsageExample() {
 
   return (
     <>
-      <div className="w-full flex flex-col gap-4 pt-4">
+      <div className="w-full flex flex-col gap-4 px-4">
         <Select name="groups" onValueChange={(groupName) => handleSelectGroup(groupName)}>
           <SelectTrigger>
             <SelectValue placeholder="Select a Group" />
@@ -182,12 +182,33 @@ export function SelectUsageExample() {
             ))}
           </SelectContent>
         </Select>
-        <div>
-          <Button variant="primary" size="sm" onClick={() => handleSubmit()}>
-            Submit
-          </Button>
-        </div>
+        <Button onClick={handleSubmit}>Submit</Button>
       </div>
     </>
   );
 }
+
+// This is a test to see the position of SelectContent, depending on the position of SelectTrigger
+export const SelectTest = () => {
+  return (
+    <div className="flex flex-col items-center pt-4 gap-4">
+      {Array.from({ length: 10 }, (_, index) => (
+        <Select key={index}>
+          <SelectTrigger>
+            <SelectValue placeholder="Test" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Groups</SelectLabel>
+              {groups.map((group) => (
+                <SelectItem key={group.id} value={group.group}>
+                  {group.group}
+                </SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+      ))}
+    </div>
+  );
+};
