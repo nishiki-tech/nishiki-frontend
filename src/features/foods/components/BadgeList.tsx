@@ -47,8 +47,8 @@ export const BadgeList = ({
     <div
       className={cn(
         'flex',
-        (group || container || categoryList.length > 0) &&
-          'gap-1.5 mt-4 pb-1.5 overflow-x-auto margin-right: -16px; margin-right: -16px; padding-left: 16px; padding-right: 16px; padding-bottom: 4px;',
+        (group || container || categoryList.length > 0) && 'gap-1.5 mt-4 pb-1.5',
+        'overflow-x-auto margin-right: -16px; margin-right: -16px; padding-left: 16px; padding-right: 16px; padding-bottom: 4px;',
       )}
     >
       {group ? (
