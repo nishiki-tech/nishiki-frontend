@@ -1,9 +1,8 @@
 'use client';
 
-import { ContainerIcon, HomeIcon_Off, MenuMeatballIcon } from '@/assets/images/icons';
+import { MenuMeatballIcon } from '@/assets/images/icons';
 import { Icon } from '@/components/ui';
-import { foodCategories } from '@/const/foodCategory';
-import { FilterBadge } from '@/features/foods/components';
+import { BadgeList } from '@/features/foods/components/BadgeList';
 import { FilterButton } from '@/features/foods/components/FilterButton';
 import { FoodList } from '@/features/foods/components/FoodList';
 import { FoodSort } from '@/features/foods/components/FoodSort';
@@ -16,15 +15,11 @@ import {
 } from '@/features/foods/utils/containerMapping';
 import { IContainer, IFood } from '@/types/definition';
 
-import { Route } from 'next';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
 export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
-  const pathname = usePathname();
   const searchParams = useSearchParams();
-  const params = new URLSearchParams(searchParams);
-  const { replace } = useRouter();
   const sort = searchParams?.get('sort') || '';
   const group = searchParams?.get('group') || '';
   const container = searchParams?.get('container') || '';
@@ -37,37 +32,15 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
   const containersGroupByGroups = groupContainersByGroupId(containers);
   const containerIdMap = createContainerIdNameMap(containers);
   const groupIdMap = createGroupIdNameMap(containers);
-  const updateUrlParams = (key: string, value?: string | string[]) => {
-    if (!value || (Array.isArray(value) && value.length === 0)) {
-      params.delete(key);
-    } else {
-      params.set(key, Array.isArray(value) ? value.join(',') : value);
-    }
-    replace(`${pathname}?${params.toString()}` as Route);
-  };
-
-  const removeGroupFilter = () => {
-    updateUrlParams('group');
-  };
-
-  const removeContainerFilter = () => {
-    updateUrlParams('container');
-  };
-
-  const removeCategoryFilter = (key: string) => {
-    const updatedCategoryList = categoryList.filter((category) => category !== key);
-    setCategoryList(updatedCategoryList);
-    updateUrlParams('category', updatedCategoryList);
-  };
 
   useEffect(() => {
     const categoryList = searchParams?.get('category')?.split(',') || [];
     setCategoryList(categoryList);
     setQuery(searchParams?.get('query') || '');
 
-    const filterByGroup = (row: { groupId: string }) => group === '' || group === row.groupId;
-    const filterByContainer = (row: { id: string }) => container === '' || container === row.id;
-    const filterByCategory = (food: { category: string }) => {
+    const filterByGroup = (row: IContainer) => group === '' || group === row.groupId;
+    const filterByContainer = (row: IContainer) => container === '' || container === row.id;
+    const filterByCategory = (food: IFoodView) => {
       if (!categoryList.length) return true;
       return categoryList.some((c) => food.category.includes(c));
     };
@@ -108,47 +81,19 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
           groupIdMap={groupIdMap}
         />
       </div>
-      <div
-        className={`flex ${
-          group || container || categoryList.length > 0
-            ? 'gap-1.5 mt-4 mb-1.5 sm:overflow-auto sm:whitespace-normal overflow-scroll whitespace-nowrap'
-            : ''
-        }`}
-      >
-        {group ? (
-          <FilterBadge
-            icon={HomeIcon_Off}
-            text={groupIdMap[group]}
-            onCrossClick={() => removeGroupFilter()}
-          />
-        ) : (
-          <></>
-        )}
-        {container ? (
-          <FilterBadge
-            icon={ContainerIcon}
-            text={containerIdMap[container]}
-            onCrossClick={() => removeContainerFilter()}
-          />
-        ) : (
-          <></>
-        )}
-        {categoryList.map((key) => {
-          return (
-            <FilterBadge
-              key={key}
-              emoji={foodCategories[key]?.emoji}
-              text={foodCategories[key]?.name}
-              onCrossClick={() => removeCategoryFilter(key)}
-            />
-          );
-        })}
-      </div>
+      <BadgeList
+        group={group}
+        container={container}
+        categoryList={categoryList}
+        groupIdMap={groupIdMap}
+        containerIdMap={containerIdMap}
+        setCategoryList={setCategoryList}
+      />
       <div className="flex items-center justify-end">
         <FoodSort />
-        <div className="px-3.5">
+        <button className="h-12 w-12 flex justify-center items-center">
           <Icon icon={MenuMeatballIcon} size={4} />
-        </div>
+        </button>
       </div>
       <FoodList foods={displayedFoods} />
     </div>

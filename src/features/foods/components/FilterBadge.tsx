@@ -29,7 +29,7 @@ const FilterBadge = ({
           <CircledIcon />
         </div>
       ) : emoji ? (
-        <div className="bg-white w-4 h-4 rounded-full p-[3px] mr-1 flex items-center justify-center text-xs select-none">
+        <div className="bg-white w-4 h-4 rounded-full p-[3px] mr-1 flex items-center justify-center text-2xs select-none">
           {emoji}
         </div>
       ) : null}

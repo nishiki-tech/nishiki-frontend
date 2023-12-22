@@ -12,20 +12,11 @@ import { cn } from '@/lib/tailwind/utils';
 
 import { useState } from 'react';
 
-export const sortOptions = [
-  {
-    id: 'createdAt',
-    label: 'Created At (Newest → Oldest)',
-  },
-  {
-    id: 'name',
-    label: 'Name (A → Z)',
-  },
-  {
-    id: 'expiry',
-    label: 'Expiry (Oldest → Newest)',
-  },
-];
+export const sortOptions = {
+  createdAt: 'Created At (Newest → Oldest)',
+  name: 'Name (A → Z)',
+  expiry: 'Expiry (Oldest → Newest)',
+};
 
 import { Route } from 'next';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
@@ -33,8 +24,7 @@ import React from 'react';
 
 export const FoodSort = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(sortOptions[0].id);
-
+  const [selectedOption, setSelectedOption] = useState<string>('createdAt');
   const onValueChange = (value: string) => {
     setSelectedOption(value);
   };
@@ -57,28 +47,30 @@ export const FoodSort = () => {
     <>
       <SelectionDrawerRoot open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
         <SelectionDrawerTrigger asChild>
-          <button className="flex items-center gap-2">
-            Name(A→Z)
+          <button className="flex items-center">
+            {sortOptions[selectedOption as keyof typeof sortOptions]}
             <Icon icon={TriangleDownIcon} className="m-5" />
           </button>
         </SelectionDrawerTrigger>
         <SelectionDrawerContent>
-          <SelectionDrawerRadioGroup defaultValue={selectedOption} onValueChange={onValueChange}>
-            {sortOptions.map((option, i) => {
+          <SelectionDrawerRadioGroup
+            defaultValue={sortOptions.createdAt}
+            onValueChange={onValueChange}
+          >
+            {Object.keys(sortOptions).map((option, i) => {
               return (
                 <Label
                   key={i}
-                  htmlFor={option.id}
+                  htmlFor={option}
                   variant="selectionDrawer"
                   className={cn(i !== 0 && 'border-t border-gray-light')}
                 >
                   <SelectionDrawerRadioGroupItem
-                    value={option.id}
-                    id={option.id}
-                    className="peer"
-                    onClick={() => handleSort(option.id)}
+                    value={option}
+                    id={option}
+                    onClick={() => handleSort(option)}
                   />
-                  {option.label}
+                  {sortOptions[option as keyof typeof sortOptions]}
                 </Label>
               );
             })}
