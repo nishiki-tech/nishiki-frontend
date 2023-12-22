@@ -1,9 +1,10 @@
 import { BagIcon, ContainerIcon } from '@/assets/images/icons';
 import { Card, Icon } from '@/components/ui';
 import { foodCategories } from '@/const/foodCategory';
-import { formatDate } from '@/utils/dateUtils';
 
-import { IFoodView } from '../types/utils';
+import { format } from 'date-fns';
+
+import { IFoodView } from '../types/FoodTypes';
 
 export const FoodList = ({ foods }: { foods: IFoodView[] }) => {
   return (
@@ -23,7 +24,7 @@ export const FoodList = ({ foods }: { foods: IFoodView[] }) => {
               <div className="text-sm flex items-center gap-1">
                 <Icon icon={BagIcon} color="black" size={3} />
                 {food.quantity} {food.unit}
-                <time className="absolute right-6">{formatDate(new Date(food.expiry))}</time>
+                <time className="absolute right-6">{format(new Date(food.expiry), 'PP')}</time>
               </div>
             </div>
           </button>

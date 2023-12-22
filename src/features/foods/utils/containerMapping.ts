@@ -1,28 +1,31 @@
 import { IContainer } from '@/types/definition';
 
-export const groupContainersByGroupId = (data: IContainer[]): Record<string, string[]> => {
-  return data.reduce(
+import { GroupIdContainersMapType } from '../types/FoodTypes';
+import { IdNameMapType } from '../types/FoodTypes';
+
+export const groupContainersByGroupId = (containers: IContainer[]): GroupIdContainersMapType => {
+  return containers.reduce(
     (acc, { groupId, id }) => ({
       ...acc,
       [groupId]: acc[groupId] ? [...acc[groupId], id] : [id],
     }),
-    {} as Record<string, string[]>,
+    {} as GroupIdContainersMapType,
   );
 };
 
-export const createContainerIdNameMap = (data: IContainer[]): { [key: string]: string } => {
+export const createContainerIdNameMap = (containers: IContainer[]): IdNameMapType => {
   const idNameMap: { [key: string]: string } = {};
-  data.forEach((container) => {
-    idNameMap[container.id] = container.name;
+  containers.forEach((c) => {
+    idNameMap[c.id] = c.name;
   });
   return idNameMap;
 };
 
-export const createGroupIdNameMap = (data: IContainer[]): { [key: string]: string } => {
+export const createGroupIdNameMap = (containers: IContainer[]): IdNameMapType => {
   const groupIdGroupNameMap: { [key: string]: string } = {};
-  data.forEach((container) => {
-    if (!groupIdGroupNameMap[container.groupId]) {
-      groupIdGroupNameMap[container.groupId] = container.groupName;
+  containers.forEach((c) => {
+    if (!groupIdGroupNameMap[c.groupId]) {
+      groupIdGroupNameMap[c.groupId] = c.groupName;
     }
   });
   return groupIdGroupNameMap;

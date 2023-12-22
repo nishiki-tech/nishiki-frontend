@@ -20,6 +20,7 @@ import { Route } from 'next';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
+import { GroupIdContainersMapType, IdNameMapType } from '../types/FoodTypes';
 import { CategoryBadge } from '.';
 import { FoodFilterCategoryDrawer } from './FoodFilterCategoryDrawer';
 
@@ -28,9 +29,9 @@ export const FilterButton = ({
   containerIdMap,
   groupIdMap,
 }: {
-  containers: Record<string, string[]>;
-  containerIdMap: { [key: string]: string };
-  groupIdMap: { [key: string]: string };
+  containers: GroupIdContainersMapType;
+  containerIdMap: IdNameMapType;
+  groupIdMap: IdNameMapType;
 }) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();

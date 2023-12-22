@@ -7,7 +7,7 @@ import { FilterButton } from '@/features/foods/components/FilterButton';
 import { FoodList } from '@/features/foods/components/FoodList';
 import { FoodSort } from '@/features/foods/components/FoodSort';
 import { SearchBar } from '@/features/foods/components/SearchBar';
-import { IFoodView } from '@/features/foods/types/utils';
+import { IFoodView } from '@/features/foods/types/FoodTypes';
 import {
   createContainerIdNameMap,
   createGroupIdNameMap,
@@ -29,7 +29,7 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
     searchParams?.get('category')?.split(',') || [],
   );
 
-  const containersGroupByGroups = groupContainersByGroupId(containers);
+  const containersGroupByGroupId = groupContainersByGroupId(containers);
   const containerIdMap = createContainerIdNameMap(containers);
   const groupIdMap = createGroupIdNameMap(containers);
 
@@ -44,8 +44,7 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
       if (!categoryList.length) return true;
       return categoryList.some((c) => food.category.includes(c));
     };
-    const filterByName = (food: { name: string }) =>
-      food.name.toLowerCase().includes(query.toLowerCase());
+    const filterByName = (food: IFoodView) => food.name.toLowerCase().includes(query.toLowerCase());
 
     const filteredContainers = containers.filter(filterByGroup).filter(filterByContainer);
     const initialFoodsView: IFoodView[] = filteredContainers.flatMap((container: IContainer) =>
@@ -76,7 +75,7 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
       <div className="relative">
         <SearchBar />
         <FilterButton
-          containers={containersGroupByGroups}
+          containers={containersGroupByGroupId}
           containerIdMap={containerIdMap}
           groupIdMap={groupIdMap}
         />

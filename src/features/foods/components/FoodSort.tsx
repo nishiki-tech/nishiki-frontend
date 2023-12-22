@@ -53,10 +53,7 @@ export const FoodSort = () => {
           </button>
         </SelectionDrawerTrigger>
         <SelectionDrawerContent>
-          <SelectionDrawerRadioGroup
-            defaultValue={sortOptions.createdAt}
-            onValueChange={onValueChange}
-          >
+          <SelectionDrawerRadioGroup defaultValue={selectedOption} onValueChange={onValueChange}>
             {Object.keys(sortOptions).map((option, i) => {
               return (
                 <Label

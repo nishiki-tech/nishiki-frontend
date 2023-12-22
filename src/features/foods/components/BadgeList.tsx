@@ -1,9 +1,11 @@
 import { ContainerIcon, HomeIcon_Off } from '@/assets/images/icons';
 import { foodCategories } from '@/const/foodCategory';
+import { cn } from '@/lib/tailwind/utils';
 
 import { Route } from 'next';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
+import { IdNameMapType } from '../types/FoodTypes';
 import { FilterBadge } from '.';
 
 export const BadgeList = ({
@@ -17,14 +19,15 @@ export const BadgeList = ({
   group: string;
   container: string;
   categoryList: string[];
-  groupIdMap: { [key: string]: string };
-  containerIdMap: { [key: string]: string };
+  groupIdMap: IdNameMapType;
+  containerIdMap: IdNameMapType;
   setCategoryList: React.Dispatch<React.SetStateAction<string[]>>;
 }) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { replace } = useRouter();
   const params = new URLSearchParams(searchParams);
+
   const updateUrlParams = (key: string, value?: string | string[]) => {
     if (!value || (Array.isArray(value) && value.length === 0)) {
       params.delete(key);
@@ -39,13 +42,14 @@ export const BadgeList = ({
     setCategoryList(updatedCategoryList);
     updateUrlParams('category', updatedCategoryList);
   };
+
   return (
     <div
-      className={`flex ${
-        group || container || categoryList.length > 0
-          ? 'gap-1.5 mt-4 pb-1.5 overflow-x-auto margin-right: -16px;'
-          : ''
-      }`}
+      className={cn(
+        'flex',
+        (group || container || categoryList.length > 0) &&
+          'gap-1.5 mt-4 pb-1.5 overflow-x-auto margin-right: -16px; margin-right: -16px; padding-left: 16px; padding-right: 16px; padding-bottom: 4px;',
+      )}
     >
       {group ? (
         <FilterBadge
@@ -53,18 +57,14 @@ export const BadgeList = ({
           text={groupIdMap[group]}
           onCrossClick={() => updateUrlParams('group')}
         />
-      ) : (
-        <></>
-      )}
+      ) : null}
       {container ? (
         <FilterBadge
           icon={ContainerIcon}
           text={containerIdMap[container]}
           onCrossClick={() => updateUrlParams('container')}
         />
-      ) : (
-        <></>
-      )}
+      ) : null}
       {categoryList.map((key) => {
         return (
           <FilterBadge
