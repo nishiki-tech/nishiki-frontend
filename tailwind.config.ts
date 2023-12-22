@@ -4,6 +4,9 @@ module.exports = {
   content: ['./src/**/*.{ts,tsx}'],
   theme: {
     extend: {
+      fontSize: {
+        '2xs': '0.625rem', // 10px
+      },
       fontFamily: {
         outfit: ['var(--font-outfit)', 'sans-serif'],
       },
