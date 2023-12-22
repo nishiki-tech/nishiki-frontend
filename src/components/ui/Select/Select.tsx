@@ -43,8 +43,8 @@ const SelectContent = forwardRef<
       className={cn(
         'flex justify-center items-center',
         // Set the max-h-72 because 80 and 96 were too big
-        'z-50 max-h-72 min-w-32 max-w-full overflow-hidden rounded',
-        ' bg-white text-black shadow-md',
+        'max-h-72 min-w-32 max-w-full bg-white text-black shadow-md rounded overflow-hidden',
+        'z-50',
         'data-[state=open]:animate-fadeIn',
         // space between the SelectTrigger and SelectContent
         'my-1',
