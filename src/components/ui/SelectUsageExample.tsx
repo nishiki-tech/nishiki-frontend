@@ -129,6 +129,7 @@ const groups = [
   },
 ];
 
+// This is an example of how to use the Select component with useState
 export function SelectUsageExample() {
   const [selectedGroup, setSelectedGroup] = useState('');
   const [selectedContainer, setSelectedContainer] = useState('');
