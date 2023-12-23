@@ -4,8 +4,13 @@ import axios from 'axios';
 
 const APIDOMAIN = 'http://localhost:8080';
 
+export interface IGroupApiResponse {
+  groupId: string;
+  groupName: string;
+}
+
 interface IGroupsResponse {
-  groups: IGroup[];
+  groups: IGroupApiResponse[];
 }
 
 interface IContainersResponse {
@@ -19,7 +24,10 @@ interface IUsersResponse {
 export async function fetchGroupList(): Promise<IGroup[]> {
   try {
     const res = await axios.get<IGroupsResponse>(APIDOMAIN + '/groups');
-    return res.data.groups;
+    return res.data.groups.map((group) => ({
+      id: group.groupId,
+      name: group.groupName,
+    }));
   } catch (err) {
     throw new Error('API response is invalid');
   }
