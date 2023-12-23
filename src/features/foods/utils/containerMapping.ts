@@ -5,9 +5,9 @@ import { IdNameMapType } from '../types/FoodTypes';
 
 export const groupContainersByGroupId = (containers: IContainer[]): GroupIdContainersMapType => {
   return containers.reduce(
-    (acc, { groupId, id }) => ({
+    (acc, { group, id }) => ({
       ...acc,
-      [groupId]: acc[groupId] ? [...acc[groupId], id] : [id],
+      [group.groupId]: acc[group.groupId] ? [...acc[group.groupId], id] : [id],
     }),
     {} as GroupIdContainersMapType,
   );
@@ -27,8 +27,8 @@ export const createContainerIdNameMap = (containers: IContainer[]): ContainerIdN
 export const createGroupIdNameMap = (containers: IContainer[]): GroupIdNameMapType => {
   const groupIdGroupNameMap: { [key: string]: string } = {};
   containers.forEach((c) => {
-    if (!groupIdGroupNameMap[c.groupId]) {
-      groupIdGroupNameMap[c.groupId] = c.groupName;
+    if (!groupIdGroupNameMap[c.group.groupId]) {
+      groupIdGroupNameMap[c.group.groupId] = c.group.groupName;
     }
   });
   return groupIdGroupNameMap;
