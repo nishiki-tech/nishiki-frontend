@@ -15,7 +15,7 @@ export const FoodList = ({ foods }: { foods: IFoodView[] }) => {
             <figure className="bg-white w-10 h-10 rounded-full flex items-center justify-center border border-primary select-none text-2xl">
               {foodCategories[food.category]?.emoji}
             </figure>
-            <div>
+            <div className="grow">
               <span className="text-left">{food.name}</span>
               <div className="text-xs text-gray-dark flex items-center gap-1 my-1.5">
                 <Icon icon={ContainerIcon} color="gray-dark" size={3} />
@@ -24,7 +24,7 @@ export const FoodList = ({ foods }: { foods: IFoodView[] }) => {
               <div className="text-sm flex items-center gap-1">
                 <Icon icon={BagIcon} color="black" size={3} />
                 {food.quantity} {food.unit}
-                <time className="absolute right-6">{format(new Date(food.expiry), 'PP')}</time>
+                <time className="ml-auto">{format(new Date(food.expiry), 'PP')}</time>
               </div>
             </div>
           </button>
