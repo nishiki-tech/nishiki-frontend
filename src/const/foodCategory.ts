@@ -34,7 +34,7 @@ export const foodCategories: IFoodCategories = {
   },
   vegetables: {
     name: 'Vegetables',
-    emoji: '🥕',
+    emoji: '🥗',
   },
   legumes: {
     name: 'Legumes',

@@ -36,6 +36,15 @@ export async function fetchContainerList(groupId: string): Promise<IContainer[]>
   }
 }
 
+export function fetchAllContainerList(): Promise<IContainer[]> {
+  return axios
+    .get<IContainersResponse>(APIDOMAIN + '/containers')
+    .then((res) => res.data.containers)
+    .catch((err) => {
+      throw new Error('API response is invalid', err);
+    });
+}
+
 export async function fetchUserList(groupId: string): Promise<IUser[]> {
   try {
     const res = await axios.get<IUsersResponse>(APIDOMAIN + '/groups/' + groupId + '/users');

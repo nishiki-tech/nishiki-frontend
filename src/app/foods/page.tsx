@@ -1,5 +1,8 @@
 import { FoodsPage } from '@/components/page/FoodsPage';
+import { fetchAllContainerList } from '@/lib/api/data';
+import { IContainer } from '@/types/definition';
 
-export default function Foods() {
-  return <FoodsPage />;
+export default async function Foods() {
+  const containers: IContainer[] = await fetchAllContainerList();
+  return <FoodsPage containers={containers} />;
 }
