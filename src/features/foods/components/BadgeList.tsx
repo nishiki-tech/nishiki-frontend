@@ -47,7 +47,7 @@ export const BadgeList = ({
     <div
       className={cn(
         (group || container || categoryList.length > 0) &&
-          'flex -mx-4 px-4 gap-1.5 mt-4 pb-1 overflow-x-auto',
+          'flex -mx-4 px-4 gap-1.5 mt-4 pb-1 overflow-x-auto whitespace-nowrap',
       )}
     >
       {group ? (
