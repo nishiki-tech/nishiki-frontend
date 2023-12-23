@@ -33,6 +33,15 @@ export { Icon, iconVariants } from './Icon';
 export { Input, NumberInput, SearchInput } from './Input';
 export { Label } from './Label';
 export {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from './Select';
+export {
   SelectionDrawerButton,
   SelectionDrawerButtonIcon,
   SelectionDrawerButtonText,
