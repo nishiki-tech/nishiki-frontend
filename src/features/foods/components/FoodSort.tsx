@@ -1,4 +1,4 @@
-import { TriangleDownIcon } from '@/assets/images/icons';
+import { CaretRightIcon } from '@/assets/images/icons';
 import {
   Icon,
   Label,
@@ -49,7 +49,7 @@ export const FoodSort = () => {
         <SelectionDrawerTrigger asChild>
           <button className="flex items-center">
             {sortOptions[selectedOption as keyof typeof sortOptions]}
-            <Icon icon={TriangleDownIcon} className="m-5" />
+            <Icon icon={CaretRightIcon} className="m-5" />
           </button>
         </SelectionDrawerTrigger>
         <SelectionDrawerContent>
