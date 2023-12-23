@@ -1,10 +1,10 @@
-import { IContainer, IGroup, IUser } from '@/types/definition';
+import { IContainer, IFood, IGroup, IUser } from '@/types/definition';
 
 import axios from 'axios';
 
 const APIDOMAIN = 'http://localhost:8080';
 
-export interface IGroupApiResponse {
+interface IGroupApiResponse {
   groupId: string;
   groupName: string;
 }
@@ -13,12 +13,29 @@ interface IGroupsResponse {
   groups: IGroupApiResponse[];
 }
 
+interface IContainerApiResponse {
+  id: string;
+  name: string;
+  group: IGroupApiResponse;
+  foods: IFood[];
+}
+
 interface IContainersResponse {
-  containers: IContainer[];
+  containers: IContainerApiResponse[];
 }
 
 interface IUsersResponse {
   users: IUser[];
+}
+
+function convertApiResponsContainers(containers: IContainerApiResponse[]): IContainer[] {
+  return containers.map((container: IContainerApiResponse) => ({
+    ...container,
+    group: {
+      id: container.group.groupId,
+      name: container.group.groupName,
+    },
+  }));
 }
 
 export async function fetchGroupList(): Promise<IGroup[]> {
@@ -38,19 +55,19 @@ export async function fetchContainerList(groupId: string): Promise<IContainer[]>
     const res = await axios.get<IContainersResponse>(
       APIDOMAIN + '/groups/' + groupId + '/containers',
     );
-    return res.data.containers;
+    return convertApiResponsContainers(res.data.containers);
   } catch (err) {
     throw new Error('API response is invalid');
   }
 }
 
-export function fetchAllContainerList(): Promise<IContainer[]> {
-  return axios
-    .get<IContainersResponse>(APIDOMAIN + '/containers')
-    .then((res) => res.data.containers)
-    .catch((err) => {
-      throw new Error('API response is invalid', err);
-    });
+export async function fetchAllContainerList(): Promise<IContainer[]> {
+  try {
+    const res = await axios.get<IContainersResponse>(APIDOMAIN + '/containers');
+    return convertApiResponsContainers(res.data.containers);
+  } catch (err) {
+    throw new Error('API response is invalid');
+  }
 }
 
 export async function fetchUserList(groupId: string): Promise<IUser[]> {
