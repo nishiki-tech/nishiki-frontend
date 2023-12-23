@@ -29,7 +29,7 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
     searchParams?.get('category')?.split(',') || [],
   );
 
-  const containersGroupByGroupId = groupContainersByGroupId(containers);
+  const containersGroupedByGroupId = groupContainersByGroupId(containers);
   const containerIdMap = createContainerIdNameMap(containers);
   const groupIdMap = createGroupIdNameMap(containers);
 
@@ -75,7 +75,7 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
       <div className="relative">
         <SearchBar />
         <FilterButton
-          containers={containersGroupByGroupId}
+          containers={containersGroupedByGroupId}
           containerIdMap={containerIdMap}
           groupIdMap={groupIdMap}
         />

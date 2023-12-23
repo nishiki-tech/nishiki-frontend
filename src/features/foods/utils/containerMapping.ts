@@ -13,7 +13,10 @@ export const groupContainersByGroupId = (containers: IContainer[]): GroupIdConta
   );
 };
 
-export const createContainerIdNameMap = (containers: IContainer[]): IdNameMapType => {
+type ContainerIdNameMapType = IdNameMapType;
+type GroupIdNameMapType = IdNameMapType;
+
+export const createContainerIdNameMap = (containers: IContainer[]): ContainerIdNameMapType => {
   const idNameMap: { [key: string]: string } = {};
   containers.forEach((c) => {
     idNameMap[c.id] = c.name;
@@ -21,7 +24,7 @@ export const createContainerIdNameMap = (containers: IContainer[]): IdNameMapTyp
   return idNameMap;
 };
 
-export const createGroupIdNameMap = (containers: IContainer[]): IdNameMapType => {
+export const createGroupIdNameMap = (containers: IContainer[]): GroupIdNameMapType => {
   const groupIdGroupNameMap: { [key: string]: string } = {};
   containers.forEach((c) => {
     if (!groupIdGroupNameMap[c.groupId]) {

@@ -1,7 +1,7 @@
-import { IFood } from '@/types/definition';
+import { IContainer, IFood } from '@/types/definition';
 
 export interface IFoodView extends IFood {
   container: string;
 }
-export type GroupIdContainersMapType = Record<string, string[]>;
-export type IdNameMapType = { [key: string]: string };
+export type GroupIdContainersMapType = Record<IContainer['groupId'], IContainer['id'][]>;
+export type IdNameMapType = Record<IContainer['groupId'], IContainer['id']>;

@@ -146,7 +146,7 @@ export const FilterButton = ({
             <option key="any" value="">
               Select a Container
             </option>
-            {Object.entries(containers).map(([group, containers]) => (
+            {Object.entries(containers).map(([group, containers]: [string, string[]]) => (
               <React.Fragment key={group}>
                 {group}
                 {containers.map((container) => (
