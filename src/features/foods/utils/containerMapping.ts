@@ -7,7 +7,7 @@ export const groupContainersByGroupId = (containers: IContainer[]): GroupIdConta
   return containers.reduce(
     (acc, { group, id }) => ({
       ...acc,
-      [group.groupId]: acc[group.groupId] ? [...acc[group.groupId], id] : [id],
+      [group.id]: acc[group.id] ? [...acc[group.id], id] : [id],
     }),
     {} as GroupIdContainersMapType,
   );
@@ -27,8 +27,8 @@ export const createContainerIdNameMap = (containers: IContainer[]): ContainerIdN
 export const createGroupIdNameMap = (containers: IContainer[]): GroupIdNameMapType => {
   const groupIdGroupNameMap: { [key: string]: string } = {};
   containers.forEach((c) => {
-    if (!groupIdGroupNameMap[c.group.groupId]) {
-      groupIdGroupNameMap[c.group.groupId] = c.group.groupName;
+    if (!groupIdGroupNameMap[c.group.id]) {
+      groupIdGroupNameMap[c.group.id] = c.group.name;
     }
   });
   return groupIdGroupNameMap;

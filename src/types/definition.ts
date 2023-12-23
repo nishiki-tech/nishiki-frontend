@@ -1,6 +1,6 @@
 export interface IGroup {
-  groupId: string;
-  groupName: string;
+  id: string;
+  name: string;
 }
 
 export interface IUser {
