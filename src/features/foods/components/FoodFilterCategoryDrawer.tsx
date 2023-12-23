@@ -1,6 +1,6 @@
 'use client';
 
-import { TriangleRightIcon } from '@/assets/images/icons';
+import { CaretRightIcon } from '@/assets/images/icons';
 import {
   DrawerBody,
   DrawerContent,
@@ -29,7 +29,7 @@ export const FoodFilterCategoryDrawer = ({
         <DrawerTrigger asChild>
           <div className="flex items-center">
             Category
-            <Icon icon={TriangleRightIcon} className="absolute right-6" />
+            <Icon icon={CaretRightIcon} className="absolute right-6" />
           </div>
         </DrawerTrigger>
         <DrawerContent side="right">

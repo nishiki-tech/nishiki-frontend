@@ -8,12 +8,12 @@ import { ContainerCount } from './ContainerCount';
 import { UserCount } from './UserCount';
 
 export const GroupItem = async ({ group }: { group: IGroup }) => {
-  const containers: IContainer[] = await fetchContainerList(group.groupId);
-  const users: IUser[] = await fetchUserList(group.groupId);
+  const containers: IContainer[] = await fetchContainerList(group.id);
+  const users: IUser[] = await fetchUserList(group.id);
   return (
-    <Link href={`/groups/${group.groupId}`} key={group.groupId}>
-      <span>{group.groupId} </span>
-      <span>{group.groupName} </span>
+    <Link href={`/groups/${group.id}`} key={group.id}>
+      <span>{group.id} </span>
+      <span>{group.name} </span>
       <ContainerCount containerCount={containers.length} />
       <UserCount userCount={users.length} />
     </Link>

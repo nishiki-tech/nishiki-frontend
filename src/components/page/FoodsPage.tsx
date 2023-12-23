@@ -38,7 +38,7 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
     setCategoryList(categoryList);
     setQuery(searchParams?.get('query') || '');
 
-    const filterByGroup = (row: IContainer) => group === '' || group === row.groupId;
+    const filterByGroup = (row: IContainer) => group === '' || group === row.group.id;
     const filterByContainer = (row: IContainer) => container === '' || container === row.id;
     const filterByCategory = (food: IFoodView) => {
       if (!categoryList.length) return true;
