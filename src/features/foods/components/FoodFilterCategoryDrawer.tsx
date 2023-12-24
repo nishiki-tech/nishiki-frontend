@@ -12,6 +12,7 @@ import {
 } from '@/components/ui';
 import { Card } from '@/components/ui';
 import { foodCategories } from '@/const/foodCategory';
+import { cn } from '@/lib/tailwind/utils';
 
 import { useState } from 'react';
 
@@ -45,15 +46,18 @@ export const FoodFilterCategoryDrawer = ({
                 return (
                   <Card
                     key={key}
-                    className={`border border-primary ${isSelected ? 'bg-primary' : 'bg-white'}`}
+                    className={cn('border border-primary', isSelected ? 'bg-primary' : 'bg-white')}
                     onClick={() => toggleCategory(key)}
+                    asChild
                   >
-                    <div className="flex gap-4 items-center">
+                    <button className="flex gap-4 items-center">
                       <div className="bg-white w-8 h-8 rounded-full flex items-center justify-center border border-primary select-none">
-                        {value.emoji}
+                        <span role="img" aria-label={value.name} className="text-lg">
+                          {value.emoji}
+                        </span>
                       </div>
                       {value.name}
-                    </div>
+                    </button>
                   </Card>
                 );
               })}
