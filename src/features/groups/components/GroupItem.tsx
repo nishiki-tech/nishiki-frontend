@@ -12,10 +12,12 @@ export const GroupItem = async ({ group }: { group: IGroup }) => {
   const users: IUser[] = await fetchUserList(group.id);
   return (
     <Link href={`/groups/${group.id}`} key={group.id}>
-      <span>{group.id} </span>
-      <span>{group.name} </span>
-      <ContainerCount containerCount={containers.length} />
-      <UserCount userCount={users.length} />
+      <div className="flex flex-col gap-4">
+        <span>id : {group.id} </span>
+        <span>name : {group.name} </span>
+        <ContainerCount containerCount={containers.length} />
+        <UserCount userCount={users.length} />
+      </div>
     </Link>
   );
 };
