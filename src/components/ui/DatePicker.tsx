@@ -13,15 +13,14 @@ import {
 import { cn } from '@/lib/tailwind/utils';
 
 import { format } from 'date-fns';
-import { useEffect, useState } from 'react';
-export const DatePicker = () => {
-  const [date, setDate] = useState<Date>();
-  const [, setDateFormatted] = useState<string>();
+import { Dispatch, SetStateAction } from 'react';
 
-  useEffect(() => {
-    setDateFormatted(date?.toJSON());
-  }, [date]);
+interface IDatePickerProps {
+  date?: Date;
+  setDate: Dispatch<SetStateAction<Date | undefined>>;
+}
 
+export const DatePicker = ({ date, setDate }: IDatePickerProps) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
