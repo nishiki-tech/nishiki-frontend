@@ -13,7 +13,7 @@ import { Root as PrimitiveRoot } from '@radix-ui/react-label';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react';
 
-const labelVariants = cva('leading-none', {
+const labelVariants = cva('leading-none inline-block', {
   variants: {
     variant: {
       selectionDrawer: 'h-12 pl-4 flex items-center w-full gap-4 text-lg',
