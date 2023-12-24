@@ -49,7 +49,7 @@ export const FoodSort = () => {
         <SelectionDrawerTrigger asChild>
           <button className="flex items-center">
             {sortOptions[selectedOption as keyof typeof sortOptions]}
-            <Icon icon={CaretDownIcon} className="m-5" />
+            <Icon icon={CaretDownIcon} className="m-5" size={2.5} color="gray-dark" />
           </button>
         </SelectionDrawerTrigger>
         <SelectionDrawerContent>

@@ -31,7 +31,7 @@ export const FoodFilterCategoryDrawer = ({
           <button className="w-full flex items-center justify-between mb-2">
             Category
             <figure className="w-12 h-12 flex items-center justify-center">
-              <Icon icon={CaretRightIcon} size={2.5} />
+              <Icon icon={CaretRightIcon} size={2.5} color="gray-dark" />
             </figure>
           </button>
         </DrawerTrigger>
