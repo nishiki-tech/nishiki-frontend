@@ -13,18 +13,22 @@ const Calendar = ({ className, classNames, ...props }: CalendarProps) => {
       captionLayout="buttons"
       fixedWeeks
       showOutsideDays
-      className={cn('p-3 rounded bg-white max-w-md', className)}
+      className={cn('px-3 pb-3 rounded bg-white max-w-sm max-h-full', className)}
       classNames={{
-        caption: 'h-10 mb-2 flex justify-center relative items-center',
+        months: 'h-full',
+        caption_start: 'flex flex-col',
+        caption: '-mx-3 h-14 flex justify-center relative items-center',
+        caption_end: 'h-full',
         nav: 'flex items-center',
-        nav_button: 'h-full px-3 rounded-md flex items-center justify-center hover:bg-gray-light',
+        nav_button: 'h-full px-5 rounded-md flex items-center justify-center hover:bg-gray-light',
         nav_button_previous: 'absolute left-0',
         nav_button_next: 'absolute right-0',
-        table: 'w-full',
+        table: 'w-full grow flex flex-col',
         head_row: 'grid grid-cols-7 text-gray-dark',
         head_cell: 'text-xs font-normal',
         row: 'grid grid-cols-7',
-        cell: 'h-12 text-sm relative select-none focus-within:relative focus-within:z-20',
+        tbody: 'grow grid grid-rows-6',
+        cell: 'text-sm relative select-none focus-within:relative focus-within:z-20',
         day: 'w-full h-full rounded-md flex justify-center items-center hover:bg-gray-light',
         day_selected: 'bg-gray hover:bg-gray focus:bg-gray',
         day_today: 'font-extrabold',
