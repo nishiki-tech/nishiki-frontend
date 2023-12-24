@@ -31,8 +31,9 @@ export {
   DrawerVariants,
 } from './Drawer';
 export { Icon, iconVariants } from './Icon';
-export { Input, NumberInput, SearchInput } from './Input';
+export { Input, inputVariants, NumberInput, SearchInput } from './Input';
 export { Label } from './Label';
+export { Popover, PopoverContent, PopoverTrigger } from './Popover';
 export {
   SelectionDrawerButton,
   SelectionDrawerButtonIcon,
