@@ -18,11 +18,13 @@ const buttonVariants = cva(
         primary: 'bg-primary text-white hover:bg-primary-dark',
         error: 'bg-danger text-white hover:bg-danger-dark',
         cancel: 'bg-transparent text-black hover:bg-gray-light',
+        none: '',
       },
       size: {
         sm: 'h-8 px-7',
         md: 'h-10 px-12',
         lg: 'h-12 px-12',
+        none: '',
       },
     },
     defaultVariants: {
