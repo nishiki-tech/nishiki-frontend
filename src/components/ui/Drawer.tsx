@@ -67,7 +67,9 @@ const DrawerVariants = cva(cn('fixed z-50 bg-white flex flex-col'), {
 
 interface IDrawerContentProps
   extends ComponentPropsWithoutRef<typeof PrimitiveContent>,
-    VariantProps<typeof DrawerVariants> {}
+    VariantProps<typeof DrawerVariants> {
+  closeButton?: boolean;
+}
 
 const DrawerContent = forwardRef<ElementRef<typeof PrimitiveContent>, IDrawerContentProps>(
   ({ side, className, children, ...props }, ref) => (
@@ -75,25 +77,38 @@ const DrawerContent = forwardRef<ElementRef<typeof PrimitiveContent>, IDrawerCon
       <DrawerOverlay />
       <PrimitiveContent ref={ref} className={cn(DrawerVariants({ side }), className)} {...props}>
         {children}
-        <DrawerClose className={cn('absolute right-3 top-3')}>
-          <Icon icon={CrossIcon} color="black" size={3.5} />
-          <span className="sr-only">Close</span>
-        </DrawerClose>
       </PrimitiveContent>
     </DrawerPortal>
   ),
 );
 DrawerContent.displayName = PrimitiveContent.displayName;
 
-const DrawerHeader = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => (
+interface IDrawerHeaderProps extends HTMLAttributes<HTMLDivElement> {
+  closeButton?: boolean;
+}
+
+const DrawerHeader = ({
+  className,
+  closeButton = true,
+  children,
+  ...props
+}: IDrawerHeaderProps) => (
   <div
     className={cn(
       'h-12 shrink-0 px-4 border-b border-gray-light grow-1',
-      'flex items-center',
+      'relative flex items-center',
       className,
     )}
     {...props}
-  />
+  >
+    {children}
+    {closeButton && (
+      <DrawerClose className={cn('absolute right-0 h-full px-4')}>
+        <Icon icon={CrossIcon} color="gray-dark" size={3.5} />
+        <span className="sr-only">Close</span>
+      </DrawerClose>
+    )}
+  </div>
 );
 DrawerHeader.displayName = 'DrawerHeader';
 
