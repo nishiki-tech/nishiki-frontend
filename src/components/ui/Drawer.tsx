@@ -102,17 +102,13 @@ DrawerHeader.displayName = 'DrawerHeader';
  */
 const DrawerBody = forwardRef<ElementRef<'div'>, HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={cn('px-4 pt-4 pb-6 overflow-y-auto max-h-full', className)}
-      {...props}
-    />
+    <div ref={ref} className={cn('p-4 overflow-y-auto max-h-full', className)} {...props} />
   ),
 );
 DrawerBody.displayName = 'DrawerBody';
 
 const DrawerFooter = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn('mt-auto px-4 pt-2 pb-12 flex justify-end gap-4', className)} {...props} />
+  <div className={cn('mt-auto px-4 pt-2 pb-6 flex justify-end gap-4', className)} {...props} />
 );
 DrawerFooter.displayName = 'DrawerFooter';
 
