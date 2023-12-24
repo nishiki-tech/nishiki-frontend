@@ -13,11 +13,11 @@ const Calendar = ({ className, classNames, ...props }: CalendarProps) => {
       captionLayout="buttons"
       fixedWeeks
       showOutsideDays
-      className={cn('px-3 pb-3 rounded bg-white max-w-sm max-h-full', className)}
+      className={cn('px-3 pb-3 rounded bg-white max-w-sm max-h-full leading-none', className)}
       classNames={{
         months: 'h-full',
         caption_start: 'flex flex-col',
-        caption: '-mx-3 h-14 flex justify-center relative items-center',
+        caption: '-mx-3 h-[18%] flex justify-center relative items-center',
         caption_end: 'h-full',
         nav: 'flex items-center',
         nav_button: 'h-full px-5 rounded-md flex items-center justify-center hover:bg-gray-light',
