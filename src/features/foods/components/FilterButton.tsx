@@ -11,7 +11,6 @@ import {
   DrawerRoot,
   DrawerTitle,
   DrawerTrigger,
-  Icon,
   SearchInput,
 } from '@/components/ui';
 import { foodCategories } from '@/const/foodCategory';
@@ -25,10 +24,12 @@ import { CategoryBadge } from '.';
 import { FoodFilterCategoryDrawer } from './FoodFilterCategoryDrawer';
 
 export const FilterButton = ({
+  isFilterSet,
   containers,
   containerIdMap,
   groupIdMap,
 }: {
+  isFilterSet: boolean;
   containers: GroupIdContainersMapType;
   containerIdMap: IdNameMapType;
   groupIdMap: IdNameMapType;
@@ -41,6 +42,7 @@ export const FilterButton = ({
   const [selectedContainer, setSelectedContainer] = useState('');
   const [query, setQuery] = useState('');
   const [selectedCategories, setSelectedCategories] = useState<{ [key: string]: boolean }>({});
+
   useEffect(() => {
     setSelectedGroup(searchParams?.get('group') || '');
     setSelectedContainer(searchParams?.get('container') || '');
@@ -105,8 +107,13 @@ export const FilterButton = ({
   return (
     <DrawerRoot open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
       <DrawerTrigger asChild>
-        <button className="flex justify-center items-center absolute top-0 right-1 h-12 w-12">
-          <Icon icon={FilterIcon} size={4} className="justify-center" />
+        <button className="flex justify-center items-center absolute top-0 right-0 h-full px-4">
+          <div className="relative">
+            <FilterIcon className="w-3.5" />
+            {isFilterSet && (
+              <div className="absolute -top-[3px] -right-[5px] w-2 h-2 rounded-full bg-danger" />
+            )}
+          </div>
         </button>
       </DrawerTrigger>
       <DrawerContent side="bottom">

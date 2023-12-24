@@ -28,6 +28,7 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
   const [categoryList, setCategoryList] = useState<string[]>(
     searchParams?.get('category')?.split(',') || [],
   );
+  const isFilterSet = !!group || !!container || !!query || Object.keys(categoryList).length > 0;
 
   const containersGroupedByGroupId = groupContainersByGroupId(containers);
   const containerIdMap = createContainerIdNameMap(containers);
@@ -75,6 +76,7 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
       <div className="relative">
         <SearchBar />
         <FilterButton
+          isFilterSet={isFilterSet}
           containers={containersGroupedByGroupId}
           containerIdMap={containerIdMap}
           groupIdMap={groupIdMap}
