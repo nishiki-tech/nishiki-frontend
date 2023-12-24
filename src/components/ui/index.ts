@@ -35,6 +35,15 @@ export { Input, inputVariants, NumberInput, SearchInput } from './Input';
 export { Label } from './Label';
 export { Popover, PopoverContent, PopoverTrigger } from './Popover';
 export {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from './Select';
+export {
   SelectionDrawerButton,
   SelectionDrawerButtonIcon,
   SelectionDrawerButtonText,

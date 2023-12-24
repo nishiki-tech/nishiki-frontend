@@ -3,10 +3,10 @@
 module.exports = {
   content: ['./src/**/*.{ts,tsx}'],
   theme: {
-    fontSize: {
-      '2xs': '0.625rem', // 10px
-    },
     extend: {
+      fontSize: {
+        '2xs': '0.625rem', // 10px
+      },
       fontFamily: {
         outfit: ['var(--font-outfit)', 'sans-serif'],
       },

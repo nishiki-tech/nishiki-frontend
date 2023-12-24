@@ -1,6 +1,6 @@
 export interface IGroup {
-  groupId: string;
-  groupName: string;
+  id: string;
+  name: string;
 }
 
 export interface IUser {
@@ -11,14 +11,16 @@ export interface IUser {
 export interface IContainer {
   id: string;
   name: string;
-  group: string;
-  food: IFood;
+  group: IGroup;
+  foods: IFood[];
 }
 
 export interface IFood {
   id: string;
   name: string;
   quantity: number;
+  category: string;
   unit: string;
   expiry: Date;
+  createdAt: Date;
 }
