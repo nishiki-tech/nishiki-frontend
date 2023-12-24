@@ -27,9 +27,11 @@ export const FoodFilterCategoryDrawer = ({
     <div>
       <DrawerRoot open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
         <DrawerTrigger asChild>
-          <div className="flex items-center">
+          <div className="flex items-center justify-between mb-2">
             Category
-            <Icon icon={CaretRightIcon} className="absolute right-6" />
+            <figure className="w-12 h-12 flex items-center justify-center">
+              <Icon icon={CaretRightIcon} size={2.5} />
+            </figure>
           </div>
         </DrawerTrigger>
         <DrawerContent side="right">
