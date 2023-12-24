@@ -37,7 +37,7 @@ export const DatePicker = ({ date, setDate }: IDatePickerProps) => {
           <Icon icon={CalendarIcon} size={4} color="gray-dark" className="ml-auto" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="max-w-sm h-screen">
+      <PopoverContent className="max-w-72 h-screen min-h-52">
         <Calendar mode="single" selected={date} onSelect={setDate} className="h-full" />
       </PopoverContent>
     </Popover>
