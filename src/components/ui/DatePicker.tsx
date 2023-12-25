@@ -30,13 +30,15 @@ export const DatePicker = ({ date, onSelect, className }: IDatePickerProps) => {
           size="none"
           className={cn(
             inputVariants(),
-            'flex items-center pr-4',
+            'flex justify-between items-center pr-4',
             'data-[state=open]:ring-2 data-[state=open]:ring-primary-dark data-[state=open]:border-transparent',
             className,
           )}
         >
-          {date ? format(date, 'PP') : null}
-          <Icon icon={CalendarIcon} size={4} color="gray-dark" className="ml-auto" />
+          <span className="whitespace-nowrap overflow-hidden text-ellipsis">
+            {date ? format(date, 'PP') : null}
+          </span>
+          <Icon icon={CalendarIcon} size={4} color="gray-dark" className="shrink-0" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="max-w-72 h-screen min-h-52">
