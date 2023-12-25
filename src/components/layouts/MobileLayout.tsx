@@ -1,4 +1,4 @@
-import { BottomTab, MobileHeader } from '@/components/base/parts';
+import { BottomTab, MobileHeader } from '@/components/parts';
 
 import { FC, ReactNode } from 'react';
 
