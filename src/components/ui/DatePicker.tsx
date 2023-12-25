@@ -18,9 +18,10 @@ import { SelectSingleEventHandler } from 'react-day-picker';
 interface IDatePickerProps {
   date?: Date;
   onSelect?: SelectSingleEventHandler;
+  className?: string;
 }
 
-export const DatePicker = ({ date, onSelect }: IDatePickerProps) => {
+export const DatePicker = ({ date, onSelect, className }: IDatePickerProps) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -31,6 +32,7 @@ export const DatePicker = ({ date, onSelect }: IDatePickerProps) => {
             inputVariants(),
             'flex items-center pr-4',
             'data-[state=open]:ring-2 data-[state=open]:ring-primary-dark data-[state=open]:border-transparent',
+            className,
           )}
         >
           {date ? format(date, 'PP') : null}
