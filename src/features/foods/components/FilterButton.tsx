@@ -1,6 +1,7 @@
 'use client';
 
 import { FilterIcon } from '@/assets/images/icons';
+import { LabeledInput } from '@/components/parts/LabeledInput';
 import {
   Button,
   DrawerBody,
@@ -11,13 +12,12 @@ import {
   DrawerRoot,
   DrawerTitle,
   DrawerTrigger,
-  Label,
   SearchInput,
   Select,
   SelectContent,
-  // SelectGroup,
+  SelectGroup,
   SelectItem,
-  // SelectLabel,
+  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from '@/components/ui';
@@ -134,10 +134,7 @@ export const FilterButton = ({
             onChange={(e) => setQuery(e.target.value)}
             value={query}
           />
-          <div>
-            <Label htmlFor="group" className="mb-2">
-              Group<span className="text-danger">*</span>
-            </Label>
+          <LabeledInput label="Group" htmlFor="group" required>
             <Select
               name="group"
               value={selectedGroup}
@@ -154,11 +151,8 @@ export const FilterButton = ({
                 ))}
               </SelectContent>
             </Select>
-          </div>
-          <div>
-            <Label htmlFor="container" className="mb-2">
-              Container<span className="text-danger">*</span>
-            </Label>
+          </LabeledInput>
+          <LabeledInput label="Container" htmlFor="container" required>
             <Select
               name="container"
               value={selectedContainer}
@@ -168,16 +162,21 @@ export const FilterButton = ({
                 <SelectValue placeholder="Select a container" />
               </SelectTrigger>
               <SelectContent>
-                {Object.entries(containers).map(([, containers]: [string, string[]]) => {
-                  return containers.map((container) => (
-                    <SelectItem key={container} value={container}>
-                      {containerIdMap[container]}
-                    </SelectItem>
-                  ));
+                {Object.entries(containers).map(([, containers]: [string, string[]], i) => {
+                  return (
+                    <SelectGroup key={i}>
+                      <SelectLabel>{'AAA'}</SelectLabel>;
+                      {containers.map((container) => (
+                        <SelectItem key={container} value={container}>
+                          {containerIdMap[container]}
+                        </SelectItem>
+                      ))}
+                    </SelectGroup>
+                  );
                 })}
               </SelectContent>
             </Select>
-          </div>
+          </LabeledInput>
           <div>
             <FoodFilterCategoryDrawer
               selectedCategories={selectedCategories}
