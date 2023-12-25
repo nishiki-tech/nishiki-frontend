@@ -31,17 +31,19 @@ import { GroupIdContainersMapType, IdNameMapType } from '../types/FoodTypes';
 import { CategoryBadge } from '.';
 import { FoodFilterCategoryDrawer } from './FoodFilterCategoryDrawer';
 
+interface IFilterButtonProps {
+  isFilterSet: boolean;
+  containers: GroupIdContainersMapType;
+  containerIdMap: IdNameMapType;
+  groupIdMap: IdNameMapType;
+}
+
 export const FilterButton = ({
   isFilterSet,
   containers,
   containerIdMap,
   groupIdMap,
-}: {
-  isFilterSet: boolean;
-  containers: GroupIdContainersMapType;
-  containerIdMap: IdNameMapType;
-  groupIdMap: IdNameMapType;
-}) => {
+}: IFilterButtonProps) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
