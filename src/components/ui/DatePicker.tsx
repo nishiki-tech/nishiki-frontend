@@ -13,14 +13,14 @@ import {
 import { cn } from '@/lib/tailwind/utils';
 
 import { format } from 'date-fns';
-import { Dispatch, SetStateAction } from 'react';
+import { SelectSingleEventHandler } from 'react-day-picker';
 
 interface IDatePickerProps {
   date?: Date;
-  setDate: Dispatch<SetStateAction<Date | undefined>>;
+  onSelect?: SelectSingleEventHandler;
 }
 
-export const DatePicker = ({ date, setDate }: IDatePickerProps) => {
+export const DatePicker = ({ date, onSelect }: IDatePickerProps) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -38,7 +38,7 @@ export const DatePicker = ({ date, setDate }: IDatePickerProps) => {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="max-w-72 h-screen min-h-52">
-        <Calendar mode="single" selected={date} onSelect={setDate} className="h-full" />
+        <Calendar mode="single" selected={date} onSelect={onSelect} className="h-full" />
       </PopoverContent>
     </Popover>
   );
