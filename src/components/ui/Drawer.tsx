@@ -67,9 +67,7 @@ const DrawerVariants = cva(cn('fixed z-50 bg-white flex flex-col'), {
 
 interface IDrawerContentProps
   extends ComponentPropsWithoutRef<typeof PrimitiveContent>,
-    VariantProps<typeof DrawerVariants> {
-  closeButton?: boolean;
-}
+    VariantProps<typeof DrawerVariants> {}
 
 const DrawerContent = forwardRef<ElementRef<typeof PrimitiveContent>, IDrawerContentProps>(
   ({ side, className, children, ...props }, ref) => (
