@@ -31,6 +31,9 @@ module.exports = {
         sm: '0.25rem', // 4px
         DEFAULT: '0.625rem', // 10px
       },
+      boxShadow: {
+        around: '0 0 8px 4px rgba(0, 0, 0, 0.1)',
+      },
       keyframes: {
         fadeIn: {
           '0%': { opacity: '0' },
@@ -82,5 +85,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [],
 };
