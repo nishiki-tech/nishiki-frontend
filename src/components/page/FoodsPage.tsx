@@ -9,6 +9,7 @@ import { FoodSort } from '@/features/foods/components/FoodSort';
 import { SearchBar } from '@/features/foods/components/SearchBar';
 import { IFoodView } from '@/features/foods/types/FoodTypes';
 import {
+  createContainerIdGroupIdMap,
   createContainerIdNameMap,
   createGroupIdNameMap,
   groupContainersByGroupId,
@@ -31,8 +32,9 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
   const isFilterSet = !!group || !!container || !!query || Object.keys(categoryList).length > 0;
 
   const containersGroupedByGroupId = groupContainersByGroupId(containers);
-  const containerIdMap = createContainerIdNameMap(containers);
-  const groupIdMap = createGroupIdNameMap(containers);
+  const containerIdGroupIdMap = createContainerIdGroupIdMap(containers);
+  const containerIdNameMap = createContainerIdNameMap(containers);
+  const groupIdNameMap = createGroupIdNameMap(containers);
 
   useEffect(() => {
     const categoryList = searchParams?.get('category')?.split(',') || [];
@@ -77,17 +79,18 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
         <SearchBar />
         <FilterButton
           isFilterSet={isFilterSet}
-          containers={containersGroupedByGroupId}
-          containerIdMap={containerIdMap}
-          groupIdMap={groupIdMap}
+          containerIdsGroupedByGroupId={containersGroupedByGroupId}
+          containerIdGroupIdMap={containerIdGroupIdMap}
+          containerIdNameMap={containerIdNameMap}
+          groupIdNameMap={groupIdNameMap}
         />
       </div>
       <BadgeList
         group={group}
         container={container}
         categoryList={categoryList}
-        groupIdMap={groupIdMap}
-        containerIdMap={containerIdMap}
+        groupIdNameMap={groupIdNameMap}
+        containerIdNameMap={containerIdNameMap}
         setCategoryList={setCategoryList}
       />
       <div className="flex items-center justify-end">

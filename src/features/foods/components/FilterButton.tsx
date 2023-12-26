@@ -22,27 +22,30 @@ import {
   SelectValue,
 } from '@/components/ui';
 import { foodCategories } from '@/const/foodCategory';
+import { GroupIdContainersMapType, IdNameMapType } from '@/features/foods/types/FoodTypes';
+import { IContainer, IGroup } from '@/types/definition';
 
 import { Route } from 'next';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { GroupIdContainersMapType, IdNameMapType } from '../types/FoodTypes';
 import { CategoryBadge } from '.';
 import { FoodFilterCategoryDrawer } from './FoodFilterCategoryDrawer';
 
 interface IFilterButtonProps {
   isFilterSet: boolean;
-  containers: GroupIdContainersMapType;
-  containerIdMap: IdNameMapType;
-  groupIdMap: IdNameMapType;
+  containerIdsGroupedByGroupId: GroupIdContainersMapType;
+  containerIdGroupIdMap: Record<IContainer['id'], IGroup['id']>;
+  containerIdNameMap: IdNameMapType;
+  groupIdNameMap: IdNameMapType;
 }
 
 export const FilterButton = ({
   isFilterSet,
-  containers,
-  containerIdMap,
-  groupIdMap,
+  containerIdsGroupedByGroupId,
+  containerIdGroupIdMap,
+  containerIdNameMap,
+  groupIdNameMap,
 }: IFilterButtonProps) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -109,8 +112,9 @@ export const FilterButton = ({
   const handleSelectGroup = (value: string) => {
     setSelectedGroup(value);
   };
-  const handleSelectContainer = (value: string) => {
-    setSelectedContainer(value);
+  const handleSelectContainer = (containerId: string) => {
+    setSelectedContainer(containerId);
+    setSelectedGroup(containerIdGroupIdMap[containerId]);
   };
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
@@ -146,9 +150,9 @@ export const FilterButton = ({
                 <SelectValue placeholder="Select a group" />
               </SelectTrigger>
               <SelectContent>
-                {Object.keys(containers).map((group) => (
+                {Object.keys(containerIdsGroupedByGroupId).map((group) => (
                   <SelectItem key={group} value={group}>
-                    {groupIdMap[group]}
+                    {groupIdNameMap[group]}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -164,18 +168,20 @@ export const FilterButton = ({
                 <SelectValue placeholder="Select a container" />
               </SelectTrigger>
               <SelectContent>
-                {Object.entries(containers).map(([groupId, containers]: [string, string[]], i) => {
-                  return (
-                    <SelectGroup key={i}>
-                      <SelectLabel>{groupIdMap[groupId]}</SelectLabel>
-                      {containers.map((container) => (
-                        <SelectItem key={container} value={container}>
-                          {containerIdMap[container]}
-                        </SelectItem>
-                      ))}
-                    </SelectGroup>
-                  );
-                })}
+                {Object.entries(containerIdsGroupedByGroupId).map(
+                  ([groupId, containers]: [string, string[]], i) => {
+                    return (
+                      <SelectGroup key={i}>
+                        <SelectLabel>{groupIdNameMap[groupId]}</SelectLabel>
+                        {containers.map((container) => (
+                          <SelectItem key={container} value={container}>
+                            {containerIdNameMap[container]}
+                          </SelectItem>
+                        ))}
+                      </SelectGroup>
+                    );
+                  },
+                )}
               </SelectContent>
             </Select>
           </LabeledInput>

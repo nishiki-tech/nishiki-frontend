@@ -12,15 +12,15 @@ export const BadgeList = ({
   group,
   container,
   categoryList,
-  groupIdMap,
-  containerIdMap,
+  groupIdNameMap,
+  containerIdNameMap,
   setCategoryList,
 }: {
   group: string;
   container: string;
   categoryList: string[];
-  groupIdMap: IdNameMapType;
-  containerIdMap: IdNameMapType;
+  groupIdNameMap: IdNameMapType;
+  containerIdNameMap: IdNameMapType;
   setCategoryList: React.Dispatch<React.SetStateAction<string[]>>;
 }) => {
   const pathname = usePathname();
@@ -53,14 +53,14 @@ export const BadgeList = ({
       {group ? (
         <FilterBadge
           icon={HomeIcon_Off}
-          text={groupIdMap[group]}
+          text={groupIdNameMap[group]}
           onCrossClick={() => updateUrlParams('group')}
         />
       ) : null}
       {container ? (
         <FilterBadge
           icon={ContainerIcon}
-          text={containerIdMap[container]}
+          text={containerIdNameMap[container]}
           onCrossClick={() => updateUrlParams('container')}
         />
       ) : null}
