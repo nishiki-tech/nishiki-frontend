@@ -86,11 +86,9 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
         />
       </div>
       <BadgeList
-        group={group}
-        container={container}
+        groupName={groupIdNameMap[group]}
+        containerName={containerIdNameMap[container]}
         categoryList={categoryList}
-        groupIdNameMap={groupIdNameMap}
-        containerIdNameMap={containerIdNameMap}
         setCategoryList={setCategoryList}
       />
       <div className="flex items-center justify-end">

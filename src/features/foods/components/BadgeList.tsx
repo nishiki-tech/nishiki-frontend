@@ -1,26 +1,22 @@
 import { ContainerIcon, HomeIcon_Off } from '@/assets/images/icons';
 import { foodCategories } from '@/const/foodCategory';
 import { cn } from '@/lib/tailwind/utils';
+import { IContainer, IGroup } from '@/types/definition';
 
 import { Route } from 'next';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
-import { IdNameMapType } from '../types/FoodTypes';
 import { FilterBadge } from '.';
 
 export const BadgeList = ({
-  group,
-  container,
+  groupName,
+  containerName,
   categoryList,
-  groupIdNameMap,
-  containerIdNameMap,
   setCategoryList,
 }: {
-  group: string;
-  container: string;
+  groupName: IGroup['name'];
+  containerName: IContainer['name'];
   categoryList: string[];
-  groupIdNameMap: IdNameMapType;
-  containerIdNameMap: IdNameMapType;
   setCategoryList: React.Dispatch<React.SetStateAction<string[]>>;
 }) => {
   const pathname = usePathname();
@@ -46,21 +42,21 @@ export const BadgeList = ({
   return (
     <div
       className={cn(
-        (group || container || categoryList.length > 0) &&
+        (groupName || containerName || categoryList.length > 0) &&
           'flex -mx-4 px-4 gap-1.5 mt-4 pb-1 overflow-x-auto whitespace-nowrap',
       )}
     >
-      {group ? (
+      {groupName ? (
         <FilterBadge
           icon={HomeIcon_Off}
-          text={groupIdNameMap[group]}
+          text={groupName}
           onCrossClick={() => updateUrlParams('group')}
         />
       ) : null}
-      {container ? (
+      {containerName ? (
         <FilterBadge
           icon={ContainerIcon}
-          text={containerIdNameMap[container]}
+          text={containerName}
           onCrossClick={() => updateUrlParams('container')}
         />
       ) : null}
