@@ -111,6 +111,7 @@ export const FilterButton = ({
 
   const handleSelectGroup = (value: string) => {
     setSelectedGroup(value);
+    setSelectedContainer('');
   };
   const handleSelectContainer = (containerId: string) => {
     setSelectedContainer(containerId);
