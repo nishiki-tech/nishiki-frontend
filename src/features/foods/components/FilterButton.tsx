@@ -53,6 +53,9 @@ export const FilterButton = ({
     setSelectedCategories(initialCategory);
   }, [searchParams]);
 
+  /**
+   * Apply filter function when Apply button is pushed
+   */
   const handleFilter = () => {
     const params = new URLSearchParams(searchParams);
 
@@ -80,6 +83,9 @@ export const FilterButton = ({
     replace(`${pathname}?${params.toString()}` as Route);
   };
 
+  /**
+   * Process when filter clear button is pushed
+   */
   const handleClear = () => {
     setSelectedGroup('');
     setSelectedContainer('');
@@ -87,6 +93,10 @@ export const FilterButton = ({
     setQuery('');
   };
 
+  /**
+   * Update the status of whether or not each category is selected for category filtering
+   * @param key category name
+   */
   const toggleCategory = (key: string) => {
     setSelectedCategories((prev) => ({
       ...prev,
@@ -94,9 +104,18 @@ export const FilterButton = ({
     }));
   };
 
+  /**
+   * process when group filter button is pushed
+   * @param event
+   */
   const handleSelectGroup = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedGroup(event.target.value);
   };
+
+  /**
+   * process when container filter button is pushed
+   * @param event
+   */
   const handleSelectContainer = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedContainer(event.target.value);
   };
