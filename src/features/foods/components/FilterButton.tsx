@@ -54,7 +54,7 @@ export const FilterButton = ({
   }, [searchParams]);
 
   /**
-   * Apply filter function when Apply button is pushed
+   * Apply filter function when "Apply" button is pushed
    */
   const handleFilter = () => {
     const params = new URLSearchParams(searchParams);
@@ -84,7 +84,7 @@ export const FilterButton = ({
   };
 
   /**
-   * Process when filter clear button is pushed
+   * Process when filter "Clear" button is pushed
    */
   const handleClear = () => {
     setSelectedGroup('');
