@@ -164,10 +164,10 @@ export const FilterButton = ({
                 <SelectValue placeholder="Select a container" />
               </SelectTrigger>
               <SelectContent>
-                {Object.entries(containers).map(([, containers]: [string, string[]], i) => {
+                {Object.entries(containers).map(([groupId, containers]: [string, string[]], i) => {
                   return (
                     <SelectGroup key={i}>
-                      <SelectLabel>{'AAA'}</SelectLabel>;
+                      <SelectLabel>{groupIdMap[groupId]}</SelectLabel>
                       {containers.map((container) => (
                         <SelectItem key={container} value={container}>
                           {containerIdMap[container]}
