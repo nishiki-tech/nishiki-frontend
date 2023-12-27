@@ -31,7 +31,7 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
   );
   const isFilterSet = !!group || !!container || !!query || Object.keys(categoryList).length > 0;
 
-  const containersGroupedByGroupId = groupContainersByGroupId(containers);
+  const groupIdContainerIdsMap = groupContainersByGroupId(containers);
   const containerIdGroupIdMap = createContainerIdGroupIdMap(containers);
   const containerIdNameMap = createContainerIdNameMap(containers);
   const groupIdNameMap = createGroupIdNameMap(containers);
@@ -78,7 +78,7 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
         <SearchBar />
         <FilterButton
           isFilterSet={isFilterSet}
-          containerIdsGroupedByGroupId={containersGroupedByGroupId}
+          groupIdContainerIdsMap={groupIdContainerIdsMap}
           containerIdGroupIdMap={containerIdGroupIdMap}
           containerIdNameMap={containerIdNameMap}
           groupIdNameMap={groupIdNameMap}

@@ -34,7 +34,7 @@ import { FoodFilterCategoryDrawer } from './FoodFilterCategoryDrawer';
 
 interface IFilterButtonProps {
   isFilterSet: boolean;
-  containerIdsGroupedByGroupId: GroupIdContainersMapType;
+  groupIdContainerIdsMap: GroupIdContainersMapType;
   containerIdGroupIdMap: Record<IContainer['id'], IGroup['id']>;
   containerIdNameMap: IdNameMapType;
   groupIdNameMap: IdNameMapType;
@@ -42,7 +42,7 @@ interface IFilterButtonProps {
 
 export const FilterButton = ({
   isFilterSet,
-  containerIdsGroupedByGroupId,
+  groupIdContainerIdsMap,
   containerIdGroupIdMap,
   containerIdNameMap,
   groupIdNameMap,
@@ -170,7 +170,7 @@ export const FilterButton = ({
                 <SelectValue placeholder="Select a group" />
               </SelectTrigger>
               <SelectContent>
-                {Object.keys(containerIdsGroupedByGroupId).map((group) => (
+                {Object.keys(groupIdContainerIdsMap).map((group) => (
                   <SelectItem key={group} value={group}>
                     {groupIdNameMap[group]}
                   </SelectItem>
@@ -188,7 +188,7 @@ export const FilterButton = ({
                 <SelectValue placeholder="Select a container" />
               </SelectTrigger>
               <SelectContent>
-                {Object.entries(containerIdsGroupedByGroupId).map(
+                {Object.entries(groupIdContainerIdsMap).map(
                   ([groupId, containers]: [string, string[]], i) => {
                     return (
                       <SelectGroup key={i}>
