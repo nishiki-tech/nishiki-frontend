@@ -12,6 +12,7 @@ import {
 } from '@/components/ui';
 import { Card } from '@/components/ui';
 import { foodCategories } from '@/const/foodCategory';
+import { cn } from '@/lib/tailwind/utils';
 
 import { useState } from 'react';
 
@@ -27,10 +28,12 @@ export const FoodFilterCategoryDrawer = ({
     <div>
       <DrawerRoot open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
         <DrawerTrigger asChild>
-          <div className="flex items-center">
+          <button className="w-full flex items-center justify-between mb-2">
             Category
-            <Icon icon={CaretRightIcon} className="absolute right-6" />
-          </div>
+            <figure className="w-12 h-12 flex items-center justify-center">
+              <Icon icon={CaretRightIcon} size={2.5} color="gray-dark" />
+            </figure>
+          </button>
         </DrawerTrigger>
         <DrawerContent side="right">
           <DrawerHeader>
@@ -43,15 +46,18 @@ export const FoodFilterCategoryDrawer = ({
                 return (
                   <Card
                     key={key}
-                    className={`border border-primary ${isSelected ? 'bg-primary' : 'bg-white'}`}
+                    className={cn('border border-primary', isSelected ? 'bg-primary' : 'bg-white')}
                     onClick={() => toggleCategory(key)}
+                    asChild
                   >
-                    <div className="flex gap-4 items-center">
+                    <button className="flex gap-4 items-center">
                       <div className="bg-white w-8 h-8 rounded-full flex items-center justify-center border border-primary select-none">
-                        {value.emoji}
+                        <span role="img" aria-label={value.name} className="text-lg">
+                          {value.emoji}
+                        </span>
                       </div>
                       {value.name}
-                    </div>
+                    </button>
                   </Card>
                 );
               })}

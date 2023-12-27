@@ -34,7 +34,7 @@ interface ISelectTriggerProps
 }
 
 const defaultIconProps: VariantProps<typeof iconVariants> = {
-  size: 2,
+  size: 2.5,
   color: 'gray-dark',
 };
 
@@ -47,7 +47,7 @@ const SelectTrigger = forwardRef<ElementRef<typeof PrimitiveTrigger>, ISelectTri
     >
       {children}
       <PrimitiveIcon asChild>
-        <Icon icon={CaretDownIcon} {...iconProps} />
+        <Icon icon={CaretDownIcon} size={2.5} {...iconProps} />
       </PrimitiveIcon>
     </PrimitiveTrigger>
   ),
