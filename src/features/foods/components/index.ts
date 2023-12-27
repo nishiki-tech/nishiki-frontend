@@ -1,5 +1,5 @@
 export { AddButton } from './AddButton';
-export { AddDrawer } from './AddDrawer';
+export { AddDrawerContent } from './AddDrawerContent';
 export { BadgeList } from './BadgeList';
 export { CategoryBadge } from './CategoryBadge';
 export { FilterBadge } from './FilterBadge';

@@ -4,18 +4,17 @@ import {
   Button,
   DrawerBody,
   DrawerClose,
-  DrawerContent,
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
 } from '@/components/ui';
 import { AddDrawerBody } from '@/features/foods/components/AddDrawerBody';
 
-interface IAddDrawerProps {
+interface IAddDrawerContentProps {
   setIsDrawerOpen: (isOpen: boolean) => void;
 }
 
-export const AddDrawer = ({ setIsDrawerOpen }: IAddDrawerProps) => {
+export const AddDrawerContent = ({ setIsDrawerOpen }: IAddDrawerContentProps) => {
   const handleCancelClick = () => {
     setIsDrawerOpen(false);
   };
@@ -26,7 +25,7 @@ export const AddDrawer = ({ setIsDrawerOpen }: IAddDrawerProps) => {
   };
 
   return (
-    <DrawerContent side="bottom">
+    <>
       <DrawerHeader>
         <DrawerTitle>Add Food</DrawerTitle>
       </DrawerHeader>
@@ -43,6 +42,6 @@ export const AddDrawer = ({ setIsDrawerOpen }: IAddDrawerProps) => {
           Add food
         </Button>
       </DrawerFooter>
-    </DrawerContent>
+    </>
   );
 };

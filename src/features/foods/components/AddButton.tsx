@@ -1,8 +1,8 @@
 'use client';
 
 import { PlusIcon } from '@/assets/images/icons';
-import { Button, DrawerRoot, DrawerTrigger, Icon } from '@/components/ui';
-import { AddDrawer } from '@/features/foods/components';
+import { Button, DrawerContent, DrawerRoot, DrawerTrigger, Icon } from '@/components/ui';
+import { AddDrawerContent } from '@/features/foods/components';
 import { cn } from '@/lib/tailwind/utils';
 
 import { useState } from 'react';
@@ -28,7 +28,9 @@ export const AddButton = ({ className }: IAddButtonProps) => {
           <Icon icon={PlusIcon} size={4.5} color="black" />
         </Button>
       </DrawerTrigger>
-      <AddDrawer setIsDrawerOpen={setIsDrawerOpen} />
+      <DrawerContent side="bottom">
+        <AddDrawerContent setIsDrawerOpen={setIsDrawerOpen} />
+      </DrawerContent>
     </DrawerRoot>
   );
 };
