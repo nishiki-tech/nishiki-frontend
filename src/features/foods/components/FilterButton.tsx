@@ -1,6 +1,7 @@
 'use client';
 
 import { FilterIcon } from '@/assets/images/icons';
+import { LabeledInput } from '@/components/parts/LabeledInput';
 import {
   Button,
   DrawerBody,
@@ -11,28 +12,41 @@ import {
   DrawerRoot,
   DrawerTitle,
   DrawerTrigger,
-  Icon,
   SearchInput,
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
 } from '@/components/ui';
 import { foodCategories } from '@/const/foodCategory';
+import { GroupIdContainersMapType, IdNameMapType } from '@/features/foods/types/FoodTypes';
+import { IContainer, IGroup } from '@/types/definition';
 
 import { Route } from 'next';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { GroupIdContainersMapType, IdNameMapType } from '../types/FoodTypes';
 import { CategoryBadge } from '.';
 import { FoodFilterCategoryDrawer } from './FoodFilterCategoryDrawer';
 
+interface IFilterButtonProps {
+  isFilterSet: boolean;
+  groupIdContainerIdsMap: GroupIdContainersMapType;
+  containerIdGroupIdMap: Record<IContainer['id'], IGroup['id']>;
+  containerIdNameMap: IdNameMapType;
+  groupIdNameMap: IdNameMapType;
+}
+
 export const FilterButton = ({
-  containers,
-  containerIdMap,
-  groupIdMap,
-}: {
-  containers: GroupIdContainersMapType;
-  containerIdMap: IdNameMapType;
-  groupIdMap: IdNameMapType;
-}) => {
+  isFilterSet,
+  groupIdContainerIdsMap,
+  containerIdGroupIdMap,
+  containerIdNameMap,
+  groupIdNameMap,
+}: IFilterButtonProps) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -41,6 +55,7 @@ export const FilterButton = ({
   const [selectedContainer, setSelectedContainer] = useState('');
   const [query, setQuery] = useState('');
   const [selectedCategories, setSelectedCategories] = useState<{ [key: string]: boolean }>({});
+
   useEffect(() => {
     setSelectedGroup(searchParams?.get('group') || '');
     setSelectedContainer(searchParams?.get('container') || '');
@@ -108,93 +123,109 @@ export const FilterButton = ({
    * Process when group filter button is pushed
    * @param event
    */
-  const handleSelectGroup = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedGroup(event.target.value);
+  const handleSelectGroup = (value: string) => {
+    setSelectedGroup(value);
+    setSelectedContainer('');
   };
 
   /**
    * Process when container filter button is pushed
    * @param event
    */
-  const handleSelectContainer = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedContainer(event.target.value);
+  const handleSelectContainer = (containerId: string) => {
+    setSelectedContainer(containerId);
+    setSelectedGroup(containerIdGroupIdMap[containerId]);
   };
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   return (
     <DrawerRoot open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
       <DrawerTrigger asChild>
-        <button className="flex justify-center items-center absolute top-0 right-1 h-12 w-12">
-          <Icon icon={FilterIcon} size={4} className="justify-center" />
+        <button className="flex justify-center items-center absolute top-0 right-0 h-full px-4">
+          <div className="relative">
+            <FilterIcon className="w-3.5" />
+            {isFilterSet && (
+              <div className="absolute -top-[3px] -right-[5px] w-2 h-2 rounded-full bg-danger" />
+            )}
+          </div>
         </button>
       </DrawerTrigger>
       <DrawerContent side="bottom">
         <DrawerHeader>
           <DrawerTitle>Filter Food</DrawerTitle>
         </DrawerHeader>
-        <DrawerBody>
+        <DrawerBody className="flex flex-col gap-4">
           <SearchInput
             placeholder="Search Foods..."
             onChange={(e) => setQuery(e.target.value)}
             value={query}
           />
-          Filter
-          <label>Group :</label>
-          <select
-            name="groups"
-            onChange={(event) => handleSelectGroup(event)}
-            id="groups"
-            value={selectedGroup}
-          >
-            <option key="any" value="">
-              Select a Group
-            </option>
-            {Object.keys(containers).map((group) => (
-              <option key={group} value={group}>
-                {groupIdMap[group]}
-              </option>
-            ))}
-          </select>
-          <label>container :</label>
-          <select
-            name="containers"
-            onChange={(event) => handleSelectContainer(event)}
-            id="containers"
-            value={selectedContainer}
-          >
-            <option key="any" value="">
-              Select a Container
-            </option>
-            {Object.entries(containers).map(([group, containers]: [string, string[]]) => (
-              <React.Fragment key={group}>
-                {group}
-                {containers.map((container) => (
-                  <option key={container} value={container}>
-                    {containerIdMap[container]}
-                  </option>
+          <LabeledInput label="Group" htmlFor="group" required>
+            <Select
+              name="group"
+              value={selectedGroup}
+              onValueChange={(value: string) => handleSelectGroup(value)}
+            >
+              <SelectTrigger id="group">
+                <SelectValue placeholder="Select a group" />
+              </SelectTrigger>
+              <SelectContent>
+                {Object.keys(groupIdContainerIdsMap).map((group) => (
+                  <SelectItem key={group} value={group}>
+                    {groupIdNameMap[group]}
+                  </SelectItem>
                 ))}
-              </React.Fragment>
-            ))}
-          </select>
-          <FoodFilterCategoryDrawer
-            selectedCategories={selectedCategories}
-            toggleCategory={toggleCategory}
-          />
-          <div className="flex flex-wrap gap-1.5 whitespace-nowrap">
-            {Object.entries(selectedCategories)
-              .filter(([, value]) => {
-                return value;
-              })
-              .map(([key]) => {
-                return (
-                  <CategoryBadge
-                    key={key}
-                    emoji={foodCategories[key]?.emoji}
-                    text={foodCategories[key]?.name}
-                    onCrossClick={() => toggleCategory(key)}
-                  ></CategoryBadge>
-                );
-              })}
+              </SelectContent>
+            </Select>
+          </LabeledInput>
+          <LabeledInput label="Container" htmlFor="container" required>
+            <Select
+              name="container"
+              value={selectedContainer}
+              onValueChange={(value: string) => handleSelectContainer(value)}
+            >
+              <SelectTrigger id="container">
+                <SelectValue placeholder="Select a container" />
+              </SelectTrigger>
+              <SelectContent>
+                {Object.entries(groupIdContainerIdsMap).map(
+                  ([groupId, containers]: [string, string[]], i) => {
+                    return (
+                      <SelectGroup key={i}>
+                        <SelectLabel>{groupIdNameMap[groupId]}</SelectLabel>
+                        {containers.map((container) => (
+                          <SelectItem key={container} value={container}>
+                            {containerIdNameMap[container]}
+                          </SelectItem>
+                        ))}
+                      </SelectGroup>
+                    );
+                  },
+                )}
+              </SelectContent>
+            </Select>
+          </LabeledInput>
+          <div>
+            <FoodFilterCategoryDrawer
+              selectedCategories={selectedCategories}
+              toggleCategory={toggleCategory}
+            />
+            <div className="flex flex-wrap gap-1.5 whitespace-nowrap">
+              {Object.entries(selectedCategories)
+                .filter(([, value]) => {
+                  return value;
+                })
+                .map(([key]) => {
+                  return (
+                    <CategoryBadge
+                      key={key}
+                      emoji={foodCategories[key]?.emoji}
+                      text={foodCategories[key]?.name}
+                      onCrossClick={() => toggleCategory(key)}
+                    />
+                  );
+                })}
+            </div>
           </div>
         </DrawerBody>
         <DrawerFooter>

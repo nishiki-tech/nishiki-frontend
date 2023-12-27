@@ -9,6 +9,7 @@ import { FoodSort } from '@/features/foods/components/FoodSort';
 import { SearchBar } from '@/features/foods/components/SearchBar';
 import { IFoodView } from '@/features/foods/types/FoodTypes';
 import {
+  createContainerIdGroupIdMap,
   createContainerIdNameMap,
   createGroupIdNameMap,
   groupContainersByGroupId,
@@ -28,10 +29,12 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
   const [categoryList, setCategoryList] = useState<string[]>(
     searchParams?.get('category')?.split(',') || [],
   );
+  const isFilterSet = !!group || !!container || !!query || Object.keys(categoryList).length > 0;
 
-  const containersGroupedByGroupId = groupContainersByGroupId(containers);
-  const containerIdMap = createContainerIdNameMap(containers);
-  const groupIdMap = createGroupIdNameMap(containers);
+  const groupIdContainerIdsMap = groupContainersByGroupId(containers);
+  const containerIdGroupIdMap = createContainerIdGroupIdMap(containers);
+  const containerIdNameMap = createContainerIdNameMap(containers);
+  const groupIdNameMap = createGroupIdNameMap(containers);
 
   useEffect(() => {
     const categoryList = searchParams?.get('category')?.split(',') || [];
@@ -74,17 +77,17 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
       <div className="relative">
         <SearchBar />
         <FilterButton
-          containers={containersGroupedByGroupId}
-          containerIdMap={containerIdMap}
-          groupIdMap={groupIdMap}
+          isFilterSet={isFilterSet}
+          groupIdContainerIdsMap={groupIdContainerIdsMap}
+          containerIdGroupIdMap={containerIdGroupIdMap}
+          containerIdNameMap={containerIdNameMap}
+          groupIdNameMap={groupIdNameMap}
         />
       </div>
       <BadgeList
-        group={group}
-        container={container}
+        groupName={groupIdNameMap[group]}
+        containerName={containerIdNameMap[container]}
         categoryList={categoryList}
-        groupIdMap={groupIdMap}
-        containerIdMap={containerIdMap}
         setCategoryList={setCategoryList}
       />
       <div className="flex items-center justify-end">

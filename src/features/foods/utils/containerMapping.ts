@@ -3,9 +3,6 @@ import { IContainer } from '@/types/definition';
 import { GroupIdContainersMapType } from '../types/FoodTypes';
 import { IdNameMapType } from '../types/FoodTypes';
 
-type ContainerIdNameMapType = IdNameMapType;
-type GroupIdNameMapType = IdNameMapType;
-
 /**
  * Create a map object containing an array of container ids per group id
  * @param containers Array of IContainer object
@@ -21,6 +18,8 @@ export const groupContainersByGroupId = (containers: IContainer[]): GroupIdConta
   );
 };
 
+type ContainerIdNameMapType = IdNameMapType;
+
 /**
  * Create an object with a pair of container id and container name from array of IContainer object
  * @param containers List of IContainer object
@@ -34,6 +33,7 @@ export const createContainerIdNameMap = (containers: IContainer[]): ContainerIdN
   return idNameMap;
 };
 
+type GroupIdNameMapType = IdNameMapType;
 /**
  * Create an object with a pair of group id and group name from array of IContainer object
  * @param containers
@@ -47,4 +47,21 @@ export const createGroupIdNameMap = (containers: IContainer[]): GroupIdNameMapTy
     }
   });
   return groupIdGroupNameMap;
+};
+
+type ContainerIdGroupIdMapType = IdNameMapType;
+
+/**
+ * Create an object that maps container id to group id from array of IContainer object
+ * @param containers Array of IContainer object
+ * @returns ContainerId/GroupId pair object
+ */
+export const createContainerIdGroupIdMap = (
+  containers: IContainer[],
+): ContainerIdGroupIdMapType => {
+  const containerIdGroupIdMap: ContainerIdGroupIdMapType = {};
+  containers.forEach((container) => {
+    containerIdGroupIdMap[container.id] = container.group.id;
+  });
+  return containerIdGroupIdMap;
 };
