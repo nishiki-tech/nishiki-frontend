@@ -84,7 +84,7 @@ export async function fetchGroupList(): Promise<IGroup[]> {
 }
 
 /**
- * Fetch a array of containers associated with a certain group .
+ * Fetch an array of containers associated with a certain group .
  * @param id groupId
  * @returns Array of IContainer object
  */
@@ -98,7 +98,7 @@ export async function fetchContainerList(id: string): Promise<IContainer[]> {
 }
 
 /**
- * Fetch a array of containers associated with a logged-in user.
+ * Fetch an array of containers associated with a logged-in user.
  * @returns Array of IContainer object
  */
 export async function fetchAllContainerList(): Promise<IContainer[]> {
@@ -111,7 +111,7 @@ export async function fetchAllContainerList(): Promise<IContainer[]> {
 }
 
 /**
- * Fetch a array of users associated with a certain group id.
+ * Fetch an array of users associated with a certain group id.
  * @param id groupId
  * @returns Array of IUser object
  */

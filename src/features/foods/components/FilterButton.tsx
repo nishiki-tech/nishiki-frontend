@@ -105,7 +105,7 @@ export const FilterButton = ({
   };
 
   /**
-   * process when group filter button is pushed
+   * Process when group filter button is pushed
    * @param event
    */
   const handleSelectGroup = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -113,7 +113,7 @@ export const FilterButton = ({
   };
 
   /**
-   * process when container filter button is pushed
+   * Process when container filter button is pushed
    * @param event
    */
   const handleSelectContainer = (event: React.ChangeEvent<HTMLSelectElement>) => {

@@ -29,7 +29,7 @@ export const BadgeList = ({
   const params = new URLSearchParams(searchParams);
 
   /**
-   * update url query parameter
+   * Update url query parameter
    * @param key query parameter key
    * @param value query parameter value (string or string[] for category)
    */

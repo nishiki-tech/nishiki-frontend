@@ -7,7 +7,7 @@ type ContainerIdNameMapType = IdNameMapType;
 type GroupIdNameMapType = IdNameMapType;
 
 /**
- * Create a map object containing a array of container ids per group id
+ * Create a map object containing an array of container ids per group id
  * @param containers Array of IContainer object
  * @returns GroupIdContainersMapType
  */
