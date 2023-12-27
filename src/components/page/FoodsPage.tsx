@@ -2,12 +2,14 @@
 
 import { MenuMeatballIcon } from '@/assets/images/icons';
 import { Icon } from '@/components/ui';
-import { AddButton } from '@/features/foods/components/AddButton';
-import { BadgeList } from '@/features/foods/components/BadgeList';
-import { FilterButton } from '@/features/foods/components/FilterButton';
-import { FoodList } from '@/features/foods/components/FoodList';
-import { FoodSort } from '@/features/foods/components/FoodSort';
-import { SearchBar } from '@/features/foods/components/SearchBar';
+import {
+  AddButton,
+  BadgeList,
+  FilterButton,
+  FoodList,
+  FoodSort,
+  SearchBar,
+} from '@/features/foods/components';
 import { IFoodView } from '@/features/foods/types/FoodTypes';
 import {
   createContainerIdGroupIdMap,

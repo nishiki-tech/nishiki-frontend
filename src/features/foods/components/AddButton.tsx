@@ -2,7 +2,7 @@
 
 import { PlusIcon } from '@/assets/images/icons';
 import { Button, DrawerRoot, DrawerTrigger, Icon } from '@/components/ui';
-import { AddDrawer } from '@/features/foods/components/AddDrawerContent';
+import { AddDrawer } from '@/features/foods/components';
 import { cn } from '@/lib/tailwind/utils';
 
 import { useState } from 'react';
