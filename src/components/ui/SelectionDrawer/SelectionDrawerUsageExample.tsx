@@ -49,7 +49,9 @@ export const SelectionDrawerWithRadioGroup = () => {
     <>
       <SelectionDrawerRoot open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
         <SelectionDrawerTrigger asChild>
-          <Button>SelectionDrawerRadios</Button>
+          <Button variant="primary" size="md">
+            SelectionDrawerRadios
+          </Button>
         </SelectionDrawerTrigger>
         <SelectionDrawerContent>
           <SelectionDrawerRadioGroup defaultValue={selectedOption} onValueChange={onValueChange}>
@@ -92,7 +94,9 @@ export const SelectionDrawerWithButtons = () => {
     <>
       <SelectionDrawerRoot open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
         <SelectionDrawerTrigger asChild>
-          <Button variant="error">SelectionDrawerButtons</Button>
+          <Button variant="error" size="md">
+            SelectionDrawerButtons
+          </Button>
         </SelectionDrawerTrigger>
         <SelectionDrawerContent>
           <SelectionDrawerButton onClick={handleRenameClick}>

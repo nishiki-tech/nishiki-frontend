@@ -183,7 +183,9 @@ export function SelectUsageExample() {
             ))}
           </SelectContent>
         </Select>
-        <Button onClick={handleSubmit}>Submit</Button>
+        <Button variant="primary" size="md" onClick={handleSubmit}>
+          Submit
+        </Button>
       </div>
     </>
   );
