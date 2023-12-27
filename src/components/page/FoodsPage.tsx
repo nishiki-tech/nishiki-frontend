@@ -73,7 +73,7 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
   }, [containers, query, sort, group, container, searchParams]);
 
   return (
-    <div className="mt-6 mx-4 mb-16">
+    <div className="mt-6 mx-4">
       <div className="relative">
         <SearchBar />
         <FilterButton

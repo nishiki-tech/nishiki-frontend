@@ -54,7 +54,7 @@ export const BottomTabIconLink: FC<IBottomTabIconLinkProps> = ({ name, isSelecte
   const textColorStyle = isSelected ? `text-primary` : 'text-gray-dark';
 
   return (
-    <Link href={path} className="inline-flex flex-col items-center justify-center px-5">
+    <Link href={path} className="inline-flex flex-col items-center justify-center">
       {IconComponent}
       <span className={cn('text-xs', textColorStyle)}>{title}</span>
     </Link>
