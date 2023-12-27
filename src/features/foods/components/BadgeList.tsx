@@ -28,6 +28,11 @@ export const BadgeList = ({
   const { replace } = useRouter();
   const params = new URLSearchParams(searchParams);
 
+  /**
+   * Update url query parameter
+   * @param key query parameter key
+   * @param value query parameter value (string or string[] for category)
+   */
   const updateUrlParams = (key: string, value?: string | string[]) => {
     if (!value || (Array.isArray(value) && value.length === 0)) {
       params.delete(key);
@@ -37,6 +42,10 @@ export const BadgeList = ({
     replace(`${pathname}?${params.toString()}` as Route);
   };
 
+  /**
+   * Remove the corresponding category from the filter category array
+   * @param key category name
+   */
   const removeCategoryFilter = (key: string) => {
     const updatedCategoryList = categoryList.filter((category) => category !== key);
     setCategoryList(updatedCategoryList);
