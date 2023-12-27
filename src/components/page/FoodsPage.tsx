@@ -77,7 +77,13 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
 
   return (
     <div className="mt-6 mx-4 relative">
-      <AddButton className="fixed bottom-20 right-4" />
+      <AddButton
+        className="fixed bottom-20 right-4"
+        groupIdContainerIdsMap={groupIdContainerIdsMap}
+        containerIdGroupIdMap={containerIdGroupIdMap}
+        containerIdNameMap={containerIdNameMap}
+        groupIdNameMap={groupIdNameMap}
+      />
       <div className="relative">
         <SearchBar />
         <FilterButton

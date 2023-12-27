@@ -9,12 +9,28 @@ import {
   DrawerTitle,
 } from '@/components/ui';
 import { AddDrawerBody } from '@/features/foods/components/AddDrawerBody';
+import { GroupIdContainersMapType } from '@/features/foods/types/FoodTypes';
+import {
+  ContainerIdGroupIdMapType,
+  ContainerIdNameMapType,
+  GroupIdNameMapType,
+} from '@/features/foods/utils/containerMapping';
 
 interface IAddDrawerContentProps {
   setIsDrawerOpen: (isOpen: boolean) => void;
+  groupIdContainerIdsMap: GroupIdContainersMapType;
+  containerIdGroupIdMap: ContainerIdGroupIdMapType;
+  containerIdNameMap: ContainerIdNameMapType;
+  groupIdNameMap: GroupIdNameMapType;
 }
 
-export const AddDrawerContent = ({ setIsDrawerOpen }: IAddDrawerContentProps) => {
+export const AddDrawerContent = ({
+  setIsDrawerOpen,
+  groupIdContainerIdsMap,
+  containerIdGroupIdMap,
+  containerIdNameMap,
+  groupIdNameMap,
+}: IAddDrawerContentProps) => {
   const handleCancelClick = () => {
     setIsDrawerOpen(false);
   };
@@ -30,7 +46,12 @@ export const AddDrawerContent = ({ setIsDrawerOpen }: IAddDrawerContentProps) =>
         <DrawerTitle>Add Food</DrawerTitle>
       </DrawerHeader>
       <DrawerBody>
-        <AddDrawerBody />
+        <AddDrawerBody
+          groupIdContainerIdsMap={groupIdContainerIdsMap}
+          containerIdGroupIdMap={containerIdGroupIdMap}
+          containerIdNameMap={containerIdNameMap}
+          groupIdNameMap={groupIdNameMap}
+        />
       </DrawerBody>
       <DrawerFooter>
         <DrawerClose asChild>
