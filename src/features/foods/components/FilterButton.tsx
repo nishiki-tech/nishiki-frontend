@@ -55,6 +55,7 @@ export const FilterButton = ({
   const [selectedContainer, setSelectedContainer] = useState('');
   const [query, setQuery] = useState('');
   const [selectedCategories, setSelectedCategories] = useState<{ [key: string]: boolean }>({});
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   useEffect(() => {
     setSelectedGroup(searchParams?.get('group') || '');
@@ -136,7 +137,6 @@ export const FilterButton = ({
     setSelectedContainer(containerId);
     setSelectedGroup(containerIdGroupIdMap[containerId]);
   };
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   return (
     <DrawerRoot open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
