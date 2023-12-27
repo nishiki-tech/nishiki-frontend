@@ -26,8 +26,6 @@ export const DatePicker = ({ date, onSelect, className }: IDatePickerProps) => {
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          variant="none"
-          size="none"
           className={cn(
             inputVariants(),
             'flex justify-between items-center pr-4',
