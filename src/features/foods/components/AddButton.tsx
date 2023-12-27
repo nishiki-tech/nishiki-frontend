@@ -20,5 +20,3 @@ export const AddButton = ({ className }: IAddButtonProps) => {
     </button>
   );
 };
-
-export default AddButton;

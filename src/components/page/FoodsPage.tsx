@@ -2,7 +2,7 @@
 
 import { MenuMeatballIcon } from '@/assets/images/icons';
 import { Icon } from '@/components/ui';
-import AddButton from '@/features/foods/components/AddButton';
+import { AddButton } from '@/features/foods/components/AddButton';
 import { BadgeList } from '@/features/foods/components/BadgeList';
 import { FilterButton } from '@/features/foods/components/FilterButton';
 import { FoodList } from '@/features/foods/components/FoodList';
