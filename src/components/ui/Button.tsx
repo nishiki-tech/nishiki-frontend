@@ -15,21 +15,21 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
+        none: '',
         primary: 'bg-primary text-white hover:bg-primary-dark',
         error: 'bg-danger text-white hover:bg-danger-dark',
         cancel: 'bg-transparent text-black hover:bg-gray-light',
-        none: '',
       },
       size: {
+        none: '',
         sm: 'h-8 px-7',
         md: 'h-10 px-12',
         lg: 'h-12 px-12',
-        none: '',
       },
     },
     defaultVariants: {
-      variant: 'primary',
-      size: 'md',
+      variant: 'none',
+      size: 'none',
     },
   },
 );
