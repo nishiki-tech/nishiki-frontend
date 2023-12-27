@@ -9,6 +9,10 @@ interface IGroupApiResponse {
   groupName: string;
 }
 
+interface ICreateGroupApiResponse {
+  groupId: string;
+}
+
 interface IGroupsResponse {
   groups: IGroupApiResponse[];
 }
@@ -36,6 +40,15 @@ function convertApiResponsContainers(containers: IContainerApiResponse[]): ICont
       name: container.group.groupName,
     },
   }));
+}
+
+export async function createGroup(groupName: string): Promise<ICreateGroupApiResponse | undefined> {
+  try {
+    const res = await axios.post<ICreateGroupApiResponse>(APIDOMAIN + '/groups', { groupName });
+    return res.data;
+  } catch (err) {
+    throw new Error('API response is invalid');
+  }
 }
 
 export async function fetchGroupList(): Promise<IGroup[]> {

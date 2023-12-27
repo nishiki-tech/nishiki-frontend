@@ -1,7 +1,4 @@
-'use client';
-
-import { ContentListHeader } from '@/features/groups/components/base/parts';
-import { GroupList } from '@/features/groups/components/GroupList';
+import { GroupCardList, GroupCollectionLayout } from '@/features/groups/components/base/layouts';
 import { IGroup } from '@/types/definition';
 
 import { FC } from 'react';
@@ -11,15 +8,11 @@ interface IGroupsPageProps {
 }
 
 export const GroupsPage: FC<IGroupsPageProps> = ({ groups }) => {
-  const onMenuButtonClick = () => {};
-  const onPlusButtonClick = () => {};
   return (
     <>
-      <ContentListHeader
-        onMenuButtonClick={onMenuButtonClick}
-        onPlusButtonClick={onPlusButtonClick}
-      />
-      <GroupList groups={groups} />
+      <GroupCollectionLayout>
+        <GroupCardList groups={groups} />
+      </GroupCollectionLayout>
     </>
   );
 };

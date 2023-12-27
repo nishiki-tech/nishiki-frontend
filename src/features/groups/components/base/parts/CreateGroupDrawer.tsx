@@ -11,21 +11,23 @@ import {
   Input,
 } from '@/components/ui';
 
-import { FC } from 'react';
+import { Dispatch, FC, SetStateAction } from 'react';
 
 interface ICreateGroupDrawerProps {
   isOpen: boolean;
+  onOpenChange: Dispatch<SetStateAction<boolean>>;
   onClose: () => void;
   onCreateClick: () => void;
 }
 
 export const CreateGroupDrawer: FC<ICreateGroupDrawerProps> = ({
   isOpen,
+  onOpenChange,
   onClose,
   onCreateClick,
 }) => {
   return (
-    <DrawerRoot open={isOpen}>
+    <DrawerRoot open={isOpen} onOpenChange={onOpenChange}>
       <DrawerContent side="bottom">
         <DrawerHeader>
           <DrawerTitle>Create Group</DrawerTitle>

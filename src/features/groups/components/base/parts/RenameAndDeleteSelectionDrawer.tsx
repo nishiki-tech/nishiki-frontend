@@ -9,18 +9,20 @@ import {
 } from '@/components/ui';
 import { cn } from '@/lib/tailwind/utils';
 
-import { FC } from 'react';
+import { Dispatch, FC, SetStateAction } from 'react';
 
-interface IRenameAndDeleteBottomDrawerProps {
+interface IRenameAndDeleteSelectionDrawerProps {
   isOpen: boolean;
   target: string;
+  onOpenChange: Dispatch<SetStateAction<boolean>>;
   onRenameClick: () => void;
   onDeleteClick: () => void;
 }
 
-export const RenameAndDeleteBottomDrawer: FC<IRenameAndDeleteBottomDrawerProps> = ({
+export const RenameAndDeleteSelectionDrawer: FC<IRenameAndDeleteSelectionDrawerProps> = ({
   isOpen,
   target,
+  onOpenChange,
   onRenameClick,
   onDeleteClick,
 }) => {
@@ -28,7 +30,7 @@ export const RenameAndDeleteBottomDrawer: FC<IRenameAndDeleteBottomDrawerProps> 
   const messageForDelete = `Delete ${target}`;
   return (
     <>
-      <SelectionDrawerRoot open={isOpen}>
+      <SelectionDrawerRoot open={isOpen} onOpenChange={onOpenChange}>
         <SelectionDrawerContent>
           <SelectionDrawerButton onClick={onRenameClick}>
             <SelectionDrawerButtonIcon>
