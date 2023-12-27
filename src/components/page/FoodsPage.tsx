@@ -2,6 +2,7 @@
 
 import { MenuMeatballIcon } from '@/assets/images/icons';
 import { Icon } from '@/components/ui';
+import AddButton from '@/features/foods/components/AddButton';
 import { BadgeList } from '@/features/foods/components/BadgeList';
 import { FilterButton } from '@/features/foods/components/FilterButton';
 import { FoodList } from '@/features/foods/components/FoodList';
@@ -73,7 +74,8 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
   }, [containers, query, sort, group, container, searchParams]);
 
   return (
-    <div className="mt-6 mx-4">
+    <div className="mt-6 mx-4 relative">
+      <AddButton className="fixed bottom-20 right-4" />
       <div className="relative">
         <SearchBar />
         <FilterButton
