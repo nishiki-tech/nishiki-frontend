@@ -33,6 +33,10 @@ export const FoodSort = () => {
   const pathname = usePathname();
   const { replace } = useRouter();
 
+  /**
+   * Switch sort mode
+   * @param term sort mode name
+   */
   const handleSort = (term: string) => {
     const params = new URLSearchParams(searchParams);
     if (term) {
