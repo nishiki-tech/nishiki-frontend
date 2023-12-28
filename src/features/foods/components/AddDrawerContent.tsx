@@ -4,6 +4,7 @@ import {
   Button,
   DrawerBody,
   DrawerClose,
+  DrawerContent,
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
@@ -41,7 +42,7 @@ export const AddDrawerContent = ({
   };
 
   return (
-    <>
+    <DrawerContent side="bottom">
       <DrawerHeader>
         <DrawerTitle>Add Food</DrawerTitle>
       </DrawerHeader>
@@ -63,6 +64,6 @@ export const AddDrawerContent = ({
           Add food
         </Button>
       </DrawerFooter>
-    </>
+    </DrawerContent>
   );
 };

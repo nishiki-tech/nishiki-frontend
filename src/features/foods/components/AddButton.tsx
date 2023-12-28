@@ -1,7 +1,7 @@
 'use client';
 
 import { PlusIcon } from '@/assets/images/icons';
-import { Button, DrawerContent, DrawerRoot, DrawerTrigger, Icon } from '@/components/ui';
+import { Button, DrawerRoot, DrawerTrigger, Icon } from '@/components/ui';
 import { AddDrawerContent } from '@/features/foods/components';
 import { GroupIdContainersMapType } from '@/features/foods/types/FoodTypes';
 import {
@@ -44,15 +44,13 @@ export const AddButton = ({
           <Icon icon={PlusIcon} size={4.5} color="black" />
         </Button>
       </DrawerTrigger>
-      <DrawerContent side="bottom">
-        <AddDrawerContent
-          setIsDrawerOpen={setIsDrawerOpen}
-          groupIdContainerIdsMap={groupIdContainerIdsMap}
-          containerIdGroupIdMap={containerIdGroupIdMap}
-          containerIdNameMap={containerIdNameMap}
-          groupIdNameMap={groupIdNameMap}
-        />
-      </DrawerContent>
+      <AddDrawerContent
+        setIsDrawerOpen={setIsDrawerOpen}
+        groupIdContainerIdsMap={groupIdContainerIdsMap}
+        containerIdGroupIdMap={containerIdGroupIdMap}
+        containerIdNameMap={containerIdNameMap}
+        groupIdNameMap={groupIdNameMap}
+      />
     </DrawerRoot>
   );
 };
