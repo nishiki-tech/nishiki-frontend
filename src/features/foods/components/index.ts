@@ -2,6 +2,7 @@ export { AddButton } from './AddButton';
 export { AddDrawerContent } from './AddDrawerContent';
 export { BadgeList } from './BadgeList';
 export { CategoryBadge } from './CategoryBadge';
+export { CategorySelect } from './CategorySelect';
 export { FilterBadge } from './FilterBadge';
 export { FilterButton } from './FilterButton';
 export { FoodList } from './FoodList';

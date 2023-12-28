@@ -1,6 +1,6 @@
 'use client';
 
-import { LabeledInput } from '@/components/parts/LabeledInput';
+import { LabeledInput } from '@/components/parts';
 import {
   DatePicker,
   Input,
@@ -12,6 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui';
+import { CategorySelect } from '@/features/foods/components';
 import { GroupIdContainersMapType } from '@/features/foods/types/FoodTypes';
 import {
   ContainerIdGroupIdMapType,
@@ -116,9 +117,7 @@ export const AddDrawerBody = ({
       <LabeledInput label="Expiry" htmlFor="expiry">
         <DatePicker />
       </LabeledInput>
-      <LabeledInput label="Category" htmlFor="category">
-        <Input name="category" id="category" type="text" />
-      </LabeledInput>
+      <CategorySelect />
       {/* "Add more" checkbox will be added here */}
     </div>
   );

@@ -1,7 +1,7 @@
 'use client';
 
 import { FilterIcon } from '@/assets/images/icons';
-import { LabeledInput } from '@/components/parts/LabeledInput';
+import { LabeledInput } from '@/components/parts';
 import {
   Button,
   DrawerBody,
