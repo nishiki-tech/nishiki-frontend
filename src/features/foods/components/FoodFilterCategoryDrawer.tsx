@@ -2,6 +2,7 @@
 
 import { CaretRightIcon } from '@/assets/images/icons';
 import {
+  Button,
   DrawerBody,
   DrawerContent,
   DrawerHeader,
@@ -25,46 +26,44 @@ export const FoodFilterCategoryDrawer = ({
 }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   return (
-    <div>
-      <DrawerRoot open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
-        <DrawerTrigger asChild>
-          <button className="w-full flex items-center justify-between mb-2">
-            Category
-            <figure className="w-12 h-12 flex items-center justify-center">
-              <Icon icon={CaretRightIcon} size={2.5} color="gray-dark" />
-            </figure>
-          </button>
-        </DrawerTrigger>
-        <DrawerContent side="right">
-          <DrawerHeader>
-            <DrawerTitle>Category</DrawerTitle>
-          </DrawerHeader>
-          <DrawerBody>
-            <div className="flex flex-col gap-2">
-              {Object.entries(foodCategories).map(([key, value]) => {
-                const isSelected = selectedCategories[key] || false;
-                return (
-                  <Card
-                    key={key}
-                    className={cn('border border-primary', isSelected ? 'bg-primary' : 'bg-white')}
-                    onClick={() => toggleCategory(key)}
-                    asChild
-                  >
-                    <button className="flex gap-4 items-center">
-                      <div className="bg-white w-8 h-8 rounded-full flex items-center justify-center border border-primary select-none">
-                        <span role="img" aria-label={value.name} className="text-lg">
-                          {value.emoji}
-                        </span>
-                      </div>
-                      {value.name}
-                    </button>
-                  </Card>
-                );
-              })}
-            </div>
-          </DrawerBody>
-        </DrawerContent>
-      </DrawerRoot>
-    </div>
+    <DrawerRoot open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
+      <DrawerTrigger asChild>
+        <Button className="w-full flex items-center justify-between mb-2">
+          Category
+          <figure className="w-12 h-12 flex items-center justify-center">
+            <Icon icon={CaretRightIcon} size={2.5} color="gray-dark" />
+          </figure>
+        </Button>
+      </DrawerTrigger>
+      <DrawerContent side="right">
+        <DrawerHeader>
+          <DrawerTitle>Category</DrawerTitle>
+        </DrawerHeader>
+        <DrawerBody>
+          <div className="flex flex-col gap-2">
+            {Object.entries(foodCategories).map(([key, value]) => {
+              const isSelected = selectedCategories[key] || false;
+              return (
+                <Card
+                  key={key}
+                  className={cn('border border-primary', isSelected ? 'bg-primary' : 'bg-white')}
+                  onClick={() => toggleCategory(key)}
+                  asChild
+                >
+                  <Button className="flex gap-4 items-center justify-start">
+                    <div className="bg-white w-8 h-8 rounded-full flex items-center justify-center border border-primary select-none">
+                      <span role="img" aria-label={value.name} className="text-lg">
+                        {value.emoji}
+                      </span>
+                    </div>
+                    {value.name}
+                  </Button>
+                </Card>
+              );
+            })}
+          </div>
+        </DrawerBody>
+      </DrawerContent>
+    </DrawerRoot>
   );
 };
