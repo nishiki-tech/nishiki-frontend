@@ -1,4 +1,3 @@
-import { LabeledInput } from '@/components/parts';
 import {
   Button,
   Card,
@@ -27,27 +26,25 @@ export const CategorySelect = ({}: ICategorySelectProps) => {
   };
 
   return (
-    <div>
+    <>
       <Input type="hidden" name="category" value={selectedCategory} />
       <DrawerRoot open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
-        <LabeledInput label="Category" htmlFor="category">
-          <DrawerTrigger asChild>
-            <Button
-              id="category"
-              className={cn(
-                inputVariants({ variant: 'rounded', h: 'md' }),
-                'flex items-center justify-start gap-2',
-              )}
-            >
-              <div className="w-6 aspect-square rounded-full border border-primary flex items-center justify-center">
-                <span className="text-base">{foodCategories[selectedCategory].emoji}</span>
-              </div>
-              <span className="whitespace-nowrap overflow-hidden text-ellipsis">
-                {foodCategories[selectedCategory].name}
-              </span>
-            </Button>
-          </DrawerTrigger>
-        </LabeledInput>
+        <DrawerTrigger asChild>
+          <Button
+            id="category"
+            className={cn(
+              inputVariants({ variant: 'rounded', h: 'md' }),
+              'flex items-center justify-start gap-2',
+            )}
+          >
+            <div className="w-6 aspect-square rounded-full border border-primary flex items-center justify-center">
+              <span className="text-base">{foodCategories[selectedCategory].emoji}</span>
+            </div>
+            <span className="whitespace-nowrap overflow-hidden text-ellipsis">
+              {foodCategories[selectedCategory].name}
+            </span>
+          </Button>
+        </DrawerTrigger>
         <DrawerContent side="right">
           <DrawerHeader>
             <DrawerTitle>Category</DrawerTitle>
@@ -81,6 +78,6 @@ export const CategorySelect = ({}: ICategorySelectProps) => {
           </DrawerBody>
         </DrawerContent>
       </DrawerRoot>
-    </div>
+    </>
   );
 };

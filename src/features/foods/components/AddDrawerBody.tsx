@@ -117,7 +117,9 @@ export const AddDrawerBody = ({
       <LabeledInput label="Expiry" htmlFor="expiry">
         <DatePicker />
       </LabeledInput>
-      <CategorySelect />
+      <LabeledInput label="Category" htmlFor="category">
+        <CategorySelect />
+      </LabeledInput>
       {/* "Add more" checkbox will be added here */}
     </div>
   );
