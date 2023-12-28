@@ -13,8 +13,11 @@ const selectTriggerVariants = cva(
   {
     variants: {
       variant: {
-        rounded:
-          'rounded-full bg-white border border-gray pl-6 pr-4 py-4 focus:ring-2 focus:ring-primary-dark focus:border-transparent',
+        rounded: cn(
+          'rounded-full bg-white border border-gray pl-6 pr-4 py-4',
+          'focus:ring-2 focus:ring-primary-dark focus:border-transparent',
+          'data-[state=open]:ring-2 data-[state=open]:ring-primary-dark  data-[state=open]:border-transparent',
+        ),
       },
       h: {
         md: 'h-12',
