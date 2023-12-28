@@ -7,57 +7,36 @@ import {
   signInWithRedirect,
   signOut,
 } from 'aws-amplify/auth';
-import { Hub } from 'aws-amplify/utils';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const OAUTH_DOMAIN: string = process.env.NEXT_PUBLIC_OAUTH_DOMAIN || '';
 const LOCALHOST_URL: string = process.env.NEXT_PUBLIC_LOCALHOST_URL || '';
 const OAUTH_REDIRECT_URL: string = process.env.NEXT_PUBLIC_OAUTH_REDIRECT_URL || '';
 const USER_POOL_ID: string = process.env.NEXT_PUBLIC_USER_POOL_ID || '';
 const USER_POOL_CLIENT_ID: string = process.env.NEXT_PUBLIC_USER_POOL_CLIENT_ID || '';
-Amplify.configure({
-  Auth: {
-    Cognito: {
-      loginWith: {
-        oauth: {
-          domain: OAUTH_DOMAIN, // OAuth domain
-          scopes: ['openid'], // Scope needed
-          responseType: 'code',
-          redirectSignIn: [LOCALHOST_URL, OAUTH_REDIRECT_URL],
-          redirectSignOut: [LOCALHOST_URL, OAUTH_REDIRECT_URL],
+Amplify.configure(
+  {
+    Auth: {
+      Cognito: {
+        loginWith: {
+          oauth: {
+            domain: OAUTH_DOMAIN, // OAuth domain
+            scopes: ['openid'], // Scope needed
+            responseType: 'code',
+            redirectSignIn: [LOCALHOST_URL, OAUTH_REDIRECT_URL],
+            redirectSignOut: [LOCALHOST_URL, OAUTH_REDIRECT_URL],
+          },
         },
+        userPoolId: USER_POOL_ID,
+        userPoolClientId: USER_POOL_CLIENT_ID,
       },
-      userPoolId: USER_POOL_ID,
-      userPoolClientId: USER_POOL_CLIENT_ID,
     },
   },
-});
+  { ssr: true },
+);
 
 export const LoginForm = () => {
   const [user, setUser] = useState<AuthUser | null>(null);
-  const [, setError] = useState<unknown>(null);
-  const [, setCustomState] = useState<string | null>(null);
-
-  useEffect(() => {
-    const unsubscribe = Hub.listen('auth', ({ payload }) => {
-      switch (payload.event) {
-        case 'signInWithRedirect':
-          getUser();
-          break;
-        case 'signInWithRedirect_failure':
-          setError('An error has ocurred during the Oauth flow.');
-          break;
-        case 'customOAuthState':
-          setCustomState(payload.data);
-          break;
-      }
-    });
-
-    getUser();
-    currentSession();
-
-    return unsubscribe;
-  }, []);
 
   const getUser = async (): Promise<void> => {
     try {
@@ -72,18 +51,22 @@ export const LoginForm = () => {
 
   async function currentSession() {
     try {
-      const { accessToken, idToken } = (await fetchAuthSession()).tokens ?? {};
-      console.log('accessToken, idToken', accessToken, idToken);
+      const { idToken } = (await fetchAuthSession()).tokens ?? {};
+      console.log('idToken', idToken?.toString());
     } catch (err) {
       console.log(err);
     }
   }
 
+  getUser();
+  currentSession();
+
   return (
     <div className="login-form">
-      <button onClick={() => signInWithRedirect()}>Open Hosted UI</button>
-      <button onClick={() => signOut()}>Sign Out</button>
-      <div>{user?.username}</div>
+      <button onClick={() => signInWithRedirect()}>Login </button>
+      <br />
+      <button onClick={() => signOut()}>Log Out</button>
+      <div>{user ? 'log-in user: ' + user?.username : 'Not loggedin'}</div>
     </div>
   );
 };
