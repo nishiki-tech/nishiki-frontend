@@ -5,6 +5,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function middleware(request: NextRequest) {
   const response = NextResponse.next();
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   const authenticated = await runWithAmplifyServerContext({
     nextServerContext: { request, response },
     operation: async (contextSpec) => {

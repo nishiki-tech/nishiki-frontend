@@ -1,11 +1,11 @@
 import { createServerRunner } from '@aws-amplify/adapter-nextjs';
-
 const OAUTH_DOMAIN: string = process.env.NEXT_PUBLIC_OAUTH_DOMAIN || '';
 const LOCALHOST_URL: string = process.env.NEXT_PUBLIC_LOCALHOST_URL || '';
 const OAUTH_REDIRECT_URL: string = process.env.NEXT_PUBLIC_OAUTH_REDIRECT_URL || '';
 const USER_POOL_ID: string = process.env.NEXT_PUBLIC_USER_POOL_ID || '';
 const USER_POOL_CLIENT_ID: string = process.env.NEXT_PUBLIC_USER_POOL_CLIENT_ID || '';
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 export const { runWithAmplifyServerContext } = createServerRunner({
   config: {
     Auth: {
