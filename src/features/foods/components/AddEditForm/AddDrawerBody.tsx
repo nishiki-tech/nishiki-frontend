@@ -67,7 +67,7 @@ export const AddDrawerBody = ({
           value={selectedGroup}
           onValueChange={(value: string) => handleSelectGroup(value)}
         >
-          <SelectTrigger>
+          <SelectTrigger id="group">
             <SelectValue placeholder="Select a group" />
           </SelectTrigger>
           <SelectContent>
@@ -85,7 +85,7 @@ export const AddDrawerBody = ({
           value={selectedContainer}
           onValueChange={(value: string) => handleSelectContainer(value)}
         >
-          <SelectTrigger>
+          <SelectTrigger id="container">
             <SelectValue placeholder="Select a container" />
           </SelectTrigger>
           <SelectContent>
