@@ -5,7 +5,8 @@ import { IContainer, IGroup, IUser } from '@/types/definition';
 
 import Link from 'next/link';
 
-import { ContainerCount, UserCount } from '.';
+import { ContainerCount } from './ContainerCount';
+import { UserCount } from './UserCount';
 
 export const GroupCard = async ({ group }: { group: IGroup }) => {
   const containers: IContainer[] = await fetchContainerList(group.id);

@@ -1,6 +1,6 @@
 import { IGroup } from '@/types/definition';
 
-import { GroupCard } from '../parts';
+import { GroupCard } from './GroupCard';
 
 export const GroupCardList = ({ groups }: { groups: IGroup[] }) => {
   return (

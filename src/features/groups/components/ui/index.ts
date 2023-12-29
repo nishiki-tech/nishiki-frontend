@@ -1,1 +1,0 @@
-export { ContainerIconWithCircle } from './ContainerIconWithCircle';

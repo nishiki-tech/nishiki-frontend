@@ -1,0 +1,1 @@
+export { DeleteGroupsButton } from './DeleteGroupsButton';
