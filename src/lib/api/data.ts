@@ -14,10 +14,6 @@ interface IGroupApiResponse {
   groupName: string;
 }
 
-interface ICreateGroupApiResponse {
-  groupId: string;
-}
-
 /**
  * Interface representing the API response for a container.
  * @property {string} id - The unique identifier of the container.
@@ -69,15 +65,6 @@ function convertApiResponsContainers(containers: IContainerApiResponse[]): ICont
       name: container.group.groupName,
     },
   }));
-}
-
-export async function createGroup(groupName: string): Promise<ICreateGroupApiResponse | undefined> {
-  try {
-    const res = await axios.post<ICreateGroupApiResponse>(APIDOMAIN + '/groups', { groupName });
-    return res.data;
-  } catch (err) {
-    throw new Error('API response is invalid');
-  }
 }
 
 /**
