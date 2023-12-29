@@ -41,12 +41,9 @@ export const LoginForm = () => {
   const getUser = async (): Promise<void> => {
     try {
       const currentUser = await getCurrentUser();
-      console.log('currentUser', currentUser);
       setUser(currentUser);
-    } catch (error) {
-      console.error(error);
-      console.log('Not signed in');
-    }
+    } catch (error) {}
+    // if user is not logged in
   };
 
   async function currentSession() {
@@ -54,7 +51,7 @@ export const LoginForm = () => {
       const { idToken } = (await fetchAuthSession()).tokens ?? {};
       console.log('idToken', idToken?.toString());
     } catch (err) {
-      console.log(err);
+      // if user is not logged in
     }
   }
 

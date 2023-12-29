@@ -13,7 +13,7 @@ export async function middleware(request: NextRequest) {
         const session = await fetchAuthSession(contextSpec);
         return session.tokens !== undefined;
       } catch (error) {
-        console.log(error);
+        // if user is not logged in.
         return false;
       }
     },
