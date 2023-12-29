@@ -43,7 +43,12 @@ export const CategorySelect = ({ hiddenInput, ...buttonProps }: ICategorySelectP
             <div className="w-6 aspect-square rounded-full border border-primary flex items-center justify-center">
               <span className="text-base">{foodCategories[selectedCategory].emoji}</span>
             </div>
-            <span className="whitespace-nowrap overflow-hidden text-ellipsis">
+            <span
+              className={cn(
+                'whitespace-nowrap overflow-hidden text-ellipsis',
+                selectedCategory === 'unselected' && 'text-gray',
+              )}
+            >
               {foodCategories[selectedCategory].name}
             </span>
           </Button>
