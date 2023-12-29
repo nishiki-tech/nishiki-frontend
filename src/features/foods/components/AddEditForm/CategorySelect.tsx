@@ -7,18 +7,19 @@ import {
   DrawerRoot,
   DrawerTitle,
   DrawerTrigger,
-  Input,
   inputVariants,
 } from '@/components/ui';
 import { foodCategories } from '@/const/foodCategory';
 import { cn } from '@/lib/tailwind/utils';
 
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 
-interface ICategorySelectProps {}
+interface ICategorySelectProps {
+  hiddenInput: (category: string) => ReactNode;
+}
 
-export const CategorySelect = ({}: ICategorySelectProps) => {
-  const [selectedCategory, setSelectedCategory] = useState('unselected');
+export const CategorySelect = ({ hiddenInput }: ICategorySelectProps) => {
+  const [selectedCategory, setSelectedCategory] = useState<string>('unselected');
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const handleCategorySelect = (category: string) => {
@@ -27,7 +28,7 @@ export const CategorySelect = ({}: ICategorySelectProps) => {
 
   return (
     <>
-      <Input type="hidden" name="category" value={selectedCategory} />
+      {hiddenInput(selectedCategory)}
       <DrawerRoot open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
         <DrawerTrigger asChild>
           <Button

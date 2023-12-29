@@ -2,7 +2,6 @@
 
 import { LabeledInput } from '@/components/parts';
 import {
-  DatePicker,
   Input,
   Select,
   SelectContent,
@@ -13,6 +12,7 @@ import {
   SelectValue,
 } from '@/components/ui';
 import { CategorySelect } from '@/features/foods/components';
+import { FormDatePicker } from '@/features/foods/components/AddEditForm/FormDatePicker';
 import { GroupIdContainersMapType } from '@/features/foods/types/FoodTypes';
 import {
   ContainerIdGroupIdMapType,
@@ -115,10 +115,14 @@ export const AddDrawerBody = ({
         </LabeledInput>
       </div>
       <LabeledInput label="Expiry" htmlFor="expiry">
-        <DatePicker />
+        <FormDatePicker
+          hiddenInput={(date) => <Input type="hidden" name="expiry" value={date?.toJSON()} />}
+        />
       </LabeledInput>
       <LabeledInput label="Category" htmlFor="category">
-        <CategorySelect />
+        <CategorySelect
+          hiddenInput={(category) => <Input type="hidden" name="category" value={category} />}
+        />
       </LabeledInput>
       {/* "Add more" checkbox will be added here */}
     </div>
