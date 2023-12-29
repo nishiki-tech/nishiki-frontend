@@ -35,7 +35,7 @@ export const FoodList = ({
     <DrawerRoot open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
       {foods.map((food) => (
         <DrawerTrigger key={food.id} asChild>
-          <Card className={'bg-white mb-2 w-full'} asChild>
+          <Card className="bg-white mb-2 w-full" asChild>
             <Button className="flex gap-4 items-center text-left">
               <figure className="bg-white w-10 h-10 rounded-full flex items-center justify-center border border-primary select-none text-2xl">
                 {foodCategories[food.category]?.emoji}
