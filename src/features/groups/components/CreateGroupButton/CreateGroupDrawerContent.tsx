@@ -27,7 +27,7 @@ export const CreateGroupDrawerContent: FC<ICreateGroupDrawerContentProps> = ({
         <Input placeholder="Group Name" />
       </DrawerBody>
       <DrawerFooter>
-        <DrawerClose>
+        <DrawerClose asChild>
           <Button variant="cancel" size="md">
             Cancel
           </Button>

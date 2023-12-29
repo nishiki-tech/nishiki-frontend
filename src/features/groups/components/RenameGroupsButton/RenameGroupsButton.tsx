@@ -16,7 +16,7 @@ export const RenameGroupsButton = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   return (
     <DrawerRoot open={isOpen} onOpenChange={setIsOpen}>
-      <DrawerTrigger>
+      <DrawerTrigger asChild>
         <SelectionDrawerButton>
           <SelectionDrawerButtonIcon>
             <Icon icon={PenIcon} size={5} color="primary" />

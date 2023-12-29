@@ -19,7 +19,7 @@ export const DeleteGroupsButton: FC<IDeleteGroupsButtonProps> = ({}) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <DrawerRoot open={isOpen} onOpenChange={setIsOpen}>
-      <DrawerTrigger>
+      <DrawerTrigger asChild>
         <SelectionDrawerButton className={cn('border-t border-gray-light')}>
           <SelectionDrawerButtonIcon>
             <Icon icon={DeleteIcon} size={5} color="danger" />
