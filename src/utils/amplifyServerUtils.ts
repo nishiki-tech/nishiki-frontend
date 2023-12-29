@@ -5,7 +5,6 @@ const OAUTH_REDIRECT_URL: string = process.env.NEXT_PUBLIC_OAUTH_REDIRECT_URL ||
 const USER_POOL_ID: string = process.env.NEXT_PUBLIC_USER_POOL_ID || '';
 const USER_POOL_CLIENT_ID: string = process.env.NEXT_PUBLIC_USER_POOL_CLIENT_ID || '';
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 export const { runWithAmplifyServerContext } = createServerRunner({
   config: {
     Auth: {
