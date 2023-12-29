@@ -2,6 +2,7 @@
 
 import { LabeledInput } from '@/components/parts';
 import {
+  DrawerBody,
   Input,
   Select,
   SelectContent,
@@ -57,7 +58,7 @@ export const AddDrawerBody = ({
   };
 
   return (
-    <div className="flex flex-col gap-4">
+    <DrawerBody className="flex flex-col gap-4">
       <LabeledInput label="Name" htmlFor="name" required>
         <Input name="name" id="name" placeholder="Container name" />
       </LabeledInput>
@@ -127,6 +128,6 @@ export const AddDrawerBody = ({
         />
       </LabeledInput>
       {/* "Add more" checkbox will be added here */}
-    </div>
+    </DrawerBody>
   );
 };

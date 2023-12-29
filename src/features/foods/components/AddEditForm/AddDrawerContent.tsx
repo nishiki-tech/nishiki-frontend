@@ -2,7 +2,6 @@
 
 import {
   Button,
-  DrawerBody,
   DrawerClose,
   DrawerContent,
   DrawerFooter,
@@ -47,14 +46,12 @@ export const AddDrawerContent = ({
       <DrawerHeader>
         <DrawerTitle>Add Food</DrawerTitle>
       </DrawerHeader>
-      <DrawerBody>
-        <AddDrawerBody
-          groupIdContainerIdsMap={groupIdContainerIdsMap}
-          containerIdGroupIdMap={containerIdGroupIdMap}
-          containerIdNameMap={containerIdNameMap}
-          groupIdNameMap={groupIdNameMap}
-        />
-      </DrawerBody>
+      <AddDrawerBody
+        groupIdContainerIdsMap={groupIdContainerIdsMap}
+        containerIdGroupIdMap={containerIdGroupIdMap}
+        containerIdNameMap={containerIdNameMap}
+        groupIdNameMap={groupIdNameMap}
+      />
       <DrawerFooter>
         <DrawerClose asChild>
           <Button variant="cancel" size="sm" onClick={handleCancelClick}>

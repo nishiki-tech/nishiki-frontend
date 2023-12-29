@@ -3,7 +3,6 @@
 import DeleteIcon from '@/assets/images/icons/icon_delete.svg';
 import {
   Button,
-  DrawerBody,
   DrawerClose,
   DrawerContent,
   DrawerFooter,
@@ -50,14 +49,12 @@ export const EditDrawerContent = ({
       <DrawerHeader>
         <DrawerTitle>Edit Food</DrawerTitle>
       </DrawerHeader>
-      <DrawerBody>
-        <AddDrawerBody
-          groupIdContainerIdsMap={groupIdContainerIdsMap}
-          containerIdGroupIdMap={containerIdGroupIdMap}
-          containerIdNameMap={containerIdNameMap}
-          groupIdNameMap={groupIdNameMap}
-        />
-      </DrawerBody>
+      <AddDrawerBody
+        groupIdContainerIdsMap={groupIdContainerIdsMap}
+        containerIdGroupIdMap={containerIdGroupIdMap}
+        containerIdNameMap={containerIdNameMap}
+        groupIdNameMap={groupIdNameMap}
+      />
       <DrawerFooter>
         <DrawerClose asChild>
           <Button variant="cancel" size="sm" onClick={handleDeleteClick}>
