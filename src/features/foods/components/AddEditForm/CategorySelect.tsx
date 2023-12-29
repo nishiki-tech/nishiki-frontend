@@ -12,13 +12,13 @@ import {
 import { foodCategories } from '@/const/foodCategory';
 import { cn } from '@/lib/tailwind/utils';
 
-import { ReactNode, useState } from 'react';
+import { ButtonHTMLAttributes, ReactNode, useState } from 'react';
 
-interface ICategorySelectProps {
+interface ICategorySelectProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   hiddenInput: (category: string) => ReactNode;
 }
 
-export const CategorySelect = ({ hiddenInput }: ICategorySelectProps) => {
+export const CategorySelect = ({ hiddenInput, ...buttonProps }: ICategorySelectProps) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('unselected');
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
@@ -37,6 +37,7 @@ export const CategorySelect = ({ hiddenInput }: ICategorySelectProps) => {
               inputVariants({ variant: 'rounded', h: 'md' }),
               'flex items-center justify-start gap-2',
             )}
+            {...buttonProps}
           >
             <div className="w-6 aspect-square rounded-full border border-primary flex items-center justify-center">
               <span className="text-base">{foodCategories[selectedCategory].emoji}</span>
