@@ -2,7 +2,6 @@
 
 import { PlusIcon } from '@/assets/images/icons';
 import { Button, DrawerRoot, DrawerTrigger, Icon } from '@/components/ui';
-import { AddDrawerContent } from '@/features/foods/components';
 import { GroupIdContainersMapType } from '@/features/foods/types/FoodTypes';
 import {
   ContainerIdGroupIdMapType,
@@ -12,6 +11,8 @@ import {
 import { cn } from '@/lib/tailwind/utils';
 
 import { useState } from 'react';
+
+import { AddDrawerContent } from './AddDrawerContent';
 
 interface IAddButtonProps {
   groupIdContainerIdsMap: GroupIdContainersMapType;

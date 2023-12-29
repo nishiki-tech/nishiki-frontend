@@ -11,8 +11,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui';
-import { CategorySelect } from '@/features/foods/components';
-import { FormDatePicker } from '@/features/foods/components/AddEditForm/FormDatePicker';
 import { GroupIdContainersMapType } from '@/features/foods/types/FoodTypes';
 import {
   ContainerIdGroupIdMapType,
@@ -21,6 +19,8 @@ import {
 } from '@/features/foods/utils/containerMapping';
 
 import { useState } from 'react';
+
+import { CategorySelect, FormDatePicker } from '.';
 
 interface IAddDrawerBodyProps {
   groupIdContainerIdsMap: GroupIdContainersMapType;

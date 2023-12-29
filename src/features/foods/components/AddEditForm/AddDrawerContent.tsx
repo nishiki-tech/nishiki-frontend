@@ -9,13 +9,14 @@ import {
   DrawerHeader,
   DrawerTitle,
 } from '@/components/ui';
-import { AddDrawerBody } from '@/features/foods/components/AddEditForm/AddDrawerBody';
 import { GroupIdContainersMapType } from '@/features/foods/types/FoodTypes';
 import {
   ContainerIdGroupIdMapType,
   ContainerIdNameMapType,
   GroupIdNameMapType,
 } from '@/features/foods/utils/containerMapping';
+
+import { AddDrawerBody } from '.';
 
 interface IAddDrawerContentProps {
   setIsDrawerOpen: (isOpen: boolean) => void;
