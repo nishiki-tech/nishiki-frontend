@@ -13,6 +13,10 @@ export const SearchBar = () => {
     setQuery(searchParams?.get('query') || '');
   }, [searchParams]);
 
+  /**
+   * Update search query at URL param and local state
+   * @param term search query
+   */
   const handleSearch = (term: string) => {
     const params = new URLSearchParams(searchParams);
     if (term) {

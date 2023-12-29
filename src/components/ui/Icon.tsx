@@ -10,6 +10,7 @@ const iconVariants = cva('', {
     // If the size in the design is not in the list, you can assign the closest size from this list.
     size: {
       2: 'w-2 h-2',
+      2.5: 'w-2.5 h-2.5',
       3: 'w-3 h-3',
       3.5: 'w-3.5 h-3.5',
       4: 'w-4 h-4',

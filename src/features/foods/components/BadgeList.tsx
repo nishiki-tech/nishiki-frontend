@@ -1,26 +1,22 @@
 import { ContainerIcon, HomeIcon_Off } from '@/assets/images/icons';
 import { foodCategories } from '@/const/foodCategory';
 import { cn } from '@/lib/tailwind/utils';
+import { IContainer, IGroup } from '@/types/definition';
 
 import { Route } from 'next';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
-import { IdNameMapType } from '../types/FoodTypes';
 import { FilterBadge } from '.';
 
 export const BadgeList = ({
-  group,
-  container,
+  groupName,
+  containerName,
   categoryList,
-  groupIdMap,
-  containerIdMap,
   setCategoryList,
 }: {
-  group: string;
-  container: string;
+  groupName: IGroup['name'];
+  containerName: IContainer['name'];
   categoryList: string[];
-  groupIdMap: IdNameMapType;
-  containerIdMap: IdNameMapType;
   setCategoryList: React.Dispatch<React.SetStateAction<string[]>>;
 }) => {
   const pathname = usePathname();
@@ -28,6 +24,11 @@ export const BadgeList = ({
   const { replace } = useRouter();
   const params = new URLSearchParams(searchParams);
 
+  /**
+   * Update url query parameter
+   * @param key query parameter key
+   * @param value query parameter value (string or string[] for category)
+   */
   const updateUrlParams = (key: string, value?: string | string[]) => {
     if (!value || (Array.isArray(value) && value.length === 0)) {
       params.delete(key);
@@ -37,6 +38,10 @@ export const BadgeList = ({
     replace(`${pathname}?${params.toString()}` as Route);
   };
 
+  /**
+   * Remove the corresponding category from the filter category array
+   * @param key category name
+   */
   const removeCategoryFilter = (key: string) => {
     const updatedCategoryList = categoryList.filter((category) => category !== key);
     setCategoryList(updatedCategoryList);
@@ -46,21 +51,21 @@ export const BadgeList = ({
   return (
     <div
       className={cn(
-        (group || container || categoryList.length > 0) &&
+        (groupName || containerName || categoryList.length > 0) &&
           'flex -mx-4 px-4 gap-1.5 mt-4 pb-1 overflow-x-auto whitespace-nowrap',
       )}
     >
-      {group ? (
+      {groupName ? (
         <FilterBadge
           icon={HomeIcon_Off}
-          text={groupIdMap[group]}
+          text={groupName}
           onCrossClick={() => updateUrlParams('group')}
         />
       ) : null}
-      {container ? (
+      {containerName ? (
         <FilterBadge
           icon={ContainerIcon}
-          text={containerIdMap[container]}
+          text={containerName}
           onCrossClick={() => updateUrlParams('container')}
         />
       ) : null}

@@ -21,27 +21,27 @@ export const foodCategories: IFoodCategories = {
     emoji: '🥛',
   },
   eggs: {
-    name: 'Eggs',
+    name: 'Egg',
     emoji: '🥚',
   },
-  fats: {
-    name: 'Fats',
+  fatsAndOils: {
+    name: 'Fat & Oil',
     emoji: '🫒',
   },
   fruits: {
-    name: 'Fruits',
+    name: 'Fruit',
     emoji: '🍎',
   },
   vegetables: {
-    name: 'Vegetables',
+    name: 'Vegetable',
     emoji: '🥗',
   },
   legumes: {
-    name: 'Legumes',
+    name: 'Legume',
     emoji: '🫘',
   },
   nutsAndSeeds: {
-    name: 'Nuts & Seeds',
+    name: 'Nut & Seed',
     emoji: '🥜',
   },
   meat: {
@@ -49,20 +49,28 @@ export const foodCategories: IFoodCategories = {
     emoji: '🥩',
   },
   desserts: {
-    name: 'Desserts',
+    name: 'Dessert',
     emoji: '🍰',
   },
   soup: {
     name: 'Soup',
     emoji: '🍜',
   },
-  seafood: {
+  seafoods: {
     name: 'Seafood',
     emoji: '🍣',
   },
-  convenience: {
-    name: 'Convenience',
+  convenienceMeals: {
+    name: 'Convenience Meal',
     emoji: '🥡',
+  },
+  seasoning: {
+    name: 'Seasoning',
+    emoji: '🧂',
+  },
+  alcohol: {
+    name: 'Alcohol',
+    emoji: '🍺',
   },
   other: {
     name: 'Other',

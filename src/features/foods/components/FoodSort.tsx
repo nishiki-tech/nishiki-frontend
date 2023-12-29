@@ -33,6 +33,10 @@ export const FoodSort = () => {
   const pathname = usePathname();
   const { replace } = useRouter();
 
+  /**
+   * Switch sort mode
+   * @param term sort mode name
+   */
   const handleSort = (term: string) => {
     const params = new URLSearchParams(searchParams);
     if (term) {
@@ -49,7 +53,7 @@ export const FoodSort = () => {
         <SelectionDrawerTrigger asChild>
           <button className="flex items-center">
             {sortOptions[selectedOption as keyof typeof sortOptions]}
-            <Icon icon={CaretDownIcon} className="m-5" />
+            <Icon icon={CaretDownIcon} className="m-5" size={2.5} color="gray-dark" />
           </button>
         </SelectionDrawerTrigger>
         <SelectionDrawerContent>

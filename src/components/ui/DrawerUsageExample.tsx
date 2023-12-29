@@ -29,7 +29,9 @@ export const DrawerUsageExample = () => {
   return (
     <DrawerRoot open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
       <DrawerTrigger asChild>
-        <Button>Open</Button>
+        <Button variant="primary" size="md">
+          Open
+        </Button>
       </DrawerTrigger>
       <DrawerContent side="bottom">
         <DrawerHeader>

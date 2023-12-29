@@ -30,7 +30,9 @@ export const DialogUsageExample = () => {
     <>
       <DialogRoot open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogTrigger asChild>
-          <Button>Open</Button>
+          <Button variant="primary" size="md">
+            Open
+          </Button>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>

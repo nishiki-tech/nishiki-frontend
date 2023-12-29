@@ -1,6 +1,6 @@
-import { FC, ReactNode } from 'react';
+import { BottomTab, MobileHeader } from '@/components/parts';
 
-import { BottomTab, MobileHeader } from '../parts';
+import { FC, ReactNode } from 'react';
 
 interface IMobileLayoutProps {
   children: ReactNode;
