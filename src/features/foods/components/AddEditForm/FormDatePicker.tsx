@@ -4,7 +4,7 @@ import { ReactNode, useState } from 'react';
 
 interface IFormDatePickerProps {
   id?: string;
-  hiddenInput: (date: Date | undefined) => ReactNode;
+  hiddenInput: (date: string) => ReactNode;
 }
 
 export const FormDatePicker = ({ id, hiddenInput }: IFormDatePickerProps) => {
@@ -12,7 +12,7 @@ export const FormDatePicker = ({ id, hiddenInput }: IFormDatePickerProps) => {
 
   return (
     <>
-      {hiddenInput(date)}
+      {hiddenInput(date?.toJSON() || '')}
       <DatePicker date={date} onSelect={setDate} id={id} />
     </>
   );

@@ -117,7 +117,7 @@ export const AddDrawerBody = ({
       <LabeledInput label="Expiry" htmlFor="expiry">
         <FormDatePicker
           id="expiry"
-          hiddenInput={(date) => <Input type="hidden" name="expiry" value={date?.toJSON()} />}
+          hiddenInput={(date) => <Input type="hidden" name="expiry" value={date} />}
         />
       </LabeledInput>
       <LabeledInput label="Category" htmlFor="category">
