@@ -15,7 +15,7 @@ export const { runWithAmplifyServerContext } = createServerRunner({
             domain: OAUTH_DOMAIN, // OAuth domain
             scopes: ['openid'], // Scope needed
             responseType: 'code',
-            redirectSignIn: [LOCALHOST_URL, OAUTH_REDIRECT_URL],
+            redirectSignIn: [LOCALHOST_URL + '/login'],
             redirectSignOut: [LOCALHOST_URL, OAUTH_REDIRECT_URL],
           },
         },

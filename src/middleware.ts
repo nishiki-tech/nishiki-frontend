@@ -18,10 +18,17 @@ export async function middleware(request: NextRequest) {
       }
     },
   });
+
+  const isOnLoginPage = request.nextUrl.pathname.startsWith('/login');
+
+  // If user is authenticated
   if (authenticated) {
-    return response;
+    // if user is in login page, redirect to '/groups'
+    return isOnLoginPage ? NextResponse.redirect(new URL('/groups', request.url)) : response;
   }
-  return NextResponse.redirect(new URL('/', request.url));
+
+  // If user is not authenticated and on login page, stay, otherwise, redirect to login page.
+  return isOnLoginPage ? response : NextResponse.redirect(new URL('/login', request.url));
 }
 
 export const config = {
@@ -34,6 +41,7 @@ export const config = {
      * - favicon.ico (favicon file)
      */
     // '/((?!api|_next/static|_next/image|favicon.ico|sign-in).*)',
+    '/login/:path*',
     '/groups/:path*',
     '/foods/:path*',
     '/profile/:path*',
