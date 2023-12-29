@@ -8,7 +8,7 @@ interface IMobileLayoutProps {
 
 export const MobileLayout: FC<IMobileLayoutProps> = ({ children }) => {
   return (
-    <div className="relative flex min-h-screen flex-col">
+    <div className="relative pt-12 pb-16 flex min-h-screen flex-col">
       <MobileHeader />
       {children}
       <BottomTab />

@@ -1,7 +1,7 @@
 'use client';
 
 import { FilterIcon } from '@/assets/images/icons';
-import { LabeledInput } from '@/components/parts/LabeledInput';
+import { LabeledInput } from '@/components/parts';
 import {
   Button,
   DrawerBody,
@@ -22,8 +22,12 @@ import {
   SelectValue,
 } from '@/components/ui';
 import { foodCategories } from '@/const/foodCategory';
-import { GroupIdContainersMapType, IdNameMapType } from '@/features/foods/types/FoodTypes';
-import { IContainer, IGroup } from '@/types/definition';
+import { GroupIdContainersMapType } from '@/features/foods/types/FoodTypes';
+import {
+  ContainerIdGroupIdMapType,
+  ContainerIdNameMapType,
+  GroupIdNameMapType,
+} from '@/features/foods/utils/containerMapping';
 
 import { Route } from 'next';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
@@ -35,9 +39,9 @@ import { FoodFilterCategoryDrawer } from './FoodFilterCategoryDrawer';
 interface IFilterButtonProps {
   isFilterSet: boolean;
   groupIdContainerIdsMap: GroupIdContainersMapType;
-  containerIdGroupIdMap: Record<IContainer['id'], IGroup['id']>;
-  containerIdNameMap: IdNameMapType;
-  groupIdNameMap: IdNameMapType;
+  containerIdGroupIdMap: ContainerIdGroupIdMapType;
+  containerIdNameMap: ContainerIdNameMapType;
+  groupIdNameMap: GroupIdNameMapType;
 }
 
 export const FilterButton = ({
@@ -55,6 +59,7 @@ export const FilterButton = ({
   const [selectedContainer, setSelectedContainer] = useState('');
   const [query, setQuery] = useState('');
   const [selectedCategories, setSelectedCategories] = useState<{ [key: string]: boolean }>({});
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   useEffect(() => {
     setSelectedGroup(searchParams?.get('group') || '');
@@ -120,7 +125,7 @@ export const FilterButton = ({
   };
 
   /**
-   * Process when group filter button is pushed
+   * Process when a group is selected
    * @param event
    */
   const handleSelectGroup = (value: string) => {
@@ -129,14 +134,13 @@ export const FilterButton = ({
   };
 
   /**
-   * Process when container filter button is pushed
+   * Process when a container is selected
    * @param event
    */
   const handleSelectContainer = (containerId: string) => {
     setSelectedContainer(containerId);
     setSelectedGroup(containerIdGroupIdMap[containerId]);
   };
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   return (
     <DrawerRoot open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
