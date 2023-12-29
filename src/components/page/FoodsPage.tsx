@@ -106,7 +106,13 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
           <Icon icon={MenuMeatballIcon} size={4} />
         </button>
       </div>
-      <FoodList foods={displayedFoods} />
+      <FoodList
+        foods={displayedFoods}
+        groupIdContainerIdsMap={groupIdContainerIdsMap}
+        containerIdGroupIdMap={containerIdGroupIdMap}
+        containerIdNameMap={containerIdNameMap}
+        groupIdNameMap={groupIdNameMap}
+      />
     </div>
   );
 };
