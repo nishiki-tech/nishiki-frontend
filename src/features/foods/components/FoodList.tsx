@@ -1,7 +1,9 @@
+'use client';
+
 import { BagIcon, ContainerIcon } from '@/assets/images/icons';
 import { Button, Card, DrawerRoot, DrawerTrigger, Icon } from '@/components/ui';
 import { foodCategories } from '@/const/foodCategory';
-import { AddDrawerContent } from '@/features/foods/components/AddEditForm';
+import { EditDrawerContent } from '@/features/foods/components/AddEditForm';
 import { GroupIdContainersMapType, IFoodView } from '@/features/foods/types/FoodTypes';
 import {
   ContainerIdGroupIdMapType,
@@ -54,7 +56,7 @@ export const FoodList = ({
           </Card>
         </DrawerTrigger>
       ))}
-      <AddDrawerContent
+      <EditDrawerContent
         setIsDrawerOpen={setIsDrawerOpen}
         groupIdContainerIdsMap={groupIdContainerIdsMap}
         containerIdGroupIdMap={containerIdGroupIdMap}
