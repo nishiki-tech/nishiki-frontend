@@ -28,11 +28,11 @@ export const CreateGroupDrawerContent: FC<ICreateGroupDrawerContentProps> = ({
       </DrawerBody>
       <DrawerFooter>
         <DrawerClose>
-          <Button variant="cancel" size="sm">
+          <Button variant="cancel" size="md">
             Cancel
           </Button>
         </DrawerClose>
-        <Button size="sm" onClick={handleCreateGroup}>
+        <Button variant="primary" size="md" onClick={handleCreateGroup}>
           Create
         </Button>
       </DrawerFooter>
