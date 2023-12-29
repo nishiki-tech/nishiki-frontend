@@ -36,6 +36,7 @@ export const CategorySelect = ({ hiddenInput, ...buttonProps }: ICategorySelectP
             className={cn(
               inputVariants({ variant: 'rounded', h: 'md' }),
               'flex items-center justify-start gap-2',
+              'data-[state=open]:ring-2 data-[state=open]:ring-primary-dark data-[state=open]:border-transparent',
             )}
             {...buttonProps}
           >
