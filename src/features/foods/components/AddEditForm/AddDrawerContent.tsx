@@ -9,7 +9,7 @@ import {
   DrawerHeader,
   DrawerTitle,
 } from '@/components/ui';
-import { AddDrawerBody } from '@/features/foods/components/AddDrawerBody';
+import { AddDrawerBody } from '@/features/foods/components/AddEditForm/AddDrawerBody';
 import { GroupIdContainersMapType } from '@/features/foods/types/FoodTypes';
 import {
   ContainerIdGroupIdMapType,
