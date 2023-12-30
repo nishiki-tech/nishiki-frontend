@@ -11,15 +11,15 @@ export const MembersPage = async ({ id }: IMembersPageProps) => {
   const users: IUser[] = await fetchUserList(id);
   return (
     <div className="px-4 pt-6 pb-16">
-      <div className="flex items-center justify-between pb-2">
+      <div className="flex items-center justify-between pb-2 h-12">
         <h2 className="text-xl">Members</h2>
         <div className="flex gap-0.5">
-          <div className="flex justify-center items-center">
-            <Icon icon={MenuMeatballIcon} size={12} className="px-3.5" />
-          </div>
-          <div className="flex justify-center items-center">
-            <Icon icon={PlusIcon} size={12} className="p-[15px]" />
-          </div>
+          <Button className="flex justify-center items-center w-12 h-12">
+            <Icon icon={MenuMeatballIcon} size={5} />
+          </Button>
+          <Button className="flex justify-center items-center w-12 h-12">
+            <Icon icon={PlusIcon} size={4.5} />
+          </Button>
         </div>
       </div>
       <div className="flex flex-col gap-2 pb-1">
