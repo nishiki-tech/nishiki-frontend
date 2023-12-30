@@ -18,8 +18,7 @@ export const groupContainersByGroupId = (containers: IContainer[]): GroupIdConta
   );
 };
 
-type ContainerIdNameMapType = IdNameMapType;
-
+export type ContainerIdNameMapType = IdNameMapType;
 /**
  * Create an object with a pair of container id and container name from array of IContainer object
  * @param containers List of IContainer object
@@ -33,7 +32,7 @@ export const createContainerIdNameMap = (containers: IContainer[]): ContainerIdN
   return idNameMap;
 };
 
-type GroupIdNameMapType = IdNameMapType;
+export type GroupIdNameMapType = IdNameMapType;
 /**
  * Create an object with a pair of group id and group name from array of IContainer object
  * @param containers
@@ -49,8 +48,7 @@ export const createGroupIdNameMap = (containers: IContainer[]): GroupIdNameMapTy
   return groupIdGroupNameMap;
 };
 
-type ContainerIdGroupIdMapType = IdNameMapType;
-
+export type ContainerIdGroupIdMapType = IdNameMapType;
 /**
  * Create an object that maps container id to group id from array of IContainer object
  * @param containers Array of IContainer object
