@@ -13,15 +13,16 @@ import {
 import { cn } from '@/lib/tailwind/utils';
 
 import { format } from 'date-fns';
+import { ButtonHTMLAttributes } from 'react';
 import { SelectSingleEventHandler } from 'react-day-picker';
 
-interface IDatePickerProps {
+interface IDatePickerProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onSelect'> {
   date?: Date;
   onSelect?: SelectSingleEventHandler;
   className?: string;
 }
 
-export const DatePicker = ({ date, onSelect, className }: IDatePickerProps) => {
+export const DatePicker = ({ date, onSelect, className, ...buttonProps }: IDatePickerProps) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -32,6 +33,7 @@ export const DatePicker = ({ date, onSelect, className }: IDatePickerProps) => {
             'data-[state=open]:ring-2 data-[state=open]:ring-primary-dark data-[state=open]:border-transparent',
             className,
           )}
+          {...buttonProps}
         >
           <span className="whitespace-nowrap overflow-hidden text-ellipsis">
             {date ? format(date, 'PP') : null}
