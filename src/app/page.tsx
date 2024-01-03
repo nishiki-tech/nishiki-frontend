@@ -1,5 +1,5 @@
-import { HomePage } from '@/components/page/HomePage';
+import { redirect } from 'next/navigation';
 
 export default function Home() {
-  return <HomePage />;
+  redirect('/groups');
 }

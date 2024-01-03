@@ -1,9 +1,9 @@
 import { LoginForm } from '@/components/ui/LoginForm';
 
-export const HomePage = () => {
+export const LoginPage = () => {
   return (
     <>
-      HomePage
+      LoginPage
       <LoginForm />
     </>
   );
