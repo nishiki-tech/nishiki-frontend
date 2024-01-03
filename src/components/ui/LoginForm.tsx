@@ -2,7 +2,7 @@
 import { Amplify } from 'aws-amplify';
 import { fetchAuthSession, signInWithRedirect } from 'aws-amplify/auth';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 const OAUTH_DOMAIN = process.env.NEXT_PUBLIC_OAUTH_DOMAIN || '';
 const LOCALHOST_URL = process.env.NEXT_PUBLIC_LOCALHOST_URL || '';
@@ -35,22 +35,24 @@ export const LoginForm = () => {
   const router = useRouter();
   const [isLoading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const checkSession = async () => {
-      try {
-        const { idToken } = (await fetchAuthSession()).tokens ?? {};
-        if (idToken) {
-          router.push('/groups');
-        } else {
-          setLoading(false);
-        }
-      } catch (err) {
+  const checkSession = useCallback(async () => {
+    try {
+      const { idToken } = (await fetchAuthSession()).tokens ?? {};
+      console.log(idToken?.toString());
+
+      if (idToken) {
+        router.push('/groups');
+      } else {
         setLoading(false);
       }
-    };
-
-    checkSession();
+    } catch (err) {
+      setLoading(false);
+    }
   }, [router]);
+
+  useEffect(() => {
+    checkSession();
+  }, [checkSession]);
 
   if (isLoading) {
     return <div>Loading...</div>;
