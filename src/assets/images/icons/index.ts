@@ -16,6 +16,7 @@ import LogoutIcon from './icon_logout.svg';
 import MenuCircleIcon from './icon_menu-circle.svg';
 import MenuMeatballIcon from './icon_menu-meatball.svg';
 import PenIcon from './icon_pen.svg';
+import PersonCircleIcon from './icon_person-circle.svg';
 import PlusIcon from './icon_plus.svg';
 import ProfileIcon_Off from './icon_profile-off.svg';
 import ProfileIcon_On from './icon_profile-on.svg';
@@ -40,6 +41,7 @@ export {
   MenuCircleIcon,
   MenuMeatballIcon,
   PenIcon,
+  PersonCircleIcon,
   PlusIcon,
   ProfileIcon_Off,
   ProfileIcon_On,
