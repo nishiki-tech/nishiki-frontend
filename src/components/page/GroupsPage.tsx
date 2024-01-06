@@ -13,12 +13,12 @@ interface IGroupsPageProps {
 
 export const GroupsPage: FC<IGroupsPageProps> = ({ groups }) => {
   return (
-    <div className="pt-6">
+    <div className="pt-6 px-4 pb-2 flex flex-col gap-2">
       <div className="h-12 w-full flex items-center justify-end gap-0.5">
         <GroupCollectionMenuButton />
         <CreateGroupButton />
       </div>
-      <div className="pt-2">
+      <div>
         <GroupCardList groups={groups} />
       </div>
     </div>
