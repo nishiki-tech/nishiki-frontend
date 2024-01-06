@@ -11,7 +11,7 @@ export const MembersPage = async ({ id }: IMembersPageProps) => {
   const users: IUser[] = await fetchUserList(id);
   return (
     <div className="px-4 py-6">
-      <div className="flex items-center justify-between pb-2 h-12">
+      <div className="flex items-center justify-between mb-2 h-12">
         <h2 className="text-xl">Members</h2>
         <div className="flex gap-0.5">
           <Button className="flex justify-center items-center w-12 h-12">
