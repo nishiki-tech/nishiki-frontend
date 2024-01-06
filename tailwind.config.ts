@@ -10,12 +10,16 @@ module.exports = {
       fontFamily: {
         outfit: ['var(--font-outfit)', 'sans-serif'],
       },
+      width: {
+        4.5: '1.125rem', // 18px
+      },
       colors: {
         'primary-lightest': '#e6f2f1',
         'primary-light': '#abd4cf',
         primary: '#6ab3ab',
         'primary-dark': '#5fa19a',
         accent: '#fcd884',
+        'accent-dark': '#f1c560',
         danger: '#cd5a5a',
         'danger-dark': '#b95151',
         'gray-lightest': '#f8f8f8',
