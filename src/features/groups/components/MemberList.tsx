@@ -1,4 +1,4 @@
-import { fetchUserList } from '@/lib/api/data';
+import { fetchUserList } from '@/lib/api/userApiClient';
 import { IUser } from '@/types/definition';
 
 export const MemberList = async ({ id }: { id: string }) => {

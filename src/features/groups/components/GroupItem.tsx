@@ -1,5 +1,4 @@
-import { fetchContainerList } from '@/lib/api/data';
-import { fetchUserList } from '@/lib/api/data';
+import { fetchContainerList, fetchUserList } from '@/lib/api';
 import { IContainer, IGroup, IUser } from '@/types/definition';
 
 import Link from 'next/link';

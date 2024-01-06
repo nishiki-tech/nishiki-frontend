@@ -1,5 +1,5 @@
 import { FoodsPage } from '@/components/page/FoodsPage';
-import { fetchAllContainerList } from '@/lib/api/data';
+import { fetchAllContainerList } from '@/lib/api';
 import { IContainer } from '@/types/definition';
 
 export default async function Foods() {
