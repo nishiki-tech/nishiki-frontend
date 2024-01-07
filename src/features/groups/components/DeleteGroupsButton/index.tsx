@@ -9,7 +9,7 @@ import {
 } from '@/components/ui';
 import { cn } from '@/lib/tailwind/utils';
 
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 
 import { DeleteGroupsDrawerContent } from './DeleteGroupsDrawerContent';
 

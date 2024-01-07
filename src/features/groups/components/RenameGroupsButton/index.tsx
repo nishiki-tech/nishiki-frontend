@@ -8,12 +8,12 @@ import {
   SelectionDrawerButtonText,
 } from '@/components/ui';
 
-import React from 'react';
+import { useState } from 'react';
 
 import { RenameGroupsDrawerContent } from './RenameGroupsDrawerContent';
 
 export const RenameGroupsButton = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <DrawerRoot open={isOpen} onOpenChange={setIsOpen}>
       <DrawerTrigger asChild>

@@ -1,6 +1,6 @@
 import { SelectionDrawerContent } from '@/components/ui';
 
-import React, { FC } from 'react';
+import { FC } from 'react';
 
 import { DeleteGroupsButton } from '../DeleteGroupsButton';
 import { RenameGroupsButton } from '../RenameGroupsButton';

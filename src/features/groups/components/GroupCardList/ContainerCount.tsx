@@ -7,7 +7,7 @@ export const ContainerCount = ({ containerCount }: { containerCount: number }) =
       <div className="w-8 h-8 rounded-full bg-accent flex justify-center items-center">
         <Icon icon={ContainerIcon} size={5} color="black" />
       </div>
-      <p>{containerCount}</p>
+      <span>{containerCount}</span>
     </div>
   );
 };

@@ -9,7 +9,7 @@ import {
   Input,
 } from '@/components/ui';
 
-import React, { FC } from 'react';
+import { FC } from 'react';
 
 interface ICreateGroupDrawerContentProps {
   handleCreateGroup: () => void;

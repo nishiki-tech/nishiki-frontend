@@ -13,10 +13,10 @@ export const GroupCard = async ({ group }: { group: IGroup }) => {
   const users: IUser[] = await fetchUserList(group.id);
   return (
     <Card asChild>
-      <Link href={`/groups/${group.id}`} key={group.id}>
+      <Link href={`/groups/${group.id}`}>
         <div className="flex flex-col gap-3">
           <span className="text-lg">{group.name}</span>
-          <div className="w-full flex justify-between">
+          <div className="w-full flex justify-between items-center">
             <ContainerCount containerCount={containers.length} />
             <UserCount userCount={users.length} />
           </div>

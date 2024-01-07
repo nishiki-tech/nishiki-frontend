@@ -1,7 +1,5 @@
 import { DrawerBody, DrawerContent, DrawerHeader, DrawerTitle } from '@/components/ui';
 
-import React from 'react';
-
 export const DeleteGroupsDrawerContent = () => {
   return (
     <DrawerContent side="bottom">

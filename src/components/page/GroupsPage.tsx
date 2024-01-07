@@ -18,9 +18,7 @@ export const GroupsPage: FC<IGroupsPageProps> = ({ groups }) => {
         <GroupCollectionMenuButton />
         <CreateGroupButton />
       </div>
-      <div>
-        <GroupCardList groups={groups} />
-      </div>
+      <GroupCardList groups={groups} />
     </div>
   );
 };
