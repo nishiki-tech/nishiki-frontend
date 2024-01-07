@@ -1,1 +1,0 @@
-export { GroupCollectionMenuButton } from './GroupCollectionMenuButton';

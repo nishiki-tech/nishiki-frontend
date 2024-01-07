@@ -2,8 +2,8 @@ import { SelectionDrawerContent } from '@/components/ui';
 
 import React, { FC } from 'react';
 
-import { DeleteGroupsButton } from '../DeleteGroupsButton/DeleteGroupsButton';
-import { RenameGroupsButton } from '../RenameGroupsButton/RenameGroupsButton';
+import { DeleteGroupsButton } from '../DeleteGroupsButton';
+import { RenameGroupsButton } from '../RenameGroupsButton';
 
 interface IGroupCollectionMenuDrawerContentProps {}
 
