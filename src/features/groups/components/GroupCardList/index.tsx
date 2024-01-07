@@ -8,7 +8,7 @@ export const GroupCardList = async () => {
   return (
     <div className="flex flex-col gap-2">
       {groups.map((group) => (
-        <GroupCard key={group.id} group={group} />
+        <GroupCard key={group.id} groupId={group.id} groupName={group.name} />
       ))}
     </div>
   );
