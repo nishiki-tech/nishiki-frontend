@@ -1,4 +1,4 @@
-import { fetchGroupList } from '@/lib/api/containerApiClient';
+import { fetchGroupList } from '@/lib/api/groupApiClient';
 import { IGroup } from '@/types/definition';
 
 import { GroupCard } from './GroupCard';

@@ -1,5 +1,5 @@
 import { Card } from '@/components/ui';
-import { fetchContainerList } from '@/lib/api/containerApiClient';
+import { fetchContainerList } from '@/lib/api/groupApiClient';
 import { fetchUserList } from '@/lib/api/userApiClient';
 import { IContainer, IUser } from '@/types/definition';
 

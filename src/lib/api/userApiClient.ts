@@ -1,9 +1,8 @@
 import { IUser } from '@/types/definition';
 
-import { redirect } from 'next/navigation';
-
 import { request } from './commonUtils';
-const APIDOMAIN = 'http://localhost:8080';
+
+const BACKEND_API_DOMAIN = process.env.NEXT_PUBLIC_BACKEND_API_DOMAIN || '';
 
 /**
  * Interface representing the API response for multiple users.
@@ -21,11 +20,11 @@ interface IUsersResponse {
 export const fetchUserList = async (id: string): Promise<IUser[]> => {
   try {
     const response: IUsersResponse = await request<IUsersResponse>(
-      APIDOMAIN + '/groups/' + id + '/users',
+      BACKEND_API_DOMAIN + '/groups/' + id + '/users',
       'GET',
     );
     return response.users;
   } catch (err) {
-    redirect('/not-found');
+    throw new Error('API response is invalid'); // TODO: display error page
   }
 };

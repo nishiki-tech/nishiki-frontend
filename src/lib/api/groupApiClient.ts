@@ -1,10 +1,8 @@
 import { IContainer, IFood, IGroup } from '@/types/definition';
 
-import { redirect } from 'next/navigation';
-
 import { request } from './commonUtils';
 
-const APIDOMAIN = 'http://localhost:8080';
+const BACKEND_API_DOMAIN = process.env.NEXT_PUBLIC_BACKEND_API_DOMAIN || '';
 
 /**
  * Interface representing the API response for a group.
@@ -52,13 +50,16 @@ interface IGroupsResponse {
  */
 export const fetchGroupList = async (): Promise<IGroup[]> => {
   try {
-    const data: IGroupsResponse = await request<IGroupsResponse>(APIDOMAIN + '/groups', 'GET');
+    const data: IGroupsResponse = await request<IGroupsResponse>(
+      BACKEND_API_DOMAIN + '/groups',
+      'GET',
+    );
     return data.groups.map((group) => ({
       id: group.groupId,
       name: group.groupName,
     }));
   } catch (err) {
-    redirect('/not-found'); // TODO: display error page
+    throw new Error('API response is invalid'); // TODO: display error page
   }
 };
 
@@ -85,12 +86,12 @@ const convertApiResponseContainers = (containers: IContainerApiResponse[]): ICon
 export const fetchContainerList = async (id: string): Promise<IContainer[]> => {
   try {
     const data: IContainersResponse = await request<IContainersResponse>(
-      APIDOMAIN + '/groups/' + id + '/containers',
+      BACKEND_API_DOMAIN + '/groups/' + id + '/containers',
       'GET',
     );
     return convertApiResponseContainers(data.containers);
   } catch (err) {
-    redirect('/not-found'); // TODO: display error page
+    throw new Error('API response is invalid'); // TODO: display error page
   }
 };
 
@@ -101,11 +102,11 @@ export const fetchContainerList = async (id: string): Promise<IContainer[]> => {
 export const fetchAllContainerList = async (): Promise<IContainer[]> => {
   try {
     const data: IContainersResponse = await request<IContainersResponse>(
-      APIDOMAIN + '/containers',
+      BACKEND_API_DOMAIN + '/containers',
       'GET',
     );
     return convertApiResponseContainers(data.containers);
   } catch (err) {
-    redirect('/not-found'); // TODO: display error page
+    throw new Error('API response is invalid'); // TODO: display error page
   }
 };

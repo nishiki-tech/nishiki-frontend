@@ -12,11 +12,11 @@ interface Options {
 }
 
 /**
- * request method to API gateway
+ * request method to Backend RESTful API
  * @param url url that you send a request to
  * @param method HTTP method
  * @param body HTTP request body
- * @returns T Objects
+ * @returns Promise with Generics Objects
  */
 export const request = async <T>(url: string, method: HttpMethod, body?: string): Promise<T> => {
   const token = await getToken();
