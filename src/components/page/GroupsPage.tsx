@@ -1,13 +1,17 @@
-import { GroupList } from '@/features/groups/components/GroupList';
-import { fetchGroupList } from '@/lib/api';
-import { IGroup } from '@/types/definition';
+import {
+  CreateGroupButton,
+  GroupCardList,
+  GroupCollectionMenuButton,
+} from '@/features/groups/components';
 
-export const GroupsPage = async () => {
-  const groups: IGroup[] = await fetchGroupList();
+export const GroupsPage = () => {
   return (
-    <>
-      GroupsPage
-      <GroupList groups={groups} />
-    </>
+    <div className="pt-6 px-4 pb-2 flex flex-col gap-2">
+      <div className="h-12 w-full flex items-center justify-end gap-0.5">
+        <GroupCollectionMenuButton />
+        <CreateGroupButton />
+      </div>
+      <GroupCardList />
+    </div>
   );
 };
