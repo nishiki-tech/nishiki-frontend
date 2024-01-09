@@ -32,10 +32,16 @@ export const AddDrawerContent = ({
   containerIdNameMap,
   groupIdNameMap,
 }: IAddDrawerContentProps) => {
+  /**
+   * Process when the cancel button is clicked
+   */
   const handleCancelClick = () => {
     setIsDrawerOpen(false);
   };
 
+  /**
+   * Process when the add button is clicked
+   */
   const handleAddClick = () => {
     alert('Successfully added!');
     setIsDrawerOpen(false);

@@ -44,16 +44,16 @@ export const AddDrawerBody = ({
 
   /**
    * Process when a group is selected
-   * @param event
+   * @param groupId
    */
-  const handleSelectGroup = (value: string) => {
-    setSelectedGroup(value);
+  const handleSelectGroup = (groupId: string) => {
+    setSelectedGroup(groupId);
     setSelectedContainer('');
   };
 
   /**
    * Process when a container is selected
-   * @param event
+   * @param containerId
    */
   const handleSelectContainer = (containerId: string) => {
     setSelectedContainer(containerId);

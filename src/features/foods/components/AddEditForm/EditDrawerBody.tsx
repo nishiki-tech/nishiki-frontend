@@ -53,7 +53,7 @@ export const EditDrawerBody = ({
 
   /**
    * Process when a group is selected
-   * @param event
+   * @param groupId
    */
   const handleSelectGroup = (groupId: IGroup['id']) => {
     setSelectedGroup(groupId);
@@ -62,7 +62,7 @@ export const EditDrawerBody = ({
 
   /**
    * Process when a container is selected
-   * @param event
+   * @param containerId
    */
   const handleSelectContainer = (containerId: IContainer['id']) => {
     setSelectedContainer(containerId);
