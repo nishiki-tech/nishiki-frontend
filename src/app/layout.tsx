@@ -8,8 +8,6 @@ import { cn } from '@/lib/tailwind/utils';
 import { Metadata } from 'next';
 import { ReactNode } from 'react';
 
-export const dynamic = 'force-dynamic';
-
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
