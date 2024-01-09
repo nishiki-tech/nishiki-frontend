@@ -1,5 +1,5 @@
 import { GroupsPage } from '@/components/page/GroupsPage';
 
-export default async function Groups() {
+export default function Groups() {
   return <GroupsPage />;
 }
