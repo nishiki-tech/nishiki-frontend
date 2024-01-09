@@ -30,13 +30,23 @@ export const FoodList = ({
   groupIdNameMap,
 }: IFoodListProps) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [clickedFood, setClickedFood] = useState<IFoodView>(foods[0]);
+
+  const handleClick = (food: IFoodView) => {
+    setClickedFood(food);
+  };
 
   return (
     <DrawerRoot open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
       {foods.map((food) => (
         <DrawerTrigger key={food.id} asChild>
           <Card className="bg-white mb-2 w-full" asChild>
-            <Button className="flex gap-4 items-center text-left">
+            <Button
+              className="flex gap-4 items-center text-left"
+              onClick={() => {
+                handleClick(food);
+              }}
+            >
               <figure className="bg-white w-10 h-10 rounded-full flex items-center justify-center border border-primary select-none text-2xl">
                 {foodCategories[food.category]?.emoji}
               </figure>
@@ -57,6 +67,7 @@ export const FoodList = ({
         </DrawerTrigger>
       ))}
       <EditDrawerContent
+        food={clickedFood}
         setIsDrawerOpen={setIsDrawerOpen}
         groupIdContainerIdsMap={groupIdContainerIdsMap}
         containerIdGroupIdMap={containerIdGroupIdMap}

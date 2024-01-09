@@ -12,40 +12,49 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui';
-import { GroupIdContainersMapType } from '@/features/foods/types/FoodTypes';
+import { GroupIdContainersMapType, IFoodView } from '@/features/foods/types/FoodTypes';
 import {
   ContainerIdGroupIdMapType,
   ContainerIdNameMapType,
   GroupIdNameMapType,
 } from '@/features/foods/utils/containerMapping';
-import { IContainer, IGroup } from '@/types/definition';
+import { IContainer, IFood, IGroup } from '@/types/definition';
 
 import { useState } from 'react';
 
 import { CategorySelect, FormDatePicker } from '.';
 
-interface IAddDrawerBodyProps {
+interface IEditDrawerBodyProps {
+  initialFoodData: IFoodView;
   groupIdContainerIdsMap: GroupIdContainersMapType;
   containerIdGroupIdMap: ContainerIdGroupIdMapType;
   containerIdNameMap: ContainerIdNameMapType;
   groupIdNameMap: GroupIdNameMapType;
 }
 
-export const AddDrawerBody = ({
+export const EditDrawerBody = ({
+  initialFoodData,
   groupIdContainerIdsMap,
   containerIdGroupIdMap,
   containerIdNameMap,
   groupIdNameMap,
-}: IAddDrawerBodyProps) => {
-  const [selectedGroup, setSelectedGroup] = useState<IGroup['id']>('');
-  const [selectedContainer, setSelectedContainer] = useState<IContainer['id']>('');
+}: IEditDrawerBodyProps) => {
+  const [name, setName] = useState<IFood['name']>(initialFoodData.name);
+  const [selectedGroup, setSelectedGroup] = useState<IGroup['id']>(
+    containerIdGroupIdMap[initialFoodData.containerId],
+  );
+  const [selectedContainer, setSelectedContainer] = useState<IContainer['id']>(
+    initialFoodData.containerId,
+  );
+  const [quantity, setQuantity] = useState<string>(String(initialFoodData.quantity));
+  const [unit, setUnit] = useState<IFood['unit']>(initialFoodData.unit);
 
   /**
    * Process when a group is selected
    * @param event
    */
-  const handleSelectGroup = (value: string) => {
-    setSelectedGroup(value);
+  const handleSelectGroup = (groupId: IGroup['id']) => {
+    setSelectedGroup(groupId);
     setSelectedContainer('');
   };
 
@@ -53,7 +62,7 @@ export const AddDrawerBody = ({
    * Process when a container is selected
    * @param event
    */
-  const handleSelectContainer = (containerId: string) => {
+  const handleSelectContainer = (containerId: IContainer['id']) => {
     setSelectedContainer(containerId);
     setSelectedGroup(containerIdGroupIdMap[containerId]);
   };
@@ -61,13 +70,22 @@ export const AddDrawerBody = ({
   return (
     <DrawerBody className="flex flex-col gap-4">
       <LabeledInput label="Name" htmlFor="name" required>
-        <Input name="name" id="name" placeholder="Container name" />
+        <Input
+          name="name"
+          id="name"
+          placeholder="Container name"
+          value={name}
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+        />
       </LabeledInput>
+      {/* Make it a separate component */}
       <LabeledInput label="Group" htmlFor="group" required>
         <Select
           name="group"
           value={selectedGroup}
-          onValueChange={(value: string) => handleSelectGroup(value)}
+          onValueChange={(value) => handleSelectGroup(value)}
         >
           <SelectTrigger id="group">
             <SelectValue placeholder="Select a group" />
@@ -81,18 +99,19 @@ export const AddDrawerBody = ({
           </SelectContent>
         </Select>
       </LabeledInput>
+      {/* Make it a separate component */}
       <LabeledInput label="Container" htmlFor="container" required>
         <Select
           name="container"
           value={selectedContainer}
-          onValueChange={(value: string) => handleSelectContainer(value)}
+          onValueChange={(value) => handleSelectContainer(value)}
         >
           <SelectTrigger id="container">
             <SelectValue placeholder="Select a container" />
           </SelectTrigger>
           <SelectContent>
             {Object.entries(groupIdContainerIdsMap).map(
-              ([groupId, containers]: [IGroup['id'], IContainer['id'][]], i) => {
+              ([groupId, containers]: [string, string[]], i) => {
                 return (
                   <SelectGroup key={i}>
                     <SelectLabel>{groupIdNameMap[groupId]}</SelectLabel>
@@ -110,10 +129,26 @@ export const AddDrawerBody = ({
       </LabeledInput>
       <div className="grid grid-cols-2 gap-6">
         <LabeledInput label="Quantity" htmlFor="quantity">
-          <Input name="quantity" id="quantity" type="number" />
+          <Input
+            name="quantity"
+            id="quantity"
+            type="number"
+            value={quantity}
+            onChange={(e) => {
+              setQuantity(e.target.value);
+            }}
+          />
         </LabeledInput>
         <LabeledInput label="Unit" htmlFor="unit">
-          <Input name="unit" id="unit" type="text" />
+          <Input
+            name="unit"
+            id="unit"
+            type="text"
+            value={unit}
+            onChange={(e) => {
+              setUnit(e.target.value);
+            }}
+          />
         </LabeledInput>
       </div>
       <LabeledInput label="Expiry" htmlFor="expiry">

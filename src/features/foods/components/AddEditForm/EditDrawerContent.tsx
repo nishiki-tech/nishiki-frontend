@@ -10,16 +10,17 @@ import {
   DrawerTitle,
   Icon,
 } from '@/components/ui';
-import { GroupIdContainersMapType } from '@/features/foods/types/FoodTypes';
+import { GroupIdContainersMapType, IFoodView } from '@/features/foods/types/FoodTypes';
 import {
   ContainerIdGroupIdMapType,
   ContainerIdNameMapType,
   GroupIdNameMapType,
 } from '@/features/foods/utils/containerMapping';
 
-import { AddDrawerBody } from '.';
+import { EditDrawerBody } from '.';
 
 interface IEditDrawerContentProps {
+  food: IFoodView;
   setIsDrawerOpen: (isOpen: boolean) => void;
   groupIdContainerIdsMap: GroupIdContainersMapType;
   containerIdGroupIdMap: ContainerIdGroupIdMapType;
@@ -28,6 +29,7 @@ interface IEditDrawerContentProps {
 }
 
 export const EditDrawerContent = ({
+  food,
   setIsDrawerOpen,
   groupIdContainerIdsMap,
   containerIdGroupIdMap,
@@ -49,7 +51,8 @@ export const EditDrawerContent = ({
       <DrawerHeader>
         <DrawerTitle>Edit Food</DrawerTitle>
       </DrawerHeader>
-      <AddDrawerBody
+      <EditDrawerBody
+        initialFoodData={food}
         groupIdContainerIdsMap={groupIdContainerIdsMap}
         containerIdGroupIdMap={containerIdGroupIdMap}
         containerIdNameMap={containerIdNameMap}
