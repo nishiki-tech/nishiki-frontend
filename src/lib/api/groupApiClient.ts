@@ -1,5 +1,7 @@
 import { IContainer, IFood, IGroup } from '@/types/definition';
 
+import { redirect } from 'next/navigation';
+
 import { request } from './commonUtils';
 
 const BACKEND_API_DOMAIN = process.env.NEXT_PUBLIC_BACKEND_API_DOMAIN || '';
@@ -59,7 +61,7 @@ export const fetchGroupList = async (): Promise<IGroup[]> => {
       name: group.groupName,
     }));
   } catch (err) {
-    throw new Error('API response is invalid'); // TODO: display error page
+    redirect('/not-found'); // TODO: display error page
   }
 };
 
@@ -107,6 +109,6 @@ export const fetchAllContainerList = async (): Promise<IContainer[]> => {
     );
     return convertApiResponseContainers(data.containers);
   } catch (err) {
-    throw new Error('API response is invalid'); // TODO: display error page
+    redirect('/not-found'); // TODO: display error page
   }
 };
