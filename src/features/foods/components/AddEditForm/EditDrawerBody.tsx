@@ -77,9 +77,7 @@ export const EditDrawerBody = ({
           id="name"
           placeholder="Container name"
           value={name}
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
+          onChange={(e) => setName(e.target.value)}
         />
       </LabeledInput>
       {/* TODO: Make it a separate component */}
@@ -136,9 +134,7 @@ export const EditDrawerBody = ({
             id="quantity"
             type="number"
             value={quantity}
-            onChange={(e) => {
-              setQuantity(e.target.value);
-            }}
+            onChange={(e) => setQuantity(e.target.value)}
           />
         </LabeledInput>
         <LabeledInput label="Unit" htmlFor="unit">
@@ -147,9 +143,7 @@ export const EditDrawerBody = ({
             id="unit"
             type="text"
             value={unit}
-            onChange={(e) => {
-              setUnit(e.target.value);
-            }}
+            onChange={(e) => setUnit(e.target.value)}
           />
         </LabeledInput>
       </div>
