@@ -1,5 +1,6 @@
 'use client';
 
+import DeleteIcon from '@/assets/images/icons/icon_delete.svg';
 import {
   Button,
   DrawerClose,
@@ -7,17 +8,19 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
+  Icon,
 } from '@/components/ui';
-import { GroupIdContainersMapType } from '@/features/foods/types/FoodTypes';
+import { GroupIdContainersMapType, IFoodView } from '@/features/foods/types/FoodTypes';
 import {
   ContainerIdGroupIdMapType,
   ContainerIdNameMapType,
   GroupIdNameMapType,
 } from '@/features/foods/utils/containerMapping';
 
-import { AddDrawerBody } from '.';
+import { EditDrawerBody } from '.';
 
-interface IAddDrawerContentProps {
+interface IEditDrawerContentProps {
+  food: IFoodView;
   setIsDrawerOpen: (isOpen: boolean) => void;
   groupIdContainerIdsMap: GroupIdContainersMapType;
   containerIdGroupIdMap: ContainerIdGroupIdMapType;
@@ -25,34 +28,31 @@ interface IAddDrawerContentProps {
   groupIdNameMap: GroupIdNameMapType;
 }
 
-export const AddDrawerContent = ({
+export const EditDrawerContent = ({
+  food,
   setIsDrawerOpen,
   groupIdContainerIdsMap,
   containerIdGroupIdMap,
   containerIdNameMap,
   groupIdNameMap,
-}: IAddDrawerContentProps) => {
-  /**
-   * Process when the cancel button is clicked
-   */
-  const handleCancelClick = () => {
+}: IEditDrawerContentProps) => {
+  const handleDeleteClick = () => {
+    alert('Successfully deleted!');
     setIsDrawerOpen(false);
   };
 
-  /**
-   * Process when the add button is clicked
-   */
-  const handleAddClick = () => {
-    alert('Successfully added!');
+  const handleUpdateClick = () => {
+    alert('Successfully updated!');
     setIsDrawerOpen(false);
   };
 
   return (
     <DrawerContent side="bottom">
       <DrawerHeader>
-        <DrawerTitle>Add Food</DrawerTitle>
+        <DrawerTitle>Edit Food</DrawerTitle>
       </DrawerHeader>
-      <AddDrawerBody
+      <EditDrawerBody
+        initialFoodData={food}
         groupIdContainerIdsMap={groupIdContainerIdsMap}
         containerIdGroupIdMap={containerIdGroupIdMap}
         containerIdNameMap={containerIdNameMap}
@@ -60,12 +60,13 @@ export const AddDrawerContent = ({
       />
       <DrawerFooter>
         <DrawerClose asChild>
-          <Button variant="cancel" size="sm" onClick={handleCancelClick}>
-            Cancel
+          <Button variant="cancel" size="sm" onClick={handleDeleteClick}>
+            <Icon icon={DeleteIcon} color="danger" size={4.5} />
+            Delete
           </Button>
         </DrawerClose>
-        <Button variant="primary" size="sm" onClick={handleAddClick}>
-          Add food
+        <Button variant="primary" size="sm" onClick={handleUpdateClick}>
+          Update
         </Button>
       </DrawerFooter>
     </DrawerContent>
