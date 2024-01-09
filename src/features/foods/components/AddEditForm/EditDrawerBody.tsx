@@ -2,6 +2,7 @@
 
 import { LabeledInput } from '@/components/parts';
 import {
+  DatePicker,
   DrawerBody,
   Input,
   Select,
@@ -22,7 +23,7 @@ import { IContainer, IFood, IGroup } from '@/types/definition';
 
 import { useState } from 'react';
 
-import { CategorySelect, FormDatePicker } from '.';
+import { CategorySelect } from '.';
 
 interface IEditDrawerBodyProps {
   initialFoodData: IFoodView;
@@ -47,7 +48,8 @@ export const EditDrawerBody = ({
     initialFoodData.containerId,
   );
   const [quantity, setQuantity] = useState<string>(String(initialFoodData.quantity));
-  const [unit, setUnit] = useState<IFood['unit']>(initialFoodData.unit);
+  const [unit, setUnit] = useState<IFood['unit']>(initialFoodData.unit || '');
+  const [date, setDate] = useState<Date | undefined>(initialFoodData.expiry);
 
   /**
    * Process when a group is selected
@@ -111,7 +113,7 @@ export const EditDrawerBody = ({
           </SelectTrigger>
           <SelectContent>
             {Object.entries(groupIdContainerIdsMap).map(
-              ([groupId, containers]: [string, string[]], i) => {
+              ([groupId, containers]: [IGroup['id'], IContainer['id'][]], i) => {
                 return (
                   <SelectGroup key={i}>
                     <SelectLabel>{groupIdNameMap[groupId]}</SelectLabel>
@@ -152,10 +154,8 @@ export const EditDrawerBody = ({
         </LabeledInput>
       </div>
       <LabeledInput label="Expiry" htmlFor="expiry">
-        <FormDatePicker
-          id="expiry"
-          hiddenInput={(date) => <Input type="hidden" name="expiry" value={date} />}
-        />
+        <Input type="hidden" name="expiry" value={String(date)} />
+        <DatePicker id="expiry" date={date} onSelect={setDate} />
       </LabeledInput>
       <LabeledInput label="Category" htmlFor="category">
         <CategorySelect

@@ -2,6 +2,7 @@
 
 import { LabeledInput } from '@/components/parts';
 import {
+  DatePicker,
   DrawerBody,
   Input,
   Select,
@@ -22,7 +23,7 @@ import { IContainer, IGroup } from '@/types/definition';
 
 import { useState } from 'react';
 
-import { CategorySelect, FormDatePicker } from '.';
+import { CategorySelect } from '.';
 
 interface IAddDrawerBodyProps {
   groupIdContainerIdsMap: GroupIdContainersMapType;
@@ -39,6 +40,7 @@ export const AddDrawerBody = ({
 }: IAddDrawerBodyProps) => {
   const [selectedGroup, setSelectedGroup] = useState<IGroup['id']>('');
   const [selectedContainer, setSelectedContainer] = useState<IContainer['id']>('');
+  const [date, setDate] = useState<Date | undefined>();
 
   /**
    * Process when a group is selected
@@ -117,10 +119,8 @@ export const AddDrawerBody = ({
         </LabeledInput>
       </div>
       <LabeledInput label="Expiry" htmlFor="expiry">
-        <FormDatePicker
-          id="expiry"
-          hiddenInput={(date) => <Input type="hidden" name="expiry" value={date} />}
-        />
+        <Input type="hidden" name="expiry" value={String(date)} />
+        <DatePicker id="expiry" date={date} onSelect={setDate} />
       </LabeledInput>
       <LabeledInput label="Category" htmlFor="category">
         <CategorySelect
