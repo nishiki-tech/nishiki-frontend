@@ -44,7 +44,7 @@ export const FoodList = ({
                 <span className="text-left">{food.name}</span>
                 <div className="text-xs text-gray-dark flex items-center gap-1 my-1.5">
                   <Icon icon={ContainerIcon} color="gray-dark" size={3} />
-                  {food.container}
+                  {containerIdNameMap[food.containerId]}
                 </div>
                 <div className="text-sm flex items-center gap-1">
                   <Icon icon={BagIcon} color="black" size={3} />

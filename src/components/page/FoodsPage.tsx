@@ -55,7 +55,7 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
     const initialFoodsView: IFoodView[] = filteredContainers.flatMap((container: IContainer) =>
       container.foods.map((food: IFood) => ({
         ...food,
-        container: container.name,
+        containerId: container.id,
       })),
     );
     const filteredFoods = initialFoodsView.filter(filterByName).filter(filterByCategory);

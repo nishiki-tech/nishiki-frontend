@@ -5,7 +5,7 @@ import { IContainer, IFood } from '@/types/definition';
  * @property {string} container - container name
  */
 export interface IFoodView extends IFood {
-  container: string;
+  containerId: IContainer['id'];
 }
 
 /**
