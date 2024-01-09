@@ -46,7 +46,7 @@ export const AddDrawerBody = ({
    * Process when a group is selected
    * @param groupId
    */
-  const handleSelectGroup = (groupId: string) => {
+  const handleSelectGroup = (groupId: IGroup['id']) => {
     setSelectedGroup(groupId);
     setSelectedContainer('');
   };
@@ -55,7 +55,7 @@ export const AddDrawerBody = ({
    * Process when a container is selected
    * @param containerId
    */
-  const handleSelectContainer = (containerId: string) => {
+  const handleSelectContainer = (containerId: IContainer['id']) => {
     setSelectedContainer(containerId);
     setSelectedGroup(containerIdGroupIdMap[containerId]);
   };
@@ -87,7 +87,7 @@ export const AddDrawerBody = ({
         <Select
           name="container"
           value={selectedContainer}
-          onValueChange={(value: string) => handleSelectContainer(value)}
+          onValueChange={(value) => handleSelectContainer(value)}
         >
           <SelectTrigger id="container">
             <SelectValue placeholder="Select a container" />
