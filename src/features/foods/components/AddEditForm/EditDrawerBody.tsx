@@ -82,7 +82,7 @@ export const EditDrawerBody = ({
           }}
         />
       </LabeledInput>
-      {/* Make it a separate component */}
+      {/* TODO: Make it a separate component */}
       <LabeledInput label="Group" htmlFor="group" required>
         <Select
           name="group"
@@ -101,7 +101,7 @@ export const EditDrawerBody = ({
           </SelectContent>
         </Select>
       </LabeledInput>
-      {/* Make it a separate component */}
+      {/* TODO: Make it a separate component */}
       <LabeledInput label="Container" htmlFor="container" required>
         <Select
           name="container"
