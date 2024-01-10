@@ -1,4 +1,4 @@
-export { AddButton } from './AddEditForm/AddButton';
+export { AddButton } from './AddButton';
 export { BadgeList } from './BadgeList';
 export { CategoryBadge } from './CategoryBadge';
 export { FilterBadge } from './FilterBadge';
