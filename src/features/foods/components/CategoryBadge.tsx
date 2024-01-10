@@ -1,6 +1,5 @@
 import { CrossIcon } from '@/assets/images/icons';
-import { Icon } from '@/components/ui';
-import { Badge } from '@/components/ui/Badge';
+import { Badge, Icon } from '@/components/ui';
 import { cn } from '@/lib/tailwind/utils';
 
 interface ICategoryBadgeProps {

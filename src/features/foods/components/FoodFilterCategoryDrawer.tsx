@@ -3,6 +3,7 @@
 import { CaretRightIcon } from '@/assets/images/icons';
 import {
   Button,
+  Card,
   DrawerBody,
   DrawerContent,
   DrawerHeader,
@@ -11,7 +12,6 @@ import {
   DrawerTrigger,
   Icon,
 } from '@/components/ui';
-import { Card } from '@/components/ui';
 import { foodCategories } from '@/const/foodCategory';
 import { cn } from '@/lib/tailwind/utils';
 
