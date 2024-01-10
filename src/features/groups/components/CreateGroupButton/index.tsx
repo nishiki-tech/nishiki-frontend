@@ -7,14 +7,12 @@ import { FC, useState } from 'react';
 
 import { CreateGroupDrawerContent } from './CreateGroupDrawerContent';
 
-interface ICreateGroupButtonProps {}
+interface ICreateGroupButtonProps {
+  handleCreateGroup: (groupName: string) => Promise<void>;
+}
 
-export const CreateGroupButton: FC<ICreateGroupButtonProps> = ({}) => {
+export const CreateGroupButton: FC<ICreateGroupButtonProps> = ({ handleCreateGroup }) => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const handleCreateGroup = () => {
-    alert('create group');
-  };
 
   return (
     <DrawerRoot open={isOpen} onOpenChange={setIsOpen}>

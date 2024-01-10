@@ -34,6 +34,7 @@ export const request = async <T>(url: string, method: HttpMethod, body?: string)
     options.body = body;
     headers['Content-Type'] = 'application/json';
   }
+  if (method === 'POST') console.log('options', options);
   const response = await fetch(url, options);
   if (!response.ok) {
     throw new Error(`HTTP error. status: ${response.status}`);
