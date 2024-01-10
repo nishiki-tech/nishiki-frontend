@@ -13,6 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui';
+import { CategorySelect } from '@/features/foods/components/Form/CategorySelect';
 import { GroupIdContainersMapType, IFoodView } from '@/features/foods/types/FoodTypes';
 import {
   ContainerIdGroupIdMapType,
@@ -22,8 +23,6 @@ import {
 import { IContainer, IFood, IGroup } from '@/types/definition';
 
 import { useState } from 'react';
-
-import { CategorySelect } from '..';
 
 interface IEditDrawerBodyProps {
   initialFoodData: IFoodView;
