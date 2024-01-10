@@ -17,7 +17,7 @@ import {
   GroupIdNameMapType,
 } from '@/features/foods/utils/containerMapping';
 
-import { EditDrawerBody } from '..';
+import { EditDrawerBody } from './EditDrawerBody';
 
 interface IEditDrawerContentProps {
   food: IFoodView;

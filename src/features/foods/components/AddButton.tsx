@@ -12,7 +12,7 @@ import { cn } from '@/lib/tailwind/utils';
 
 import { useState } from 'react';
 
-import { AddDrawerContent } from './Form/AddDrawerContent';
+import { AddDrawerContent } from './Form';
 
 interface IAddButtonProps {
   groupIdContainerIdsMap: GroupIdContainersMapType;
