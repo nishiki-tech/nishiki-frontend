@@ -21,15 +21,16 @@ interface Options {
 export const request = async <T>(url: string, method: HttpMethod, body?: string): Promise<T> => {
   const token = await getToken();
   if (!token) {
-    throw new Error(`API Unauthorized error.`);
+    throw new Error('API Unauthorized error.');
   }
-  const headers: Record<string, string> = {};
+  const headers: Record<string, string> = {
+    Authorization: `Bearer ${token.idToken}`,
+  };
   const options: Options = {
     method: method,
-    headers: {
-      Authorization: 'Bearer ' + token?.idToken?.toString(),
-    },
+    headers: headers,
   };
+
   if (body) {
     options.body = body;
     headers['Content-Type'] = 'application/json';
