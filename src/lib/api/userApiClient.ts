@@ -19,10 +19,10 @@ interface IUsersResponse {
  */
 export const fetchUserList = async (id: string): Promise<IUser[]> => {
   try {
-    const response: IUsersResponse = await request<IUsersResponse>(
-      BACKEND_API_DOMAIN + '/groups/' + id + '/users',
-      'GET',
-    );
+    const response: IUsersResponse = await request<IUsersResponse>({
+      url: BACKEND_API_DOMAIN + '/groups/' + id + '/users',
+      method: 'GET',
+    });
     return response.users;
   } catch (err) {
     throw new Error('API response is invalid'); // TODO: display error page
