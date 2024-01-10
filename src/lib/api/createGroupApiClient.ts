@@ -16,14 +16,12 @@ export interface ICreateGroupApiResponse {
  * @returns The ID of the newly created group.
  */
 export const createGroup = async (params: ICreateGroupParams): Promise<string> => {
-  console.log('createGroup', params);
-
   try {
-    const data: ICreateGroupApiResponse = await request<ICreateGroupApiResponse>(
-      BACKEND_API_DOMAIN + '/groups',
-      'POST',
-      JSON.stringify(params),
-    );
+    const data: ICreateGroupApiResponse = await request<ICreateGroupApiResponse>({
+      url: BACKEND_API_DOMAIN + '/groups',
+      method: 'POST',
+      body: JSON.stringify(params),
+    });
     return data.groupId;
   } catch (err) {
     throw new Error(`API response is invalid ${err}`);
