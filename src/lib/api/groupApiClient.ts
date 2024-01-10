@@ -50,10 +50,10 @@ interface IGroupsResponse {
  */
 export const fetchGroupList = async (): Promise<IGroup[]> => {
   try {
-    const data: IGroupsResponse = await request<IGroupsResponse>(
-      BACKEND_API_DOMAIN + '/groups',
-      'GET',
-    );
+    const data: IGroupsResponse = await request<IGroupsResponse>({
+      url: BACKEND_API_DOMAIN + '/groups',
+      method: 'GET',
+    });
     return data.groups.map((group) => ({
       id: group.groupId,
       name: group.groupName,
@@ -85,10 +85,10 @@ const convertApiResponseContainers = (containers: IContainerApiResponse[]): ICon
  */
 export const fetchContainerList = async (id: string): Promise<IContainer[]> => {
   try {
-    const data: IContainersResponse = await request<IContainersResponse>(
-      BACKEND_API_DOMAIN + '/groups/' + id + '/containers',
-      'GET',
-    );
+    const data: IContainersResponse = await request<IContainersResponse>({
+      url: BACKEND_API_DOMAIN + '/groups/' + id + '/containers',
+      method: 'GET',
+    });
     return convertApiResponseContainers(data.containers);
   } catch (err) {
     throw new Error('API response is invalid'); // TODO: display error page
@@ -101,10 +101,10 @@ export const fetchContainerList = async (id: string): Promise<IContainer[]> => {
  */
 export const fetchAllContainerList = async (): Promise<IContainer[]> => {
   try {
-    const data: IContainersResponse = await request<IContainersResponse>(
-      BACKEND_API_DOMAIN + '/containers',
-      'GET',
-    );
+    const data: IContainersResponse = await request<IContainersResponse>({
+      url: BACKEND_API_DOMAIN + '/containers',
+      method: 'GET',
+    });
     return convertApiResponseContainers(data.containers);
   } catch (err) {
     throw new Error('API response is invalid'); // TODO: display error page
