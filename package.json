@@ -28,7 +28,6 @@
     "@radix-ui/react-tabs": "^1.0.4",
     "@svgr/webpack": "^8.1.0",
     "aws-amplify": "^6.0.9",
-    "axios": "^1.6.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "date-fns": "^3.0.6",

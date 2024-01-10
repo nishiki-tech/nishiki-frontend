@@ -1,5 +1,7 @@
 import { GroupsPage } from '@/components/page/GroupsPage';
 
-export default async function Groups() {
+export const dynamic = 'force-dynamic';
+
+export default function Groups() {
   return <GroupsPage />;
 }
