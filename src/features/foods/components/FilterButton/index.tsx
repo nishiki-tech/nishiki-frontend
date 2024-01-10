@@ -33,7 +33,7 @@ import { Route } from 'next';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-import { CategoryBadge } from '.';
+import { CategoryBadge } from './CategoryBadge';
 import { FoodFilterCategoryDrawer } from './FoodFilterCategoryDrawer';
 
 interface IFilterButtonProps {
