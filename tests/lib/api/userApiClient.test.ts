@@ -1,11 +1,11 @@
-import { fetchGroupList } from '@/lib/api';
+import { fetchUserList } from '@/lib/api';
 import * as commonUtils from '@/lib/api/commonUtils';
 
 jest.mock('@/lib/api/commonUtils', () => ({
   request: jest.fn(),
 }));
 
-const mockGroup = { groupId: '1', groupName: 'Group 1' };
+const mockUser = { userId: '1', userName: 'User 1' };
 
 const setUpMockRequest = <T>(mockData: T) => {
   return jest.spyOn(commonUtils, 'request').mockResolvedValue(mockData);
@@ -16,12 +16,13 @@ describe('API Function Tests', () => {
     jest.clearAllMocks();
   });
 
-  describe('fetchGroupList', () => {
-    it('successfully fetches group list', async () => {
-      const mockRequest = setUpMockRequest({ groups: [mockGroup] });
-      const expectedValue = [{ id: '1', name: 'Group 1' }];
+  describe('fetchUserList', () => {
+    const mockUserId = '123';
+    it('successfully fetches user list for a group', async () => {
+      const mockRequest = setUpMockRequest({ users: [mockUser] });
+      const expectedValue = [{ ...mockUser }];
 
-      const result = await fetchGroupList();
+      const result = await fetchUserList(mockUserId);
 
       expect(result).toEqual(expectedValue);
       expect(mockRequest).toHaveBeenCalledTimes(1);
@@ -29,7 +30,7 @@ describe('API Function Tests', () => {
 
     it('throws an error on API failure', async () => {
       jest.spyOn(commonUtils, 'request').mockRejectedValue(new Error('Network error'));
-      const result = fetchGroupList();
+      const result = fetchUserList(mockUserId);
       await expect(result).rejects.toThrow('API response is invalid');
     });
   });
