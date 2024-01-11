@@ -57,6 +57,7 @@ Example:
 
 <!-- You can tick the checkboxes if not applicable -->
 
+- [ ] The naming convention of the PR title is correct (See the comment at the top of this template)
 - [ ] The base branch is correct (See: [Types of Branches](https://github.com/genesis-tech-tribe/nishiki-frontend/blob/develop/docs/CONTRIBUTING.md#types-of-branches))
 - [ ] The branch name follows the [Branch Naming Conventions](https://github.com/genesis-tech-tribe/nishiki-frontend/blob/develop/docs/CONTRIBUTING.md#branch-naming-conventions)
 - [ ] The correct assignees and reviewers have been designated for this PR
@@ -69,6 +70,7 @@ Example:
 
 <!-- You can tick the checkboxes if not applicable -->
 
+- [ ] Double-check the "Assignee Checklist"
 - [ ] The code follows the generic best practices and our [Coding Style Guide](https://github.com/genesis-tech-tribe/nishiki-frontend/blob/develop/docs/STYLEGUIDE.md)
 - [ ] Code is well-commented and easy to understand
 - [ ] UI changes accurately reflect the provided design
