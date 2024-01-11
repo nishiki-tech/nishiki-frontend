@@ -6,7 +6,7 @@ import { IContainer, IGroup } from '@/types/definition';
 import { Route } from 'next';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
-import { FilterBadge } from '.';
+import { FilterBadge } from './FilterBadge';
 
 export const BadgeList = ({
   groupName,

@@ -15,7 +15,7 @@ import {
   GroupIdNameMapType,
 } from '@/features/foods/utils/containerMapping';
 
-import { AddDrawerBody } from '.';
+import { AddDrawerBody } from './AddDrawerBody';
 
 interface IAddDrawerContentProps {
   setIsDrawerOpen: (isOpen: boolean) => void;
