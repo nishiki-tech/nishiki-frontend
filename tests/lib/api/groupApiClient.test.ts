@@ -5,7 +5,7 @@ jest.mock('@/lib/api/commonUtils', () => ({
   request: jest.fn(),
 }));
 
-const mockGroup = { groupId: '1', groupName: 'Group 1' };
+const mockGroup = { groupId: 'a3kdifut-a520-c2cb-1be7-d90710691861', groupName: 'Shared-house' };
 
 const setUpMockRequest = <T>(mockData: T) => {
   return jest.spyOn(commonUtils, 'request').mockResolvedValue(mockData);
@@ -19,7 +19,7 @@ describe('API Function Tests', () => {
   describe('fetchGroupList', () => {
     it('successfully fetches group list', async () => {
       const mockRequest = setUpMockRequest({ groups: [mockGroup] });
-      const expectedValue = [{ id: '1', name: 'Group 1' }];
+      const expectedValue = [{ id: 'a3kdifut-a520-c2cb-1be7-d90710691861', name: 'Shared-house' }];
 
       const result = await fetchGroupList();
 

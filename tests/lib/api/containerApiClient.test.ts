@@ -6,9 +6,9 @@ jest.mock('@/lib/api/commonUtils', () => ({
 }));
 
 const mockContainer = {
-  id: '1',
-  name: 'Container 1',
-  group: { groupId: '123', groupName: 'Group 123' },
+  id: '939a4c50-ee7b-4558-b8d5-371514e77bed',
+  name: 'Shared-houses Fridge',
+  group: { groupId: 'a3kdifut-a520-c2cb-1be7-d90710691861', groupName: 'Shared-house' },
   foods: [
     {
       id: '11111111-58b7-4c3d-9548-fc0a4d3b3ef4',
@@ -32,13 +32,13 @@ describe('API Function Tests', () => {
   });
 
   describe('fetchContainerList', () => {
-    const mockGroupId = '123';
+    const mockGroupId = 'a3kdifut-a520-c2cb-1be7-d90710691861';
     it('successfully fetches container list for a group', async () => {
       const mockRequest = setUpMockRequest({ containers: [mockContainer] });
       const expectedValue = [
         {
           ...mockContainer,
-          group: { id: '123', name: 'Group 123' },
+          group: { id: 'a3kdifut-a520-c2cb-1be7-d90710691861', name: 'Shared-house' },
         },
       ];
 
@@ -61,7 +61,7 @@ describe('API Function Tests', () => {
       const expectedValue = [
         {
           ...mockContainer,
-          group: { id: '123', name: 'Group 123' },
+          group: { id: 'a3kdifut-a520-c2cb-1be7-d90710691861', name: 'Shared-house' },
         },
       ];
 
