@@ -3,7 +3,12 @@ import { runWithAmplifyServerContext } from '@/utils/amplifyServerUtils';
 import { fetchAuthSession } from 'aws-amplify/auth/server';
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function middleware(request: NextRequest) {
+/**
+ * Next.js middleware is the code which is run before a request is completed
+ * @param request: NextRequest
+ * @returns NextResponse
+ */
+export const middleware = async (request: NextRequest) => {
   const response = NextResponse.next();
 
   const authenticated = await runWithAmplifyServerContext({
@@ -29,7 +34,7 @@ export async function middleware(request: NextRequest) {
 
   // If user is not authenticated and on login page, stay, otherwise, redirect to login page.
   return isOnLoginPage ? response : NextResponse.redirect(new URL('/login', request.url));
-}
+};
 
 export const config = {
   matcher: [

@@ -3,7 +3,6 @@
 import { BagIcon, ContainerIcon } from '@/assets/images/icons';
 import { Button, Card, DrawerRoot, DrawerTrigger, Icon } from '@/components/ui';
 import { foodCategories } from '@/const/foodCategory';
-import { EditDrawerContent } from '@/features/foods/components/AddEditForm';
 import { GroupIdContainersMapType, IFoodView } from '@/features/foods/types/FoodTypes';
 import {
   ContainerIdGroupIdMapType,
@@ -13,6 +12,8 @@ import {
 
 import { format } from 'date-fns';
 import { useState } from 'react';
+
+import { EditDrawerContent } from './Form';
 
 interface IFoodListProps {
   foods: IFoodView[];

@@ -1,6 +1,5 @@
 import { CrossIcon } from '@/assets/images/icons';
-import { Icon } from '@/components/ui';
-import { Badge } from '@/components/ui/Badge';
+import { Badge, Icon } from '@/components/ui';
 import { cn } from '@/lib/tailwind/utils';
 
 interface ICategoryBadgeProps {
@@ -10,7 +9,13 @@ interface ICategoryBadgeProps {
   onCrossClick?: () => void;
 }
 
-const CategoryBadge = ({ emoji, text, className, onCrossClick, ...props }: ICategoryBadgeProps) => {
+export const CategoryBadge = ({
+  emoji,
+  text,
+  className,
+  onCrossClick,
+  ...props
+}: ICategoryBadgeProps) => {
   return (
     <Badge variant="lightest" className={cn('pl-1 pr-0 gap-0', className)} {...props}>
       <div className="bg-white w-4 h-4 rounded-full p-[3px] mr-1 flex items-center justify-center text-2xs select-none">
@@ -23,5 +28,3 @@ const CategoryBadge = ({ emoji, text, className, onCrossClick, ...props }: ICate
     </Badge>
   );
 };
-
-export { CategoryBadge };
