@@ -36,6 +36,20 @@ export { Input, inputVariants, NumberInput, SearchInput } from './Input';
 export { Label } from './Label';
 export { Popover, PopoverContent, PopoverTrigger } from './Popover';
 export {
+  SecondaryDrawerBody,
+  SecondaryDrawerClose,
+  SecondaryDrawerContent,
+  SecondaryDrawerDescription,
+  SecondaryDrawerFooter,
+  SecondaryDrawerHeader,
+  SecondaryDrawerOverlay,
+  SecondaryDrawerPortal,
+  SecondaryDrawerRoot,
+  SecondaryDrawerTitle,
+  SecondaryDrawerTrigger,
+  SecondaryDrawerVariants,
+} from './SecondaryDrawer';
+export {
   Select,
   SelectContent,
   SelectGroup,
