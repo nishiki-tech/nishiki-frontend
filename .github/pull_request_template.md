@@ -38,6 +38,14 @@ Example:
 <!-- Necessary for UI changes -->
 <!-- Delete this section if not needed -->
 
+## References
+
+<!-- List all the URLs of the references (documents, articles, youtube videos, etc.) that you used to complete this task -->
+<!-- If you have referred to responses from ChatGPT or other AIs, please include the links to the conversations if possible -->
+<!-- Delete this section if not needed -->
+
+-
+
 ## Note
 
 <!-- Write any note or comment. You can share your thoughts or ideas. -->
