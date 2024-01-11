@@ -6,6 +6,7 @@ import CaretRightIcon from './icon_caret-right.svg';
 import ContainerIcon from './icon_container.svg';
 import CrossIcon from './icon_cross.svg';
 import DeleteIcon from './icon_delete.svg';
+import ExclamationIcon from './icon_exclamation.svg';
 import FilterIcon from './icon_filter.svg';
 import FoodIcon_Off from './icon_food-off.svg';
 import FoodIcon_On from './icon_food-on.svg';
@@ -31,6 +32,7 @@ export {
   ContainerIcon,
   CrossIcon,
   DeleteIcon,
+  ExclamationIcon,
   FilterIcon,
   FoodIcon_Off,
   FoodIcon_On,
