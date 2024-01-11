@@ -72,5 +72,5 @@ Example:
 
 - [ ] Double-check the "Assignee Checklist"
 - [ ] The code follows the generic best practices and our [Coding Style Guide](https://github.com/genesis-tech-tribe/nishiki-frontend/blob/develop/docs/STYLEGUIDE.md)
-- [ ] Code is well-commented and easy to understand
-- [ ] UI changes accurately reflect the provided design
+- [ ] The code is well-commented and easy to understand
+- [ ] The UI changes accurately reflect the provided design
