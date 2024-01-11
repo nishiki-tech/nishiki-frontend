@@ -62,7 +62,6 @@ const useFormField = () => {
     id,
     name: fieldContext.name,
     formItemId: `${id}-form-item`,
-    formDescriptionId: `${id}-form-item-description`,
     formMessageId: `${id}-form-item-message`,
     ...fieldState,
   };
@@ -106,13 +105,13 @@ FormLabel.displayName = 'FormLabel';
 
 const FormControl = forwardRef<ElementRef<typeof Slot>, ComponentPropsWithoutRef<typeof Slot>>(
   ({ ...props }, ref) => {
-    const { error, formItemId, formDescriptionId, formMessageId } = useFormField();
+    const { error, formItemId } = useFormField();
 
     return (
       <Slot
         ref={ref}
         id={formItemId}
-        aria-describedby={!error ? `${formDescriptionId}` : `${formDescriptionId} ${formMessageId}`}
+        // aria-describedby={!error ? `${formDescriptionId}` : `${formDescriptionId} ${formMessageId}`}
         aria-invalid={!!error}
         {...props}
       />
@@ -120,22 +119,6 @@ const FormControl = forwardRef<ElementRef<typeof Slot>, ComponentPropsWithoutRef
   },
 );
 FormControl.displayName = 'FormControl';
-
-const FormDescription = forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLParagraphElement>>(
-  ({ className, ...props }, ref) => {
-    const { formDescriptionId } = useFormField();
-
-    return (
-      <p
-        ref={ref}
-        id={formDescriptionId}
-        className={cn('text-sm text-muted-foreground', className)}
-        {...props}
-      />
-    );
-  },
-);
-FormDescription.displayName = 'FormDescription';
 
 const FormMessage = forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLParagraphElement>>(
   ({ className, children, ...props }, ref) => {
@@ -160,13 +143,4 @@ const FormMessage = forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLParagrap
 );
 FormMessage.displayName = 'FormMessage';
 
-export {
-  Form,
-  FormControl,
-  // FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-  useFormField,
-};
+export { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, useFormField };
