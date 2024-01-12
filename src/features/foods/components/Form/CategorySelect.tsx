@@ -12,23 +12,27 @@ import {
 import { foodCategories } from '@/const/foodCategory';
 import { cn } from '@/lib/tailwind/utils';
 
-import { ButtonHTMLAttributes, ReactNode, useState } from 'react';
+import { ButtonHTMLAttributes, Dispatch, SetStateAction, useState } from 'react';
 
 interface ICategorySelectProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  hiddenInput: (category: string) => ReactNode;
+  selectedCategory: string;
+  setSelectedCategory: Dispatch<SetStateAction<string>>;
 }
 
-export const CategorySelect = ({ hiddenInput, ...buttonProps }: ICategorySelectProps) => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('unselected');
+export const CategorySelect = ({
+  selectedCategory: category,
+  setSelectedCategory: setCategory,
+  ...buttonProps
+}: ICategorySelectProps) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const handleCategorySelect = (category: string) => {
-    setSelectedCategory(category);
+  const handleClick = (cat: string) => {
+    setCategory(cat);
+    setIsDrawerOpen(false);
   };
 
   return (
     <>
-      {hiddenInput(selectedCategory)}
       <DrawerRoot open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
         <DrawerTrigger asChild>
           <Button
@@ -41,15 +45,15 @@ export const CategorySelect = ({ hiddenInput, ...buttonProps }: ICategorySelectP
             {...buttonProps}
           >
             <div className="w-6 aspect-square rounded-full border border-primary flex items-center justify-center">
-              <span className="text-base">{foodCategories[selectedCategory].emoji}</span>
+              <span className="text-base">{foodCategories[category].emoji}</span>
             </div>
             <span
               className={cn(
                 'whitespace-nowrap overflow-hidden text-ellipsis',
-                selectedCategory === 'unselected' && 'text-gray',
+                category === 'unselected' && 'text-gray',
               )}
             >
-              {foodCategories[selectedCategory].name}
+              {foodCategories[category].name}
             </span>
           </Button>
         </DrawerTrigger>
@@ -60,15 +64,12 @@ export const CategorySelect = ({ hiddenInput, ...buttonProps }: ICategorySelectP
           <DrawerBody>
             <div className="flex flex-col gap-2">
               {Object.entries(foodCategories).map(([key, value]) => {
-                const isSelected = selectedCategory === key;
+                const isSelected = category === key;
                 return (
                   <Card
                     key={key}
                     className={cn('border border-primary', isSelected ? 'bg-primary' : 'bg-white')}
-                    onClick={() => {
-                      handleCategorySelect(key);
-                      setIsDrawerOpen(false);
-                    }}
+                    onClick={() => handleClick(key)}
                     asChild
                   >
                     <Button className="flex gap-4 items-center justify-start">

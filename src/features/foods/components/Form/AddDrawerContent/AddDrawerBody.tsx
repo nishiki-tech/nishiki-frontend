@@ -40,6 +40,7 @@ export const AddDrawerBody = ({
   const [selectedGroup, setSelectedGroup] = useState<IGroup['id']>('');
   const [selectedContainer, setSelectedContainer] = useState<IContainer['id']>('');
   const [date, setDate] = useState<Date | undefined>();
+  const [category, setCategory] = useState<string>('unselected');
 
   /**
    * Process when a group is selected
@@ -122,9 +123,11 @@ export const AddDrawerBody = ({
         <DatePicker id="expiry" date={date} onSelect={setDate} />
       </LabeledInput>
       <LabeledInput label="Category" htmlFor="category">
+        <Input type="hidden" name="category" value={category} />
         <CategorySelect
           id="category"
-          hiddenInput={(category) => <Input type="hidden" name="category" value={category} />}
+          selectedCategory={category}
+          setSelectedCategory={setCategory}
         />
       </LabeledInput>
       {/* "Add more" checkbox will be added here */}
