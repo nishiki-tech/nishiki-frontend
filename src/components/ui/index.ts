@@ -47,7 +47,6 @@ export {
   SecondaryDrawerRoot,
   SecondaryDrawerTitle,
   SecondaryDrawerTrigger,
-  SecondaryDrawerVariants,
 } from './SecondaryDrawer';
 export {
   Select,
