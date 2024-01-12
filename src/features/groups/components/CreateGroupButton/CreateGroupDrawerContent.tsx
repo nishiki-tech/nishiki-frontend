@@ -12,7 +12,7 @@ import {
 
 import { useState } from 'react';
 
-import { createGroupAction } from './createGroupAction';
+import { createGroupAction } from './createGroupaction';
 
 export const CreateGroupDrawerContent = () => {
   const [groupName, setGroupName] = useState('');
