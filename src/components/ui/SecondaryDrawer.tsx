@@ -22,7 +22,6 @@ import {
   Title as PrimitiveTitle,
   Trigger as PrimitiveTrigger,
 } from '@radix-ui/react-dialog';
-import { cva, type VariantProps } from 'class-variance-authority';
 import { ComponentPropsWithoutRef, ElementRef, forwardRef, HTMLAttributes } from 'react';
 
 const SecondaryDrawerRoot = PrimitiveRoot;
@@ -47,37 +46,22 @@ const SecondaryDrawerOverlay = forwardRef<
 ));
 SecondaryDrawerOverlay.displayName = PrimitiveOverlay.displayName;
 
-const SecondaryDrawerVariants = cva(cn('fixed z-50 bg-primary-lightest flex flex-col'), {
-  variants: {
-    side: {
-      bottom: cn(
-        'inset-x-0 bottom-0 rounded-t h-[calc(100vh-2rem)]',
-        'data-[state=open]:animate-slideInFromBottom data-[state=closed]:animate-slideOutToBottom',
-      ),
-      right: cn(
-        'inset-y-0 right-0 h-full w-5/6 max-w-sm',
-        'data-[state=open]:animate-slideInFromRight data-[state=closed]:animate-slideOutToRight',
-      ),
-    },
-  },
-  defaultVariants: {
-    side: 'bottom',
-  },
-});
-
-interface ISecondaryDrawerContentProps
-  extends ComponentPropsWithoutRef<typeof PrimitiveContent>,
-    VariantProps<typeof SecondaryDrawerVariants> {}
+interface ISecondaryDrawerContentProps extends ComponentPropsWithoutRef<typeof PrimitiveContent> {}
 
 const SecondaryDrawerContent = forwardRef<
   ElementRef<typeof PrimitiveContent>,
   ISecondaryDrawerContentProps
->(({ side, className, children, ...props }, ref) => (
+>(({ className, children, ...props }, ref) => (
   <SecondaryDrawerPortal>
     <SecondaryDrawerOverlay />
     <PrimitiveContent
       ref={ref}
-      className={cn(SecondaryDrawerVariants({ side }), className)}
+      className={cn(
+        'fixed z-50 bg-primary-lightest flex flex-col',
+        'inset-x-0 bottom-0 rounded-t h-[calc(100vh-2rem)]',
+        'data-[state=open]:animate-slideInFromBottom data-[state=closed]:animate-slideOutToBottom',
+        className,
+      )}
       {...props}
     >
       {children}
@@ -165,5 +149,4 @@ export {
   SecondaryDrawerRoot,
   SecondaryDrawerTitle,
   SecondaryDrawerTrigger,
-  SecondaryDrawerVariants,
 };
