@@ -60,6 +60,12 @@ export const FromUsageExample = () => {
     },
   });
 
+  useEffect(() => {
+    if (!isDrawerOpen) {
+      form.reset();
+    }
+  }, [isDrawerOpen, form]);
+
   type Inputs = z.infer<typeof formSchema>;
 
   const processSubmit: SubmitHandler<Inputs> = (values) => {
