@@ -3,7 +3,7 @@
 import { cn } from '@/lib/tailwind/utils';
 
 import { VariantProps } from 'class-variance-authority';
-import { FC, InputHTMLAttributes } from 'react';
+import { forwardRef, InputHTMLAttributes, KeyboardEvent } from 'react';
 
 import { Input, inputVariants } from './Input';
 
@@ -30,7 +30,7 @@ const SYMBOLS = {
 };
 
 const handleExceptionSymbols = (
-  event: React.KeyboardEvent<HTMLInputElement>,
+  event: KeyboardEvent<HTMLInputElement>,
   exceptionSymbolsProps: IExceptionSymbolsProps,
 ) => {
   const { key, currentTarget } = event;
@@ -57,20 +57,28 @@ const defaultExceptionSymbols: IExceptionSymbolsProps = {
   exceptPlusOperator: true,
 };
 
-export const NumberInput: FC<INumberInputProps> = ({
-  className,
-  variant = defaultVariant,
-  onKeyDown = handleExceptionSymbols,
-  exceptionSymbolsProps = defaultExceptionSymbols,
-  ...props
-}) => {
-  return (
-    <Input
-      type="number"
-      variant={variant}
-      className={cn('flex-1', className)}
-      onKeyDown={(e) => onKeyDown(e, exceptionSymbolsProps)}
-      {...props}
-    />
-  );
-};
+export const NumberInput = forwardRef<HTMLInputElement, INumberInputProps>(
+  (
+    {
+      className,
+      variant = defaultVariant,
+      onKeyDown = handleExceptionSymbols,
+      exceptionSymbolsProps = defaultExceptionSymbols,
+      ...props
+    },
+    ref,
+  ) => {
+    return (
+      <Input
+        type="number"
+        variant={variant}
+        className={cn('flex-1', className)}
+        onKeyDown={(e) => onKeyDown(e, exceptionSymbolsProps)}
+        ref={ref}
+        {...props}
+      />
+    );
+  },
+);
+
+NumberInput.displayName = 'NumberInput';
