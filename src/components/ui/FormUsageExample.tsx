@@ -41,9 +41,9 @@ export const FromUsageExample = () => {
     name: z.string().min(1, { message: 'Name is required' }),
     group: z.string().min(1, { message: 'Group is required' }),
     container: z.string().min(1, { message: 'Container is required' }),
-    quantity: z.string(),
-    unit: z.string(),
-    expiry: z.coerce.date(),
+    quantity: z.string().optional(),
+    unit: z.string().optional(),
+    expiry: z.coerce.date().optional(),
     category: z.string(),
   });
 
@@ -53,8 +53,8 @@ export const FromUsageExample = () => {
       name: '',
       group: '',
       container: '',
-      quantity: '',
-      unit: '',
+      quantity: undefined,
+      unit: undefined,
       expiry: undefined,
       category: 'unselected',
     },
@@ -65,7 +65,13 @@ export const FromUsageExample = () => {
   const processSubmit: SubmitHandler<Inputs> = (values) => {
     console.log({ values });
     alert('Submitted!');
+    form.reset();
     setIsDrawerOpen(false);
+  };
+
+  const handleGroupChange = (group: string) => {
+    form.setValue('group', group);
+    form.setValue('container', '');
   };
 
   return (
@@ -101,7 +107,7 @@ export const FromUsageExample = () => {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel required>Group</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <Select onValueChange={handleGroupChange} defaultValue={field.value}>
                       <FormControl>
                         <SelectTrigger variant="rounded">
                           <SelectValue placeholder="Select a group" />
@@ -126,7 +132,7 @@ export const FromUsageExample = () => {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel required>Container</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
                         <SelectTrigger variant="rounded">
                           <SelectValue placeholder="Select a container" />
