@@ -11,11 +11,11 @@ import {
 
 import { useState } from 'react';
 
+import { createGroupAction } from './CreateGroupAction';
+
 export const CreateGroupDrawerContent = () => {
   const [groupName, setGroupName] = useState('');
-  const createGroupAction = (groupName: string) => {
-    console.log('Create group action', groupName);
-  };
+
   return (
     <DrawerContent side="bottom">
       <DrawerHeader>
