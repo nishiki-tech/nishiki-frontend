@@ -30,7 +30,7 @@ import {
 import { CategorySelect } from '@/features/foods/components/Form';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -60,14 +60,24 @@ export const FromUsageExample = () => {
     },
   });
 
+  /**
+   * Reset the form when the drawer is closed.
+   */
   useEffect(() => {
     if (!isDrawerOpen) {
       form.reset();
     }
   }, [isDrawerOpen, form]);
 
+  /**
+   * The type of the form inputs based on the schema
+   */
   type Inputs = z.infer<typeof formSchema>;
 
+  /**
+   * Process the form submission.
+   * @param values The form values
+   */
   const processSubmit: SubmitHandler<Inputs> = (values) => {
     console.log({ values });
     alert('Submitted!');
@@ -75,6 +85,10 @@ export const FromUsageExample = () => {
     setIsDrawerOpen(false);
   };
 
+  /**
+   * Process when a group is selected.
+   * @param group selected group
+   */
   const handleGroupChange = (group: string) => {
     form.setValue('group', group);
     form.setValue('container', '');
