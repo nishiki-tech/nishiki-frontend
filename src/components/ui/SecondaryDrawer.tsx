@@ -88,11 +88,13 @@ SecondaryDrawerContent.displayName = PrimitiveContent.displayName;
 
 interface ISecondaryDrawerHeaderProps extends HTMLAttributes<HTMLDivElement> {
   closeButton?: boolean;
+  closeText?: string;
 }
 
 const SecondaryDrawerHeader = ({
   className,
   closeButton = true,
+  closeText,
   children,
   ...props
 }: ISecondaryDrawerHeaderProps) => (
@@ -105,18 +107,23 @@ const SecondaryDrawerHeader = ({
     {...props}
   >
     {children}
-    {closeButton && (
-      <SecondaryDrawerClose className={cn('absolute right-0 h-full px-4')}>
-        <Icon icon={CrossIcon} color="gray-dark" size={3.5} />
-        <span className="sr-only">Close</span>
-      </SecondaryDrawerClose>
-    )}
+    {closeButton &&
+      (closeText ? (
+        <SecondaryDrawerClose className={cn('absolute right-0 h-full px-6')}>
+          <span>{closeText}</span>
+        </SecondaryDrawerClose>
+      ) : (
+        <SecondaryDrawerClose className={cn('absolute right-0 h-full px-4')}>
+          <Icon icon={CrossIcon} size={3.5} />
+          <span className="sr-only">Close</span>
+        </SecondaryDrawerClose>
+      ))}
   </div>
 );
 SecondaryDrawerHeader.displayName = 'SecondaryDrawerHeader';
 
 /**
- * This is a custom component that we use to wrap the body (between header and footer) of the dialog.
+ * This is a custom component that we use to wrap the body (between header and footer) of the secondary Drawer.
  */
 const SecondaryDrawerBody = forwardRef<ElementRef<'div'>, HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (
