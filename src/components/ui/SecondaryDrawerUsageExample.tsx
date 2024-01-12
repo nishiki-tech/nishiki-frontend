@@ -32,8 +32,8 @@ export const SecondaryDrawerUsageExample = () => {
           Open
         </Button>
       </SecondaryDrawerTrigger>
-      <SecondaryDrawerContent side="bottom">
-        <SecondaryDrawerHeader closeText="Done">
+      <SecondaryDrawerContent>
+        <SecondaryDrawerHeader>
           <SecondaryDrawerTitle>Delete Container</SecondaryDrawerTitle>
         </SecondaryDrawerHeader>
         <SecondaryDrawerBody>
