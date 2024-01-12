@@ -21,9 +21,11 @@ export const CreateGroupDrawerContent = () => {
       <DrawerHeader>
         <DrawerTitle>Create Group</DrawerTitle>
       </DrawerHeader>
-      <form onSubmit={() => createGroupAction(groupName)}>
+      <form action={() => createGroupAction(groupName)}>
         <DrawerBody>
           <Input
+            id="groupName"
+            name="groupName"
             placeholder="Group Name"
             value={groupName}
             onChange={(e) => setGroupName(e.target.value)}

@@ -1,5 +1,5 @@
 'use server';
-// import { createGroup } from '@/lib/api';
+import { createGroup } from '@/lib/api';
 
 /**
  *
@@ -8,6 +8,5 @@
  * @returns {Promise<void>}
  */
 export async function createGroupAction(groupName: string) {
-  console.log(`Creating group with name: ${groupName}`);
-  // await createGroup({ groupName });
+  return await createGroup({ groupName });
 }
