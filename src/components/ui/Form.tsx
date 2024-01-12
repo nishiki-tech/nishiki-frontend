@@ -1,4 +1,5 @@
-import { Label } from '@/components/ui';
+import { ExclamationIcon } from '@/assets/images/icons';
+import { Icon, Label } from '@/components/ui';
 import { cn } from '@/lib/tailwind/utils';
 
 import { Root as LabelPrimitiveRoot } from '@radix-ui/react-label';
@@ -79,7 +80,7 @@ const FormItem = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
 
     return (
       <FormItemContext.Provider value={{ id }}>
-        <div ref={ref} className={cn('space-y-2', className)} {...props} />
+        <div ref={ref} className={className} {...props} />
       </FormItemContext.Provider>
     );
   },
@@ -88,11 +89,18 @@ FormItem.displayName = 'FormItem';
 
 const FormLabel = forwardRef<
   ElementRef<typeof LabelPrimitiveRoot>,
-  ComponentPropsWithoutRef<typeof LabelPrimitiveRoot>
->(({ className, ...props }, ref) => {
+  ComponentPropsWithoutRef<typeof LabelPrimitiveRoot> & {
+    required?: boolean;
+  }
+>(({ className, children, required, ...props }, ref) => {
   const { formItemId } = useFormField();
 
-  return <Label ref={ref} className={className} htmlFor={formItemId} {...props} />;
+  return (
+    <Label ref={ref} className={cn('mb-2', className)} htmlFor={formItemId} {...props}>
+      {children}
+      {required && <span className="text-danger">*</span>}
+    </Label>
+  );
 });
 FormLabel.displayName = 'FormLabel';
 
@@ -123,14 +131,20 @@ const FormMessage = forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLParagrap
     }
 
     return (
-      <p
-        ref={ref}
-        id={formMessageId}
-        className={cn('text-sm font-medium text-destructive', className)}
-        {...props}
-      >
-        {body}
-      </p>
+      <div className="mt-1 flex items-start gap-1.5">
+        {/* The heights of this <div> must be match the line-height of the following <p>. */}
+        <div className="h-5 flex items-center">
+          <Icon icon={ExclamationIcon} size={3.5} color="danger" />
+        </div>
+        <p
+          ref={ref}
+          id={formMessageId}
+          className={cn('text-danger leading-5', className)}
+          {...props}
+        >
+          {body}
+        </p>
+      </div>
     );
   },
 );
