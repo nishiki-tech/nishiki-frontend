@@ -6,6 +6,11 @@ import {
 import { createGroup } from '@/lib/api';
 
 export const GroupsPage = () => {
+  /**
+   * Create a new group.
+   * @param {string} groupName The name of the new group.
+   * @returns The ID of the newly created group.
+   */
   const handleCreateGroup = async (groupName: string) => {
     'use server';
     await createGroup({ groupName });

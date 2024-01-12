@@ -41,18 +41,26 @@ export const fetchGroupList = async (): Promise<IGroup[]> => {
   }
 };
 
+/**
+ * Interface representing the Params for the method to create a group.
+ * @property {string} groupName - The name of the group.
+ */
 export interface ICreateGroupParams {
   groupName: string;
 }
 
+/**
+ * Interface representing the API response for the method to create a group.
+ * @property {string} groupId - The unique identifier of the group.
+ */
 export interface ICreateGroupApiResponse {
   groupId: string;
 }
 
 /**
  * Create a new group.
- * @param name The name of the new group.
- * @returns The ID of the newly created group.
+ * @param  {ICreateGroupParams} params - The parameters for the group to be created.
+ * @returns {string} The ID of the newly created group.
  */
 export const createGroup = async (params: ICreateGroupParams): Promise<string> => {
   try {
