@@ -9,33 +9,36 @@ import {
   Input,
 } from '@/components/ui';
 
-import { FC } from 'react';
+import { useState } from 'react';
 
-interface ICreateGroupDrawerContentProps {
-  handleCreateGroup: () => void;
-}
+import { createGroupAction } from './CreateGroupAction';
 
-export const CreateGroupDrawerContent: FC<ICreateGroupDrawerContentProps> = ({
-  handleCreateGroup,
-}) => {
+export const CreateGroupDrawerContent = () => {
+  const [groupName, setGroupName] = useState('');
   return (
     <DrawerContent side="bottom">
       <DrawerHeader>
         <DrawerTitle>Create Group</DrawerTitle>
       </DrawerHeader>
-      <DrawerBody>
-        <Input placeholder="Group Name" />
-      </DrawerBody>
-      <DrawerFooter>
-        <DrawerClose asChild>
-          <Button variant="cancel" size="md">
-            Cancel
+      <form onSubmit={() => createGroupAction(groupName)}>
+        <DrawerBody>
+          <Input
+            placeholder="Group Name"
+            value={groupName}
+            onChange={(e) => setGroupName(e.target.value)}
+          />
+        </DrawerBody>
+        <DrawerFooter>
+          <DrawerClose asChild>
+            <Button variant="cancel" size="md">
+              Cancel
+            </Button>
+          </DrawerClose>
+          <Button type="submit" size="md">
+            Create
           </Button>
-        </DrawerClose>
-        <Button variant="primary" size="md" onClick={handleCreateGroup}>
-          Create
-        </Button>
-      </DrawerFooter>
+        </DrawerFooter>
+      </form>
     </DrawerContent>
   );
 };

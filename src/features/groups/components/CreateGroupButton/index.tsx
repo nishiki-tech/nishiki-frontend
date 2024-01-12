@@ -3,18 +3,12 @@
 import { PlusIcon } from '@/assets/images/icons';
 import { Button, DrawerRoot, DrawerTrigger, Icon } from '@/components/ui';
 
-import { FC, useState } from 'react';
+import { useState } from 'react';
 
 import { CreateGroupDrawerContent } from './CreateGroupDrawerContent';
 
-interface ICreateGroupButtonProps {}
-
-export const CreateGroupButton: FC<ICreateGroupButtonProps> = ({}) => {
+export const CreateGroupButton = ({}) => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const handleCreateGroup = () => {
-    alert('create group');
-  };
 
   return (
     <DrawerRoot open={isOpen} onOpenChange={setIsOpen}>
@@ -23,7 +17,7 @@ export const CreateGroupButton: FC<ICreateGroupButtonProps> = ({}) => {
           <Icon icon={PlusIcon} size={4} />
         </Button>
       </DrawerTrigger>
-      <CreateGroupDrawerContent handleCreateGroup={handleCreateGroup} />
+      <CreateGroupDrawerContent />
     </DrawerRoot>
   );
 };
