@@ -51,7 +51,7 @@ const SecondaryDrawerVariants = cva(cn('fixed z-50 bg-primary-lightest flex flex
   variants: {
     side: {
       bottom: cn(
-        'inset-x-0 bottom-0 rounded-t max-h-[calc(100vh-2rem)]',
+        'inset-x-0 bottom-0 rounded-t h-[calc(100vh-2rem)]',
         'data-[state=open]:animate-slideInFromBottom data-[state=closed]:animate-slideOutToBottom',
       ),
       right: cn(
