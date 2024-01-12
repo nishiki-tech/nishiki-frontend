@@ -1,7 +1,6 @@
 ---
 name: Problem
 about: Report a bug or any other problem
-title: 'Write a title as brief (yet descriptive) as possible'
 ---
 
 ## Description
@@ -30,13 +29,6 @@ title: 'Write a title as brief (yet descriptive) as possible'
 ## Notes
 
 <!-- Write any note or comment. You can share your thoughts or ideas. -->
-<!-- Delete this section if not needed -->
-
--
-
-## Additional Context
-
-<!-- Customize the title of this section and add any context -->
 <!-- Delete this section if not needed -->
 
 -

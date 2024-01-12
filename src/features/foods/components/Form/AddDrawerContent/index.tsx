@@ -2,7 +2,6 @@
 
 import {
   Button,
-  DrawerBody,
   DrawerClose,
   DrawerContent,
   DrawerFooter,
@@ -16,7 +15,7 @@ import {
   GroupIdNameMapType,
 } from '@/features/foods/utils/containerMapping';
 
-import { AddDrawerBody } from '.';
+import { AddDrawerBody } from './AddDrawerBody';
 
 interface IAddDrawerContentProps {
   setIsDrawerOpen: (isOpen: boolean) => void;
@@ -33,10 +32,16 @@ export const AddDrawerContent = ({
   containerIdNameMap,
   groupIdNameMap,
 }: IAddDrawerContentProps) => {
+  /**
+   * Process when the cancel button is clicked
+   */
   const handleCancelClick = () => {
     setIsDrawerOpen(false);
   };
 
+  /**
+   * Process when the add button is clicked
+   */
   const handleAddClick = () => {
     alert('Successfully added!');
     setIsDrawerOpen(false);
@@ -47,14 +52,12 @@ export const AddDrawerContent = ({
       <DrawerHeader>
         <DrawerTitle>Add Food</DrawerTitle>
       </DrawerHeader>
-      <DrawerBody>
-        <AddDrawerBody
-          groupIdContainerIdsMap={groupIdContainerIdsMap}
-          containerIdGroupIdMap={containerIdGroupIdMap}
-          containerIdNameMap={containerIdNameMap}
-          groupIdNameMap={groupIdNameMap}
-        />
-      </DrawerBody>
+      <AddDrawerBody
+        groupIdContainerIdsMap={groupIdContainerIdsMap}
+        containerIdGroupIdMap={containerIdGroupIdMap}
+        containerIdNameMap={containerIdNameMap}
+        groupIdNameMap={groupIdNameMap}
+      />
       <DrawerFooter>
         <DrawerClose asChild>
           <Button variant="cancel" size="sm" onClick={handleCancelClick}>

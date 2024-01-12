@@ -3,16 +3,6 @@ import { getToken } from './authTokenFetcher';
 type HttpMethod = 'GET' | 'POST' | 'DELETE' | 'PUT';
 
 /**
- * Option parameters of HTTP request
- */
-interface Options {
-  method: HttpMethod;
-  headers: Record<string, string>;
-  body?: string;
-  cache?: RequestCache;
-}
-
-/**
  * request method to Backend RESTful API
  * @param url url that you send a request to
  * @param method HTTP method
@@ -22,36 +12,30 @@ interface Options {
 export const request = async <T>({
   url,
   method,
-  body,
-  cache,
+  options,
 }: {
   url: string;
   method: HttpMethod;
-  body?: string;
-  cache?: RequestCache;
+  options?: Omit<RequestInit, 'method' | 'headers'>;
 }): Promise<T> => {
   const token = await getToken();
   if (!token) {
     throw new Error('API Unauthorized error.');
   }
+  // headers with Authorization
   const headers: Record<string, string> = {
     Authorization: `Bearer ${token.idToken}`,
   };
-  const options: Options = {
-    method: method,
-    headers: headers,
-  };
-
-  // cache strategy
-  if (cache) {
-    options.cache = cache;
-  }
   // Request body
-  if (body) {
-    options.body = body;
+  if (options?.body) {
     headers['Content-Type'] = 'application/json';
   }
-  const response = await fetch(url, options);
+  const fetchOptions: RequestInit = {
+    method: method,
+    headers: headers,
+    ...options,
+  };
+  const response = await fetch(url, fetchOptions);
   if (!response.ok) {
     throw new Error(`HTTP error. status: ${response.status}`);
   }
