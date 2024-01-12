@@ -10,22 +10,19 @@ import {
   Input,
 } from '@/components/ui';
 
-import { FC, useState } from 'react';
+import { useState } from 'react';
 
-interface ICreateGroupDrawerContentProps {
-  handleCreateGroup: (groupName: string) => Promise<void>;
-}
+import { createGroupAction } from './creategroupAction';
 
-export const CreateGroupDrawerContent: FC<ICreateGroupDrawerContentProps> = ({
-  handleCreateGroup,
-}) => {
+export const CreateGroupDrawerContent = () => {
   const [groupName, setGroupName] = useState('');
+
   return (
     <DrawerContent side="bottom">
       <DrawerHeader>
         <DrawerTitle>Create Group</DrawerTitle>
       </DrawerHeader>
-      <form onSubmit={() => handleCreateGroup(groupName)}>
+      <form onSubmit={() => createGroupAction(groupName)}>
         <DrawerBody>
           <Input
             placeholder="Group Name"
