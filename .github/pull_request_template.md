@@ -38,6 +38,14 @@ Example:
 <!-- Necessary for UI changes -->
 <!-- Delete this section if not needed -->
 
+## References
+
+<!-- List all the URLs of the references (documents, articles, youtube videos, etc.) that you used to complete this task -->
+<!-- If you have referred to responses from ChatGPT or other AIs, please include the links to the conversations if possible -->
+<!-- Delete this section if not needed -->
+
+-
+
 ## Note
 
 <!-- Write any note or comment. You can share your thoughts or ideas. -->
@@ -49,6 +57,7 @@ Example:
 
 <!-- You can tick the checkboxes if not applicable -->
 
+- [ ] The naming convention of the PR title is correct (See the comment at the top of this template)
 - [ ] The base branch is correct (See: [Types of Branches](https://github.com/genesis-tech-tribe/nishiki-frontend/blob/develop/docs/CONTRIBUTING.md#types-of-branches))
 - [ ] The branch name follows the [Branch Naming Conventions](https://github.com/genesis-tech-tribe/nishiki-frontend/blob/develop/docs/CONTRIBUTING.md#branch-naming-conventions)
 - [ ] The correct assignees and reviewers have been designated for this PR
@@ -61,6 +70,7 @@ Example:
 
 <!-- You can tick the checkboxes if not applicable -->
 
+- [ ] Double-check the "Assignee Checklist"
 - [ ] The code follows the generic best practices and our [Coding Style Guide](https://github.com/genesis-tech-tribe/nishiki-frontend/blob/develop/docs/STYLEGUIDE.md)
-- [ ] Code is well-commented and easy to understand
-- [ ] UI changes accurately reflect the provided design
+- [ ] The code is well-commented and easy to understand
+- [ ] The UI changes accurately reflect the provided design
