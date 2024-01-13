@@ -3,16 +3,16 @@
 import { CheckIcon } from '@/assets/images/icons';
 import { cn } from '@/lib/tailwind/utils';
 
-import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
-import * as React from 'react';
+import { Indicator as CheckboxIndicator, Root as CheckboxRoot } from '@radix-ui/react-checkbox';
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react';
 
 import { Icon } from '.';
 
-const Checkbox = React.forwardRef<
-  React.ElementRef<typeof CheckboxPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>
+const Checkbox = forwardRef<
+  ElementRef<typeof CheckboxRoot>,
+  ComponentPropsWithoutRef<typeof CheckboxRoot>
 >(({ className, ...props }, ref) => (
-  <CheckboxPrimitive.Root
+  <CheckboxRoot
     ref={ref}
     className={cn(
       'peer',
@@ -23,11 +23,11 @@ const Checkbox = React.forwardRef<
     )}
     {...props}
   >
-    <CheckboxPrimitive.Indicator className={cn('flex items-center justify-center')}>
+    <CheckboxIndicator className={cn('flex items-center justify-center')}>
       <Icon icon={CheckIcon} color="white" size={3.5} />
-    </CheckboxPrimitive.Indicator>
-  </CheckboxPrimitive.Root>
+    </CheckboxIndicator>
+  </CheckboxRoot>
 ));
-Checkbox.displayName = CheckboxPrimitive.Root.displayName;
+Checkbox.displayName = CheckboxRoot.displayName;
 
 export { Checkbox };
