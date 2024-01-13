@@ -1,5 +1,15 @@
 'use client';
 
+/**
+ * This file is based on the Checkbox component from shadcn/ui and customized for our needs.
+ *  * The Checkbox component of shadcn/ui is based on  Checkbox component of Radix UI.
+ *
+ * See the official docs for more info:
+ * shadcn/ui: https://ui.shadcn.com/docs/components/checkbox
+ *  * Radix UI: https://www.radix-ui.com/themes/docs/components/checkbox
+ *
+ */
+
 import { CheckIcon } from '@/assets/images/icons';
 import { cn } from '@/lib/tailwind/utils';
 

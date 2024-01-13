@@ -1,5 +1,8 @@
 'use client';
-
+/**
+ * This file is used as an example for the Checkbox components.
+ * Once we're done with the example, we can delete this file.
+ */
 import { ContainerIcon } from '@/assets/images/icons';
 import { Card, Checkbox, Icon, Label } from '@/components/ui';
 
