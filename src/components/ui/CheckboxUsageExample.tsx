@@ -25,7 +25,7 @@ export const CheckboxUsageExample = () => {
             <div className="w-11 h-11 rounded-full bg-accent flex justify-center items-center">
               <Icon icon={ContainerIcon} size={5} color="black" />
             </div>
-            <Label htmlFor="container2">Shared-house’s Fridge</Label>
+            <Label htmlFor="container2">Disabled</Label>
           </div>
           <Checkbox id="container2" disabled />
         </div>
