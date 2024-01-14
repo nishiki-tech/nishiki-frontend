@@ -1,17 +1,4 @@
 export { Badge, badgeVariants } from './Badge';
-export {
-  BaseDrawerBody,
-  BaseDrawerClose,
-  BaseDrawerContent,
-  BaseDrawerFooter,
-  BaseDrawerHeader,
-  BaseDrawerOverlay,
-  BaseDrawerPortal,
-  BaseDrawerRoot,
-  BaseDrawerTitle,
-  BaseDrawerTrigger,
-  BaseDrawerVariants,
-} from './BaseDrawer';
 export { BottomTabIconLink } from './BottomTabIconLink';
 export { Button, buttonVariants } from './Button';
 export { Calendar } from './Calendar';
@@ -44,11 +31,18 @@ export {
   DrawerTrigger,
   DrawerVariants,
 } from './Drawer';
-export { Icon, iconVariants } from './Icon';
-export { Input, inputVariants, NumberInput, SearchInput } from './Input';
-export { Label } from './Label';
-export { Popover, PopoverContent, PopoverTrigger } from './Popover';
 export {
+  BaseDrawerBody,
+  BaseDrawerClose,
+  BaseDrawerContent,
+  BaseDrawerFooter,
+  BaseDrawerHeader,
+  BaseDrawerOverlay,
+  BaseDrawerPortal,
+  BaseDrawerRoot,
+  BaseDrawerTitle,
+  BaseDrawerTrigger,
+  BaseDrawerVariants,
   PrimaryDrawerBody,
   PrimaryDrawerClose,
   PrimaryDrawerContent,
@@ -59,7 +53,11 @@ export {
   PrimaryDrawerRoot,
   PrimaryDrawerTitle,
   PrimaryDrawerTrigger,
-} from './PrimaryDrawer';
+} from './Drawers';
+export { Icon, iconVariants } from './Icon';
+export { Input, inputVariants, NumberInput, SearchInput } from './Input';
+export { Label } from './Label';
+export { Popover, PopoverContent, PopoverTrigger } from './Popover';
 export {
   SecondaryDrawerBody,
   SecondaryDrawerClose,
