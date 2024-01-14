@@ -1,4 +1,17 @@
 export { Badge, badgeVariants } from './Badge';
+export {
+  BaseDrawerBody,
+  BaseDrawerClose,
+  BaseDrawerContent,
+  BaseDrawerFooter,
+  BaseDrawerHeader,
+  BaseDrawerOverlay,
+  BaseDrawerPortal,
+  BaseDrawerRoot,
+  BaseDrawerTitle,
+  BaseDrawerTrigger,
+  BaseDrawerVariants,
+} from './BaseDrawer';
 export { BottomTabIconLink } from './BottomTabIconLink';
 export { Button, buttonVariants } from './Button';
 export { Calendar } from './Calendar';
