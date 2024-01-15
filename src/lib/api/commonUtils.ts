@@ -24,7 +24,7 @@ export const request = async <T>({
   }
   // headers with Authorization
   const headers: Record<string, string> = {
-    Authorization: `Bearer ${token.idToken}`,
+    Authorization: `Bearer ${token}`,
   };
   // Request body
   if (options?.body) {
