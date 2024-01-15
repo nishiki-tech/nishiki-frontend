@@ -1,4 +1,9 @@
+'use client';
+import { configureClientAmplify } from '@/utils/amplify';
+
 import { fetchAuthSession } from 'aws-amplify/auth';
+
+configureClientAmplify();
 
 /**
  * get token from request cookie

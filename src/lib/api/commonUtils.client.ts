@@ -1,3 +1,4 @@
+'use client';
 import { getToken } from './AuthTokenFetcher.client';
 
 type HttpMethod = 'GET' | 'POST' | 'DELETE' | 'PUT';
@@ -19,7 +20,6 @@ export const request = async <T>({
   options?: Omit<RequestInit, 'method' | 'headers'>;
 }): Promise<T> => {
   const token = await getToken();
-  console.log('token', token);
   if (!token) {
     throw new Error('API Unauthorized error.');
   }
@@ -36,9 +36,6 @@ export const request = async <T>({
     headers: headers,
     ...options,
   };
-  if (method == 'POST') {
-    console.log('fetchOptions', fetchOptions);
-  }
   const response = await fetch(url, fetchOptions);
   if (!response.ok) {
     throw new Error(`HTTP error. status: ${response.status}`);
