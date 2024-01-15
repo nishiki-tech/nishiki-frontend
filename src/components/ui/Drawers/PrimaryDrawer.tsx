@@ -1,5 +1,9 @@
 'use client';
 
+import { cn } from '@/lib/tailwind/utils';
+
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react';
+
 import {
   BaseDrawerBody,
   BaseDrawerClose,
@@ -11,10 +15,7 @@ import {
   BaseDrawerRoot,
   BaseDrawerTitle,
   BaseDrawerTrigger,
-} from '@/components/ui';
-import { cn } from '@/lib/tailwind/utils';
-
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react';
+} from '.';
 
 const PrimaryDrawerRoot = BaseDrawerRoot;
 const PrimaryDrawerTrigger = BaseDrawerTrigger;
