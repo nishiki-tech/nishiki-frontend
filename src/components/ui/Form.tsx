@@ -106,13 +106,13 @@ FormLabel.displayName = 'FormLabel';
 
 const FormControl = forwardRef<ElementRef<typeof Slot>, ComponentPropsWithoutRef<typeof Slot>>(
   ({ ...props }, ref) => {
-    const { error, formItemId } = useFormField();
+    const { error, formItemId, formMessageId } = useFormField();
 
     return (
       <Slot
         ref={ref}
         id={formItemId}
-        // aria-describedby={!error ? `${formDescriptionId}` : `${formDescriptionId} ${formMessageId}`}
+        aria-describedby={error && formMessageId}
         aria-invalid={!!error}
         {...props}
       />
