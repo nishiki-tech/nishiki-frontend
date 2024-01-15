@@ -137,8 +137,7 @@ const BaseDrawerTitle = forwardRef<
 BaseDrawerTitle.displayName = 'BaseDrawerTitle';
 
 /**
- * Uncomment the following component if you need
- *
+ * Uncomment the following code when you need
  */
 // const BaseDrawerDescription = forwardRef<
 //   ElementRef<typeof PrimitiveDescription>,
