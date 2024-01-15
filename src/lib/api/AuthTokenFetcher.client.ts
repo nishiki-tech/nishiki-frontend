@@ -3,6 +3,7 @@ import { configureClientAmplify } from '@/utils/amplify';
 
 import { fetchAuthSession } from 'aws-amplify/auth';
 
+// amplify setting
 configureClientAmplify();
 
 /**

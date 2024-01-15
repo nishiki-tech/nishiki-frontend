@@ -6,6 +6,9 @@ const OAUTH_REDIRECT_URL = process.env.NEXT_PUBLIC_OAUTH_REDIRECT_URL || '';
 const USER_POOL_ID = process.env.NEXT_PUBLIC_USER_POOL_ID || '';
 const USER_POOL_CLIENT_ID = process.env.NEXT_PUBLIC_USER_POOL_CLIENT_ID || '';
 
+/**
+ * configure Amplify setting for Client Component
+ */
 export const configureClientAmplify = () => {
   Amplify.configure(
     {
