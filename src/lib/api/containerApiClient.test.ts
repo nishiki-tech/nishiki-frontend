@@ -22,8 +22,24 @@ const mockContainer = {
   ],
 };
 
-const setUpMockRequest = <T>(mockData: T) => {
-  return (request as jest.MockedFunction<typeof request>).mockResolvedValueOnce(mockData);
+/**
+ * Create mock data for request method
+ * @template T
+ * @param {T} mockData
+ * @return {*} mocked request method
+ */
+const setUpMockSuccessRequest = <T>(mockData: T) => {
+  return (request as jest.MockedFunction<typeof request>).mockResolvedValue(mockData);
+};
+
+/**
+ * Create mock error data for request method
+ * @template T
+ * @param {T} mockData
+ * @return {*} mocked request method
+ */
+const setUpMockErrorRequest = <T>(mockData: T) => {
+  return (request as jest.MockedFunction<typeof request>).mockRejectedValue(mockData);
 };
 
 describe('API Function Tests', () => {
@@ -34,7 +50,7 @@ describe('API Function Tests', () => {
   describe('fetchContainerList', () => {
     const mockGroupId = 'a3kdifut-a520-c2cb-1be7-d90710691861';
     it('successfully fetches container list for a group', async () => {
-      const mockRequest = setUpMockRequest({ containers: [mockContainer] });
+      const mockRequest = setUpMockSuccessRequest({ containers: [mockContainer] });
       const expectedValue = [
         {
           ...mockContainer,
@@ -49,9 +65,7 @@ describe('API Function Tests', () => {
     });
 
     it('throws an error on API failure', async () => {
-      (request as jest.MockedFunction<typeof request>).mockRejectedValue(
-        new Error('Network error'),
-      );
+      setUpMockErrorRequest(new Error('Network error'));
       const result = fetchContainerList(mockGroupId);
       await expect(result).rejects.toThrow('API response is invalid');
     });
@@ -59,7 +73,7 @@ describe('API Function Tests', () => {
 
   describe('fetchAllContainerList', () => {
     it('successfully fetches all containers', async () => {
-      const mockRequest = setUpMockRequest({ containers: [mockContainer] });
+      const mockRequest = setUpMockSuccessRequest({ containers: [mockContainer] });
       const expectedValue = [
         {
           ...mockContainer,
@@ -74,9 +88,7 @@ describe('API Function Tests', () => {
     });
 
     it('throws an error on API failure', async () => {
-      (request as jest.MockedFunction<typeof request>).mockRejectedValue(
-        new Error('Network error'),
-      );
+      setUpMockErrorRequest(new Error('Network error'));
       const result = fetchAllContainerList();
       await expect(result).rejects.toThrow('API response is invalid');
     });
