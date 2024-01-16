@@ -1,5 +1,5 @@
 'use client';
-import { getToken } from './AuthTokenFetcher.client';
+import { getToken } from './authTokenFetcher.client';
 
 type HttpMethod = 'GET' | 'POST' | 'DELETE' | 'PUT';
 
