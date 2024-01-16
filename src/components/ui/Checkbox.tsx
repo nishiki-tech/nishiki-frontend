@@ -25,10 +25,9 @@ const Checkbox = forwardRef<
   <CheckboxRoot
     ref={ref}
     className={cn(
-      'peer',
-      'h-6 w-6 shrink-0 rounded-sm border border-primary',
-      'disabled:cursor-not-allowed',
-      ' data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground',
+      // 0.075rem=1.2px
+      'h-6 w-6 shrink-0 rounded-sm border-[0.075rem] border-primary',
+      ' data-[state=checked]:bg-primary',
       className,
     )}
     {...props}
