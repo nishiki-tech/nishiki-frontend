@@ -1,5 +1,5 @@
 import { fetchUserList } from '@/lib/api';
-import * as commonUtils from '@/lib/api/commonUtils';
+import { request } from '@/lib/api/commonUtils';
 
 jest.mock('@/lib/api/commonUtils', () => ({
   request: jest.fn(),
@@ -7,8 +7,24 @@ jest.mock('@/lib/api/commonUtils', () => ({
 
 const mockUser = { userId: '679adc58-b03a-4fb6-993b-c72404087375', userName: 'John' };
 
-const setUpMockRequest = <T>(mockData: T) => {
-  return jest.spyOn(commonUtils, 'request').mockResolvedValue(mockData);
+/**
+ * Create mock data for request method
+ * @template T
+ * @param {T} mockData
+ * @return {jest.MockedFunction<typeof request>} mocked request method
+ */
+const setUpMockSuccessRequest = <T>(mockData: T) => {
+  return (request as jest.MockedFunction<typeof request>).mockResolvedValue(mockData);
+};
+
+/**
+ * Create mock error data for request method
+ * @template T
+ * @param {T} mockData
+ * @return {jest.MockedFunction<typeof request>} mocked request method
+ */
+const setUpMockErrorRequest = <T>(mockData: T) => {
+  return (request as jest.MockedFunction<typeof request>).mockRejectedValue(mockData);
 };
 
 describe('API Function Tests', () => {
@@ -19,7 +35,7 @@ describe('API Function Tests', () => {
   describe('fetchUserList', () => {
     const mockUserId = '679adc58-b03a-4fb6-993b-c72404087375';
     it('successfully fetches user list for a group', async () => {
-      const mockRequest = setUpMockRequest({ users: [mockUser] });
+      const mockRequest = setUpMockSuccessRequest({ users: [mockUser] });
       const expectedValue = [{ ...mockUser }];
 
       const result = await fetchUserList(mockUserId);
@@ -29,7 +45,7 @@ describe('API Function Tests', () => {
     });
 
     it('throws an error on API failure', async () => {
-      jest.spyOn(commonUtils, 'request').mockRejectedValue(new Error('Network error'));
+      setUpMockErrorRequest(new Error('Network error'));
       const result = fetchUserList(mockUserId);
       await expect(result).rejects.toThrow('API response is invalid');
     });
