@@ -3,7 +3,7 @@ import { getToken } from './authTokenFetcher';
 type HttpMethod = 'GET' | 'POST' | 'DELETE' | 'PUT';
 
 /**
- * request method to Backend RESTful API
+ * request method to Backend RESTful API from server component
  * @param url url that you send a request to
  * @param method HTTP method
  * @param body HTTP request body
