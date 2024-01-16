@@ -96,7 +96,7 @@ interface IBaseDrawerHeaderProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const BaseDrawerHeader = forwardRef<HTMLDivElement, IBaseDrawerHeaderProps>(
-  ({ className, /*closeButton = true,*/ children, ...props }, ref) => (
+  ({ className, children, ...props }, ref) => (
     <div
       ref={ref}
       className={cn(
@@ -124,7 +124,9 @@ BaseDrawerBody.displayName = 'BaseDrawerBody';
 interface IBaseDrawerFooterProps extends HTMLAttributes<HTMLDivElement> {}
 
 const BaseDrawerFooter = forwardRef<HTMLDivElement, IBaseDrawerFooterProps>(
-  ({ className, ...props }, ref) => <div ref={ref} className={cn('', className)} {...props} />,
+  ({ className, ...props }, ref) => (
+    <div ref={ref} className={cn('flex items-center', className)} {...props} />
+  ),
 );
 BaseDrawerFooter.displayName = 'BaseDrawerFooter';
 
