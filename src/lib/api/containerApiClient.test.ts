@@ -1,5 +1,5 @@
 import { fetchAllContainerList, fetchContainerList } from '@/lib/api';
-import * as commonUtils from '@/lib/api/commonUtils';
+import { request } from '@/lib/api/commonUtils';
 
 jest.mock('@/lib/api/commonUtils', () => ({
   request: jest.fn(),
@@ -23,7 +23,7 @@ const mockContainer = {
 };
 
 const setUpMockRequest = <T>(mockData: T) => {
-  return jest.spyOn(commonUtils, 'request').mockResolvedValue(mockData);
+  return (request as jest.MockedFunction<typeof request>).mockResolvedValueOnce(mockData);
 };
 
 describe('API Function Tests', () => {
@@ -49,7 +49,9 @@ describe('API Function Tests', () => {
     });
 
     it('throws an error on API failure', async () => {
-      jest.spyOn(commonUtils, 'request').mockRejectedValue(new Error('Network error'));
+      (request as jest.MockedFunction<typeof request>).mockRejectedValue(
+        new Error('Network error'),
+      );
       const result = fetchContainerList(mockGroupId);
       await expect(result).rejects.toThrow('API response is invalid');
     });
@@ -72,7 +74,9 @@ describe('API Function Tests', () => {
     });
 
     it('throws an error on API failure', async () => {
-      jest.spyOn(commonUtils, 'request').mockRejectedValue(new Error('Network error'));
+      (request as jest.MockedFunction<typeof request>).mockRejectedValue(
+        new Error('Network error'),
+      );
       const result = fetchAllContainerList();
       await expect(result).rejects.toThrow('API response is invalid');
     });
