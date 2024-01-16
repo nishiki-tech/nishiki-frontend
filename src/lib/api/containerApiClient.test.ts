@@ -23,10 +23,11 @@ const mockContainer = {
 };
 
 /**
- * Create mock data for request method
+ *
+ *
  * @template T
  * @param {T} mockData
- * @return {*} mocked request method
+ * @return {jest.MockedFunction<typeof request>}
  */
 const setUpMockSuccessRequest = <T>(mockData: T) => {
   return (request as jest.MockedFunction<typeof request>).mockResolvedValue(mockData);
@@ -36,7 +37,7 @@ const setUpMockSuccessRequest = <T>(mockData: T) => {
  * Create mock error data for request method
  * @template T
  * @param {T} mockData
- * @return {*} mocked request method
+ * @return {jest.MockedFunction<typeof request>} mocked request method
  */
 const setUpMockErrorRequest = <T>(mockData: T) => {
   return (request as jest.MockedFunction<typeof request>).mockRejectedValue(mockData);
