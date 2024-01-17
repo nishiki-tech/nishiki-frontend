@@ -24,13 +24,18 @@ const PrimaryBottomDrawerPortal = BaseDrawerPortal;
 const PrimaryBottomDrawerOverlay = BaseDrawerOverlay;
 
 interface IPrimaryBottomDrawerContentProps
-  extends ComponentPropsWithoutRef<typeof BaseDrawerContent> {}
+  extends Omit<ComponentPropsWithoutRef<typeof BaseDrawerContent>, 'side'> {}
 
 const PrimaryBottomDrawerContent = forwardRef<
   ElementRef<typeof BaseDrawerContent>,
   IPrimaryBottomDrawerContentProps
 >(({ className, ...props }, ref) => (
-  <BaseDrawerContent className={cn('h-[calc(100vh-2rem)]', className)} {...props} ref={ref} />
+  <BaseDrawerContent
+    ref={ref}
+    className={cn('h-[calc(100vh-2rem)]', className)}
+    side="bottom"
+    {...props}
+  />
 ));
 PrimaryBottomDrawerContent.displayName = 'PrimaryBottomDrawerContent';
 
