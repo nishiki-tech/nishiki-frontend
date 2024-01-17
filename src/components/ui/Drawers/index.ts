@@ -12,14 +12,14 @@ export {
   BaseDrawerVariants,
 } from './BaseDrawer';
 export {
-  PrimaryBottomDrawerBody,
-  PrimaryBottomDrawerClose,
-  PrimaryBottomDrawerContent,
-  PrimaryBottomDrawerFooter,
-  PrimaryBottomDrawerHeader,
-  PrimaryBottomDrawerOverlay,
-  PrimaryBottomDrawerPortal,
-  PrimaryBottomDrawerRoot,
-  PrimaryBottomDrawerTitle,
-  PrimaryBottomDrawerTrigger,
-} from './PrimaryBottomDrawer';
+  ExampleDrawerBody,
+  ExampleDrawerClose,
+  ExampleDrawerContent,
+  ExampleDrawerFooter,
+  ExampleDrawerHeader,
+  ExampleDrawerOverlay,
+  ExampleDrawerPortal,
+  ExampleDrawerRoot,
+  ExampleDrawerTitle,
+  ExampleDrawerTrigger,
+} from './ExampleDrawer';
