@@ -1,3 +1,7 @@
+/**
+ * This file serves as an example of how to create a customized drawer for various needs
+ * by extending the BaseDrawer.tsx component.
+ */
 'use client';
 
 import { cn } from '@/lib/tailwind/utils';
