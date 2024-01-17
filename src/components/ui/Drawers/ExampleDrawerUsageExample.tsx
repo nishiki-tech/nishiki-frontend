@@ -5,8 +5,11 @@
 'use client';
 
 import { CrossIcon } from '@/assets/images/icons';
+import { Button, Icon } from '@/components/ui';
+
+import { useState } from 'react';
+
 import {
-  Button,
   ExampleDrawerBody,
   ExampleDrawerClose,
   ExampleDrawerContent,
@@ -15,10 +18,7 @@ import {
   ExampleDrawerRoot,
   ExampleDrawerTitle,
   ExampleDrawerTrigger,
-  Icon,
-} from '@/components/ui';
-
-import { useState } from 'react';
+} from '.';
 
 export const ExampleDrawerUsageExample = () => {
   const [isExampleDrawerOpen, setIsExampleDrawerOpen] = useState(false);
