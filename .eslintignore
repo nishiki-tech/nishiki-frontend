@@ -9,3 +9,4 @@ next.config.js
 postcss.config.js
 commitlint.config.js
 docs
+coverage
