@@ -31,29 +31,6 @@ export {
   DrawerTrigger,
   DrawerVariants,
 } from './Drawer';
-export {
-  BaseDrawerBody,
-  BaseDrawerClose,
-  BaseDrawerContent,
-  BaseDrawerFooter,
-  BaseDrawerHeader,
-  BaseDrawerOverlay,
-  BaseDrawerPortal,
-  BaseDrawerRoot,
-  BaseDrawerTitle,
-  BaseDrawerTrigger,
-  BaseDrawerVariants,
-  ExampleDrawerBody,
-  ExampleDrawerClose,
-  ExampleDrawerContent,
-  ExampleDrawerFooter,
-  ExampleDrawerHeader,
-  ExampleDrawerOverlay,
-  ExampleDrawerPortal,
-  ExampleDrawerRoot,
-  ExampleDrawerTitle,
-  ExampleDrawerTrigger,
-} from './Drawers';
 export { Icon, iconVariants } from './Icon';
 export { Input, inputVariants, NumberInput, SearchInput } from './Input';
 export { Label } from './Label';
