@@ -29,6 +29,7 @@ const iconVariants = cva('', {
       16: 'w-16 h-16',
     },
     color: {
+      white: 'text-white',
       black: 'text-black',
       primary: 'text-primary',
       danger: 'text-danger',
