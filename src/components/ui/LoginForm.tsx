@@ -1,12 +1,9 @@
 'use client';
-import { configureClientAmplify } from '@/utils/amplify';
+import { getToken } from '@/lib/api/authTokenFetcher.client';
 
-import { fetchAuthSession, signInWithRedirect } from 'aws-amplify/auth';
+import { signInWithRedirect } from 'aws-amplify/auth';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
-
-// amplify setting
-configureClientAmplify();
 
 export const LoginForm = () => {
   const router = useRouter();
@@ -14,8 +11,7 @@ export const LoginForm = () => {
 
   const checkSession = useCallback(async () => {
     try {
-      const { idToken } = (await fetchAuthSession()).tokens ?? {};
-
+      const idToken = await getToken();
       if (idToken) {
         router.push('/groups');
       } else {
