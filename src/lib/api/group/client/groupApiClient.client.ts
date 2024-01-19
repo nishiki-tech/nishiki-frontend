@@ -1,7 +1,7 @@
 // 'use client';
 // // api client code from client component will be here. Please delete after implement it.
 
-// import { request } from './commonUtils.client';
+// import { request } from '@/lib/api/common/client';
 // const BACKEND_API_DOMAIN = process.env.NEXT_PUBLIC_BACKEND_API_DOMAIN || '';
 
 // /**
