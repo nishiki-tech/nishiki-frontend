@@ -1,5 +1,5 @@
 'use client';
-import { getToken } from '@/lib/api/authTokenFetcher.client';
+import { getToken } from '@/lib/api/common/client';
 
 import { signInWithRedirect } from 'aws-amplify/auth';
 import { useRouter } from 'next/navigation';
@@ -12,6 +12,7 @@ export const LoginForm = () => {
   const checkSession = useCallback(async () => {
     try {
       const idToken = await getToken();
+      console.log(idToken);
       if (idToken) {
         router.push('/groups');
       } else {

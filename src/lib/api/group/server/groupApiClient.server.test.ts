@@ -1,7 +1,7 @@
-import { fetchGroupList } from '@/lib/api';
-import { request } from '@/lib/api/commonUtils';
+import { request } from '@/lib/api/common/server';
+import { fetchGroupList } from '@/lib/api/group/server';
 
-jest.mock('@/lib/api/commonUtils', () => ({
+jest.mock('@/lib/api/common/server/commonUtils.server', () => ({
   request: jest.fn(),
 }));
 

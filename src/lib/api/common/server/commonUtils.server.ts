@@ -1,4 +1,4 @@
-import { getToken } from './authTokenFetcher';
+import { getToken } from './authTokenFetcher.server';
 
 type HttpMethod = 'GET' | 'POST' | 'DELETE' | 'PUT';
 

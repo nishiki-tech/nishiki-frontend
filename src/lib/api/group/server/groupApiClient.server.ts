@@ -1,6 +1,5 @@
+import { request } from '@/lib/api/common/server';
 import { IGroup } from '@/types/definition';
-
-import { request } from './commonUtils';
 
 const BACKEND_API_DOMAIN = process.env.NEXT_PUBLIC_BACKEND_API_DOMAIN || '';
 

@@ -1,7 +1,7 @@
-import { fetchUserList } from '@/lib/api';
-import { request } from '@/lib/api/commonUtils';
+import { request } from '@/lib/api/common/server';
+import { fetchUserList } from '@/lib/api/user/server';
 
-jest.mock('@/lib/api/commonUtils', () => ({
+jest.mock('@/lib/api/common/server/commonUtils.server', () => ({
   request: jest.fn(),
 }));
 

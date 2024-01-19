@@ -1,12 +1,12 @@
-import { getToken as originalGetToken } from '@/lib/api/authTokenFetcher';
+import { getToken as originalGetToken } from './authTokenFetcher.client';
 const getToken = originalGetToken as jest.MockedFunction<typeof originalGetToken>;
 
 // test target method
-import { request } from '@/lib/api/commonUtils';
+import { request } from './commonUtils.client';
 
 // Mock fetch and getToken
 global.fetch = jest.fn() as jest.MockedFunction<typeof fetch>;
-jest.mock('@/lib/api/authTokenFetcher');
+jest.mock('@/lib/api/common/client/authTokenFetcher.client');
 
 describe('request function', () => {
   const mockUrl = 'https://example.com/api/test';

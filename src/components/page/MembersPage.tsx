@@ -1,6 +1,6 @@
 import { MenuMeatballIcon, PersonCircleIcon, PlusIcon } from '@/assets/images/icons';
 import { Button, Card, Icon } from '@/components/ui';
-import { fetchUserList } from '@/lib/api';
+import { fetchUserList } from '@/lib/api/user/server';
 import { IUser } from '@/types/definition';
 
 interface IMembersPageProps {
