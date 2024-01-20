@@ -1,1 +1,1 @@
-export { fetchGroupList } from './groupApiClient.server';
+export { fetchGroupList, putJoinRequest } from './groupApiClient.server';

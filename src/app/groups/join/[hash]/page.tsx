@@ -1,4 +1,4 @@
-import { putJoinRequest } from '@/lib/api/group/server/groupApiClient.server';
+import { putJoinRequest } from '@/lib/api/group/server';
 
 import { redirect } from 'next/navigation';
 
