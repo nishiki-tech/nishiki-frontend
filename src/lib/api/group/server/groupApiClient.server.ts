@@ -39,3 +39,22 @@ export const fetchGroupList = async (): Promise<IGroup[]> => {
     throw new Error('API response is invalid'); // TODO: display error page
   }
 };
+
+export interface IGroupJoinResponse {
+  groupId: IGroup['id'];
+}
+
+export const putJoinRequest = async (hashValue: string): Promise<IGroup['id'] | undefined> => {
+  try {
+    const data: IGroupJoinResponse = await request<IGroupJoinResponse>({
+      url: BACKEND_API_DOMAIN + '/groups?Action=joinToGroup',
+      method: 'PUT',
+      options: {
+        body: JSON.stringify({ invitationLinkHash: hashValue }),
+      },
+    });
+    return data.groupId;
+  } catch (err) {
+    return undefined;
+  }
+};
