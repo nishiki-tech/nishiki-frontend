@@ -1,9 +1,10 @@
-import { getToken } from './authTokenFetcher';
+'use client';
+import { getToken } from './authTokenFetcher.client';
 
 type HttpMethod = 'GET' | 'POST' | 'DELETE' | 'PUT';
 
 /**
- * request method to Backend RESTful API
+ * request method to Backend RESTful API from client component
  * @param url url that you send a request to
  * @param method HTTP method
  * @param body HTTP request body
@@ -39,5 +40,6 @@ export const request = async <T>({
   if (!response.ok) {
     throw new Error(`HTTP error. status: ${response.status}`);
   }
+
   return response.json() as Promise<T>;
 };

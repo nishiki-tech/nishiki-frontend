@@ -1,6 +1,5 @@
+import { request } from '@/lib/api/common/server';
 import { IGroup } from '@/types/definition';
-
-import { request } from './commonUtils';
 
 const BACKEND_API_DOMAIN = process.env.NEXT_PUBLIC_BACKEND_API_DOMAIN || '';
 
@@ -38,5 +37,24 @@ export const fetchGroupList = async (): Promise<IGroup[]> => {
     }));
   } catch (err) {
     throw new Error('API response is invalid'); // TODO: display error page
+  }
+};
+
+export interface IGroupJoinResponse {
+  groupId: IGroup['id'];
+}
+
+export const putJoinRequest = async (hashValue: string): Promise<IGroup['id'] | undefined> => {
+  try {
+    const data: IGroupJoinResponse = await request<IGroupJoinResponse>({
+      url: BACKEND_API_DOMAIN + '/groups?Action=joinToGroup',
+      method: 'PUT',
+      options: {
+        body: JSON.stringify({ invitationLinkHash: hashValue }),
+      },
+    });
+    return data.groupId;
+  } catch (err) {
+    return undefined;
   }
 };

@@ -1,6 +1,6 @@
 import { IUser } from '@/types/definition';
 
-import { request } from './commonUtils';
+import { request } from '../../common/server/commonUtils.server';
 
 const BACKEND_API_DOMAIN = process.env.NEXT_PUBLIC_BACKEND_API_DOMAIN || '';
 
