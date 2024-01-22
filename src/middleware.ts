@@ -1,4 +1,4 @@
-import { runWithAmplifyServerContext } from '@/utils/amplifyServerUtils';
+import { runWithAmplifyServerContext } from '@/utils/amplify';
 
 import { fetchAuthSession } from 'aws-amplify/auth/server';
 import { NextRequest, NextResponse } from 'next/server';

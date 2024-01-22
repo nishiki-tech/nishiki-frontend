@@ -11,8 +11,6 @@ import {
 
 import { useState } from 'react';
 
-import { createGroupAction } from './CreateGroupAction';
-
 export const CreateGroupDrawerContent = () => {
   const [groupName, setGroupName] = useState('');
 
@@ -21,7 +19,7 @@ export const CreateGroupDrawerContent = () => {
       <DrawerHeader>
         <DrawerTitle>Create Group</DrawerTitle>
       </DrawerHeader>
-      <form action={() => createGroupAction(groupName)}>
+      <form action={() => console.log()}>
         <DrawerBody>
           <Input
             id="groupName"

@@ -1,6 +1,5 @@
+import { request } from '@/lib/api/common/server';
 import { IGroup } from '@/types/definition';
-
-import { request } from './commonUtils';
 
 const BACKEND_API_DOMAIN = process.env.NEXT_PUBLIC_BACKEND_API_DOMAIN || '';
 
@@ -41,36 +40,21 @@ export const fetchGroupList = async (): Promise<IGroup[]> => {
   }
 };
 
-/**
- * Interface representing the Params for the method to create a group.
- * @property {string} groupName - The name of the group.
- */
-export interface ICreateGroupParams {
-  groupName: string;
+export interface IGroupJoinResponse {
+  groupId: IGroup['id'];
 }
 
-/**
- * Interface representing the API response for the method to create a group.
- * @property {string} groupId - The unique identifier of the group.
- */
-export interface ICreateGroupApiResponse {
-  groupId: string;
-}
-
-/**
- * Create a new group.
- * @param  {ICreateGroupParams} params - The parameters for the group to be created.
- * @returns {string} The ID of the newly created group.
- */
-export const createGroup = async (params: ICreateGroupParams): Promise<string> => {
+export const putJoinRequest = async (hashValue: string): Promise<IGroup['id'] | undefined> => {
   try {
-    const data: ICreateGroupApiResponse = await request<ICreateGroupApiResponse>({
-      url: BACKEND_API_DOMAIN + '/groups',
-      method: 'POST',
-      options: { body: JSON.stringify(params) },
+    const data: IGroupJoinResponse = await request<IGroupJoinResponse>({
+      url: BACKEND_API_DOMAIN + '/groups?Action=joinToGroup',
+      method: 'PUT',
+      options: {
+        body: JSON.stringify({ invitationLinkHash: hashValue }),
+      },
     });
     return data.groupId;
   } catch (err) {
-    throw new Error(`API response is invalid ${err}`);
+    return undefined;
   }
 };
