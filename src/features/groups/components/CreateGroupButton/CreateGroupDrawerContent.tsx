@@ -8,18 +8,25 @@ import {
   DrawerTitle,
   Input,
 } from '@/components/ui';
+import { createGroup } from '@/lib/api/group/client';
 
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 
 export const CreateGroupDrawerContent = () => {
   const [groupName, setGroupName] = useState('');
+
+  // Temporary Submit function. It will be replaced when we're implementing `Form` component
+  const onSubmitCreateGroup = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    await createGroup({ groupName });
+  };
 
   return (
     <DrawerContent side="bottom">
       <DrawerHeader>
         <DrawerTitle>Create Group</DrawerTitle>
       </DrawerHeader>
-      <form action={() => console.log()}>
+      <form onSubmit={onSubmitCreateGroup}>
         <DrawerBody>
           <Input
             id="groupName"
@@ -35,7 +42,7 @@ export const CreateGroupDrawerContent = () => {
               Cancel
             </Button>
           </DrawerClose>
-          <Button type="submit" size="md">
+          <Button type="submit" variant="primary" size="md">
             Create
           </Button>
         </DrawerFooter>

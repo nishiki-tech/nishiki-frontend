@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 import { CreateGroupDrawerContent } from './CreateGroupDrawerContent';
 
-export const CreateGroupButton = ({}) => {
+export const CreateGroupButton = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
