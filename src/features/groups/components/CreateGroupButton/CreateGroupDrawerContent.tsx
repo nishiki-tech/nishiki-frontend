@@ -8,34 +8,46 @@ import {
   DrawerTitle,
   Input,
 } from '@/components/ui';
+import { createGroup } from '@/lib/api/group/client';
+import { IGroup } from '@/types/definition';
 
-import { FC } from 'react';
+import { FormEvent, useState } from 'react';
 
-interface ICreateGroupDrawerContentProps {
-  handleCreateGroup: () => void;
-}
+export const CreateGroupDrawerContent = () => {
+  const [groupName, setGroupName] = useState<IGroup['name']>('');
 
-export const CreateGroupDrawerContent: FC<ICreateGroupDrawerContentProps> = ({
-  handleCreateGroup,
-}) => {
+  // Temporary Submit function. It will be replaced when we're implementing `Form` component
+  const onSubmitCreateGroup = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    await createGroup({ groupName });
+  };
+
   return (
     <DrawerContent side="bottom">
       <DrawerHeader>
         <DrawerTitle>Create Group</DrawerTitle>
       </DrawerHeader>
-      <DrawerBody>
-        <Input placeholder="Group Name" />
-      </DrawerBody>
-      <DrawerFooter>
-        <DrawerClose asChild>
-          <Button variant="cancel" size="md">
-            Cancel
+      <form onSubmit={onSubmitCreateGroup}>
+        <DrawerBody>
+          <Input
+            id="groupName"
+            name="groupName"
+            placeholder="Group Name"
+            value={groupName}
+            onChange={(e) => setGroupName(e.target.value)}
+          />
+        </DrawerBody>
+        <DrawerFooter>
+          <DrawerClose asChild>
+            <Button variant="cancel" size="md">
+              Cancel
+            </Button>
+          </DrawerClose>
+          <Button type="submit" variant="primary" size="md">
+            Create
           </Button>
-        </DrawerClose>
-        <Button variant="primary" size="md" onClick={handleCreateGroup}>
-          Create
-        </Button>
-      </DrawerFooter>
+        </DrawerFooter>
+      </form>
     </DrawerContent>
   );
 };
