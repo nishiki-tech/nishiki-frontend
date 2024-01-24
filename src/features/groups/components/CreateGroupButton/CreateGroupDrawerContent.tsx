@@ -9,11 +9,12 @@ import {
   Input,
 } from '@/components/ui';
 import { createGroup } from '@/lib/api/group/client';
+import { IGroup } from '@/types/definition';
 
 import { FormEvent, useState } from 'react';
 
 export const CreateGroupDrawerContent = () => {
-  const [groupName, setGroupName] = useState('');
+  const [groupName, setGroupName] = useState<IGroup['name']>('');
 
   // Temporary Submit function. It will be replaced when we're implementing `Form` component
   const onSubmitCreateGroup = async (e: FormEvent<HTMLFormElement>) => {

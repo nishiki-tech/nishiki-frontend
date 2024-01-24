@@ -1,6 +1,7 @@
 'use client';
 
 import { request } from '@/lib/api/common/client';
+import { IGroup } from '@/types/definition';
 const BACKEND_API_DOMAIN = process.env.NEXT_PUBLIC_BACKEND_API_DOMAIN || '';
 
 /**
@@ -8,7 +9,7 @@ const BACKEND_API_DOMAIN = process.env.NEXT_PUBLIC_BACKEND_API_DOMAIN || '';
  * @property {string} groupName - The name of the group.
  */
 export interface ICreateGroupParams {
-  groupName: string;
+  groupName: IGroup['name'];
 }
 
 /**
@@ -16,7 +17,7 @@ export interface ICreateGroupParams {
  * @property {string} groupId - The unique identifier of the group.
  */
 export interface ICreateGroupApiResponse {
-  groupId: string;
+  groupId: IGroup['id'];
 }
 
 /**
