@@ -32,6 +32,8 @@ export const createGroup = async (params: ICreateGroupParams): Promise<string> =
       method: 'POST',
       options: { body: JSON.stringify(params) },
     });
+    console.log('create group success', data);
+
     return data.groupId;
   } catch (err) {
     throw new Error('API response is invalid');
