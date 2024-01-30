@@ -3,6 +3,8 @@ import { Button, Card, Icon } from '@/components/ui';
 import { fetchContainerList } from '@/lib/api/container/server';
 import { IContainer } from '@/types/definition';
 
+import Link from 'next/link';
+
 export const ContainerList = async ({ id }: { id: string }) => {
   const containers: IContainer[] = await fetchContainerList(id);
   return (
@@ -16,13 +18,13 @@ export const ContainerList = async ({ id }: { id: string }) => {
         </div>
       </div>
       {containers.map((container) => (
-        <Card key={container.id}>
-          <div className="flex gap-4 items-center">
+        <Card key={container.id} asChild>
+          <Link href={`/foods?container=${id}`} className="flex gap-4 items-center">
             <div className="flex items-center justify-center bg-accent rounded-full w-11 h-11">
               <Icon icon={ContainerIcon} color="black" size={5} />
             </div>
             {container.name}
-          </div>
+          </Link>
         </Card>
       ))}
     </>
