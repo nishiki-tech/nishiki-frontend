@@ -17,9 +17,7 @@ export const MemberList = async ({ id }: { id: string }) => {
       </div>
       <Link href={`/groups/${id}/members`} className="flex flex-row gap-2">
         {users.map((_, idx) => (
-          <Button key={idx} className="">
-            <Icon icon={PersonCircleIcon} color="gray" size={10} />
-          </Button>
+          <Icon key={idx} icon={PersonCircleIcon} color="gray" size={10} />
         ))}
       </Link>
     </div>
