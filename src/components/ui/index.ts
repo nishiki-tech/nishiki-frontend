@@ -38,7 +38,6 @@ export {
   DropdownMenuButtonIcon,
   DropdownMenuButtonText,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuPortal,
   DropdownMenuTrigger,

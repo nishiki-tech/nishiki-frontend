@@ -5,7 +5,6 @@ import { cn } from '@/lib/tailwind/utils';
 import {
   DropdownMenu as PrimitiveRoot,
   DropdownMenuContent as PrimitiveContent,
-  DropdownMenuGroup as PrimitiveGroup,
   DropdownMenuItem as PrimitiveItem,
   DropdownMenuPortal as PrimitivePortal,
   DropdownMenuTrigger as PrimitiveTrigger,
@@ -26,14 +25,15 @@ const DropdownMenu = PrimitiveRoot;
 
 const DropdownMenuTrigger = PrimitiveTrigger;
 
-const DropdownMenuGroup = PrimitiveGroup;
-
 const DropdownMenuPortal = PrimitivePortal;
 
 const DropdownMenuContent = forwardRef<
   ElementRef<typeof PrimitiveContent>,
   ComponentPropsWithoutRef<typeof PrimitiveContent>
-  // sideOffset is the vertical distance in pixels from the trigger. Reference(https://www.radix-ui.com/primitives/docs/components/dropdown-menu)
+  /**
+   * Prop 'sideOffset' is the vertical distance in pixels from the trigger.
+   * Reference(https://www.radix-ui.com/primitives/docs/components/dropdown-menu)
+   */
 >(({ className, sideOffset = 18, ...props }, ref) => (
   <PrimitivePortal>
     <PrimitiveContent
@@ -50,6 +50,9 @@ const DropdownMenuContent = forwardRef<
 ));
 DropdownMenuContent.displayName = PrimitiveContent.displayName;
 
+/**
+ * You need to wrap each element with this component to set the focus on opening the menu.
+ */
 const DropdownMenuItem = forwardRef<
   ElementRef<typeof PrimitiveItem>,
   ComponentPropsWithoutRef<typeof PrimitiveItem> & {
@@ -128,7 +131,6 @@ export {
   DropdownMenuButtonIcon,
   DropdownMenuButtonText,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuPortal,
   DropdownMenuTrigger,
