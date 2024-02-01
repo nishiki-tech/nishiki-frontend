@@ -33,7 +33,8 @@ const DropdownMenuPortal = PrimitivePortal;
 const DropdownMenuContent = forwardRef<
   ElementRef<typeof PrimitiveContent>,
   ComponentPropsWithoutRef<typeof PrimitiveContent>
->(({ className, sideOffset = 4, ...props }, ref) => (
+  // sideOffset is the vertical distance in pixels from the trigger. Reference(https://www.radix-ui.com/primitives/docs/components/dropdown-menu)
+>(({ className, sideOffset = 18, ...props }, ref) => (
   <PrimitivePortal>
     <PrimitiveContent
       ref={ref}
