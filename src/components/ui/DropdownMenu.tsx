@@ -1,3 +1,12 @@
+/**
+ * This file is based on the DropdownMenu component from shadcn and customized for our needs.
+ * The DropdownMenu component of shadcn is based on the DropdownMenu component of Radix UI.
+ *
+ * See the official docs for more info:
+ * shadcn/ui: https://ui.shadcn.com/docs/components/dropdown-menu
+ * Radix UI: https://www.radix-ui.com/themes/docs/components/dropdown-menu
+ */
+
 'use client';
 
 import { cn } from '@/lib/tailwind/utils';
