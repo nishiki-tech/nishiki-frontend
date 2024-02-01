@@ -19,7 +19,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
   Icon,
-} from '..';
+} from '.';
 
 export const DropdownMenuUsageExample = () => {
   const handleRenameClick = () => {
