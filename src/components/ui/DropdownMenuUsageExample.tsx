@@ -6,7 +6,6 @@
 import { DeleteIcon, MenuKebabIcon, PenIcon } from '@/assets/images/icons';
 import { ContainerCount } from '@/features/groups/components/GroupCardList/ContainerCount';
 import { UserCount } from '@/features/groups/components/GroupCardList/UserCount';
-import { cn } from '@/lib/tailwind/utils';
 
 import {
   Button,
@@ -41,8 +40,9 @@ const DropDownMenuWithCardExample = () => {
   };
   return (
     <Card asChild>
-      <div className="flex items-center justify-between pl-4 py-2 pr-0">
-        <div className="w-[calc(100%-3.5rem)] flex flex-col gap-3">
+      <div className="h-[5.25rem] flex items-center justify-between">
+        {/* 100%(card's width, with left padding already distracted) - 0.5rem(8px,gap between left content and kebab button) - 3rem(48px,kebab button width) */}
+        <div className="w-[calc(100%-3.5rem)] flex flex-col gap-3 pl-4 py-2">
           <span className="text-lg">Group name</span>
           <div className="w-full flex justify-between items-center">
             <ContainerCount containerCount={3} />
@@ -51,13 +51,12 @@ const DropDownMenuWithCardExample = () => {
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" className="w-12 h-full">
               <Icon icon={MenuKebabIcon} size={4.5} />
             </Button>
           </DropdownMenuTrigger>
-          {/* You have to adjust it's horizontal position by adding margin */}
-          <DropdownMenuContent className="mr-4">
-            <DropdownMenuItem>
+          <DropdownMenuContent>
+            <DropdownMenuItem asChild>
               <DropdownMenuButton onClick={handleRenameClick}>
                 <DropdownMenuButtonIcon>
                   <Icon icon={PenIcon} size={5} color="primary" />
@@ -65,12 +64,8 @@ const DropDownMenuWithCardExample = () => {
                 <DropdownMenuButtonText>Rename</DropdownMenuButtonText>
               </DropdownMenuButton>
             </DropdownMenuItem>
-            <DropdownMenuItem>
-              {' '}
-              <DropdownMenuButton
-                className={cn('border-t border-gray-light')}
-                onClick={handleDeleteClick}
-              >
+            <DropdownMenuItem asChild>
+              <DropdownMenuButton onClick={handleDeleteClick}>
                 <DropdownMenuButtonIcon>
                   <Icon icon={DeleteIcon} size={5} color="danger" />
                 </DropdownMenuButtonIcon>

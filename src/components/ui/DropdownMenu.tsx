@@ -39,17 +39,14 @@ const DropdownMenuPortal = PrimitivePortal;
 const DropdownMenuContent = forwardRef<
   ElementRef<typeof PrimitiveContent>,
   ComponentPropsWithoutRef<typeof PrimitiveContent>
-  /**
-   * Prop 'sideOffset' is the vertical distance in pixels from the trigger.
-   * Reference(https://www.radix-ui.com/primitives/docs/components/dropdown-menu)
-   */
->(({ className, sideOffset = 18, ...props }, ref) => (
+>(({ className, sideOffset = 0, align = 'end', ...props }, ref) => (
   <PrimitivePortal>
     <PrimitiveContent
       ref={ref}
       sideOffset={sideOffset}
+      align={align}
       className={cn(
-        'z-50 min-w-[16rem] overflow-hidden rounded bg-white text-black shadow-around',
+        'z-50 min-w-64 overflow-hidden rounded bg-white text-black shadow-around',
         'data-[state=open]:animate-fadeIn data-[state=closed]:animate-fadeOut',
         className,
       )}
@@ -70,7 +67,12 @@ const DropdownMenuItem = forwardRef<
 >(({ className, ...props }, ref) => (
   <PrimitiveItem
     ref={ref}
-    className={cn('select-none outline-none transition-colors', ' focus:bg-gray-light', className)}
+    className={cn(
+      'select-none outline-none',
+      'border-b border-gray-light last:border-b-0',
+      'transition-colors focus:bg-gray-light',
+      className,
+    )}
     {...props}
   />
 ));
@@ -93,7 +95,7 @@ const DropdownMenuButton = forwardRef<HTMLButtonElement, ButtonProps>(
 );
 DropdownMenuButton.displayName = 'DropdownMenuButton';
 
-interface ISelectionDrawerIconProps {
+interface IDropDownMenuIconProps {
   children: ReactElement<FC<SVGAttributes<SVGElement>>>;
   className?: string;
 }
@@ -101,7 +103,7 @@ interface ISelectionDrawerIconProps {
 /**
  * This is a custom component that we use to wrap the Icon in the button.
  */
-const DropdownMenuButtonIcon = forwardRef<HTMLDivElement, ISelectionDrawerIconProps>(
+const DropdownMenuButtonIcon = forwardRef<HTMLDivElement, IDropDownMenuIconProps>(
   ({ children, className }, ref) => {
     return (
       <div
@@ -115,7 +117,7 @@ const DropdownMenuButtonIcon = forwardRef<HTMLDivElement, ISelectionDrawerIconPr
 );
 DropdownMenuButtonIcon.displayName = 'DropdownMenuButtonIcon';
 
-interface ISelectionDrawerLabelProps {
+interface IDropDownMenuLabelProps {
   children: ReactNode;
   className?: string;
 }
@@ -123,7 +125,7 @@ interface ISelectionDrawerLabelProps {
 /**
  * This is a custom component that we use to wrap the text in the button.
  */
-const DropdownMenuButtonText = forwardRef<HTMLSpanElement, ISelectionDrawerLabelProps>(
+const DropdownMenuButtonText = forwardRef<HTMLSpanElement, IDropDownMenuLabelProps>(
   ({ children, className }, ref) => {
     return (
       <span className={cn(className)} ref={ref}>
