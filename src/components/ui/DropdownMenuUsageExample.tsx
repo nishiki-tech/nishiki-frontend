@@ -40,6 +40,7 @@ const DropDownMenuWithCardExample = () => {
   };
   return (
     <Card asChild>
+      {/* Needed fixed height to give kebab-menu button h-full height */}
       <div className="h-[5.25rem] flex items-center justify-between">
         {/* 100%(card's width, with left padding already distracted) - 0.5rem(8px,gap between left content and kebab button) - 3rem(48px,kebab button width) */}
         <div className="w-[calc(100%-3.5rem)] flex flex-col gap-3 pl-4 py-2">
@@ -51,8 +52,9 @@ const DropDownMenuWithCardExample = () => {
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon" className="w-12 h-full">
-              <Icon icon={MenuKebabIcon} size={4.5} />
+            <Button variant="ghost" size="icon" className="h-full">
+              {/* size 4.5 is not working for this kebab icon... not sure why */}
+              <Icon icon={MenuKebabIcon} size={5} />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
