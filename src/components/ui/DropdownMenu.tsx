@@ -2,10 +2,11 @@
  * This file is based on the DropdownMenu component from shadcn and customized for our needs.
  * The DropdownMenu component of shadcn is based on the DropdownMenu component of Radix UI.
  *
- * We removed the components below from default shadcnUI
- * "DropDownMenuCheckboxItem", "DropdownMenuSeparator","DropdownMenuGroup",
- * "DropdownMenuRadioGroup", "DropdownMenuRadioItem",
+ * We removed the components below from default shadcn DropdownMenu file. We can add them later if needed:
+ * "DropDownMenuCheckboxItem","DropdownMenuRadioItem", "DropdownMenuLabel",
+ * "DropdownMenuSeparator", "DropdownMenuShortcut","DropdownMenuGroup",
  * "DropdownMenuSub","DropdownMenuSubContent","DropdownMenuSubTrigger",
+ * "DropdownMenuRadioGroup"
  * See the official docs for more info:
  * shadcn/ui: https://ui.shadcn.com/docs/components/dropdown-menu
  * Radix UI: https://www.radix-ui.com/themes/docs/components/dropdown-menu
