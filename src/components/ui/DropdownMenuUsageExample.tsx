@@ -50,7 +50,7 @@ const DropDownMenuWithCardExample = () => {
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="none" className="w-12">
+            <Button variant="ghost" className="w-12">
               {/* size 4.5 is not working for this kebab icon... it works for other icons tho */}
               <Icon icon={MenuKebabIcon} size={5} />
             </Button>

@@ -1,4 +1,5 @@
-import { Card } from '@/components/ui';
+import { MenuKebabIcon } from '@/assets/images/icons';
+import { Button, Card, Icon } from '@/components/ui';
 import { fetchContainerList } from '@/lib/api/container/server';
 import { fetchUserList } from '@/lib/api/user/server';
 import { IContainer, IUser } from '@/types/definition';
@@ -19,14 +20,17 @@ export const GroupCard: FC<IGroupCardProps> = async ({ groupId, groupName }) => 
   const users: IUser[] = await fetchUserList(groupId);
   return (
     <Card asChild>
-      <Link href={`/groups/${groupId}`}>
-        <div className="flex flex-col gap-3">
-          <span className="text-lg">{groupName}</span>
+      <Link href={`/groups/${groupId}`} className="flex justify-between gap-2">
+        <div className="flex grow flex-col gap-3 pl-4 py-2">
+          <span className="text-lg leading-6">{groupName}</span>
           <div className="w-full flex justify-between items-center">
             <ContainerCount containerCount={containers.length} />
             <UserCount userCount={users.length} />
           </div>
         </div>
+        <Button variant="ghost" className="w-12">
+          <Icon icon={MenuKebabIcon} size={5} />
+        </Button>
       </Link>
     </Card>
   );

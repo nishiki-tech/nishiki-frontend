@@ -1,4 +1,4 @@
-import { ContainerIcon, PlusIcon } from '@/assets/images/icons';
+import { ContainerIcon, MenuKebabIcon, PlusIcon } from '@/assets/images/icons';
 import { Button, Card, Icon } from '@/components/ui';
 import { fetchContainerList } from '@/lib/api/container/server';
 import { IContainer } from '@/types/definition';
@@ -21,12 +21,17 @@ export const ContainerList = async ({ id }: { id: string }) => {
         <Card key={container.id} asChild>
           <Link
             href={`/foods?group=${id}&container=${container.id}`}
-            className="flex gap-4 items-center"
+            className="flex justify-between gap-2"
           >
-            <div className="flex items-center justify-center bg-accent rounded-full w-11 h-11">
-              <Icon icon={ContainerIcon} color="black" size={6} />
+            <div className="flex gap-4 items-center pl-4 py-2">
+              <div className="flex items-center justify-center bg-accent rounded-full w-11 h-11">
+                <Icon icon={ContainerIcon} color="black" size={6} />
+              </div>
+              <span className="leading-5">{container.name}</span>
             </div>
-            {container.name}
+            <Button variant="ghost" className="w-12">
+              <Icon icon={MenuKebabIcon} size={5} />
+            </Button>
           </Link>
         </Card>
       ))}
