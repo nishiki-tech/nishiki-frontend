@@ -40,7 +40,7 @@ const DropDownMenuWithCardExample = () => {
   };
   return (
     <Card asChild>
-      <div className="flex justify-between items-stretch gap-2">
+      <div className="flex justify-between gap-2">
         <div className="flex grow flex-col gap-3 pl-4 py-2">
           <span className="text-lg leading-6">Group name</span>
           <div className="w-full flex justify-between items-center">
