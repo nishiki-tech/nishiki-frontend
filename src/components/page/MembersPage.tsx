@@ -26,7 +26,7 @@ export const MembersPage = async ({ id }: IMembersPageProps) => {
         {users.map((user, i) => (
           <Card key={i} asChild>
             <div className="flex justify-between gap-2">
-              <div className="flex gap-4 items-center pl-4 py-2">
+              <div className="flex grow gap-4 items-center pl-4 py-2">
                 <Icon icon={PersonCircleIcon} color="gray" size={11} />
                 <span className="leading-5">{user.name}</span>
               </div>
