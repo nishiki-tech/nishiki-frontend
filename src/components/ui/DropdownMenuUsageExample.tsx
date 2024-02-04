@@ -52,7 +52,7 @@ const DropDownMenuWithCardExample = () => {
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="w-12">
               {/* size 4.5 is not working for this kebab icon... it works for other icons tho */}
-              <Icon icon={MenuKebabIcon} size={5} />
+              <Icon icon={MenuKebabIcon} size={4.5} />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
