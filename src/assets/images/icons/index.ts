@@ -16,6 +16,7 @@ import HomeIcon_On from './icon_home-on.svg';
 import LinkIcon from './icon_link.svg';
 import LogoutIcon from './icon_logout.svg';
 import MenuCircleIcon from './icon_menu-circle.svg';
+import MenuKebabIcon from './icon_menu-kebab.svg';
 import MenuMeatballIcon from './icon_menu-meatball.svg';
 import PenIcon from './icon_pen.svg';
 import PersonCircleIcon from './icon_person-circle.svg';
@@ -43,6 +44,7 @@ export {
   LinkIcon,
   LogoutIcon,
   MenuCircleIcon,
+  MenuKebabIcon,
   MenuMeatballIcon,
   PenIcon,
   PersonCircleIcon,

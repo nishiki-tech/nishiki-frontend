@@ -32,6 +32,16 @@ export {
   DrawerTrigger,
   DrawerVariants,
 } from './Drawer';
+export {
+  DropdownMenu,
+  DropdownMenuButton,
+  DropdownMenuButtonIcon,
+  DropdownMenuButtonText,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuPortal,
+  DropdownMenuTrigger,
+} from './DropdownMenu';
 export { Icon, iconVariants } from './Icon';
 export { Input, inputVariants, NumberInput, SearchInput } from './Input';
 export { Label } from './Label';
