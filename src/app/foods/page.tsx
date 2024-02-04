@@ -1,5 +1,5 @@
 import { FoodsPage } from '@/components/page/FoodsPage';
-import { fetchAllContainerList } from '@/lib/api';
+import { fetchAllContainerList } from '@/lib/api/container/server';
 import { IContainer } from '@/types/definition';
 
 export const dynamic = 'force-dynamic';

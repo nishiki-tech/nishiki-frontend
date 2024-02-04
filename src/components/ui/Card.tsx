@@ -10,7 +10,7 @@ export interface ICardProps extends HTMLAttributes<HTMLDivElement> {
 const Card = forwardRef<HTMLDivElement, ICardProps>(
   ({ className, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : 'div';
-    return <Comp ref={ref} className={cn('bg-white rounded px-4 py-2', className)} {...props} />;
+    return <Comp ref={ref} className={cn('bg-white rounded', className)} {...props} />;
   },
 );
 Card.displayName = 'Card';

@@ -34,6 +34,13 @@ Stop the WebAPI mock server:
 npm run mock:down
 ```
 
+## Run Test Code with ts-jest
+
+```bash
+npm run test
+# See coverage report ./coverage/lcov-report/index.html as well
+```
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

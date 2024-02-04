@@ -1,4 +1,4 @@
-import { runWithAmplifyServerContext } from '@/utils/amplifyServerUtils';
+import { runWithAmplifyServerContext } from '@/utils/amplify';
 
 import { AuthTokens } from 'aws-amplify/auth';
 import { fetchAuthSession } from 'aws-amplify/auth/server';
@@ -8,7 +8,7 @@ import { cookies } from 'next/headers';
  * get token from request cookie
  * @returns AuthTokens object
  */
-export const getToken = async () => {
+export const getToken = async (): Promise<string | undefined> => {
   const token: AuthTokens | undefined = await runWithAmplifyServerContext({
     nextServerContext: { cookies },
     operation: async (contextSpec) => {
@@ -20,5 +20,5 @@ export const getToken = async () => {
       }
     },
   });
-  return token;
+  return token?.idToken?.toString();
 };

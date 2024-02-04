@@ -3,6 +3,7 @@ export { BottomTabIconLink } from './BottomTabIconLink';
 export { Button, buttonVariants } from './Button';
 export { Calendar } from './Calendar';
 export { Card } from './Card';
+export { Checkbox } from './Checkbox';
 export { DatePicker } from './DatePicker';
 export {
   DialogBody,
@@ -31,6 +32,16 @@ export {
   DrawerTrigger,
   DrawerVariants,
 } from './Drawer';
+export {
+  DropdownMenu,
+  DropdownMenuButton,
+  DropdownMenuButtonIcon,
+  DropdownMenuButtonText,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuPortal,
+  DropdownMenuTrigger,
+} from './DropdownMenu';
 export { Icon, iconVariants } from './Icon';
 export { Input, inputVariants, NumberInput, SearchInput } from './Input';
 export { Label } from './Label';

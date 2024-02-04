@@ -49,6 +49,7 @@ export const EditDrawerBody = ({
   const [quantity, setQuantity] = useState<string>(String(initialFoodData.quantity));
   const [unit, setUnit] = useState<IFood['unit']>(initialFoodData.unit || '');
   const [date, setDate] = useState<Date | undefined>(initialFoodData.expiry);
+  const [category, setCategory] = useState<string>('unselected');
 
   /**
    * Process when a group is selected
@@ -151,9 +152,11 @@ export const EditDrawerBody = ({
         <DatePicker id="expiry" date={date} onSelect={setDate} />
       </LabeledInput>
       <LabeledInput label="Category" htmlFor="category">
+        <Input type="hidden" name="category" value={category} />
         <CategorySelect
           id="category"
-          hiddenInput={(category) => <Input type="hidden" name="category" value={category} />}
+          selectedCategory={category}
+          setSelectedCategory={setCategory}
         />
       </LabeledInput>
       {/* "Add more" checkbox will be added here */}

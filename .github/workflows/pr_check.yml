@@ -39,6 +39,9 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Unit Test with Jest
+        run: npm run test
+
   build:
     timeout-minutes: 5
     runs-on: ubuntu-latest
