@@ -5,8 +5,8 @@ const BACKEND_API_DOMAIN = process.env.NEXT_PUBLIC_BACKEND_API_DOMAIN || '';
 
 /**
  * Interface representing the API response for a group.
- * @property {string} groupId - The unique identifier of the group.
- * @property {string} groupName - The name of the group.
+ * @property groupId - The unique identifier of the group.
+ * @property groupName - The name of the group.
  */
 export interface IGroupApiResponse {
   groupId: string;
@@ -15,7 +15,7 @@ export interface IGroupApiResponse {
 
 /**
  * Interface representing the API response for multiple groups.
- * @property {IGroupApiResponse[]} groups - Array of group objects.
+ * @property groups - Array of group objects.
  */
 interface IGroupsResponse {
   groups: IGroupApiResponse[];

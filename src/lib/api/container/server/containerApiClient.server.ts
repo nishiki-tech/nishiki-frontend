@@ -7,10 +7,10 @@ const BACKEND_API_DOMAIN = process.env.NEXT_PUBLIC_BACKEND_API_DOMAIN || '';
 
 /**
  * Interface representing the API response for a container.
- * @property {string} id - The unique identifier of the container.
- * @property {string} name - The name of the container.
- * @property {IGroupApiResponse} group - The group to which this container belongs.
- * @property {IFood[]} foods - Array of foods contained in this container.
+ * @property id - The unique identifier of the container.
+ * @property name - The name of the container.
+ * @property group - The group to which this container belongs.
+ * @property foods - Array of foods contained in this container.
  */
 interface IContainerApiResponse {
   id: string;
@@ -21,7 +21,7 @@ interface IContainerApiResponse {
 
 /**
  * Interface representing the API response for multiple containers.
- * @property {IContainerApiResponse[]} containers - Array of container objects.
+ * @property containers - Array of container objects.
  */
 interface IContainersResponse {
   containers: IContainerApiResponse[];

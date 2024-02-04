@@ -6,7 +6,7 @@ const BACKEND_API_DOMAIN = process.env.NEXT_PUBLIC_BACKEND_API_DOMAIN || '';
 
 /**
  * Interface representing the API response for multiple users.
- * @property {IUser[]} users - Array of user objects.
+ * @property users - Array of user objects.
  */
 interface IUsersResponse {
   users: IUser[];

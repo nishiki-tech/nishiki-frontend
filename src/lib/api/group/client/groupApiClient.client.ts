@@ -6,7 +6,7 @@ const BACKEND_API_DOMAIN = process.env.NEXT_PUBLIC_BACKEND_API_DOMAIN || '';
 
 /**
  * Interface representing the Params for the method to create a group.
- * @property {string} groupName - The name of the group.
+ * @property groupName - The name of the group.
  */
 export interface ICreateGroupParams {
   groupName: IGroup['name'];
@@ -14,7 +14,7 @@ export interface ICreateGroupParams {
 
 /**
  * Interface representing the API response for the method to create a group.
- * @property {string} groupId - The unique identifier of the group.
+ * @property groupId - The unique identifier of the group.
  */
 export interface ICreateGroupApiResponse {
   groupId: IGroup['id'];
@@ -22,8 +22,8 @@ export interface ICreateGroupApiResponse {
 
 /**
  * Create a new group.
- * @param  {ICreateGroupParams} params - The parameters for the group to be created.
- * @returns {string} The ID of the newly created group.
+ * @param params - The parameters for the group to be created.
+ * @returns The ID of the newly created group.
  */
 export const createGroup = async (params: ICreateGroupParams): Promise<string> => {
   try {

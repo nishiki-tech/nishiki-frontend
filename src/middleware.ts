@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 /**
  * Next.js middleware is the code which is run before a request is completed
- * @param request: NextRequest
+ * @param NextRequest
  * @returns NextResponse
  */
 export const middleware = async (request: NextRequest) => {
