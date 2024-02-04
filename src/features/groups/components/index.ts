@@ -1,3 +1,3 @@
 export { CreateGroupButton } from './CreateGroupButton';
 export { GroupCardList } from './GroupCardList';
-export { GroupCollectionMenuButton } from './GroupCollectionMenuButton';
+export { GroupCollectionMenuButton } from './GroupCardList/GroupCard/GroupCollectionMenuButton';

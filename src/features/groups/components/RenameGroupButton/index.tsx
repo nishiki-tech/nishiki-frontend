@@ -2,27 +2,27 @@ import { PenIcon } from '@/assets/images/icons';
 import {
   DrawerRoot,
   DrawerTrigger,
+  DropdownMenuButton,
+  DropdownMenuButtonIcon,
+  DropdownMenuButtonText,
   Icon,
-  SelectionDrawerButton,
-  SelectionDrawerButtonIcon,
-  SelectionDrawerButtonText,
 } from '@/components/ui';
 
 import { useState } from 'react';
 
-import { RenameGroupsDrawerContent } from './RenameGroupsDrawerContent';
+import { RenameGroupsDrawerContent } from './RenameGroupDrawerContent';
 
 export const RenameGroupsButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <DrawerRoot open={isOpen} onOpenChange={setIsOpen}>
       <DrawerTrigger asChild>
-        <SelectionDrawerButton>
-          <SelectionDrawerButtonIcon>
+        <DropdownMenuButton>
+          <DropdownMenuButtonIcon>
             <Icon icon={PenIcon} size={5} color="primary" />
-          </SelectionDrawerButtonIcon>
-          <SelectionDrawerButtonText>Rename groups</SelectionDrawerButtonText>
-        </SelectionDrawerButton>
+          </DropdownMenuButtonIcon>
+          <DropdownMenuButtonText>Rename</DropdownMenuButtonText>
+        </DropdownMenuButton>
       </DrawerTrigger>
       <RenameGroupsDrawerContent />
     </DrawerRoot>
