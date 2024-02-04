@@ -19,19 +19,17 @@ export const GroupCard: FC<IGroupCardProps> = async ({ groupId, groupName }) => 
   const containers: IContainer[] = await fetchContainerList(groupId);
   const users: IUser[] = await fetchUserList(groupId);
   return (
-    <Card asChild>
-      <Link href={`/groups/${groupId}`} className="flex justify-between gap-2">
-        <div className="flex grow flex-col gap-3 pl-4 py-2">
-          <span className="text-lg leading-6">{groupName}</span>
-          <div className="w-full flex justify-between items-center">
-            <ContainerCount containerCount={containers.length} />
-            <UserCount userCount={users.length} />
-          </div>
+    <Card className="flex justify-between gap-2">
+      <Link href={`/groups/${groupId}`} className="flex grow flex-col gap-3 pl-4 py-2">
+        <span className="text-lg leading-6">{groupName}</span>
+        <div className="w-full flex justify-between items-center">
+          <ContainerCount containerCount={containers.length} />
+          <UserCount userCount={users.length} />
         </div>
-        <Button variant="ghost" className="w-12">
-          <Icon icon={MenuKebabIcon} size={5} />
-        </Button>
       </Link>
+      <Button variant="ghost" className="w-12">
+        <Icon icon={MenuKebabIcon} size={5} />
+      </Button>
     </Card>
   );
 };

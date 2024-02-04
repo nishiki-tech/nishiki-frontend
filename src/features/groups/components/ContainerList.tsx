@@ -18,21 +18,19 @@ export const ContainerList = async ({ id }: { id: string }) => {
         </div>
       </div>
       {containers.map((container) => (
-        <Card key={container.id} asChild>
+        <Card key={container.id} className="flex justify-between gap-2">
           <Link
             href={`/foods?group=${id}&container=${container.id}`}
-            className="flex justify-between gap-2"
+            className="flex grow gap-4 items-center pl-4 py-2"
           >
-            <div className="flex grow gap-4 items-center pl-4 py-2">
-              <div className="flex items-center justify-center bg-accent rounded-full w-11 h-11">
-                <Icon icon={ContainerIcon} color="black" size={6} />
-              </div>
-              <span className="leading-5">{container.name}</span>
+            <div className="flex items-center justify-center bg-accent rounded-full w-11 h-11">
+              <Icon icon={ContainerIcon} color="black" size={6} />
             </div>
-            <Button variant="ghost" className="w-12">
-              <Icon icon={MenuKebabIcon} size={5} />
-            </Button>
+            <span className="leading-5">{container.name}</span>
           </Link>
+          <Button variant="ghost" className="w-12">
+            <Icon icon={MenuKebabIcon} size={5} />
+          </Button>
         </Card>
       ))}
     </>
