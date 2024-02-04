@@ -1,4 +1,6 @@
 'use client';
+import { GoogleSigninIcon } from '@/assets/images/google';
+import { Icon } from '@/components/ui';
 import { getToken } from '@/lib/api/common/client';
 
 import { signInWithRedirect } from 'aws-amplify/auth';
@@ -28,12 +30,29 @@ export const LoginForm = () => {
   }, [checkSession]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <button
+        disabled
+        className="bg-white border border-gray rounded flex items-center justify-center h-10 px-8"
+        onClick={() => signInWithRedirect()}
+      >
+        <div className="flex items-center justify-center h-5 mr-2 w-5">
+          <Icon icon={GoogleSigninIcon} color="white" size={4} />
+        </div>
+        <span> Login in with Google</span>
+      </button>
+    );
   }
 
   return (
-    <div className="login-form">
-      <button onClick={() => signInWithRedirect()}>Login</button>
-    </div>
+    <button
+      className="bg-white border border-gray rounded flex items-center justify-center h-10 px-8"
+      onClick={() => signInWithRedirect()}
+    >
+      <div className="flex items-center justify-center h-5 mr-2 w-5">
+        <Icon icon={GoogleSigninIcon} color="white" size={4} />
+      </div>
+      <span> Login in with Google</span>
+    </button>
   );
 };
