@@ -18,7 +18,7 @@ export const CreateGroupButton = () => {
     <DrawerRoot open={isOpen} onOpenChange={setIsOpen}>
       <DrawerTrigger asChild>
         <Button variant="ghost" size="icon">
-          <Icon icon={PlusIcon} size={4} />
+          <Icon icon={PlusIcon} size={4.5} />
         </Button>
       </DrawerTrigger>
       <CreateGroupDrawerContent isOpen={isOpen} onClose={onClose} />

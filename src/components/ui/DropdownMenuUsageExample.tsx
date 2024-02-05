@@ -4,8 +4,8 @@
  * Once we're done with the example, we can delete this file.
  */
 import { DeleteIcon, MenuKebabIcon, PenIcon } from '@/assets/images/icons';
-import { ContainerCount } from '@/features/groups/components/GroupCardList/ContainerCount';
-import { UserCount } from '@/features/groups/components/GroupCardList/UserCount';
+import { ContainerCount } from '@/features/groups/components/GroupCardList/GroupCard/ContainerCount';
+import { UserCount } from '@/features/groups/components/GroupCardList/GroupCard/UserCount';
 
 import {
   Button,
@@ -51,7 +51,6 @@ const DropDownMenuWithCardExample = () => {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="w-12">
-              {/* size 4.5 is not working for this kebab icon... it works for other icons tho */}
               <Icon icon={MenuKebabIcon} size={4.5} />
             </Button>
           </DropdownMenuTrigger>

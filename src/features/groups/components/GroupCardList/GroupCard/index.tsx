@@ -1,5 +1,4 @@
-import { MenuKebabIcon } from '@/assets/images/icons';
-import { Button, Card, Icon } from '@/components/ui';
+import { Card } from '@/components/ui';
 import { fetchContainerList } from '@/lib/api/container/server';
 import { fetchUserList } from '@/lib/api/user/server';
 import { IContainer, IUser } from '@/types/definition';
@@ -8,6 +7,7 @@ import Link from 'next/link';
 import { FC } from 'react';
 
 import { ContainerCount } from './ContainerCount';
+import { GroupCardMenuButton } from './GroupCardMenuButton';
 import { UserCount } from './UserCount';
 
 interface IGroupCardProps {
@@ -27,9 +27,7 @@ export const GroupCard: FC<IGroupCardProps> = async ({ groupId, groupName }) => 
           <UserCount userCount={users.length} />
         </div>
       </Link>
-      <Button variant="ghost" className="w-12">
-        <Icon icon={MenuKebabIcon} size={4.5} />
-      </Button>
+      <GroupCardMenuButton />
     </Card>
   );
 };
