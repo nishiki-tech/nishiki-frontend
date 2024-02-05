@@ -44,7 +44,7 @@ const convertApiResponseContainers = (containers: IContainerApiResponse[]): ICon
 
 /**
  * Fetch an array of containers associated with a certain group .
- * @param id groupId
+ * @param id - groupId
  * @returns Array of IContainer object
  */
 export const fetchContainerList = async (id: string): Promise<IContainer[]> => {
