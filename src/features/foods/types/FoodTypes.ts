@@ -2,7 +2,7 @@ import { IContainer, IFood } from '@/types/definition';
 
 /**
  * Food object for food view
- * @property {IContainer['id']} containerId
+ * @property containerId
  */
 export interface IFoodView extends IFood {
   containerId: IContainer['id'];

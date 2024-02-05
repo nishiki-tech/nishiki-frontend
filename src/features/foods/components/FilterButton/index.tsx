@@ -115,7 +115,7 @@ export const FilterButton = ({
 
   /**
    * Update the status of whether or not each category is selected for category filtering
-   * @param key category name
+   * @param key - category name
    */
   const toggleCategory = (key: string) => {
     setSelectedCategories((prev) => ({

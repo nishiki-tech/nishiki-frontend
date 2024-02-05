@@ -1,7 +1,7 @@
 /**
  * Group object
- * @property {string} id - group id
- * @property {string} name - group name
+ * @property id - group id
+ * @property name - group name
  */
 export interface IGroup {
   id: string;
@@ -10,8 +10,8 @@ export interface IGroup {
 
 /**
  * User object
- * @property {string} id - user id
- * @property {string} id - user name
+ * @property id - user id
+ * @property id - user name
  */
 export interface IUser {
   id: string;
@@ -20,10 +20,10 @@ export interface IUser {
 
 /**
  * Container object
- * @property {string} id - container id
- * @property {string} name - container name
- * @property {string} group - Group object
- * @property {string} group - List of food object
+ * @property id - container id
+ * @property name - container name
+ * @property group - Group object
+ * @property group - List of food object
  */
 export interface IContainer {
   id: string;
@@ -34,12 +34,12 @@ export interface IContainer {
 
 /**
  * Food object
- * @property {string} id - food id
- * @property {string} name - food name
- * @property {number} quantity - quantity for this food
- * @property {string} category - food category. Each food has only one category.
- * @property {string} unit - unit of a food (kg/bottle etc)
- * @property {Date} expiry - expiry date of a food
+ * @property id - food id
+ * @property name - food name
+ * @property quantity - quantity for this food
+ * @property category - food category. Each food has only one category.
+ * @property unit - unit of a food (kg/bottle etc)
+ * @property expiry - expiry date of a food
  */
 export interface IFood {
   id: string;

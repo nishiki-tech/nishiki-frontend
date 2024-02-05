@@ -5,7 +5,7 @@ import { IdNameMapType } from '../types/FoodTypes';
 
 /**
  * Create a map object containing an array of container ids per group id
- * @param containers Array of IContainer object
+ * @param containers - Array of IContainer object
  * @returns GroupIdContainersMapType
  */
 export const groupContainersByGroupId = (containers: IContainer[]): GroupIdContainersMapType => {
@@ -21,7 +21,7 @@ export const groupContainersByGroupId = (containers: IContainer[]): GroupIdConta
 export type ContainerIdNameMapType = IdNameMapType;
 /**
  * Create an object with a pair of container id and container name from array of IContainer object
- * @param containers List of IContainer object
+ * @param containers - List of IContainer object
  * @returns Container id/name pair object
  */
 export const createContainerIdNameMap = (containers: IContainer[]): ContainerIdNameMapType => {
@@ -51,7 +51,7 @@ export const createGroupIdNameMap = (containers: IContainer[]): GroupIdNameMapTy
 export type ContainerIdGroupIdMapType = IdNameMapType;
 /**
  * Create an object that maps container id to group id from array of IContainer object
- * @param containers Array of IContainer object
+ * @param containers - Array of IContainer object
  * @returns ContainerId/GroupId pair object
  */
 export const createContainerIdGroupIdMap = (
