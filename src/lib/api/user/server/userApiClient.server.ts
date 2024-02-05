@@ -14,7 +14,7 @@ interface IUsersResponse {
 
 /**
  * Fetch an array of users associated with a certain group id.
- * @param id groupId
+ * @param id - groupId
  * @returns Array of IUser object
  */
 export const fetchUserList = async (id: string): Promise<IUser[]> => {

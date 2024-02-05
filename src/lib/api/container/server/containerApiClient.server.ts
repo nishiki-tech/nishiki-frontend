@@ -29,7 +29,7 @@ interface IContainersResponse {
 
 /**
  * Converting a Container object from the Backend API to a front Interface
- * @param containers array of containers with Backend API schema
+ * @param containers - array of containers with Backend API schema
  * @returns array of containers with IContainer
  */
 const convertApiResponseContainers = (containers: IContainerApiResponse[]): IContainer[] => {
