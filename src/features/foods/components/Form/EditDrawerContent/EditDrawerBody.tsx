@@ -53,7 +53,7 @@ export const EditDrawerBody = ({
 
   /**
    * Process when a container is selected.
-   * @param groupId selected group
+   * @param containerId selected container
    */
   const handleContainerChange = (containerId: IContainer['id']) => {
     form.setValue('container', containerId);
@@ -69,7 +69,7 @@ export const EditDrawerBody = ({
           <FormItem>
             <FormLabel required>Name</FormLabel>
             <FormControl>
-              <Input {...field} placeholder="Food name" required />
+              <Input {...field} placeholder="Food name" />
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -191,7 +191,6 @@ export const EditDrawerBody = ({
           </FormItem>
         )}
       />
-      {/* "Add more" checkbox will be added here */}
     </DrawerBody>
   );
 };

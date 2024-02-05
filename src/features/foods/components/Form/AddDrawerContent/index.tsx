@@ -8,6 +8,8 @@ import {
   DrawerHeader,
   DrawerTitle,
 } from '@/components/ui';
+import { Form } from '@/components/ui/Form';
+import { foodFormSchema, FoodInputs } from '@/features/foods/lib/schema';
 import { GroupIdContainersMapType } from '@/features/foods/types/FoodTypes';
 import {
   ContainerIdGroupIdMapType,
@@ -15,11 +17,14 @@ import {
   GroupIdNameMapType,
 } from '@/features/foods/utils/containerMapping';
 
-import { FormEvent } from 'react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useEffect } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { AddDrawerBody } from './AddDrawerBody';
 
 interface IAddDrawerContentProps {
+  isDrawerOpen: boolean;
   setIsDrawerOpen: (isOpen: boolean) => void;
   groupIdContainerIdsMap: GroupIdContainersMapType;
   containerIdGroupIdMap: ContainerIdGroupIdMapType;
@@ -28,6 +33,7 @@ interface IAddDrawerContentProps {
 }
 
 export const AddDrawerContent = ({
+  isDrawerOpen,
   setIsDrawerOpen,
   groupIdContainerIdsMap,
   containerIdGroupIdMap,
@@ -41,30 +47,37 @@ export const AddDrawerContent = ({
     setIsDrawerOpen(false);
   };
 
+  const form = useForm<FoodInputs>({
+    resolver: zodResolver(foodFormSchema),
+    defaultValues: {
+      name: '',
+      group: '',
+      container: '',
+      quantity: '',
+      unit: '',
+      expiry: undefined,
+      category: 'unselected',
+    },
+  });
+
   /**
-   * Process when the add button is clicked
+   * Reset the form when the drawer is closed.
    */
-  // const handleAddClick = () => {
-  //   alert('Successfully added!');
-  //   setIsDrawerOpen(false);
-  // };
+  useEffect(() => {
+    if (!isDrawerOpen) {
+      form.reset();
+    }
+  }, [isDrawerOpen, form]);
 
   /**
    * Process when the form is submitted
+   * @param values The form values
    */
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    const formDataObject = Object.fromEntries(formData);
-
-    const data = await fetch('/api/form', {
-      method: 'POST',
-      body: JSON.stringify(formDataObject),
-    }).then((res) => res.json());
-
-    console.log(data);
+  const processSubmit: SubmitHandler<FoodInputs> = (values) => {
+    console.log({ values });
+    alert('Submitted!');
+    form.reset();
+    setIsDrawerOpen(false);
   };
 
   return (
@@ -72,24 +85,27 @@ export const AddDrawerContent = ({
       <DrawerHeader>
         <DrawerTitle>Add Food</DrawerTitle>
       </DrawerHeader>
-      <form onSubmit={handleSubmit}>
-        <AddDrawerBody
-          groupIdContainerIdsMap={groupIdContainerIdsMap}
-          containerIdGroupIdMap={containerIdGroupIdMap}
-          containerIdNameMap={containerIdNameMap}
-          groupIdNameMap={groupIdNameMap}
-        />
-        <DrawerFooter>
-          <DrawerClose asChild>
-            <Button variant="cancel" size="sm" onClick={handleCancelClick}>
-              Cancel
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(processSubmit)}>
+          <AddDrawerBody
+            form={form}
+            groupIdContainerIdsMap={groupIdContainerIdsMap}
+            containerIdGroupIdMap={containerIdGroupIdMap}
+            containerIdNameMap={containerIdNameMap}
+            groupIdNameMap={groupIdNameMap}
+          />
+          <DrawerFooter>
+            <DrawerClose asChild>
+              <Button variant="cancel" size="sm" onClick={handleCancelClick}>
+                Cancel
+              </Button>
+            </DrawerClose>
+            <Button type="submit" variant="primary" size="sm">
+              Add food
             </Button>
-          </DrawerClose>
-          <Button type="submit" variant="primary" size="sm">
-            Add food
-          </Button>
-        </DrawerFooter>
-      </form>
+          </DrawerFooter>
+        </form>
+      </Form>
     </DrawerContent>
   );
 };

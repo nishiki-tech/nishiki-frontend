@@ -42,6 +42,9 @@ export const EditDrawerContent = ({
   containerIdNameMap,
   groupIdNameMap,
 }: IEditDrawerContentProps) => {
+  /**
+   * Process when the delete button is clicked
+   */
   const handleDeleteClick = () => {
     alert('Successfully deleted!');
     setIsDrawerOpen(false);
@@ -63,12 +66,12 @@ export const EditDrawerContent = ({
       quantity: String(food?.quantity ?? '') ?? '',
       unit: food?.unit ?? '',
       expiry: food?.expiry,
-      category: food?.category,
+      category: food?.category ?? 'unselected',
     });
   }, [containerIdGroupIdMap, food, form]);
 
   /**
-   * Process the form submission.
+   * Process when the form is submitted
    * @param values The form values
    */
   const processSubmit: SubmitHandler<FoodInputs> = (values) => {
