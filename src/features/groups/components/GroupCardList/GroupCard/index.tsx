@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { FC } from 'react';
 
 import { ContainerCount } from './ContainerCount';
-import { GroupCollectionMenuButton } from './GroupCollectionMenuButton';
+import { GroupCardMenuButton } from './GroupCardMenuButton';
 import { UserCount } from './UserCount';
 
 interface IGroupCardProps {
@@ -27,7 +27,7 @@ export const GroupCard: FC<IGroupCardProps> = async ({ groupId, groupName }) => 
           <UserCount userCount={users.length} />
         </div>
       </Link>
-      <GroupCollectionMenuButton />
+      <GroupCardMenuButton />
     </Card>
   );
 };

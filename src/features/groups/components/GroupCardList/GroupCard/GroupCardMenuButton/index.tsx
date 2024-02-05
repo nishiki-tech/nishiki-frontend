@@ -13,9 +13,9 @@ import {
 } from '@/components/ui';
 
 import { FC } from 'react';
-interface IGroupCollectionMenuButtonProps {}
+interface IGroupCardMenuButtonProps {}
 
-export const GroupCollectionMenuButton: FC<IGroupCollectionMenuButtonProps> = ({}) => {
+export const GroupCardMenuButton: FC<IGroupCardMenuButtonProps> = ({}) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
