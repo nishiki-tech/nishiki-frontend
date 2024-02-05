@@ -18,7 +18,6 @@ export interface ICreateGroupParams {
  */
 export interface ICreateGroupApiResponse {
   groupId: IGroup['id'];
-  groupName: IGroup['name'];
 }
 
 /**

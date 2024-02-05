@@ -38,7 +38,6 @@ describe('API Function Tests', () => {
     const mockCreateGroupParams: ICreateGroupParams = { groupName: 'Shared-house' };
     const mockCreateGroupResponse: ICreateGroupApiResponse = {
       groupId: 'a3kdifut-a520-c2cb-1be7-d90710691861',
-      groupName: 'Shared-house',
     };
     it('successfully creates a group', async () => {
       const mockRequest = setUpMockSuccessRequest(mockCreateGroupResponse);
