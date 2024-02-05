@@ -10,9 +10,9 @@ import {
 
 import { useState } from 'react';
 
-import { RenameGroupsDrawerContent } from './RenameGroupDrawerContent';
+import { RenameGroupDrawerContent } from './RenameGroupDrawerContent';
 
-export const RenameGroupsButton = () => {
+export const RenameGroupButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <DrawerRoot open={isOpen} onOpenChange={setIsOpen}>
@@ -24,7 +24,7 @@ export const RenameGroupsButton = () => {
           <DropdownMenuButtonText>Rename</DropdownMenuButtonText>
         </DropdownMenuButton>
       </DrawerTrigger>
-      <RenameGroupsDrawerContent />
+      <RenameGroupDrawerContent />
     </DrawerRoot>
   );
 };

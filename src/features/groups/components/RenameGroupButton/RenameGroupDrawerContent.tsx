@@ -1,6 +1,6 @@
 import { DrawerBody, DrawerContent, DrawerHeader, DrawerTitle } from '@/components/ui';
 
-export const RenameGroupsDrawerContent = () => {
+export const RenameGroupDrawerContent = () => {
   return (
     <DrawerContent side="bottom">
       <DrawerHeader>
