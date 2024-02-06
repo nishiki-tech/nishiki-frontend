@@ -13,9 +13,11 @@ import {
 } from '@/components/ui';
 
 import { FC } from 'react';
-interface IGroupCardMenuButtonProps {}
+interface IGroupCardMenuButtonProps {
+  handleRenameClick: () => void;
+}
 
-export const GroupCardMenuButton: FC<IGroupCardMenuButtonProps> = ({}) => {
+export const GroupCardMenuButton: FC<IGroupCardMenuButtonProps> = ({ handleRenameClick }) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -25,7 +27,7 @@ export const GroupCardMenuButton: FC<IGroupCardMenuButtonProps> = ({}) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem asChild>
-          <DropdownMenuButton onClick={() => {}}>
+          <DropdownMenuButton onClick={handleRenameClick}>
             <DropdownMenuButtonIcon>
               <Icon icon={PenIcon} size={5} color="primary" />
             </DropdownMenuButtonIcon>
