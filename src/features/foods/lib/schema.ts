@@ -10,4 +10,14 @@ export const foodFormSchema = z.object({
   category: z.string(),
 });
 
+export const defaultValues = {
+  name: '',
+  group: '',
+  container: '',
+  quantity: '',
+  unit: '',
+  expiry: undefined,
+  category: 'unselected',
+}
+
 export type FoodInputs = z.infer<typeof foodFormSchema>;

@@ -9,7 +9,7 @@ import {
   DrawerTitle,
 } from '@/components/ui';
 import { Form } from '@/components/ui/Form';
-import { foodFormSchema, FoodInputs } from '@/features/foods/lib/schema';
+import { defaultValues, foodFormSchema, FoodInputs } from '@/features/foods/lib/schema';
 import { GroupIdContainersMapType } from '@/features/foods/types/FoodTypes';
 import {
   ContainerIdGroupIdMapType,
@@ -49,15 +49,7 @@ export const AddDrawerContent = ({
 
   const form = useForm<FoodInputs>({
     resolver: zodResolver(foodFormSchema),
-    defaultValues: {
-      name: '',
-      group: '',
-      container: '',
-      quantity: '',
-      unit: '',
-      expiry: undefined,
-      category: 'unselected',
-    },
+    defaultValues
   });
 
   /**
