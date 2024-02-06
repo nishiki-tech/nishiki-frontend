@@ -101,12 +101,12 @@ export const FromUsageExample = () => {
           Open
         </Button>
       </DrawerTrigger>
-      <Form {...form}>
-        <DrawerContent side="bottom">
+      <DrawerContent side="bottom">
+        <DrawerHeader>
+          <DrawerTitle>Form</DrawerTitle>
+        </DrawerHeader>
+        <Form {...form}>
           <form onSubmit={form.handleSubmit(processSubmit)}>
-            <DrawerHeader>
-              <DrawerTitle>Form</DrawerTitle>
-            </DrawerHeader>
             <DrawerBody className="flex flex-col gap-4">
               <FormField
                 control={form.control}
@@ -241,8 +241,8 @@ export const FromUsageExample = () => {
               </Button>
             </DrawerFooter>
           </form>
-        </DrawerContent>
-      </Form>
+        </Form>
+      </DrawerContent>
     </DrawerRoot>
   );
 };
