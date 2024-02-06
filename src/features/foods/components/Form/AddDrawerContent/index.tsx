@@ -49,7 +49,7 @@ export const AddDrawerContent = ({
 
   const form = useForm<FoodInputs>({
     resolver: zodResolver(foodFormSchema),
-    defaultValues
+    defaultValues,
   });
 
   /**

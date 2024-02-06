@@ -18,6 +18,6 @@ export const defaultValues = {
   unit: '',
   expiry: undefined,
   category: 'unselected',
-}
+};
 
 export type FoodInputs = z.infer<typeof foodFormSchema>;
