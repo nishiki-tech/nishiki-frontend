@@ -65,6 +65,10 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
         case 'name':
           return a.name.localeCompare(b.name);
         case 'expiry':
+          // Move null dates to the end of array
+          if (a.expiry === null) return 1;
+          if (b.expiry === null) return -1;
+          // Sort by expiry date
           return a.expiry < b.expiry ? -1 : 1;
         default:
           return a.createdAt > b.createdAt ? -1 : 1; // default is createdAt desc order
