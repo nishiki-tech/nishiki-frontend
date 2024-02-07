@@ -1,10 +1,10 @@
 'use client';
 
-import { LabeledInput } from '@/components/parts';
 import {
   DatePicker,
   DrawerBody,
   Input,
+  NumberInput,
   Select,
   SelectContent,
   SelectGroup,
@@ -13,19 +13,22 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui';
-import { CategorySelect } from '@/features/foods/components/Form/CategorySelect';
-import { GroupIdContainersMapType, IFoodView } from '@/features/foods/types/FoodTypes';
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/Form';
+import { CategorySelect } from '@/features/foods/components/Form';
+import { foodFormSchema } from '@/features/foods/lib/schema';
+import { GroupIdContainersMapType } from '@/features/foods/types/FoodTypes';
 import {
   ContainerIdGroupIdMapType,
   ContainerIdNameMapType,
   GroupIdNameMapType,
 } from '@/features/foods/utils/containerMapping';
-import { IContainer, IFood, IGroup } from '@/types/definition';
+import { IContainer, IGroup } from '@/types/definition';
 
-import { useState } from 'react';
+import { UseFormReturn } from 'react-hook-form';
+import { z } from 'zod';
 
 interface IEditDrawerBodyProps {
-  initialFoodData: IFoodView;
+  form: UseFormReturn<z.infer<typeof foodFormSchema>>;
   groupIdContainerIdsMap: GroupIdContainersMapType;
   containerIdGroupIdMap: ContainerIdGroupIdMapType;
   containerIdNameMap: ContainerIdNameMapType;
@@ -33,133 +36,161 @@ interface IEditDrawerBodyProps {
 }
 
 export const EditDrawerBody = ({
-  initialFoodData,
+  form,
   groupIdContainerIdsMap,
   containerIdGroupIdMap,
   containerIdNameMap,
   groupIdNameMap,
 }: IEditDrawerBodyProps) => {
-  const [name, setName] = useState<IFood['name']>(initialFoodData.name);
-  const [selectedGroup, setSelectedGroup] = useState<IGroup['id']>(
-    containerIdGroupIdMap[initialFoodData.containerId],
-  );
-  const [selectedContainer, setSelectedContainer] = useState<IContainer['id']>(
-    initialFoodData.containerId,
-  );
-  const [quantity, setQuantity] = useState<string>(String(initialFoodData.quantity));
-  const [unit, setUnit] = useState<IFood['unit']>(initialFoodData.unit || '');
-  const [date, setDate] = useState<Date | undefined>(initialFoodData.expiry);
-  const [category, setCategory] = useState<string>('unselected');
-
   /**
-   * Process when a group is selected
-   * @param groupId
+   * Process when a group is selected.
+   * @param groupId selected group
    */
-  const handleSelectGroup = (groupId: IGroup['id']) => {
-    setSelectedGroup(groupId);
-    setSelectedContainer('');
+  const handleGroupChange = (groupId: IGroup['id']) => {
+    form.setValue('group', groupId);
+    form.setValue('container', '');
   };
 
   /**
-   * Process when a container is selected
-   * @param containerId
+   * Process when a container is selected.
+   * @param containerId selected container
    */
-  const handleSelectContainer = (containerId: IContainer['id']) => {
-    setSelectedContainer(containerId);
-    setSelectedGroup(containerIdGroupIdMap[containerId]);
+  const handleContainerChange = (containerId: IContainer['id']) => {
+    form.setValue('container', containerId);
+    form.setValue('group', containerIdGroupIdMap[containerId]);
   };
 
   return (
     <DrawerBody className="flex flex-col gap-4">
-      <LabeledInput label="Name" htmlFor="name" required>
-        <Input
-          name="name"
-          id="name"
-          placeholder="Container name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </LabeledInput>
-      {/* TODO: Make it a separate component */}
-      <LabeledInput label="Group" htmlFor="group" required>
-        <Select
-          name="group"
-          value={selectedGroup}
-          onValueChange={(value) => handleSelectGroup(value)}
-        >
-          <SelectTrigger id="group">
-            <SelectValue placeholder="Select a group" />
-          </SelectTrigger>
-          <SelectContent>
-            {Object.keys(groupIdContainerIdsMap).map((group) => (
-              <SelectItem key={group} value={group}>
-                {groupIdNameMap[group]}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </LabeledInput>
-      {/* TODO: Make it a separate component */}
-      <LabeledInput label="Container" htmlFor="container" required>
-        <Select
-          name="container"
-          value={selectedContainer}
-          onValueChange={(value) => handleSelectContainer(value)}
-        >
-          <SelectTrigger id="container">
-            <SelectValue placeholder="Select a container" />
-          </SelectTrigger>
-          <SelectContent>
-            {Object.entries(groupIdContainerIdsMap).map(
-              ([groupId, containers]: [IGroup['id'], IContainer['id'][]], i) => {
-                return (
-                  <SelectGroup key={i}>
-                    <SelectLabel>{groupIdNameMap[groupId]}</SelectLabel>
-                    {containers.map((container) => (
-                      <SelectItem key={container} value={container}>
-                        {containerIdNameMap[container]}
-                      </SelectItem>
-                    ))}
-                  </SelectGroup>
-                );
-              },
-            )}
-          </SelectContent>
-        </Select>
-      </LabeledInput>
+      <FormField
+        control={form.control}
+        name="name"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel required>Name</FormLabel>
+            <FormControl>
+              <Input {...field} placeholder="Food name" />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="group"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel required>Group</FormLabel>
+            <Select onValueChange={handleGroupChange} value={field.value}>
+              <FormControl>
+                <SelectTrigger variant="rounded">
+                  <SelectValue placeholder="Select a group" />
+                </SelectTrigger>
+              </FormControl>
+              <SelectContent>
+                {Object.keys(groupIdContainerIdsMap).map((group) => (
+                  <SelectItem key={group} value={group}>
+                    {groupIdNameMap[group]}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="container"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel required>Container</FormLabel>
+            <Select onValueChange={handleContainerChange} value={field.value}>
+              <FormControl>
+                <SelectTrigger variant="rounded">
+                  <SelectValue placeholder="Select a container" />
+                </SelectTrigger>
+              </FormControl>
+              <SelectContent>
+                {Object.entries(groupIdContainerIdsMap).map(
+                  ([groupId, containers]: [IGroup['id'], IContainer['id'][]], i) => {
+                    return (
+                      <SelectGroup key={i}>
+                        <SelectLabel>{groupIdNameMap[groupId]}</SelectLabel>
+                        {containers.map((container) => (
+                          <SelectItem key={container} value={container}>
+                            {containerIdNameMap[container]}
+                          </SelectItem>
+                        ))}
+                      </SelectGroup>
+                    );
+                  },
+                )}
+              </SelectContent>
+            </Select>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
       <div className="grid grid-cols-2 gap-6">
-        <LabeledInput label="Quantity" htmlFor="quantity">
-          <Input
-            name="quantity"
-            id="quantity"
-            type="number"
-            value={quantity}
-            onChange={(e) => setQuantity(e.target.value)}
-          />
-        </LabeledInput>
-        <LabeledInput label="Unit" htmlFor="unit">
-          <Input
-            name="unit"
-            id="unit"
-            type="text"
-            value={unit}
-            onChange={(e) => setUnit(e.target.value)}
-          />
-        </LabeledInput>
-      </div>
-      <LabeledInput label="Expiry" htmlFor="expiry">
-        <Input type="hidden" name="expiry" value={String(date)} />
-        <DatePicker id="expiry" date={date} onSelect={setDate} />
-      </LabeledInput>
-      <LabeledInput label="Category" htmlFor="category">
-        <Input type="hidden" name="category" value={category} />
-        <CategorySelect
-          id="category"
-          selectedCategory={category}
-          setSelectedCategory={setCategory}
+        <FormField
+          control={form.control}
+          name="quantity"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Quantity</FormLabel>
+              <FormControl>
+                <NumberInput {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
         />
-      </LabeledInput>
-      {/* "Add more" checkbox will be added here */}
+        <FormField
+          control={form.control}
+          name="unit"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Unit</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      </div>
+      <FormField
+        control={form.control}
+        name="expiry"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Expiry</FormLabel>
+            <Input type="hidden" name="expiry" value={String(field.value)} />
+            <FormControl>
+              <DatePicker id="expiry" date={field.value} onSelect={field.onChange} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="category"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Category</FormLabel>
+            <FormControl>
+              <CategorySelect
+                id="category"
+                selectedCategory={field.value}
+                setSelectedCategory={field.onChange}
+              />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
     </DrawerBody>
   );
 };
