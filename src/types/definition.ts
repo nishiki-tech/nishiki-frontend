@@ -46,7 +46,7 @@ export interface IFood {
   name: string;
   quantity: number;
   category: string;
-  unit: string;
-  expiry: Date;
+  unit: string | null;
+  expiry: Date | null;
   createdAt: Date;
 }

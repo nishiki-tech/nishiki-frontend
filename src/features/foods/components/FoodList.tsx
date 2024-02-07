@@ -67,7 +67,9 @@ export const FoodList = ({
                 <div className="text-sm flex items-center gap-1">
                   <Icon icon={BagIcon} color="black" size={3} />
                   {food.quantity} {food.unit}
-                  <time className="ml-auto">{format(new Date(food.expiry), 'PP')}</time>
+                  <time className="ml-auto">
+                    {food.expiry && format(new Date(food.expiry), 'PP')}
+                  </time>
                 </div>
               </div>
             </Button>

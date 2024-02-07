@@ -65,7 +65,7 @@ export const EditDrawerContent = ({
       container: food?.containerId ?? '',
       quantity: String(food?.quantity ?? '') ?? '',
       unit: food?.unit ?? '',
-      expiry: food?.expiry,
+      expiry: food?.expiry ?? undefined,
       category: food?.category ?? 'unselected',
     });
   }, [containerIdGroupIdMap, food, form]);
