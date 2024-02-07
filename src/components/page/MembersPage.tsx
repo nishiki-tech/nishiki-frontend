@@ -18,7 +18,7 @@ export const MembersPage = async ({ id }: IMembersPageProps) => {
           <Button className="flex justify-center items-center w-12 h-12">
             <Icon icon={MenuMeatballIcon} size={5} />
           </Button>
-          <InviteMemberButton></InviteMemberButton>
+          <InviteMemberButton />
         </div>
       </div>
       <div className="flex flex-col gap-2 pb-1">
