@@ -17,10 +17,15 @@ import { useState } from 'react';
 
 export const InviteMemberButton = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isCopyDisabled, setIsCopyDisabled] = useState(false);
 
-  const handleCopy = () => {
+  const handleLinkCopy = () => {
     alert('link copied');
-    setIsDialogOpen(false);
+    // setIsDialogOpen(false);
+    setIsCopyDisabled(true);
+  };
+  const changeText = (isClicked: boolean) => {
+    return isClicked ? 'Copied!' : 'Copy Link';
   };
 
   return (
@@ -36,9 +41,14 @@ export const InviteMemberButton = () => {
             <DialogTitle>Invite users</DialogTitle>
           </DialogHeader>
           <DialogBody className="flex justify-center">
-            <Button variant="primary" size={'lg'} onClick={handleCopy}>
+            <Button
+              disabled={isCopyDisabled}
+              variant="primary"
+              size={'lg'}
+              onClick={handleLinkCopy}
+            >
               <Icon icon={LinkIcon} size={5} color={'white'} />
-              Copy link
+              {changeText(isCopyDisabled)}
             </Button>
           </DialogBody>
           <DialogDescription className="text-center text-sm text-gray-dark">

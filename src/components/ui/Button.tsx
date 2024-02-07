@@ -16,8 +16,8 @@ const buttonVariants = cva(
     variants: {
       variant: {
         none: 'min-w-0',
-        primary: 'bg-primary text-white hover:bg-primary-dark disabled:opacity-50',
-        error: 'bg-danger text-white hover:bg-danger-dark disabled:opacity-50',
+        primary: 'bg-primary text-white enabled:hover:bg-primary-dark disabled:opacity-50',
+        error: 'bg-danger text-white enabled:hover:bg-danger-dark disabled:opacity-50',
         cancel: 'bg-transparent text-black hover:bg-gray-light',
         ghost: 'bg-transparent',
       },
