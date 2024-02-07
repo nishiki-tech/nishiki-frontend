@@ -72,7 +72,7 @@ export const CategorySelect = ({
                     onClick={() => handleClick(key)}
                     asChild
                   >
-                    <Button className="flex gap-4 items-center justify-start">
+                    <Button className="flex gap-4 items-center justify-start px-4 py-2">
                       <div className="bg-white w-8 h-8 rounded-full flex items-center justify-center border border-primary select-none">
                         <span role="img" aria-label={value.name} className="text-lg">
                           {value.emoji}

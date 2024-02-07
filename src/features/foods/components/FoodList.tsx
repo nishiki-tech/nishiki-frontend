@@ -1,6 +1,6 @@
 'use client';
 
-import { BagIcon, ContainerIcon } from '@/assets/images/icons';
+import { BagIcon, ContainerIcon, MenuKebabIcon } from '@/assets/images/icons';
 import { Button, Card, DrawerRoot, DrawerTrigger, Icon } from '@/components/ui';
 import { foodCategories } from '@/const/foodCategory';
 import { GroupIdContainersMapType, IFoodView } from '@/features/foods/types/FoodTypes';
@@ -40,9 +40,12 @@ export const FoodList = ({
   return (
     <DrawerRoot open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
       {foods.map((food) => (
-        <DrawerTrigger key={food.id} asChild>
-          <Card className="bg-white mb-2 w-full" asChild>
-            <Button className="flex gap-4 items-center text-left" onClick={() => handleClick(food)}>
+        <Card className="mb-2 w-full flex" key={food.id}>
+          <DrawerTrigger asChild>
+            <Button
+              className="flex grow gap-4 items-center text-left pl-4 py-2"
+              onClick={() => handleClick(food)}
+            >
               <figure className="bg-white w-10 h-10 rounded-full flex items-center justify-center border border-primary select-none text-2xl">
                 {foodCategories[food.category]?.emoji}
               </figure>
@@ -59,8 +62,11 @@ export const FoodList = ({
                 </div>
               </div>
             </Button>
-          </Card>
-        </DrawerTrigger>
+          </DrawerTrigger>
+          <Button variant="ghost" className="w-12">
+            <Icon icon={MenuKebabIcon} size={4.5} />
+          </Button>
+        </Card>
       ))}
       <EditDrawerContent
         food={clickedFood}

@@ -76,7 +76,7 @@ export const FromUsageExample = () => {
 
   /**
    * Process the form submission.
-   * @param values The form values
+   * @param values - The form values
    */
   const processSubmit: SubmitHandler<Inputs> = (values) => {
     console.log({ values });
@@ -87,7 +87,7 @@ export const FromUsageExample = () => {
 
   /**
    * Process when a group is selected.
-   * @param group selected group
+   * @param group - selected group
    */
   const handleGroupChange = (group: string) => {
     form.setValue('group', group);

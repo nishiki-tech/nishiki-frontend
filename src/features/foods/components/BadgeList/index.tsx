@@ -26,8 +26,8 @@ export const BadgeList = ({
 
   /**
    * Update url query parameter
-   * @param key query parameter key
-   * @param value query parameter value (string or string[] for category)
+   * @param key - query parameter key
+   * @param value - query parameter value (string or string[] for category)
    */
   const updateUrlParams = (key: string, value?: string | string[]) => {
     if (!value || (Array.isArray(value) && value.length === 0)) {
@@ -40,7 +40,7 @@ export const BadgeList = ({
 
   /**
    * Remove the corresponding category from the filter category array
-   * @param key category name
+   * @param key - category name
    */
   const removeCategoryFilter = (key: string) => {
     const updatedCategoryList = categoryList.filter((category) => category !== key);

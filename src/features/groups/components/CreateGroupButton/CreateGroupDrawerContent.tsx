@@ -50,7 +50,7 @@ export const CreateGroupDrawerContent: FC<ICreateGroupDrawerContentProps> = ({
 
   /**
    * Process the form submission.
-   * @param values The form values
+   * @param values - The form values
    */
   const processSubmit: SubmitHandler<Inputs> = async (values) => {
     const { groupName } = values;
