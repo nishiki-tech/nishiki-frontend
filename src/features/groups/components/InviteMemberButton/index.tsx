@@ -20,11 +20,9 @@ export const InviteMemberButton = () => {
   const [isCopyDisabled, setIsCopyDisabled] = useState(false);
 
   const handleLinkCopy = () => {
-    alert('link copied');
-    // setIsDialogOpen(false);
     setIsCopyDisabled(true);
   };
-  const changeText = (isClicked: boolean) => {
+  const handleTextChange = (isClicked: boolean) => {
     return isClicked ? 'Copied!' : 'Copy Link';
   };
 
@@ -48,7 +46,7 @@ export const InviteMemberButton = () => {
               onClick={handleLinkCopy}
             >
               <Icon icon={LinkIcon} size={5} color={'white'} />
-              {changeText(isCopyDisabled)}
+              {handleTextChange(isCopyDisabled)}
             </Button>
           </DialogBody>
           <DialogDescription className="text-center text-sm text-gray-dark">
