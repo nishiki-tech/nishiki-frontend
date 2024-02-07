@@ -44,6 +44,7 @@ export const InviteMemberButton = () => {
               variant="primary"
               size={'lg'}
               onClick={handleLinkCopy}
+              className="w-40 px-3.5"
             >
               <Icon icon={LinkIcon} size={5} color={'white'} />
               {handleTextChange(isCopyDisabled)}
