@@ -11,7 +11,7 @@ import {
 } from '@/features/foods/utils/containerMapping';
 
 import { format } from 'date-fns';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { EditDrawerContent } from './Form';
 
@@ -31,7 +31,16 @@ export const FoodList = ({
   groupIdNameMap,
 }: IFoodListProps) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [clickedFood, setClickedFood] = useState<IFoodView>(foods[0]);
+  const [clickedFood, setClickedFood] = useState<IFoodView | undefined>();
+
+  /**
+   * Reset the form when the drawer is closed.
+   */
+  useEffect(() => {
+    if (!isDrawerOpen) {
+      setClickedFood(undefined);
+    }
+  }, [isDrawerOpen]);
 
   const handleClick = (food: IFoodView) => {
     setClickedFood(food);

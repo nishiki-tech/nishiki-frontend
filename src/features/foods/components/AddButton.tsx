@@ -46,6 +46,7 @@ export const AddButton = ({
         </Button>
       </DrawerTrigger>
       <AddDrawerContent
+        isDrawerOpen={isDrawerOpen}
         setIsDrawerOpen={setIsDrawerOpen}
         groupIdContainerIdsMap={groupIdContainerIdsMap}
         containerIdGroupIdMap={containerIdGroupIdMap}
