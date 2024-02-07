@@ -9,6 +9,7 @@ Thank you for your interest in contributing to Nishiki! This document outlines t
   - [Branching Rules](#branching-rules)
     - [Types of Branches](#types-of-branches)
     - [Branch Naming Conventions](#branch-naming-conventions)
+      - [Syntax](#syntax)
       - [Examples](#examples)
   - [Testing](#testing)
   - [Commit Convention](#commit-convention)
@@ -20,25 +21,34 @@ Thank you for your interest in contributing to Nishiki! This document outlines t
 
 ### Types of Branches
 
-- `main`: For production use. Only accepts PRs from `develop` (and `hotfix` in emergencies).
+- `main`: For production use. Only accepts PRs from `develop` (and `hotfix/` in emergencies).
 - `develop`: Accepts PRs from `feature` branches.
-- `feature/`: Branches for developing new features or improvements.
-- `hotfix/`: Branches for urgent fixes.
-- `docs/`: Branches for documentation updates.
+- `feature/`: Branches for developing new features or enhancements.
+- `fix/` Branches for fixing bugs or issues. (❗️The base and target branches of these PRs must be `develop`)
+- `hotfix/`: Branches for fixing urgent issues in production. (❗️The base and target branch of these PRs must be `main`)
+- `refactor/`: Branches for refactoring code.
+- `test/` - Branches for testing new features or changes.
+- `docs/`: Branches for updating documentation.
 
 ### Branch Naming Conventions
 
-- Feature Addition: `feature/<issue_number>-<brief_description>` (develop ⇔ feature)
-- Hotfix: `hotfix/<issue_number>-<brief_description>` (main ⇔ hotfix)
-- Documentation Update: `docs/<issue_number>-<brief_description>` (develop ⇔ docs)
+#### Syntax
 
-_Note: `<issue_number>-` can be omitted if the modification is not based on an issue._
+```
+<type>/<issue_number>-<brief_description_separated_by_dashes>
+```
 
 #### Examples
 
-- feature/42-user-authentication
-- hotfix/56-security-vulnerability-fix
-- docs/108-update-installation-guide
+- Docs: Update installation guide -->
+- Feature: `feature/15-add-button-to-home-page`
+- Fix: `fix/56-resolve-error-in-data-fetching`
+- Hotfix: `hotfix/67-fix-user-authentication-issue`
+- Refactor: `refactor/102-reorganize-file-structure`
+- Test: `test/23-add-unit-tests-for-form-validation`
+- Docs: `docs/108-update-installation-guide`
+
+\*_Note: `<issue_number>-` can be omitted if the modification is not based on an issue._
 
 ## Testing
 
@@ -51,7 +61,7 @@ _Note: `<issue_number>-` can be omitted if the modification is not based on an i
 Before you create a Pull Request, please check whether your commits comply with
 the commit conventions used in this repository.
 
-When you create a commit we kindly ask you to follow the convention
+When you create a commit, we kindly ask you to follow the convention
 `category(scope or module): message` in your commit message while using one of
 the following categories:
 
