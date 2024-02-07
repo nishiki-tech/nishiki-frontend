@@ -37,7 +37,7 @@ export const InviteMemberButton = () => {
             <Icon icon={PlusIcon} size={4.5} />
           </Button>
         </DialogTrigger>
-        <DialogContent className="h-44 w-11/12">
+        <DialogContent className="h-44 w-[calc(100%-2rem)]">
           <DialogHeader>
             <DialogTitle>Invite users</DialogTitle>
           </DialogHeader>
@@ -45,7 +45,7 @@ export const InviteMemberButton = () => {
             <Button
               disabled={isCopyDisabled}
               variant="primary"
-              size={'lg'}
+              size="lg"
               onClick={handleLinkCopy}
               className="w-40 px-3.5"
             >
