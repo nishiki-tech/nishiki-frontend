@@ -13,7 +13,7 @@ import {
   Icon,
 } from '@/components/ui';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const InviteMemberButton = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -25,6 +25,9 @@ export const InviteMemberButton = () => {
   const handleTextChange = (isClicked: boolean) => {
     return isClicked ? 'Copied!' : 'Copy Link';
   };
+  useEffect(() => {
+    setTimeout(() => setIsCopyDisabled(false), 200);
+  }, [isDialogOpen]);
 
   return (
     <>
