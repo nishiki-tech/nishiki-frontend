@@ -2,7 +2,7 @@ import { Input } from '@/components/ui';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/Form';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useRef } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -24,6 +24,7 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
   containerCount,
   userCount,
 }) => {
+  const inputRef = useRef<HTMLInputElement>(null);
   const formSchema = z.object({
     groupName: z.string().min(1, { message: 'Name has to have at least 1 character' }),
   });
@@ -59,6 +60,18 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
     if (!isOpen) form.reset();
   }, [isOpen, form]);
 
+  /**
+   * Focus the input when the form is opened.
+   */
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => {
+        console.log('focus');
+        inputRef.current?.focus();
+      }, 350);
+    }
+  }, [isOpen]);
+
   return (
     <div className="flex grow flex-col gap-3 pl-4 py-2">
       <Form {...form}>
@@ -69,7 +82,14 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input variant="square" {...field} h={'sm'} className="text-[18px]" />
+                  <Input
+                    variant="square"
+                    {...field}
+                    h={'sm'}
+                    className="text-lg"
+                    ref={inputRef}
+                    onBlur={onClose}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>

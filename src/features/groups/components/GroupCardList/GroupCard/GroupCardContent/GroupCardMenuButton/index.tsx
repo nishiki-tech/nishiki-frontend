@@ -21,7 +21,7 @@ export const GroupCardMenuButton: FC<IGroupCardMenuButtonProps> = ({ handleRenam
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="w-12">
+        <Button variant="ghost" className="w-12" onFocus={() => console.log('button focused')}>
           <Icon icon={MenuKebabIcon} size={4.5} />
         </Button>
       </DropdownMenuTrigger>
