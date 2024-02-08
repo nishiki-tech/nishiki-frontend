@@ -2,7 +2,7 @@ import { Input } from '@/components/ui';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/Form';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import React, { FC, useEffect, useRef } from 'react';
+import React, { FC, KeyboardEvent, useEffect, useRef } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -54,6 +54,16 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
   };
 
   /**
+   * Handle the escape key down event.
+   * @param event - The keyboard event
+   */
+  const handleEscKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Escape') {
+      onClose();
+    }
+  };
+
+  /**
    * Reset the form when the drawer is closed.
    */
   useEffect(() => {
@@ -88,11 +98,12 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
                 <FormControl>
                   <Input
                     variant="square"
-                    {...field}
                     h={'sm'}
                     className="text-lg"
+                    {...field}
                     ref={inputRef}
                     onBlur={onClose}
+                    onKeyDown={handleEscKeyDown}
                   />
                 </FormControl>
                 <FormMessage />
