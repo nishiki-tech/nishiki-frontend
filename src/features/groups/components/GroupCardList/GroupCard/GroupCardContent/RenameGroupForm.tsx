@@ -1,4 +1,5 @@
-import { Input } from '@/components/ui';
+import { CircleCrossIcon } from '@/assets/images/icons';
+import { Button, Icon, Input } from '@/components/ui';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/Form';
 
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -25,8 +26,9 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
   userCount,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const shouldHandleBlur = useRef(true);
   const formSchema = z.object({
-    groupName: z.string().min(1, { message: 'Name has to have at least 1 character' }),
+    groupName: z.string().min(1, { message: 'Name is required' }),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -50,7 +52,7 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
     /**Replace console.log with rename api method in here, after it's implemented */
     console.log({ groupName });
     form.reset();
-    onClose();
+    // onClose();
   };
 
   /**
@@ -63,6 +65,38 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
     }
   };
 
+  /**
+   * Focus the input when the form is opened.
+   */
+  const handleInputFocus = () => {
+    inputRef.current?.focus();
+  };
+
+  /**
+   * When the input is blurred, process the form submission and close the form.
+   */
+  const handleInputBlur = () => {
+    if (!shouldHandleBlur.current) return;
+    // check if the cross button is clicked
+    // process the form submission
+    processSubmit(form.getValues());
+    onClose();
+  };
+
+  /**
+   * When cross button is clicked, empty the input value and set the focus back to the input.
+   */
+  const handleCrossButtonClick = () => {
+    form.setValue('groupName', '');
+    handleInputFocus();
+    shouldHandleBlur.current = true;
+  };
+  /**
+   * When cross button is clicked, set the shouldHandleBlur to false.
+   */
+  const handleCrossButtonMouseDown = () => {
+    shouldHandleBlur.current = false;
+  };
   /**
    * Reset the form when the drawer is closed.
    */
@@ -81,7 +115,7 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
        * Radix dropdownMenu trigger focus will happen at around 300 ms after the dropdownMenu is closed.
        */
       setTimeout(() => {
-        inputRef.current?.focus();
+        handleInputFocus();
       }, 350);
     }
   }, [isOpen]);
@@ -96,15 +130,25 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input
-                    variant="square"
-                    h={'sm'}
-                    className="text-lg"
-                    {...field}
-                    ref={inputRef}
-                    onBlur={onClose}
-                    onKeyDown={handleEscKeyDown}
-                  />
+                  <div className="relative flex items-center">
+                    <Input
+                      type="text"
+                      variant="square"
+                      className="text-lg flex-grow"
+                      {...field}
+                      ref={inputRef}
+                      onKeyDown={handleEscKeyDown}
+                      onBlur={handleInputBlur}
+                    />
+                    <Button
+                      variant="ghost"
+                      className="absolute right-0 w-10"
+                      onMouseDown={handleCrossButtonMouseDown}
+                      onClick={handleCrossButtonClick}
+                    >
+                      <Icon icon={CircleCrossIcon} size={4} />
+                    </Button>
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>
