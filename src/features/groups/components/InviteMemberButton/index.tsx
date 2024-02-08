@@ -37,7 +37,7 @@ export const InviteMemberButton = () => {
             <Icon icon={PlusIcon} size={4.5} />
           </Button>
         </DialogTrigger>
-        <DialogContent className="h-44 w-[calc(100%-2rem)]">
+        <DialogContent className="h-44">
           <DialogHeader>
             <DialogTitle>Invite users</DialogTitle>
           </DialogHeader>

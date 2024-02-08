@@ -57,7 +57,7 @@ const DialogContent = forwardRef<
         'fixed z-50 left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]',
         'w-full rounded',
         'bg-white shadow-lg',
-        'data-[state=open]:animate-fadeIn data-[state=closed]:animate-fadeOut',
+        'data-[state=open]:animate-fadeIn data-[state=closed]:animate-fadeOut w-[calc(100%-2rem)]',
         className,
       )}
       {...props}
