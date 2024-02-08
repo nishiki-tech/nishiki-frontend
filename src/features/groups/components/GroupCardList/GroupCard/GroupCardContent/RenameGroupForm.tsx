@@ -65,6 +65,11 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
    */
   useEffect(() => {
     if (isOpen) {
+      /**
+       * Needed 350 ms delay to focus the input,
+       * because the focus will be set to the radix dropdownMenu trigger on closing the dropdownMenu.
+       * Radix dropdownMenu trigger focus will happen at around 300 ms after the dropdownMenu is closed.
+       */
       setTimeout(() => {
         console.log('focus');
         inputRef.current?.focus();
