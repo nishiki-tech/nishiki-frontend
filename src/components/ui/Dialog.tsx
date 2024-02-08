@@ -74,7 +74,7 @@ DialogContent.displayName = PrimitiveContent.displayName;
 
 const DialogHeader = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn('h-12 px-4 border-b border-gray-light', 'flex items-center', className)}
+    className={cn('h-12 px-4 border-b border-gray-light', 'flex items-center content-center', className)}
     {...props}
   />
 );
