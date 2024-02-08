@@ -5,7 +5,6 @@ import {
   Button,
   DialogBody,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogRoot,
   DialogTitle,
@@ -41,7 +40,7 @@ export const InviteMemberButton = () => {
           <DialogHeader>
             <DialogTitle>Invite users</DialogTitle>
           </DialogHeader>
-          <DialogBody className="flex justify-center">
+          <DialogBody className="flex flex-col gap-4 justify-center items-center pb-8">
             <Button
               disabled={isCopyDisabled}
               variant="primary"
@@ -52,10 +51,8 @@ export const InviteMemberButton = () => {
               <Icon icon={LinkIcon} size={5} color="white" />
               {handleTextChange(isCopyDisabled)}
             </Button>
+            <p className="text-center text-sm text-gray-dark">Your invite link expires in a day.</p>
           </DialogBody>
-          <DialogDescription className="text-center text-sm text-gray-dark">
-            Your invite link expires in a day.
-          </DialogDescription>
         </DialogContent>
       </DialogRoot>
     </>
