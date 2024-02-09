@@ -44,7 +44,7 @@ export interface IContainer {
 export interface IFood {
   id: string;
   name: string;
-  quantity: number;
+  quantity: number | null;
   category: string;
   unit: string | null;
   expiry: Date | null;
