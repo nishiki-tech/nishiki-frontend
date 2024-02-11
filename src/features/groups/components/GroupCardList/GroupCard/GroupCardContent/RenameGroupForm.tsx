@@ -53,17 +53,18 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
    */
   const processSubmit: SubmitHandler<Inputs> = async (values) => {
     const { groupName } = values;
-    /**Replace console.log with rename api method in here, after it's implemented */
+    // Replace console.log with rename api method in here, after it's implemented
     alert(`Rename to ${groupName}`);
     form.reset();
     onClose();
   };
 
   /**
-   * Handle the escape key down event.
+   * Handle the key down event.
+   * when the escape key is pressed, close the form without the submission.
    * @param event - The keyboard event
    */
-  const handleEscKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Escape') {
       onClose();
     }
@@ -113,11 +114,9 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
    */
   useEffect(() => {
     if (isOpen) {
-      /**
-       * Needed 350 ms delay to focus the input
-       * because the focus will be set to the radix dropdownMenu trigger on closing the dropdownMenu.
-       * Radix dropdownMenu trigger focus will happen around 300 ms after the dropdownMenu is closed.
-       */
+      //Needed 350 ms delay to focus the input
+      //because the focus will be set to the radix dropdownMenu trigger on closing the dropdownMenu.
+      //Radix dropdownMenu trigger focus will happen around 300 ms after the dropdownMenu is closed.
       setTimeout(() => {
         inputRef.current?.focus();
       }, 350);
@@ -144,12 +143,12 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
                       )}
                       {...field}
                       ref={inputRef}
-                      onKeyDown={handleEscKeyDown}
+                      onKeyDown={handleKeyDown}
                       onBlur={handleInputBlur}
                     />
                     <Button
                       variant="ghost"
-                      className="absolute right-0 w-10"
+                      className="absolute right-0 w-10 h-full"
                       onMouseDown={handleCrossButtonMouseDown}
                       onClick={handleCrossButtonClick}
                     >
