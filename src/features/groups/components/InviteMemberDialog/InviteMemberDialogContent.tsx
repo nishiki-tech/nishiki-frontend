@@ -11,13 +11,14 @@ import {
 import { useEffect, useState } from 'react';
 
 /**
- * this function is for exporting JSX.Element to index.tsx
+ * This component displays dialog which has copy button.
+ * When it is clicked, the text changes to "Copied!"
  *
- * @param isDialogOpen boolean, this is state of the Dialog, if it is open => true, if not => false, for useEffect function which is switch of Button
- * @see useEffect() in this file
- * @returns JSX.Element which export to index.tsx
+ * The component's visibility and the reset of the copy button's state are controlled by the `isDialogOpen` prop, which is passed from the parent component.
+ *
+ * @param props.isDialogOpen - state to control the visibility of dialog, if it is open => true, if not => false, this state is used to switch the text in button.
+ * @returns {JSX.Element} - The JSX code for rendering the dialog component.
  */
-
 export const InviteMemberDialogContent = ({ isDialogOpen }: { isDialogOpen: boolean }) => {
   const [isLinkButtonClicked, setIsLinkButtonClicked] = useState(false);
 
