@@ -153,7 +153,7 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
                       onMouseDown={handleCrossButtonMouseDown}
                       onClick={handleCrossButtonClick}
                     >
-                      <Icon icon={CircleCrossIcon} size={4} />
+                      <Icon icon={CircleCrossIcon} size={4} color="gray-dark" />
                     </Button>
                   </div>
                 </FormControl>
