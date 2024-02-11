@@ -4,7 +4,7 @@ import { Button, DropdownMenu, DropdownMenuTrigger, Icon } from '@/components/ui
 
 import { FC } from 'react';
 
-import { GroupCardDropDownMenuContent } from './GroupCardDropDownMenuContent';
+import { GroupCardDropdownMenuContent } from './GroupCardDropdownMenuContent';
 interface IGroupCardMenuButtonProps {
   handleRenameClick: () => void;
 }
@@ -19,7 +19,7 @@ export const GroupCardDropdownMenuTriggerButton: FC<IGroupCardMenuButtonProps> =
           <Icon icon={MenuKebabIcon} size={4.5} />
         </Button>
       </DropdownMenuTrigger>
-      <GroupCardDropDownMenuContent handleRenameClick={handleRenameClick} />
+      <GroupCardDropdownMenuContent handleRenameClick={handleRenameClick} />
     </DropdownMenu>
   );
 };

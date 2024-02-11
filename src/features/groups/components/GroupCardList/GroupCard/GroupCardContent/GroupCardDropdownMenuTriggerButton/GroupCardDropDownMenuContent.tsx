@@ -14,7 +14,7 @@ interface IGroupCardDropdownMenuContentProps {
   handleRenameClick: () => void;
 }
 
-export const GroupCardDropDownMenuContent: FC<IGroupCardDropdownMenuContentProps> = ({
+export const GroupCardDropdownMenuContent: FC<IGroupCardDropdownMenuContentProps> = ({
   handleRenameClick,
 }) => {
   return (
