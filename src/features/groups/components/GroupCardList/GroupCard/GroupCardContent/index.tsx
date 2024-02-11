@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { FC, useState } from 'react';
 
 import { ContainerCount } from './ContainerCount';
-import { GroupCardMenuButton } from './GroupCardMenuButton';
+import { GroupCardDropdownMenuTriggerButton } from './GroupCardDropdownMenuTriggerButton';
 import { RenameGroupForm } from './RenameGroupForm';
 import { UserCount } from './UserCount';
 
@@ -51,7 +51,7 @@ export const GroupCardContent: FC<IGroupCardContentProps> = ({
           </div>
         </Link>
       )}
-      <GroupCardMenuButton handleRenameClick={handleRenameClick} />
+      <GroupCardDropdownMenuTriggerButton handleRenameClick={handleRenameClick} />
     </Card>
   );
 };
