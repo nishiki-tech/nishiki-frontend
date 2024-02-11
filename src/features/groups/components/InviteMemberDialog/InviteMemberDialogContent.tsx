@@ -10,15 +10,33 @@ import {
 
 import { useEffect, useState } from 'react';
 
-export const InviteMemberDialogContent = ({ isDialogOpen }: { isDialogOpen: boolean }) => {
-  const [isCopyDisabled, setIsCopyDisabled] = useState(false);
+/**
+ * this function is for exporting JSX.Element to index.tsx
+ *
+ * @param param0  this is state of the Dialog, if it is open => true, if not => false, for useEffect function which is switch of Button
+ * @see useEffect()
+ * @returns JSX.Element which export to index.tsx
+ */
 
+export const InviteMemberDialogContent = ({ isDialogOpen }: { isDialogOpen: boolean }) => {
+  const [isLinkButtonClicked, setIsLinkButtonClicked] = useState(false);
+
+  /**
+   * this function is onClick function when the `Button` clicked
+   */
   const handleLinkCopy = () => {
-    setIsCopyDisabled(true);
+    setIsLinkButtonClicked(true);
   };
 
+  /**
+   * this is React Hook useEffect which changes the state of `isLinkButtonClicked` to false if the state of `isDialogOpen` changes
+   *
+   * @setup `seTimeout` which enables you to change the state of `setIsLinkButtonClicked` to false 0.2 sec after the dependency change
+   * The `setTimeout` is needed to remain text "copied" until the dialog disappears in order. Without it, the text would've change to "Copy Link" before dialog disappears.
+   * @deps the parameter of `InviteMemberDialogContent` which is checking the state of Dialog as `isDialogOpen`
+   */
   useEffect(() => {
-    setTimeout(() => setIsCopyDisabled(false), 200);
+    setTimeout(() => setIsLinkButtonClicked(false), 200);
   }, [isDialogOpen]);
 
   return (
@@ -29,14 +47,14 @@ export const InviteMemberDialogContent = ({ isDialogOpen }: { isDialogOpen: bool
         </DialogHeader>
         <DialogBody className="flex flex-col gap-4 justify-center items-center pb-8">
           <Button
-            disabled={isCopyDisabled}
+            disabled={isLinkButtonClicked}
             variant="primary"
             size="lg"
             onClick={handleLinkCopy}
             className="w-40 px-3.5"
           >
             <Icon icon={LinkIcon} size={5} color="white" />
-            {isCopyDisabled ? 'Copied!' : 'Copy link'}
+            {isLinkButtonClicked ? 'Copied!' : 'Copy link'}
           </Button>
           <p className="text-center text-sm text-gray-dark">Your invite link expires in a day.</p>
         </DialogBody>
