@@ -2,15 +2,17 @@
 
 Title Naming Conventions:
 
-- Start with a capitalized prefix followed by an imperative form of a verb, just like a commit message.
-- Refer to the "Commit Convention" for the prefix:
-  https://github.com/nishiki-tech/nishiki-frontend/blob/develop/docs/CONTRIBUTING.md#commit-convention
+- Start with a capitalized prefix followed by an imperative form of a verb.
+- Refer to the "Types of Branches" section for the prefix:
+  https://github.com/nishiki-tech/nishiki-frontend/blob/develop/docs/CONTRIBUTING.md#types-of-branches
 
 Example:
-- Fix: Resolve memory leak in data processing module
-- Feat: Add two-factor authentication
-- Refactor: Improve state management in React components
-- Docs: Add Windows setup instructions
+- Feature: Add button to the home page
+- Fix: Resolve error in data fetching
+- Hotfix: Fix user authentication issue
+- Refactor: Reorganize the file structure
+- Test: Add unit tests for form validation
+- Docs: Update installation guide
 
 -->
 
@@ -40,13 +42,13 @@ Example:
 
 ## References
 
-<!-- List all the URLs of the references (documents, articles, youtube videos, etc.) that you used to complete this task -->
+<!-- List all the URLs of the references (documents, articles, YouTube videos, etc.) that you used to complete this task -->
 <!-- If you have referred to responses from ChatGPT or other AIs, please include the links to the conversations if possible -->
 <!-- Delete this section if not needed -->
 
 -
 
-## Note
+## Notes
 
 <!-- Write any note or comment. You can share your thoughts or ideas. -->
 <!-- Delete this section if not needed -->
