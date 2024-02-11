@@ -1,6 +1,7 @@
 import { CircleCrossIcon } from '@/assets/images/icons';
 import { Button, Icon, Input } from '@/components/ui';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/Form';
+import { cn } from '@/lib/tailwind/utils';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import React, { FC, KeyboardEvent, useEffect, useRef } from 'react';
@@ -52,7 +53,7 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
     /**Replace console.log with rename api method in here, after it's implemented */
     console.log({ groupName });
     form.reset();
-    // onClose();
+    onClose();
   };
 
   /**
@@ -66,7 +67,7 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
   };
 
   /**
-   * Focus the input when the form is opened.
+   * Focus the input
    */
   const handleInputFocus = () => {
     inputRef.current?.focus();
@@ -84,21 +85,27 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
   };
 
   /**
-   * When cross button is clicked, empty the input value and set the focus back to the input.
-   */
-  const handleCrossButtonClick = () => {
-    form.setValue('groupName', '');
-    handleInputFocus();
-    shouldHandleBlur.current = true;
-  };
-  /**
-   * When cross button is clicked, set the shouldHandleBlur to false.
+   * When cross button is mouse downed,
+   * set the shouldHandleBlur to false,
+   * empty the input value.
    */
   const handleCrossButtonMouseDown = () => {
     shouldHandleBlur.current = false;
+    form.setValue('groupName', '');
   };
+
   /**
-   * Reset the form when the drawer is closed.
+   * When cross button clicked is completed,
+   *  set the focus back to the input
+   * set the shouldHandleBlur to true.
+   */
+  const handleCrossButtonClick = () => {
+    handleInputFocus();
+    shouldHandleBlur.current = true;
+  };
+
+  /**
+   * Reset the form when the form is closed.
    */
   useEffect(() => {
     if (!isOpen) form.reset();
@@ -110,9 +117,9 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
   useEffect(() => {
     if (isOpen) {
       /**
-       * Needed 350 ms delay to focus the input,
+       * Needed 350 ms delay to focus the input
        * because the focus will be set to the radix dropdownMenu trigger on closing the dropdownMenu.
-       * Radix dropdownMenu trigger focus will happen at around 300 ms after the dropdownMenu is closed.
+       * Radix dropdownMenu trigger focus will happen around 300 ms after the dropdownMenu is closed.
        */
       setTimeout(() => {
         handleInputFocus();
@@ -134,7 +141,10 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
                     <Input
                       type="text"
                       variant="square"
-                      className="text-lg flex-grow"
+                      className={cn(
+                        'text-lg pr-10',
+                        form.formState.errors.groupName && 'border-danger',
+                      )}
                       {...field}
                       ref={inputRef}
                       onKeyDown={handleEscKeyDown}
