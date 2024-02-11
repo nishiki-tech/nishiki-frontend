@@ -53,8 +53,8 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
    */
   const processSubmit: SubmitHandler<Inputs> = async (values) => {
     const { groupName } = values;
-    // Replace console.log with rename api method in here, after it's implemented
-    alert(`Rename to ${groupName}`);
+    // Replace alert with rename api method in here, after it's implemented
+    if (groupName !== currentGroupName) alert(`Rename to ${groupName}`);
     form.reset();
     onClose();
   };
