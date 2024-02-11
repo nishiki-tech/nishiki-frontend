@@ -63,20 +63,30 @@ const DialogContent = forwardRef<
       {...props}
     >
       {children}
-      <DialogClose className={cn('absolute right-3 top-3')}>
+      {/* Move DialogClose to the header */}
+
+      {/* <DialogClose className={cn('')}>
         <Icon icon={CrossIcon} color="black" size={3.5} />
         <span className="sr-only">Close</span>
-      </DialogClose>
+      </DialogClose> */}
     </PrimitiveContent>
   </DialogPortal>
 ));
 DialogContent.displayName = PrimitiveContent.displayName;
 
 const DialogHeader = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn('h-12 px-4 border-b border-gray-light', 'flex items-center', className)}
+  // Add a new parent div
+  <div className={cn('h-12 px-4 border-b border-gray-light', 'flex items-center',)}>
+    <div
+    className={cn(className)}
     {...props}
   />
+    <DialogClose className={cn('absolute right-3')}>
+        <Icon icon={CrossIcon} color="black" size={3.5} />
+        <span className="sr-only">Close</span>
+      </DialogClose>
+  </div>
+  
 );
 DialogHeader.displayName = 'DialogHeader';
 
