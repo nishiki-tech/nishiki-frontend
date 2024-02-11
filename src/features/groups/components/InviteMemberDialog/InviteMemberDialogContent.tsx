@@ -13,8 +13,8 @@ import { useEffect, useState } from 'react';
 /**
  * this function is for exporting JSX.Element to index.tsx
  *
- * @param param0  this is state of the Dialog, if it is open => true, if not => false, for useEffect function which is switch of Button
- * @see useEffect()
+ * @param isDialogOpen boolean, this is state of the Dialog, if it is open => true, if not => false, for useEffect function which is switch of Button
+ * @see useEffect() in this file
  * @returns JSX.Element which export to index.tsx
  */
 
@@ -31,10 +31,10 @@ export const InviteMemberDialogContent = ({ isDialogOpen }: { isDialogOpen: bool
   /**
    * this is React Hook useEffect which changes the state of `isLinkButtonClicked` to false if the state of `isDialogOpen` changes
    *
-   * @setup `seTimeout` which enables you to change the state of `setIsLinkButtonClicked` to false 0.3 sec after the dependency change
+   * `seTimeout` which enables you to change the state of `setIsLinkButtonClicked` to false 0.3 sec after the dependency change
    * The `setTimeout` is needed to remain text "copied" until the dialog disappears in order. Without it, the text would've change to "Copy Link" before dialog disappears.
    * the duration 0.3 is same as fadeIn/fadeOut ruled at `tailwind.config.ts`
-   * @deps the parameter of `InviteMemberDialogContent` which is checking the state of Dialog as `isDialogOpen`
+   * dependency: the parameter of `InviteMemberDialogContent` which is checking the state of Dialog whether it's open/close(=true/false)
    */
   useEffect(() => {
     setTimeout(() => setIsLinkButtonClicked(false), 300);
