@@ -1,5 +1,5 @@
 import { CircleCrossIcon } from '@/assets/images/icons';
-import { Button, Icon, Input } from '@/components/ui';
+import { Button, Card, Icon, Input } from '@/components/ui';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/Form';
 import { cn } from '@/lib/tailwind/utils';
 
@@ -124,48 +124,50 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
   }, [isOpen]);
 
   return (
-    <div className="flex grow flex-col gap-3 pl-4 py-2">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(processSubmit)}>
-          <FormField
-            control={form.control}
-            name="groupName"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <div className="relative flex items-center">
-                    <Input
-                      type="text"
-                      variant="square"
-                      className={cn(
-                        'text-lg pr-10',
-                        form.formState.errors.groupName && 'border-danger',
-                      )}
-                      {...field}
-                      ref={inputRef}
-                      onKeyDown={handleKeyDown}
-                      onBlur={handleInputBlur}
-                    />
-                    <Button
-                      variant="ghost"
-                      className="absolute right-0 w-10 h-full"
-                      onMouseDown={handleCrossButtonMouseDown}
-                      onClick={handleCrossButtonClick}
-                    >
-                      <Icon icon={CircleCrossIcon} size={4} color="gray-dark" />
-                    </Button>
-                  </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          ></FormField>
-        </form>
-      </Form>
-      <div className="w-full flex justify-between items-center">
-        <ContainerCount containerCount={containerCount} />
-        <UserCount userCount={userCount} />
+    <Card asChild>
+      <div className="flex flex-col gap-3 px-4 py-2">
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(processSubmit)}>
+            <FormField
+              control={form.control}
+              name="groupName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <div className="relative flex items-center">
+                      <Input
+                        type="text"
+                        variant="square"
+                        className={cn(
+                          'text-lg pr-10',
+                          form.formState.errors.groupName && 'border-danger',
+                        )}
+                        {...field}
+                        ref={inputRef}
+                        onKeyDown={handleKeyDown}
+                        onBlur={handleInputBlur}
+                      />
+                      <Button
+                        variant="ghost"
+                        className="absolute right-0 w-10 h-full"
+                        onMouseDown={handleCrossButtonMouseDown}
+                        onClick={handleCrossButtonClick}
+                      >
+                        <Icon icon={CircleCrossIcon} size={4} color="gray-dark" />
+                      </Button>
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            ></FormField>
+          </form>
+        </Form>
+        <div className="w-full flex justify-between items-center">
+          <ContainerCount containerCount={containerCount} />
+          <UserCount userCount={userCount} />
+        </div>
       </div>
-    </div>
+    </Card>
   );
 };

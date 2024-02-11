@@ -32,25 +32,23 @@ export const GroupCardContent: FC<IGroupCardContentProps> = ({
     setIsRenameFormOpen(false);
   };
 
-  return (
+  return isRenameFormOpen ? (
+    <RenameGroupForm
+      currentGroupName={groupName}
+      containerCount={containerCount}
+      userCount={userCount}
+      isOpen={isRenameFormOpen}
+      onClose={handleRenameFormClose}
+    />
+  ) : (
     <Card className="flex justify-between gap-2">
-      {isRenameFormOpen ? (
-        <RenameGroupForm
-          currentGroupName={groupName}
-          containerCount={containerCount}
-          userCount={userCount}
-          isOpen={isRenameFormOpen}
-          onClose={handleRenameFormClose}
-        />
-      ) : (
-        <Link href={`/groups/${groupId}`} className="flex grow flex-col gap-3 pl-4 py-2">
-          <span className="text-lg leading-6">{groupName}</span>
-          <div className="w-full flex justify-between items-center">
-            <ContainerCount containerCount={containerCount} />
-            <UserCount userCount={userCount} />
-          </div>
-        </Link>
-      )}
+      <Link href={`/groups/${groupId}`} className="flex grow flex-col gap-3 pl-4 py-2">
+        <span className="text-lg leading-6">{groupName}</span>
+        <div className="w-full flex justify-between items-center">
+          <ContainerCount containerCount={containerCount} />
+          <UserCount userCount={userCount} />
+        </div>
+      </Link>
       <GroupCardDropdownMenuTriggerButton handleRenameClick={handleRenameClick} />
     </Card>
   );
