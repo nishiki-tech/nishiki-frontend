@@ -12,15 +12,15 @@ import { useEffect, useState } from 'react';
 
 export const InviteMemberDialogContent = ({ isDialogOpen }: { isDialogOpen: boolean }) => {
   const [isCopyDisabled, setIsCopyDisabled] = useState(false);
+
   const handleLinkCopy = () => {
     setIsCopyDisabled(true);
   };
-  const handleTextChange = (isClicked: boolean) => {
-    return isClicked ? 'Copied!' : 'Copy Link';
-  };
+
   useEffect(() => {
     setTimeout(() => setIsCopyDisabled(false), 200);
   }, [isDialogOpen]);
+
   return (
     <>
       <DialogContent>
@@ -36,7 +36,7 @@ export const InviteMemberDialogContent = ({ isDialogOpen }: { isDialogOpen: bool
             className="w-40 px-3.5"
           >
             <Icon icon={LinkIcon} size={5} color="white" />
-            {handleTextChange(isCopyDisabled)}
+            {isCopyDisabled ? 'Copied!' : 'Copy link'}
           </Button>
           <p className="text-center text-sm text-gray-dark">Your invite link expires in a day.</p>
         </DialogBody>
