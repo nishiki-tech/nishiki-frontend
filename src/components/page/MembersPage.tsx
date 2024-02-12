@@ -1,5 +1,6 @@
-import { MenuKebabIcon, MenuMeatballIcon, PersonCircleIcon, PlusIcon } from '@/assets/images/icons';
+import { MenuKebabIcon, MenuMeatballIcon, PersonCircleIcon } from '@/assets/images/icons';
 import { Button, Card, Icon } from '@/components/ui';
+import { InviteMemberDialog } from '@/features/groups/components/InviteMemberDialog';
 import { fetchUserList } from '@/lib/api/user/server';
 import { IUser } from '@/types/definition';
 
@@ -17,9 +18,7 @@ export const MembersPage = async ({ id }: IMembersPageProps) => {
           <Button className="flex justify-center items-center w-12 h-12">
             <Icon icon={MenuMeatballIcon} size={5} />
           </Button>
-          <Button className="flex justify-center items-center w-12 h-12">
-            <Icon icon={PlusIcon} size={4.5} />
-          </Button>
+          <InviteMemberDialog />
         </div>
       </div>
       <div className="flex flex-col gap-2 pb-1">
