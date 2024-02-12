@@ -1,7 +1,5 @@
-import { CircleCrossIcon } from '@/assets/images/icons';
-import { Button, Card, Icon, Input } from '@/components/ui';
+import { Card, SquareTextInput } from '@/components/ui';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/Form';
-import { cn } from '@/lib/tailwind/utils';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import React, { FC, KeyboardEvent, useEffect, useRef } from 'react';
@@ -28,8 +26,6 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
 }) => {
   // input ref
   const inputRef = useRef<HTMLInputElement>(null);
-  // ref to check if the onBlur event of the input should be handled or not
-  const shouldHandleInputBlur = useRef(true);
 
   const formSchema = z.object({
     groupName: z.string().min(1, { message: 'Name is required' }),
@@ -71,55 +67,33 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
   };
 
   /**
-   * When the input is blurred,
+   * When cross button click is completed,
+   * set the focus back to the input,
+   */
+  const handleCrossButtonClick = () => {
+    form.setValue('groupName', '');
+    inputRef.current?.focus();
+  };
+
+  /**
+   * Handle the outside click event.
    * process the form submission and close the form.
    */
-  const handleInputBlur = () => {
-    // if the input is blurred because of the cross button click, don't process the form submission.
-    if (!shouldHandleInputBlur.current) return;
+  const handleOutsideClick = () => {
     // process the form submission
     processSubmit(form.getValues());
     onClose();
   };
 
-  /**
-   * When cross button is mouse downed,
-   * set the shouldHandleBlur to false,
-   * and empty the input value.
-   */
-  const handleCrossButtonMouseDown = () => {
-    shouldHandleInputBlur.current = false;
-    form.setValue('groupName', '');
-  };
-
-  /**
-   * When cross button click is completed,
-   * set the focus back to the input,
-   * and set the shouldHandleBlur to true.
-   */
-  const handleCrossButtonClick = () => {
-    inputRef.current?.focus();
-    shouldHandleInputBlur.current = true;
-  };
-
-  /**
-   * Reset the form when the form is closed.
-   */
+  // Reset the form when the form is closed.
   useEffect(() => {
     if (!isOpen) form.reset();
   }, [isOpen, form]);
 
-  /**
-   * Focus the input when the form is opened.
-   */
+  // Focus the input when the form is opened.
   useEffect(() => {
     if (isOpen) {
-      //Needed 350 ms delay to focus the input
-      //because the focus will be set to the radix dropdownMenu trigger on closing the dropdownMenu.
-      //Radix dropdownMenu trigger focus will happen around 300 ms after the dropdownMenu is closed.
-      setTimeout(() => {
-        inputRef.current?.focus();
-      }, 350);
+      inputRef.current?.focus();
     }
   }, [isOpen]);
 
@@ -134,28 +108,14 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <div className="relative flex items-center">
-                      <Input
-                        type="text"
-                        variant="square"
-                        className={cn(
-                          'text-lg pr-10',
-                          form.formState.errors.groupName && 'border-danger',
-                        )}
-                        {...field}
-                        ref={inputRef}
-                        onKeyDown={handleKeyDown}
-                        onBlur={handleInputBlur}
-                      />
-                      <Button
-                        variant="ghost"
-                        className="absolute right-0 w-10 h-full"
-                        onMouseDown={handleCrossButtonMouseDown}
-                        onClick={handleCrossButtonClick}
-                      >
-                        <Icon icon={CircleCrossIcon} size={4} color="gray-dark" />
-                      </Button>
-                    </div>
+                    <SquareTextInput
+                      {...field}
+                      ref={inputRef}
+                      onKeyDown={handleKeyDown}
+                      handleCrossButtonClick={handleCrossButtonClick}
+                      handleOutsideClick={handleOutsideClick}
+                      className={form.formState.errors.groupName && 'border-danger'}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
