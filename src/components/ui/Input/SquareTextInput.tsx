@@ -72,9 +72,12 @@ export const SquareTextInput = forwardRef<HTMLInputElement, ISquareTextInputProp
       <div className="relative flex items-center" ref={inputWrapperRef}>
         <Input
           type="text"
-          variant="square"
           h={h}
-          className={cn('text-lg pr-10', className)}
+          variant="none"
+          className={cn(
+            'bg-gray-lightest border-b border-primary py-2 pl-2 pr-10 text-lg',
+            className,
+          )}
           ref={ref}
           {...props}
         />
