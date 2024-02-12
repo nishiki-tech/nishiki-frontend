@@ -17,7 +17,7 @@ interface ISquareTextInputProps extends Omit<InputHTMLAttributes<HTMLInputElemen
   /**
    * Executed when outside of the input is clicked. Will not be invoked when cross button is clicked.
    */
-  handleOutsideClick: () => void;
+  handleOutsideClick?: () => void;
   /**
    * The height of the input. Default is 'sm'
    */
@@ -49,7 +49,10 @@ export const SquareTextInput = forwardRef<HTMLInputElement, ISquareTextInputProp
   ) => {
     // input wrapper ref
     const inputWrapperRef = useRef<HTMLDivElement>(null);
+
     useEffect(() => {
+      // Do nothing if handleOutsideClick is not provided
+      if (!handleOutsideClick) return;
       /**
        * Invoke the handleOutsideClick function if clicked on outside of element
        * @param event - The mouse event
