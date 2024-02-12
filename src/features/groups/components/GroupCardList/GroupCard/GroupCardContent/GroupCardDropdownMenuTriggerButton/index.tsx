@@ -4,7 +4,7 @@ import { Button, DropdownMenu, DropdownMenuTrigger, Icon } from '@/components/ui
 
 import { FC } from 'react';
 
-import { GroupCardDropdownMenuContent } from './GroupCardDropdownMenuContent';
+import { GroupCardDropdownMenuContent } from './GroupCardDropDownMenuContent';
 interface IGroupCardMenuButtonProps {
   handleRenameClick: () => void;
 }
