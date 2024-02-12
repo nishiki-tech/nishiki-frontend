@@ -35,7 +35,7 @@ export const FoodSort = () => {
 
   /**
    * Switch sort mode
-   * @param term sort mode name
+   * @param term - sort mode name
    */
   const handleSort = (term: string) => {
     const params = new URLSearchParams(searchParams);

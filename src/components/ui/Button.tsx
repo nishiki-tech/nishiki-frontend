@@ -15,14 +15,14 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        none: 'min-w-0',
+        none: '',
         primary: 'bg-primary text-white enabled:hover:bg-primary-dark disabled:opacity-50',
         error: 'bg-danger text-white enabled:hover:bg-danger-dark disabled:opacity-50',
         cancel: 'bg-transparent text-black hover:bg-gray-light',
         ghost: 'bg-transparent',
       },
       size: {
-        none: '',
+        none: 'min-w-0',
         sm: 'h-8 px-7',
         md: 'h-10 px-12',
         lg: 'h-12 px-12',

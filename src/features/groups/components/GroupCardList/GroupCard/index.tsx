@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { FC } from 'react';
 
 import { ContainerCount } from './ContainerCount';
+import { GroupCardMenuButton } from './GroupCardMenuButton';
 import { UserCount } from './UserCount';
 
 interface IGroupCardProps {
@@ -18,16 +19,15 @@ export const GroupCard: FC<IGroupCardProps> = async ({ groupId, groupName }) => 
   const containers: IContainer[] = await fetchContainerList(groupId);
   const users: IUser[] = await fetchUserList(groupId);
   return (
-    <Card asChild>
-      <Link href={`/groups/${groupId}`}>
-        <div className="flex flex-col gap-3">
-          <span className="text-lg">{groupName}</span>
-          <div className="w-full flex justify-between items-center">
-            <ContainerCount containerCount={containers.length} />
-            <UserCount userCount={users.length} />
-          </div>
+    <Card className="flex justify-between gap-2">
+      <Link href={`/groups/${groupId}`} className="flex grow flex-col gap-3 pl-4 py-2">
+        <span className="text-lg leading-6">{groupName}</span>
+        <div className="w-full flex justify-between items-center">
+          <ContainerCount containerCount={containers.length} />
+          <UserCount userCount={users.length} />
         </div>
       </Link>
+      <GroupCardMenuButton />
     </Card>
   );
 };
