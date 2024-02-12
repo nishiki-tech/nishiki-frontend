@@ -1,13 +1,10 @@
-// import { LoginForm } from '@/components/ui/LoginForm';
-import { DialogUsageExample } from '../ui/DialogUsageExample';
-import { DrawerUsageExample } from '../ui/DrawerUsageExample';
+import { LoginForm } from '@/components/ui/LoginForm';
 
 export const LoginPage = () => {
   return (
     <>
       LoginPage
-      <DialogUsageExample />
-      <DrawerUsageExample />
+      <LoginForm />
     </>
   );
 };
