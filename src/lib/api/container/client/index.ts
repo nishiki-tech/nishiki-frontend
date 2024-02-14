@@ -1,2 +1,2 @@
-export type { FoodPostRequestBody } from './containerApiClient.client';
-export { postFood } from './containerApiClient.client';
+export type { FoodPostRequestBody, FoodPutRequestBody } from './containerApiClient.client';
+export { postFood, putFood } from './containerApiClient.client';

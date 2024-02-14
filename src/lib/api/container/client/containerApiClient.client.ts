@@ -33,3 +33,28 @@ export const postFood = async (
     return Err('API response is invalid');
   }
 };
+
+export interface FoodPutRequestBody extends FoodPostRequestBody {}
+
+export const putFood = async (
+  containerId: IContainer['id'],
+  foodId: IFood['id'],
+  foodData: FoodPutRequestBody,
+): Promise<Result<undefined, string>> => {
+  try {
+    await request({
+      url: `${BACKEND_API_DOMAIN}/containers/${containerId}/foods/${foodId}`,
+      method: 'PUT',
+      options: {
+        body: JSON.stringify(foodData),
+      },
+    });
+    return Ok(undefined);
+  } catch (err) {
+    if (err instanceof Error) {
+      console.error(err.message);
+      return Err(err.message);
+    }
+    return Err('API response is invalid');
+  }
+};
