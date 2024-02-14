@@ -67,8 +67,7 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
   };
 
   /**
-   * When cross button click is completed,
-   * set the focus back to the input,
+   * Clear the input value.
    */
   const handleClearInput = () => {
     form.setValue('groupName', '');

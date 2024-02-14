@@ -48,18 +48,22 @@ export const SquareTextInput = forwardRef<HTMLInputElement, ISquareTextInputProp
     },
     ref,
   ) => {
-    // input wrapper ref
+    // Input wrapper ref
     const inputWrapperRef = useRef<HTMLDivElement>(null);
 
     useOutsideClick(inputWrapperRef, handleOutsideClick);
 
+    // If handleClearInput is provided, show the cross button
     const hasCrossButton = !!handleClearInput;
 
+    // If handleClearInput is provided, clear the input value when cross button is mouse downed
     const handleCrossButtonMouseDown = () => {
       hasCrossButton && handleClearInput();
     };
 
+    // On cross button click, set the focus to the input
     const handleCrossButtonClick = () => {
+      // This type narrowing is necessary because ref.current is available only when ref is an object
       if (ref && typeof ref === 'object') {
         ref.current?.focus();
       }
