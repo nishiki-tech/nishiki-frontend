@@ -9,6 +9,7 @@ import {
   DrawerTitle,
 } from '@/components/ui';
 import { Form } from '@/components/ui/Form';
+import { createFood } from '@/features/foods/lib/actions';
 import { defaultValues, foodFormSchema, FoodInputs } from '@/features/foods/lib/schema';
 import { GroupIdContainersMapType } from '@/features/foods/types/FoodTypes';
 import {
@@ -65,11 +66,15 @@ export const AddDrawerContent = ({
    * Process when the form is submitted
    * @param values The form values
    */
-  const processSubmit: SubmitHandler<FoodInputs> = (values) => {
-    console.log({ values });
-    alert('Submitted!');
-    form.reset();
-    setIsDrawerOpen(false);
+  const processSubmit: SubmitHandler<FoodInputs> = async (values: FoodInputs) => {
+    const result = await createFood(values);
+    if (!result.ok) {
+      alert('Failed to create food');
+    } else {
+      alert('Food successfully created');
+      form.reset();
+      setIsDrawerOpen(false);
+    }
   };
 
   return (
