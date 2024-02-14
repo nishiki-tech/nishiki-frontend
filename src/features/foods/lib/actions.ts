@@ -1,11 +1,13 @@
-import { foodFormSchema, FoodInputs } from '@/features/foods/lib/schema';
+import { createFoodFormSchema, CreateFoodInputs } from '@/features/foods/lib/schema';
 import { FoodPostRequestBody, postFood } from '@/lib/api/container/client';
 
 import { Err, Ok, Result } from 'result-ts-type';
 
-const CreateFoodFormSchema = foodFormSchema.omit({ group: true, container: true });
+const CreateFoodFormSchema = createFoodFormSchema.omit({ group: true, container: true });
 
-export const createFood = async (inputs: FoodInputs): Promise<Result<undefined, undefined>> => {
+export const createFood = async (
+  inputs: CreateFoodInputs,
+): Promise<Result<undefined, undefined>> => {
   const validatedData = CreateFoodFormSchema.safeParse(inputs);
   if (!validatedData.success) return Err(undefined);
 

@@ -10,7 +10,11 @@ import {
 } from '@/components/ui';
 import { Form } from '@/components/ui/Form';
 import { createFood } from '@/features/foods/lib/actions';
-import { defaultValues, foodFormSchema, FoodInputs } from '@/features/foods/lib/schema';
+import {
+  createFoodDefaultValues,
+  createFoodFormSchema,
+  CreateFoodInputs,
+} from '@/features/foods/lib/schema';
 import { GroupIdContainersMapType } from '@/features/foods/types/FoodTypes';
 import {
   ContainerIdGroupIdMapType,
@@ -48,9 +52,9 @@ export const AddDrawerContent = ({
     setIsDrawerOpen(false);
   };
 
-  const form = useForm<FoodInputs>({
-    resolver: zodResolver(foodFormSchema),
-    defaultValues,
+  const form = useForm<CreateFoodInputs>({
+    resolver: zodResolver(createFoodFormSchema),
+    defaultValues: createFoodDefaultValues,
   });
 
   /**
@@ -66,12 +70,12 @@ export const AddDrawerContent = ({
    * Process when the form is submitted
    * @param values The form values
    */
-  const processSubmit: SubmitHandler<FoodInputs> = async (values: FoodInputs) => {
+  const processSubmit: SubmitHandler<CreateFoodInputs> = async (values: CreateFoodInputs) => {
     const result = await createFood(values);
     if (!result.ok) {
-      alert('Failed to create food');
+      alert('Failed to create');
     } else {
-      alert('Food successfully created');
+      alert('Successfully created');
       form.reset();
       setIsDrawerOpen(false);
     }
