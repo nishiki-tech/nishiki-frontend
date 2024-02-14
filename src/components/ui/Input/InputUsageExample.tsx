@@ -34,12 +34,7 @@ export function InputUsageExample() {
         className="bg-white"
       />
       {/* without cross button */}
-      <SquareTextInput
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        ref={squareTextInputRef}
-        className="bg-white"
-      />
+      <SquareTextInput ref={squareTextInputRef} className="bg-white" />
       <SearchInput placeholder="Search Foods" />
       <div className="w-1/2">
         <Label htmlFor="quantity">Quantity</Label>
