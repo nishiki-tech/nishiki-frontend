@@ -70,9 +70,8 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
    * When cross button click is completed,
    * set the focus back to the input,
    */
-  const handleCrossButtonClick = () => {
+  const handleClearInput = () => {
     form.setValue('groupName', '');
-    inputRef.current?.focus();
   };
 
   /**
@@ -112,7 +111,7 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
                       {...field}
                       ref={inputRef}
                       onKeyDown={handleKeyDown}
-                      handleCrossButtonClick={handleCrossButtonClick}
+                      handleClearInput={handleClearInput}
                       handleOutsideClick={handleOutsideClick}
                       className={form.formState.errors.groupName && 'border-danger'}
                     />

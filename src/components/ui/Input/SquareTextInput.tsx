@@ -1,9 +1,10 @@
 'use client';
 import { CircleCrossIcon } from '@/assets/images/icons';
+import { useOutsideClick } from '@/hooks';
 import { cn } from '@/lib/tailwind/utils';
 
 import { VariantProps } from 'class-variance-authority';
-import { forwardRef, InputHTMLAttributes, useEffect, useRef } from 'react';
+import { forwardRef, InputHTMLAttributes, useRef } from 'react';
 
 import { Button } from '../Button';
 import { Icon, iconVariants } from '../Icon';
@@ -11,9 +12,9 @@ import { Input, inputVariants } from './Input';
 
 interface ISquareTextInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> {
   /**
-   * Executed when the cross button is clicked
+   * Function to clear the input value with cross button
    */
-  handleCrossButtonClick: () => void;
+  handleClearInput?: () => void;
   /**
    * Executed when outside of the input is clicked. Will not be invoked when cross button is clicked.
    */
@@ -38,7 +39,7 @@ const defaultHeight = 'sm';
 export const SquareTextInput = forwardRef<HTMLInputElement, ISquareTextInputProps>(
   (
     {
-      handleCrossButtonClick,
+      handleClearInput,
       handleOutsideClick,
       h = defaultHeight,
       iconProps = defaultIconProps,
@@ -50,26 +51,19 @@ export const SquareTextInput = forwardRef<HTMLInputElement, ISquareTextInputProp
     // input wrapper ref
     const inputWrapperRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-      // Do nothing if handleOutsideClick is not provided
-      if (!handleOutsideClick) return;
-      /**
-       * Invoke the handleOutsideClick function if clicked on outside of element
-       * @param event - The mouse event
-       */
-      const callback = (event: MouseEvent) => {
-        if (inputWrapperRef?.current && !inputWrapperRef.current.contains(event.target as Node)) {
-          handleOutsideClick();
-        }
-      };
+    useOutsideClick(inputWrapperRef, handleOutsideClick);
 
-      // Bind the event listener
-      document.addEventListener('mousedown', callback);
-      return () => {
-        // Unbind the event listener on clean up
-        document.removeEventListener('mousedown', callback);
-      };
-    }, [handleOutsideClick, inputWrapperRef]);
+    const hasCrossButton = !!handleClearInput;
+
+    const handleCrossButtonMouseDown = () => {
+      hasCrossButton && handleClearInput();
+    };
+
+    const handleCrossButtonClick = () => {
+      if (ref && typeof ref === 'object') {
+        ref.current?.focus();
+      }
+    };
 
     return (
       <div className="relative flex items-center" ref={inputWrapperRef}>
@@ -78,19 +72,23 @@ export const SquareTextInput = forwardRef<HTMLInputElement, ISquareTextInputProp
           h={h}
           variant="none"
           className={cn(
-            'bg-gray-lightest border-b border-primary py-2 pl-2 pr-10 text-lg',
+            'bg-gray-lightest border-b border-primary py-2 text-lg',
+            hasCrossButton ? 'pl-2 pr-10' : 'px-2',
             className,
           )}
           ref={ref}
           {...props}
         />
-        <Button
-          variant="ghost"
-          className="absolute right-0 w-10 h-full"
-          onClick={handleCrossButtonClick}
-        >
-          <Icon icon={CircleCrossIcon} {...iconProps} />
-        </Button>
+        {hasCrossButton && (
+          <Button
+            variant="ghost"
+            className="absolute right-0 w-10 h-full"
+            onMouseDown={handleCrossButtonMouseDown}
+            onClick={handleCrossButtonClick}
+          >
+            <Icon icon={CircleCrossIcon} {...iconProps} />
+          </Button>
+        )}
       </div>
     );
   },

@@ -1,3 +1,4 @@
+'use client';
 /**
  * This file is used as an example for the Input components.
  * Once we're done with the example, we can delete this file.
@@ -16,7 +17,7 @@ export function InputUsageExample() {
    * When cross button click is completed,
    * set the focus back to the input,
    */
-  const handleCrossButtonClick = () => {
+  const handleClearInput = () => {
     // clear squareTextInputRef value
     setValue('');
     squareTextInputRef.current?.focus();
@@ -24,11 +25,19 @@ export function InputUsageExample() {
   return (
     <div className="grid w-full max-w-sm items-center gap-1.5 py-4">
       <Input type="text" id="groupName" placeholder="Group name" />
+      {/* with cross button */}
       <SquareTextInput
         value={value}
         onChange={(e) => setValue(e.target.value)}
         ref={squareTextInputRef}
-        handleCrossButtonClick={handleCrossButtonClick}
+        handleClearInput={handleClearInput}
+        className="bg-white"
+      />
+      {/* without cross button */}
+      <SquareTextInput
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        ref={squareTextInputRef}
         className="bg-white"
       />
       <SearchInput placeholder="Search Foods" />
