@@ -43,7 +43,7 @@ export {
   DropdownMenuTrigger,
 } from './DropdownMenu';
 export { Icon, iconVariants } from './Icon';
-export { Input, inputVariants, NumberInput, SearchInput } from './Input';
+export { Input, inputVariants, NumberInput, SearchInput, SquareTextInput } from './Input';
 export { Label } from './Label';
 export { Popover, PopoverContent, PopoverTrigger } from './Popover';
 export {
