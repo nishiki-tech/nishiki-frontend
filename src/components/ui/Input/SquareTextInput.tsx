@@ -66,13 +66,10 @@ export const SquareTextInput = forwardRef<HTMLInputElement, ISquareTextInputProp
 
     /**
      *  On cross button click, set the focus to the input
-     *
      */
     const handleCrossButtonClick = () => {
       // This type narrowing is necessary because ref.current is available only when ref is an object
-      if (ref && typeof ref === 'object') {
-        ref.current?.focus();
-      }
+      if (ref && typeof ref === 'object') ref.current?.focus();
     };
 
     return (
