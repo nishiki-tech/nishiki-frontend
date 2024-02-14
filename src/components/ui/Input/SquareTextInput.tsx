@@ -56,12 +56,18 @@ export const SquareTextInput = forwardRef<HTMLInputElement, ISquareTextInputProp
     // If handleClearInput is provided, show the cross button
     const hasCrossButton = !!handleClearInput;
 
-    // If handleClearInput is provided, clear the input value when cross button is mouse downed
+    /**  If handleClearInput is provided, clear the input value on cross button mouse down event.
+     * We needed to use mouse down event instead of click event,
+     * because click event will be triggered when we key down "enter" on the input.
+     */
     const handleCrossButtonMouseDown = () => {
       hasCrossButton && handleClearInput();
     };
 
-    // On cross button click, set the focus to the input
+    /**
+     *  On cross button click, set the focus to the input
+     *
+     */
     const handleCrossButtonClick = () => {
       // This type narrowing is necessary because ref.current is available only when ref is an object
       if (ref && typeof ref === 'object') {
