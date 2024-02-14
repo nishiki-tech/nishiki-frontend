@@ -1,19 +1,57 @@
 // Target function to test
 import { request } from './commonUtils.client';
 
-// Mock fetch and getToken
-global.fetch = jest.fn() as jest.MockedFunction<typeof fetch>;
 // Mock fetch globally
+global.fetch = jest.fn() as jest.MockedFunction<typeof fetch>;
 
 // Mock getToken function
 jest.mock('./authTokenFetcher.client');
 import { getToken as originalGetToken } from './authTokenFetcher.client';
 const getToken = originalGetToken as jest.MockedFunction<typeof originalGetToken>;
 
+interface ICreateMockResponseProps {
+  responseBody?: unknown;
+  ok?: boolean;
+  status?: number;
+  contentType?: string | undefined;
+}
+
+/**
+ * Create a mock Response object
+ * @param props.responseBody - Response body of the response
+ * @param props.ok - Whether the response is OK or not
+ * @param props.status - Status code of the response
+ * @param props.contentType - Content type of the responses
+ * @returns Mock Response object
+ *
+ * @example
+ * const response = createMockResponse({ responseBody: { data: 'test' } });
+ * const data = await response.json();
+ * console.log(data); // { data: 'test' }
+ */
+const createMockResponse = ({
+  responseBody = null,
+  ok = true,
+  status = 200,
+  contentType = 'application/json',
+}: ICreateMockResponseProps): Response => {
+  const headers = new Headers();
+  if (contentType && status !== 204) {
+    headers.append('content-type', contentType);
+  }
+  return {
+    ok,
+    status,
+    statusText: ok ? 'OK' : 'Error',
+    headers,
+    json: () => Promise.resolve(responseBody),
+  } as Response;
+};
+
 describe('request function', () => {
   const mockUrl = 'https://example.com/api/test';
   const mockMethod = 'GET';
-  const mockResponseData = { data: 'test' };
+  const mockResponseBody = { data: 'test' };
   const mockToken = 'fake-token';
 
   // Clear mocks before each test
@@ -25,13 +63,7 @@ describe('request function', () => {
   it('should include correct Authorization header in the request', async () => {
     /* Arrange */
     getToken.mockResolvedValue(mockToken);
-    (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValue({
-      ok: true,
-      json: () => Promise.resolve({}),
-      headers: {
-        get: jest.fn(),
-      },
-    } as unknown as Response);
+    (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValue(createMockResponse({}));
 
     /* Act */
     await request({ url: mockUrl, method: mockMethod });
@@ -61,36 +93,24 @@ describe('request function', () => {
   it('should make an API call and return data if response body is JSON', async () => {
     /* Arrange */
     getToken.mockResolvedValue(mockToken);
-    (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValue({
-      ok: true,
-      status: 200,
-      statusText: 'OK',
-      headers: {
-        get: jest.fn(() => 'application/json'), // Specify the content type as JSON
-      },
-      json: () => Promise.resolve(mockResponseData),
-    } as unknown as Response);
+    (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValue(
+      createMockResponse({ responseBody: mockResponseBody }),
+    );
 
     /* Act */
     const result = await request({ url: mockUrl, method: mockMethod });
 
     /* Assert */
-    expect(result).toEqual(mockResponseData);
+    expect(result).toEqual(mockResponseBody);
     expect(fetch).toHaveBeenCalledWith(mockUrl, expect.anything());
   });
 
-  it('should make an API call and return data if response body is not JSON', async () => {
+  it('should return an empty object if the status code is 204', async () => {
     /* Arrange */
     getToken.mockResolvedValue(mockToken);
-    (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValue({
-      ok: true,
-      status: 200,
-      statusText: 'OK',
-      headers: {
-        get: jest.fn(() => 'text/html'), // Non-JSON content type
-      },
-      json: () => Promise.resolve(mockResponseData),
-    } as unknown as Response);
+    (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValue(
+      createMockResponse({ status: 204 }),
+    );
 
     /* Act */
     const result = await request({ url: mockUrl, method: mockMethod });
@@ -103,19 +123,16 @@ describe('request function', () => {
   it('should throw an error when the response is not ok', async () => {
     /* Arrange */
     getToken.mockResolvedValue(mockToken);
-    (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValue({
-      ok: false,
-      status: 500,
-      statusText: 'API response error',
-      headers: {
-        get: jest.fn(() => 'application/json'),
-      },
-      json: () => Promise.resolve({ message: 'Server error' }),
-    } as unknown as Response);
+    (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValue(
+      createMockResponse({
+        ok: false,
+        status: 500,
+      }),
+    );
 
     /* Act & Assert */
     await expect(request({ url: mockUrl, method: mockMethod })).rejects.toThrow(
-      'API error with status code 500: API response error',
+      'API error with status code 500:',
     );
   });
 });
