@@ -9,6 +9,11 @@ type HttpMethod = 'GET' | 'POST' | 'DELETE' | 'PUT';
  * @param method - HTTP method
  * @param body - HTTP request body
  * @returns Promise of the response data from the API server in JSON format
+ *
+ * @example
+ * type Food = { name: string };
+ * const result = await request<Food>({ url: 'https://example.com/api/foods/1', method: 'GET' });
+ * console.log(result); // { name: 'Tomato' }
  */
 export const request = async <T>({
   url,
