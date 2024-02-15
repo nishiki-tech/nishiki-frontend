@@ -49,15 +49,15 @@ const createMockResponse = ({
 };
 
 describe('request function', () => {
+  // Arrange mock data
   const mockUrl = 'https://example.com/api/test';
   const mockMethod = 'GET';
   const mockResponseBody = { data: 'test' };
   const mockToken = 'fake-token';
 
-  // Clear mocks before each test
-  beforeEach(() => {
-    (fetch as jest.Mock).mockClear();
-    getToken.mockClear();
+  // Clear mocks after each test
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
   it('should include correct Authorization header in the request', async () => {
