@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 import { InviteMemberDialogContent } from './InviteMemberDialogContent';
 
-export const InviteMemberDialog = () => {
+export const InviteMemberDialog = ({ groupId }: { groupId: string }) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   return (
@@ -18,7 +18,7 @@ export const InviteMemberDialog = () => {
             <Icon icon={PlusIcon} size={4.5} />
           </Button>
         </DialogTrigger>
-        <InviteMemberDialogContent isDialogOpen={isDialogOpen} />
+        <InviteMemberDialogContent isDialogOpen={isDialogOpen} groupId={groupId} />
       </DialogRoot>
     </>
   );

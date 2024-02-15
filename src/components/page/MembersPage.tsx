@@ -8,7 +8,7 @@ interface IMembersPageProps {
   id: string;
 }
 
-export const MembersPage = async ({ id }: IMembersPageProps) => {
+export const MembersPage: React.FC<IMembersPageProps> = async ({ id }) => {
   const users: IUser[] = await fetchUserList(id);
   return (
     <div className="px-4 py-6">
@@ -18,7 +18,7 @@ export const MembersPage = async ({ id }: IMembersPageProps) => {
           <Button className="flex justify-center items-center w-12 h-12">
             <Icon icon={MenuMeatballIcon} size={5} />
           </Button>
-          <InviteMemberDialog />
+          <InviteMemberDialog groupId={id} />
         </div>
       </div>
       <div className="flex flex-col gap-2 pb-1">

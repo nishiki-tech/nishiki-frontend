@@ -23,17 +23,24 @@ interface IGenerateInvitationLink {
  * @param props.isDialogOpen - state to control the visibility of dialog, if it is open => true, if not => false, this state is used to switch the text in button.
  * @returns - The JSX code for rendering the dialog component.
  */
-export const InviteMemberDialogContent = ({ isDialogOpen }: { isDialogOpen: boolean }) => {
+export const InviteMemberDialogContent = ({
+  isDialogOpen,
+  groupId,
+}: {
+  isDialogOpen: boolean;
+  groupId: string;
+}) => {
   const [isLinkButtonClicked, setIsLinkButtonClicked] = useState(false);
 
   /**
    * this function is onClick function when the `Button` clicked
    */
   const handleLinkCopy = () => {
+    console.log(groupId);
     setIsLinkButtonClicked(true);
     //using dynamic param nextjs to get groupid
-    const urlPath: string[] = location.pathname.split('/');
-    const groupId = urlPath[2];
+    // const urlPath: string[] = location.pathname.split('/');
+    // const groupId = urlPath[2];
     const BACKEND_API_DOMAIN = process.env.NEXT_PUBLIC_BACKEND_API_DOMAIN || '';
 
     const generateInvitationLink = async (): Promise<string> => {
@@ -42,6 +49,7 @@ export const InviteMemberDialogContent = ({ isDialogOpen }: { isDialogOpen: bool
           url: BACKEND_API_DOMAIN + '/groups/' + groupId + '?Action=generateInvitationLink',
           method: 'PUT',
         });
+        console.log(data);
         return data.invitationLinkhash;
       } catch (err) {
         console.log('err', err);
