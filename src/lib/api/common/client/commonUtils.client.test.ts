@@ -56,14 +56,14 @@ describe('request function', () => {
 
   // Clear mocks before each test
   beforeEach(() => {
-    (fetch as jest.MockedFunction<typeof fetch>).mockClear();
+    (fetch as jest.Mock).mockClear();
     getToken.mockClear();
   });
 
   it('should include correct Authorization header in the request', async () => {
     /* Arrange */
     getToken.mockResolvedValue(mockToken);
-    (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValue(createMockResponse({}));
+    (fetch as jest.Mock).mockResolvedValue(createMockResponse({}));
 
     /* Act */
     await request({ url: mockUrl, method: mockMethod });
@@ -93,9 +93,7 @@ describe('request function', () => {
   it('should make an API call and return data if response body is JSON', async () => {
     /* Arrange */
     getToken.mockResolvedValue(mockToken);
-    (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValue(
-      createMockResponse({ responseBody: mockResponseBody }),
-    );
+    (fetch as jest.Mock).mockResolvedValue(createMockResponse({ responseBody: mockResponseBody }));
 
     /* Act */
     const result = await request({ url: mockUrl, method: mockMethod });
@@ -108,9 +106,7 @@ describe('request function', () => {
   it('should return an empty object if the status code is 204', async () => {
     /* Arrange */
     getToken.mockResolvedValue(mockToken);
-    (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValue(
-      createMockResponse({ status: 204 }),
-    );
+    (fetch as jest.Mock).mockResolvedValue(createMockResponse({ status: 204 }));
 
     /* Act */
     const result = await request({ url: mockUrl, method: mockMethod });
@@ -123,7 +119,7 @@ describe('request function', () => {
   it('should throw an error when the response is not ok', async () => {
     /* Arrange */
     getToken.mockResolvedValue(mockToken);
-    (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValue(
+    (fetch as jest.Mock).mockResolvedValue(
       createMockResponse({
         ok: false,
         status: 500,
