@@ -15,7 +15,7 @@ import {
 } from '@/components/ui';
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/Form';
 import { CategorySelect } from '@/features/foods/components/Form';
-import { foodFormSchema } from '@/features/foods/lib/schema';
+import { createFoodFormSchema } from '@/features/foods/lib/schema';
 import { GroupIdContainersMapType } from '@/features/foods/types/FoodTypes';
 import {
   ContainerIdGroupIdMapType,
@@ -28,7 +28,7 @@ import { UseFormReturn } from 'react-hook-form';
 import { z } from 'zod';
 
 interface IAddDrawerBodyProps {
-  form: UseFormReturn<z.infer<typeof foodFormSchema>>;
+  form: UseFormReturn<z.infer<typeof createFoodFormSchema>>;
   groupIdContainerIdsMap: GroupIdContainersMapType;
   containerIdGroupIdMap: ContainerIdGroupIdMapType;
   containerIdNameMap: ContainerIdNameMapType;

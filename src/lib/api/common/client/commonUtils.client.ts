@@ -8,7 +8,12 @@ type HttpMethod = 'GET' | 'POST' | 'DELETE' | 'PUT';
  * @param url - url that you send a request to
  * @param method - HTTP method
  * @param body - HTTP request body
- * @returns Promise with Generics Objects
+ * @returns Promise of the response data from the API server in JSON format
+ *
+ * @example
+ * type Food = { name: string };
+ * const result = await request<Food>({ url: 'https://example.com/api/foods/1', method: 'GET' });
+ * console.log(result); // { name: 'Tomato' }
  */
 export const request = async <T>({
   url,
@@ -21,7 +26,7 @@ export const request = async <T>({
 }): Promise<T> => {
   const token = await getToken();
   if (!token) {
-    throw new Error('API Unauthorized error.');
+    throw new Error('Authentication token is not available');
   }
   // headers with Authorization
   const headers: Record<string, string> = {
@@ -36,10 +41,16 @@ export const request = async <T>({
     headers: headers,
     ...options,
   };
+
   const response = await fetch(url, fetchOptions);
   if (!response.ok) {
-    throw new Error(`HTTP error. status: ${response.status}`);
+    throw new Error(`API error with status code ${response.status}: ${response.statusText}`);
   }
 
-  return response.json() as Promise<T>;
+  // Check if the response has content before attempting to parse it as JSON
+  const contentType = response.headers.get('content-type');
+  if (contentType && contentType.includes('application/json')) {
+    return response.json() as Promise<T>;
+  }
+  return {} as Promise<T>;
 };

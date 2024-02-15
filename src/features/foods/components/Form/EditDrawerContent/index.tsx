@@ -11,7 +11,8 @@ import {
   Icon,
 } from '@/components/ui';
 import { Form } from '@/components/ui/Form';
-import { foodFormSchema, FoodInputs } from '@/features/foods/lib/schema';
+import { updateFood } from '@/features/foods/lib/actions';
+import { updateFoodFormSchema, UpdateFoodInputs } from '@/features/foods/lib/schema';
 import { GroupIdContainersMapType, IFoodView } from '@/features/foods/types/FoodTypes';
 import {
   ContainerIdGroupIdMapType,
@@ -50,8 +51,8 @@ export const EditDrawerContent = ({
     setIsDrawerOpen(false);
   };
 
-  const form = useForm<FoodInputs>({
-    resolver: zodResolver(foodFormSchema),
+  const form = useForm<UpdateFoodInputs>({
+    resolver: zodResolver(updateFoodFormSchema),
   });
 
   /**
@@ -60,6 +61,7 @@ export const EditDrawerContent = ({
    */
   useEffect(() => {
     form.reset({
+      id: food?.id ?? '',
       name: food?.name ?? '',
       group: containerIdGroupIdMap[food?.containerId ?? ''] ?? '',
       container: food?.containerId ?? '',
@@ -74,11 +76,15 @@ export const EditDrawerContent = ({
    * Process when the form is submitted
    * @param values The form values
    */
-  const processSubmit: SubmitHandler<FoodInputs> = (values) => {
-    console.log({ values });
-    alert('Submitted!');
-    form.reset();
-    setIsDrawerOpen(false);
+  const processSubmit: SubmitHandler<UpdateFoodInputs> = async (values: UpdateFoodInputs) => {
+    const result = await updateFood(values);
+    if (!result.ok) {
+      alert('Failed to update');
+    } else {
+      alert('Successfully updated');
+      form.reset();
+      setIsDrawerOpen(false);
+    }
   };
 
   return (
