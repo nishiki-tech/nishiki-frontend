@@ -1,25 +1,20 @@
 'use client';
+
+import '@aws-amplify/ui-react/styles.css';
+
 import { getToken } from '@/lib/api/common/client';
 
-import { signInWithRedirect } from 'aws-amplify/auth';
+import { Authenticator } from '@aws-amplify/ui-react';
 import { useRouter } from 'next/navigation';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect } from 'react';
 
 export const LoginForm = () => {
   const router = useRouter();
-  const [isLoading, setLoading] = useState(true);
 
   const checkSession = useCallback(async () => {
-    try {
-      const idToken = await getToken();
-      console.log(idToken);
-      if (idToken) {
-        router.push('/groups');
-      } else {
-        setLoading(false);
-      }
-    } catch (err) {
-      setLoading(false);
+    const idToken = await getToken();
+    if (idToken) {
+      router.push('/groups');
     }
   }, [router]);
 
@@ -27,13 +22,5 @@ export const LoginForm = () => {
     checkSession();
   }, [checkSession]);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  return (
-    <div className="login-form">
-      <button onClick={() => signInWithRedirect()}>Login</button>
-    </div>
-  );
+  return <Authenticator socialProviders={['google']} hideSignUp={true} />;
 };
