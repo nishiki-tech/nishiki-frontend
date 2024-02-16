@@ -7,12 +7,9 @@ import {
   DialogTitle,
   Icon,
 } from '@/components/ui';
-import { request } from '@/lib/api/common/client';
+import { generateInvitationLinkHash } from '@/lib/api/group/client/groupApiClient.client';
 
 import { useEffect, useState } from 'react';
-interface IGenerateInvitationLink {
-  invitationLinkhash: string;
-}
 
 /**
  * This component displays dialog which has copy button.
@@ -35,28 +32,10 @@ export const InviteMemberDialogContent = ({
   /**
    * this function is onClick function when the `Button` clicked
    */
-  const handleLinkCopy = () => {
-    console.log(groupId);
+  const handleLinkCopy = async () => {
     setIsLinkButtonClicked(true);
-    //using dynamic param nextjs to get groupid
-    // const urlPath: string[] = location.pathname.split('/');
-    // const groupId = urlPath[2];
-    const BACKEND_API_DOMAIN = process.env.NEXT_PUBLIC_BACKEND_API_DOMAIN || '';
-
-    const generateInvitationLink = async (): Promise<string> => {
-      try {
-        const data: IGenerateInvitationLink = await request({
-          url: BACKEND_API_DOMAIN + '/groups/' + groupId + '?Action=generateInvitationLink',
-          method: 'PUT',
-        });
-        console.log(data);
-        return data.invitationLinkhash;
-      } catch (err) {
-        console.log('err', err);
-        throw new Error('API response is invalid');
-      }
-    };
-    generateInvitationLink();
+    const hash = await generateInvitationLinkHash(groupId);
+    console.log('outside', hash);
   };
 
   /**

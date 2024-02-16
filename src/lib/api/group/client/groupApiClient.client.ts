@@ -20,6 +20,10 @@ export interface ICreateGroupApiResponse {
   groupId: IGroup['id'];
 }
 
+export interface IGenerateInvitationLink {
+  invitationLinkHash: string;
+}
+
 /**
  * Create a new group.
  * @param params - The parameters for the group to be created.
@@ -34,6 +38,20 @@ export const createGroup = async (params: ICreateGroupParams): Promise<string> =
     });
     return data.groupId;
   } catch (err) {
+    throw new Error('API response is invalid');
+  }
+};
+
+export const generateInvitationLinkHash = async (groupId: string): Promise<string> => {
+  try {
+    const data: string = await request({
+      url: BACKEND_API_DOMAIN + '/groups/' + groupId + '?Action=generateInvitationLink',
+      method: 'PUT',
+    });
+    const parsedData: IGenerateInvitationLink = JSON.parse(data);
+    return parsedData.invitationLinkHash;
+  } catch (err) {
+    console.log('err', err);
     throw new Error('API response is invalid');
   }
 };
