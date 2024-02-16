@@ -15,7 +15,7 @@ import {
 } from '@/components/ui';
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/Form';
 import { CategorySelect } from '@/features/foods/components/Form';
-import { foodFormSchema } from '@/features/foods/lib/schema';
+import { updateFoodFormSchema } from '@/features/foods/lib/schema';
 import { GroupIdContainersMapType } from '@/features/foods/types/FoodTypes';
 import {
   ContainerIdGroupIdMapType,
@@ -28,7 +28,7 @@ import { UseFormReturn } from 'react-hook-form';
 import { z } from 'zod';
 
 interface IEditDrawerBodyProps {
-  form: UseFormReturn<z.infer<typeof foodFormSchema>>;
+  form: UseFormReturn<z.infer<typeof updateFoodFormSchema>>;
   groupIdContainerIdsMap: GroupIdContainersMapType;
   containerIdGroupIdMap: ContainerIdGroupIdMapType;
   containerIdNameMap: ContainerIdNameMapType;
@@ -62,6 +62,15 @@ export const EditDrawerBody = ({
 
   return (
     <DrawerBody className="flex flex-col gap-4">
+      <FormField
+        control={form.control}
+        name="id"
+        render={({ field }) => (
+          <FormItem>
+            <Input type="hidden" value={field.value} />
+          </FormItem>
+        )}
+      />
       <FormField
         control={form.control}
         name="name"

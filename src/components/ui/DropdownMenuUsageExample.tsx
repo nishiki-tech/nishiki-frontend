@@ -4,8 +4,8 @@
  * Once we're done with the example, we can delete this file.
  */
 import { DeleteIcon, MenuKebabIcon, PenIcon } from '@/assets/images/icons';
-import { ContainerCount } from '@/features/groups/components/GroupCardList/GroupCard/ContainerCount';
-import { UserCount } from '@/features/groups/components/GroupCardList/GroupCard/UserCount';
+import { ContainerCount } from '@/features/groups/components/GroupCardList/GroupCard/GroupCardContent/ContainerCount';
+import { UserCount } from '@/features/groups/components/GroupCardList/GroupCard/GroupCardContent/UserCount';
 
 import {
   Button,
