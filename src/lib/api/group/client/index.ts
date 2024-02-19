@@ -1,1 +1,1 @@
-export { createGroup } from './groupApiClient.client';
+export { postCreateGroup, putRenameGroup } from './groupApiClient.client';
