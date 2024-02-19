@@ -3,7 +3,11 @@ import { postCreateGroup } from '@/lib/api/group/client';
 
 import { Err, Ok } from 'result-ts-type';
 
-import { IPostCreateGroupApiResponse, IPostCreateGroupPayload } from './groupApiClient.client';
+import {
+  IPostCreateGroupApiResponse,
+  IPostCreateGroupPayload,
+  putRenameGroup,
+} from './groupApiClient.client';
 
 jest.mock('@/lib/api/common/client/commonUtils.client', () => ({
   request: jest.fn(),
@@ -60,6 +64,37 @@ describe('API Function Tests', () => {
 
       // Act
       const result = await postCreateGroup(mockPayload);
+
+      // Assert
+      expect(result).toEqual(Err(mockError.message));
+    });
+  });
+
+  describe('putRenameGroup', () => {
+    // Arrange mock data
+    const mockGroupId = 'a3kdifut-a520-c2cb-1be7-d90710691861';
+    const mockPayload = { groupName: 'Shared-house' };
+
+    it('successfully renames a group', async () => {
+      // mock response,request and expected value
+      const mockRequest = setUpMockSuccessRequest({});
+      const expectedValue = Ok(undefined);
+
+      // Act
+      const result = await putRenameGroup(mockGroupId, mockPayload);
+
+      // Assert
+      expect(result).toEqual(expectedValue);
+      expect(mockRequest).toHaveBeenCalledTimes(1);
+    });
+
+    it('throws an error on API failure', async () => {
+      // Arrange mock error and request
+      const mockError = new Error('API error');
+      setUpMockErrorRequest(mockError);
+
+      // Act
+      const result = await putRenameGroup(mockGroupId, mockPayload);
 
       // Assert
       expect(result).toEqual(Err(mockError.message));
