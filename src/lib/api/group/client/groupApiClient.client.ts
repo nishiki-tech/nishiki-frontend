@@ -20,6 +20,10 @@ export interface ICreateGroupApiResponse {
   groupId: IGroup['id'];
 }
 
+/**
+ * Interface representing the API response for the method to generate a invitation link
+ * @property invitationLinkHash - string, a hash for invitation link
+ */
 export interface IGenerateInvitationLink {
   invitationLinkHash: string;
 }
@@ -42,6 +46,11 @@ export const createGroup = async (params: ICreateGroupParams): Promise<string> =
   }
 };
 
+/**
+ * generate a invitation link hash
+ * @param groupId unique Id for generating invitation link hash
+ * @returns A hash: IGenerateInvitationLink of inivitation link
+ */
 export const generateInvitationLinkHash = async (groupId: string): Promise<string> => {
   try {
     const data: string = await request({
@@ -51,7 +60,6 @@ export const generateInvitationLinkHash = async (groupId: string): Promise<strin
     const parsedData: IGenerateInvitationLink = JSON.parse(data);
     return parsedData.invitationLinkHash;
   } catch (err) {
-    console.log('err', err);
     throw new Error('API response is invalid');
   }
 };
