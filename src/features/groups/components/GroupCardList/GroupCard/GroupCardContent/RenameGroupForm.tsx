@@ -1,5 +1,7 @@
 import { Card, SquareTextInput } from '@/components/ui';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/Form';
+import { renameGroup } from '@/features/groups/lib/actions';
+import { renameGroupFormSchema, RenameGroupInputs } from '@/features/groups/lib/schemas';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import React, { FC, KeyboardEvent, useEffect, useRef } from 'react';
@@ -10,6 +12,7 @@ import { ContainerCount } from './ContainerCount';
 import { UserCount } from './UserCount';
 
 interface IRenameGroupFormProps {
+  groupId: string;
   currentGroupName: string;
   containerCount: number;
   userCount: number;
@@ -18,6 +21,7 @@ interface IRenameGroupFormProps {
 }
 
 export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
+  groupId,
   currentGroupName,
   isOpen,
   onClose,
@@ -27,32 +31,29 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
   // input ref
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const formSchema = z.object({
-    groupName: z.string().min(1, { message: 'Name is required' }),
-  });
-
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof renameGroupFormSchema>>({
+    resolver: zodResolver(renameGroupFormSchema),
     defaultValues: {
       groupName: currentGroupName,
     },
   });
 
   /**
-   * The type of the form inputs based on the schema
-   */
-  type Inputs = z.infer<typeof formSchema>;
-
-  /**
    * Process the form submission.
    * @param values - The form values
    */
-  const processSubmit: SubmitHandler<Inputs> = async (values) => {
+  const processSubmit: SubmitHandler<RenameGroupInputs> = async (values) => {
     const { groupName } = values;
-    // Replace alert with rename api method in here, after it's implemented
-    if (groupName !== currentGroupName) alert(`Rename to ${groupName}`);
-    form.reset();
-    onClose();
+    if (groupName !== currentGroupName) {
+      const result = await renameGroup(groupId, values);
+      if (!result.ok) {
+        alert('Failed to rename the group');
+      } else {
+        alert('Successfully renamed the group');
+        form.reset();
+        onClose();
+      }
+    }
   };
 
   /**

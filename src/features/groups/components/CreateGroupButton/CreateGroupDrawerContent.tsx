@@ -47,9 +47,14 @@ export const CreateGroupDrawerContent: FC<ICreateGroupDrawerContentProps> = ({
    */
   const processSubmit: SubmitHandler<CreateGroupInputs> = async (values) => {
     const { groupName } = values;
-    await createGroup({ groupName });
-    form.reset();
-    onClose();
+    const result = await createGroup({ groupName });
+    if (!result.ok) {
+      alert('Failed to create the group');
+    } else {
+      alert('Successfully created the group');
+      form.reset();
+      onClose();
+    }
   };
 
   /**
