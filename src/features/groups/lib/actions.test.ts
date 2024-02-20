@@ -44,6 +44,7 @@ describe('Group actions', () => {
 
       // Assert
       expect(result).toEqual(Err('Validation failed'));
+      expect(postCreateGroup).not.toHaveBeenCalled();
     });
 
     it('should return an error if API request fails', async () => {
@@ -89,6 +90,7 @@ describe('Group actions', () => {
 
       // Assert
       expect(result).toEqual(Err('Validation failed'));
+      expect(putRenameGroup).not.toHaveBeenCalled();
     });
 
     it('should return an error if API request fails', async () => {

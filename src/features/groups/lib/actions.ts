@@ -10,8 +10,8 @@ import {
 } from './schemas';
 
 /**
- * Method to create a group.
- * @param inputs - The payload for the method.
+ * Function to create a group.
+ * @param inputs - The input for the function.
  * @returns The unique identifier of the group.
  */
 export const createGroup = async (
@@ -27,9 +27,9 @@ export const createGroup = async (
 };
 
 /**
- * Method to rename a group.
+ * Function to rename a group.
  * @param groupId - The unique identifier of the group.
- * @param inputs - The payload for the method.
+ * @param inputs - The input for the function.
  */
 
 export const renameGroup = async (

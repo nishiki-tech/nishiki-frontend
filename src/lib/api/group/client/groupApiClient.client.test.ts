@@ -1,33 +1,33 @@
 import { request } from '@/lib/api/common/client';
-import { postCreateGroup } from '@/lib/api/group/client';
-
-import { Err, Ok } from 'result-ts-type';
-
 import {
   IPostCreateGroupApiResponse,
   IPostCreateGroupPayload,
+  // Target functions to test
+  postCreateGroup,
   putRenameGroup,
-} from './groupApiClient.client';
+} from '@/lib/api/group/client';
 
-jest.mock('@/lib/api/common/client/commonUtils.client', () => ({
+import { Err, Ok } from 'result-ts-type';
+
+jest.mock('@/lib/api/common/client', () => ({
   request: jest.fn(),
 }));
 
 /**
- * Create mock data for request method
+ * Create mock data for request function
  * @template T
  * @param mockData
- * @return mocked request method
+ * @returns mocked request function
  */
 const setUpMockSuccessRequest = <T>(mockData: T) => {
   return (request as jest.MockedFunction<typeof request>).mockResolvedValue(mockData);
 };
 
 /**
- * Create mock error data for request method
+ * Create mock error data for request function
  * @template T
  * @param mockData
- * @return mocked request method
+ * @returns mocked request function
  */
 const setUpMockErrorRequest = <T>(mockData: T) => {
   return (request as jest.MockedFunction<typeof request>).mockRejectedValue(mockData);
@@ -41,6 +41,7 @@ describe('API Function Tests', () => {
   describe('postCreateGroup', () => {
     // Arrange mock data
     const mockPayload: IPostCreateGroupPayload = { groupName: 'Shared-house' };
+
     it('successfully creates a group', async () => {
       // mock response,request and expected value
       const mockResponse: IPostCreateGroupApiResponse = {

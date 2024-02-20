@@ -44,15 +44,15 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
    */
   const processSubmit: SubmitHandler<RenameGroupInputs> = async (values) => {
     const { groupName } = values;
-    if (groupName !== currentGroupName) {
-      const result = await renameGroup(groupId, values);
-      if (!result.ok) {
-        alert('Failed to rename the group');
-      } else {
-        alert('Successfully renamed the group');
-        form.reset();
-        onClose();
-      }
+    if (groupName === currentGroupName) return;
+
+    const result = await renameGroup(groupId, values);
+    if (!result.ok) {
+      alert('Failed to rename the group');
+    } else {
+      alert('Successfully renamed the group');
+      form.reset();
+      onClose();
     }
   };
 

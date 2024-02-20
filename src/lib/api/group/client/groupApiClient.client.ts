@@ -7,7 +7,7 @@ import { Err, Ok, Result } from 'result-ts-type';
 const BACKEND_API_DOMAIN = process.env.NEXT_PUBLIC_BACKEND_API_DOMAIN || '';
 
 /**
- * Interface representing the Payload for the method to create a group.
+ * Interface representing the Payload for the function to create a group.
  * @property groupName - The name of the group.
  */
 export interface IPostCreateGroupPayload {
@@ -15,7 +15,7 @@ export interface IPostCreateGroupPayload {
 }
 
 /**
- * Interface representing the API response for the method to create a group.
+ * Interface representing the API response for the function to create a group.
  * @property groupId - The unique identifier of the group.
  */
 export interface IPostCreateGroupApiResponse {
@@ -23,8 +23,8 @@ export interface IPostCreateGroupApiResponse {
 }
 
 /**
- * Method to create a group.
- * @param payload - The payload for the method.
+ * Function to create a group.
+ * @param payload - The payload for the function.
  * @returns The unique identifier of the group.
  */
 export const postCreateGroup = async (
@@ -46,7 +46,7 @@ export const postCreateGroup = async (
 };
 
 /**
- * Interface representing the Payload for the method to rename a group.
+ * Interface representing the Payload for the function to rename a group.
  * @property groupName - The name of the group.
  */
 interface IPutRenameGroupPayload {
@@ -54,9 +54,9 @@ interface IPutRenameGroupPayload {
 }
 
 /**
- * Method to rename a group.
+ * Function to rename a group.
  * @param groupId - The unique identifier of the group.
- * @param payload - The payload for the method.
+ * @param payload - The payload for the function.
  */
 
 export const putRenameGroup = async (

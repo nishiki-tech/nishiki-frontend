@@ -16,14 +16,13 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/Form';
+import { createGroup } from '@/features/groups/lib/actions';
+import { createGroupFormSchema, CreateGroupInputs } from '@/features/groups/lib/schemas';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FC, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
-
-import { createGroup } from '../../lib/actions';
-import { createGroupFormSchema, CreateGroupInputs } from '../../lib/schemas';
 
 interface ICreateGroupDrawerContentProps {
   isOpen: boolean;
