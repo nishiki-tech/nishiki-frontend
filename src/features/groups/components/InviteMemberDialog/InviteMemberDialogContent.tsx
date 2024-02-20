@@ -35,7 +35,7 @@ export const InviteMemberDialogContent = ({
   const handleLinkCopy = async () => {
     const result = await generateInvitationLinkHash(groupId);
     if (!result.ok) {
-      //save
+      //narrowing if result is invalid, no action for now
       return;
     }
     setIsLinkButtonClicked(true);
