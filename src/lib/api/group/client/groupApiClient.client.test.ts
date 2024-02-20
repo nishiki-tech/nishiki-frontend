@@ -1,7 +1,6 @@
 import { request } from '@/lib/api/common/client';
 import {
   generateInvitationLinkHash,
-  // IGenerateInvitationLink,
   IPostCreateGroupApiResponse,
   IPostCreateGroupPayload,
   // Target functions to test

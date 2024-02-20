@@ -52,7 +52,7 @@ export const putFood = async (
     return Ok(undefined);
   } catch (err) {
     if (err instanceof Error) {
-      // console.error(err.message);
+      console.error(err.message);
       return Err(err.message);
     }
     return Err('API response is invalid');
