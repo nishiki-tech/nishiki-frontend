@@ -53,12 +53,13 @@ export const createGroup = async (params: ICreateGroupParams): Promise<string> =
  */
 export const generateInvitationLinkHash = async (groupId: string): Promise<string> => {
   try {
-    const data: string = await request({
+    const data: IGenerateInvitationLink = await request<IGenerateInvitationLink>({
       url: BACKEND_API_DOMAIN + '/groups/' + groupId + '?Action=generateInvitationLink',
       method: 'PUT',
     });
-    const parsedData: IGenerateInvitationLink = JSON.parse(data);
-    return parsedData.invitationLinkHash;
+
+    const { invitationLinkHash } = data;
+    return invitationLinkHash;
   } catch (err) {
     throw new Error('API response is invalid');
   }
