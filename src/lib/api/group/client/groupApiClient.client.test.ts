@@ -15,7 +15,6 @@ jest.mock('@/lib/api/common/client', () => ({
 
 /**
  * Create mock data for request function
- * @template T
  * @param mockData
  * @returns mocked request function
  */
@@ -25,7 +24,6 @@ const setUpMockSuccessRequest = <T>(mockData: T) => {
 
 /**
  * Create mock error data for request function
- * @template T
  * @param mockData
  * @returns mocked request function
  */

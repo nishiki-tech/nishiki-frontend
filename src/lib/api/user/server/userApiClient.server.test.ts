@@ -9,7 +9,6 @@ const mockUser = { userId: '679adc58-b03a-4fb6-993b-c72404087375', userName: 'Jo
 
 /**
  * Create mock data for request method
- * @template T
  * @param mockData
  * @returns mocked request method
  */
@@ -19,7 +18,6 @@ const setUpMockSuccessRequest = <T>(mockData: T) => {
 
 /**
  * Create mock error data for request method
- * @template T
  * @param mockData
  * @returns mocked request method
  */

@@ -9,7 +9,6 @@ const mockGroup = { groupId: 'a3kdifut-a520-c2cb-1be7-d90710691861', groupName: 
 
 /**
  * Create mock data for request method
- * @template T
  * @param mockData
  * @returns mocked request method
  */
@@ -19,7 +18,6 @@ const setUpMockSuccessRequest = <T>(mockData: T) => {
 
 /**
  * Create mock error data for request method
- * @template T
  * @param mockData
  * @returns mocked request method
  */

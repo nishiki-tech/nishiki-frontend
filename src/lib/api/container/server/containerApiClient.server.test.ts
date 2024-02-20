@@ -24,7 +24,6 @@ const mockContainer = {
 
 /**
  * Create mock data for request method
- * @template T
  * @param mockData
  * @returns mocked request method
  */
@@ -34,7 +33,6 @@ const setUpMockSuccessRequest = <T>(mockData: T) => {
 
 /**
  * Create mock error data for request method
- * @template T
  * @param mockData
  * @returns mocked request method
  */
