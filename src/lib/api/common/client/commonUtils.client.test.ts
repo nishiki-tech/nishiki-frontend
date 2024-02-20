@@ -1,54 +1,74 @@
+// Target function to test
+import { request } from './commonUtils.client';
+
+// Mock fetch globally
+global.fetch = jest.fn() as jest.MockedFunction<typeof fetch>;
+
+// Mock getToken function
+jest.mock('./authTokenFetcher.client');
 import { getToken as originalGetToken } from './authTokenFetcher.client';
 const getToken = originalGetToken as jest.MockedFunction<typeof originalGetToken>;
 
-// test target method
-import { request } from './commonUtils.client';
+interface ICreateMockResponseProps {
+  responseBody?: unknown;
+  ok?: boolean;
+  status?: number;
+  contentType?: string | undefined;
+}
 
-// Mock fetch and getToken
-global.fetch = jest.fn() as jest.MockedFunction<typeof fetch>;
-jest.mock('@/lib/api/common/client/authTokenFetcher.client');
+/**
+ * Create a mock Response object
+ * @param props.responseBody - Response body of the response
+ * @param props.ok - Whether the response is OK or not
+ * @param props.status - Status code of the response
+ * @param props.contentType - Content type of the responses
+ * @returns Mock Response object
+ *
+ * @example
+ * const response = createMockResponse({ responseBody: { data: 'test' } });
+ * const data = await response.json();
+ * console.log(data); // { data: 'test' }
+ */
+const createMockResponse = ({
+  responseBody = null,
+  ok = true,
+  status = 200,
+  contentType = 'application/json',
+}: ICreateMockResponseProps): Response => {
+  const headers = new Headers();
+  if (contentType && status !== 204) {
+    headers.append('content-type', contentType);
+  }
+  return {
+    ok,
+    status,
+    statusText: ok ? 'OK' : 'Error',
+    headers,
+    json: () => Promise.resolve(responseBody),
+  } as Response;
+};
 
 describe('request function', () => {
+  // Arrange mock data
   const mockUrl = 'https://example.com/api/test';
   const mockMethod = 'GET';
-  const mockResponseData = { data: 'test' };
+  const mockResponseBody = { data: 'test' };
   const mockToken = 'fake-token';
 
-  beforeEach(() => {
-    (fetch as jest.MockedFunction<typeof fetch>).mockClear();
-    (getToken as jest.MockedFunction<typeof getToken>).mockClear();
-  });
-
-  it('should make an API call and return data', async () => {
-    getToken.mockResolvedValue(mockToken);
-    (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValue({
-      ok: true,
-      status: 200,
-      statusText: 'OK',
-      headers: {
-        get: jest.fn(),
-      },
-      json: () => Promise.resolve(mockResponseData),
-    } as unknown as Response);
-    // Execute test
-    const result = await request({ url: mockUrl, method: mockMethod });
-    // Expect
-    expect(result).toEqual(mockResponseData);
-    expect(fetch).toHaveBeenCalledWith(mockUrl, expect.anything());
+  // Clear mocks after each test
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
   it('should include correct Authorization header in the request', async () => {
+    /* Arrange */
     getToken.mockResolvedValue(mockToken);
+    (fetch as jest.Mock).mockResolvedValue(createMockResponse({}));
 
-    // Mock fetch response
-    (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValue({
-      ok: true,
-      json: () => Promise.resolve({}),
-    } as unknown as Response);
-
-    // Execute test
+    /* Act */
     await request({ url: mockUrl, method: mockMethod });
-    // Expect
+
+    /* Assert */
     expect(fetch).toHaveBeenCalled();
     // Check the headers in the fetch call
     const fetchCall = (fetch as jest.MockedFunction<typeof fetch>).mock.calls[0];
@@ -58,29 +78,57 @@ describe('request function', () => {
     expect(headers['Authorization']).toBe(`Bearer ${mockToken}`);
   });
 
-  it('should throw an error when the response is not ok', async () => {
-    getToken.mockResolvedValue(mockToken);
-    (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValue({
-      ok: false,
-      status: 500,
-      statusText: 'API response error',
-      headers: {
-        get: jest.fn(),
-      },
-      json: () => Promise.reject(),
-    } as unknown as Response);
-    // Execute test
-    const result = request({ url: mockUrl, method: mockMethod });
-    // Expect
-    await expect(result).rejects.toThrow('HTTP error. status: 500');
-  });
-
   it('should throw an error when token is not available', async () => {
+    /* Arrange */
+    // Specify that the token is not available
     getToken.mockResolvedValue(undefined);
 
-    // Execute test & Expect
+    /* Act */
+    const promise = request({ url: mockUrl, method: mockMethod });
+
+    /* Assert */
+    await expect(promise).rejects.toThrow('Authentication token is not available');
+  });
+
+  it('should make an API call and return data if response body is JSON', async () => {
+    /* Arrange */
+    getToken.mockResolvedValue(mockToken);
+    (fetch as jest.Mock).mockResolvedValue(createMockResponse({ responseBody: mockResponseBody }));
+
+    /* Act */
+    const result = await request({ url: mockUrl, method: mockMethod });
+
+    /* Assert */
+    expect(result).toEqual(mockResponseBody);
+    expect(fetch).toHaveBeenCalledWith(mockUrl, expect.anything());
+  });
+
+  it('should return an empty object if the status code is 204', async () => {
+    /* Arrange */
+    getToken.mockResolvedValue(mockToken);
+    (fetch as jest.Mock).mockResolvedValue(createMockResponse({ status: 204 }));
+
+    /* Act */
+    const result = await request({ url: mockUrl, method: mockMethod });
+
+    /* Assert */
+    expect(result).toEqual({}); // Empty object because the response body is not JSON
+    expect(fetch).toHaveBeenCalledWith(mockUrl, expect.anything());
+  });
+
+  it('should throw an error when the response is not ok', async () => {
+    /* Arrange */
+    getToken.mockResolvedValue(mockToken);
+    (fetch as jest.Mock).mockResolvedValue(
+      createMockResponse({
+        ok: false,
+        status: 500,
+      }),
+    );
+
+    /* Act & Assert */
     await expect(request({ url: mockUrl, method: mockMethod })).rejects.toThrow(
-      'API Unauthorized error.',
+      'API error with status code 500:',
     );
   });
 });

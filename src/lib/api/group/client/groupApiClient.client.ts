@@ -2,23 +2,81 @@
 
 import { request } from '@/lib/api/common/client';
 import { IGroup } from '@/types/definition';
+
+import { Err, Ok, Result } from 'result-ts-type';
 const BACKEND_API_DOMAIN = process.env.NEXT_PUBLIC_BACKEND_API_DOMAIN || '';
 
 /**
- * Interface representing the Params for the method to create a group.
+ * Interface representing the Payload for the function to create a group.
  * @property groupName - The name of the group.
  */
-export interface ICreateGroupParams {
+export interface IPostCreateGroupPayload {
   groupName: IGroup['name'];
 }
 
 /**
- * Interface representing the API response for the method to create a group.
+ * Interface representing the API response for the function to create a group.
  * @property groupId - The unique identifier of the group.
  */
-export interface ICreateGroupApiResponse {
+export interface IPostCreateGroupApiResponse {
   groupId: IGroup['id'];
 }
+
+/**
+ * Function to create a group.
+ * @param payload - The payload for the function.
+ * @returns The unique identifier of the group.
+ */
+export const postCreateGroup = async (
+  payload: IPostCreateGroupPayload,
+): Promise<Result<IPostCreateGroupApiResponse, string>> => {
+  try {
+    const data: IPostCreateGroupApiResponse = await request<IPostCreateGroupApiResponse>({
+      url: BACKEND_API_DOMAIN + '/groups',
+      method: 'POST',
+      options: { body: JSON.stringify(payload) },
+    });
+    return Ok(data);
+  } catch (err) {
+    if (err instanceof Error) {
+      return Err(err.message);
+    }
+    return Err('API response is invalid');
+  }
+};
+
+/**
+ * Interface representing the Payload for the function to rename a group.
+ * @property groupName - The name of the group.
+ */
+interface IPutRenameGroupPayload {
+  groupName: IGroup['name'];
+}
+
+/**
+ * Function to rename a group.
+ * @param groupId - The unique identifier of the group.
+ * @param payload - The payload for the function.
+ */
+
+export const putRenameGroup = async (
+  groupId: IGroup['id'],
+  payload: IPutRenameGroupPayload,
+): Promise<Result<undefined, string>> => {
+  try {
+    await request({
+      url: `${BACKEND_API_DOMAIN}/groups/${groupId}`,
+      method: 'PUT',
+      options: { body: JSON.stringify(payload) },
+    });
+    return Ok(undefined);
+  } catch (err) {
+    if (err instanceof Error) {
+      return Err(err.message);
+    }
+    return Err('API response is invalid');
+  }
+};
 
 /**
  * Interface representing the API response for the method to generate a invitation link
@@ -29,38 +87,24 @@ export interface IGenerateInvitationLink {
 }
 
 /**
- * Create a new group.
- * @param params - The parameters for the group to be created.
- * @returns The ID of the newly created group.
- */
-export const createGroup = async (params: ICreateGroupParams): Promise<string> => {
-  try {
-    const data: ICreateGroupApiResponse = await request<ICreateGroupApiResponse>({
-      url: BACKEND_API_DOMAIN + '/groups',
-      method: 'POST',
-      options: { body: JSON.stringify(params) },
-    });
-    return data.groupId;
-  } catch (err) {
-    throw new Error('API response is invalid');
-  }
-};
-
-/**
  * generate a invitation link hash
  * @param groupId unique Id for generating invitation link hash
  * @returns A hash: IGenerateInvitationLink of inivitation link
  */
-export const generateInvitationLinkHash = async (groupId: string): Promise<string> => {
+export const generateInvitationLinkHash = async (
+  groupId: string,
+): Promise<Result<string, string>> => {
   try {
-    const data: IGenerateInvitationLink = await request<IGenerateInvitationLink>({
+    const data: string = await request({
       url: BACKEND_API_DOMAIN + '/groups/' + groupId + '?Action=generateInvitationLink',
       method: 'PUT',
     });
 
-    const { invitationLinkHash } = data;
-    return invitationLinkHash;
+    const parsedData = JSON.parse(data) as IGenerateInvitationLink;
+    return Ok(parsedData.invitationLinkHash);
   } catch (err) {
-    throw new Error('API response is invalid');
+    if (err instanceof Error) {
+    }
+    return Err('API response is invalid');
   }
 };

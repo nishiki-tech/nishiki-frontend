@@ -33,10 +33,14 @@ export const InviteMemberDialogContent = ({
    * this function is onClick function when the `Button` clicked
    */
   const handleLinkCopy = async () => {
+    const result = await generateInvitationLinkHash(groupId);
+    if (!result.ok) {
+      //save
+      return;
+    }
     setIsLinkButtonClicked(true);
-    const hash = await generateInvitationLinkHash(groupId);
-    const invitationUrl = BACKEND_API_DOMAIN + '/groups/join/' + hash;
-    navigator.clipboard.writeText(invitationUrl);
+    const hash = result.value;
+    return navigator.clipboard.writeText(BACKEND_API_DOMAIN + '/groups/join/' + hash);
   };
 
   /**

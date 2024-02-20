@@ -4,6 +4,7 @@ import CalendarIcon from './icon_calendar.svg';
 import CaretDownIcon from './icon_caret-down.svg';
 import CaretRightIcon from './icon_caret-right.svg';
 import CheckIcon from './icon_check.svg';
+import CircleCrossIcon from './icon_circle-cross.svg';
 import ContainerIcon from './icon_container.svg';
 import CrossIcon from './icon_cross.svg';
 import DeleteIcon from './icon_delete.svg';
@@ -32,6 +33,7 @@ export {
   CaretDownIcon,
   CaretRightIcon,
   CheckIcon,
+  CircleCrossIcon,
   ContainerIcon,
   CrossIcon,
   DeleteIcon,
