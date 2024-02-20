@@ -79,7 +79,7 @@ export const putRenameGroup = async (
 };
 
 /**
- * Interface representing the API response for the method to generate a invitation link
+ * Interface representing the API response for the function to generate a invitation link
  * @property invitationLinkHash - string, a hash for invitation link
  */
 export interface IGenerateInvitationLink {
