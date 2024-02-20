@@ -34,6 +34,7 @@ export const GroupCardContent: FC<IGroupCardContentProps> = ({
 
   return isRenameFormOpen ? (
     <RenameGroupForm
+      groupId={groupId}
       currentGroupName={groupName}
       containerCount={containerCount}
       userCount={userCount}

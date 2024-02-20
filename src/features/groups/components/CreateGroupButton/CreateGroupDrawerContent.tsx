@@ -16,7 +16,8 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/Form';
-import { createGroup } from '@/lib/api/group/client';
+import { createGroup } from '@/features/groups/lib/actions';
+import { createGroupFormSchema, CreateGroupInputs } from '@/features/groups/lib/schemas';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FC, useEffect } from 'react';
@@ -32,31 +33,27 @@ export const CreateGroupDrawerContent: FC<ICreateGroupDrawerContentProps> = ({
   isOpen,
   onClose,
 }) => {
-  const formSchema = z.object({
-    groupName: z.string().min(1, { message: 'Name is required' }),
-  });
-
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof createGroupFormSchema>>({
+    resolver: zodResolver(createGroupFormSchema),
     defaultValues: {
       groupName: '',
     },
   });
 
   /**
-   * The type of the form inputs based on the schema
-   */
-  type Inputs = z.infer<typeof formSchema>;
-
-  /**
    * Process the form submission.
    * @param values - The form values
    */
-  const processSubmit: SubmitHandler<Inputs> = async (values) => {
+  const processSubmit: SubmitHandler<CreateGroupInputs> = async (values) => {
     const { groupName } = values;
-    await createGroup({ groupName });
-    form.reset();
-    onClose();
+    const result = await createGroup({ groupName });
+    if (!result.ok) {
+      alert('Failed to create the group');
+    } else {
+      alert('Successfully created the group');
+      form.reset();
+      onClose();
+    }
   };
 
   /**
