@@ -36,8 +36,6 @@ export const InviteMemberDialogContent = ({
     setIsLinkButtonClicked(true);
     const hash = await generateInvitationLinkHash(groupId);
     const invitationUrl = BACKEND_API_DOMAIN + '/groups/join/' + hash;
-    console.log(hash);
-    console.log(invitationUrl);
     navigator.clipboard.writeText(invitationUrl);
   };
 
