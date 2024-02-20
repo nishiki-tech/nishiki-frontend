@@ -21,6 +21,7 @@ describe('Group actions', () => {
     const mockInputs: CreateGroupInputs = {
       groupName: 'Test Group',
     };
+
     it('should create a group successfully', async () => {
       // Arrange
       (postCreateGroup as jest.Mock).mockResolvedValue(Ok({ groupId: 'newGroupId' }));
