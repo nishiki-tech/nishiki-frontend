@@ -38,6 +38,7 @@ export const InviteMemberDialogContent = ({
     const invitationUrl = BACKEND_API_DOMAIN + '/groups/join/' + hash;
     console.log(hash);
     console.log(invitationUrl);
+    navigator.clipboard.writeText(invitationUrl);
   };
 
   /**
