@@ -1,4 +1,4 @@
-import { BottomTabs, MobileHeader } from '@/components/parts';
+import { BottomTabs, Header } from '@/components/parts';
 
 import { FC, ReactNode } from 'react';
 
@@ -10,7 +10,7 @@ export const MobileLayout: FC<IMobileLayoutProps> = ({ children }) => {
   return (
     // The top and bottom padding is intended to make space for the header and bottom tabs.
     <div className="pt-12 pb-16 min-h-screen">
-      <MobileHeader />
+      <Header />
       {children}
       <BottomTabs />
     </div>

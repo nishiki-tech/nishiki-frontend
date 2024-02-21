@@ -6,7 +6,7 @@ import { cn } from '@/lib/tailwind/utils';
 
 import { ButtonHTMLAttributes, FC, ReactNode } from 'react';
 
-export const MobileHeader = () => {
+export const Header = () => {
   return (
     <header
       className={cn(
