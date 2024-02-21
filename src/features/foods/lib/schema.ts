@@ -10,6 +10,9 @@ export const createFoodFormSchema = z.object({
   category: z.string().min(1, { message: 'Category must be selected' }),
 });
 
+/**
+ * User's raw inputs to create a new food
+ */
 export type CreateFoodInputs = z.infer<typeof createFoodFormSchema>;
 
 export const createFoodDefaultValues: CreateFoodInputs = {

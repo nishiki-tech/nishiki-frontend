@@ -1,7 +1,7 @@
 export {
   deleteFood,
-  type FoodPostRequestBody,
-  type FoodPutRequestBody,
+  type IPostFoodRequestBody,
+  type IPutFoodRequestBody,
   postFood,
   putFood,
 } from './containerApiClient.client';

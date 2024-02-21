@@ -4,8 +4,8 @@ import {
   UpdateFoodInputs,
 } from '@/features/foods/lib/schema';
 import {
-  FoodPostRequestBody,
-  FoodPutRequestBody,
+  IPostFoodRequestBody,
+  IPutFoodRequestBody,
   postFood,
   putFood,
 } from '@/lib/api/container/client';
@@ -15,11 +15,16 @@ import { Err, Ok, Result } from 'result-ts-type';
 
 const CreateFoodFormSchema = createFoodFormSchema.omit({ group: true, container: true });
 
+/**
+ * Validate the inputs and call the API client to create a new food
+ * @param inputs - The raw inputs to be validated
+ * @returns undefined on success, or an error message if the validation or request fails
+ */
 export const createFood = async (inputs: CreateFoodInputs): Promise<Result<undefined, string>> => {
   const validatedData = CreateFoodFormSchema.safeParse(inputs);
   if (!validatedData.success) return Err('Validation failed');
 
-  const newFood: FoodPostRequestBody = {
+  const newFood: IPostFoodRequestBody = {
     name: validatedData.data.name,
     quantity: Number(validatedData.data.quantity) || null,
     unit: validatedData.data.unit || null,
@@ -33,11 +38,16 @@ export const createFood = async (inputs: CreateFoodInputs): Promise<Result<undef
   return Err(result.error);
 };
 
+/**
+ * Validate the inputs and call the API client to update a food
+ * @param inputs - The raw inputs to be validated
+ * @returns undefined on success, or an error message if the validation or request fails
+ */
 export const updateFood = async (inputs: UpdateFoodInputs): Promise<Result<undefined, string>> => {
   const validatedData = createFoodFormSchema.safeParse(inputs);
   if (!validatedData.success) return Err('Validation failed');
 
-  const alteredFood: FoodPutRequestBody = {
+  const alteredFood: IPutFoodRequestBody = {
     name: validatedData.data.name,
     quantity: Number(validatedData.data.quantity) || null,
     unit: validatedData.data.unit || null,
@@ -51,6 +61,12 @@ export const updateFood = async (inputs: UpdateFoodInputs): Promise<Result<undef
   return Err(result.error);
 };
 
+/**
+ * Call the API client to remove a food
+ * @param containerId - The ID of the container to remove the food from
+ * @param foodId - The ID of the food to be removed
+ * @returns undefined on success, or an error message if the request fails
+ */
 export const removeFood = async (
   containerId: string,
   foodId: string,
