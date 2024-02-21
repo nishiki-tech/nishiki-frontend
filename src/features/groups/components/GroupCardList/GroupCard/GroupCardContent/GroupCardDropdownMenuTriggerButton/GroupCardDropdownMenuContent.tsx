@@ -1,5 +1,6 @@
 import { DeleteIcon, PenIcon } from '@/assets/images/icons';
 import {
+  DialogTrigger,
   DropdownMenuButton,
   DropdownMenuButtonIcon,
   DropdownMenuButtonText,
@@ -28,12 +29,15 @@ export const GroupCardDropdownMenuContent: FC<IGroupCardDropdownMenuContentProps
         </DropdownMenuButton>
       </DropdownMenuItem>
       <DropdownMenuItem asChild>
-        <DropdownMenuButton onClick={() => {}}>
-          <DropdownMenuButtonIcon>
-            <Icon icon={DeleteIcon} size={5} color="danger" />
-          </DropdownMenuButtonIcon>
-          <DropdownMenuButtonText>Delete</DropdownMenuButtonText>
-        </DropdownMenuButton>
+        {/* Wrapping delete button with DialogTrigger to open the dialog in parent component*/}
+        <DialogTrigger asChild>
+          <DropdownMenuButton>
+            <DropdownMenuButtonIcon>
+              <Icon icon={DeleteIcon} size={5} color="danger" />
+            </DropdownMenuButtonIcon>
+            <DropdownMenuButtonText>Delete</DropdownMenuButtonText>
+          </DropdownMenuButton>
+        </DialogTrigger>
       </DropdownMenuItem>
     </DropdownMenuContent>
   );
