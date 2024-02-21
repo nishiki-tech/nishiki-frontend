@@ -1,3 +1,5 @@
+import { MobileLayout } from '@/components/layouts/MobileLayout';
+
 export const ProfilePage = () => {
-  return <>Profile page</>;
+  return <MobileLayout>Profile Page</MobileLayout>;
 };
