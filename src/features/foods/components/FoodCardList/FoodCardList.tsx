@@ -3,7 +3,8 @@
 import { BagIcon, ContainerIcon } from '@/assets/images/icons';
 import { Button, Card, DrawerRoot, DrawerTrigger, Icon } from '@/components/ui';
 import { foodCategories } from '@/const/foodCategory';
-import { FoodCardDropdownMenu } from '@/features/foods/components/FoodCardDropdownMenu';
+import { FoodCardDropdownMenu } from '@/features/foods/components/FoodCardList/FoodCardDropdownMenu';
+import { EditDrawerContent } from '@/features/foods/components/Form';
 import { GroupIdContainersMapType, IFoodView } from '@/features/foods/types/FoodTypes';
 import {
   ContainerIdGroupIdMapType,
@@ -14,8 +15,6 @@ import {
 import { format } from 'date-fns';
 import { useEffect, useState } from 'react';
 
-import { EditDrawerContent } from './Form';
-
 interface IFoodListProps {
   foods: IFoodView[];
   groupIdContainerIdsMap: GroupIdContainersMapType;
@@ -24,7 +23,7 @@ interface IFoodListProps {
   groupIdNameMap: GroupIdNameMapType;
 }
 
-export const FoodList = ({
+export const FoodCardList = ({
   foods,
   groupIdContainerIdsMap,
   containerIdGroupIdMap,
@@ -87,6 +86,7 @@ export const FoodList = ({
           </Card>
         );
       })}
+      {/* The drawer content must be outside of the map() method to avoid opening multiple drawers. */}
       <EditDrawerContent
         food={clickedFood}
         setIsDrawerOpen={setIsDrawerOpen}

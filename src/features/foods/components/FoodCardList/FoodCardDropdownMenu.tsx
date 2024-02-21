@@ -7,7 +7,7 @@ import {
   DropdownMenuTrigger,
   Icon,
 } from '@/components/ui';
-import { FoodCardDropdownMenuDeleteButton } from '@/features/foods/components/FoodCardDropdownMenuDeleteButton';
+import { FoodCardDropdownMenuDeleteButton } from '@/features/foods/components/FoodCardList/FoodCardDropdownMenuDeleteButton';
 import { IContainer, IFood } from '@/types/definition';
 
 interface IFoodCardDropdownMenuProps {

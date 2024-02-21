@@ -7,7 +7,7 @@ import {
   DropdownMenuButtonText,
   Icon,
 } from '@/components/ui';
-import { FoodCardDropdownMenuDeleteDialogContent } from '@/features/foods/components/FoodCardDropdownMenuDeleteDialogContent';
+import { FoodCardDropdownMenuDeleteDialogContent } from '@/features/foods/components/FoodCardList/FoodCardDropdownMenuDeleteDialogContent';
 import { IContainer, IFood } from '@/types/definition';
 
 import { useState } from 'react';
