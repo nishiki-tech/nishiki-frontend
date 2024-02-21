@@ -58,3 +58,21 @@ export const putFood = async (
     return Err('API response is invalid');
   }
 };
+
+export const deleteFood = async (
+  containerId: IContainer['id'],
+  foodId: IFood['id'],
+): Promise<Result<undefined, string>> => {
+  try {
+    await request({
+      url: `${BACKEND_API_DOMAIN}/containers/${containerId}/foods/${foodId}`,
+      method: 'DELETE',
+    });
+    return Ok(undefined);
+  } catch (err) {
+    if (err instanceof Error) {
+      return Err(err.message);
+    }
+    return Err('API response is invalid');
+  }
+};
