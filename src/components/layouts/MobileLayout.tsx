@@ -9,7 +9,7 @@ interface IMobileLayoutProps {
 export const MobileLayout: FC<IMobileLayoutProps> = ({ children }) => {
   return (
     // The top and bottom padding is intended to make space for the header and bottom tabs.
-    <div className="relative pt-12 pb-16 flex min-h-screen flex-col">
+    <div className="pt-12 pb-16 min-h-screen">
       <MobileHeader />
       {children}
       <BottomTabs />
