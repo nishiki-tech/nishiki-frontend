@@ -9,6 +9,7 @@ import {
   postFood,
   putFood,
 } from '@/lib/api/container/client';
+import { deleteFood } from '@/lib/api/container/client';
 
 import { Err, Ok, Result } from 'result-ts-type';
 
@@ -45,6 +46,16 @@ export const updateFood = async (inputs: UpdateFoodInputs): Promise<Result<undef
   };
 
   const result = await putFood(inputs.container, inputs.id, alteredFood);
+
+  if (result.ok) return Ok(undefined);
+  return Err(result.error);
+};
+
+export const removeFood = async (
+  containerId: string,
+  foodId: string,
+): Promise<Result<undefined, string>> => {
+  const result = await deleteFood(containerId, foodId);
 
   if (result.ok) return Ok(undefined);
   return Err(result.error);
