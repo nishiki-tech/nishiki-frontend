@@ -1,8 +1,9 @@
 'use client';
 
-import { BagIcon, ContainerIcon, MenuKebabIcon } from '@/assets/images/icons';
+import { BagIcon, ContainerIcon } from '@/assets/images/icons';
 import { Button, Card, DrawerRoot, DrawerTrigger, Icon } from '@/components/ui';
 import { foodCategories } from '@/const/foodCategory';
+import { FoodCardDropdownMenu } from '@/features/foods/components/FoodCardDropdownMenu';
 import { GroupIdContainersMapType, IFoodView } from '@/features/foods/types/FoodTypes';
 import {
   ContainerIdGroupIdMapType,
@@ -82,9 +83,7 @@ export const FoodList = ({
                 </div>
               </Button>
             </DrawerTrigger>
-            <Button variant="ghost" className="w-12">
-              <Icon icon={MenuKebabIcon} size={4.5} />
-            </Button>
+            <FoodCardDropdownMenu containerId={food.containerId} foodId={food.id} />
           </Card>
         );
       })}
