@@ -8,7 +8,7 @@
 
 'use client';
 
-import { CaretDownIcon } from '@/assets/images/icons';
+import { CheckIcon } from '@/assets/images/icons';
 import { cn } from '@/lib/tailwind/utils';
 
 import {
@@ -42,7 +42,7 @@ const SelectContent = forwardRef<
       ref={ref}
       className={cn(
         'flex justify-center items-center',
-        'max-h-[calc(100vh_/_2_-_var(--radix-select-trigger-height))] min-w-32 max-w-full bg-white text-black shadow-md rounded overflow-hidden',
+        'max-h-[calc(100vh_/_2_-_var(--radix-select-trigger-height))] min-w-32 max-w-full bg-white text-black shadow-md rounded-md overflow-hidden',
         'z-50',
         'data-[state=open]:animate-fadeIn',
         // space between the SelectTrigger and SelectContent
@@ -73,7 +73,7 @@ const SelectLabel = forwardRef<
 >(({ className, ...props }, ref) => (
   <PrimitiveLabel
     ref={ref}
-    className={cn('py-1.5 pl-6 pr-2 text-sm font-semibold', className)}
+    className={cn('py-1.5 pl-8 pr-2 text-base font-medium', className)}
     {...props}
   />
 ));
@@ -87,7 +87,7 @@ const SelectItem = forwardRef<
     ref={ref}
     className={cn(
       'relative flex items-center',
-      'w-full rounded-sm text-sm outline-none  focus:bg-gray-light',
+      'w-full rounded-sm text-base font-normal outline-none focus:bg-gray-light',
       'py-1 pl-8 pr-2',
       'cursor-default select-none',
       className,
@@ -97,7 +97,7 @@ const SelectItem = forwardRef<
     <span className="absolute left-2">
       <PrimitiveItemIndicator>
         {/* TODO:Create a new icon to use in here */}
-        <Icon icon={CaretDownIcon} size={4} />
+        <Icon icon={CheckIcon} size={4} className="text-primary" />
       </PrimitiveItemIndicator>
     </span>
     <PrimitiveItemText>{children}</PrimitiveItemText>
