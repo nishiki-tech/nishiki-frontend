@@ -10,7 +10,9 @@ import {
 import { putGenerateInvitationLinkHash } from '@/lib/api/group/client/groupApiClient.client';
 
 import { useEffect, useState } from 'react';
-const BACKEND_API_DOMAIN = process.env.NEXT_PUBLIC_BACKEND_API_DOMAIN || '';
+
+const LOCALHOST_URL = process.env.NEXT_PUBLIC_LOCALHOST_URL || '';
+
 /**
  * This component displays dialog which has copy button.
  * When it is clicked, the text changes to "Copied!"
@@ -42,7 +44,7 @@ export const InviteMemberDialogContent = ({
     setIsLinkButtonClicked(true);
     const hash = result.value;
 
-    return navigator.clipboard.writeText(BACKEND_API_DOMAIN + '/groups/join/' + hash);
+    return navigator.clipboard.writeText(LOCALHOST_URL + '/groups/join/' + hash);
   };
 
   /**
