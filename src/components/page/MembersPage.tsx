@@ -8,7 +8,7 @@ interface IMembersPageProps {
   id: string;
 }
 
-export const MembersPage: React.FC<IMembersPageProps> = async ({ id }) => {
+export const MembersPage = async ({ id }: IMembersPageProps) => {
   const users: IUser[] = await fetchUserList(id);
   return (
     <div className="px-4 py-6">

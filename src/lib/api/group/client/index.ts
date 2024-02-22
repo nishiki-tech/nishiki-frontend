@@ -1,8 +1,8 @@
 export {
-  generateInvitationLinkHash,
-  type IGenerateInvitationLink,
   type IPostCreateGroupApiResponse,
   type IPostCreateGroupPayload,
+  type IPutGenerateInvitationLink,
   postCreateGroup,
+  putGenerateInvitationLinkHash,
   putRenameGroup,
 } from './groupApiClient.client';

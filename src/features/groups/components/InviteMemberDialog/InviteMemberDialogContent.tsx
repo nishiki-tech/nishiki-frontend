@@ -7,7 +7,7 @@ import {
   DialogTitle,
   Icon,
 } from '@/components/ui';
-import { generateInvitationLinkHash } from '@/lib/api/group/client/groupApiClient.client';
+import { putGenerateInvitationLinkHash } from '@/lib/api/group/client/groupApiClient.client';
 
 import { useEffect, useState } from 'react';
 const BACKEND_API_DOMAIN = process.env.NEXT_PUBLIC_BACKEND_API_DOMAIN || '';
@@ -18,6 +18,7 @@ const BACKEND_API_DOMAIN = process.env.NEXT_PUBLIC_BACKEND_API_DOMAIN || '';
  * Its state is controlled by the `isDialogOpen` prop, which is passed from the parent component.
  *
  * @param props.isDialogOpen - state to control the visibility of dialog, if it is open => true, if not => false, this state is used to switch the text in button.
+ * @param groupId - a unique Id as identfier of a group
  * @returns - The JSX code for rendering the dialog component.
  */
 export const InviteMemberDialogContent = ({
@@ -33,13 +34,14 @@ export const InviteMemberDialogContent = ({
    * this function is onClick function when the `Button` clicked
    */
   const handleLinkCopy = async () => {
-    const result = await generateInvitationLinkHash(groupId);
-    if (!result.ok) {
-      //narrowing if result is invalid, no implementation for now
-      return;
-    }
+    const result = await putGenerateInvitationLinkHash(groupId);
+
+    //narrowing if result is invalid, no implementation for now
+    if (!result.ok) return;
+
     setIsLinkButtonClicked(true);
     const hash = result.value;
+
     return navigator.clipboard.writeText(BACKEND_API_DOMAIN + '/groups/join/' + hash);
   };
 
