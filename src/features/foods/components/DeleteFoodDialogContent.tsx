@@ -10,28 +10,29 @@ import {
 import { removeFood } from '@/features/foods/lib/actions';
 import { IContainer, IFood } from '@/types/definition';
 
-interface IFoodCardDropdownMenuDeleteDialogContentProps {
-  // setIsDropdownOpen: (isOpen: boolean) => void;
+interface IDeleteFoodDialogContentProps {
+  setIsParentOpen?: (isOpen: boolean) => void;
   setIsDialogOpen: (isOpen: boolean) => void;
-  containerId: IContainer['id'];
-  foodId: IFood['id'];
+  containerId?: IContainer['id'];
+  foodId?: IFood['id'];
 }
 
-export const FoodCardDropdownMenuDeleteDialogContent = ({
-  // setIsDropdownOpen,
+export const DeleteFoodDialogContent = ({
+  setIsParentOpen,
   setIsDialogOpen,
   containerId,
   foodId,
-}: IFoodCardDropdownMenuDeleteDialogContentProps) => {
+}: IDeleteFoodDialogContentProps) => {
   const handleDelete = async () => {
+    if (!containerId || !foodId) return;
     const result = await removeFood(containerId, foodId);
     if (!result.ok) {
       alert('Something went wrong. Please try again.');
     } else {
       alert('Successfully deleted!');
     }
-    // setIsDropdownOpen(false); // Delete this line when the issue of the useEffect in the parent FC is fixed.
     setIsDialogOpen(false);
+    setIsParentOpen && setIsParentOpen(false);
   };
 
   return (
@@ -44,7 +45,7 @@ export const FoodCardDropdownMenuDeleteDialogContent = ({
       </DialogBody>
       <DialogFooter>
         <DialogClose asChild>
-          <Button variant="cancel" size="sm">
+          <Button type="button" variant="cancel" size="sm">
             Cancel
           </Button>
         </DialogClose>

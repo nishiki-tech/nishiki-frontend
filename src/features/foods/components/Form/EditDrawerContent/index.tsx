@@ -1,16 +1,8 @@
 'use client';
 
-import DeleteIcon from '@/assets/images/icons/icon_delete.svg';
-import {
-  Button,
-  DrawerClose,
-  DrawerContent,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  Icon,
-} from '@/components/ui';
+import { DrawerContent, DrawerHeader, DrawerTitle } from '@/components/ui';
 import { Form } from '@/components/ui/Form';
+import { EditDrawerFooter } from '@/features/foods/components/Form/EditDrawerContent/EditDrawerFooter';
 import { updateFood } from '@/features/foods/lib/actions';
 import { updateFoodFormSchema, UpdateFoodInputs } from '@/features/foods/lib/schema';
 import { GroupIdContainersMapType, IFoodView } from '@/features/foods/types/FoodTypes';
@@ -43,14 +35,6 @@ export const EditDrawerContent = ({
   containerIdNameMap,
   groupIdNameMap,
 }: IEditDrawerContentProps) => {
-  /**
-   * Process when the delete button is clicked
-   */
-  const handleDeleteClick = () => {
-    alert('Successfully deleted!');
-    setIsDrawerOpen(false);
-  };
-
   const form = useForm<UpdateFoodInputs>({
     resolver: zodResolver(updateFoodFormSchema),
   });
@@ -101,17 +85,7 @@ export const EditDrawerContent = ({
             containerIdNameMap={containerIdNameMap}
             groupIdNameMap={groupIdNameMap}
           />
-          <DrawerFooter>
-            <DrawerClose asChild>
-              <Button variant="cancel" size="sm" onClick={handleDeleteClick}>
-                <Icon icon={DeleteIcon} color="danger" size={4.5} />
-                Delete
-              </Button>
-            </DrawerClose>
-            <Button type="submit" variant="primary" size="sm">
-              Update
-            </Button>
-          </DrawerFooter>
+          <EditDrawerFooter food={food} setIsDrawerOpen={setIsDrawerOpen} />
         </form>
       </Form>
     </DrawerContent>

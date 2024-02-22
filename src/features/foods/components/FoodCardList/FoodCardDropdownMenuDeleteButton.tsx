@@ -7,7 +7,7 @@ import {
   DropdownMenuButtonText,
   Icon,
 } from '@/components/ui';
-import { FoodCardDropdownMenuDeleteDialogContent } from '@/features/foods/components/FoodCardList/FoodCardDropdownMenuDeleteDialogContent';
+import { DeleteFoodDialogContent } from '@/features/foods/components/DeleteFoodDialogContent';
 import { IContainer, IFood } from '@/types/definition';
 
 import { useState } from 'react';
@@ -43,7 +43,7 @@ export const FoodCardDropdownMenuDeleteButton = ({
           <DropdownMenuButtonText>Delete</DropdownMenuButtonText>
         </DropdownMenuButton>
       </DialogTrigger>
-      <FoodCardDropdownMenuDeleteDialogContent
+      <DeleteFoodDialogContent
         setIsDialogOpen={setIsDialogOpen}
         containerId={containerId}
         foodId={foodId}
