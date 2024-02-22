@@ -1,6 +1,7 @@
 'use client';
 
 import { ArrowLeftIcon, MenuCircleIcon } from '@/assets/images/icons';
+import { H2 } from '@/components/Typography';
 import { Button, Icon } from '@/components/ui';
 import { cn } from '@/lib/tailwind/utils';
 
@@ -20,7 +21,7 @@ export const Header = ({ heading, left, right }: IHeaderProps) => {
       className={cn('fixed top-0 z-40 w-full h-12 bg-white flex items-center justify-center')}
     >
       {!!left && <div className="absolute left-0 h-full">{left}</div>}
-      {!!heading && <h1 className="text-xl">{heading}</h1>}
+      {!!heading && <H2>{heading}</H2>}
       {!!right && <div className="absolute right-0 h-full">{right}</div>}
     </header>
   );
