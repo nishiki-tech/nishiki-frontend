@@ -7,11 +7,11 @@ import { usePathname } from 'next/navigation';
 import { FC } from 'react';
 import { UrlObject } from 'url';
 
-interface IBottomTabIconLinkProps {
+interface IBottomMenuLinkProps {
   name: MainRouteKey;
 }
 
-export const BottomTabLink: FC<IBottomTabIconLinkProps> = ({ name }) => {
+export const BottomMenuLink: FC<IBottomMenuLinkProps> = ({ name }) => {
   // Check if the icon is selected based on the current path
   const pathName = usePathname();
   const isSelected = pathName === mainRoutes[name].path;

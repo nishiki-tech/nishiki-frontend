@@ -1,4 +1,4 @@
-import { BottomTabs, Header } from '@/components/parts';
+import { BottomMenu, Header } from '@/components/parts';
 
 import { FC, ReactNode } from 'react';
 
@@ -20,7 +20,7 @@ export const MobileLayout: FC<IMobileLayoutProps> = ({
     <div className="pt-12 pb-16 min-h-screen">
       <Header heading={heading} left={headerLeft} right={headerRight} />
       {children}
-      <BottomTabs />
+      <BottomMenu />
     </div>
   );
 };
