@@ -1,18 +1,22 @@
 import { MenuKebabIcon, MenuMeatballIcon, PersonCircleIcon } from '@/assets/images/icons';
 import { MobileLayout } from '@/components/layouts/MobileLayout';
+import { HeaderBackButton } from '@/components/parts/Header';
 import { Button, Card, Icon } from '@/components/ui';
 import { InviteMemberDialog } from '@/features/groups/components/InviteMemberDialog';
 import { fetchUserList } from '@/lib/api/user/server';
 import { IUser } from '@/types/definition';
 
 interface IMembersPageProps {
-  id: string;
+  groupId: string;
 }
 
-export const MembersPage = async ({ id }: IMembersPageProps) => {
-  const users: IUser[] = await fetchUserList(id);
+export const MembersPage = async ({ groupId }: IMembersPageProps) => {
+  const users: IUser[] = await fetchUserList(groupId);
   return (
-    <MobileLayout>
+    <MobileLayout
+      heading="Members"
+      headerLeft={<HeaderBackButton href={{ pathname: `/groups/${groupId}` }} />}
+    >
       <div className="px-4 py-6">
         <div className="flex items-center justify-between mb-2 h-12">
           <h2 className="text-xl">Members</h2>

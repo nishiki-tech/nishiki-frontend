@@ -2,6 +2,7 @@
 
 import { MenuMeatballIcon } from '@/assets/images/icons';
 import { MobileLayout } from '@/components/layouts/MobileLayout';
+import { HeaderBackButton } from '@/components/parts/Header';
 import { Icon } from '@/components/ui';
 import {
   AddButton,
@@ -81,7 +82,10 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
   }, [containers, query, sort, group, container, searchParams]);
 
   return (
-    <MobileLayout>
+    <MobileLayout
+      heading="Foods"
+      headerLeft={group && <HeaderBackButton href={{ pathname: '/groups' }} />}
+    >
       <div className="mt-6 mx-4 relative">
         <AddButton
           className="fixed bottom-[5.5rem] right-4"
