@@ -2,8 +2,8 @@
  * This file is an example usage of the MobileLayout component.
  * You can use this file as a reference when you need to use the MobileLayout component.
  *
- * This component should be used at the root level of a page component,
- * located in the "src/components/page/" directory.
+ * This component can be used for testing by placing at the root level of a page.tsx component,
+ * located within the `src/app/` directory.
  */
 
 'use client';

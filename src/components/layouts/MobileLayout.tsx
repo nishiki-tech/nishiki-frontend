@@ -1,3 +1,8 @@
+/**
+ * This component should be used at the root level of a page component,
+ * located in the "src/components/page/" directory.
+ */
+
 import { BottomMenu, Header } from '@/components/parts';
 
 import { FC, ReactNode } from 'react';
