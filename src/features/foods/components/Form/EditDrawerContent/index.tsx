@@ -19,7 +19,13 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { EditDrawerBody } from './EditDrawerBody';
 
 interface IEditDrawerContentProps {
+  /**
+   * The food to be edited.
+   */
   food?: IFoodView;
+  /**
+   * The function to set the drawer's open state.
+   */
   setIsDrawerOpen: (isOpen: boolean) => void;
   groupIdContainerIdsMap: GroupIdContainersMapType;
   containerIdGroupIdMap: ContainerIdGroupIdMapType;
@@ -85,7 +91,11 @@ export const EditDrawerContent = ({
             containerIdNameMap={containerIdNameMap}
             groupIdNameMap={groupIdNameMap}
           />
-          <EditDrawerFooter food={food} setIsDrawerOpen={setIsDrawerOpen} />
+          <EditDrawerFooter
+            setIsDrawerOpen={setIsDrawerOpen}
+            containerId={food?.containerId}
+            foodId={food?.id}
+          />
         </form>
       </Form>
     </DrawerContent>

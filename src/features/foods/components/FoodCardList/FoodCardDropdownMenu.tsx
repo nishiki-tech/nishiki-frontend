@@ -14,13 +14,28 @@ import { useState } from 'react';
 import { FoodCardDropdownMenuDeleteButton } from '.';
 
 interface IFoodCardDropdownMenuProps {
+  /**
+   * The ID of the container that the food belongs to.
+   */
   containerId: IContainer['id'];
+  /**
+   * The ID of the food this dropdown menu is for.
+   */
   foodId: IFood['id'];
 }
 
 export const FoodCardDropdownMenu = ({ containerId, foodId }: IFoodCardDropdownMenuProps) => {
   const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
 
+  /**
+   * The function that is called when the dropdown menu item is selected.
+   * e.preventDefault() prevents the dropdown menu from closing when selecting that item.
+   * This is necessary because closing dropdown menu also closes the dialog unintentionally.
+   * @see {@link https://www.radix-ui.com/primitives/docs/components/dropdown-menu#item}
+   *
+   * @param e The event object
+   * @returns void
+   */
   const handleSelect = (e: Event) => {
     e.preventDefault();
   };

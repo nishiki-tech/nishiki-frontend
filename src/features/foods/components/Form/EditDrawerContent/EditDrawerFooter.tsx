@@ -3,17 +3,31 @@
 import DeleteIcon from '@/assets/images/icons/icon_delete.svg';
 import { Button, DialogRoot, DrawerFooter, Icon } from '@/components/ui';
 import { DeleteFoodDialogContent } from '@/features/foods/components';
-import { IFoodView } from '@/features/foods/types/FoodTypes';
+import { IContainer, IFood } from '@/types/definition';
 
 import { DialogTrigger } from '@radix-ui/react-dialog';
 import { useState } from 'react';
 
 interface IEditDrawerFooterProps {
-  food?: IFoodView;
+  /**
+   * The function to set the drawer's open state.
+   */
   setIsDrawerOpen: (isOpen: boolean) => void;
+  /**
+   * The ID of the container that the food belongs to.
+   */
+  containerId?: IContainer['id'];
+  /**
+   * The ID of the food this drawer is for.
+   */
+  foodId?: IFood['id'];
 }
 
-export const EditDrawerFooter = ({ food, setIsDrawerOpen }: IEditDrawerFooterProps) => {
+export const EditDrawerFooter = ({
+  setIsDrawerOpen,
+  containerId,
+  foodId,
+}: IEditDrawerFooterProps) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   return (
@@ -26,11 +40,11 @@ export const EditDrawerFooter = ({ food, setIsDrawerOpen }: IEditDrawerFooterPro
           </Button>
         </DialogTrigger>
         <DeleteFoodDialogContent
-          parentClose={false}
+          closeParentOnCancel={false}
           setIsParentOpen={setIsDrawerOpen}
           setIsDialogOpen={setIsDialogOpen}
-          containerId={food?.containerId}
-          foodId={food?.id}
+          containerId={containerId}
+          foodId={foodId}
         />
       </DialogRoot>
       <Button type="submit" variant="primary" size="sm">
