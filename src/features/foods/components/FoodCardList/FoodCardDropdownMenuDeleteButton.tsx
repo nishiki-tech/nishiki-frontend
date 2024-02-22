@@ -13,25 +13,17 @@ import { IContainer, IFood } from '@/types/definition';
 import { useState } from 'react';
 
 interface IFoodCardDropdownMenuDeleteButtonProps {
+  setIsDropdownMenuOpen: (open: boolean) => void;
   containerId: IContainer['id'];
   foodId: IFood['id'];
 }
 
 export const FoodCardDropdownMenuDeleteButton = ({
+  setIsDropdownMenuOpen,
   containerId,
   foodId,
 }: IFoodCardDropdownMenuDeleteButtonProps) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-
-  /**
-   * Close the DropdownMenu when the Dialog gets opened.
-   *
-   * *This useEffect not only closes the DropdownMenu but also unintentionally closes the Dialog.
-   * TODO: Fix this issue.
-   */
-  // useEffect(() => {
-  //   setIsDropdownOpen(false);
-  // }, [isDialogOpen, setIsDropdownOpen]);
 
   return (
     <DialogRoot open={isDialogOpen} onOpenChange={setIsDialogOpen}>
@@ -44,6 +36,7 @@ export const FoodCardDropdownMenuDeleteButton = ({
         </DropdownMenuButton>
       </DialogTrigger>
       <DeleteFoodDialogContent
+        setIsParentOpen={setIsDropdownMenuOpen}
         setIsDialogOpen={setIsDialogOpen}
         containerId={containerId}
         foodId={foodId}

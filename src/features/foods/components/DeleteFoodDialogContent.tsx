@@ -11,6 +11,7 @@ import { removeFood } from '@/features/foods/lib/actions';
 import { IContainer, IFood } from '@/types/definition';
 
 interface IDeleteFoodDialogContentProps {
+  parentClose?: boolean;
   setIsParentOpen?: (isOpen: boolean) => void;
   setIsDialogOpen: (isOpen: boolean) => void;
   containerId?: IContainer['id'];
@@ -18,11 +19,16 @@ interface IDeleteFoodDialogContentProps {
 }
 
 export const DeleteFoodDialogContent = ({
+  parentClose = true,
   setIsParentOpen,
   setIsDialogOpen,
   containerId,
   foodId,
 }: IDeleteFoodDialogContentProps) => {
+  const handleCancel = () => {
+    parentClose && setIsParentOpen?.(false);
+  };
+
   const handleDelete = async () => {
     if (!containerId || !foodId) return;
     const result = await removeFood(containerId, foodId);
@@ -30,9 +36,9 @@ export const DeleteFoodDialogContent = ({
       alert('Something went wrong. Please try again.');
     } else {
       alert('Successfully deleted!');
+      setIsParentOpen?.(false);
     }
     setIsDialogOpen(false);
-    setIsParentOpen && setIsParentOpen(false);
   };
 
   return (
@@ -45,7 +51,7 @@ export const DeleteFoodDialogContent = ({
       </DialogBody>
       <DialogFooter>
         <DialogClose asChild>
-          <Button type="button" variant="cancel" size="sm">
+          <Button type="button" variant="cancel" size="sm" onClick={handleCancel}>
             Cancel
           </Button>
         </DialogClose>

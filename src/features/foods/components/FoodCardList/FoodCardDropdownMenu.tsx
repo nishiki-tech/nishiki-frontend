@@ -7,8 +7,11 @@ import {
   DropdownMenuTrigger,
   Icon,
 } from '@/components/ui';
-import { FoodCardDropdownMenuDeleteButton } from '@/features/foods/components/FoodCardList/FoodCardDropdownMenuDeleteButton';
 import { IContainer, IFood } from '@/types/definition';
+
+import { useState } from 'react';
+
+import { FoodCardDropdownMenuDeleteButton } from '.';
 
 interface IFoodCardDropdownMenuProps {
   containerId: IContainer['id'];
@@ -16,16 +19,26 @@ interface IFoodCardDropdownMenuProps {
 }
 
 export const FoodCardDropdownMenu = ({ containerId, foodId }: IFoodCardDropdownMenuProps) => {
+  const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
+
+  const handleSelect = (e: Event) => {
+    e.preventDefault();
+  };
+
   return (
-    <DropdownMenu>
+    <DropdownMenu open={isDropdownMenuOpen} onOpenChange={setIsDropdownMenuOpen}>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="w-12">
           <Icon icon={MenuKebabIcon} size={4.5} />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem>
-          <FoodCardDropdownMenuDeleteButton containerId={containerId} foodId={foodId} />
+        <DropdownMenuItem onSelect={handleSelect}>
+          <FoodCardDropdownMenuDeleteButton
+            setIsDropdownMenuOpen={setIsDropdownMenuOpen}
+            containerId={containerId}
+            foodId={foodId}
+          />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

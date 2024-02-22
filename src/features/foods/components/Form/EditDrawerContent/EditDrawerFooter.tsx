@@ -26,6 +26,7 @@ export const EditDrawerFooter = ({ food, setIsDrawerOpen }: IEditDrawerFooterPro
           </Button>
         </DialogTrigger>
         <DeleteFoodDialogContent
+          parentClose={false}
           setIsParentOpen={setIsDrawerOpen}
           setIsDialogOpen={setIsDialogOpen}
           containerId={food?.containerId}
