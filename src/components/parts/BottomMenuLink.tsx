@@ -4,14 +4,13 @@ import { cn } from '@/lib/tailwind/utils';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { FC } from 'react';
 import { UrlObject } from 'url';
 
 interface IBottomMenuLinkProps {
   name: MainRouteKey;
 }
 
-export const BottomMenuLink: FC<IBottomMenuLinkProps> = ({ name }) => {
+export const BottomMenuLink = ({ name }: IBottomMenuLinkProps) => {
   // Check if the icon is selected based on the current path
   const pathName = usePathname();
   const isSelected = pathName === mainRoutes[name].path;
