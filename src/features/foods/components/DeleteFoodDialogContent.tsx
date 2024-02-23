@@ -71,7 +71,7 @@ export const DeleteFoodDialogContent = ({
   return (
     <DialogContent>
       <DialogHeader>
-        <DialogTitle>Delete Container</DialogTitle>
+        <DialogTitle>Delete Food</DialogTitle>
       </DialogHeader>
       <DialogBody>
         <p>Are you sure you want to delete this food?</p>
