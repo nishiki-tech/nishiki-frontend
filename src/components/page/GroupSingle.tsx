@@ -1,4 +1,4 @@
-import { ContainerList } from '@/features/groups/components/ContainerList';
+import { ContainerList } from '@/features/groups/components/ContainerList/Index';
 import { MemberList } from '@/features/groups/components/MemberList';
 
 export const GroupSinglePage = ({ id }: { id: string }) => {
