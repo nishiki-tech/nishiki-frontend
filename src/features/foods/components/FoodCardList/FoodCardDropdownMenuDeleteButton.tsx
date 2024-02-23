@@ -14,9 +14,9 @@ import { useState } from 'react';
 
 interface IFoodCardDropdownMenuDeleteButtonProps {
   /**
-   * The function to set the dropdown menu's open state.
+   * The function to close the dropdown menu.
    */
-  setIsDropdownMenuOpen: (open: boolean) => void;
+  onDropdownMenuClose: () => void;
   /**
    * The ID of the container that the food belongs to.
    */
@@ -28,7 +28,7 @@ interface IFoodCardDropdownMenuDeleteButtonProps {
 }
 
 export const FoodCardDropdownMenuDeleteButton = ({
-  setIsDropdownMenuOpen,
+  onDropdownMenuClose,
   containerId,
   foodId,
 }: IFoodCardDropdownMenuDeleteButtonProps) => {
@@ -45,8 +45,10 @@ export const FoodCardDropdownMenuDeleteButton = ({
         </DropdownMenuButton>
       </DialogTrigger>
       <DeleteFoodDialogContent
-        setIsParentOpen={setIsDropdownMenuOpen}
-        setIsDialogOpen={setIsDialogOpen}
+        onParentClose={onDropdownMenuClose}
+        onDialogClose={() => {
+          setIsDialogOpen(false);
+        }}
         containerId={containerId}
         foodId={foodId}
       />

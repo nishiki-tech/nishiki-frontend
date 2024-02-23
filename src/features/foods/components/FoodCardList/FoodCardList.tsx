@@ -89,7 +89,9 @@ export const FoodCardList = ({
       {/* The drawer content must be outside of the map() method to avoid opening multiple drawers. */}
       <EditDrawerContent
         food={clickedFood}
-        setIsDrawerOpen={setIsDrawerOpen}
+        onDrawerClose={() => {
+          setIsDrawerOpen(false);
+        }}
         groupIdContainerIdsMap={groupIdContainerIdsMap}
         containerIdGroupIdMap={containerIdGroupIdMap}
         containerIdNameMap={containerIdNameMap}

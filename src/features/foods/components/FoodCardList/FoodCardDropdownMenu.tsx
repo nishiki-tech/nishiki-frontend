@@ -50,7 +50,9 @@ export const FoodCardDropdownMenu = ({ containerId, foodId }: IFoodCardDropdownM
       <DropdownMenuContent>
         <DropdownMenuItem onSelect={handleSelect}>
           <FoodCardDropdownMenuDeleteButton
-            setIsDropdownMenuOpen={setIsDropdownMenuOpen}
+            onDropdownMenuClose={() => {
+              setIsDropdownMenuOpen(false);
+            }}
             containerId={containerId}
             foodId={foodId}
           />

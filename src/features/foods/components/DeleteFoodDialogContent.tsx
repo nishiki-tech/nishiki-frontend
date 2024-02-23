@@ -16,13 +16,13 @@ interface IDeleteFoodDialogContentProps {
    */
   closeParentOnCancel?: boolean;
   /**
-   * The function to set the parent UI component's open state.
+   * The function to close the parent UI component.
    */
-  setIsParentOpen?: (isOpen: boolean) => void;
+  onParentClose?: () => void;
   /**
-   * The function to set this dialog's open state.
+   * The function to close this delete dialog.
    */
-  setIsDialogOpen: (isOpen: boolean) => void;
+  onDialogClose: () => void;
   /**
    * The ID of the container that the food belongs to.
    */
@@ -35,8 +35,8 @@ interface IDeleteFoodDialogContentProps {
 
 export const DeleteFoodDialogContent = ({
   closeParentOnCancel = true,
-  setIsParentOpen,
-  setIsDialogOpen,
+  onParentClose,
+  onDialogClose,
   containerId,
   foodId,
 }: IDeleteFoodDialogContentProps) => {
@@ -47,7 +47,7 @@ export const DeleteFoodDialogContent = ({
    * @returns void
    */
   const handleCancel = () => {
-    closeParentOnCancel && setIsParentOpen?.(false);
+    closeParentOnCancel && onParentClose?.();
   };
 
   /**
@@ -63,9 +63,9 @@ export const DeleteFoodDialogContent = ({
       alert('Something went wrong. Please try again.');
     } else {
       alert('Successfully deleted!');
-      setIsParentOpen?.(false);
+      onParentClose?.();
     }
-    setIsDialogOpen(false);
+    onDialogClose();
   };
 
   return (

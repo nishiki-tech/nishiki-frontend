@@ -10,9 +10,9 @@ import { useState } from 'react';
 
 interface IEditDrawerFooterProps {
   /**
-   * The function to set the drawer's open state.
+   * The function to close the drawer.
    */
-  setIsDrawerOpen: (isOpen: boolean) => void;
+  onDrawerClose: () => void;
   /**
    * The ID of the container that the food belongs to.
    */
@@ -24,7 +24,7 @@ interface IEditDrawerFooterProps {
 }
 
 export const EditDrawerFooter = ({
-  setIsDrawerOpen,
+  onDrawerClose,
   containerId,
   foodId,
 }: IEditDrawerFooterProps) => {
@@ -41,8 +41,10 @@ export const EditDrawerFooter = ({
         </DialogTrigger>
         <DeleteFoodDialogContent
           closeParentOnCancel={false}
-          setIsParentOpen={setIsDrawerOpen}
-          setIsDialogOpen={setIsDialogOpen}
+          onParentClose={onDrawerClose}
+          onDialogClose={() => {
+            setIsDialogOpen(false);
+          }}
           containerId={containerId}
           foodId={foodId}
         />

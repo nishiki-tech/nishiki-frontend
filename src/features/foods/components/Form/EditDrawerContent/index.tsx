@@ -24,9 +24,9 @@ interface IEditDrawerContentProps {
    */
   food?: IFoodView;
   /**
-   * The function to set the drawer's open state.
+   * The function to close the drawer.
    */
-  setIsDrawerOpen: (isOpen: boolean) => void;
+  onDrawerClose: () => void;
   groupIdContainerIdsMap: GroupIdContainersMapType;
   containerIdGroupIdMap: ContainerIdGroupIdMapType;
   containerIdNameMap: ContainerIdNameMapType;
@@ -35,7 +35,7 @@ interface IEditDrawerContentProps {
 
 export const EditDrawerContent = ({
   food,
-  setIsDrawerOpen,
+  onDrawerClose,
   groupIdContainerIdsMap,
   containerIdGroupIdMap,
   containerIdNameMap,
@@ -73,7 +73,7 @@ export const EditDrawerContent = ({
     } else {
       alert('Successfully updated');
       form.reset();
-      setIsDrawerOpen(false);
+      onDrawerClose();
     }
   };
 
@@ -92,7 +92,7 @@ export const EditDrawerContent = ({
             groupIdNameMap={groupIdNameMap}
           />
           <EditDrawerFooter
-            setIsDrawerOpen={setIsDrawerOpen}
+            onDrawerClose={onDrawerClose}
             containerId={food?.containerId}
             foodId={food?.id}
           />
