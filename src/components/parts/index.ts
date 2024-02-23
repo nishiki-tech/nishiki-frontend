@@ -1,3 +1,4 @@
+export { BottomMenu } from './BottomMenu';
+export { BottomMenuLink } from './BottomMenuLink';
+export { Header } from './Header';
 export { LabeledInput } from './LabeledInput';
-export { BottomTab } from './mobile/BottomTab';
-export { MobileHeader } from './mobile/MobileHeader';
