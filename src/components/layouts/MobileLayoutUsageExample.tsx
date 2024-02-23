@@ -8,11 +8,10 @@
 
 'use client';
 
-import { DeleteIcon, MenuCircleIcon, PenIcon } from '@/assets/images/icons';
+import { DeleteIcon, PenIcon } from '@/assets/images/icons';
 import { MobileLayout } from '@/components/layouts/MobileLayout';
-import { HeaderBackButton } from '@/components/parts/Header';
+import { HeaderBackButton, HeaderMenuCircleButton } from '@/components/parts/Header';
 import {
-  Button,
   DropdownMenu,
   DropdownMenuButton,
   DropdownMenuButtonIcon,
@@ -49,10 +48,7 @@ const HeaderDropdownMenu = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        {/* Replacing this button with 'HeaderMenuCircleButton' causes this dropdown menu to stop working */}
-        <Button className="h-full px-4 flex items-center">
-          <Icon icon={MenuCircleIcon} size={6} color="black" />
-        </Button>
+        <HeaderMenuCircleButton />
       </DropdownMenuTrigger>
       <DropdownMenuPortal>
         <DropdownMenuContent>

@@ -6,15 +6,29 @@ import { Button, Icon } from '@/components/ui';
 import { cn } from '@/lib/tailwind/utils';
 
 import Link from 'next/link';
-import { ReactNode } from 'react';
+import { ButtonHTMLAttributes, forwardRef, ReactNode } from 'react';
 import { UrlObject } from 'url';
 
 interface IHeaderProps {
+  /**
+   * The heading text to display at the center of the header.
+   */
   heading?: string;
+  /**
+   * The component to display on the left side of the header.
+   * {@link HeaderBackButton} is a common use case for this prop.
+   */
   left?: ReactNode;
+  /**
+   * The component to display on the right side of the header.
+   * {@link HeaderMenuCircleButton} is a common use case for this prop.
+   */
   right?: ReactNode;
 }
 
+/**
+ * A header component for mobile layouts.
+ */
 export const Header = ({ heading, left, right }: IHeaderProps) => {
   return (
     <header
@@ -28,9 +42,15 @@ export const Header = ({ heading, left, right }: IHeaderProps) => {
 };
 
 interface IBackButtonProps {
+  /**
+   * The URL to navigate to when the button is clicked.
+   */
   href: UrlObject;
 }
 
+/**
+ * A back button for the header. It is designed to navigate to a specified page.
+ */
 export const HeaderBackButton = ({ href }: IBackButtonProps) => {
   return (
     <Link href={href} className="h-full aspect-square pl-4 flex items-center">
@@ -39,10 +59,16 @@ export const HeaderBackButton = ({ href }: IBackButtonProps) => {
   );
 };
 
-export const HeaderMenuCircleButton = () => {
-  return (
-    <Button className="h-full px-4 flex items-center">
-      <Icon icon={MenuCircleIcon} size={6} color="black" />
-    </Button>
-  );
-};
+/**
+ * A menu button for the header. It is designed as a trigger button for a dropdown menu.
+ * @param props - Any additional props to pass to the button element.
+ */
+export const HeaderMenuCircleButton = forwardRef<
+  HTMLButtonElement,
+  ButtonHTMLAttributes<HTMLButtonElement>
+>(({ ...props }, ref) => (
+  <Button className="h-full px-4 flex items-center" ref={ref} {...props}>
+    <Icon icon={MenuCircleIcon} size={6} color="black" />
+  </Button>
+));
+HeaderMenuCircleButton.displayName = 'HeaderMenuCircleButton';
