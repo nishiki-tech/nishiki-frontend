@@ -78,7 +78,7 @@ export const CreateContainerDrawerContent: FC<ICreateContainerDrawerContentProps
                   <FormMessage />
                 </FormItem>
               )}
-            ></FormField>
+            />
           </DrawerBody>
           <DrawerFooter>
             <DrawerClose asChild>
