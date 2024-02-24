@@ -20,7 +20,7 @@ import { createGroup } from '@/features/groups/lib/actions';
 import { createGroupFormSchema, CreateGroupInputs } from '@/features/groups/lib/schemas';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { FC, useEffect } from 'react';
+import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -29,10 +29,7 @@ interface ICreateGroupDrawerContentProps {
   onClose: () => void;
 }
 
-export const CreateGroupDrawerContent: FC<ICreateGroupDrawerContentProps> = ({
-  isOpen,
-  onClose,
-}) => {
+export const CreateGroupDrawerContent = ({ isOpen, onClose }: ICreateGroupDrawerContentProps) => {
   const form = useForm<z.infer<typeof createGroupFormSchema>>({
     resolver: zodResolver(createGroupFormSchema),
     defaultValues: {
@@ -83,7 +80,7 @@ export const CreateGroupDrawerContent: FC<ICreateGroupDrawerContentProps> = ({
                   <FormMessage />
                 </FormItem>
               )}
-            ></FormField>
+            />
           </DrawerBody>
           <DrawerFooter>
             <DrawerClose asChild>
