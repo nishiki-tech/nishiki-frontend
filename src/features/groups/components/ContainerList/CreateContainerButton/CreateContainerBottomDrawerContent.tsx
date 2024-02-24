@@ -24,10 +24,22 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 interface ICreateContainerDrawerContentProps {
+  /**
+   * boolean, if true, the state of drawer is open
+   */
   isOpen: boolean;
+  /**
+   * function to change the state of the drawer to close
+   */
   onClose: () => void;
 }
 
+/**
+ * the content of the creating a new container drawer including form input
+ * @param  isOpen boolean, if true, the state of drawer is open
+ * @param  onClose function to change the state of the drawer to close
+ * @returns  The JSX code for rendering the drawer component.
+ */
 export const CreateContainerDrawerContent = ({
   isOpen,
   onClose,

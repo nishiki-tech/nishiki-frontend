@@ -10,6 +10,9 @@ import { CreateContainerDrawerContent } from './CreateContainerBottomDrawerConte
 export const CreateContainerButton = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  /**
+   * function to change the state of CreateContainerDrawerContent to close(=false)
+   */
   const onClose = () => {
     setIsOpen(false);
   };
