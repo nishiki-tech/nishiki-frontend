@@ -43,7 +43,9 @@ export const CreateContainerDrawerContent: FC<ICreateContainerDrawerContentProps
    * Process the form submission.
    * @param values - The form values
    */
-  const processSubmit: SubmitHandler<CreateContainerInputs> = async (values) => {
+  const processSubmit: SubmitHandler<CreateContainerInputs> = async (
+    values: CreateContainerInputs,
+  ) => {
     const { containerName } = values;
     console.log(containerName);
     onClose();
