@@ -1,4 +1,4 @@
-import { MenuKebabIcon, MenuMeatballIcon, PersonCircleIcon } from '@/assets/images/icons';
+import { MenuKebabIcon, PersonCircleIcon } from '@/assets/images/icons';
 import { MobileLayout } from '@/components/layouts/MobileLayout';
 import { HeaderBackButton } from '@/components/parts/Header';
 import { Button, Card, Icon } from '@/components/ui';
@@ -18,14 +18,8 @@ export const MembersPage = async ({ groupId }: IMembersPageProps) => {
       headerLeft={<HeaderBackButton href={{ pathname: `/groups/${groupId}` }} />}
     >
       <div className="px-4 py-6">
-        <div className="flex items-center justify-between mb-2 h-12">
-          <h2 className="text-xl">Members</h2>
-          <div className="flex gap-0.5">
-            <Button className="flex justify-center items-center w-12 h-12">
-              <Icon icon={MenuMeatballIcon} size={5} />
-            </Button>
-            <InviteMemberDialog groupId={groupId} />
-          </div>
+        <div className="flex items-center justify-end mb-2 h-12">
+          <InviteMemberDialog groupId={groupId} />
         </div>
         <div className="flex flex-col gap-2 pb-1">
           {users.map((user, i) => (
