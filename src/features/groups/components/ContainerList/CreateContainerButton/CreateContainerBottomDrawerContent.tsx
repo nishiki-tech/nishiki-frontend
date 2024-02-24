@@ -16,7 +16,6 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/Form';
-// import { createGroup } from '@/features/groups/lib/actions';
 import { createContainerFormSchema, CreateContainerInputs } from '@/features/groups/lib/schemas';
 
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -45,16 +44,9 @@ export const CreateContainerDrawerContent: FC<ICreateContainerDrawerContentProps
    * @param values - The form values
    */
   const processSubmit: SubmitHandler<CreateContainerInputs> = async (values) => {
-    // const { groupName } = values;
-    // const result = await createGroup({ groupName });
-    // if (!result.ok) {
-    //   alert('Failed to create the group');
-    // } else {
-    //   alert('Successfully created the group');
-    //   form.reset();
-    console.log(values);
+    const { containerName } = values;
+    console.log(containerName);
     onClose();
-    // }
   };
 
   /**
