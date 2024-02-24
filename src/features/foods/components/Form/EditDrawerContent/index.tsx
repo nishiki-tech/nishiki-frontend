@@ -13,6 +13,7 @@ import {
 } from '@/features/foods/utils/containerMapping';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -41,6 +42,7 @@ export const EditDrawerContent = ({
   containerIdNameMap,
   groupIdNameMap,
 }: IEditDrawerContentProps) => {
+  const router = useRouter();
   const form = useForm<UpdateFoodInputs>({
     resolver: zodResolver(updateFoodFormSchema),
   });
@@ -72,7 +74,7 @@ export const EditDrawerContent = ({
       alert('Failed to update');
     } else {
       alert('Successfully updated');
-      form.reset();
+      router.refresh();
       onDrawerClose();
     }
   };

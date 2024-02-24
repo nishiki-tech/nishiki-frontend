@@ -23,6 +23,7 @@ import {
 } from '@/features/foods/utils/containerMapping';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -45,6 +46,7 @@ export const AddDrawerContent = ({
   containerIdNameMap,
   groupIdNameMap,
 }: IAddDrawerContentProps) => {
+  const router = useRouter();
   /**
    * Process when the cancel button is clicked
    */
@@ -76,7 +78,7 @@ export const AddDrawerContent = ({
       alert('Failed to create');
     } else {
       alert('Successfully created');
-      form.reset();
+      router.refresh();
       setIsDrawerOpen(false);
     }
   };

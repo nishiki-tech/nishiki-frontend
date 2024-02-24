@@ -10,6 +10,8 @@ import {
 import { removeFood } from '@/features/foods/lib/actions';
 import { IContainer, IFood } from '@/types/definition';
 
+import { useRouter } from 'next/navigation';
+
 interface IDeleteFoodDialogContentProps {
   /**
    * If true, close the parent UI component, such as Dialog, DropdownMenu, Drawer, etc., on cancel button click.
@@ -40,6 +42,7 @@ export const DeleteFoodDialogContent = ({
   containerId,
   foodId,
 }: IDeleteFoodDialogContentProps) => {
+  const router = useRouter();
   /**
    * Handle the cancel button click.
    * If the parentClose is true, close the parent dialog together with this dialog.
@@ -63,6 +66,7 @@ export const DeleteFoodDialogContent = ({
       alert('Something went wrong. Please try again.');
     } else {
       alert('Successfully deleted!');
+      router.refresh();
       onParentClose?.();
     }
     onDialogClose();

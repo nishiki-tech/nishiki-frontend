@@ -20,6 +20,7 @@ import { createGroup } from '@/features/groups/lib/actions';
 import { createGroupFormSchema, CreateGroupInputs } from '@/features/groups/lib/schemas';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 import { FC, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -33,6 +34,7 @@ export const CreateGroupDrawerContent: FC<ICreateGroupDrawerContentProps> = ({
   isOpen,
   onClose,
 }) => {
+  const router = useRouter();
   const form = useForm<z.infer<typeof createGroupFormSchema>>({
     resolver: zodResolver(createGroupFormSchema),
     defaultValues: {
@@ -50,6 +52,7 @@ export const CreateGroupDrawerContent: FC<ICreateGroupDrawerContentProps> = ({
     if (!result.ok) {
       alert('Failed to create the group');
     } else {
+      router.refresh();
       alert('Successfully created the group');
       form.reset();
       onClose();
