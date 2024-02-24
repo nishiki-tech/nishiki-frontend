@@ -8,7 +8,7 @@ import {
   AddButton,
   BadgeList,
   FilterButton,
-  FoodList,
+  FoodCardList,
   FoodSort,
   SearchBar,
 } from '@/features/foods/components';
@@ -116,7 +116,7 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
             <Icon icon={MenuMeatballIcon} size={4} />
           </button>
         </div>
-        <FoodList
+        <FoodCardList
           foods={displayedFoods}
           groupIdContainerIdsMap={groupIdContainerIdsMap}
           containerIdGroupIdMap={containerIdGroupIdMap}
