@@ -1,6 +1,6 @@
 import { MobileLayout } from '@/components/layouts/MobileLayout';
 import { HeaderBackButton, HeaderMenuCircleButton } from '@/components/parts/Header';
-import { ContainerList } from '@/features/groups/components/ContainerList/Index';
+import { ContainerList } from '@/features/groups/components/ContainerList';
 import { MemberList } from '@/features/groups/components/MemberList';
 
 export const GroupSinglePage = ({ groupId }: { groupId: string }) => {
