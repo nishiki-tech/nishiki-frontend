@@ -19,7 +19,7 @@ import {
 import { createContainerFormSchema, CreateContainerInputs } from '@/features/groups/lib/schemas';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { FC, useEffect } from 'react';
+import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -28,10 +28,10 @@ interface ICreateContainerDrawerContentProps {
   onClose: () => void;
 }
 
-export const CreateContainerDrawerContent: FC<ICreateContainerDrawerContentProps> = ({
+export const CreateContainerDrawerContent = ({
   isOpen,
   onClose,
-}) => {
+}: ICreateContainerDrawerContentProps) => {
   const form = useForm<z.infer<typeof createContainerFormSchema>>({
     resolver: zodResolver(createContainerFormSchema),
     defaultValues: {
