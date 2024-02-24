@@ -17,7 +17,7 @@ import {
   FormMessage,
 } from '@/components/ui/Form';
 // import { createGroup } from '@/features/groups/lib/actions';
-import { createGroupFormSchema, CreateGroupInputs } from '@/features/groups/lib/schemas';
+import { createContainerFormSchema, CreateContainerInputs } from '@/features/groups/lib/schemas';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FC, useEffect } from 'react';
@@ -33,10 +33,10 @@ export const CreateContainerDrawerContent: FC<ICreateContainerDrawerContentProps
   isOpen,
   onClose,
 }) => {
-  const form = useForm<z.infer<typeof createGroupFormSchema>>({
-    resolver: zodResolver(createGroupFormSchema),
+  const form = useForm<z.infer<typeof createContainerFormSchema>>({
+    resolver: zodResolver(createContainerFormSchema),
     defaultValues: {
-      groupName: '',
+      containerName: '',
     },
   });
 
@@ -44,7 +44,7 @@ export const CreateContainerDrawerContent: FC<ICreateContainerDrawerContentProps
    * Process the form submission.
    * @param values - The form values
    */
-  const processSubmit: SubmitHandler<CreateGroupInputs> = async (values) => {
+  const processSubmit: SubmitHandler<CreateContainerInputs> = async (values) => {
     // const { groupName } = values;
     // const result = await createGroup({ groupName });
     // if (!result.ok) {
@@ -74,7 +74,7 @@ export const CreateContainerDrawerContent: FC<ICreateContainerDrawerContentProps
           <DrawerBody>
             <FormField
               control={form.control}
-              name="groupName"
+              name="containerName"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel required>Container name</FormLabel>
