@@ -1,15 +1,16 @@
 // src/features/foods/lib/actions.test.ts
-import { postFood, putFood } from '@/lib/api/container/client';
+import { deleteFood, postFood, putFood } from '@/lib/api/container/client';
 
 import { Err, Ok } from 'result-ts-type';
 
 // Target functions to test
-import { createFood, updateFood } from './actions';
+import { createFood, removeFood, updateFood } from './actions';
 
 // Mock functions from containerApiClient.client
 jest.mock('@/lib/api/container/client', () => ({
   postFood: jest.fn(),
   putFood: jest.fn(),
+  deleteFood: jest.fn(),
 }));
 
 // Clear mocks after each test
@@ -103,6 +104,32 @@ describe('Food actions', () => {
 
       /* Act */
       const result = await updateFood(updateInputs);
+
+      /* Assert */
+      expect(result).toEqual(Err(mockErrorMessage));
+    });
+  });
+
+  describe('removeFood', () => {
+    it('should successfully remove food', async () => {
+      /* Arrange */
+      (deleteFood as jest.Mock).mockResolvedValue(Ok(undefined));
+
+      /* Act */
+      const result = await removeFood('containerId', 'foodId');
+
+      /* Assert */
+      expect(result).toEqual(Ok(undefined));
+      expect(deleteFood).toHaveBeenCalled();
+    });
+
+    it('should return Err if API request fails', async () => {
+      /* Arrange */
+      const mockErrorMessage = 'API error';
+      (deleteFood as jest.Mock).mockResolvedValue(Err(mockErrorMessage));
+
+      /* Act */
+      const result = await removeFood('containerId', 'foodId');
 
       /* Assert */
       expect(result).toEqual(Err(mockErrorMessage));

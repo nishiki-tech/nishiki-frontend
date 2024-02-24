@@ -1,2 +1,7 @@
-export type { FoodPostRequestBody, FoodPutRequestBody } from './containerApiClient.client';
-export { postFood, putFood } from './containerApiClient.client';
+export {
+  deleteFood,
+  type IPostFoodRequestBody,
+  type IPutFoodRequestBody,
+  postFood,
+  putFood,
+} from './containerApiClient.client';
