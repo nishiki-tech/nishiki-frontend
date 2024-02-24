@@ -77,8 +77,23 @@ export const EditDrawerContent = ({
     }
   };
 
+  /**
+   * Event handler called when focus moves to the trigger after closing.
+   * {@link https://www.radix-ui.com/primitives/docs/components/dialog#content}
+   * @param e The event
+   */
+  const handleCloseAutoFocus = (e: Event) => {
+    // Prevent the focus from moving to the last food card of the list when the drawer is closed.
+    e.preventDefault();
+  };
+
   return (
-    <DrawerContent side="bottom">
+    <DrawerContent
+      side="bottom"
+      onCloseAutoFocus={(e) => {
+        handleCloseAutoFocus(e);
+      }}
+    >
       <DrawerHeader>
         <DrawerTitle>Edit Food</DrawerTitle>
       </DrawerHeader>
