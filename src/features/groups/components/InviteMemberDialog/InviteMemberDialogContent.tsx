@@ -7,8 +7,11 @@ import {
   DialogTitle,
   Icon,
 } from '@/components/ui';
+import { putGenerateInvitationLinkHash } from '@/lib/api/group/client/groupApiClient.client';
 
 import { useEffect, useState } from 'react';
+
+const LOCALHOST_URL = process.env.NEXT_PUBLIC_LOCALHOST_URL || '';
 
 /**
  * This component displays dialog which has copy button.
@@ -17,16 +20,31 @@ import { useEffect, useState } from 'react';
  * Its state is controlled by the `isDialogOpen` prop, which is passed from the parent component.
  *
  * @param props.isDialogOpen - state to control the visibility of dialog, if it is open => true, if not => false, this state is used to switch the text in button.
+ * @param groupId - a unique Id as identfier of a group
  * @returns - The JSX code for rendering the dialog component.
  */
-export const InviteMemberDialogContent = ({ isDialogOpen }: { isDialogOpen: boolean }) => {
+export const InviteMemberDialogContent = ({
+  isDialogOpen,
+  groupId,
+}: {
+  isDialogOpen: boolean;
+  groupId: string;
+}) => {
   const [isLinkButtonClicked, setIsLinkButtonClicked] = useState(false);
 
   /**
    * this function is onClick function when the `Button` clicked
    */
-  const handleLinkCopy = () => {
+  const handleLinkCopy = async () => {
+    const result = await putGenerateInvitationLinkHash(groupId);
+
+    //narrowing if result is invalid, no implementation for now
+    if (!result.ok) return;
+
     setIsLinkButtonClicked(true);
+    const hash = result.value;
+
+    return navigator.clipboard.writeText(LOCALHOST_URL + '/groups/join/' + hash);
   };
 
   /**

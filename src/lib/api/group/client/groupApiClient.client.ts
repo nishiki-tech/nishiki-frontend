@@ -4,6 +4,7 @@ import { request } from '@/lib/api/common/client';
 import { IGroup } from '@/types/definition';
 
 import { Err, Ok, Result } from 'result-ts-type';
+
 const BACKEND_API_DOMAIN = process.env.NEXT_PUBLIC_BACKEND_API_DOMAIN || '';
 
 /**
@@ -73,6 +74,37 @@ export const putRenameGroup = async (
   } catch (err) {
     if (err instanceof Error) {
       return Err(err.message);
+    }
+    return Err('API response is invalid');
+  }
+};
+
+/**
+ * Interface representing the API response for the function to generate a invitation link
+ * @property invitationLinkHash - string, a hash for invitation link
+ */
+export interface IPutGenerateInvitationLink {
+  invitationLinkHash: string;
+}
+
+/**
+ * generate a invitation link hash
+ * @param groupId unique Id for generating invitation link hash
+ * @returns A hash: IPutGenerateInvitationLink of inivitation link
+ */
+export const putGenerateInvitationLinkHash = async (
+  groupId: string,
+): Promise<Result<string, string>> => {
+  try {
+    const data = await request<string>({
+      url: BACKEND_API_DOMAIN + '/groups/' + groupId + '?Action=generateInvitationLink',
+      method: 'PUT',
+    });
+
+    const parsedData = JSON.parse(data) as IPutGenerateInvitationLink;
+    return Ok(parsedData.invitationLinkHash);
+  } catch (err) {
+    if (err instanceof Error) {
     }
     return Err('API response is invalid');
   }

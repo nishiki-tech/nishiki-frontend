@@ -24,7 +24,7 @@ export const MembersPage = async ({ groupId }: IMembersPageProps) => {
             <Button className="flex justify-center items-center w-12 h-12">
               <Icon icon={MenuMeatballIcon} size={5} />
             </Button>
-            <InviteMemberDialog />
+            <InviteMemberDialog groupId={groupId} />
           </div>
         </div>
         <div className="flex flex-col gap-2 pb-1">
