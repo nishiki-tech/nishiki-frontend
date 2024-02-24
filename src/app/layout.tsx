@@ -1,6 +1,5 @@
 import '@/styles/globals.css';
 
-import { MobileLayout } from '@/components/layouts/MobileLayout';
 import { fontOutfit } from '@/const/fonts';
 import { siteConfig } from '@/const/site/siteConfig';
 import { cn } from '@/lib/tailwind/utils';
@@ -33,7 +32,7 @@ export default function RootLayout({ children }: IRootLayoutProps) {
       <html lang="en" className={fontOutfit.variable} suppressHydrationWarning>
         <head />
         <body className={cn('min-h-screen bg-primary-lightest antialiased font-outfit')}>
-          <MobileLayout>{children}</MobileLayout>
+          {children}
         </body>
       </html>
     </>

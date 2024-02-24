@@ -87,7 +87,7 @@ export const AddDrawerContent = ({
         <DrawerTitle>Add Food</DrawerTitle>
       </DrawerHeader>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(processSubmit)}>
+        <form onSubmit={form.handleSubmit(processSubmit)} className="overflow-y-auto">
           <AddDrawerBody
             form={form}
             groupIdContainerIdsMap={groupIdContainerIdsMap}
