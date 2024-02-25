@@ -23,7 +23,7 @@ export const MemberCardDropdownMenuTriggerButton = ({}) => {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <MemberCardDeleteButton open={isDropdownMenuOpen} />
+        <MemberCardDeleteButton />
       </DropdownMenuContent>
     </DropdownMenu>
   );

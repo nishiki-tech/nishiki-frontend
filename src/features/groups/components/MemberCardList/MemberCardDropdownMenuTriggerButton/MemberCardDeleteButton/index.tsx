@@ -12,9 +12,9 @@ import {
 
 import { MemberCardDeleteDialog } from './MemberCardDleteDialog';
 
-export const MemberCardDeleteButton = ({ isDropdownMenuOpen }: any) => {
+export const MemberCardDeleteButton = () => {
   return (
-    <DialogRoot open={isDropdownMenuOpen}>
+    <DialogRoot>
       <DialogTrigger asChild>
         <DropdownMenuButton>
           <DropdownMenuButtonIcon>

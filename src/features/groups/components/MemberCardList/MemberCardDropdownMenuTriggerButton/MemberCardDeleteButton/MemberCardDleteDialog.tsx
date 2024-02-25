@@ -9,6 +9,14 @@ import {
 } from '@/components/ui';
 
 export const MemberCardDeleteDialog = () => {
+  const handleCancel = () => {
+    console.log('cancel clicked');
+  };
+
+  const handleDelete = () => {
+    console.log('delete clicked');
+  };
+
   return (
     <DialogContent>
       <DialogHeader>
@@ -19,24 +27,11 @@ export const MemberCardDeleteDialog = () => {
       </DialogBody>
       <DialogFooter>
         <DialogClose asChild>
-          <Button
-            type="button"
-            variant="cancel"
-            size="sm"
-            onClick={() => {
-              console.log('cancel');
-            }}
-          >
+          <Button type="button" variant="cancel" size="sm" onClick={handleCancel}>
             Cancel
           </Button>
         </DialogClose>
-        <Button
-          variant="error"
-          size="sm"
-          onClick={() => {
-            console.log('delete');
-          }}
-        >
+        <Button variant="error" size="sm" onClick={handleDelete}>
           Delete
         </Button>
       </DialogFooter>
