@@ -21,8 +21,8 @@ afterEach(() => {
 describe('Food actions', () => {
   const mockInputs = {
     name: 'Test Food',
-    group: 'Test Group',
-    container: 'Test Container',
+    group: '503d5c82-b112-475b-b64d-8f194c3bbbdd',
+    container: 'f0dec4a1-2425-4cb0-a8ec-6bd5f630a698',
     quantity: '2',
     unit: 'kg',
     expiry: new Date('2024-01-01'),
@@ -70,7 +70,7 @@ describe('Food actions', () => {
   describe('updateFood', () => {
     const updateInputs = {
       ...mockInputs,
-      id: 'existingFoodId',
+      id: 'c58cd729-112c-499e-bbe5-fb09dd7c0a0a',
     };
 
     it('should successfully update food if validation passes', async () => {
