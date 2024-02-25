@@ -21,7 +21,7 @@ export const MemberCardList = async ({ groupId }: IMembersPageProps) => {
               <Icon icon={PersonCircleIcon} color="gray" size={11} />
               <span className="leading-5">{user.name}</span>
             </div>
-            <MemberCardDropdownMenuTriggerButton />
+            <MemberCardDropdownMenuTriggerButton userId={user.id} groupId={groupId} />
           </div>
         </Card>
       ))}

@@ -12,18 +12,30 @@ import { useState } from 'react';
 
 import { MemberCardDeleteButton } from './MemberCardDeleteButton';
 
-export const MemberCardDropdownMenuTriggerButton = ({}) => {
-  const [isDropdownMenuOpen, setIsDropdownMenuOpne] = useState(false);
+export const MemberCardDropdownMenuTriggerButton = ({
+  userId,
+  groupId,
+}: {
+  userId: string;
+  groupId: string;
+}) => {
+  const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
 
   return (
-    <DropdownMenu open={isDropdownMenuOpen} onOpenChange={setIsDropdownMenuOpne}>
+    <DropdownMenu open={isDropdownMenuOpen} onOpenChange={setIsDropdownMenuOpen}>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="w-12">
           <Icon icon={MenuKebabIcon} size={4.5} />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <MemberCardDeleteButton />
+        <MemberCardDeleteButton
+          onDropdownMenuClose={() => {
+            setIsDropdownMenuOpen(false);
+          }}
+          userId={userId}
+          groupId={groupId}
+        />
       </DropdownMenuContent>
     </DropdownMenu>
   );

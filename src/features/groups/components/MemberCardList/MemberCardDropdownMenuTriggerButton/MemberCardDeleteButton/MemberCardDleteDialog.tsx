@@ -8,13 +8,27 @@ import {
   DialogTitle,
 } from '@/components/ui';
 
-export const MemberCardDeleteDialog = () => {
+export const MemberCardDeleteDialog = ({
+  onParentClose,
+  onDialogClose,
+  userId,
+  groupId,
+}: {
+  onParentClose: () => void;
+  onDialogClose: () => void;
+
+  userId: string;
+  groupId: string;
+}) => {
   const handleCancel = () => {
     console.log('cancel clicked');
+    onParentClose();
   };
 
   const handleDelete = () => {
-    console.log('delete clicked');
+    console.log('delete clicked', userId, groupId);
+    onDialogClose();
+    onParentClose();
   };
 
   return (

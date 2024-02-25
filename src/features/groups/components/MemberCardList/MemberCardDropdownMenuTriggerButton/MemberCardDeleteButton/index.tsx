@@ -10,11 +10,23 @@ import {
   Icon,
 } from '@/components/ui';
 
+import { useState } from 'react';
+
 import { MemberCardDeleteDialog } from './MemberCardDleteDialog';
 
-export const MemberCardDeleteButton = () => {
+export const MemberCardDeleteButton = ({
+  onDropdownMenuClose,
+  userId,
+  groupId,
+}: {
+  onDropdownMenuClose: () => void;
+  userId: string;
+  groupId: string;
+}) => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   return (
-    <DialogRoot>
+    <DialogRoot open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogTrigger asChild>
         <DropdownMenuButton>
           <DropdownMenuButtonIcon>
@@ -23,7 +35,14 @@ export const MemberCardDeleteButton = () => {
           <DropdownMenuButtonText>Delete</DropdownMenuButtonText>
         </DropdownMenuButton>
       </DialogTrigger>
-      <MemberCardDeleteDialog />
+      <MemberCardDeleteDialog
+        onParentClose={onDropdownMenuClose}
+        onDialogClose={() => {
+          setIsDialogOpen(false);
+        }}
+        userId={userId}
+        groupId={groupId}
+      />
     </DialogRoot>
   );
 };
