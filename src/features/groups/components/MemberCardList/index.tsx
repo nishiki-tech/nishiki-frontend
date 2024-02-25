@@ -1,12 +1,12 @@
 import { PersonCircleIcon } from '@/assets/images/icons';
 import { Card, Icon } from '@/components/ui';
 import { fetchUserList } from '@/lib/api/user/server';
-import { IUser } from '@/types/definition';
+import { IGroup, IUser } from '@/types/definition';
 
 import { MemberCardDropdownMenuTriggerButton } from './MemberCardDropdownMenuTriggerButton';
 
 interface IMembersPageProps {
-  groupId: string;
+  groupId: IGroup['id'];
 }
 
 export const MemberCardList = async ({ groupId }: IMembersPageProps) => {

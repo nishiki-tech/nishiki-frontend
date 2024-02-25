@@ -9,20 +9,32 @@ import {
   DropdownMenuButtonText,
   Icon,
 } from '@/components/ui';
+import { IGroup, IUser } from '@/types/definition';
 
 import { useState } from 'react';
 
 import { MemberCardDeleteDialog } from './MemberCardDleteDialog';
 
+interface IMemberCardDeleteButtonProps {
+  /**
+   * The function to close the dropdown menu
+   */
+  onDropdownMenuClose: () => void;
+  /**
+   * An identifier of a group which a user belongs to.
+   */
+  groupId: IGroup['id'];
+  /**
+   * An identifier of a user for which this dropdown menu is.
+   */
+  userId: IUser['id'];
+}
+
 export const MemberCardDeleteButton = ({
   onDropdownMenuClose,
-  userId,
   groupId,
-}: {
-  onDropdownMenuClose: () => void;
-  userId: string;
-  groupId: string;
-}) => {
+  userId,
+}: IMemberCardDeleteButtonProps) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   return (
@@ -40,8 +52,8 @@ export const MemberCardDeleteButton = ({
         onDialogClose={() => {
           setIsDialogOpen(false);
         }}
-        userId={userId}
         groupId={groupId}
+        userId={userId}
       />
     </DialogRoot>
   );

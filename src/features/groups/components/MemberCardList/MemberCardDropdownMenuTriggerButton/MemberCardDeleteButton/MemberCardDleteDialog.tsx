@@ -7,19 +7,36 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui';
+import { IGroup, IUser } from '@/types/definition';
 
+interface IMemberCardDeleteDialogProps {
+  /**
+   * The funtion to close the parent UI component which is dropdown menu
+   */
+  onParentClose: () => void;
+  /**
+   * The function to close the dalog
+   */
+  onDialogClose: () => void;
+  /**
+   * An identifier of a user for which this dropdown menu is.
+   */
+  userId: IUser['id'];
+  /**
+   * An identifier of a group which a user belongs to.
+   */
+  groupId: IGroup['id'];
+}
 export const MemberCardDeleteDialog = ({
   onParentClose,
   onDialogClose,
   userId,
   groupId,
-}: {
-  onParentClose: () => void;
-  onDialogClose: () => void;
-
-  userId: string;
-  groupId: string;
-}) => {
+}: IMemberCardDeleteDialogProps) => {
+  /**
+   * the Handling function when cancel clicked
+   * when clicked, not only the dialog but also dropdown Menu closed
+   */
   const handleCancel = () => {
     console.log('cancel clicked');
     onParentClose();

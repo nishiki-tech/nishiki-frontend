@@ -7,18 +7,27 @@ import {
   DropdownMenuTrigger,
   Icon,
 } from '@/components/ui';
+import { IGroup, IUser } from '@/types/definition';
 
 import { useState } from 'react';
 
 import { MemberCardDeleteButton } from './MemberCardDeleteButton';
 
+interface IMemberCardDropdownMenuTriggerButton {
+  /**
+   * An identifier of a group which a user belongs to.
+   */
+  groupId: IGroup['id'];
+  /**
+   * An identifier of a user for which this dropdown menu is.
+   */
+  userId: IUser['id'];
+}
+
 export const MemberCardDropdownMenuTriggerButton = ({
-  userId,
   groupId,
-}: {
-  userId: string;
-  groupId: string;
-}) => {
+  userId,
+}: IMemberCardDropdownMenuTriggerButton) => {
   const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
 
   return (
@@ -33,8 +42,8 @@ export const MemberCardDropdownMenuTriggerButton = ({
           onDropdownMenuClose={() => {
             setIsDropdownMenuOpen(false);
           }}
-          userId={userId}
           groupId={groupId}
+          userId={userId}
         />
       </DropdownMenuContent>
     </DropdownMenu>
