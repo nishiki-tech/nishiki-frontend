@@ -2,29 +2,28 @@
 
 import { DeleteIcon } from '@/assets/images/icons';
 import {
+  DialogRoot,
+  DialogTrigger,
   DropdownMenuButton,
   DropdownMenuButtonIcon,
   DropdownMenuButtonText,
-  DropdownMenuContent,
-  DropdownMenuItem,
   Icon,
 } from '@/components/ui';
 
-export const MemberCardDropdownMenuContent = ({}) => {
+import { MemberCardDeleteDialog } from './MemberCardDleteDialog';
+
+export const MemberCardDeleteButton = ({ isDropdownMenuOpen }: any) => {
   return (
-    <DropdownMenuContent>
-      <DropdownMenuItem asChild>
-        <DropdownMenuButton
-          onClick={() => {
-            console.log('delete');
-          }}
-        >
+    <DialogRoot open={isDropdownMenuOpen}>
+      <DialogTrigger asChild>
+        <DropdownMenuButton>
           <DropdownMenuButtonIcon>
             <Icon icon={DeleteIcon} size={5} color="danger" />
           </DropdownMenuButtonIcon>
           <DropdownMenuButtonText>Delete</DropdownMenuButtonText>
         </DropdownMenuButton>
-      </DropdownMenuItem>
-    </DropdownMenuContent>
+      </DialogTrigger>
+      <MemberCardDeleteDialog />
+    </DialogRoot>
   );
 };
