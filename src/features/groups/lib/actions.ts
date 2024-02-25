@@ -1,4 +1,4 @@
-import { postCreateGroup, putRenameGroup } from '@/lib/api/group/client';
+import { deleteMember, postCreateGroup, putRenameGroup } from '@/lib/api/group/client';
 
 import { Err, Ok, Result } from 'result-ts-type';
 
@@ -40,6 +40,16 @@ export const renameGroup = async (
   if (!validatedData.success) return Err('Validation failed');
 
   const result = await putRenameGroup(groupId, { groupName: validatedData.data.groupName });
+  if (result.ok) return Ok(undefined);
+  return Err(result.error);
+};
+
+export const removeMember = async (
+  groupId: string,
+  userId: string,
+): Promise<Result<undefined, string>> => {
+  const result = await deleteMember(groupId, userId);
+
   if (result.ok) return Ok(undefined);
   return Err(result.error);
 };

@@ -1,13 +1,14 @@
-import { postCreateGroup, putRenameGroup } from '@/lib/api/group/client';
+import { deleteMember, postCreateGroup, putRenameGroup } from '@/lib/api/group/client';
 
 import { Err, Ok } from 'result-ts-type';
 
-import { createGroup, renameGroup } from './actions';
+import { createGroup, removeMember, renameGroup } from './actions';
 import { CreateGroupInputs } from './schemas';
 
 jest.mock('@/lib/api/group/client', () => ({
   postCreateGroup: jest.fn(),
   putRenameGroup: jest.fn(),
+  deleteMember: jest.fn(),
 }));
 
 // Clear mocks after each test
@@ -102,6 +103,33 @@ describe('Group actions', () => {
       const result = await renameGroup(mockGroupId, mockInputs);
 
       expect(result).toEqual(Err('API request failed'));
+    });
+  });
+
+  //removeMember function tests
+  describe('removeFood', () => {
+    it('should successfully remove member', async () => {
+      /* Arrange */
+      (deleteMember as jest.Mock).mockResolvedValue(Ok(undefined));
+
+      /* Act */
+      const result = await removeMember('groupId', 'userId');
+
+      /* Assert */
+      expect(result).toEqual(Ok(undefined));
+      expect(deleteMember).toHaveBeenCalled();
+    });
+
+    it('should return Err if API request fails', async () => {
+      /* Arrange */
+      const mockErrorMessage = 'API error';
+      (deleteMember as jest.Mock).mockResolvedValue(Err(mockErrorMessage));
+
+      /* Act */
+      const result = await removeMember('containerId', 'foodId');
+
+      /* Assert */
+      expect(result).toEqual(Err(mockErrorMessage));
     });
   });
 });
