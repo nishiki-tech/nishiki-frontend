@@ -5,7 +5,7 @@ import { IGroup } from '@/types/definition';
 
 import { Err, Ok, Result } from 'result-ts-type';
 
-const BACKEND_API_DOMAIN = process.env.NEXT_PUBLIC_BACKEND_API_DOMAIN || '';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || '';
 
 /**
  * Interface representing the Payload for the function to create a group.
@@ -33,7 +33,7 @@ export const postCreateGroup = async (
 ): Promise<Result<IPostCreateGroupApiResponse, string>> => {
   try {
     const data: IPostCreateGroupApiResponse = await request<IPostCreateGroupApiResponse>({
-      url: BACKEND_API_DOMAIN + '/groups',
+      url: API_BASE_URL + '/groups',
       method: 'POST',
       options: { body: JSON.stringify(payload) },
     });
@@ -66,7 +66,7 @@ export const putRenameGroup = async (
 ): Promise<Result<undefined, string>> => {
   try {
     await request({
-      url: `${BACKEND_API_DOMAIN}/groups/${groupId}`,
+      url: `${API_BASE_URL}/groups/${groupId}`,
       method: 'PUT',
       options: { body: JSON.stringify(payload) },
     });
@@ -97,7 +97,7 @@ export const putGenerateInvitationLinkHash = async (
 ): Promise<Result<string, string>> => {
   try {
     const data = await request<string>({
-      url: BACKEND_API_DOMAIN + '/groups/' + groupId + '?Action=generateInvitationLink',
+      url: API_BASE_URL + '/groups/' + groupId + '?Action=generateInvitationLink',
       method: 'PUT',
     });
 
