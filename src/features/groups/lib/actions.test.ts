@@ -116,7 +116,7 @@ describe('Group actions', () => {
       const result = await removeMember('groupId', 'userId');
 
       /* Assert */
-      expect(result).toEqual(Ok(undefined));
+      expect(result.unwrap()).toBe(undefined);
       expect(deleteMember).toHaveBeenCalled();
     });
 
@@ -129,7 +129,7 @@ describe('Group actions', () => {
       const result = await removeMember('containerId', 'foodId');
 
       /* Assert */
-      expect(result).toEqual(Err(mockErrorMessage));
+      expect(result.unwrapError()).toBe(mockErrorMessage);
     });
   });
 });

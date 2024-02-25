@@ -141,7 +141,7 @@ describe('API Function Tests', () => {
       const result = await deleteMember(mockGroupId, mockUserId);
 
       /* Assert */
-      expect(result).toEqual(Ok(undefined));
+      expect(result.unwrap()).toBe(undefined);
       expect(request).toHaveBeenCalledWith({
         url: expect.stringContaining(`/groups/${mockGroupId}/users/${mockUserId}`),
         method: 'DELETE',
@@ -157,7 +157,7 @@ describe('API Function Tests', () => {
       const result = await deleteMember(mockGroupId, mockUserId);
 
       /* Assert */
-      expect(result).toEqual(Err(mockError.message));
+      expect(result.unwrapError()).toBe(mockError.message);
     });
   });
 });
