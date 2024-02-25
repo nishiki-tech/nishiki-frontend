@@ -16,24 +16,38 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/Form';
-import { createGroup } from '@/features/groups/lib/actions';
-import { createGroupFormSchema, CreateGroupInputs } from '@/features/groups/lib/schemas';
+import { createContainerFormSchema, CreateContainerInputs } from '@/features/groups/lib/schemas';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-interface ICreateGroupDrawerContentProps {
+interface ICreateContainerDrawerContentProps {
+  /**
+   * boolean, if true, the state of drawer is open
+   */
   isOpen: boolean;
+  /**
+   * function to change the state of the drawer to close
+   */
   onClose: () => void;
 }
 
-export const CreateGroupDrawerContent = ({ isOpen, onClose }: ICreateGroupDrawerContentProps) => {
-  const form = useForm<z.infer<typeof createGroupFormSchema>>({
-    resolver: zodResolver(createGroupFormSchema),
+/**
+ * the content of the creating a new container drawer including form input
+ * @param  isOpen boolean, if true, the state of drawer is open
+ * @param  onClose function to change the state of the drawer to close
+ * @returns  The JSX code for rendering the drawer component.
+ */
+export const CreateContainerDrawerContent = ({
+  isOpen,
+  onClose,
+}: ICreateContainerDrawerContentProps) => {
+  const form = useForm<z.infer<typeof createContainerFormSchema>>({
+    resolver: zodResolver(createContainerFormSchema),
     defaultValues: {
-      groupName: '',
+      containerName: '',
     },
   });
 
@@ -41,16 +55,12 @@ export const CreateGroupDrawerContent = ({ isOpen, onClose }: ICreateGroupDrawer
    * Process the form submission.
    * @param values - The form values
    */
-  const processSubmit: SubmitHandler<CreateGroupInputs> = async (values: CreateGroupInputs) => {
-    const { groupName } = values;
-    const result = await createGroup({ groupName });
-    if (!result.ok) {
-      alert('Failed to create the group');
-    } else {
-      alert('Successfully created the group');
-      form.reset();
-      onClose();
-    }
+  const processSubmit: SubmitHandler<CreateContainerInputs> = async (
+    values: CreateContainerInputs,
+  ) => {
+    const { containerName } = values;
+    console.log(containerName);
+    onClose();
   };
 
   /**
@@ -63,17 +73,17 @@ export const CreateGroupDrawerContent = ({ isOpen, onClose }: ICreateGroupDrawer
   return (
     <DrawerContent side="bottom">
       <DrawerHeader>
-        <DrawerTitle>Create Group</DrawerTitle>
+        <DrawerTitle>Create Container</DrawerTitle>
       </DrawerHeader>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(processSubmit)}>
           <DrawerBody>
             <FormField
               control={form.control}
-              name="groupName"
+              name="containerName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel required>Group name</FormLabel>
+                  <FormLabel required>Container name</FormLabel>
                   <FormControl>
                     <Input {...field} />
                   </FormControl>
