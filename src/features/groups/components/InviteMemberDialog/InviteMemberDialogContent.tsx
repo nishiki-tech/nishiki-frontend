@@ -11,7 +11,7 @@ import { putGenerateInvitationLinkHash } from '@/lib/api/group/client/groupApiCl
 
 import { useEffect, useState } from 'react';
 
-const LOCALHOST_URL = process.env.NEXT_PUBLIC_LOCALHOST_URL || '';
+const CLIENT_BASE_URL = process.env.NEXT_PUBLIC_CLIENT_BASE_URL || '';
 
 /**
  * This component displays dialog which has copy button.
@@ -44,7 +44,7 @@ export const InviteMemberDialogContent = ({
     setIsLinkButtonClicked(true);
     const hash = result.value;
 
-    return navigator.clipboard.writeText(LOCALHOST_URL + '/groups/join/' + hash);
+    return navigator.clipboard.writeText(CLIENT_BASE_URL + '/groups/join/' + hash);
   };
 
   /**
