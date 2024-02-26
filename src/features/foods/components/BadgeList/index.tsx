@@ -26,6 +26,8 @@ export const BadgeList = ({
 
   /**
    * Update url query parameter
+   * - If value is specified, set the query parameter
+   * - If value is not specified, remove the query parameter
    * @param key - query parameter key
    * @param value - query parameter value (string or string[] for category)
    */
@@ -55,20 +57,25 @@ export const BadgeList = ({
           'flex -mx-4 px-4 gap-1.5 mt-4 pb-1 overflow-x-auto whitespace-nowrap',
       )}
     >
-      {groupName ? (
+      {!!groupName && (
         <FilterBadge
           icon={HomeIcon_Off}
           text={groupName}
-          onCrossClick={() => updateUrlParams('group')}
+          onCrossClick={() => {
+            updateUrlParams('group');
+            updateUrlParams('container');
+          }}
         />
-      ) : null}
-      {containerName ? (
+      )}
+      {!!containerName && (
         <FilterBadge
           icon={ContainerIcon}
           text={containerName}
-          onCrossClick={() => updateUrlParams('container')}
+          onCrossClick={() => {
+            updateUrlParams('container');
+          }}
         />
-      ) : null}
+      )}
       {categoryList.map((key) => {
         return (
           <FilterBadge
