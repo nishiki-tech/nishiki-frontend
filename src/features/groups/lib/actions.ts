@@ -1,10 +1,12 @@
 import { deleteMember, postCreateGroup, putRenameGroup } from '@/lib/api/group/client';
+import { IGroup, IUser } from '@/types/definition';
 
 import { Err, Ok, Result } from 'result-ts-type';
 
 import {
   createGroupFormSchema,
   CreateGroupInputs,
+  deleteMemberSchema,
   renameGroupFormSchema,
   RenameGroupInputs,
 } from './schemas';
@@ -51,9 +53,12 @@ export const renameGroup = async (
  * @returns undeifined on success, or an error message if fail
  */
 export const removeMember = async (
-  groupId: string,
-  userId: string,
+  groupId: IGroup['id'],
+  userId: IUser['id'],
 ): Promise<Result<undefined, string>> => {
+  const validatedData = deleteMemberSchema.safeParse({ groupId, userId });
+  if (!validatedData.success) return Err('Validation failed');
+
   const result = await deleteMember(groupId, userId);
 
   if (result.ok) return Ok(undefined);

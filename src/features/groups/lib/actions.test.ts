@@ -107,17 +107,31 @@ describe('Group actions', () => {
   });
 
   //removeMember function tests
-  describe('removeFood', () => {
+  describe('removeMember', () => {
+    const mockGroupId = 'e8cf327b-944a-402f-ba18-c2c4e442d675';
+    const mockUserId = '05d768f5-c290-4187-b539-b481a8cb5af1';
     it('should successfully remove member', async () => {
       /* Arrange */
       (deleteMember as jest.Mock).mockResolvedValue(Ok(undefined));
 
       /* Act */
-      const result = await removeMember('groupId', 'userId');
+      const result = await removeMember(mockGroupId, mockUserId);
 
       /* Assert */
       expect(result.unwrap()).toBe(undefined);
       expect(deleteMember).toHaveBeenCalled();
+    });
+
+    it('should return Err if validation fails', async () => {
+      /* Arrange */
+      const invalidGroupId = 'invalid-group-id';
+      const invalidUserId = 'invalid-user-id';
+
+      /* Act */
+      const result = await removeMember(invalidGroupId, invalidUserId);
+
+      /* Assert */
+      expect(result.unwrapError()).toBe('Validation failed');
     });
 
     it('should return Err if API request fails', async () => {
@@ -126,7 +140,7 @@ describe('Group actions', () => {
       (deleteMember as jest.Mock).mockResolvedValue(Err(mockErrorMessage));
 
       /* Act */
-      const result = await removeMember('containerId', 'foodId');
+      const result = await removeMember(mockGroupId, mockUserId);
 
       /* Assert */
       expect(result.unwrapError()).toBe(mockErrorMessage);
