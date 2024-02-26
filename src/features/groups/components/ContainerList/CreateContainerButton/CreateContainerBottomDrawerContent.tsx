@@ -32,6 +32,7 @@ interface ICreateContainerDrawerContentProps {
    * function to change the state of the drawer to close
    */
   onClose: () => void;
+  groupId: string;
 }
 
 /**
@@ -43,6 +44,7 @@ interface ICreateContainerDrawerContentProps {
 export const CreateContainerDrawerContent = ({
   isOpen,
   onClose,
+  groupId,
 }: ICreateContainerDrawerContentProps) => {
   const form = useForm<z.infer<typeof createContainerFormSchema>>({
     resolver: zodResolver(createContainerFormSchema),
@@ -60,6 +62,7 @@ export const CreateContainerDrawerContent = ({
   ) => {
     const { containerName } = values;
     console.log(containerName);
+    console.log(groupId);
     onClose();
   };
 

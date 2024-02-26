@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 import { CreateContainerDrawerContent } from './CreateContainerBottomDrawerContent';
 
-export const CreateContainerButton = () => {
+export const CreateContainerButton = ({ groupId }: { groupId: string }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   /**
@@ -24,7 +24,7 @@ export const CreateContainerButton = () => {
           <Icon icon={PlusIcon} size={4.5} />
         </Button>
       </DrawerTrigger>
-      <CreateContainerDrawerContent isOpen={isOpen} onClose={onClose} />
+      <CreateContainerDrawerContent isOpen={isOpen} onClose={onClose} groupId={groupId} />
     </DrawerRoot>
   );
 };
