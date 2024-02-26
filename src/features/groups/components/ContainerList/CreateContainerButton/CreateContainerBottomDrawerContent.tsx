@@ -34,6 +34,9 @@ interface ICreateContainerDrawerContentProps {
    * function to change the state of the drawer to close
    */
   onClose: () => void;
+  /**
+   * an identifier of a group
+   */
   groupId: IGroup['id'];
 }
 
@@ -41,6 +44,7 @@ interface ICreateContainerDrawerContentProps {
  * the content of the creating a new container drawer including form input
  * @param  isOpen boolean, if true, the state of drawer is open
  * @param  onClose function to change the state of the drawer to close
+ * @param groupId an identifier of a group
  * @returns  The JSX code for rendering the drawer component.
  */
 export const CreateContainerDrawerContent = ({
@@ -51,7 +55,7 @@ export const CreateContainerDrawerContent = ({
   const form = useForm<z.infer<typeof createContainerFormSchema>>({
     resolver: zodResolver(createContainerFormSchema),
     defaultValues: {
-      containerName: '',
+      name: '',
     },
   });
 
@@ -62,9 +66,13 @@ export const CreateContainerDrawerContent = ({
   const processSubmit: SubmitHandler<CreateContainerInputs> = async (
     values: CreateContainerInputs,
   ) => {
-    const { containerName } = values;
-    createContainer(containerName, groupId);
-    onClose();
+    const result = await createContainer(values, groupId);
+    if (!result.ok) {
+      alert('Failed to create');
+    } else {
+      alert('Successfully created');
+      onClose();
+    }
   };
 
   /**
@@ -84,7 +92,7 @@ export const CreateContainerDrawerContent = ({
           <DrawerBody>
             <FormField
               control={form.control}
-              name="containerName"
+              name="name"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel required>Container name</FormLabel>
