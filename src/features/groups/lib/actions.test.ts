@@ -1,14 +1,19 @@
+import { postContainer } from '@/lib/api/container/client';
 import { deleteMember, postCreateGroup, putRenameGroup } from '@/lib/api/group/client';
 
 import { Err, Ok } from 'result-ts-type';
 
-import { createGroup, removeMember, renameGroup } from './actions';
+import { createContainer, createGroup, removeMember, renameGroup } from './actions';
 import { CreateGroupInputs } from './schemas';
 
 jest.mock('@/lib/api/group/client', () => ({
   postCreateGroup: jest.fn(),
   putRenameGroup: jest.fn(),
   deleteMember: jest.fn(),
+}));
+
+jest.mock('@/lib/api/container/client', () => ({
+  postContainer: jest.fn(),
 }));
 
 // Clear mocks after each test
@@ -144,6 +149,32 @@ describe('Group actions', () => {
 
       /* Assert */
       expect(result.unwrapError()).toBe(mockErrorMessage);
+    });
+  });
+
+  describe('createContainer', () => {
+    const mockRequestGroupId = { name: '82597aad-0d1b-4672-8b9a-fd3764cb9928' };
+    const mockRequestName = 'newContainer';
+    const mockResponse = { containerId: 'container1' };
+    it('should create a container successfully', async () => {
+      /* Arrange */
+      (postContainer as jest.Mock).mockResolvedValue(Ok(mockResponse));
+
+      /* Act */
+      const result = await createContainer(mockRequestGroupId, mockRequestName);
+
+      /* Assert */
+      expect(result.unwrap()).toEqual(undefined);
+      expect(postContainer).toHaveBeenCalled();
+    });
+    it('should return an error if validation fails', async () => {
+      /* Arrange */
+      const mockInvalidRequestName = { name: '' };
+      const mockInvalidGroupId = '';
+      /* Act */
+      const result = await createContainer(mockInvalidRequestName, mockInvalidGroupId);
+      /* Assert */
+      expect(result.unwrapError()).toEqual('Validation failed');
     });
   });
 });
