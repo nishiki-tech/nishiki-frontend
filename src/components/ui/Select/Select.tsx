@@ -86,10 +86,10 @@ const SelectItem = forwardRef<
   <PrimitiveItem
     ref={ref}
     className={cn(
-      'relative flex items-center',
-      'w-full rounded-sm text-base font-normal outline-none focus:bg-gray-light',
-      'py-1 pl-8 pr-2',
-      'cursor-default select-none',
+      'relative flex items-center w-full',
+      'rounded-md text-base font-normal outline-none',
+      'py-1 pl-8 pr-2 cursor-default select-none',
+      'focus:bg-gray-light data-[state=checked]:bg-gray-light',
       className,
     )}
     {...props}
