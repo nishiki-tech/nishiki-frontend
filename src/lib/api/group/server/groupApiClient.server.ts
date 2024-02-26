@@ -1,7 +1,7 @@
 import { request } from '@/lib/api/common/server';
 import { IGroup } from '@/types/definition';
 
-const BACKEND_API_DOMAIN = process.env.NEXT_PUBLIC_BACKEND_API_DOMAIN || '';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || '';
 
 /**
  * Interface representing the API response for a group.
@@ -28,7 +28,7 @@ interface IGroupsResponse {
 export const fetchGroupList = async (): Promise<IGroup[]> => {
   try {
     const data: IGroupsResponse = await request<IGroupsResponse>({
-      url: BACKEND_API_DOMAIN + '/groups',
+      url: API_BASE_URL + '/groups',
       method: 'GET',
     });
     return data.groups.map((group) => ({
@@ -47,7 +47,7 @@ export interface IGroupJoinResponse {
 export const putJoinRequest = async (hashValue: string): Promise<IGroup['id'] | undefined> => {
   try {
     const data: IGroupJoinResponse = await request<IGroupJoinResponse>({
-      url: BACKEND_API_DOMAIN + '/groups?Action=joinToGroup',
+      url: API_BASE_URL + '/groups?Action=joinToGroup',
       method: 'PUT',
       options: {
         body: JSON.stringify({ invitationLinkHash: hashValue }),

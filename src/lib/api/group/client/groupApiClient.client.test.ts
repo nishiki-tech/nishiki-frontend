@@ -1,5 +1,6 @@
 import { request } from '@/lib/api/common/client';
 import {
+  deleteMember,
   IPostCreateGroupApiResponse,
   IPostCreateGroupPayload,
   // Target functions to test
@@ -101,7 +102,7 @@ describe('API Function Tests', () => {
     });
   });
 
-  //generateInvitationlink function tests
+  //generateInvitationLink function tests
   describe('putGenerateInvitationLink', () => {
     //mock params and response
     const mockGroupId = '6ec791b9-945c-4c1c-a872-3610521650e4';
@@ -123,6 +124,39 @@ describe('API Function Tests', () => {
       const mockError = new Error('API response is invalid');
       setUpMockErrorRequest(mockError);
       const result = await putGenerateInvitationLinkHash(mockGroupId);
+      expect(result.unwrapError()).toBe(mockError.message);
+    });
+  });
+
+  //deleteMember function tests
+  describe('deleteMember', () => {
+    const mockGroupId = 'group1';
+    const mockUserId = 'user1';
+
+    it('should return Ok result on success', async () => {
+      /* Arrange */
+      (request as jest.Mock).mockResolvedValue({});
+
+      /* Act */
+      const result = await deleteMember(mockGroupId, mockUserId);
+
+      /* Assert */
+      expect(result.unwrap()).toBe(undefined);
+      expect(request).toHaveBeenCalledWith({
+        url: expect.stringContaining(`/groups/${mockGroupId}/users/${mockUserId}`),
+        method: 'DELETE',
+      });
+    });
+
+    it('should return Err result if API request fails', async () => {
+      /* Arrange */
+      const mockError = new Error('API error');
+      (request as jest.Mock).mockRejectedValue(mockError);
+
+      /* Act */
+      const result = await deleteMember(mockGroupId, mockUserId);
+
+      /* Assert */
       expect(result.unwrapError()).toBe(mockError.message);
     });
   });
