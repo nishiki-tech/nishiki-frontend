@@ -156,6 +156,7 @@ describe('Group actions', () => {
     const mockRequestGroupId = { name: '82597aad-0d1b-4672-8b9a-fd3764cb9928' };
     const mockRequestName = 'newContainer';
     const mockResponse = { containerId: 'container1' };
+
     it('should create a container successfully', async () => {
       /* Arrange */
       (postContainer as jest.Mock).mockResolvedValue(Ok(mockResponse));
@@ -167,14 +168,28 @@ describe('Group actions', () => {
       expect(result.unwrap()).toEqual(undefined);
       expect(postContainer).toHaveBeenCalled();
     });
+
     it('should return an error if validation fails', async () => {
       /* Arrange */
       const mockInvalidRequestName = { name: '' };
       const mockInvalidGroupId = '';
+
       /* Act */
       const result = await createContainer(mockInvalidRequestName, mockInvalidGroupId);
+
       /* Assert */
       expect(result.unwrapError()).toEqual('Validation failed');
+    });
+
+    it('should return an error if API request fails', async () => {
+      /* Arrange */
+      const mockErrorMessage = 'API error';
+      (postContainer as jest.Mock).mockResolvedValue(Err(mockErrorMessage));
+
+      /* Act */
+      const result = await createContainer(mockRequestGroupId, mockRequestName);
+      /* Assert */
+      expect(result.unwrapError()).toBe(mockErrorMessage);
     });
   });
 });

@@ -1,4 +1,4 @@
-import { postContainer } from '@/lib/api/container/client';
+import { IPostContainerRequestBody, postContainer } from '@/lib/api/container/client';
 import { deleteMember, postCreateGroup, putRenameGroup } from '@/lib/api/group/client';
 import { IGroup, IUser } from '@/types/definition';
 
@@ -71,10 +71,10 @@ export const removeMember = async (
 export const createContainer = async (
   containerNameInput: CreateContainerInputs,
   groupId: string,
-) => {
+): Promise<Result<undefined, string>> => {
   const validatedData = createContainerFormSchema.safeParse(containerNameInput);
   if (!validatedData.success) return Err('Validation failed');
-  const newContainer = {
+  const newContainer: IPostContainerRequestBody = {
     groupId: groupId,
     name: validatedData.data.name,
   };

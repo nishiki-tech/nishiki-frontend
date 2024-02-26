@@ -120,7 +120,9 @@ export interface IPostContainerResponse {
   containerId: IContainer['id'];
 }
 
-export const postContainer = async (requestBody: IPostContainerRequestBody) => {
+export const postContainer = async (
+  requestBody: IPostContainerRequestBody,
+): Promise<Result<IPostContainerResponse, string>> => {
   try {
     const res = await request<IPostContainerResponse>({
       url: `${API_BASE_URL}/containers`,
