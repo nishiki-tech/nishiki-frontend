@@ -14,6 +14,7 @@ interface IGroupSinglePageProps {
 
 export const GroupSinglePage = async ({ groupId }: IGroupSinglePageProps) => {
   const group = await getGroup(groupId);
+
   return (
     <MobileLayout
       heading={group.name}
