@@ -123,7 +123,7 @@ export interface IPostContainerResponse {
 export const postContainer = async (requestBody: IPostContainerRequestBody) => {
   try {
     const res = await request<IPostContainerResponse>({
-      url: `${BACKEND_API_DOMAIN}/containers`,
+      url: `${API_BASE_URL}/containers`,
       method: 'POST',
       options: {
         body: JSON.stringify(requestBody),

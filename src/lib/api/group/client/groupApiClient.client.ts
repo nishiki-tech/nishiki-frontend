@@ -122,7 +122,7 @@ export const deleteMember = async (
 ): Promise<Result<undefined, string>> => {
   try {
     await request({
-      url: `${BACKEND_API_DOMAIN}/groups/${groupId}/users/${userId}`,
+      url: `${API_BASE_URL}/groups/${groupId}/users/${userId}`,
       method: 'DELETE',
     });
     return Ok(undefined);
