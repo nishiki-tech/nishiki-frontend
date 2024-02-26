@@ -21,8 +21,8 @@ afterEach(() => {
 describe('Food actions', () => {
   const mockInputs = {
     name: 'Test Food',
-    group: 'Test Group',
-    container: 'Test Container',
+    group: '503d5c82-b112-475b-b64d-8f194c3bbbdd',
+    container: 'f0dec4a1-2425-4cb0-a8ec-6bd5f630a698',
     quantity: '2',
     unit: 'kg',
     expiry: new Date('2024-01-01'),
@@ -70,7 +70,7 @@ describe('Food actions', () => {
   describe('updateFood', () => {
     const updateInputs = {
       ...mockInputs,
-      id: 'existingFoodId',
+      id: 'c58cd729-112c-499e-bbe5-fb09dd7c0a0a',
     };
 
     it('should successfully update food if validation passes', async () => {
@@ -111,16 +111,32 @@ describe('Food actions', () => {
   });
 
   describe('removeFood', () => {
+    const mockContainerId = '9479c68f-f7d2-4dd4-bb6f-07ac3b5c47bf';
+    const mockFoodId = 'bd5ec07e-d79e-49c8-86ad-b728dcda778d';
+
     it('should successfully remove food', async () => {
       /* Arrange */
       (deleteFood as jest.Mock).mockResolvedValue(Ok(undefined));
 
       /* Act */
-      const result = await removeFood('containerId', 'foodId');
+      const result = await removeFood(mockContainerId, mockFoodId);
 
       /* Assert */
       expect(result).toEqual(Ok(undefined));
       expect(deleteFood).toHaveBeenCalled();
+    });
+
+    it('should return Err if validation fails', async () => {
+      /* Arrange */
+      const invalidContainerId = 'invalid-container-id';
+      const invalidFoodId = 'invalid-food-id';
+
+      /* Act */
+      const result = await removeFood(invalidContainerId, invalidFoodId);
+
+      /* Assert */
+      expect(result).toEqual(Err('Validation failed'));
+      expect(putFood).not.toHaveBeenCalled();
     });
 
     it('should return Err if API request fails', async () => {
@@ -129,7 +145,7 @@ describe('Food actions', () => {
       (deleteFood as jest.Mock).mockResolvedValue(Err(mockErrorMessage));
 
       /* Act */
-      const result = await removeFood('containerId', 'foodId');
+      const result = await removeFood(mockContainerId, mockFoodId);
 
       /* Assert */
       expect(result).toEqual(Err(mockErrorMessage));
