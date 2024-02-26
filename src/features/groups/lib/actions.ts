@@ -49,8 +49,8 @@ export const renameGroup = async (
 /**
  * Function to call a API client to remove a member from a group
  * @param groupId The unique identifier of a group which a user will be removed from
- * @param userId The unique idenitifier of a user who will be removed from a group
- * @returns undeifined on success, or an error message if fail
+ * @param userId The unique identifier of a user who will be removed from a group
+ * @returns undefined on success, or an error message if fail
  */
 export const removeMember = async (
   groupId: IGroup['id'],

@@ -12,11 +12,11 @@ import { IGroup, IUser } from '@/types/definition';
 
 interface IMemberCardDeleteDialogProps {
   /**
-   * The funtion to close the parent UI component which is dropdown menu
+   * The function to close the parent UI component which is dropdown menu
    */
   onParentClose: () => void;
   /**
-   * The function to close the dalog
+   * The function to close the dialog
    */
   onDialogClose: () => void;
   /**

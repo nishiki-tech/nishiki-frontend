@@ -102,7 +102,7 @@ describe('API Function Tests', () => {
     });
   });
 
-  //generateInvitationlink function tests
+  //generateInvitationLink function tests
   describe('putGenerateInvitationLink', () => {
     //mock params and response
     const mockGroupId = '6ec791b9-945c-4c1c-a872-3610521650e4';
@@ -134,7 +134,7 @@ describe('API Function Tests', () => {
     const mockUserId = 'user1';
 
     it('should return Ok result on success', async () => {
-      /* Arrrange */
+      /* Arrange */
       (request as jest.Mock).mockResolvedValue({});
 
       /* Act */

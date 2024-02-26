@@ -90,7 +90,7 @@ export interface IPutGenerateInvitationLink {
 /**
  * generate a invitation link hash
  * @param groupId unique Id for generating invitation link hash
- * @returns A hash: IPutGenerateInvitationLink of inivitation link
+ * @returns A hash: IPutGenerateInvitationLink of invitation link
  */
 export const putGenerateInvitationLinkHash = async (
   groupId: string,
@@ -113,8 +113,8 @@ export const putGenerateInvitationLinkHash = async (
 /**
  * Send a request to API to delete a member from a group
  * @param groupId The unique identifier of a group which a user will be deleted from
- * @param userId The unique idenitifier of a user who will be deleted from a group
- * @returns undeifined on success, or an error message if fail
+ * @param userId The unique identifier of a user who will be deleted from a group
+ * @returns undefined on success, or an error message if fail
  */
 export const deleteMember = async (
   groupId: string,
