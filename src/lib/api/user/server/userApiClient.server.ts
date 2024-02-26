@@ -2,7 +2,7 @@ import { IUser } from '@/types/definition';
 
 import { request } from '../../common/server/commonUtils.server';
 
-const BACKEND_API_DOMAIN = process.env.NEXT_PUBLIC_BACKEND_API_DOMAIN || '';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || '';
 
 /**
  * Interface representing the API response for multiple users.
@@ -20,7 +20,7 @@ interface IUsersResponse {
 export const fetchUserList = async (id: string): Promise<IUser[]> => {
   try {
     const response: IUsersResponse = await request<IUsersResponse>({
-      url: BACKEND_API_DOMAIN + '/groups/' + id + '/users',
+      url: API_BASE_URL + '/groups/' + id + '/users',
       method: 'GET',
     });
     return response.users;

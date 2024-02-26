@@ -3,7 +3,7 @@ import { IContainer, IFood } from '@/types/definition';
 
 import { Err, Ok, Result } from 'result-ts-type';
 
-const BACKEND_API_DOMAIN = process.env.NEXT_PUBLIC_BACKEND_API_DOMAIN || '';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || '';
 
 /**
  * The object to be sent to the API as the request body for creating a new food
@@ -38,7 +38,7 @@ export const postFood = async (
 ): Promise<Result<IPostFoodResponse, string>> => {
   try {
     const res = await request<IPostFoodResponse>({
-      url: `${BACKEND_API_DOMAIN}/containers/${containerId}/foods`,
+      url: `${API_BASE_URL}/containers/${containerId}/foods`,
       method: 'POST',
       options: {
         body: JSON.stringify(requestBody),
@@ -72,7 +72,7 @@ export const putFood = async (
 ): Promise<Result<undefined, string>> => {
   try {
     await request({
-      url: `${BACKEND_API_DOMAIN}/containers/${containerId}/foods/${foodId}`,
+      url: `${API_BASE_URL}/containers/${containerId}/foods/${foodId}`,
       method: 'PUT',
       options: {
         body: JSON.stringify(requestBody),
@@ -99,7 +99,7 @@ export const deleteFood = async (
 ): Promise<Result<undefined, string>> => {
   try {
     await request({
-      url: `${BACKEND_API_DOMAIN}/containers/${containerId}/foods/${foodId}`,
+      url: `${API_BASE_URL}/containers/${containerId}/foods/${foodId}`,
       method: 'DELETE',
     });
     return Ok(undefined);
