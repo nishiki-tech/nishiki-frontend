@@ -13,7 +13,7 @@ import { IGroup, IUser } from '@/types/definition';
 
 import { useState } from 'react';
 
-import { MemberCardDeleteDialog } from './MemberCardDleteDialog';
+import { MemberCardDeleteDialog } from './MemberCardDeleteDialog';
 
 interface IMemberCardDeleteButtonProps {
   /**

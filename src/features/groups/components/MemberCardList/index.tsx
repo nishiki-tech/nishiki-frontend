@@ -6,6 +6,9 @@ import { IGroup, IUser } from '@/types/definition';
 import { MemberCardDropdownMenuTriggerButton } from './MemberCardDropdownMenuTriggerButton';
 
 interface IMembersPageProps {
+  /**
+   * an identifier of a group
+   */
   groupId: IGroup['id'];
 }
 

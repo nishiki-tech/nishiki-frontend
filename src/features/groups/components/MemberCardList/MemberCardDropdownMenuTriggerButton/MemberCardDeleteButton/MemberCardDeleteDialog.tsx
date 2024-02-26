@@ -28,6 +28,7 @@ interface IMemberCardDeleteDialogProps {
    */
   groupId: IGroup['id'];
 }
+
 export const MemberCardDeleteDialog = ({
   onParentClose,
   onDialogClose,
