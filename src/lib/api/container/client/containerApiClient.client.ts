@@ -1,5 +1,5 @@
 import { request } from '@/lib/api/common/client';
-import { IContainer, IFood } from '@/types/definition';
+import { IContainer, IFood, IGroup } from '@/types/definition';
 
 import { Err, Ok, Result } from 'result-ts-type';
 
@@ -103,6 +103,33 @@ export const deleteFood = async (
       method: 'DELETE',
     });
     return Ok(undefined);
+  } catch (err) {
+    if (err instanceof Error) {
+      return Err(err.message);
+    }
+    return Err('API response is invalid');
+  }
+};
+
+export interface IPostContainerRequestBody {
+  groupId: IGroup['id'];
+  name: string;
+}
+
+export interface IPostContainerResponse {
+  containerId: IContainer['id'];
+}
+
+export const postContainer = async (requestBody: IPostContainerRequestBody) => {
+  try {
+    const res = await request<IPostContainerResponse>({
+      url: `${BACKEND_API_DOMAIN}/containers`,
+      method: 'POST',
+      options: {
+        body: JSON.stringify(requestBody),
+      },
+    });
+    return Ok({ containerId: res.containerId });
   } catch (err) {
     if (err instanceof Error) {
       return Err(err.message);

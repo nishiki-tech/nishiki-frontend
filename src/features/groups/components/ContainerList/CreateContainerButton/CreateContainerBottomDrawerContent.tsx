@@ -16,7 +16,9 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/Form';
+import { createContainer } from '@/features/groups/lib/actions';
 import { createContainerFormSchema, CreateContainerInputs } from '@/features/groups/lib/schemas';
+import { IGroup } from '@/types/definition';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect } from 'react';
@@ -32,7 +34,7 @@ interface ICreateContainerDrawerContentProps {
    * function to change the state of the drawer to close
    */
   onClose: () => void;
-  groupId: string;
+  groupId: IGroup['id'];
 }
 
 /**
@@ -61,8 +63,7 @@ export const CreateContainerDrawerContent = ({
     values: CreateContainerInputs,
   ) => {
     const { containerName } = values;
-    console.log(containerName);
-    console.log(groupId);
+    createContainer(containerName, groupId);
     onClose();
   };
 
