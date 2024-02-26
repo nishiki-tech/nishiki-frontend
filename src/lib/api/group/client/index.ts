@@ -1,4 +1,5 @@
 export {
+  deleteMember,
   type IPostCreateGroupApiResponse,
   type IPostCreateGroupPayload,
   type IPutGenerateInvitationLink,

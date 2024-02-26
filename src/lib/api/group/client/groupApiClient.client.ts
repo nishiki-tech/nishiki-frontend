@@ -90,7 +90,7 @@ export interface IPutGenerateInvitationLink {
 /**
  * generate a invitation link hash
  * @param groupId unique Id for generating invitation link hash
- * @returns A hash: IPutGenerateInvitationLink of inivitation link
+ * @returns A hash: IPutGenerateInvitationLink of invitation link
  */
 export const putGenerateInvitationLinkHash = async (
   groupId: string,
@@ -105,6 +105,30 @@ export const putGenerateInvitationLinkHash = async (
     return Ok(parsedData.invitationLinkHash);
   } catch (err) {
     if (err instanceof Error) {
+    }
+    return Err('API response is invalid');
+  }
+};
+
+/**
+ * Send a request to API to delete a member from a group
+ * @param groupId The unique identifier of a group which a user will be deleted from
+ * @param userId The unique identifier of a user who will be deleted from a group
+ * @returns undefined on success, or an error message if fail
+ */
+export const deleteMember = async (
+  groupId: string,
+  userId: string,
+): Promise<Result<undefined, string>> => {
+  try {
+    await request({
+      url: `${BACKEND_API_DOMAIN}/groups/${groupId}/users/${userId}`,
+      method: 'DELETE',
+    });
+    return Ok(undefined);
+  } catch (err) {
+    if (err instanceof Error) {
+      return Err(err.message);
     }
     return Err('API response is invalid');
   }
