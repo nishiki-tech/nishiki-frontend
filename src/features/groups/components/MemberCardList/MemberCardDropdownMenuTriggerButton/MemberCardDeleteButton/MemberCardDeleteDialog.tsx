@@ -63,14 +63,7 @@ export const MemberCardDeleteDialog = ({
       </DialogBody>
       <DialogFooter>
         <DialogClose asChild>
-          <Button
-            type="button"
-            variant="cancel"
-            size="sm"
-            onClick={() => {
-              onParentClose();
-            }}
-          >
+          <Button type="button" variant="cancel" size="sm" onClick={onParentClose}>
             Cancel
           </Button>
         </DialogClose>
