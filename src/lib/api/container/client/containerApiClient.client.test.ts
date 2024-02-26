@@ -3,7 +3,7 @@ import { request } from '@/lib/api/common/client';
 import { Err, Ok } from 'result-ts-type';
 
 // Target functions to test
-import { deleteFood, postFood, putFood } from './containerApiClient.client';
+import { deleteFood, postContainer, postFood, putFood } from './containerApiClient.client';
 
 // Mock request function
 jest.mock('@/lib/api/common/client', () => ({
@@ -118,6 +118,41 @@ describe('containerApiClient', () => {
 
       /* Assert */
       expect(result).toEqual(Err(mockError.message));
+    });
+  });
+
+  //test for creating new container function
+  describe('postContainer', () => {
+    const mockRequest = { groupId: 'groupId', name: 'newContainer' };
+    const mockResponse = { containerId: mockContainerId };
+    it('should return OK result with new container ID', async () => {
+      /* Arrange */
+      (request as jest.Mock).mockResolvedValue(mockResponse);
+
+      /* Act */
+      const result = await postContainer(mockRequest);
+
+      /* Assert*/
+      expect(result.unwrap()).toEqual(mockResponse);
+      expect(request).toHaveBeenCalledWith({
+        url: expect.stringContaining(`/containers`),
+        method: 'POST',
+        options: {
+          body: JSON.stringify(mockRequest),
+        },
+      });
+    });
+
+    it('should return error result if API request fails', async () => {
+      /* Arrange */
+      const mockError = new Error('API error');
+      (request as jest.Mock).mockRejectedValue(mockError);
+
+      /* Act */
+      const result = await postContainer(mockRequest);
+
+      /* Assert */
+      expect(result.unwrapError()).toEqual(mockError.message);
     });
   });
 });
