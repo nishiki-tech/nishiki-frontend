@@ -35,18 +35,11 @@ interface ICreateContainerDrawerContentProps {
    */
   onClose: () => void;
   /**
-   * An identifier of a group
+   * An identifier of a group which a new container will belong to
    */
   groupId: IGroup['id'];
 }
 
-/**
- * The content of the creating a new container drawer including form input
- * @param  isOpen Boolean, if true, the state of drawer is open
- * @param  onClose Function to change the state of the drawer to close
- * @param  groupId An identifier of a group
- * @returns  The JSX code for rendering the drawer component.
- */
 export const CreateContainerDrawerContent = ({
   isOpen,
   onClose,
@@ -68,7 +61,7 @@ export const CreateContainerDrawerContent = ({
   ) => {
     const result = await createContainer(values, groupId);
     if (!result.ok) {
-      alert('Failed to create');
+      alert('Something went wrong');
     } else {
       alert('Successfully created');
       onClose();

@@ -70,15 +70,15 @@ export const removeMember = async (
 
 /**
  * Function to validate input, if valid, call the API client to create a new container
- * @param containerNameInput {@link CreateContainerInputs}The user input to be validated
- * @param groupId An identifier of a group which a new container will belong to.
+ * @param containerNameInputs - {@link CreateContainerInputs} The user input to be validated
+ * @param groupId - An identifier of a group which a new container will belong to.
  * @returns Undefined for success, an error message if validation or request fails
  */
 export const createContainer = async (
-  containerNameInput: CreateContainerInputs,
+  containerNameInputs: CreateContainerInputs,
   groupId: IGroup['id'],
 ): Promise<Result<undefined, string>> => {
-  const validatedData = createContainerFormSchema.safeParse(containerNameInput);
+  const validatedData = createContainerFormSchema.safeParse(containerNameInputs);
   if (!validatedData.success) return Err('Validation failed');
 
   const newContainer: IPostContainerRequestBody = {

@@ -117,7 +117,7 @@ export interface IPostContainerRequestBody {
    */
   groupId: IGroup['id'];
   /**
-   * New container name a user input
+   * New container name which a user create
    */
   name: string;
 }
