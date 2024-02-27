@@ -10,7 +10,7 @@ import {
 
 import React from 'react';
 
-export const DeleteGroupConfirmDialogContent = () => {
+export const DeleteGroupDialogContent = () => {
   return (
     <DialogContent>
       <DialogHeader>
