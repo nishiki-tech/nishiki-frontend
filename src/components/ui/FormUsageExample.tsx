@@ -106,7 +106,7 @@ export const FromUsageExample = () => {
           <DrawerTitle>Form</DrawerTitle>
         </DrawerHeader>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(processSubmit)}>
+          <form onSubmit={form.handleSubmit(processSubmit)} className="overflow-y-auto">
             <DrawerBody className="flex flex-col gap-4">
               <FormField
                 control={form.control}

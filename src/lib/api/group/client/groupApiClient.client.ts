@@ -4,7 +4,8 @@ import { request } from '@/lib/api/common/client';
 import { IGroup } from '@/types/definition';
 
 import { Err, Ok, Result } from 'result-ts-type';
-const BACKEND_API_DOMAIN = process.env.NEXT_PUBLIC_BACKEND_API_DOMAIN || '';
+
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || '';
 
 /**
  * Interface representing the Payload for the function to create a group.
@@ -32,7 +33,7 @@ export const postCreateGroup = async (
 ): Promise<Result<IPostCreateGroupApiResponse, string>> => {
   try {
     const data: IPostCreateGroupApiResponse = await request<IPostCreateGroupApiResponse>({
-      url: BACKEND_API_DOMAIN + '/groups',
+      url: API_BASE_URL + '/groups',
       method: 'POST',
       options: { body: JSON.stringify(payload) },
     });
@@ -65,9 +66,64 @@ export const putRenameGroup = async (
 ): Promise<Result<undefined, string>> => {
   try {
     await request({
-      url: `${BACKEND_API_DOMAIN}/groups/${groupId}`,
+      url: `${API_BASE_URL}/groups/${groupId}`,
       method: 'PUT',
       options: { body: JSON.stringify(payload) },
+    });
+    return Ok(undefined);
+  } catch (err) {
+    if (err instanceof Error) {
+      return Err(err.message);
+    }
+    return Err('API response is invalid');
+  }
+};
+
+/**
+ * Interface representing the API response for the function to generate a invitation link
+ * @property invitationLinkHash - string, a hash for invitation link
+ */
+export interface IPutGenerateInvitationLink {
+  invitationLinkHash: string;
+}
+
+/**
+ * generate a invitation link hash
+ * @param groupId unique Id for generating invitation link hash
+ * @returns A hash: IPutGenerateInvitationLink of invitation link
+ */
+export const putGenerateInvitationLinkHash = async (
+  groupId: string,
+): Promise<Result<string, string>> => {
+  try {
+    const data = await request<string>({
+      url: API_BASE_URL + '/groups/' + groupId + '?Action=generateInvitationLink',
+      method: 'PUT',
+    });
+
+    const parsedData = JSON.parse(data) as IPutGenerateInvitationLink;
+    return Ok(parsedData.invitationLinkHash);
+  } catch (err) {
+    if (err instanceof Error) {
+    }
+    return Err('API response is invalid');
+  }
+};
+
+/**
+ * Send a request to API to delete a member from a group
+ * @param groupId The unique identifier of a group which a user will be deleted from
+ * @param userId The unique identifier of a user who will be deleted from a group
+ * @returns undefined on success, or an error message if fail
+ */
+export const deleteMember = async (
+  groupId: string,
+  userId: string,
+): Promise<Result<undefined, string>> => {
+  try {
+    await request({
+      url: `${BACKEND_API_DOMAIN}/groups/${groupId}/users/${userId}`,
+      method: 'DELETE',
     });
     return Ok(undefined);
   } catch (err) {
