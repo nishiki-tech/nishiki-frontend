@@ -12,7 +12,7 @@ export const GroupSinglePage = ({ groupId }: { groupId: string }) => {
     >
       <div className="px-4 pt-6 pb-16">
         <MemberList id={groupId} />
-        <ContainerList id={groupId} />
+        <ContainerList groupId={groupId} />
       </div>
     </MobileLayout>
   );

@@ -13,7 +13,7 @@ export const renameGroupFormSchema = z.object({
 export type RenameGroupInputs = z.infer<typeof renameGroupFormSchema>;
 
 export const createContainerFormSchema = z.object({
-  containerName: z.string().min(1, { message: 'Name is required' }),
+  name: z.string().min(1, { message: 'Name is required' }),
 });
 
 export type CreateContainerInputs = z.infer<typeof createContainerFormSchema>;

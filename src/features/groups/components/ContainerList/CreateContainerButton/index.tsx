@@ -2,16 +2,24 @@
 
 import { PlusIcon } from '@/assets/images/icons';
 import { Button, DrawerRoot, DrawerTrigger, Icon } from '@/components/ui';
+import { IGroup } from '@/types/definition';
 
 import { useState } from 'react';
 
 import { CreateContainerDrawerContent } from './CreateContainerBottomDrawerContent';
 
-export const CreateContainerButton = () => {
+interface ICreateContainerButtonProps {
+  /**
+   * an identifier of a group which a container, a user is trying to create, belongs to
+   */
+  groupId: IGroup['id'];
+}
+
+export const CreateContainerButton = ({ groupId }: ICreateContainerButtonProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   /**
-   * function to change the state of CreateContainerDrawerContent to close(=false)
+   * Function to change the state of CreateContainerDrawerContent to close(=false)
    */
   const onClose = () => {
     setIsOpen(false);
@@ -24,7 +32,7 @@ export const CreateContainerButton = () => {
           <Icon icon={PlusIcon} size={4.5} />
         </Button>
       </DrawerTrigger>
-      <CreateContainerDrawerContent isOpen={isOpen} onClose={onClose} />
+      <CreateContainerDrawerContent isOpen={isOpen} onClose={onClose} groupId={groupId} />
     </DrawerRoot>
   );
 };
