@@ -41,7 +41,7 @@ export const GroupCardDropdownMenuContent = ({
 
   return (
     <DropdownMenuContent>
-      <DropdownMenuItem asChild>
+      <DropdownMenuItem>
         <DropdownMenuButton onClick={handleRenameClick}>
           <DropdownMenuButtonIcon>
             <Icon icon={PenIcon} size={5} color="primary" />
@@ -49,7 +49,7 @@ export const GroupCardDropdownMenuContent = ({
           <DropdownMenuButtonText>Rename</DropdownMenuButtonText>
         </DropdownMenuButton>
       </DropdownMenuItem>
-      <DropdownMenuItem asChild onSelect={handleSelect}>
+      <DropdownMenuItem onSelect={handleSelect}>
         <DeleteGroupDialogTriggerButton onDropdownMenuClose={onDropdownMenuClose} />
       </DropdownMenuItem>
     </DropdownMenuContent>
