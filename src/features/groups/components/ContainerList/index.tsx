@@ -1,14 +1,15 @@
 import { ContainerIcon, MenuKebabIcon } from '@/assets/images/icons';
 import { Button, Card, Icon } from '@/components/ui';
 import { fetchContainerList } from '@/lib/api/container/server';
-import { IContainer } from '@/types/definition';
+import { IContainer, IGroup } from '@/types/definition';
 
 import Link from 'next/link';
 
 import { CreateContainerButton } from './CreateContainerButton';
 
-export const ContainerList = async ({ groupId }: { groupId: string }) => {
+export const ContainerList = async ({ groupId }: { groupId: IGroup['id'] }) => {
   const containers: IContainer[] = await fetchContainerList(groupId);
+
   return (
     <>
       <div className="flex items-center justify-between mb-2 h-12">

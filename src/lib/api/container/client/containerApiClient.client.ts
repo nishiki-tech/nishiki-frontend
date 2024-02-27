@@ -112,14 +112,28 @@ export const deleteFood = async (
 };
 
 export interface IPostContainerRequestBody {
+  /**
+   * An identifier of a group that a new container will belong to
+   */
   groupId: IGroup['id'];
+  /**
+   * New container name a user input
+   */
   name: string;
 }
 
 export interface IPostContainerResponse {
+  /**
+   * An identifier of a newly created container
+   */
   containerId: IContainer['id'];
 }
 
+/**
+ * Function to send a request to the API to create a new container
+ * @param requestBody An object to be sent to API as the request body
+ * @returns A {@link IPostContainerResponse} object for success, an error message if fails
+ */
 export const postContainer = async (
   requestBody: IPostContainerRequestBody,
 ): Promise<Result<IPostContainerResponse, string>> => {

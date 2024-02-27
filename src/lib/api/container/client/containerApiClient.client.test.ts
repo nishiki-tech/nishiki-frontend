@@ -123,10 +123,12 @@ describe('containerApiClient', () => {
 
   //test for creating new container function
   describe('postContainer', () => {
+    /* Arrange common mock data */
     const mockRequest = { groupId: 'groupId', name: 'newContainer' };
-    const mockResponse = { containerId: mockContainerId };
+
     it('should return OK result with new container ID', async () => {
       /* Arrange */
+      const mockResponse = { containerId: mockContainerId };
       (request as jest.Mock).mockResolvedValue(mockResponse);
 
       /* Act */

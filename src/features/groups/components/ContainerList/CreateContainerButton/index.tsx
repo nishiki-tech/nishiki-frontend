@@ -2,12 +2,13 @@
 
 import { PlusIcon } from '@/assets/images/icons';
 import { Button, DrawerRoot, DrawerTrigger, Icon } from '@/components/ui';
+import { IGroup } from '@/types/definition';
 
 import { useState } from 'react';
 
 import { CreateContainerDrawerContent } from './CreateContainerBottomDrawerContent';
 
-export const CreateContainerButton = ({ groupId }: { groupId: string }) => {
+export const CreateContainerButton = ({ groupId }: { groupId: IGroup['id'] }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   /**

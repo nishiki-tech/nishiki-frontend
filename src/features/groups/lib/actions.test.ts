@@ -153,12 +153,13 @@ describe('Group actions', () => {
   });
 
   describe('createContainer', () => {
+    /* Arrange common mock data */
     const mockRequestGroupId = { name: '82597aad-0d1b-4672-8b9a-fd3764cb9928' };
     const mockRequestName = 'newContainer';
-    const mockResponse = { containerId: 'container1' };
 
     it('should create a container successfully', async () => {
       /* Arrange */
+      const mockResponse = { containerId: 'container1' };
       (postContainer as jest.Mock).mockResolvedValue(Ok(mockResponse));
 
       /* Act */
