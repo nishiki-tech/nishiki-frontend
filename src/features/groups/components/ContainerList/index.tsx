@@ -1,10 +1,11 @@
-import { ContainerIcon, MenuKebabIcon } from '@/assets/images/icons';
-import { Button, Card, Icon } from '@/components/ui';
+import { ContainerIcon } from '@/assets/images/icons';
+import { Card, Icon } from '@/components/ui';
 import { fetchContainerList } from '@/lib/api/container/server';
 import { IContainer, IGroup } from '@/types/definition';
 
 import Link from 'next/link';
 
+import { ContainerDropdownMenuTriggerButton } from './ContainerDropdownMenuTriggerButton';
 import { CreateContainerButton } from './CreateContainerButton';
 
 interface IContainerListProps {
@@ -36,9 +37,7 @@ export const ContainerList = async ({ groupId }: IContainerListProps) => {
             </div>
             <span className="leading-5">{container.name}</span>
           </Link>
-          <Button variant="ghost" className="w-12">
-            <Icon icon={MenuKebabIcon} size={4.5} />
-          </Button>
+          <ContainerDropdownMenuTriggerButton />
         </Card>
       ))}
     </>
