@@ -47,6 +47,7 @@ export const DeleteGroupDialogContent = ({
   const handleDelete = async () => {
     alert('delete');
     onDialogClose();
+    onParentClose?.();
   };
 
   return (
