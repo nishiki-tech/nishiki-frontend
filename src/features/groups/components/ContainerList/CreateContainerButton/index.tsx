@@ -12,7 +12,7 @@ export const CreateContainerButton = ({ groupId }: { groupId: IGroup['id'] }) =>
   const [isOpen, setIsOpen] = useState(false);
 
   /**
-   * function to change the state of CreateContainerDrawerContent to close(=false)
+   * Function to change the state of CreateContainerDrawerContent to close(=false)
    */
   const onClose = () => {
     setIsOpen(false);

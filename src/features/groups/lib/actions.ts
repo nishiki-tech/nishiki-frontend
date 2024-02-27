@@ -69,10 +69,10 @@ export const removeMember = async (
 };
 
 /**
- * function to validate input, if valid, call the API client to create a new container
- * @param containerNameInput the user input to be validated
- * @param groupId an identifier of a group which a new container will belong to.
- * @returns undefined for success, an error message if validation or request fails
+ * Function to validate input, if valid, call the API client to create a new container
+ * @param containerNameInput The user input to be validated
+ * @param groupId An identifier of a group which a new container will belong to.
+ * @returns Undefined for success, an error message if validation or request fails
  */
 export const createContainer = async (
   containerNameInput: CreateContainerInputs,
