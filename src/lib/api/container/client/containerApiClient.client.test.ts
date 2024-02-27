@@ -124,7 +124,7 @@ describe('containerApiClient', () => {
   //test for creating new container function
   describe('postContainer', () => {
     /* Arrange common mock data */
-    const mockRequest = { groupId: 'groupId', name: 'newContainer' };
+    const mockRequestBody = { groupId: 'groupId', name: 'newContainer' };
 
     it('should return OK result with new container ID', async () => {
       /* Arrange */
@@ -132,7 +132,7 @@ describe('containerApiClient', () => {
       (request as jest.Mock).mockResolvedValue(mockResponse);
 
       /* Act */
-      const result = await postContainer(mockRequest);
+      const result = await postContainer(mockRequestBody);
 
       /* Assert*/
       expect(result.unwrap()).toEqual(mockResponse);
@@ -140,7 +140,7 @@ describe('containerApiClient', () => {
         url: expect.stringContaining(`/containers`),
         method: 'POST',
         options: {
-          body: JSON.stringify(mockRequest),
+          body: JSON.stringify(mockRequestBody),
         },
       });
     });
@@ -151,7 +151,7 @@ describe('containerApiClient', () => {
       (request as jest.Mock).mockRejectedValue(mockError);
 
       /* Act */
-      const result = await postContainer(mockRequest);
+      const result = await postContainer(mockRequestBody);
 
       /* Assert */
       expect(result.unwrapError()).toEqual(mockError.message);

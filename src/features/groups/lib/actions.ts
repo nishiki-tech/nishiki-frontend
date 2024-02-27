@@ -70,7 +70,7 @@ export const removeMember = async (
 
 /**
  * Function to validate input, if valid, call the API client to create a new container
- * @param containerNameInput The user input to be validated
+ * @param containerNameInput {@link CreateContainerInputs}The user input to be validated
  * @param groupId An identifier of a group which a new container will belong to.
  * @returns Undefined for success, an error message if validation or request fails
  */
