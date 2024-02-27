@@ -27,6 +27,43 @@ describe('containerApiClient', () => {
     jest.clearAllMocks();
   });
 
+  //test for creating new container function
+  describe('postContainer', () => {
+    /* Arrange common mock data */
+    const mockRequestBody = { groupId: 'groupId', name: 'newContainer' };
+
+    it('should return OK result with new container ID', async () => {
+      /* Arrange */
+      const mockResponse = { containerId: mockContainerId };
+      (request as jest.Mock).mockResolvedValue(mockResponse);
+
+      /* Act */
+      const result = await postContainer(mockRequestBody);
+
+      /* Assert*/
+      expect(result.unwrap()).toEqual(mockResponse);
+      expect(request).toHaveBeenCalledWith({
+        url: expect.stringContaining(`/containers`),
+        method: 'POST',
+        options: {
+          body: JSON.stringify(mockRequestBody),
+        },
+      });
+    });
+
+    it('should return error result if API request fails', async () => {
+      /* Arrange */
+      const mockError = new Error('API error');
+      (request as jest.Mock).mockRejectedValue(mockError);
+
+      /* Act */
+      const result = await postContainer(mockRequestBody);
+
+      /* Assert */
+      expect(result.unwrapError()).toEqual(mockError.message);
+    });
+  });
+
   describe('postFood function', () => {
     it('should return Ok result with foodId on success', async () => {
       /* Arrange */
@@ -118,43 +155,6 @@ describe('containerApiClient', () => {
 
       /* Assert */
       expect(result).toEqual(Err(mockError.message));
-    });
-  });
-
-  //test for creating new container function
-  describe('postContainer', () => {
-    /* Arrange common mock data */
-    const mockRequestBody = { groupId: 'groupId', name: 'newContainer' };
-
-    it('should return OK result with new container ID', async () => {
-      /* Arrange */
-      const mockResponse = { containerId: mockContainerId };
-      (request as jest.Mock).mockResolvedValue(mockResponse);
-
-      /* Act */
-      const result = await postContainer(mockRequestBody);
-
-      /* Assert*/
-      expect(result.unwrap()).toEqual(mockResponse);
-      expect(request).toHaveBeenCalledWith({
-        url: expect.stringContaining(`/containers`),
-        method: 'POST',
-        options: {
-          body: JSON.stringify(mockRequestBody),
-        },
-      });
-    });
-
-    it('should return error result if API request fails', async () => {
-      /* Arrange */
-      const mockError = new Error('API error');
-      (request as jest.Mock).mockRejectedValue(mockError);
-
-      /* Act */
-      const result = await postContainer(mockRequestBody);
-
-      /* Assert */
-      expect(result.unwrapError()).toEqual(mockError.message);
     });
   });
 });
