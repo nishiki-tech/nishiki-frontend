@@ -3,7 +3,7 @@ import { request } from '@/lib/api/common/client';
 import { Err, Ok } from 'result-ts-type';
 
 // Target functions to test
-import { deleteFood, postContainer, postFood, putFood } from './containerApiClient.client';
+import { deleteFood, postCreateContainer, postFood, putFood } from './containerApiClient.client';
 
 // Mock request function
 jest.mock('@/lib/api/common/client', () => ({
@@ -28,7 +28,7 @@ describe('containerApiClient', () => {
   });
 
   //test for creating new container function
-  describe('postContainer', () => {
+  describe('postCreateContainer', () => {
     /* Arrange common mock data */
     const mockRequestBody = { groupId: 'groupId', name: 'newContainer' };
 
@@ -38,7 +38,7 @@ describe('containerApiClient', () => {
       (request as jest.Mock).mockResolvedValue(mockResponse);
 
       /* Act */
-      const result = await postContainer(mockRequestBody);
+      const result = await postCreateContainer(mockRequestBody);
 
       /* Assert*/
       expect(result.unwrap()).toEqual(mockResponse);
@@ -57,7 +57,7 @@ describe('containerApiClient', () => {
       (request as jest.Mock).mockRejectedValue(mockError);
 
       /* Act */
-      const result = await postContainer(mockRequestBody);
+      const result = await postCreateContainer(mockRequestBody);
 
       /* Assert */
       expect(result.unwrapError()).toEqual(mockError.message);

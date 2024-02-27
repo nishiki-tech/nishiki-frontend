@@ -1,4 +1,4 @@
-import { IPostContainerRequestBody, postContainer } from '@/lib/api/container/client';
+import { IPostContainerRequestBody, postCreateContainer } from '@/lib/api/container/client';
 import { deleteMember, postCreateGroup, putRenameGroup } from '@/lib/api/group/client';
 import { IGroup, IUser } from '@/types/definition';
 
@@ -86,7 +86,7 @@ export const createContainer = async (
     name: validatedData.data.name,
   };
 
-  const result = await postContainer(newContainer);
+  const result = await postCreateContainer(newContainer);
 
   if (result.ok) return Ok(undefined);
   return Err(result.error);

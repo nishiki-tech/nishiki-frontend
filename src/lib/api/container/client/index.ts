@@ -3,7 +3,7 @@ export {
   type IPostContainerRequestBody,
   type IPostFoodRequestBody,
   type IPutFoodRequestBody,
-  postContainer,
+  postCreateContainer,
   postFood,
   putFood,
 } from './containerApiClient.client';

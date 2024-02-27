@@ -28,7 +28,7 @@ export interface IPostContainerResponse {
  * @param requestBody A {@link IPostContainerRequestBody} object to be sent to API as the request body
  * @returns A {@link IPostContainerResponse} object for success, an error message if fails
  */
-export const postContainer = async (
+export const postCreateContainer = async (
   requestBody: IPostContainerRequestBody,
 ): Promise<Result<IPostContainerResponse, string>> => {
   try {

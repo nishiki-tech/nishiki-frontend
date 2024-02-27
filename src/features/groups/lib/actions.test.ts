@@ -1,4 +1,4 @@
-import { postContainer } from '@/lib/api/container/client';
+import { postCreateContainer } from '@/lib/api/container/client';
 import { deleteMember, postCreateGroup, putRenameGroup } from '@/lib/api/group/client';
 
 import { Err, Ok } from 'result-ts-type';
@@ -13,7 +13,7 @@ jest.mock('@/lib/api/group/client', () => ({
 }));
 
 jest.mock('@/lib/api/container/client', () => ({
-  postContainer: jest.fn(),
+  postCreateContainer: jest.fn(),
 }));
 
 // Clear mocks after each test
@@ -160,14 +160,14 @@ describe('Group actions', () => {
     it('should create a container successfully', async () => {
       /* Arrange */
       const mockResponse = { containerId: 'container1' };
-      (postContainer as jest.Mock).mockResolvedValue(Ok(mockResponse));
+      (postCreateContainer as jest.Mock).mockResolvedValue(Ok(mockResponse));
 
       /* Act */
       const result = await createContainer(mockRequestGroupId, mockRequestName);
 
       /* Assert */
       expect(result.unwrap()).toEqual(undefined);
-      expect(postContainer).toHaveBeenCalled();
+      expect(postCreateContainer).toHaveBeenCalled();
     });
 
     it('should return an error if validation fails', async () => {
@@ -185,7 +185,7 @@ describe('Group actions', () => {
     it('should return an error if API request fails', async () => {
       /* Arrange */
       const mockErrorMessage = 'API error';
-      (postContainer as jest.Mock).mockResolvedValue(Err(mockErrorMessage));
+      (postCreateContainer as jest.Mock).mockResolvedValue(Err(mockErrorMessage));
 
       /* Act */
       const result = await createContainer(mockRequestGroupId, mockRequestName);
