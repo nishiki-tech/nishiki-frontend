@@ -8,13 +8,24 @@ import {
   Icon,
 } from '@/components/ui';
 
-import React from 'react';
+import { useState } from 'react';
 
 import { DeleteGroupDialogContent } from './DeleteGroupDialogContent';
 
-export const DeleteGroupDialogTriggerButton = () => {
+interface IGroupCardDropdownMenuDeleteButtonProps {
+  /**
+   * The function to close the dropdown menu.
+   */
+  onDropdownMenuClose: () => void;
+}
+
+export const DeleteGroupDialogTriggerButton = ({
+  onDropdownMenuClose,
+}: IGroupCardDropdownMenuDeleteButtonProps) => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   return (
-    <DialogRoot>
+    <DialogRoot open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogTrigger asChild>
         <DropdownMenuButton>
           <DropdownMenuButtonIcon>
@@ -23,7 +34,10 @@ export const DeleteGroupDialogTriggerButton = () => {
           <DropdownMenuButtonText>Delete</DropdownMenuButtonText>
         </DropdownMenuButton>
       </DialogTrigger>
-      <DeleteGroupDialogContent />
+      <DeleteGroupDialogContent
+        onParentClose={onDropdownMenuClose}
+        onDialogClose={() => setIsDialogOpen(false)}
+      />
     </DialogRoot>
   );
 };
