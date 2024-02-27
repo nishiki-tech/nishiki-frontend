@@ -7,14 +7,14 @@ import Link from 'next/link';
 
 import { CreateContainerButton } from './CreateContainerButton';
 
-interface IContainerListProp {
+interface IContainerListProps {
   /**
    * an identifier of a group which a list of containers belongs to
    */
   groupId: IGroup['id'];
 }
 
-export const ContainerList = async ({ groupId }: IContainerListProp) => {
+export const ContainerList = async ({ groupId }: IContainerListProps) => {
   const containers: IContainer[] = await fetchContainerList(groupId);
 
   return (

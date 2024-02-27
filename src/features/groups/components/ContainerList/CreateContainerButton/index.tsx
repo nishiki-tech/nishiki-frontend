@@ -8,14 +8,14 @@ import { useState } from 'react';
 
 import { CreateContainerDrawerContent } from './CreateContainerBottomDrawerContent';
 
-interface ICreateContainerButtonProp {
+interface ICreateContainerButtonProps {
   /**
    * an identifier of a group which a container, a user is trying to create, belongs to
    */
   groupId: IGroup['id'];
 }
 
-export const CreateContainerButton = ({ groupId }: ICreateContainerButtonProp) => {
+export const CreateContainerButton = ({ groupId }: ICreateContainerButtonProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   /**

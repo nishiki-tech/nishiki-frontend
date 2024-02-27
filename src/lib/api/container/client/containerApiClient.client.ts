@@ -25,7 +25,7 @@ export interface IPostContainerResponse {
 
 /**
  * Function to send a request to the API to create a new container
- * @param requestBody A {@link IPostContainerRequestBody} object to be sent to API as the request body
+ * @param requestBody - A {@link IPostContainerRequestBody} object to be sent to API as the request body
  * @returns A {@link IPostContainerResponse} object for success, an error message if fails
  */
 export const postCreateContainer = async (
