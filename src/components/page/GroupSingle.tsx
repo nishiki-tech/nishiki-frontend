@@ -1,11 +1,19 @@
+import { MobileLayout } from '@/components/layouts/MobileLayout';
+import { HeaderBackButton, HeaderMenuCircleButton } from '@/components/parts/Header';
 import { ContainerList } from '@/features/groups/components/ContainerList';
 import { MemberList } from '@/features/groups/components/MemberList';
 
-export const GroupSinglePage = ({ id }: { id: string }) => {
+export const GroupSinglePage = ({ groupId }: { groupId: string }) => {
   return (
-    <div className="px-4 pt-6 pb-16">
-      <MemberList id={id} />
-      <ContainerList id={id} />
-    </div>
+    <MobileLayout
+      heading="Group Name"
+      headerLeft={<HeaderBackButton href={{ pathname: '/groups' }} />}
+      headerRight={<HeaderMenuCircleButton />}
+    >
+      <div className="px-4 pt-6 pb-16">
+        <MemberList id={groupId} />
+        <ContainerList groupId={groupId} />
+      </div>
+    </MobileLayout>
   );
 };

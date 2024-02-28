@@ -8,7 +8,7 @@
 
 'use client';
 
-import { CaretDownIcon } from '@/assets/images/icons';
+import { IconCaretDown } from '@/assets/images/icons';
 import { cn } from '@/lib/tailwind/utils';
 
 import {
@@ -97,7 +97,7 @@ const SelectItem = forwardRef<
     <span className="absolute left-2">
       <PrimitiveItemIndicator>
         {/* TODO:Create a new icon to use in here */}
-        <Icon icon={CaretDownIcon} size={4} />
+        <Icon icon={IconCaretDown} size={4} />
       </PrimitiveItemIndicator>
     </span>
     <PrimitiveItemText>{children}</PrimitiveItemText>

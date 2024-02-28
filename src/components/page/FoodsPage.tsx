@@ -1,12 +1,14 @@
 'use client';
 
-import { MenuMeatballIcon } from '@/assets/images/icons';
+import { IconMenuMeatball } from '@/assets/images/icons';
+import { MobileLayout } from '@/components/layouts/MobileLayout';
+import { HeaderBackButton } from '@/components/parts/Header';
 import { Icon } from '@/components/ui';
 import {
   AddButton,
   BadgeList,
   FilterButton,
-  FoodList,
+  FoodCardList,
   FoodSort,
   SearchBar,
 } from '@/features/foods/components';
@@ -80,43 +82,48 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
   }, [containers, query, sort, group, container, searchParams]);
 
   return (
-    <div className="mt-6 mx-4 relative">
-      <AddButton
-        className="fixed bottom-[5.5rem] right-4"
-        groupIdContainerIdsMap={groupIdContainerIdsMap}
-        containerIdGroupIdMap={containerIdGroupIdMap}
-        containerIdNameMap={containerIdNameMap}
-        groupIdNameMap={groupIdNameMap}
-      />
-      <div className="relative">
-        <SearchBar />
-        <FilterButton
-          isFilterSet={isFilterSet}
+    <MobileLayout
+      heading="Foods"
+      headerLeft={group && <HeaderBackButton href={{ pathname: '/groups' }} />}
+    >
+      <div className="mt-6 mx-4 relative">
+        <AddButton
+          className="fixed bottom-[5.5rem] right-4"
+          groupIdContainerIdsMap={groupIdContainerIdsMap}
+          containerIdGroupIdMap={containerIdGroupIdMap}
+          containerIdNameMap={containerIdNameMap}
+          groupIdNameMap={groupIdNameMap}
+        />
+        <div className="relative">
+          <SearchBar />
+          <FilterButton
+            isFilterSet={isFilterSet}
+            groupIdContainerIdsMap={groupIdContainerIdsMap}
+            containerIdGroupIdMap={containerIdGroupIdMap}
+            containerIdNameMap={containerIdNameMap}
+            groupIdNameMap={groupIdNameMap}
+          />
+        </div>
+        <BadgeList
+          groupName={groupIdNameMap[group]}
+          containerName={containerIdNameMap[container]}
+          categoryList={categoryList}
+          setCategoryList={setCategoryList}
+        />
+        <div className="flex items-center justify-end">
+          <FoodSort />
+          <button className="h-12 w-12 flex justify-center items-center">
+            <Icon icon={IconMenuMeatball} size={4} />
+          </button>
+        </div>
+        <FoodCardList
+          foods={displayedFoods}
           groupIdContainerIdsMap={groupIdContainerIdsMap}
           containerIdGroupIdMap={containerIdGroupIdMap}
           containerIdNameMap={containerIdNameMap}
           groupIdNameMap={groupIdNameMap}
         />
       </div>
-      <BadgeList
-        groupName={groupIdNameMap[group]}
-        containerName={containerIdNameMap[container]}
-        categoryList={categoryList}
-        setCategoryList={setCategoryList}
-      />
-      <div className="flex items-center justify-end">
-        <FoodSort />
-        <button className="h-12 w-12 flex justify-center items-center">
-          <Icon icon={MenuMeatballIcon} size={4} />
-        </button>
-      </div>
-      <FoodList
-        foods={displayedFoods}
-        groupIdContainerIdsMap={groupIdContainerIdsMap}
-        containerIdGroupIdMap={containerIdGroupIdMap}
-        containerIdNameMap={containerIdNameMap}
-        groupIdNameMap={groupIdNameMap}
-      />
-    </div>
+    </MobileLayout>
   );
 };

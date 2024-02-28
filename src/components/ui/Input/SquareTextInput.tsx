@@ -1,5 +1,5 @@
 'use client';
-import { CircleCrossIcon } from '@/assets/images/icons';
+import { IconCircleCross } from '@/assets/images/icons';
 import { useOutsideClick } from '@/hooks';
 import { cn } from '@/lib/tailwind/utils';
 
@@ -93,7 +93,7 @@ export const SquareTextInput = forwardRef<HTMLInputElement, ISquareTextInputProp
             onMouseDown={handleCrossButtonMouseDown}
             onClick={handleCrossButtonClick}
           >
-            <Icon icon={CircleCrossIcon} {...iconProps} />
+            <Icon icon={IconCircleCross} {...iconProps} />
           </Button>
         )}
       </div>
