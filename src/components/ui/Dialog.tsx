@@ -7,7 +7,7 @@
  */
 'use client';
 
-import { CrossIcon } from '@/assets/images/icons';
+import { IconCross } from '@/assets/images/icons';
 import { Icon } from '@/components/ui';
 import { cn } from '@/lib/tailwind/utils';
 
@@ -79,7 +79,7 @@ const DialogHeader = ({ className, children, ...props }: HTMLAttributes<HTMLDivE
   >
     {children}
     <DialogClose className={cn('absolute right-0 h-full px-4')}>
-      <Icon icon={CrossIcon} color="gray-dark" size={3.5} />
+      <Icon icon={IconCross} color="gray-dark" size={3.5} />
       <span className="sr-only">Close</span>
     </DialogClose>
   </div>

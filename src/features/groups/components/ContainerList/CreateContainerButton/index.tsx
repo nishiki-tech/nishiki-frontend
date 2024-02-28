@@ -1,6 +1,6 @@
 'use client';
 
-import { PlusIcon } from '@/assets/images/icons';
+import { IconPlus } from '@/assets/images/icons';
 import { Button, DrawerRoot, DrawerTrigger, Icon } from '@/components/ui';
 import { IGroup } from '@/types/definition';
 
@@ -29,7 +29,7 @@ export const CreateContainerButton = ({ groupId }: ICreateContainerButtonProps) 
     <DrawerRoot open={isOpen} onOpenChange={setIsOpen}>
       <DrawerTrigger asChild>
         <Button variant="ghost" size="icon">
-          <Icon icon={PlusIcon} size={4.5} />
+          <Icon icon={IconPlus} size={4.5} />
         </Button>
       </DrawerTrigger>
       <CreateContainerDrawerContent isOpen={isOpen} onClose={onClose} groupId={groupId} />
