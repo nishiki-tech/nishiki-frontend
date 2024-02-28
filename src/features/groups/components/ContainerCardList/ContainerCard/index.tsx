@@ -8,22 +8,32 @@ import { useState } from 'react';
 import { ContainerCardDropdownMenuTriggerButton } from './ContainerCardDropdownMenuTriggerButton';
 import { RenameContainerForm } from './RenameContainerForm';
 
-export const ContainerCard = ({
-  containerId,
-  groupId,
-  containerName,
-}: {
+interface IContainerCardProps {
+  /**
+   * an identifier of container which belongs to the group whose ID is in this props
+   */
   containerId: string;
+
   groupId: string;
   containerName: string;
-}) => {
+}
+
+export const ContainerCard = ({ containerId, groupId, containerName }: IContainerCardProps) => {
   const [isRenameFormOpen, setIsRenameFormOpen] = useState(false);
 
+  /**
+   * the function to change the state of rename form to true( = open the form input field)
+   * @returns void
+   */
   const handleRenameClick = () => {
     console.log('rename');
     setIsRenameFormOpen(true);
   };
 
+  /**
+   * The function to change the state of rename form to false ( = close the form input field)
+   * @return void
+   */
   const handleRenameFormClose = () => {
     setIsRenameFormOpen(false);
   };

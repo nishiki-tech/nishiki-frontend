@@ -4,6 +4,9 @@ import { Button, DropdownMenu, DropdownMenuTrigger, Icon } from '@/components/ui
 import { ContainerCardDropdownMenuContent } from './ContainerCardDropdownMenuContent';
 
 interface IContainerCardDropdownMenuProps {
+  /**
+   * A function to open rename form input field
+   */
   handleRenameClick: () => void;
 }
 

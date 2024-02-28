@@ -3,7 +3,11 @@ import { HeaderBackButton, HeaderMenuCircleButton } from '@/components/parts/Hea
 import { ContainerCardList } from '@/features/groups/components/ContainerCardList';
 import { MemberList } from '@/features/groups/components/MemberList';
 
-export const GroupSinglePage = ({ groupId }: { groupId: string }) => {
+interface IGroupSinglePageProps {
+  groupId: string;
+}
+
+export const GroupSinglePage = ({ groupId }: IGroupSinglePageProps) => {
   return (
     <MobileLayout
       heading="Group Name"

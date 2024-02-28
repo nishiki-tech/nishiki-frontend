@@ -8,15 +8,26 @@ import { KeyboardEvent, useEffect, useRef } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
+interface IRenameContainerFormProps {
+  /**
+   * The current container name, which a user willing to change from
+   */
+  currentContainerName: string;
+  /**
+   * The state, if true, the rename form is open
+   */
+  isOpen: boolean;
+  /**
+   * The function to change the state of form to false (=close the input field)
+   */
+  onClose: () => void;
+}
+
 export const RenameContainerForm = ({
   currentContainerName,
   isOpen,
   onClose,
-}: {
-  currentContainerName: string;
-  isOpen: boolean;
-  onClose: () => void;
-}) => {
+}: IRenameContainerFormProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const form = useForm<z.infer<typeof renameContainerFormSchema>>({
     resolver: zodResolver(renameContainerFormSchema),

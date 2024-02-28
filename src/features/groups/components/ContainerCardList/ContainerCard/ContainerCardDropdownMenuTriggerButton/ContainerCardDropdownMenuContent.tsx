@@ -9,6 +9,9 @@ import {
 } from '@/components/ui';
 
 interface IContainerCardDropdownMenuContent {
+  /**
+   * The function to open rename form input field
+   */
   handleRenameClick: () => void;
 }
 
