@@ -14,12 +14,18 @@ import { DeleteGroupDialogContent } from './DeleteGroupDialogContent';
 
 interface IGroupCardDropdownMenuDeleteButtonProps {
   /**
+   * The ID of the group to delete.
+   */
+  groupId: string;
+
+  /**
    * The function to close the dropdown menu.
    */
   onDropdownMenuClose: () => void;
 }
 
 export const DeleteGroupDialogTriggerButton = ({
+  groupId,
   onDropdownMenuClose,
 }: IGroupCardDropdownMenuDeleteButtonProps) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -35,6 +41,7 @@ export const DeleteGroupDialogTriggerButton = ({
         </DropdownMenuButton>
       </DialogTrigger>
       <DeleteGroupDialogContent
+        groupId={groupId}
         onParentClose={onDropdownMenuClose}
         onDialogClose={() => setIsDialogOpen(false)}
       />
