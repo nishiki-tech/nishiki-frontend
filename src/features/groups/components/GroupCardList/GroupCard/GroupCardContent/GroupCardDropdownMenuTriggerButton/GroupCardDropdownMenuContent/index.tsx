@@ -1,4 +1,4 @@
-import { PenIcon } from '@/assets/images/icons';
+import { IconPen } from '@/assets/images/icons';
 import {
   DropdownMenuButton,
   DropdownMenuButtonIcon,
@@ -44,7 +44,7 @@ export const GroupCardDropdownMenuContent = ({
       <DropdownMenuItem>
         <DropdownMenuButton onClick={handleRenameClick}>
           <DropdownMenuButtonIcon>
-            <Icon icon={PenIcon} size={5} color="primary" />
+            <Icon icon={IconPen} size={5} color="primary" />
           </DropdownMenuButtonIcon>
           <DropdownMenuButtonText>Rename</DropdownMenuButtonText>
         </DropdownMenuButton>
