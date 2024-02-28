@@ -1,9 +1,15 @@
 import { MenuKebabIcon } from '@/assets/images/icons';
 import { Button, DropdownMenu, DropdownMenuTrigger, Icon } from '@/components/ui';
 
-import { ContainerDropdownMenuContent } from './ContainerDropdownMenuContent';
+import { ContainerCardDropdownMenuContent } from './ContainerCardDropdownMenuContent';
 
-export const ContainerDropdownMenuTriggerButton = () => {
+interface IContainerCardDropdownMenuProps {
+  handleRenameClick: () => void;
+}
+
+export const ContainerCardDropdownMenuTriggerButton = ({
+  handleRenameClick,
+}: IContainerCardDropdownMenuProps) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -11,7 +17,7 @@ export const ContainerDropdownMenuTriggerButton = () => {
           <Icon icon={MenuKebabIcon} size={4.5} />
         </Button>
       </DropdownMenuTrigger>
-      <ContainerDropdownMenuContent />
+      <ContainerCardDropdownMenuContent handleRenameClick={handleRenameClick} />
     </DropdownMenu>
   );
 };

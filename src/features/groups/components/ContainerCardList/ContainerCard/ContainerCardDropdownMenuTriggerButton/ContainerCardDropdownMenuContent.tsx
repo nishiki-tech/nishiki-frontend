@@ -8,11 +8,17 @@ import {
   Icon,
 } from '@/components/ui';
 
-export const ContainerDropdownMenuContent = () => {
+interface IContainerCardDropdownMenuContent {
+  handleRenameClick: () => void;
+}
+
+export const ContainerCardDropdownMenuContent = ({
+  handleRenameClick,
+}: IContainerCardDropdownMenuContent) => {
   return (
     <DropdownMenuContent>
       <DropdownMenuItem asChild>
-        <DropdownMenuButton onClick={() => {}}>
+        <DropdownMenuButton onClick={handleRenameClick}>
           <DropdownMenuButtonIcon>
             <Icon icon={PenIcon} size={5} color="primary" />
           </DropdownMenuButtonIcon>
@@ -20,7 +26,7 @@ export const ContainerDropdownMenuContent = () => {
         </DropdownMenuButton>
       </DropdownMenuItem>
       <DropdownMenuItem asChild>
-        <DropdownMenuButton onClick={() => {}}>
+        <DropdownMenuButton>
           <DropdownMenuButtonIcon>
             <Icon icon={DeleteIcon} size={5} color="danger" />
           </DropdownMenuButtonIcon>
