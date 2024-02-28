@@ -1,5 +1,5 @@
 import { IPostContainerRequestBody, postCreateContainer } from '@/lib/api/container/client';
-import { deleteMember, postCreateGroup, putRenameGroup } from '@/lib/api/group/client';
+import { deleteGroup, deleteMember, postCreateGroup, putRenameGroup } from '@/lib/api/group/client';
 import { IGroup, IUser } from '@/types/definition';
 
 import { Err, Ok, Result } from 'result-ts-type';
@@ -9,6 +9,7 @@ import {
   CreateContainerInputs,
   createGroupFormSchema,
   CreateGroupInputs,
+  deleteGroupSchema,
   deleteMemberSchema,
   renameGroupFormSchema,
   RenameGroupInputs,
@@ -46,6 +47,21 @@ export const renameGroup = async (
   if (!validatedData.success) return Err('Validation failed');
 
   const result = await putRenameGroup(groupId, { groupName: validatedData.data.groupName });
+  if (result.ok) return Ok(undefined);
+  return Err(result.error);
+};
+
+/**
+ * Function to call a API client to remove a group
+ * @param groupId The unique identifier of a group
+ * @returns undefined on success, or an error message if fail
+ */
+export const removeGroup = async (groupId: IGroup['id']): Promise<Result<undefined, string>> => {
+  const validatedData = deleteGroupSchema.safeParse({ groupId });
+  if (!validatedData.success) return Err('Validation failed');
+
+  const result = await deleteGroup(groupId);
+
   if (result.ok) return Ok(undefined);
   return Err(result.error);
 };
