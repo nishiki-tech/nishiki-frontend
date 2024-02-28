@@ -72,12 +72,12 @@ export const RenameContainerForm = ({
 
   return (
     <Card asChild>
-      <div className="flex gap-4 items-center pl-4 py-2">
-        <div className="flex items-center justify-center bg-accent rounded-full w-11 h-11">
+      <div className="flex gap-2 items-center px-4 py-2">
+        <div className="flex items-center justify-center bg-accent rounded-full min-w-11 h-11">
           <Icon icon={ContainerIcon} color="black" size={6} />
         </div>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(processSubmit)} className="w-full mr-2">
+          <form onSubmit={form.handleSubmit(processSubmit)} className="w-full">
             <FormField
               control={form.control}
               name="containerName"
