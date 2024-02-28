@@ -1,57 +1,27 @@
-import ArrowLeftIcon from './icon_arrow-left.svg';
-import BagIcon from './icon_bag.svg';
-import CalendarIcon from './icon_calendar.svg';
-import CaretDownIcon from './icon_caret-down.svg';
-import CaretRightIcon from './icon_caret-right.svg';
-import CheckIcon from './icon_check.svg';
-import CircleCrossIcon from './icon_circle-cross.svg';
-import ContainerIcon from './icon_container.svg';
-import CrossIcon from './icon_cross.svg';
-import DeleteIcon from './icon_delete.svg';
-import ExclamationIcon from './icon_exclamation.svg';
-import FilterIcon from './icon_filter.svg';
-import FoodIcon_Off from './icon_food-off.svg';
-import FoodIcon_On from './icon_food-on.svg';
-import HomeIcon_Off from './icon_home-off.svg';
-import HomeIcon_On from './icon_home-on.svg';
-import LinkIcon from './icon_link.svg';
-import LogoutIcon from './icon_logout.svg';
-import MenuCircleIcon from './icon_menu-circle.svg';
-import MenuKebabIcon from './icon_menu-kebab.svg';
-import MenuMeatballIcon from './icon_menu-meatball.svg';
-import PenIcon from './icon_pen.svg';
-import PersonCircleIcon from './icon_person-circle.svg';
-import PlusIcon from './icon_plus.svg';
-import ProfileIcon_Off from './icon_profile-off.svg';
-import ProfileIcon_On from './icon_profile-on.svg';
-import SearchIcon from './icon_search.svg';
-
-export {
-  ArrowLeftIcon,
-  BagIcon,
-  CalendarIcon,
-  CaretDownIcon,
-  CaretRightIcon,
-  CheckIcon,
-  CircleCrossIcon,
-  ContainerIcon,
-  CrossIcon,
-  DeleteIcon,
-  ExclamationIcon,
-  FilterIcon,
-  FoodIcon_Off,
-  FoodIcon_On,
-  HomeIcon_Off,
-  HomeIcon_On,
-  LinkIcon,
-  LogoutIcon,
-  MenuCircleIcon,
-  MenuKebabIcon,
-  MenuMeatballIcon,
-  PenIcon,
-  PersonCircleIcon,
-  PlusIcon,
-  ProfileIcon_Off,
-  ProfileIcon_On,
-  SearchIcon,
-};
+export { default as ArrowLeftIcon } from './icon_arrow-left.svg';
+export { default as BagIcon } from './icon_bag.svg';
+export { default as CalendarIcon } from './icon_calendar.svg';
+export { default as CaretDownIcon } from './icon_caret-down.svg';
+export { default as CaretRightIcon } from './icon_caret-right.svg';
+export { default as CheckIcon } from './icon_check.svg';
+export { default as CircleCrossIcon } from './icon_circle-cross.svg';
+export { default as ContainerIcon } from './icon_container.svg';
+export { default as CrossIcon } from './icon_cross.svg';
+export { default as DeleteIcon } from './icon_delete.svg';
+export { default as ExclamationIcon } from './icon_exclamation.svg';
+export { default as FilterIcon } from './icon_filter.svg';
+export { default as FoodIcon_Off } from './icon_food-off.svg';
+export { default as FoodIcon_On } from './icon_food-on.svg';
+export { default as HomeIcon_Off } from './icon_home-off.svg';
+export { default as HomeIcon_On } from './icon_home-on.svg';
+export { default as LinkIcon } from './icon_link.svg';
+export { default as LogoutIcon } from './icon_logout.svg';
+export { default as MenuCircleIcon } from './icon_menu-circle.svg';
+export { default as MenuKebabIcon } from './icon_menu-kebab.svg';
+export { default as MenuMeatballIcon } from './icon_menu-meatball.svg';
+export { default as PenIcon } from './icon_pen.svg';
+export { default as PersonCircleIcon } from './icon_person-circle.svg';
+export { default as PlusIcon } from './icon_plus.svg';
+export { default as ProfileIcon_Off } from './icon_profile-off.svg';
+export { default as ProfileIcon_On } from './icon_profile-on.svg';
+export { default as SearchIcon } from './icon_search.svg';

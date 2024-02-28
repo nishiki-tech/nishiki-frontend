@@ -42,7 +42,7 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
    * Process the form submission.
    * @param values - The form values
    */
-  const processSubmit: SubmitHandler<RenameGroupInputs> = async (values) => {
+  const processSubmit: SubmitHandler<RenameGroupInputs> = async (values: RenameGroupInputs) => {
     const { groupName } = values;
     if (groupName === currentGroupName) return;
 

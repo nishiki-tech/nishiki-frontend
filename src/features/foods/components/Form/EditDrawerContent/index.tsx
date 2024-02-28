@@ -1,16 +1,8 @@
 'use client';
 
-import DeleteIcon from '@/assets/images/icons/icon_delete.svg';
-import {
-  Button,
-  DrawerClose,
-  DrawerContent,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  Icon,
-} from '@/components/ui';
+import { DrawerContent, DrawerHeader, DrawerTitle } from '@/components/ui';
 import { Form } from '@/components/ui/Form';
+import { EditDrawerFooter } from '@/features/foods/components/Form/EditDrawerContent/EditDrawerFooter';
 import { updateFood } from '@/features/foods/lib/actions';
 import { updateFoodFormSchema, UpdateFoodInputs } from '@/features/foods/lib/schema';
 import { GroupIdContainersMapType, IFoodView } from '@/features/foods/types/FoodTypes';
@@ -27,8 +19,14 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { EditDrawerBody } from './EditDrawerBody';
 
 interface IEditDrawerContentProps {
+  /**
+   * The food to be edited.
+   */
   food?: IFoodView;
-  setIsDrawerOpen: (isOpen: boolean) => void;
+  /**
+   * The function to close the drawer.
+   */
+  onDrawerClose: () => void;
   groupIdContainerIdsMap: GroupIdContainersMapType;
   containerIdGroupIdMap: ContainerIdGroupIdMapType;
   containerIdNameMap: ContainerIdNameMapType;
@@ -37,20 +35,12 @@ interface IEditDrawerContentProps {
 
 export const EditDrawerContent = ({
   food,
-  setIsDrawerOpen,
+  onDrawerClose,
   groupIdContainerIdsMap,
   containerIdGroupIdMap,
   containerIdNameMap,
   groupIdNameMap,
 }: IEditDrawerContentProps) => {
-  /**
-   * Process when the delete button is clicked
-   */
-  const handleDeleteClick = () => {
-    alert('Successfully deleted!');
-    setIsDrawerOpen(false);
-  };
-
   const form = useForm<UpdateFoodInputs>({
     resolver: zodResolver(updateFoodFormSchema),
   });
@@ -83,17 +73,32 @@ export const EditDrawerContent = ({
     } else {
       alert('Successfully updated');
       form.reset();
-      setIsDrawerOpen(false);
+      onDrawerClose();
     }
   };
 
+  /**
+   * Event handler called when focus moves to the trigger after closing.
+   * {@link https://www.radix-ui.com/primitives/docs/components/dialog#content}
+   * @param e The event
+   */
+  const handleCloseAutoFocus = (e: Event) => {
+    // Prevent the focus from moving to the last food card of the list when the drawer is closed.
+    e.preventDefault();
+  };
+
   return (
-    <DrawerContent side="bottom">
+    <DrawerContent
+      side="bottom"
+      onCloseAutoFocus={(e) => {
+        handleCloseAutoFocus(e);
+      }}
+    >
       <DrawerHeader>
         <DrawerTitle>Edit Food</DrawerTitle>
       </DrawerHeader>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(processSubmit)}>
+        <form onSubmit={form.handleSubmit(processSubmit)} className="overflow-y-auto">
           <EditDrawerBody
             form={form}
             groupIdContainerIdsMap={groupIdContainerIdsMap}
@@ -101,17 +106,11 @@ export const EditDrawerContent = ({
             containerIdNameMap={containerIdNameMap}
             groupIdNameMap={groupIdNameMap}
           />
-          <DrawerFooter>
-            <DrawerClose asChild>
-              <Button variant="cancel" size="sm" onClick={handleDeleteClick}>
-                <Icon icon={DeleteIcon} color="danger" size={4.5} />
-                Delete
-              </Button>
-            </DrawerClose>
-            <Button type="submit" variant="primary" size="sm">
-              Update
-            </Button>
-          </DrawerFooter>
+          <EditDrawerFooter
+            onDrawerClose={onDrawerClose}
+            containerId={food?.containerId}
+            foodId={food?.id}
+          />
         </form>
       </Form>
     </DrawerContent>
