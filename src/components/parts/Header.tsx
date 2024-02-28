@@ -1,6 +1,6 @@
 'use client';
 
-import { ArrowLeftIcon, MenuCircleIcon } from '@/assets/images/icons';
+import { IconArrowLeft, IconMenuCircle } from '@/assets/images/icons';
 import { H2 } from '@/components/Typography';
 import { Button, Icon } from '@/components/ui';
 import { cn } from '@/lib/tailwind/utils';
@@ -67,7 +67,7 @@ export const HeaderBackButton = ({ href, className, ...props }: IBackButtonProps
       className={cn('h-full aspect-square pl-4 flex items-center', className)}
       {...props}
     >
-      <Icon icon={ArrowLeftIcon} size={4} color="gray-dark" />
+      <Icon icon={IconArrowLeft} size={4} color="gray-dark" />
     </Link>
   );
 };
@@ -81,7 +81,7 @@ export const HeaderMenuCircleButton = forwardRef<
   ButtonHTMLAttributes<HTMLButtonElement>
 >(({ ...props }, ref) => (
   <Button className="h-full px-4 flex items-center" ref={ref} {...props}>
-    <Icon icon={MenuCircleIcon} size={6} color="black" />
+    <Icon icon={IconMenuCircle} size={6} color="black" />
   </Button>
 ));
 HeaderMenuCircleButton.displayName = 'HeaderMenuCircleButton';

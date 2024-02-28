@@ -1,4 +1,4 @@
-import { ContainerIcon, HomeIcon_Off } from '@/assets/images/icons';
+import { IconContainer, IconHomeOff } from '@/assets/images/icons';
 import { foodCategories } from '@/const/foodCategory';
 import { cn } from '@/lib/tailwind/utils';
 import { IContainer, IGroup } from '@/types/definition';
@@ -59,7 +59,7 @@ export const BadgeList = ({
     >
       {!!groupName && (
         <FilterBadge
-          icon={HomeIcon_Off}
+          icon={IconHomeOff}
           text={groupName}
           onCrossClick={() => {
             updateUrlParams('group');
@@ -69,7 +69,7 @@ export const BadgeList = ({
       )}
       {!!containerName && (
         <FilterBadge
-          icon={ContainerIcon}
+          icon={IconContainer}
           text={containerName}
           onCrossClick={() => {
             updateUrlParams('container');

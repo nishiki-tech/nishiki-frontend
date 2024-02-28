@@ -3,7 +3,7 @@
  * This file is used as an example for the Checkbox components.
  * Once we're done with the example, we can delete this file.
  */
-import { ContainerIcon } from '@/assets/images/icons';
+import { IconContainer } from '@/assets/images/icons';
 import { Card, Checkbox, Icon, Label } from '@/components/ui';
 
 export const CheckboxUsageExample = () => {
@@ -14,7 +14,7 @@ export const CheckboxUsageExample = () => {
         <Label htmlFor="container1" className="flex justify-between items-center py-2 px-4">
           <div className="flex items-center gap-4">
             <div className="w-11 h-11 rounded-full bg-accent flex justify-center items-center">
-              <Icon icon={ContainerIcon} size={5} color="black" />
+              <Icon icon={IconContainer} size={5} color="black" />
             </div>
             <span>Freezer</span>
           </div>
@@ -26,7 +26,7 @@ export const CheckboxUsageExample = () => {
         <Label htmlFor="container2" className="flex justify-between items-center py-2 px-4">
           <div className="flex items-center gap-4">
             <div className="w-11 h-11 rounded-full bg-accent flex justify-center items-center">
-              <Icon icon={ContainerIcon} size={5} color="black" />
+              <Icon icon={IconContainer} size={5} color="black" />
             </div>
             <span>Disabled</span>
           </div>
