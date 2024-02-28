@@ -23,7 +23,7 @@ export const GroupSinglePage = async ({ groupId }: IGroupSinglePageProps) => {
     >
       <div className="px-4 pt-6 pb-16">
         <MemberList id={groupId} />
-        <ContainerList id={groupId} />
+        <ContainerList groupId={groupId} />
       </div>
     </MobileLayout>
   );

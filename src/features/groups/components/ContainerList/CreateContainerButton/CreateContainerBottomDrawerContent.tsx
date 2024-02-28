@@ -16,7 +16,9 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/Form';
+import { createContainer } from '@/features/groups/lib/actions';
 import { createContainerFormSchema, CreateContainerInputs } from '@/features/groups/lib/schemas';
+import { IGroup } from '@/types/definition';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect } from 'react';
@@ -25,29 +27,28 @@ import { z } from 'zod';
 
 interface ICreateContainerDrawerContentProps {
   /**
-   * boolean, if true, the state of drawer is open
+   * Boolean, if true, the state of drawer is open
    */
   isOpen: boolean;
   /**
-   * function to change the state of the drawer to close
+   * Function to change the state of the drawer to close
    */
   onClose: () => void;
+  /**
+   * An identifier of a group which a new container will belong to
+   */
+  groupId: IGroup['id'];
 }
 
-/**
- * the content of the creating a new container drawer including form input
- * @param  isOpen boolean, if true, the state of drawer is open
- * @param  onClose function to change the state of the drawer to close
- * @returns  The JSX code for rendering the drawer component.
- */
 export const CreateContainerDrawerContent = ({
   isOpen,
   onClose,
+  groupId,
 }: ICreateContainerDrawerContentProps) => {
   const form = useForm<z.infer<typeof createContainerFormSchema>>({
     resolver: zodResolver(createContainerFormSchema),
     defaultValues: {
-      containerName: '',
+      name: '',
     },
   });
 
@@ -58,9 +59,13 @@ export const CreateContainerDrawerContent = ({
   const processSubmit: SubmitHandler<CreateContainerInputs> = async (
     values: CreateContainerInputs,
   ) => {
-    const { containerName } = values;
-    console.log(containerName);
-    onClose();
+    const result = await createContainer(values, groupId);
+    if (!result.ok) {
+      alert('Something went wrong. Please try again');
+    } else {
+      alert('Successfully created');
+      onClose();
+    }
   };
 
   /**
@@ -80,7 +85,7 @@ export const CreateContainerDrawerContent = ({
           <DrawerBody>
             <FormField
               control={form.control}
-              name="containerName"
+              name="name"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel required>Container name</FormLabel>
