@@ -1,16 +1,32 @@
-- [Naming Conventions](#naming-conventions)
-  - [Interfaces](#interfaces)
-  - [Imports and Exports](#imports-and-exports)
-    - [Avoid Using Wildcard Imports/Export](#avoid-using-wildcard-importsexport)
-    - [Avoid Using Wildcard Imports](#avoid-using-wildcard-imports)
-- [CSS Class Management](#css-class-management)
-  - [Organizing Tailwind Classes](#organizing-tailwind-classes)
-- [Icons](#icons)
-  - [How to add a new icon](#how-to-add-a-new-icon)
+# Style Guide
 
-# Naming Conventions
+We use [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/) for linting and formatting.
 
-## Interfaces
+Pre-commit hooks are set up to run the linting and formatting commands automatically before you commit your changes. Make sure to fix any linting errors before you commit your changes.
+
+You can also run the following command manually to fix linting and formatting errors:
+
+```bash
+npm run lint:fix
+```
+
+## Table of Contents
+
+- [Style Guide](#style-guide)
+  - [Table of Contents](#table-of-contents)
+  - [Naming Conventions](#naming-conventions)
+    - [Interfaces](#interfaces)
+    - [Imports and Exports](#imports-and-exports)
+      - [Avoid Using Wildcard Imports/Export](#avoid-using-wildcard-importsexport)
+      - [Avoid Using Wildcard Imports](#avoid-using-wildcard-imports)
+  - [CSS Class Management](#css-class-management)
+    - [Organizing Tailwind Classes](#organizing-tailwind-classes)
+  - [Icons](#icons)
+    - [How to add a new icon](#how-to-add-a-new-icon)
+
+## Naming Conventions
+
+### Interfaces
 
 Prefix interface names with a capital `I`.
 **Example**
@@ -21,9 +37,9 @@ interface IMyProps {
 }
 ```
 
-## Imports and Exports
+### Imports and Exports
 
-### Avoid Using Wildcard Imports/Export
+#### Avoid Using Wildcard Imports/Export
 
 Use named imports and exports instead of default ones to ensure consistency and clarity.
 
@@ -34,7 +50,7 @@ export default MyComponent; // Bad
 export { MyComponent }; // Good
 ```
 
-### Avoid Using Wildcard Imports
+#### Avoid Using Wildcard Imports
 
 Refrain from using wildcard imports to maintain clarity and prevent namespace conflicts.
 
@@ -56,9 +72,9 @@ interface IMyProps {
 }
 ```
 
-# CSS Class Management
+## CSS Class Management
 
-## Organizing Tailwind Classes
+### Organizing Tailwind Classes
 
 - When using `cn()` (class names) with Tailwind CSS, organize classes for readability.
 - If a set of classes becomes extensive, split them into groups, separated by commas.
@@ -81,9 +97,9 @@ interface IMyProps {
 </div>
 ```
 
-# Icons
+## Icons
 
-## How to add a new icon
+### How to add a new icon
 
 1. Copy the SVG code of the new icon from the Figma in the Dev mode.
 2. Create a new file in the `src/assets/images/icons` directory with the name defined in the Figma.
