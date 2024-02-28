@@ -10,11 +10,16 @@ import { RenameContainerForm } from './RenameContainerForm';
 
 interface IContainerCardProps {
   /**
-   * an identifier of container which belongs to the group whose ID is in this props
+   * an identifier of container which each container card has
    */
   containerId: string;
-
+  /**
+   * an identifier of a group which the container(s) belong to
+   */
   groupId: string;
+  /**
+   * the name of container which is in a container card
+   */
   containerName: string;
 }
 
@@ -23,16 +28,13 @@ export const ContainerCard = ({ containerId, groupId, containerName }: IContaine
 
   /**
    * the function to change the state of rename form to true( = open the form input field)
-   * @returns void
    */
   const handleRenameClick = () => {
-    console.log('rename');
     setIsRenameFormOpen(true);
   };
 
   /**
    * The function to change the state of rename form to false ( = close the form input field)
-   * @return void
    */
   const handleRenameFormClose = () => {
     setIsRenameFormOpen(false);
