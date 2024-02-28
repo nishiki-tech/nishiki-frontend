@@ -15,9 +15,9 @@ import {
 } from './schemas';
 
 /**
- * Function to create a group.
- * @param inputs - The input for the function.
- * @returns The unique identifier of the group.
+ * Function to call a API client to create a new group
+ * @param inputs - {@link CreateGroupInputs} The user input for the new group
+ * @returns undefined on success, or an error message if fail
  */
 export const createGroup = async (
   inputs: CreateGroupInputs,
@@ -32,9 +32,10 @@ export const createGroup = async (
 };
 
 /**
- * Function to rename a group.
- * @param groupId - The unique identifier of the group.
- * @param inputs - The input for the function.
+ * Function to call a API client to rename a group
+ * @param groupId The unique identifier of a group
+ * @param inputs  - {@link RenameGroupInputs} The user input for the new name of the group
+ * @returns undefined on success, or an error message if fail
  */
 
 export const renameGroup = async (
