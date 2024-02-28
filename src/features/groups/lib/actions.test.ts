@@ -31,13 +31,14 @@ describe('Group actions', () => {
 
     it('should create a group successfully', async () => {
       // Arrange
-      (postCreateGroup as jest.Mock).mockResolvedValue(Ok({ groupId: 'newGroupId' }));
+      const mockResponse = { groupId: 'newGroupId' };
+      (postCreateGroup as jest.Mock).mockResolvedValue(Ok(mockResponse));
 
       // Act
       const result = await createGroup(mockInputs);
 
       // Assert
-      expect(result).toEqual(Ok(undefined));
+      expect(result.unwrap()).toEqual(undefined);
       expect(postCreateGroup).toHaveBeenCalled();
     });
 
@@ -46,25 +47,27 @@ describe('Group actions', () => {
       const mockInvalidInputs: CreateGroupInputs = {
         groupName: '',
       };
+      const mockErrorMessage = 'Validation failed';
 
       // Act
       const result = await createGroup(mockInvalidInputs);
 
       // Assert
-      expect(result).toEqual(Err('Validation failed'));
+      expect(result.unwrapError()).toEqual(mockErrorMessage);
       expect(postCreateGroup).not.toHaveBeenCalled();
     });
 
     it('should return an error if API request fails', async () => {
       // Arrange
       // Mock the API request to simulate failure
-      (postCreateGroup as jest.Mock).mockResolvedValue(Err('API request failed'));
+      const mockErrorMessage = 'API request failed';
+      (postCreateGroup as jest.Mock).mockResolvedValue(Err(mockErrorMessage));
 
       // Act
       const result = await createGroup(mockInputs);
 
       // Assert
-      expect(result).toEqual(Err('API request failed'));
+      expect(result.unwrapError()).toEqual(mockErrorMessage);
     });
   });
 
@@ -83,7 +86,7 @@ describe('Group actions', () => {
       const result = await renameGroup(mockGroupId, mockInputs);
 
       // Assert
-      expect(result).toEqual(Ok(undefined));
+      expect(result.unwrap()).toEqual(undefined);
       expect(putRenameGroup).toHaveBeenCalled();
     });
 
@@ -92,23 +95,25 @@ describe('Group actions', () => {
       const mockInvalidInputs = {
         groupName: '',
       };
+      const mockErrorMessage = 'Validation failed';
 
       // Act
       const result = await renameGroup(mockGroupId, mockInvalidInputs);
 
       // Assert
-      expect(result).toEqual(Err('Validation failed'));
+      expect(result.unwrapError()).toEqual(mockErrorMessage);
       expect(putRenameGroup).not.toHaveBeenCalled();
     });
 
     it('should return an error if API request fails', async () => {
       // Arrange
       // Mock the API request to simulate failure
-      (putRenameGroup as jest.Mock).mockResolvedValue(Err('API request failed'));
+      const mockErrorMessage = 'API request failed';
+      (putRenameGroup as jest.Mock).mockResolvedValue(Err(mockErrorMessage));
 
       const result = await renameGroup(mockGroupId, mockInputs);
 
-      expect(result).toEqual(Err('API request failed'));
+      expect(result.unwrapError()).toEqual(mockErrorMessage);
     });
   });
 
