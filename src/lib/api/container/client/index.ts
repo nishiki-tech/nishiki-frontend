@@ -6,4 +6,5 @@ export {
   postCreateContainer,
   postFood,
   putFood,
+  putRenameContainer,
 } from './containerApiClient.client';

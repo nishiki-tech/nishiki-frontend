@@ -48,6 +48,28 @@ export const postCreateContainer = async (
   }
 };
 
+export const putRenameContainer = async ({
+  containerId,
+  name,
+}: {
+  containerId: string;
+  name: string;
+}) => {
+  try {
+    await request({
+      url: `${API_BASE_URL}/containers/${containerId}`,
+      method: 'PUT',
+      options: { body: JSON.stringify(name) },
+    });
+    return Ok(undefined);
+  } catch (err) {
+    if (err instanceof Error) {
+      return Err(err.message);
+    }
+    return Err('API response is invalid');
+  }
+};
+
 /**
  * The object to be sent to the API as the request body for creating a new food
  */
