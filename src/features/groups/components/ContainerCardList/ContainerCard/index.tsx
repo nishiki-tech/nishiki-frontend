@@ -1,5 +1,5 @@
 'use client';
-import { ContainerIcon } from '@/assets/images/icons';
+import { IconContainer } from '@/assets/images/icons';
 import { Card, Icon } from '@/components/ui';
 
 import Link from 'next/link';
@@ -53,7 +53,7 @@ export const ContainerCard = ({ containerId, groupId, containerName }: IContaine
         className="flex grow gap-4 items-center pl-4 py-2"
       >
         <div className="flex items-center justify-center bg-accent rounded-full w-11 h-11">
-          <Icon icon={ContainerIcon} color="black" size={6} />
+          <Icon icon={IconContainer} color="black" size={6} />
         </div>
         <span className="leading-5">{containerName}</span>
       </Link>

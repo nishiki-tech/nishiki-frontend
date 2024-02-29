@@ -1,10 +1,10 @@
-import { fetchGroupList } from '@/lib/api/group/server';
+import { getGroupList } from '@/lib/api/group/server';
 import { IGroup } from '@/types/definition';
 
 import { GroupCard } from './GroupCard';
 
 export const GroupCardList = async () => {
-  const groups: IGroup[] = await fetchGroupList();
+  const groups: IGroup[] = await getGroupList();
   return (
     <div className="flex flex-col gap-2">
       {groups.map((group) => (

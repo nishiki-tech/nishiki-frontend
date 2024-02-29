@@ -1,8 +1,8 @@
 'use client';
-import { MenuKebabIcon } from '@/assets/images/icons';
+import { IconMenuKebab } from '@/assets/images/icons';
 import { Button, DropdownMenu, DropdownMenuTrigger, Icon } from '@/components/ui';
 
-import { FC } from 'react';
+import { useState } from 'react';
 
 import { GroupCardDropdownMenuContent } from './GroupCardDropdownMenuContent';
 
@@ -10,17 +10,21 @@ interface IGroupCardMenuButtonProps {
   handleRenameClick: () => void;
 }
 
-export const GroupCardDropdownMenuTriggerButton: FC<IGroupCardMenuButtonProps> = ({
+export const GroupCardDropdownMenuTriggerButton = ({
   handleRenameClick,
-}) => {
+}: IGroupCardMenuButtonProps) => {
+  const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
   return (
-    <DropdownMenu>
+    <DropdownMenu open={isDropdownMenuOpen} onOpenChange={setIsDropdownMenuOpen}>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="w-12">
-          <Icon icon={MenuKebabIcon} size={4.5} />
+          <Icon icon={IconMenuKebab} size={4.5} />
         </Button>
       </DropdownMenuTrigger>
-      <GroupCardDropdownMenuContent handleRenameClick={handleRenameClick} />
+      <GroupCardDropdownMenuContent
+        handleRenameClick={handleRenameClick}
+        onDropdownMenuClose={() => setIsDropdownMenuOpen(false)}
+      />
     </DropdownMenu>
   );
 };

@@ -1,5 +1,3 @@
-'use client';
-
 import { IconDelete } from '@/assets/images/icons';
 import {
   DialogRoot,
@@ -9,32 +7,21 @@ import {
   DropdownMenuButtonText,
   Icon,
 } from '@/components/ui';
-import { IGroup, IUser } from '@/types/definition';
 
 import { useState } from 'react';
 
-import { MemberCardDeleteDialog } from './MemberCardDeleteDialog';
+import { DeleteGroupDialogContent } from './DeleteGroupDialogContent';
 
-interface IMemberCardDeleteButtonProps {
+interface IGroupCardDropdownMenuDeleteButtonProps {
   /**
-   * The function to close the dropdown menu
+   * The function to close the dropdown menu.
    */
   onDropdownMenuClose: () => void;
-  /**
-   * An identifier of a group which a user belongs to.
-   */
-  groupId: IGroup['id'];
-  /**
-   * An identifier of a user for which this dropdown menu is.
-   */
-  userId: IUser['id'];
 }
 
-export const MemberCardDeleteButton = ({
+export const DeleteGroupDialogTriggerButton = ({
   onDropdownMenuClose,
-  groupId,
-  userId,
-}: IMemberCardDeleteButtonProps) => {
+}: IGroupCardDropdownMenuDeleteButtonProps) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   return (
@@ -47,13 +34,9 @@ export const MemberCardDeleteButton = ({
           <DropdownMenuButtonText>Delete</DropdownMenuButtonText>
         </DropdownMenuButton>
       </DialogTrigger>
-      <MemberCardDeleteDialog
+      <DeleteGroupDialogContent
         onParentClose={onDropdownMenuClose}
-        onDialogClose={() => {
-          setIsDialogOpen(false);
-        }}
-        groupId={groupId}
-        userId={userId}
+        onDialogClose={() => setIsDialogOpen(false)}
       />
     </DialogRoot>
   );

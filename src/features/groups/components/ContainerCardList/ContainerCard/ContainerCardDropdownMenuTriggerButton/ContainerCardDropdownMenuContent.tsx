@@ -1,4 +1,4 @@
-import { DeleteIcon, PenIcon } from '@/assets/images/icons';
+import { IconDelete, IconPen } from '@/assets/images/icons';
 import {
   DropdownMenuButton,
   DropdownMenuButtonIcon,
@@ -23,7 +23,7 @@ export const ContainerCardDropdownMenuContent = ({
       <DropdownMenuItem asChild>
         <DropdownMenuButton onClick={handleRenameClick}>
           <DropdownMenuButtonIcon>
-            <Icon icon={PenIcon} size={5} color="primary" />
+            <Icon icon={IconPen} size={5} color="primary" />
           </DropdownMenuButtonIcon>
           <DropdownMenuButtonText>Rename</DropdownMenuButtonText>
         </DropdownMenuButton>
@@ -31,7 +31,7 @@ export const ContainerCardDropdownMenuContent = ({
       <DropdownMenuItem asChild>
         <DropdownMenuButton>
           <DropdownMenuButtonIcon>
-            <Icon icon={DeleteIcon} size={5} color="danger" />
+            <Icon icon={IconDelete} size={5} color="danger" />
           </DropdownMenuButtonIcon>
           <DropdownMenuButtonText>Delete</DropdownMenuButtonText>
         </DropdownMenuButton>
