@@ -15,7 +15,13 @@ describe('authApiClient', () => {
       // Arrange
       const mockUserId = 'user1';
       const mockResponse: IGetCurrentUserResponse = { userId: mockUserId };
-      (request as jest.Mock).mockResolvedValue(mockResponse);
+      /**
+       * The API currently returns a JSON string instead of object
+       * This issue is mentioned in the issue {@link https://github.com/nishiki-tech/nishiki-frontend/issues/255}
+       * Thus,for now, we need to stringify the response here to mock request function.
+       */
+      const mockRequestFunctionResponse = JSON.stringify(mockResponse);
+      (request as jest.Mock).mockResolvedValue(mockRequestFunctionResponse);
 
       // Act
       const result = await getCurrentUserId();
