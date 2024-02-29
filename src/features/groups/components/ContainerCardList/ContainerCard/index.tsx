@@ -1,6 +1,7 @@
 'use client';
 import { IconContainer } from '@/assets/images/icons';
 import { Card, Icon } from '@/components/ui';
+import { IContainer, IGroup } from '@/types/definition';
 
 import Link from 'next/link';
 import { useState } from 'react';
@@ -12,15 +13,15 @@ interface IContainerCardProps {
   /**
    * an identifier of container which each container card has
    */
-  containerId: string;
+  containerId: IContainer['id'];
   /**
    * an identifier of a group which the container(s) belong to
    */
-  groupId: string;
+  groupId: IGroup['id'];
   /**
    * the name of container which is in a container card
    */
-  containerName: string;
+  containerName: IContainer['name'];
 }
 
 export const ContainerCard = ({ containerId, groupId, containerName }: IContainerCardProps) => {
@@ -42,6 +43,7 @@ export const ContainerCard = ({ containerId, groupId, containerName }: IContaine
 
   return isRenameFormOpen ? (
     <RenameContainerForm
+      containerId={containerId}
       currentContainerName={containerName}
       isOpen={isRenameFormOpen}
       onClose={handleRenameFormClose}

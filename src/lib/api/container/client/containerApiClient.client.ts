@@ -48,18 +48,19 @@ export const postCreateContainer = async (
   }
 };
 
-export const putRenameContainer = async ({
-  containerId,
-  name,
-}: {
-  containerId: string;
-  name: string;
-}) => {
+interface IPutRenameContainerRequestBody {
+  containerName: string;
+}
+
+export const putRenameContainer = async (
+  containerId: IContainer['id'],
+  requestBody: IPutRenameContainerRequestBody,
+): Promise<Result<undefined, string>> => {
   try {
     await request({
       url: `${API_BASE_URL}/containers/${containerId}`,
       method: 'PUT',
-      options: { body: JSON.stringify(name) },
+      options: { body: JSON.stringify(requestBody) },
     });
     return Ok(undefined);
   } catch (err) {

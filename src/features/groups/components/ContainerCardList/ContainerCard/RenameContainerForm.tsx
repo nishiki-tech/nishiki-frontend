@@ -1,6 +1,7 @@
 import { IconContainer } from '@/assets/images/icons';
 import { Card, Icon, SquareTextInput } from '@/components/ui';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/Form';
+import { renameContainer } from '@/features/groups/lib/actions';
 import { renameContainerFormSchema, RenameContainerInputs } from '@/features/groups/lib/schemas';
 
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -9,6 +10,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 interface IRenameContainerFormProps {
+  containerId: string;
   /**
    * The current container name, which a user willing to change from
    */
@@ -24,6 +26,7 @@ interface IRenameContainerFormProps {
 }
 
 export const RenameContainerForm = ({
+  containerId,
   currentContainerName,
   isOpen,
   onClose,
@@ -41,6 +44,15 @@ export const RenameContainerForm = ({
   ) => {
     const { containerName } = values;
     if (containerName === currentContainerName) return;
+
+    const result = await renameContainer(containerId, containerName);
+    if (!result.ok) {
+      alert('Failed to rename the container');
+    } else {
+      alert('Successfully renamed the container');
+      form.reset();
+      onClose();
+    }
   };
 
   /**

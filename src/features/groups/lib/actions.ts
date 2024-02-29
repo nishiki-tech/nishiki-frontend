@@ -97,11 +97,13 @@ export const createContainer = async (
   return Err(result.error);
 };
 
-export const renameContainer = async () => {
+export const renameContainer = async (containerId: string, inputs: string) => {
   const validatedData = renameContainerFormSchema.safeParse(inputs);
   if (!validatedData.success) return Err('Validation failed');
 
-  const result = await putRenameContainer(containerId);
+  const result = await putRenameContainer(containerId, {
+    containerName: validatedData.data.containerName,
+  });
   if (result.ok) return Ok(undefined);
   return Err(result.error);
 };
