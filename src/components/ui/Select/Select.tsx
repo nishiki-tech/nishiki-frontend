@@ -8,7 +8,7 @@
 
 'use client';
 
-import { CheckIcon } from '@/assets/images/icons';
+import { IconCheck } from '@/assets/images/icons';
 import { cn } from '@/lib/tailwind/utils';
 
 import {
@@ -98,7 +98,7 @@ const SelectItem = forwardRef<
       <PrimitiveItemIndicator>
         {/* TODO:Create a new icon to use in here */}
         <div className="w-4 h-4 flex items-center">
-          <Icon icon={CheckIcon} size={3.5} className="text-primary" />
+          <Icon icon={IconCheck} size={3.5} className="text-primary" />
         </div>
       </PrimitiveItemIndicator>
     </span>
