@@ -49,7 +49,7 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
 
     const result = await renameGroup(groupId, values);
     if (!result.ok) {
-      alert('Something went wrong. Please try again');
+      alert('Something went wrong. Please try again.');
     } else {
       alert('Successfully renamed the group');
       form.reset();
