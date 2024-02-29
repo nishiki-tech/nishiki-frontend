@@ -116,6 +116,12 @@ export const createContainer = async (
   return Err(result.error);
 };
 
+/**
+ * Function to validate input, if valid, call the API client to rename the container
+ * @param containerId - An identifier of a container which a user is willing to change the name of
+ * @param inputs - A user input {@link RenameContainerInputs} to be validated
+ * @returns Undefined for success, or an error message if the validation or request fails
+ */
 export const renameContainer = async (
   containerId: IContainer['id'],
   inputs: RenameContainerInputs,
