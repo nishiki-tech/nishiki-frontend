@@ -2,6 +2,7 @@ import { Card, SquareTextInput } from '@/components/ui';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/Form';
 import { renameGroup } from '@/features/groups/lib/actions';
 import { renameGroupFormSchema, RenameGroupInputs } from '@/features/groups/lib/schemas';
+import { cn } from '@/lib/tailwind/utils';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import React, { FC, KeyboardEvent, useEffect, useRef } from 'react';
@@ -113,7 +114,7 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
                       onKeyDown={handleKeyDown}
                       handleClearInput={handleClearInput}
                       handleOutsideClick={handleOutsideClick}
-                      className={form.formState.errors.groupName && 'border-danger'}
+                      className={cn(form.formState.errors.groupName && 'border-danger', 'text-lg')}
                     />
                   </FormControl>
                   <FormMessage />

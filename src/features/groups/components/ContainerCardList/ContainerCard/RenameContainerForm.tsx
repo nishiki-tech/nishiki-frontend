@@ -107,9 +107,7 @@ export const RenameContainerForm = ({
                       onKeyDown={handleKeyDown}
                       handleClearInput={handleClearInput}
                       handleOutsideClick={handleOutsideClick}
-                      className={`${
-                        form.formState.errors.containerName && 'border-danger'
-                      } text-md`}
+                      className={form.formState.errors.containerName && 'border-danger'}
                     />
                   </FormControl>
                   <FormMessage />

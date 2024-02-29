@@ -79,7 +79,7 @@ export const SquareTextInput = forwardRef<HTMLInputElement, ISquareTextInputProp
           h={h}
           variant="none"
           className={cn(
-            'bg-gray-lightest border-b border-primary py-2 text-lg',
+            'bg-gray-lightest border-b border-primary py-2',
             hasCrossButton ? 'pl-2 pr-10' : 'px-2',
             className,
           )}
