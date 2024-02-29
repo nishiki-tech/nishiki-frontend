@@ -1,5 +1,5 @@
 import { request } from '@/lib/api/common/server';
-import { fetchGroupList } from '@/lib/api/group/server';
+import { getGroupList } from '@/lib/api/group/server';
 
 jest.mock('@/lib/api/common/server/commonUtils.server', () => ({
   request: jest.fn(),
@@ -35,7 +35,7 @@ describe('API Function Tests', () => {
       const mockRequest = setUpMockSuccessRequest({ groups: [mockGroup] });
       const expectedValue = [{ id: 'a3kdifut-a520-c2cb-1be7-d90710691861', name: 'Shared-house' }];
 
-      const result = await fetchGroupList();
+      const result = await getGroupList();
 
       expect(result).toEqual(expectedValue);
       expect(mockRequest).toHaveBeenCalledTimes(1);
@@ -43,7 +43,7 @@ describe('API Function Tests', () => {
 
     it('throws an error on API failure', async () => {
       setUpMockErrorRequest(new Error('Network error'));
-      const result = fetchGroupList();
+      const result = getGroupList();
       await expect(result).rejects.toThrow('API response is invalid');
     });
   });
