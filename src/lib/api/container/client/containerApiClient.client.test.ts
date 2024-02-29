@@ -70,6 +70,7 @@ describe('containerApiClient', () => {
 
         /* Act */
         const result = await putRenameContainer(mockContainerId, mockRequestBody);
+
         /* Assert */
         expect(result.unwrap()).toBe(undefined);
         expect(request).toHaveBeenCalledWith({
@@ -88,6 +89,7 @@ describe('containerApiClient', () => {
 
         /* Act */
         const result = await putRenameContainer(mockContainerId, mockRequestBody);
+
         /* Assert */
         expect(result.unwrapError()).toBe(mockError.message);
       });
