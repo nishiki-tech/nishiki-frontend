@@ -1,4 +1,4 @@
-import { MenuKebabIcon } from '@/assets/images/icons';
+import { IconMenuKebab } from '@/assets/images/icons';
 import { Button, DropdownMenu, DropdownMenuTrigger, Icon } from '@/components/ui';
 
 import { ContainerCardDropdownMenuContent } from './ContainerCardDropdownMenuContent';
@@ -17,7 +17,7 @@ export const ContainerCardDropdownMenuTriggerButton = ({
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="w-12">
-          <Icon icon={MenuKebabIcon} size={4.5} />
+          <Icon icon={IconMenuKebab} size={4.5} />
         </Button>
       </DropdownMenuTrigger>
       <ContainerCardDropdownMenuContent handleRenameClick={handleRenameClick} />

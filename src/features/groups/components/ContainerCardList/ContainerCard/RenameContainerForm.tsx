@@ -1,4 +1,4 @@
-import { ContainerIcon } from '@/assets/images/icons';
+import { IconContainer } from '@/assets/images/icons';
 import { Card, Icon, SquareTextInput } from '@/components/ui';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/Form';
 import { renameContainerFormSchema, RenameContainerInputs } from '@/features/groups/lib/schemas';
@@ -85,7 +85,7 @@ export const RenameContainerForm = ({
     <Card asChild>
       <div className="flex gap-2 items-center px-4 py-2">
         <div className="flex items-center justify-center bg-accent rounded-full min-w-11 h-11">
-          <Icon icon={ContainerIcon} color="black" size={6} />
+          <Icon icon={IconContainer} color="black" size={6} />
         </div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(processSubmit)} className="w-full">
