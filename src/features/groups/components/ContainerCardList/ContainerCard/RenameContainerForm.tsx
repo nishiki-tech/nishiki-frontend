@@ -109,8 +109,8 @@ export const RenameContainerForm = ({
 
   return (
     <Card asChild>
-      <div className="flex gap-2 px-4 py-2">
-        <div className="flex items-center justify-center bg-accent rounded-full min-w-11 h-11">
+      <div className="flex items-center gap-2 px-4 py-2">
+        <div className="flex items-center justify-center self-start bg-accent rounded-full min-w-11 h-11">
           <Icon icon={IconContainer} color="black" size={6} />
         </div>
         <Form {...form}>
