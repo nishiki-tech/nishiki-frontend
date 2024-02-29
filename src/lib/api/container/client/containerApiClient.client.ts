@@ -49,9 +49,18 @@ export const postCreateContainer = async (
 };
 
 interface IPutRenameContainerRequestBody {
+  /**
+   * a new container name which a user input
+   */
   containerName: string;
 }
 
+/**
+ * Function to send a request to the API to rename the container
+ * @param containerId - The identifier of container whose name a user is willing to change
+ * @param requestBody - A {@link IPutRenameContainerRequestBody} object to be sent to API as the request body
+ * @returns undefined for success, an error message if fails
+ */
 export const putRenameContainer = async (
   containerId: IContainer['id'],
   requestBody: IPutRenameContainerRequestBody,

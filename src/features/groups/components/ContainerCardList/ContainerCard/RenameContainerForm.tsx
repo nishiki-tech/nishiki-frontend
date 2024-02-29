@@ -11,7 +11,10 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 interface IRenameContainerFormProps {
-  containerId: string;
+  /**
+   * The current container ID whose name the user is willing to change
+   */
+  containerId: IContainer['id'];
   /**
    * The current container name, which a user willing to change from
    */
