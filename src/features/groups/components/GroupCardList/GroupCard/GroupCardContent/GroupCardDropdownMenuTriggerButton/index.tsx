@@ -1,16 +1,25 @@
 'use client';
 import { IconMenuKebab } from '@/assets/images/icons';
 import { Button, DropdownMenu, DropdownMenuTrigger, Icon } from '@/components/ui';
+import { IGroup } from '@/types/definition';
 
 import { useState } from 'react';
 
 import { GroupCardDropdownMenuContent } from './GroupCardDropdownMenuContent';
 
 interface IGroupCardMenuButtonProps {
+  /**
+   * The ID of the group to delete.
+   */
+  groupId: IGroup['id'];
+  /**
+   * Function to handle the rename button click.
+   */
   handleRenameClick: () => void;
 }
 
 export const GroupCardDropdownMenuTriggerButton = ({
+  groupId,
   handleRenameClick,
 }: IGroupCardMenuButtonProps) => {
   const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
@@ -22,6 +31,7 @@ export const GroupCardDropdownMenuTriggerButton = ({
         </Button>
       </DropdownMenuTrigger>
       <GroupCardDropdownMenuContent
+        groupId={groupId}
         handleRenameClick={handleRenameClick}
         onDropdownMenuClose={() => setIsDropdownMenuOpen(false)}
       />

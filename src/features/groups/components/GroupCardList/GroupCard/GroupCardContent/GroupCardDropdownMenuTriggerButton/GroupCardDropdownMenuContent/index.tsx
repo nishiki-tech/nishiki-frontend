@@ -7,10 +7,15 @@ import {
   DropdownMenuItem,
   Icon,
 } from '@/components/ui';
+import { IGroup } from '@/types/definition';
 
 import { DeleteGroupDialogTriggerButton } from './DeleteGroupDialogTriggerButton';
 
 interface IGroupCardDropdownMenuContentProps {
+  /**
+   * The ID of the group to delete.
+   */
+  groupId: IGroup['id'];
   /**
    * Function to handle the rename button click.
    */
@@ -23,6 +28,7 @@ interface IGroupCardDropdownMenuContentProps {
 }
 
 export const GroupCardDropdownMenuContent = ({
+  groupId,
   handleRenameClick,
   onDropdownMenuClose,
 }: IGroupCardDropdownMenuContentProps) => {
@@ -50,7 +56,10 @@ export const GroupCardDropdownMenuContent = ({
         </DropdownMenuButton>
       </DropdownMenuItem>
       <DropdownMenuItem onSelect={handleSelect}>
-        <DeleteGroupDialogTriggerButton onDropdownMenuClose={onDropdownMenuClose} />
+        <DeleteGroupDialogTriggerButton
+          groupId={groupId}
+          onDropdownMenuClose={onDropdownMenuClose}
+        />
       </DropdownMenuItem>
     </DropdownMenuContent>
   );

@@ -3,7 +3,7 @@ import {
   postCreateContainer,
   putRenameContainer,
 } from '@/lib/api/container/client';
-import { deleteMember, postCreateGroup, putRenameGroup } from '@/lib/api/group/client';
+import { deleteGroup, deleteMember, postCreateGroup, putRenameGroup } from '@/lib/api/group/client';
 import { IGroup, IUser } from '@/types/definition';
 
 import { Err, Ok, Result } from 'result-ts-type';
@@ -13,6 +13,7 @@ import {
   CreateContainerInputs,
   createGroupFormSchema,
   CreateGroupInputs,
+  deleteGroupSchema,
   deleteMemberSchema,
   renameContainerFormSchema,
   renameGroupFormSchema,
@@ -20,9 +21,9 @@ import {
 } from './schemas';
 
 /**
- * Function to create a group.
- * @param inputs - The input for the function.
- * @returns The unique identifier of the group.
+ * Function to call a API client to create a new group
+ * @param inputs - {@link CreateGroupInputs} The user input for the new group
+ * @returns undefined on success, or an error message if fail
  */
 export const createGroup = async (
   inputs: CreateGroupInputs,
@@ -37,9 +38,10 @@ export const createGroup = async (
 };
 
 /**
- * Function to rename a group.
- * @param groupId - The unique identifier of the group.
- * @param inputs - The input for the function.
+ * Function to call a API client to rename a group
+ * @param groupId - The ID of the group to be renamed
+ * @param inputs  - {@link RenameGroupInputs} The user input for the new name of the group
+ * @returns undefined on success, or an error message if fail
  */
 
 export const renameGroup = async (
@@ -55,9 +57,24 @@ export const renameGroup = async (
 };
 
 /**
+ * Function to call a API client to remove a group
+ * @param groupId - The ID of the group to be removed
+ * @returns undefined on success, or an error message if fail
+ */
+export const removeGroup = async (groupId: IGroup['id']): Promise<Result<undefined, string>> => {
+  const validatedData = deleteGroupSchema.safeParse({ groupId });
+  if (!validatedData.success) return Err('Validation failed');
+
+  const result = await deleteGroup(groupId);
+
+  if (result.ok) return Ok(undefined);
+  return Err(result.error);
+};
+
+/**
  * Function to call a API client to remove a member from a group
- * @param groupId The unique identifier of a group which a user will be removed from
- * @param userId The unique identifier of a user who will be removed from a group
+ * @param groupId - The unique identifier of a group which a user will be removed from
+ * @param userId - The unique identifier of a user who will be removed from a group
  * @returns undefined on success, or an error message if fail
  */
 export const removeMember = async (

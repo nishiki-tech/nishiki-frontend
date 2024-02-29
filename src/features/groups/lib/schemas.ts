@@ -10,6 +10,10 @@ export const renameGroupFormSchema = z.object({
   groupName: z.string().min(1, { message: 'Name is required' }),
 });
 
+export const deleteGroupSchema = z.object({
+  groupId: z.string().uuid({ message: 'Group ID is invalid' }),
+});
+
 export type RenameGroupInputs = z.infer<typeof renameGroupFormSchema>;
 
 export const createContainerFormSchema = z.object({
