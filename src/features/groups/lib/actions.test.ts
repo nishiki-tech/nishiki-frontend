@@ -1,9 +1,16 @@
-import { postCreateContainer } from '@/lib/api/container/client';
+import { postCreateContainer, putRenameContainer } from '@/lib/api/container/client';
 import { deleteGroup, deleteMember, postCreateGroup, putRenameGroup } from '@/lib/api/group/client';
 
 import { Err, Ok } from 'result-ts-type';
 
-import { createContainer, createGroup, removeGroup, removeMember, renameGroup } from './actions';
+import {
+  createContainer,
+  createGroup,
+  removeGroup,
+  removeMember,
+  renameContainer,
+  renameGroup,
+} from './actions';
 import { CreateGroupInputs } from './schemas';
 
 jest.mock('@/lib/api/group/client', () => ({
@@ -15,6 +22,7 @@ jest.mock('@/lib/api/group/client', () => ({
 
 jest.mock('@/lib/api/container/client', () => ({
   postCreateContainer: jest.fn(),
+  putRenameContainer: jest.fn(),
 }));
 
 // Clear mocks after each test
@@ -236,6 +244,41 @@ describe('Group actions', () => {
       const result = await createContainer(mockRequestGroupId, mockRequestName);
       /* Assert */
       expect(result.unwrapError()).toBe(mockErrorMessage);
+    });
+  });
+
+  describe('renameContainer', () => {
+    const mockContainerId = 'myContainerId';
+    const mockInputs = {
+      containerName: 'updateContainerName',
+    };
+    it('should rename container successfully', async () => {
+      /* Arrange */
+      (putRenameContainer as jest.Mock).mockResolvedValue(Ok(undefined));
+      /* Act */
+      const result = await renameContainer(mockContainerId, mockInputs);
+      /* Assert */
+      expect(result.unwrap()).toBe(undefined);
+      expect(putRenameContainer).toHaveBeenCalled();
+    });
+    it('should return an error if validation fails', async () => {
+      /* Arrange */
+      const mockInvalidInputs = {
+        containerName: '',
+      };
+      /* Act */
+      const result = await renameContainer(mockContainerId, mockInvalidInputs);
+      /* Assert */
+      expect(result.unwrapError()).toBe('Validation failed');
+    });
+    it('should return an error if API request fails', async () => {
+      /* Arrange */
+      (putRenameContainer as jest.Mock).mockResolvedValue(Err('API request failed'));
+
+      /* Act */
+      const result = await renameContainer(mockContainerId, mockInputs);
+      /* Assert */
+      expect(result.unwrapError()).toBe('API request failed');
     });
   });
 });

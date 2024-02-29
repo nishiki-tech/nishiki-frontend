@@ -1,10 +1,11 @@
 import {
   IPostContainerRequestBody,
+  IPutRenameContainerRequestBody,
   postCreateContainer,
   putRenameContainer,
 } from '@/lib/api/container/client';
 import { deleteGroup, deleteMember, postCreateGroup, putRenameGroup } from '@/lib/api/group/client';
-import { IGroup, IUser } from '@/types/definition';
+import { IContainer, IGroup, IUser } from '@/types/definition';
 
 import { Err, Ok, Result } from 'result-ts-type';
 
@@ -16,6 +17,7 @@ import {
   deleteGroupSchema,
   deleteMemberSchema,
   renameContainerFormSchema,
+  RenameContainerInputs,
   renameGroupFormSchema,
   RenameGroupInputs,
 } from './schemas';
@@ -114,13 +116,18 @@ export const createContainer = async (
   return Err(result.error);
 };
 
-export const renameContainer = async (containerId: string, inputs: string) => {
+export const renameContainer = async (
+  containerId: IContainer['id'],
+  inputs: RenameContainerInputs,
+): Promise<Result<undefined, string>> => {
   const validatedData = renameContainerFormSchema.safeParse(inputs);
   if (!validatedData.success) return Err('Validation failed');
 
-  const result = await putRenameContainer(containerId, {
+  const containerRenameRequestBody: IPutRenameContainerRequestBody = {
     containerName: validatedData.data.containerName,
-  });
+  };
+
+  const result = await putRenameContainer(containerId, containerRenameRequestBody);
   if (result.ok) return Ok(undefined);
   return Err(result.error);
 };

@@ -48,7 +48,7 @@ export const postCreateContainer = async (
   }
 };
 
-interface IPutRenameContainerRequestBody {
+export interface IPutRenameContainerRequestBody {
   /**
    * a new container name which a user input
    */
