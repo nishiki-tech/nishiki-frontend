@@ -1,6 +1,6 @@
 import { MobileLayout } from '@/components/layouts/MobileLayout';
 import { HeaderBackButton, HeaderMenuCircleButton } from '@/components/parts/Header';
-import { ContainerList } from '@/features/groups/components/ContainerList';
+import { ContainerCardList } from '@/features/groups/components/ContainerCardList';
 import { MemberList } from '@/features/groups/components/MemberList';
 import { getGroup } from '@/lib/api/group/server';
 import { IGroup } from '@/types/definition';
@@ -23,7 +23,7 @@ export const GroupSinglePage = async ({ groupId }: IGroupSinglePageProps) => {
     >
       <div className="px-4 pt-6 pb-16">
         <MemberList id={groupId} />
-        <ContainerList groupId={groupId} />
+        <ContainerCardList groupId={groupId} />
       </div>
     </MobileLayout>
   );

@@ -22,6 +22,12 @@ export const createContainerFormSchema = z.object({
 
 export type CreateContainerInputs = z.infer<typeof createContainerFormSchema>;
 
+export const renameContainerFormSchema = z.object({
+  containerName: z.string().min(1, { message: 'Name is required' }),
+});
+
+export type RenameContainerInputs = z.infer<typeof renameContainerFormSchema>;
+
 export const deleteMemberSchema = z.object({
   groupId: z.string().uuid({ message: 'Group ID is invalid' }),
   userId: z.string().uuid({ message: 'User ID is invalid' }),
