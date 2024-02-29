@@ -8,12 +8,13 @@ import {
   DialogTitle,
 } from '@/components/ui';
 import { removeGroup } from '@/features/groups/lib/actions';
+import { IGroup } from '@/types/definition';
 
 interface IDeleteGroupDialogContentProps {
   /**
    * The ID of the group to delete.
    */
-  groupId: string;
+  groupId: IGroup['id'];
 
   /**
    * If true, close the parent UI component, such as Dialog, DropdownMenu, Drawer, etc., on cancel button click.

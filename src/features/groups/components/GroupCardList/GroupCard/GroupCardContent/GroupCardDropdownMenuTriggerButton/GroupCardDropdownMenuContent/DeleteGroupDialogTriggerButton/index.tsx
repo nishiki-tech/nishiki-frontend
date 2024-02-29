@@ -7,6 +7,7 @@ import {
   DropdownMenuButtonText,
   Icon,
 } from '@/components/ui';
+import { IGroup } from '@/types/definition';
 
 import { useState } from 'react';
 
@@ -16,7 +17,7 @@ interface IGroupCardDropdownMenuDeleteButtonProps {
   /**
    * The ID of the group to delete.
    */
-  groupId: string;
+  groupId: IGroup['id'];
 
   /**
    * The function to close the dropdown menu.

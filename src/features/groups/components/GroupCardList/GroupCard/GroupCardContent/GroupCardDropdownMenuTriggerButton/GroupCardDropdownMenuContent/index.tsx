@@ -7,6 +7,7 @@ import {
   DropdownMenuItem,
   Icon,
 } from '@/components/ui';
+import { IGroup } from '@/types/definition';
 
 import { DeleteGroupDialogTriggerButton } from './DeleteGroupDialogTriggerButton';
 
@@ -14,7 +15,7 @@ interface IGroupCardDropdownMenuContentProps {
   /**
    * The ID of the group to delete.
    */
-  groupId: string;
+  groupId: IGroup['id'];
   /**
    * Function to handle the rename button click.
    */

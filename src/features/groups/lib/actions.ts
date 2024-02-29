@@ -34,7 +34,7 @@ export const createGroup = async (
 
 /**
  * Function to call a API client to rename a group
- * @param groupId The unique identifier of a group
+ * @param groupId - The unique identifier of a group
  * @param inputs  - {@link RenameGroupInputs} The user input for the new name of the group
  * @returns undefined on success, or an error message if fail
  */
@@ -53,7 +53,7 @@ export const renameGroup = async (
 
 /**
  * Function to call a API client to remove a group
- * @param groupId The unique identifier of a group
+ * @param groupId - The unique identifier of a group
  * @returns undefined on success, or an error message if fail
  */
 export const removeGroup = async (groupId: IGroup['id']): Promise<Result<undefined, string>> => {
@@ -68,8 +68,8 @@ export const removeGroup = async (groupId: IGroup['id']): Promise<Result<undefin
 
 /**
  * Function to call a API client to remove a member from a group
- * @param groupId The unique identifier of a group which a user will be removed from
- * @param userId The unique identifier of a user who will be removed from a group
+ * @param groupId - The unique identifier of a group which a user will be removed from
+ * @param userId - The unique identifier of a user who will be removed from a group
  * @returns undefined on success, or an error message if fail
  */
 export const removeMember = async (

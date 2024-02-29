@@ -1,6 +1,7 @@
 'use client';
 import { MenuKebabIcon } from '@/assets/images/icons';
 import { Button, DropdownMenu, DropdownMenuTrigger, Icon } from '@/components/ui';
+import { IGroup } from '@/types/definition';
 
 import { useState } from 'react';
 
@@ -10,7 +11,7 @@ interface IGroupCardMenuButtonProps {
   /**
    * The ID of the group to delete.
    */
-  groupId: string;
+  groupId: IGroup['id'];
   /**
    * Function to handle the rename button click.
    */
