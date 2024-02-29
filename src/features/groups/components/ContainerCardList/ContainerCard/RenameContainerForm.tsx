@@ -55,7 +55,7 @@ export const RenameContainerForm = ({
 
     const result = await renameContainer(containerId, values);
     if (!result.ok) {
-      alert('Failed to rename the container');
+      alert('Something went wrong. Please try again');
     } else {
       alert('Successfully renamed the container');
       form.reset();

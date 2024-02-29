@@ -45,7 +45,7 @@ export const CreateGroupDrawerContent = ({ isOpen, onClose }: ICreateGroupDrawer
     const { groupName } = values;
     const result = await createGroup({ groupName });
     if (!result.ok) {
-      alert('Failed to create the group');
+      alert('Something went wrong. Please try again');
     } else {
       alert('Successfully created the group');
       form.reset();
