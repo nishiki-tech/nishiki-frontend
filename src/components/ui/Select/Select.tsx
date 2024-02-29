@@ -97,7 +97,7 @@ const SelectItem = forwardRef<
     <span className="absolute left-2">
       <PrimitiveItemIndicator>
         {/* TODO:Create a new icon to use in here */}
-        <div className="w-4 h-4 flex items-center">
+        <div className="size-4 flex items-center justify-center">
           <Icon icon={IconCheck} size={3.5} className="text-primary" />
         </div>
       </PrimitiveItemIndicator>
