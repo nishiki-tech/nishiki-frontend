@@ -57,7 +57,7 @@ export const ContainerCard = ({ containerId, groupId, containerName }: IContaine
         </div>
         <span className="leading-5">{containerName}</span>
       </Link>
-      <ContainerCardDropdownMenuTriggerButton handleRenameClick={handleRenameClick} />
+      <ContainerCardDropdownMenuTriggerButton onRenameClick={handleRenameClick} />
     </Card>
   );
 };

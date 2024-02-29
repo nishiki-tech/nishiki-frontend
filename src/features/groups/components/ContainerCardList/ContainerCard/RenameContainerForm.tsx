@@ -71,10 +71,16 @@ export const RenameContainerForm = ({
     onClose();
   };
 
+  /**
+   * React hook which reset the form when it is closed
+   */
   useEffect(() => {
     if (!isOpen) form.reset();
   }, [isOpen, form]);
 
+  /**
+   * React hook which focus the input when the form is opened
+   */
   useEffect(() => {
     if (isOpen) {
       inputRef.current?.focus();
@@ -101,9 +107,7 @@ export const RenameContainerForm = ({
                       onKeyDown={handleKeyDown}
                       handleClearInput={handleClearInput}
                       handleOutsideClick={handleOutsideClick}
-                      className={`${
-                        form.formState.errors.containerName && 'border-danger'
-                      } text-md`}
+                      className={form.formState.errors.containerName && 'border-danger'}
                     />
                   </FormControl>
                   <FormMessage />
