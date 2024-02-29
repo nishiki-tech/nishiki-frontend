@@ -80,6 +80,26 @@ export const putRenameGroup = async (
 };
 
 /**
+ * Send a request to the API to delete a group
+ * @param groupId - The unique identifier of a group to be deleted
+ * @returns undefined on success, or an error message if the request fails
+ */
+export const deleteGroup = async (groupId: IGroup['id']): Promise<Result<undefined, string>> => {
+  try {
+    await request({
+      url: `${API_BASE_URL}/groups/${groupId}`,
+      method: 'DELETE',
+    });
+    return Ok(undefined);
+  } catch (err) {
+    if (err instanceof Error) {
+      return Err(err.message);
+    }
+    return Err('API response is invalid');
+  }
+};
+
+/**
  * Interface representing the API response for the function to generate a invitation link
  * @property invitationLinkHash - string, a hash for invitation link
  */

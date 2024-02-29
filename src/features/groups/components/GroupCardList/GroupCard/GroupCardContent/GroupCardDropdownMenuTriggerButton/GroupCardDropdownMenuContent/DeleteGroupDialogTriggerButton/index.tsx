@@ -7,6 +7,7 @@ import {
   DropdownMenuButtonText,
   Icon,
 } from '@/components/ui';
+import { IGroup } from '@/types/definition';
 
 import { useState } from 'react';
 
@@ -14,12 +15,18 @@ import { DeleteGroupDialogContent } from './DeleteGroupDialogContent';
 
 interface IGroupCardDropdownMenuDeleteButtonProps {
   /**
+   * The ID of the group to delete.
+   */
+  groupId: IGroup['id'];
+
+  /**
    * The function to close the dropdown menu.
    */
   onDropdownMenuClose: () => void;
 }
 
 export const DeleteGroupDialogTriggerButton = ({
+  groupId,
   onDropdownMenuClose,
 }: IGroupCardDropdownMenuDeleteButtonProps) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -35,6 +42,7 @@ export const DeleteGroupDialogTriggerButton = ({
         </DropdownMenuButton>
       </DialogTrigger>
       <DeleteGroupDialogContent
+        groupId={groupId}
         onParentClose={onDropdownMenuClose}
         onDialogClose={() => setIsDialogOpen(false)}
       />
