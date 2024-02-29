@@ -43,13 +43,17 @@ export const RenameContainerForm = ({
     },
   });
 
+  /**
+   * Process when the form is submitted
+   * @param values - The form values {@link RenameContainerInputs}
+   */
   const processSubmit: SubmitHandler<RenameContainerInputs> = async (
     values: RenameContainerInputs,
   ) => {
     const { containerName } = values;
     if (containerName === currentContainerName) return;
 
-    const result = await renameContainer(containerId, containerName);
+    const result = await renameContainer(containerId, values);
     if (!result.ok) {
       alert('Failed to rename the container');
     } else {
