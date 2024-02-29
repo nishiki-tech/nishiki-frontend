@@ -248,35 +248,44 @@ describe('Group actions', () => {
   });
 
   describe('renameContainer', () => {
+    /* Arrange common mock data */
     const mockContainerId = 'myContainerId';
     const mockInputs = {
       containerName: 'updateContainerName',
     };
+
     it('should rename container successfully', async () => {
       /* Arrange */
       (putRenameContainer as jest.Mock).mockResolvedValue(Ok(undefined));
+
       /* Act */
       const result = await renameContainer(mockContainerId, mockInputs);
+
       /* Assert */
       expect(result.unwrap()).toBe(undefined);
       expect(putRenameContainer).toHaveBeenCalled();
     });
+
     it('should return an error if validation fails', async () => {
       /* Arrange */
       const mockInvalidInputs = {
         containerName: '',
       };
+
       /* Act */
       const result = await renameContainer(mockContainerId, mockInvalidInputs);
+
       /* Assert */
       expect(result.unwrapError()).toBe('Validation failed');
     });
+
     it('should return an error if API request fails', async () => {
       /* Arrange */
       (putRenameContainer as jest.Mock).mockResolvedValue(Err('API request failed'));
 
       /* Act */
       const result = await renameContainer(mockContainerId, mockInputs);
+
       /* Assert */
       expect(result.unwrapError()).toBe('API request failed');
     });
