@@ -71,10 +71,16 @@ export const RenameContainerForm = ({
     onClose();
   };
 
+  /**
+   * React hook which reset the form when it is closed
+   */
   useEffect(() => {
     if (!isOpen) form.reset();
   }, [isOpen, form]);
 
+  /**
+   * React hook which focus the input when the form is opened
+   */
   useEffect(() => {
     if (isOpen) {
       inputRef.current?.focus();
