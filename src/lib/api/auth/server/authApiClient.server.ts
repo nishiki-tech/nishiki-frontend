@@ -10,7 +10,7 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || '';
  * Interface representing the API response for auth/me API endpoint.
  * @property userId - Id of current logged in user.
  */
-interface IGetCurrentUserResponse {
+export interface IGetCurrentUserResponse {
   userId: IUser['id'];
 }
 
@@ -26,6 +26,9 @@ export const getCurrentUserId = async (): Promise<Result<IGetCurrentUserResponse
     });
     return Ok(response);
   } catch (err) {
+    if (err instanceof Error) {
+      return Err(err.message);
+    }
     return Err('API response is invalid');
   }
 };
