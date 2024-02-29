@@ -1,6 +1,6 @@
 'use client';
 
-import { PlusIcon } from '@/assets/images/icons';
+import { IconPlus } from '@/assets/images/icons';
 import { Button, DrawerRoot, DrawerTrigger, Icon } from '@/components/ui';
 
 import { useState } from 'react';
@@ -18,7 +18,7 @@ export const CreateGroupButton = () => {
     <DrawerRoot open={isOpen} onOpenChange={setIsOpen}>
       <DrawerTrigger asChild>
         <Button variant="ghost" size="icon">
-          <Icon icon={PlusIcon} size={4.5} />
+          <Icon icon={IconPlus} size={4.5} />
         </Button>
       </DrawerTrigger>
       <CreateGroupDrawerContent isOpen={isOpen} onClose={onClose} />

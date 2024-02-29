@@ -1,6 +1,6 @@
 'use client';
 
-import { SearchIcon } from '@/assets/images/icons';
+import { IconSearch } from '@/assets/images/icons';
 import { cn } from '@/lib/tailwind/utils';
 
 import { VariantProps } from 'class-variance-authority';
@@ -33,7 +33,7 @@ export const SearchInput: FC<ISearchInputProps> = ({
 
   return (
     <div className={cn('relative', className)} onClick={focusInput}>
-      <Icon icon={SearchIcon} {...iconProps} className="absolute top-4 left-6" />
+      <Icon icon={IconSearch} {...iconProps} className="absolute top-4 left-6" />
       <Input type="search" variant="rounded" className="pl-12" ref={ref} {...props} />
     </div>
   );

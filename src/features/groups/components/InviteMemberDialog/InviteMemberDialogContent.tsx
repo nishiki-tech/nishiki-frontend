@@ -1,4 +1,4 @@
-import { LinkIcon } from '@/assets/images/icons';
+import { IconLink } from '@/assets/images/icons';
 import {
   Button,
   DialogBody,
@@ -73,7 +73,7 @@ export const InviteMemberDialogContent = ({
             onClick={handleLinkCopy}
             className="w-40 px-3.5"
           >
-            <Icon icon={LinkIcon} size={5} color="white" />
+            <Icon icon={IconLink} size={5} color="white" />
             {isLinkButtonClicked ? 'Copied!' : 'Copy link'}
           </Button>
           <p className="text-center text-sm text-gray-dark">Your invite link expires in a day.</p>

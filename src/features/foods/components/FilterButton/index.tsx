@@ -1,6 +1,6 @@
 'use client';
 
-import { FilterIcon } from '@/assets/images/icons';
+import { IconFilter } from '@/assets/images/icons';
 import { LabeledInput } from '@/components/parts';
 import {
   Button,
@@ -147,7 +147,7 @@ export const FilterButton = ({
       <DrawerTrigger asChild>
         <button className="flex justify-center items-center absolute top-0 right-0 h-full px-4">
           <div className="relative">
-            <FilterIcon className="w-3.5" />
+            <IconFilter className="w-3.5" />
             {isFilterSet && (
               <div className="absolute -top-[3px] -right-[5px] w-2 h-2 rounded-full bg-danger" />
             )}

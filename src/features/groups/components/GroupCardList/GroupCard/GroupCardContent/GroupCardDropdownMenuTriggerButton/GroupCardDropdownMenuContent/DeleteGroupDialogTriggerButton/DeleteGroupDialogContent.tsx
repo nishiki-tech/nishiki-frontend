@@ -7,8 +7,15 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui';
+import { removeGroup } from '@/features/groups/lib/actions';
+import { IGroup } from '@/types/definition';
 
 interface IDeleteGroupDialogContentProps {
+  /**
+   * The ID of the group to delete.
+   */
+  groupId: IGroup['id'];
+
   /**
    * If true, close the parent UI component, such as Dialog, DropdownMenu, Drawer, etc., on cancel button click.
    */
@@ -24,6 +31,7 @@ interface IDeleteGroupDialogContentProps {
 }
 
 export const DeleteGroupDialogContent = ({
+  groupId,
   closeParentOnCancel = true,
   onParentClose,
   onDialogClose,
@@ -45,9 +53,14 @@ export const DeleteGroupDialogContent = ({
    * @returns void
    */
   const handleDelete = async () => {
-    alert('delete');
-    onDialogClose();
+    const result = await removeGroup(groupId);
+    if (!result.ok) {
+      alert('Something went wrong. Please try again.');
+    } else {
+      alert('Successfully deleted!');
+    }
     onParentClose?.();
+    onDialogClose();
   };
 
   return (

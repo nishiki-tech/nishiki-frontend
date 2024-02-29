@@ -1,6 +1,6 @@
 'use client';
 
-import { DeleteIcon } from '@/assets/images/icons';
+import { IconDelete } from '@/assets/images/icons';
 import {
   DialogRoot,
   DialogTrigger,
@@ -42,7 +42,7 @@ export const MemberCardDeleteButton = ({
       <DialogTrigger asChild>
         <DropdownMenuButton>
           <DropdownMenuButtonIcon>
-            <Icon icon={DeleteIcon} size={5} color="danger" />
+            <Icon icon={IconDelete} size={5} color="danger" />
           </DropdownMenuButtonIcon>
           <DropdownMenuButtonText>Delete</DropdownMenuButtonText>
         </DropdownMenuButton>
