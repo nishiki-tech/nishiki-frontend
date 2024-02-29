@@ -7,11 +7,11 @@ interface IContainerCardDropdownMenuProps {
   /**
    * A function to open rename form input field
    */
-  handleRenameClick: () => void;
+  onRenameClick: () => void;
 }
 
 export const ContainerCardDropdownMenuTriggerButton = ({
-  handleRenameClick,
+  onRenameClick,
 }: IContainerCardDropdownMenuProps) => {
   return (
     <DropdownMenu>
@@ -20,7 +20,7 @@ export const ContainerCardDropdownMenuTriggerButton = ({
           <Icon icon={IconMenuKebab} size={4.5} />
         </Button>
       </DropdownMenuTrigger>
-      <ContainerCardDropdownMenuContent handleRenameClick={handleRenameClick} />
+      <ContainerCardDropdownMenuContent onRenameClick={onRenameClick} />
     </DropdownMenu>
   );
 };
