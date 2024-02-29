@@ -6,10 +6,25 @@ import { Icon, WhiteOverlay } from '@/components/ui';
 import { LoginForm } from '@/features/auth/components/LoginForm/LoginForm';
 import { cn } from '@/lib/tailwind/utils';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const LoginPage = () => {
   const [isLoading, setIsLoading] = useState(false);
+
+  /**
+   * If the loading state is still true after a certain amount of time, set it to false and show an error message.
+   * This is to prevent the loading spinner from being displayed indefinitely.
+   */
+  useEffect(() => {
+    let timeout: ReturnType<typeof setTimeout> | undefined;
+    if (isLoading) {
+      timeout = setTimeout(() => {
+        setIsLoading(false);
+        alert('Something went wrong. Please try again.');
+      }, 15000); // 15 seconds
+    }
+    return () => clearTimeout(timeout);
+  }, [isLoading]);
 
   return (
     <>
