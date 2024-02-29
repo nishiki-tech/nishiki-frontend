@@ -31,6 +31,7 @@ const iconVariants = cva('', {
       12: 'size-12',
       14: 'size-14',
       16: 'size-16',
+      32: 'size-32',
     },
     /**
      * Color of the icon, which is predefined in the `theme.extend.colors` object in the `tailwind.config.ts` file.
