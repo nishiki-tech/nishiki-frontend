@@ -2,6 +2,7 @@ import { IconContainer } from '@/assets/images/icons';
 import { Card, Icon, SquareTextInput } from '@/components/ui';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/Form';
 import { renameContainerFormSchema, RenameContainerInputs } from '@/features/groups/lib/schemas';
+import { IContainer } from '@/types/definition';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { KeyboardEvent, useEffect, useRef } from 'react';
@@ -12,7 +13,7 @@ interface IRenameContainerFormProps {
   /**
    * The current container name, which a user willing to change from
    */
-  currentContainerName: string;
+  currentContainerName: IContainer['name'];
   /**
    * The state, if true, the rename form is open
    */
