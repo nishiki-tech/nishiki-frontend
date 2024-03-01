@@ -15,11 +15,6 @@ interface IDeleteGroupDialogContentProps {
    * The ID of the group to delete.
    */
   groupId: IGroup['id'];
-
-  /**
-   * If true, close the parent UI component, such as Dialog, DropdownMenu, Drawer, etc., on cancel button click.
-   */
-  closeParentOnCancel?: boolean;
   /**
    * The function to close the parent UI component.
    */
@@ -35,6 +30,9 @@ export const DeleteGroupDialogContent = ({
   onParentClose,
   onDialogClose,
 }: IDeleteGroupDialogContentProps) => {
+  const handleCancel = () => {
+    onParentClose?.();
+  };
   /**
    * Handle the delete button click.
    * If the DELETE request is successful, show a success message and close the dialog and drawer.
@@ -62,7 +60,7 @@ export const DeleteGroupDialogContent = ({
       </DialogBody>
       <DialogFooter>
         <DialogClose asChild>
-          <Button variant="cancel" size="sm" onClick={onParentClose}>
+          <Button variant="cancel" size="sm" onClick={handleCancel}>
             Cancel
           </Button>
         </DialogClose>

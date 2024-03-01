@@ -26,7 +26,7 @@ export const DeleteContainerDialogTriggerButton = ({
 
   return (
     <DialogRoot open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-      <DialogTrigger>
+      <DialogTrigger asChild>
         <DropdownMenuButton>
           <DropdownMenuButtonIcon>
             <Icon icon={IconDelete} size={5} color="danger" />

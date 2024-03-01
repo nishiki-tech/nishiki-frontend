@@ -27,11 +27,14 @@ export const ContainerCardDropdownMenuContent = ({
 }: IContainerCardDropdownMenuContent) => {
   /**
    * The function that is called when the dropdown menu is selected
-   * The preventDefault() inside this function avoids closing the dialog unintentionally when an item selected
-   * @param evt - The event object
-   */
-  const handleSelect = (evt: Event) => {
-    evt.preventDefault();
+   * e.preventDefault() prevents the dropdown menu from closing when selecting that item
+   * This is necessary because closing dropdown menu also closes the dialog unintentionally
+   * @see {@link https://www.radix-ui.com/primitives/docs/components/dropdown-menu#item}
+   * @param e - The event object
+   * @returns void
+   * */
+  const handleSelect = (e: Event) => {
+    e.preventDefault();
   };
 
   return (
