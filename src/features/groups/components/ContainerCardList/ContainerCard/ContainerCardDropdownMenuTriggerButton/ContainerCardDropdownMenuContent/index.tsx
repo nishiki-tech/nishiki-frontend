@@ -1,4 +1,4 @@
-import { IconDelete, IconPen } from '@/assets/images/icons';
+import { IconPen } from '@/assets/images/icons';
 import {
   DropdownMenuButton,
   DropdownMenuButtonIcon,
@@ -8,16 +8,24 @@ import {
   Icon,
 } from '@/components/ui';
 
+import { DeleteContainerDialogTriggerButton } from './DeleteContainerDialogTriggerButton';
+
 interface IContainerCardDropdownMenuContent {
   /**
    * The function to open rename form input field
    */
   onRenameClick: () => void;
+
+  onDropdownMenuClose: () => void;
 }
 
 export const ContainerCardDropdownMenuContent = ({
   onRenameClick,
+  onDropdownMenuClose,
 }: IContainerCardDropdownMenuContent) => {
+  const handleSelect = (evt: Event) => {
+    evt.preventDefault();
+  };
   return (
     <DropdownMenuContent>
       <DropdownMenuItem asChild>
@@ -28,13 +36,8 @@ export const ContainerCardDropdownMenuContent = ({
           <DropdownMenuButtonText>Rename</DropdownMenuButtonText>
         </DropdownMenuButton>
       </DropdownMenuItem>
-      <DropdownMenuItem asChild>
-        <DropdownMenuButton>
-          <DropdownMenuButtonIcon>
-            <Icon icon={IconDelete} size={5} color="danger" />
-          </DropdownMenuButtonIcon>
-          <DropdownMenuButtonText>Delete</DropdownMenuButtonText>
-        </DropdownMenuButton>
+      <DropdownMenuItem onSelect={handleSelect}>
+        <DeleteContainerDialogTriggerButton onDropdownMenuClose={onDropdownMenuClose} />
       </DropdownMenuItem>
     </DropdownMenuContent>
   );
