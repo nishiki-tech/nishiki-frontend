@@ -19,10 +19,10 @@ We have a Discord server for this project. You can join the server by clicking [
 
 ## Authors
 
-- Kota Kawaguchi (@kotaaaa)
-- Nick Y. Ito (@nick-y-ito)
-- Kanta Sakai (@kanta1207)
-- Shuhei Ota (@ShoeheyOt)
+- Kota Kawaguchi ([@kotaaaa](https://github.com/kotaaaa))
+- Nick Y. Ito ([@nick-y-ito](https://github.com/nick-y-ito))
+- Kanta Sakai ([@kanta1207](https://github.com/kanta1207))
+- Shuhei Ota ([@ShoeheyOt](https://github.com/ShoeheyOt))
 
 ## Tech Stack
 
