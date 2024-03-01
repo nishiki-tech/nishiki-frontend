@@ -80,6 +80,11 @@ export const putRenameContainer = async (
   }
 };
 
+/**
+ * Function to send a request to API to delete container
+ * @param containerId - The identifier of container which a user is willing to delete
+ * @returns undefined for success, an error message if fails
+ */
 export const deleteContainer = async (
   containerId: IContainer['id'],
 ): Promise<Result<undefined, string>> => {

@@ -298,7 +298,9 @@ describe('Group actions', () => {
         expect(result.unwrapError()).toBe('API request failed');
       });
     });
+
     describe('removeContainer', () => {
+      /* Arrange common mock data */
       const mockContainerId = '0bfe2c43-865b-4d8a-9ad8-9a0bf54f5e2f';
 
       it('should successfully remove container ', async () => {
@@ -307,18 +309,23 @@ describe('Group actions', () => {
 
         /* Act */
         const result = await removeContainer(mockContainerId);
+
         /* Assert */
         expect(result.unwrap()).toBe(undefined);
         expect(deleteContainer).toHaveBeenCalled();
       });
+
       it('should return Err if validation fails', async () => {
         /* Arrange */
         const invalidContainerId = '';
+
         /* Act */
         const result = removeContainer(invalidContainerId);
+
         /* Assert */
         expect((await result).unwrapError()).toBe('Validation failed');
       });
+
       it('should successful with OK response ', async () => {
         /* Arrange */
         const mockErrorMessage = 'API error';

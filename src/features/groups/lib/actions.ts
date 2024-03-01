@@ -140,6 +140,11 @@ export const renameContainer = async (
   return Err(result.error);
 };
 
+/**
+ * Function to validate containerId and if valid, call the API client to delete the container
+ * @param containerId an identifier of a container which a user is willing to delete
+ * @returns Undefined for success, or an error message if the validation or request fails
+ */
 export const removeContainer = async (
   containerId: IContainer['id'],
 ): Promise<Result<undefined, string>> => {
