@@ -16,7 +16,7 @@ interface IDeleteContainerDialogContentProps {
    */
   containerId: IContainer['id'];
   /**
-   * The function to close parent UI which is dropdownMenu
+   * The function to close parent UI component
    */
   onParentClose: () => void;
   /**
@@ -31,7 +31,15 @@ export const DeleteContainerDialogContent = ({
   onDialogClose,
 }: IDeleteContainerDialogContentProps) => {
   /**
-   * The function to handle when delete button clicked
+   * Handle the cancel button click.
+   * It closes the parent UI component together with this dialog
+   */
+  const handleCancel = () => {
+    onParentClose?.();
+  };
+
+  /**
+   * The function to close the dialog and dropdown menu when delete button clicked
    */
   const handleDelete = async () => {
     const result = await removeContainer(containerId);
@@ -41,7 +49,7 @@ export const DeleteContainerDialogContent = ({
       alert('Successfully deleted');
     }
     onDialogClose();
-    onParentClose();
+    onParentClose?.();
   };
 
   return (
@@ -54,7 +62,7 @@ export const DeleteContainerDialogContent = ({
       </DialogBody>
       <DialogFooter>
         <DialogClose asChild>
-          <Button type="button" variant="cancel" size="sm" onClick={onParentClose}>
+          <Button type="button" variant="cancel" size="sm" onClick={handleCancel}>
             Cancel
           </Button>
         </DialogClose>
