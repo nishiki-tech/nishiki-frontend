@@ -70,12 +70,12 @@ describe('request function', () => {
 
     /* Assert */
     expect(fetch).toHaveBeenCalled();
-    // Check the headers in the fetch call
+    // Check if the Authorization header is included in the fetch options
     const fetchCall = (fetch as jest.MockedFunction<typeof fetch>).mock.calls[0];
     const fetchOptions = fetchCall[1] as RequestInit;
     expect(fetchOptions.headers).toBeDefined();
-    const headers = fetchOptions.headers as Record<string, string>;
-    expect(headers['Authorization']).toBe(`Bearer ${mockToken}`);
+    const headers = fetchOptions.headers as Headers;
+    expect(headers.get('Authorization')).toBe(`Bearer ${mockToken}`);
   });
 
   it('should throw an error when token is not available', async () => {
