@@ -16,7 +16,7 @@ export interface IGetCurrentUserResponse {
 
 /**
  * Fetch the current logged in user's id.
- * @returns {Promise<Result<IGetCurrentUserResponse | string>>} - Id of current logged in user.
+ * @returns A {@link IGetCurrentUserResponse} object on success, or an error message if the request fails
  */
 export const getCurrentUserId = async (): Promise<Result<IGetCurrentUserResponse, string>> => {
   try {
