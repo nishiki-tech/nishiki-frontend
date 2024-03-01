@@ -42,8 +42,8 @@ export const DeleteFoodDialogContent = ({
 }: IDeleteFoodDialogContentProps) => {
   /**
    * Handle the cancel button click.
-   * If the parentClose is true, close the parent dialog together with this dialog.
-   * If the parentClose is false, close only this dialog.
+   * If the closeParentOnCancel is true, close the parent together with this dialog.
+   * If the closeParentOnCancel is false, close only this dialog.
    * @returns void
    */
   const handleCancel = () => {
