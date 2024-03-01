@@ -12,6 +12,9 @@ import { IContainer } from '@/types/definition';
 import { DeleteContainerDialogTriggerButton } from './DeleteContainerDialogTriggerButton';
 
 interface IContainerCardDropdownMenuContent {
+  /**
+   * An identifier of a container which a user willing to delete
+   */
   containerId: IContainer['id'];
   /**
    * The function to open rename form input field

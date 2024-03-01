@@ -62,6 +62,7 @@ describe('containerApiClient', () => {
         expect(result.unwrapError()).toEqual(mockError.message);
       });
     });
+
     describe('putRenameContainer', () => {
       /* Arrange common mock data */
       const mockRequestBody = { containerName: 'newContainerName' };

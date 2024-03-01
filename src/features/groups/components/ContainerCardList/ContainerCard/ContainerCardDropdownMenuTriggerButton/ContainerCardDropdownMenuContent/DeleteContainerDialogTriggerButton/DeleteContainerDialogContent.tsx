@@ -12,7 +12,7 @@ import { IContainer } from '@/types/definition';
 
 interface IDeleteContainerDialogContentProps {
   /**
-   *
+   * An identifier of a container which a user is willing to delete
    */
   containerId: IContainer['id'];
   /**

@@ -14,6 +14,9 @@ import { useState } from 'react';
 import { DeleteContainerDialogContent } from './DeleteContainerDialogContent';
 
 interface IDeleteContainerDialogTriggerButtonProps {
+  /**
+   * An identifier of a container which a user is willing to delete
+   */
   containerId: IContainer['id'];
   /**
    * The function to close the dropdown menu

@@ -8,8 +8,7 @@ import { ContainerCardDropdownMenuContent } from './ContainerCardDropdownMenuCon
 
 interface IContainerCardDropdownMenuProps {
   /**
-   *
-   * @returns
+   * An identifier of a container which a user is willing to delete
    */
   containerId: IContainer['id'];
   /**
