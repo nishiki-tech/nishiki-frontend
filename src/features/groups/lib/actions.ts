@@ -143,7 +143,7 @@ export const renameContainer = async (
 export const removeContainer = async (
   containerId: IContainer['id'],
 ): Promise<Result<undefined, string>> => {
-  const validatedData = deleteContainerSchema.safeParse({ undefined });
+  const validatedData = deleteContainerSchema.safeParse({ containerId });
   if (!validatedData.success) return Err('Validation failed');
 
   const result = await deleteContainer(containerId);

@@ -7,6 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui';
+import { removeContainer } from '@/features/groups/lib/actions';
 import { IContainer } from '@/types/definition';
 
 interface IDeleteContainerDialogContentProps {
@@ -25,20 +26,20 @@ interface IDeleteContainerDialogContentProps {
 }
 
 export const DeleteContainerDialogContent = ({
-  // containerId,
+  containerId,
   onParentClose,
   onDialogClose,
 }: IDeleteContainerDialogContentProps) => {
   /**
    * The function to handle when delete button clicked
    */
-  const handleDelete = () => {
-    // const result = await removeContainer(containerId);
-    // if(!result.ok) {
-    //   alert('Something went wrong. Please try again.')
-    // } else{
-    //   alert('Successfully deleted')
-    // }
+  const handleDelete = async () => {
+    const result = await removeContainer(containerId);
+    if (!result.ok) {
+      alert('Something went wrong. Please try again.');
+    } else {
+      alert('Successfully deleted');
+    }
     onDialogClose();
     onParentClose();
   };
