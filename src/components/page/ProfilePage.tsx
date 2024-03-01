@@ -11,15 +11,10 @@ export const ProfilePage = async () => {
    */
   const getUserName = async () => {
     const getCurrentUserIdResult = await getCurrentUserId();
-    if (getCurrentUserIdResult.ok) {
-      const { userId } = getCurrentUserIdResult.unwrap();
-      const getUserByIdResult = await getUserById(userId);
-      if (getUserByIdResult.ok) {
-        const { name } = getUserByIdResult.unwrap();
-        return name;
-      }
-    }
-    return undefined;
+    const { userId } = getCurrentUserIdResult.unwrap();
+    const getUserByIdResult = await getUserById(userId);
+    const { name } = getUserByIdResult.unwrap();
+    return name;
   };
 
   // Get the user's name in here.
@@ -27,7 +22,7 @@ export const ProfilePage = async () => {
 
   return (
     <MobileLayout heading="Profile" headerRight={<HeaderMenuCircleButton />}>
-      {name ? <UserProfile name={name} /> : <p>Something went wrong.</p>}
+      <UserProfile name={name} />
     </MobileLayout>
   );
 };
