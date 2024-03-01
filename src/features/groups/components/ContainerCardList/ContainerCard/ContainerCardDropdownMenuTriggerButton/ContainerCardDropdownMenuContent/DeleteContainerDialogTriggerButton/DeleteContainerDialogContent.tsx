@@ -25,7 +25,7 @@ export const DeleteContainerDialogContent = ({
 }: IDeleteContainerDialogContentProps) => {
   /**
    * Handle the cancel button click.
-   * It closes the parent UI component if specified.
+   * It closes the parent UI component together with this dialog
    */
   const handleCancel = () => {
     onParentClose?.();
