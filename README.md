@@ -24,6 +24,46 @@ We have a Discord server for this project. You can join the server by clicking [
 - Kanta Sakai (@kanta1207)
 - Shuhei Ota (@ShoeheyOt)
 
+## Tech Stack
+
+### Base
+
+- [TypeScript](https://www.typescriptlang.org/)
+- [Next.js](https://nextjs.org/) 14 (App Router)
+- [React.js](https://react.dev/) 18
+
+### Styling
+
+- [Tailwind CSS](https://tailwindcss.com/)
+- [shadcn/ui](https://ui.shadcn.com/)
+- [Radix UI](https://www.radix-ui.com/primitives)
+
+### Testing
+
+- [Jest](https://jestjs.io/)
+
+### Form Handling
+
+- [React Hook Form](https://react-hook-form.com/)
+- [Zod](https://zod.dev/)
+
+### Authentication
+
+- [Amazon Cognito](https://aws.amazon.com/cognito/)
+- [AWS Amplify](https://aws.amazon.com/amplify/)
+
+### Linting
+
+- [ESLint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
+- [Husky](https://typicode.github.io/husky/)
+- [Commitlint](https://commitlint.js.org/)
+
+### CI/CD
+
+- [GitHub Actions](https://github.com/features/actions)
+- [Vercel](https://vercel.com/docs)
+
 <!-- TODO: Add License Section -->
 <!-- ISSUE: #233 -->
 <!-- ## License -->
