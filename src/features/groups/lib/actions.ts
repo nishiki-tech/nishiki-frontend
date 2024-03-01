@@ -1,4 +1,5 @@
 import {
+  deleteContainer,
   IPostContainerRequestBody,
   IPutRenameContainerRequestBody,
   postCreateContainer,
@@ -14,6 +15,7 @@ import {
   CreateContainerInputs,
   createGroupFormSchema,
   CreateGroupInputs,
+  deleteContainerSchema,
   deleteGroupSchema,
   deleteMemberSchema,
   renameContainerFormSchema,
@@ -134,6 +136,18 @@ export const renameContainer = async (
   };
 
   const result = await putRenameContainer(containerId, containerRenameRequestBody);
+  if (result.ok) return Ok(undefined);
+  return Err(result.error);
+};
+
+export const removeContainer = async (
+  containerId: IContainer['id'],
+): Promise<Result<undefined, string>> => {
+  const validatedData = deleteContainerSchema.safeParse({ undefined });
+  if (!validatedData.success) return Err('Validation failed');
+
+  const result = await deleteContainer(containerId);
+
   if (result.ok) return Ok(undefined);
   return Err(result.error);
 };

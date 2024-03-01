@@ -1,5 +1,6 @@
 import { IconMenuKebab } from '@/assets/images/icons';
 import { Button, DropdownMenu, DropdownMenuTrigger, Icon } from '@/components/ui';
+import { IContainer } from '@/types/definition';
 
 import { useState } from 'react';
 
@@ -7,12 +8,18 @@ import { ContainerCardDropdownMenuContent } from './ContainerCardDropdownMenuCon
 
 interface IContainerCardDropdownMenuProps {
   /**
+   *
+   * @returns
+   */
+  containerId: IContainer['id'];
+  /**
    * A function to open rename form input field
    */
   onRenameClick: () => void;
 }
 
 export const ContainerCardDropdownMenuTriggerButton = ({
+  containerId,
   onRenameClick,
 }: IContainerCardDropdownMenuProps) => {
   const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
@@ -25,6 +32,7 @@ export const ContainerCardDropdownMenuTriggerButton = ({
         </Button>
       </DropdownMenuTrigger>
       <ContainerCardDropdownMenuContent
+        containerId={containerId}
         onRenameClick={onRenameClick}
         onDropdownMenuClose={() => setIsDropdownMenuOpen(false)}
       />

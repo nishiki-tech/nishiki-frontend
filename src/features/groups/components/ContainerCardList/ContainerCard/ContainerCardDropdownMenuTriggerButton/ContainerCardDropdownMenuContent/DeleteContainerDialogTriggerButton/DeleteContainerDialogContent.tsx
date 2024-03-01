@@ -7,8 +7,13 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui';
+import { IContainer } from '@/types/definition';
 
 interface IDeleteContainerDialogContentProps {
+  /**
+   *
+   */
+  containerId: IContainer['id'];
   /**
    * The function to close parent UI which is dropdownMenu
    */
@@ -20,6 +25,7 @@ interface IDeleteContainerDialogContentProps {
 }
 
 export const DeleteContainerDialogContent = ({
+  // containerId,
   onParentClose,
   onDialogClose,
 }: IDeleteContainerDialogContentProps) => {
@@ -27,6 +33,12 @@ export const DeleteContainerDialogContent = ({
    * The function to handle when delete button clicked
    */
   const handleDelete = () => {
+    // const result = await removeContainer(containerId);
+    // if(!result.ok) {
+    //   alert('Something went wrong. Please try again.')
+    // } else{
+    //   alert('Successfully deleted')
+    // }
     onDialogClose();
     onParentClose();
   };

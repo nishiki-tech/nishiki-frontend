@@ -7,10 +7,12 @@ import {
   DropdownMenuItem,
   Icon,
 } from '@/components/ui';
+import { IContainer } from '@/types/definition';
 
 import { DeleteContainerDialogTriggerButton } from './DeleteContainerDialogTriggerButton';
 
 interface IContainerCardDropdownMenuContent {
+  containerId: IContainer['id'];
   /**
    * The function to open rename form input field
    */
@@ -22,6 +24,7 @@ interface IContainerCardDropdownMenuContent {
 }
 
 export const ContainerCardDropdownMenuContent = ({
+  containerId,
   onRenameClick,
   onDropdownMenuClose,
 }: IContainerCardDropdownMenuContent) => {
@@ -45,7 +48,10 @@ export const ContainerCardDropdownMenuContent = ({
         </DropdownMenuButton>
       </DropdownMenuItem>
       <DropdownMenuItem onSelect={handleSelect}>
-        <DeleteContainerDialogTriggerButton onDropdownMenuClose={onDropdownMenuClose} />
+        <DeleteContainerDialogTriggerButton
+          containerId={containerId}
+          onDropdownMenuClose={onDropdownMenuClose}
+        />
       </DropdownMenuItem>
     </DropdownMenuContent>
   );

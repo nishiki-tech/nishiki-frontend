@@ -1,4 +1,5 @@
 export {
+  deleteContainer,
   deleteFood,
   type IPostContainerRequestBody,
   type IPostFoodRequestBody,

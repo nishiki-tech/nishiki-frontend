@@ -4,6 +4,7 @@ import { Err, Ok } from 'result-ts-type';
 
 // Target functions to test
 import {
+  deleteContainer,
   deleteFood,
   postCreateContainer,
   postFood,
@@ -90,6 +91,31 @@ describe('containerApiClient', () => {
         /* Act */
         const result = await putRenameContainer(mockContainerId, mockRequestBody);
 
+        /* Assert */
+        expect(result.unwrapError()).toBe(mockError.message);
+      });
+    });
+    describe('deleteContainer', () => {
+      it('should return Ok result on success', async () => {
+        /* Arrange */
+        (request as jest.Mock).mockResolvedValue({});
+        /* Act */
+        const result = await deleteContainer(mockContainerId);
+        /* Assert */
+        expect(result.unwrap()).toBe(undefined);
+        expect(request).toHaveBeenCalledWith({
+          url: expect.stringContaining(`/containers/${mockContainerId}`),
+          method: 'DELETE',
+        });
+      });
+
+      it('should return Err result if API request fails', async () => {
+        /* Arrange */
+        const mockError = new Error('API error');
+        (request as jest.Mock).mockRejectedValue(mockError);
+
+        /* Act */
+        const result = await deleteContainer(mockContainerId);
         /* Assert */
         expect(result.unwrapError()).toBe(mockError.message);
       });
