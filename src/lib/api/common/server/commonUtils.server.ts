@@ -32,9 +32,8 @@ export const request = async <T>({
    * Set the Authorization token in the header
    * If the API is a mock API, then skip this if statement.
    */
-  if (!isMockApi() && !token) {
-    throw new Error('Authentication token is not available');
-  } else if (token) {
+  if (!isMockApi()) {
+    if (!token) throw new Error('Authentication token is not available');
     requestHeaders.set('Authorization', `Bearer ${token}`);
   }
 
