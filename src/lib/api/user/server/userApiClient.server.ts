@@ -1,6 +1,8 @@
 import { IUser } from '@/types/definition';
 
-import { request } from '../../common/server/commonUtils.server';
+import { Err, Ok, Result } from 'result-ts-type';
+
+import { request } from '../../common/server';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || '';
 
@@ -26,5 +28,68 @@ export const fetchUserList = async (id: string): Promise<IUser[]> => {
     return response.users;
   } catch (err) {
     throw new Error('API response is invalid'); // TODO: display error page
+  }
+};
+/**
+ * Interface representing the API response for the function to get a user by userId.
+ * @property id - {@link IUser} The unique identifier of the user to get.
+ * @property name - {@link IUser} The name of the user.
+ */
+export interface IGetUserByIdResponse {
+  id: IUser['id'];
+  name: IUser['name'];
+}
+
+/**
+ * Interface representing the temporary API response, which should be fixed in the future.
+ * It's different from how it's defined in the web API document.
+ * Mentioned in the issue {@link https://github.com/nishiki-tech/nishiki-frontend/issues/255#issuecomment-1973752756}
+ * @property userId - {@link IUser} The unique identifier of the user to get.
+ * @property username - {@link IUser} The name of the user.
+ */
+interface ITemporaryGetUserByIdResponse {
+  status: string;
+  statusCode: number;
+  body: {
+    userId: IUser['id'];
+    username: IUser['name'];
+  };
+}
+
+/**
+ * Fetch a user by userId.
+ * @param userId - The unique identifier of the user.
+ * @returns {Promise<Result<IGetCurrentUserResponse | string>>} - Id of current logged in user.
+ */
+export const getUserById = async (
+  userId: IUser['id'],
+): Promise<Result<IGetUserByIdResponse, string>> => {
+  try {
+    const data = await request<string>({
+      url: API_BASE_URL + '/users/' + userId,
+      method: 'GET',
+    });
+
+    /**
+     * The API currently returns a JSON string instead of object
+     * This issue is mentioned in the issue {@link https://github.com/nishiki-tech/nishiki-frontend/issues/255}
+     * Thus, fow now, we need to parse the response in here.
+     */
+    const parsedData = JSON.parse(data) as ITemporaryGetUserByIdResponse;
+
+    /**
+     * The data modified to match the interface {@link IGetUserByIdResponse}, which is defined in the web API document.
+     */
+    const modifiedData: IGetUserByIdResponse = {
+      id: parsedData.body.userId,
+      name: parsedData.body.username,
+    };
+
+    return Ok(modifiedData);
+  } catch (error) {
+    if (error instanceof Error) {
+      return Err(error.message);
+    }
+    return Err('API response is invalid');
   }
 };
