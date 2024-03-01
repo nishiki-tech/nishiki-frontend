@@ -13,6 +13,9 @@ import { useState } from 'react';
 import { DeleteContainerDialogContent } from './DeleteContainerDialogContent';
 
 interface IDeleteContainerDialogTriggerButtonProps {
+  /**
+   * The function to close the dropdown menu
+   */
   onDropdownMenuClose: () => void;
 }
 
@@ -31,7 +34,10 @@ export const DeleteContainerDialogTriggerButton = ({
           <DropdownMenuButtonText>Delete</DropdownMenuButtonText>
         </DropdownMenuButton>
       </DialogTrigger>
-      <DeleteContainerDialogContent onDropdownMenuClose={onDropdownMenuClose} />
+      <DeleteContainerDialogContent
+        onParentClose={onDropdownMenuClose}
+        onDialogClose={() => setIsDialogOpen(false)}
+      />
     </DialogRoot>
   );
 };

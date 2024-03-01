@@ -9,12 +9,28 @@ import {
 } from '@/components/ui';
 
 interface IDeleteContainerDialogContentProps {
-  onDropdownMenuClose: () => void;
+  /**
+   * function to close parent UI which is dropdownMenu
+   */
+  onParentClose: () => void;
+  /**
+   * the function to close this dialog
+   */
+  onDialogClose: () => void;
 }
 
 export const DeleteContainerDialogContent = ({
-  onDropdownMenuClose,
+  onParentClose,
+  onDialogClose,
 }: IDeleteContainerDialogContentProps) => {
+  /**
+   * function to handle when delete button clicked
+   */
+  const handleDelete = () => {
+    onDialogClose();
+    onParentClose();
+  };
+
   return (
     <DialogContent>
       <DialogHeader>
@@ -24,12 +40,12 @@ export const DeleteContainerDialogContent = ({
         <p>Are you sure you want to delete the container?</p>
       </DialogBody>
       <DialogFooter>
-        <DialogClose onClick={onDropdownMenuClose}>
-          <Button type="button" variant="cancel" size="sm">
+        <DialogClose asChild>
+          <Button type="button" variant="cancel" size="sm" onClick={onParentClose}>
             Cancel
           </Button>
         </DialogClose>
-        <Button variant="error" size="sm">
+        <Button variant="error" size="sm" onClick={handleDelete}>
           Delete
         </Button>
       </DialogFooter>

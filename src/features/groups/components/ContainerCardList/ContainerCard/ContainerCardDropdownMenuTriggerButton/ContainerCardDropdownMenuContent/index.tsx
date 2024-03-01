@@ -16,6 +16,9 @@ interface IContainerCardDropdownMenuContent {
    */
   onRenameClick: () => void;
 
+  /**
+   * The function to close dropdown menu
+   */
   onDropdownMenuClose: () => void;
 }
 
@@ -23,9 +26,15 @@ export const ContainerCardDropdownMenuContent = ({
   onRenameClick,
   onDropdownMenuClose,
 }: IContainerCardDropdownMenuContent) => {
+  /**
+   * The function that is called when the dropdown menu is selected
+   * the preventDefault() inside this function avoids closing the the dialog unintentionally when an item selected
+   * @param evt - The event object
+   */
   const handleSelect = (evt: Event) => {
     evt.preventDefault();
   };
+
   return (
     <DropdownMenuContent>
       <DropdownMenuItem asChild>
