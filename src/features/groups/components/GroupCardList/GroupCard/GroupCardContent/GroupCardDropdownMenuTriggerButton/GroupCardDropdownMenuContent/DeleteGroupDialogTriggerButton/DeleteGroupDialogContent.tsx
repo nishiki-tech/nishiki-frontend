@@ -30,7 +30,7 @@ export const DeleteGroupDialogContent = ({
   onParentClose,
   onDialogClose,
 }: IDeleteGroupDialogContentProps) => {
-  /*
+  /**
    * Handle the cancel button click.
    * It closes the parent UI component if specified.
    */
