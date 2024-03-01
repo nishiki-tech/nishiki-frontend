@@ -15,7 +15,6 @@ interface IContainerCardDropdownMenuContent {
    * The function to open rename form input field
    */
   onRenameClick: () => void;
-
   /**
    * The function to close dropdown menu
    */
@@ -28,7 +27,7 @@ export const ContainerCardDropdownMenuContent = ({
 }: IContainerCardDropdownMenuContent) => {
   /**
    * The function that is called when the dropdown menu is selected
-   * the preventDefault() inside this function avoids closing the the dialog unintentionally when an item selected
+   * The preventDefault() inside this function avoids closing the dialog unintentionally when an item selected
    * @param evt - The event object
    */
   const handleSelect = (evt: Event) => {

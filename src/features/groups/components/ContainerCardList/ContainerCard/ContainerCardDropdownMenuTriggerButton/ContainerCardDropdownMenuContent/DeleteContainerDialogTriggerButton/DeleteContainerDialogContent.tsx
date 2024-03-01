@@ -10,11 +10,11 @@ import {
 
 interface IDeleteContainerDialogContentProps {
   /**
-   * function to close parent UI which is dropdownMenu
+   * The function to close parent UI which is dropdownMenu
    */
   onParentClose: () => void;
   /**
-   * the function to close this dialog
+   * The function to close this dialog
    */
   onDialogClose: () => void;
 }
@@ -24,7 +24,7 @@ export const DeleteContainerDialogContent = ({
   onDialogClose,
 }: IDeleteContainerDialogContentProps) => {
   /**
-   * function to handle when delete button clicked
+   * The function to handle when delete button clicked
    */
   const handleDelete = () => {
     onDialogClose();
