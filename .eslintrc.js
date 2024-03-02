@@ -45,7 +45,6 @@ module.exports = {
       {
         selector: 'variable',
         format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
-        leadingUnderscore: 'allow',
       },
     ],
   },

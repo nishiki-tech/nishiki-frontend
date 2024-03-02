@@ -8,7 +8,7 @@
  */
 'use client';
 
-import { IconCross } from '@/assets/images/icons';
+import { CrossIcon } from '@/assets/images/icons';
 import { Icon } from '@/components/ui';
 import { cn } from '@/lib/tailwind/utils';
 
@@ -102,7 +102,7 @@ const DrawerHeader = ({
     {children}
     {closeButton && (
       <DrawerClose className={cn('absolute right-0 h-full px-4')}>
-        <Icon icon={IconCross} color="gray-dark" size={3.5} />
+        <Icon icon={CrossIcon} color="gray-dark" size={3.5} />
         <span className="sr-only">Close</span>
       </DrawerClose>
     )}

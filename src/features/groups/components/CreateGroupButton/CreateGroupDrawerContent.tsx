@@ -20,7 +20,7 @@ import { createGroup } from '@/features/groups/lib/actions';
 import { createGroupFormSchema, CreateGroupInputs } from '@/features/groups/lib/schemas';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -29,7 +29,10 @@ interface ICreateGroupDrawerContentProps {
   onClose: () => void;
 }
 
-export const CreateGroupDrawerContent = ({ isOpen, onClose }: ICreateGroupDrawerContentProps) => {
+export const CreateGroupDrawerContent: FC<ICreateGroupDrawerContentProps> = ({
+  isOpen,
+  onClose,
+}) => {
   const form = useForm<z.infer<typeof createGroupFormSchema>>({
     resolver: zodResolver(createGroupFormSchema),
     defaultValues: {
@@ -41,11 +44,11 @@ export const CreateGroupDrawerContent = ({ isOpen, onClose }: ICreateGroupDrawer
    * Process the form submission.
    * @param values - The form values
    */
-  const processSubmit: SubmitHandler<CreateGroupInputs> = async (values: CreateGroupInputs) => {
+  const processSubmit: SubmitHandler<CreateGroupInputs> = async (values) => {
     const { groupName } = values;
     const result = await createGroup({ groupName });
     if (!result.ok) {
-      alert('Something went wrong. Please try again.');
+      alert('Failed to create the group');
     } else {
       alert('Successfully created the group');
       form.reset();
@@ -80,7 +83,7 @@ export const CreateGroupDrawerContent = ({ isOpen, onClose }: ICreateGroupDrawer
                   <FormMessage />
                 </FormItem>
               )}
-            />
+            ></FormField>
           </DrawerBody>
           <DrawerFooter>
             <DrawerClose asChild>

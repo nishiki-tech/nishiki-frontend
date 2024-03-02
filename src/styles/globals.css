@@ -3,24 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --color-primary-lightest: #e6f2f1;
-    --color-primary-light: #abd4cf;
-    --color-primary: #6ab3ab;
-    --color-primary-dark: #5fa19a;
-    --color-accent: #fcd884;
-    --color-accent-dark: #f1c560;
-    --color-danger: #cd5a5a;
-    --color-danger-dark: #b95151;
-    --color-gray-lightest: #f8f8f8;
-    --color-gray-light: #eeeeee;
-    --color-gray: #bdbdbd;
-    --color-gray-dark: #777777;
-    --color-overlay: rgba(0, 0, 0, 0.25);
-    --color-white: #ffffff;
-    --color-black: #222222;
-  }
-
   input[type='search']::-webkit-search-cancel-button {
     -webkit-appearance: none;
     appearance: none;

@@ -1,6 +1,6 @@
 'use client';
 
-import { IconCaretRight } from '@/assets/images/icons';
+import { CaretRightIcon } from '@/assets/images/icons';
 import {
   Button,
   Card,
@@ -31,7 +31,7 @@ export const FoodFilterCategoryDrawer = ({
         <Button className="w-full flex items-center justify-between mb-2">
           Category
           <figure className="w-12 h-12 flex items-center justify-center">
-            <Icon icon={IconCaretRight} size={2.5} color="gray-dark" />
+            <Icon icon={CaretRightIcon} size={2.5} color="gray-dark" />
           </figure>
         </Button>
       </DrawerTrigger>

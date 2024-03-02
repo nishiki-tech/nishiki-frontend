@@ -73,7 +73,7 @@ export const AddDrawerContent = ({
   const processSubmit: SubmitHandler<CreateFoodInputs> = async (values: CreateFoodInputs) => {
     const result = await createFood(values);
     if (!result.ok) {
-      alert('Something went wrong. Please try again.');
+      alert('Failed to create');
     } else {
       alert('Successfully created');
       form.reset();

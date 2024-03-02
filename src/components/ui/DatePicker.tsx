@@ -1,6 +1,6 @@
 'use client';
 
-import { IconCalendar } from '@/assets/images/icons';
+import { CalendarIcon } from '@/assets/images/icons';
 import {
   Button,
   Calendar,
@@ -38,7 +38,7 @@ export const DatePicker = ({ date, onSelect, className, ...buttonProps }: IDateP
           <span className="whitespace-nowrap overflow-hidden text-ellipsis">
             {date ? format(date, 'PP') : null}
           </span>
-          <Icon icon={IconCalendar} size={4} color="gray-dark" className="shrink-0" />
+          <Icon icon={CalendarIcon} size={4} color="gray-dark" className="shrink-0" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="max-w-72 h-screen min-h-52">

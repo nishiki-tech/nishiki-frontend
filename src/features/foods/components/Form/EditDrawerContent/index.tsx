@@ -69,7 +69,7 @@ export const EditDrawerContent = ({
   const processSubmit: SubmitHandler<UpdateFoodInputs> = async (values: UpdateFoodInputs) => {
     const result = await updateFood(values);
     if (!result.ok) {
-      alert('Something went wrong. Please try again.');
+      alert('Failed to update');
     } else {
       alert('Successfully updated');
       form.reset();

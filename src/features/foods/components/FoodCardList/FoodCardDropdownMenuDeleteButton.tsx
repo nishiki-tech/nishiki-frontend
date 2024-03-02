@@ -1,4 +1,4 @@
-import { IconDelete } from '@/assets/images/icons';
+import { DeleteIcon } from '@/assets/images/icons';
 import {
   DialogRoot,
   DialogTrigger,
@@ -39,7 +39,7 @@ export const FoodCardDropdownMenuDeleteButton = ({
       <DialogTrigger asChild>
         <DropdownMenuButton>
           <DropdownMenuButtonIcon>
-            <Icon icon={IconDelete} size={5} color="danger" />
+            <Icon icon={DeleteIcon} size={5} color="danger" />
           </DropdownMenuButtonIcon>
           <DropdownMenuButtonText>Delete</DropdownMenuButtonText>
         </DropdownMenuButton>

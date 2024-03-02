@@ -1,7 +1,6 @@
 import {
   createFoodFormSchema,
   CreateFoodInputs,
-  deleteFoodFormSchema,
   UpdateFoodInputs,
 } from '@/features/foods/lib/schema';
 import {
@@ -11,7 +10,6 @@ import {
   putFood,
 } from '@/lib/api/container/client';
 import { deleteFood } from '@/lib/api/container/client';
-import { IContainer, IFood } from '@/types/definition';
 
 import { Err, Ok, Result } from 'result-ts-type';
 
@@ -70,12 +68,9 @@ export const updateFood = async (inputs: UpdateFoodInputs): Promise<Result<undef
  * @returns undefined on success, or an error message if the request fails
  */
 export const removeFood = async (
-  containerId: IContainer['id'],
-  foodId: IFood['id'],
+  containerId: string,
+  foodId: string,
 ): Promise<Result<undefined, string>> => {
-  const validatedData = deleteFoodFormSchema.safeParse({ foodId, containerId });
-  if (!validatedData.success) return Err('Validation failed');
-
   const result = await deleteFood(containerId, foodId);
 
   if (result.ok) return Ok(undefined);

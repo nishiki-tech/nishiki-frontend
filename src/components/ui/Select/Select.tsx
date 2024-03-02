@@ -8,7 +8,7 @@
 
 'use client';
 
-import { IconCheck } from '@/assets/images/icons';
+import { CaretDownIcon } from '@/assets/images/icons';
 import { cn } from '@/lib/tailwind/utils';
 
 import {
@@ -42,7 +42,7 @@ const SelectContent = forwardRef<
       ref={ref}
       className={cn(
         'flex justify-center items-center',
-        'max-h-[calc(100vh_/_2_-_var(--radix-select-trigger-height))] min-w-32 max-w-full bg-white text-black shadow-md rounded-md overflow-hidden',
+        'max-h-[calc(100vh_/_2_-_var(--radix-select-trigger-height))] min-w-32 max-w-full bg-white text-black shadow-md rounded overflow-hidden',
         'z-50',
         'data-[state=open]:animate-fadeIn',
         // space between the SelectTrigger and SelectContent
@@ -73,7 +73,7 @@ const SelectLabel = forwardRef<
 >(({ className, ...props }, ref) => (
   <PrimitiveLabel
     ref={ref}
-    className={cn('py-1.5 pl-8 pr-2 text-base font-medium', className)}
+    className={cn('py-1.5 pl-6 pr-2 text-sm font-semibold', className)}
     {...props}
   />
 ));
@@ -86,10 +86,10 @@ const SelectItem = forwardRef<
   <PrimitiveItem
     ref={ref}
     className={cn(
-      'relative flex items-center w-full',
-      'rounded-md text-base font-normal outline-none',
-      'py-1 pl-8 pr-2 cursor-default select-none',
-      'focus:bg-gray-light data-[state=checked]:bg-gray-light',
+      'relative flex items-center',
+      'w-full rounded-sm text-sm outline-none  focus:bg-gray-light',
+      'py-1 pl-8 pr-2',
+      'cursor-default select-none',
       className,
     )}
     {...props}
@@ -97,9 +97,7 @@ const SelectItem = forwardRef<
     <span className="absolute left-2">
       <PrimitiveItemIndicator>
         {/* TODO:Create a new icon to use in here */}
-        <div className="size-4 flex items-center justify-center">
-          <Icon icon={IconCheck} size={3.5} className="text-primary" />
-        </div>
+        <Icon icon={CaretDownIcon} size={4} />
       </PrimitiveItemIndicator>
     </span>
     <PrimitiveItemText>{children}</PrimitiveItemText>

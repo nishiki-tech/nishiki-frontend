@@ -1,6 +1,6 @@
 'use client';
 
-import { IconCaretDown } from '@/assets/images/icons';
+import { CaretDownIcon } from '@/assets/images/icons';
 import { Icon, iconVariants } from '@/components/ui';
 import { cn } from '@/lib/tailwind/utils';
 
@@ -50,7 +50,7 @@ const SelectTrigger = forwardRef<ElementRef<typeof PrimitiveTrigger>, ISelectTri
     >
       {children}
       <PrimitiveIcon asChild>
-        <Icon icon={IconCaretDown} size={2.5} {...iconProps} />
+        <Icon icon={CaretDownIcon} size={2.5} {...iconProps} />
       </PrimitiveIcon>
     </PrimitiveTrigger>
   ),

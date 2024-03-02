@@ -1,7 +1,7 @@
 import { request } from '@/lib/api/common/server';
 import { IGroup } from '@/types/definition';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || '';
+const BACKEND_API_DOMAIN = process.env.NEXT_PUBLIC_BACKEND_API_DOMAIN || '';
 
 /**
  * Interface representing the API response for a group.
@@ -22,13 +22,13 @@ interface IGroupsResponse {
 }
 
 /**
- * Fetch a list of groups that the user is a member of.
+ * Fetch array of groups to which the logged-in user belongs.
  * @returns Array of IGroup object
  */
-export const getGroupList = async (): Promise<IGroup[]> => {
+export const fetchGroupList = async (): Promise<IGroup[]> => {
   try {
     const data: IGroupsResponse = await request<IGroupsResponse>({
-      url: API_BASE_URL + '/groups',
+      url: BACKEND_API_DOMAIN + '/groups',
       method: 'GET',
     });
     return data.groups.map((group) => ({
@@ -36,24 +36,7 @@ export const getGroupList = async (): Promise<IGroup[]> => {
       name: group.groupName,
     }));
   } catch (err) {
-    throw new Error('API response is invalid');
-  }
-};
-
-/**
- * Fetch a single group by its ID.
- * @param groupId - The ID of the group to fetch.
- * @returns IGroup object
- */
-export const getGroup = async (groupId: string): Promise<IGroup> => {
-  try {
-    const data: IGroupApiResponse = await request<IGroupApiResponse>({
-      url: `${API_BASE_URL}/groups/${groupId}`,
-      method: 'GET',
-    });
-    return { id: data.groupId, name: data.groupName };
-  } catch (err) {
-    throw new Error('API response is invalid');
+    throw new Error('API response is invalid'); // TODO: display error page
   }
 };
 
@@ -64,7 +47,7 @@ export interface IGroupJoinResponse {
 export const putJoinRequest = async (hashValue: string): Promise<IGroup['id'] | undefined> => {
   try {
     const data: IGroupJoinResponse = await request<IGroupJoinResponse>({
-      url: API_BASE_URL + '/groups?Action=joinToGroup',
+      url: BACKEND_API_DOMAIN + '/groups?Action=joinToGroup',
       method: 'PUT',
       options: {
         body: JSON.stringify({ invitationLinkHash: hashValue }),

@@ -2,7 +2,6 @@ import { Card, SquareTextInput } from '@/components/ui';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/Form';
 import { renameGroup } from '@/features/groups/lib/actions';
 import { renameGroupFormSchema, RenameGroupInputs } from '@/features/groups/lib/schemas';
-import { cn } from '@/lib/tailwind/utils';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import React, { FC, KeyboardEvent, useEffect, useRef } from 'react';
@@ -43,13 +42,13 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
    * Process the form submission.
    * @param values - The form values
    */
-  const processSubmit: SubmitHandler<RenameGroupInputs> = async (values: RenameGroupInputs) => {
+  const processSubmit: SubmitHandler<RenameGroupInputs> = async (values) => {
     const { groupName } = values;
     if (groupName === currentGroupName) return;
 
     const result = await renameGroup(groupId, values);
     if (!result.ok) {
-      alert('Something went wrong. Please try again.');
+      alert('Failed to rename the group');
     } else {
       alert('Successfully renamed the group');
       form.reset();
@@ -114,7 +113,7 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
                       onKeyDown={handleKeyDown}
                       handleClearInput={handleClearInput}
                       handleOutsideClick={handleOutsideClick}
-                      className={cn(form.formState.errors.groupName && 'border-danger', 'text-lg')}
+                      className={form.formState.errors.groupName && 'border-danger'}
                     />
                   </FormControl>
                   <FormMessage />

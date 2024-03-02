@@ -1,6 +1,6 @@
 'use client';
 
-import { IconPlus } from '@/assets/images/icons';
+import { PlusIcon } from '@/assets/images/icons';
 import { Button, DrawerRoot, DrawerTrigger, Icon } from '@/components/ui';
 import { GroupIdContainersMapType } from '@/features/foods/types/FoodTypes';
 import {
@@ -42,7 +42,7 @@ export const AddButton = ({
             className,
           )}
         >
-          <Icon icon={IconPlus} size={4.5} color="black" />
+          <Icon icon={PlusIcon} size={4.5} color="black" />
         </Button>
       </DrawerTrigger>
       <AddDrawerContent

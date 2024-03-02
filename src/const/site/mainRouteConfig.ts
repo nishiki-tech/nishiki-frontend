@@ -1,10 +1,10 @@
 import {
-  IconFoodOff,
-  IconFoodOn,
-  IconHomeOff,
-  IconHomeOn,
-  IconProfileOff,
-  IconProfileOn,
+  FoodIcon_Off,
+  FoodIcon_On,
+  HomeIcon_Off,
+  HomeIcon_On,
+  ProfileIcon_Off,
+  ProfileIcon_On,
 } from '@/assets/images/icons';
 
 export type MainRouteKey = 'groups' | 'foods' | 'profile';
@@ -28,24 +28,24 @@ export const mainRoutes: MainRoutes = {
     path: '/groups',
     label: 'Groups',
     icons: {
-      on: IconHomeOn,
-      off: IconHomeOff,
+      on: HomeIcon_On,
+      off: HomeIcon_Off,
     },
   },
   foods: {
     path: '/foods',
     label: 'Foods',
     icons: {
-      on: IconFoodOn,
-      off: IconFoodOff,
+      on: FoodIcon_On,
+      off: FoodIcon_Off,
     },
   },
   profile: {
     path: '/profile',
     label: 'Profile',
     icons: {
-      on: IconProfileOn,
-      off: IconProfileOff,
+      on: ProfileIcon_On,
+      off: ProfileIcon_Off,
     },
   },
 };

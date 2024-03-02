@@ -3,7 +3,7 @@
  * This file is used as an example for the Dropdown components.
  * Once we're done with the example, we can delete this file.
  */
-import { IconDelete, IconMenuKebab, IconPen } from '@/assets/images/icons';
+import { DeleteIcon, MenuKebabIcon, PenIcon } from '@/assets/images/icons';
 import { ContainerCount } from '@/features/groups/components/GroupCardList/GroupCard/GroupCardContent/ContainerCount';
 import { UserCount } from '@/features/groups/components/GroupCardList/GroupCard/GroupCardContent/UserCount';
 
@@ -51,14 +51,14 @@ const DropDownMenuWithCardExample = () => {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="w-12">
-              <Icon icon={IconMenuKebab} size={4.5} />
+              <Icon icon={MenuKebabIcon} size={4.5} />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             <DropdownMenuItem asChild>
               <DropdownMenuButton onClick={handleRenameClick}>
                 <DropdownMenuButtonIcon>
-                  <Icon icon={IconPen} size={5} color="primary" />
+                  <Icon icon={PenIcon} size={5} color="primary" />
                 </DropdownMenuButtonIcon>
                 <DropdownMenuButtonText>Rename</DropdownMenuButtonText>
               </DropdownMenuButton>
@@ -66,7 +66,7 @@ const DropDownMenuWithCardExample = () => {
             <DropdownMenuItem asChild>
               <DropdownMenuButton onClick={handleDeleteClick}>
                 <DropdownMenuButtonIcon>
-                  <Icon icon={IconDelete} size={5} color="danger" />
+                  <Icon icon={DeleteIcon} size={5} color="danger" />
                 </DropdownMenuButtonIcon>
                 <DropdownMenuButtonText>Delete</DropdownMenuButtonText>
               </DropdownMenuButton>

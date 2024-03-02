@@ -1,6 +1,6 @@
 'use client';
 
-import { IconMenuMeatball } from '@/assets/images/icons';
+import { MenuMeatballIcon } from '@/assets/images/icons';
 import { MobileLayout } from '@/components/layouts/MobileLayout';
 import { HeaderBackButton } from '@/components/parts/Header';
 import { Icon } from '@/components/ui';
@@ -27,14 +27,14 @@ import React, { useEffect, useState } from 'react';
 export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
   const searchParams = useSearchParams();
   const sort = searchParams?.get('sort') || '';
-  const groupId = searchParams?.get('group') || '';
-  const containerId = searchParams?.get('container') || '';
+  const group = searchParams?.get('group') || '';
+  const container = searchParams?.get('container') || '';
   const [displayedFoods, setDisplayedFoods] = useState<IFoodView[]>([]);
   const [query, setQuery] = useState<string>(searchParams?.get('query') || '');
   const [categoryList, setCategoryList] = useState<string[]>(
     searchParams?.get('category')?.split(',') || [],
   );
-  const isFilterSet = !!groupId || !!containerId || !!query || Object.keys(categoryList).length > 0;
+  const isFilterSet = !!group || !!container || !!query || Object.keys(categoryList).length > 0;
 
   const groupIdContainerIdsMap = groupContainersByGroupId(containers);
   const containerIdGroupIdMap = createContainerIdGroupIdMap(containers);
@@ -45,8 +45,8 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
     const categoryList = searchParams?.get('category')?.split(',') || [];
     setCategoryList(categoryList);
     setQuery(searchParams?.get('query') || '');
-    const filterByGroup = (row: IContainer) => groupId === '' || groupId === row.group.id;
-    const filterByContainer = (row: IContainer) => containerId === '' || containerId === row.id;
+    const filterByGroup = (row: IContainer) => group === '' || group === row.group.id;
+    const filterByContainer = (row: IContainer) => container === '' || container === row.id;
     const filterByCategory = (food: IFoodView) => {
       if (!categoryList.length) return true;
       return categoryList.some((c) => food.category.includes(c));
@@ -79,12 +79,12 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
 
     const sortedFoods = [...filteredFoods].sort(sortFoods);
     setDisplayedFoods(sortedFoods);
-  }, [containers, query, sort, groupId, containerId, searchParams]);
+  }, [containers, query, sort, group, container, searchParams]);
 
   return (
     <MobileLayout
       heading="Foods"
-      headerLeft={groupId && <HeaderBackButton href={{ pathname: `/groups/${groupId}` }} />}
+      headerLeft={group && <HeaderBackButton href={{ pathname: '/groups' }} />}
     >
       <div className="mt-6 mx-4 relative">
         <AddButton
@@ -105,15 +105,15 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
           />
         </div>
         <BadgeList
-          groupName={groupIdNameMap[groupId]}
-          containerName={containerIdNameMap[containerId]}
+          groupName={groupIdNameMap[group]}
+          containerName={containerIdNameMap[container]}
           categoryList={categoryList}
           setCategoryList={setCategoryList}
         />
         <div className="flex items-center justify-end">
           <FoodSort />
           <button className="h-12 w-12 flex justify-center items-center">
-            <Icon icon={IconMenuMeatball} size={4} />
+            <Icon icon={MenuMeatballIcon} size={4} />
           </button>
         </div>
         <FoodCardList

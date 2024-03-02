@@ -1,11 +1,11 @@
 'use client';
 
-import { IconArrowLeft, IconMenuCircle } from '@/assets/images/icons';
+import { ArrowLeftIcon, MenuCircleIcon } from '@/assets/images/icons';
 import { H2 } from '@/components/Typography';
 import { Button, Icon } from '@/components/ui';
 import { cn } from '@/lib/tailwind/utils';
 
-import Link, { LinkProps } from 'next/link';
+import Link from 'next/link';
 import { ButtonHTMLAttributes, forwardRef, ReactNode } from 'react';
 import { UrlObject } from 'url';
 
@@ -41,33 +41,20 @@ export const Header = ({ heading, left, right }: IHeaderProps) => {
   );
 };
 
-interface IBackButtonProps extends Omit<LinkProps<HTMLAnchorElement>, 'href' | 'className'> {
+interface IBackButtonProps {
   /**
    * The URL to navigate to when the button is clicked.
    */
   href: UrlObject;
-  /**
-   * Additional class names to apply to the Link component.
-   */
-  className?: string;
-  /**
-   * Additional props to pass to the Link component.
-   * @see {@link LinkProps}
-   */
-  props?: Omit<LinkProps<HTMLAnchorElement>, 'href' | 'className'>;
 }
 
 /**
  * A back button for the header. It is designed to navigate to a specified page.
  */
-export const HeaderBackButton = ({ href, className, ...props }: IBackButtonProps) => {
+export const HeaderBackButton = ({ href }: IBackButtonProps) => {
   return (
-    <Link
-      href={href}
-      className={cn('h-full aspect-square pl-4 flex items-center', className)}
-      {...props}
-    >
-      <Icon icon={IconArrowLeft} size={4} color="gray-dark" />
+    <Link href={href} className="h-full aspect-square pl-4 flex items-center">
+      <Icon icon={ArrowLeftIcon} size={4} color="gray-dark" />
     </Link>
   );
 };
@@ -81,7 +68,7 @@ export const HeaderMenuCircleButton = forwardRef<
   ButtonHTMLAttributes<HTMLButtonElement>
 >(({ ...props }, ref) => (
   <Button className="h-full px-4 flex items-center" ref={ref} {...props}>
-    <Icon icon={IconMenuCircle} size={6} color="black" />
+    <Icon icon={MenuCircleIcon} size={6} color="black" />
   </Button>
 ));
 HeaderMenuCircleButton.displayName = 'HeaderMenuCircleButton';

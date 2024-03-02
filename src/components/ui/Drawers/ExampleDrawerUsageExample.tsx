@@ -4,7 +4,7 @@
  */
 'use client';
 
-import { IconCross } from '@/assets/images/icons';
+import { CrossIcon } from '@/assets/images/icons';
 import { Button, Icon } from '@/components/ui';
 
 import { useState } from 'react';
@@ -39,7 +39,7 @@ export const ExampleDrawerUsageExample = () => {
         <ExampleDrawerHeader className="flex justify-between">
           <ExampleDrawerTitle>Delete Container</ExampleDrawerTitle>
           <ExampleDrawerClose>
-            <Icon icon={IconCross} color="gray-dark" size={3.5} />
+            <Icon icon={CrossIcon} color="gray-dark" size={3.5} />
           </ExampleDrawerClose>
         </ExampleDrawerHeader>
         <ExampleDrawerBody>

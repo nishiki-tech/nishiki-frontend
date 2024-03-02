@@ -1,4 +1,4 @@
-import { IconBag, IconContainer } from '@/assets/images/icons';
+import { BagIcon, ContainerIcon } from '@/assets/images/icons';
 import { Button, Card, DrawerTrigger, Icon } from '@/components/ui';
 import { foodCategories } from '@/const/foodCategory';
 import { FoodCardDropdownMenu } from '@/features/foods/components/FoodCardList/FoodCardDropdownMenu';
@@ -31,13 +31,13 @@ export const FoodCard = ({ food, setClickedFood, containerIdNameMap }: IFoodCard
           <div className="grow">
             <span className="text-left">{food.name}</span>
             <div className="text-xs text-gray-dark flex items-center gap-1 my-1.5">
-              <Icon icon={IconContainer} color="gray-dark" size={3} />
+              <Icon icon={ContainerIcon} color="gray-dark" size={3} />
               {containerIdNameMap[food.containerId]}
             </div>
             <div className="text-sm flex items-center gap-1">
               {food.quantity ? (
                 <>
-                  <Icon icon={IconBag} color="black" size={3} />
+                  <Icon icon={BagIcon} color="black" size={3} />
                   <span>
                     {food.quantity}
                     {food.unit ? ` ${food.unit}` : ''}

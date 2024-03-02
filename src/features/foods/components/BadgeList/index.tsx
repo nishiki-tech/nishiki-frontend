@@ -1,4 +1,4 @@
-import { IconContainer, IconHomeOff } from '@/assets/images/icons';
+import { ContainerIcon, HomeIcon_Off } from '@/assets/images/icons';
 import { foodCategories } from '@/const/foodCategory';
 import { cn } from '@/lib/tailwind/utils';
 import { IContainer, IGroup } from '@/types/definition';
@@ -26,8 +26,6 @@ export const BadgeList = ({
 
   /**
    * Update url query parameter
-   * - If value is specified, set the query parameter
-   * - If value is not specified, remove the query parameter
    * @param key - query parameter key
    * @param value - query parameter value (string or string[] for category)
    */
@@ -57,25 +55,20 @@ export const BadgeList = ({
           'flex -mx-4 px-4 gap-1.5 mt-4 pb-1 overflow-x-auto whitespace-nowrap',
       )}
     >
-      {!!groupName && (
+      {groupName ? (
         <FilterBadge
-          icon={IconHomeOff}
+          icon={HomeIcon_Off}
           text={groupName}
-          onCrossClick={() => {
-            updateUrlParams('group');
-            updateUrlParams('container');
-          }}
+          onCrossClick={() => updateUrlParams('group')}
         />
-      )}
-      {!!containerName && (
+      ) : null}
+      {containerName ? (
         <FilterBadge
-          icon={IconContainer}
+          icon={ContainerIcon}
           text={containerName}
-          onCrossClick={() => {
-            updateUrlParams('container');
-          }}
+          onCrossClick={() => updateUrlParams('container')}
         />
-      )}
+      ) : null}
       {categoryList.map((key) => {
         return (
           <FilterBadge

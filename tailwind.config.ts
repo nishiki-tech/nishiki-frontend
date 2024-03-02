@@ -16,25 +16,22 @@ module.exports = {
       height: {
         4.5: '1.125rem', // 18px
       },
-      size: {
-        4.5: '1.125rem', // 18px
-      },
       colors: {
-        'primary-lightest': 'var(--color-primary-lightest)',
-        'primary-light': 'var(--color-primary-light)',
-        primary: 'var(--color-primary)',
-        'primary-dark': 'var(--color-primary-dark)',
-        accent: 'var(--color-accent)',
-        'accent-dark': 'var(--color-accent-dark)',
-        danger: 'var(--color-danger)',
-        'danger-dark': 'var(--color-danger-dark)',
-        'gray-lightest': 'var(--color-gray-lightest)',
-        'gray-light': 'var(--color-gray-light)',
-        gray: 'var(--color-gray)',
-        'gray-dark': 'var(--color-gray-dark)',
-        overlay: 'var(--color-overlay)',
-        white: 'var(--color-white)',
-        black: 'var(--color-black)',
+        'primary-lightest': '#e6f2f1',
+        'primary-light': '#abd4cf',
+        primary: '#6ab3ab',
+        'primary-dark': '#5fa19a',
+        accent: '#fcd884',
+        'accent-dark': '#f1c560',
+        danger: '#cd5a5a',
+        'danger-dark': '#b95151',
+        'gray-lightest': '#f8f8f8',
+        'gray-light': '#eeeeee',
+        gray: '#bdbdbd',
+        'gray-dark': '#777777',
+        overlay: 'rgba(0, 0, 0, 0.25)',
+        white: '#ffffff',
+        black: '#222222',
       },
       borderRadius: {
         xs: '0.125rem', // 2px
@@ -69,6 +66,18 @@ module.exports = {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(100%)' },
         },
+        'accordion-down': {
+          from: { height: 0 },
+          to: { height: 'var(--radix-accordion-content-height)' },
+        },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: 0 },
+        },
+        pulse: {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.25)' },
+        },
       },
       animation: {
         fadeIn: 'fadeIn 0.3s ease-in-out',
@@ -77,6 +86,9 @@ module.exports = {
         slideOutToBottom: 'slideOutToBottom 0.3s ease-in-out',
         slideInFromRight: 'slideInFromRight 0.3s ease-in-out',
         slideOutToRight: 'slideOutToRight 0.3s ease-in-out',
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
+        pulse: 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
     },
   },

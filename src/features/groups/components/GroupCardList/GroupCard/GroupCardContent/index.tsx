@@ -50,7 +50,7 @@ export const GroupCardContent: FC<IGroupCardContentProps> = ({
           <UserCount userCount={userCount} />
         </div>
       </Link>
-      <GroupCardDropdownMenuTriggerButton groupId={groupId} handleRenameClick={handleRenameClick} />
+      <GroupCardDropdownMenuTriggerButton handleRenameClick={handleRenameClick} />
     </Card>
   );
 };

@@ -3,7 +3,7 @@ import { IContainer, IFood } from '@/types/definition';
 
 import { IGroupApiResponse } from '../../group/server/groupApiClient.server';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || '';
+const BACKEND_API_DOMAIN = process.env.NEXT_PUBLIC_BACKEND_API_DOMAIN || '';
 
 /**
  * Interface representing the API response for a container.
@@ -50,7 +50,7 @@ const convertApiResponseContainers = (containers: IContainerApiResponse[]): ICon
 export const fetchContainerList = async (id: string): Promise<IContainer[]> => {
   try {
     const data: IContainersResponse = await request<IContainersResponse>({
-      url: API_BASE_URL + '/groups/' + id + '/containers',
+      url: BACKEND_API_DOMAIN + '/groups/' + id + '/containers',
       method: 'GET',
     });
     return convertApiResponseContainers(data.containers);
@@ -66,7 +66,7 @@ export const fetchContainerList = async (id: string): Promise<IContainer[]> => {
 export const fetchAllContainerList = async (): Promise<IContainer[]> => {
   try {
     const data: IContainersResponse = await request<IContainersResponse>({
-      url: API_BASE_URL + '/containers',
+      url: BACKEND_API_DOMAIN + '/containers',
       method: 'GET',
     });
     return convertApiResponseContainers(data.containers);
