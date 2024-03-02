@@ -51,6 +51,8 @@ We are looking for contributors who can actively contribute to this project. If 
 
 We have a list of [good first issues](https://github.com/nishiki-tech/nishiki-frontend/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22good+first+issue%22) that contain issues that are relatively easy to solve and are a good starting point for newcomers.
 
+<br>
+
 ## Authors
 
 <table>
@@ -88,43 +90,15 @@ We have a list of [good first issues](https://github.com/nishiki-tech/nishiki-fr
   
 ## Tech Stack
 
-### Base
-
-- [TypeScript](https://www.typescriptlang.org/)
-- [Next.js](https://nextjs.org/) 14 (App Router)
-- [React.js](https://react.dev/) 18
-
-### Styling
-
-- [Tailwind CSS](https://tailwindcss.com/)
-- [shadcn/ui](https://ui.shadcn.com/)
-- [Radix UI](https://www.radix-ui.com/primitives)
-
-### Testing
-
-- [Jest](https://jestjs.io/)
-
-### Form Handling
-
-- [React Hook Form](https://react-hook-form.com/)
-- [Zod](https://zod.dev/)
-
-### Authentication
-
-- [Amazon Cognito](https://aws.amazon.com/cognito/)
-- [AWS Amplify](https://aws.amazon.com/amplify/)
-
-### Linting
-
-- [ESLint](https://eslint.org/)
-- [Prettier](https://prettier.io/)
-- [Husky](https://typicode.github.io/husky/)
-- [Commitlint](https://commitlint.js.org/)
-
-### CI/CD
-
-- [GitHub Actions](https://github.com/features/actions)
-- [Vercel](https://vercel.com/docs)
+- Language: [TypeScript](https://www.typescriptlang.org/)
+- Framework: [Next.js 14](https://nextjs.org/) (with [App Router](https://nextjs.org/docs/app))
+- Styling: [Tailwind CSS](https://tailwindcss.com/)
+- Components: [shadcn/ui](https://ui.shadcn.com/) ([Radix UI](https://www.radix-ui.com/primitives))
+- Form Handling: [Zod](https://zod.dev/), [React Hook Form](https://react-hook-form.com/)
+- Linting/Formatting: [ESLint](https://eslint.org/), [Prettier](https://prettier.io/), [Commitlint](https://commitlint.js.org/)
+- Testing: [Jest](https://jestjs.io/)
+- Authentication: [Amazon Cognito](https://aws.amazon.com/cognito/), [AWS Amplify](https://aws.amazon.com/amplify/)
+- CI/CD: [GitHub Actions](https://github.com/features/actions), [Vercel](https://vercel.com/docs)
 
 <!-- TODO: Add License Section -->
 <!-- ISSUE: #233 -->
