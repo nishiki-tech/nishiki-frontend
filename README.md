@@ -1,3 +1,7 @@
+<div style="display: flex; align-items: center; justify-content: center; height: 150px; background-color: white;">
+  <img src="./src/assets/images/logos/logo_horizontal_primary.svg">
+</div>
+
 # Nishiki
 
 **An app for tracking and sharing food inventories within groups for better pantry management.**
