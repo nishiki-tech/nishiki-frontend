@@ -1,7 +1,10 @@
 import { request } from '@/lib/api/common/server';
-import { fetchUserList, getUserById } from '@/lib/api/user/server';
-
-import { IGetUserByIdResponse, ITemporaryGetUserByIdResponse } from './userApiClient.server';
+import {
+  fetchUserList,
+  getUserById,
+  IGetUserByIdResponse,
+  ITemporaryGetUserByIdResponse,
+} from '@/lib/api/user/server';
 
 jest.mock('@/lib/api/common/server/commonUtils.server', () => ({
   request: jest.fn(),
