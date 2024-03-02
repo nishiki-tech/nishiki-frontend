@@ -32,6 +32,18 @@ Nishiki is composed of three main repositories, each serving a unique purpose wi
     <td>Maintains GUI documentation code, including a project guide developed with Docusaurus and a Web API specification using OpenAPI.</td>
   </tr>
 </table>
+  
+## Tech Stack
+
+- Language: [TypeScript](https://www.typescriptlang.org/)
+- Framework: [Next.js 14](https://nextjs.org/) (with [App Router](https://nextjs.org/docs/app))
+- Styling: [Tailwind CSS](https://tailwindcss.com/)
+- Components: [shadcn/ui](https://ui.shadcn.com/) ([Radix UI](https://www.radix-ui.com/primitives))
+- Form Handling: [Zod](https://zod.dev/), [React Hook Form](https://react-hook-form.com/)
+- Linting/Formatting: [ESLint](https://eslint.org/), [Prettier](https://prettier.io/), [Commitlint](https://commitlint.js.org/)
+- Testing: [Jest](https://jestjs.io/)
+- Authentication: [Amazon Cognito](https://aws.amazon.com/cognito/), [AWS Amplify](https://aws.amazon.com/amplify/)
+- CI/CD: [GitHub Actions](https://github.com/features/actions), [Vercel](https://vercel.com/docs)
 
 ## Getting Started
 
@@ -91,18 +103,6 @@ We have a list of [good first issues](https://github.com/nishiki-tech/nishiki-fr
 </table>
 
 <br>
-  
-## Tech Stack
-
-- Language: [TypeScript](https://www.typescriptlang.org/)
-- Framework: [Next.js 14](https://nextjs.org/) (with [App Router](https://nextjs.org/docs/app))
-- Styling: [Tailwind CSS](https://tailwindcss.com/)
-- Components: [shadcn/ui](https://ui.shadcn.com/) ([Radix UI](https://www.radix-ui.com/primitives))
-- Form Handling: [Zod](https://zod.dev/), [React Hook Form](https://react-hook-form.com/)
-- Linting/Formatting: [ESLint](https://eslint.org/), [Prettier](https://prettier.io/), [Commitlint](https://commitlint.js.org/)
-- Testing: [Jest](https://jestjs.io/)
-- Authentication: [Amazon Cognito](https://aws.amazon.com/cognito/), [AWS Amplify](https://aws.amazon.com/amplify/)
-- CI/CD: [GitHub Actions](https://github.com/features/actions), [Vercel](https://vercel.com/docs)
 
 <!-- TODO: Add License Section -->
 <!-- ISSUE: #233 -->
