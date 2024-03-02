@@ -57,6 +57,7 @@ describe('API Function Tests', () => {
   describe('getUserById', () => {
     const mockUserId = '679adc58-b03a-4fb6-993b-c72404087375';
     const mockUserName = 'John';
+
     it('successfully fetches user by id', async () => {
       // Arrange
 
