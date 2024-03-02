@@ -53,11 +53,39 @@ We have a list of [good first issues](https://github.com/nishiki-tech/nishiki-fr
 
 ## Authors
 
-- Kota Kawaguchi ([@kotaaaa](https://github.com/kotaaaa))
-- Nick Y. Ito ([@nick-y-ito](https://github.com/nick-y-ito))
-- Kanta Sakai ([@kanta1207](https://github.com/kanta1207))
-- Shuhei Ota ([@ShoeheyOt](https://github.com/ShoeheyOt))
+<table>
+  <tr>
+    <td width="80px" align="center">
+      <img src="https://avatars.githubusercontent.com/u/25422441?v=4" width="50" height="50" alt="Kota Kawaguchi" style="border-radius: 100%;">
+    </td>
+    <td><strong>Kota Kawaguchi</strong></td>
+    <td><a href="https://github.com/kotaaaa" target="_blank">@kotaaaa</a></td>
+  </tr>
+    <tr>
+    <td width="80px" align="center">
+      <img src="https://avatars.githubusercontent.com/u/99148565?v=4" width="50" height="50" alt="Nick Y. Ito" style="border-radius: 100%;">
+    </td>
+    <td width="200px"><strong>Nick Y. Ito</strong></td>
+    <td width="200px"><a href="https://github.com/nick-y-ito" target="_blank">@nick-y-ito</a></td>
+  </tr>
+  <tr>
+    <td width="80px" align="center">
+      <img src="https://avatars.githubusercontent.com/u/99339182?v=4" width="50" height="50" alt="Kanta Sakai" style="border-radius: 100%;">
+    </td>
+    <td><strong>Kanta Sakai</strong></td>
+    <td><a href="https://github.com/kanta1207" target="_blank">@kanta1207</a></td>
+  </tr>
+  <tr>
+    <td width="80px" align="center">
+      <img src="https://avatars.githubusercontent.com/u/142355969?v=4" width="50" height="50" alt="Shuhei Ota" style="border-radius: 100%;">
+    </td>
+    <td><strong>Shuhei Ota</strong></td>
+    <td><a href="https://github.com/ShoeheyOt" target="_blank">@ShoeheyOt</a></td>
+  </tr>
+</table>
 
+<br>
+  
 ## Tech Stack
 
 ### Base
