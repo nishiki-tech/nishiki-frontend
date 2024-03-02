@@ -1,4 +1,4 @@
-import { LinkIcon } from '@/assets/images/icons';
+import { IconLink } from '@/assets/images/icons';
 import {
   Button,
   DialogBody,
@@ -11,7 +11,7 @@ import { putGenerateInvitationLinkHash } from '@/lib/api/group/client/groupApiCl
 
 import { useEffect, useState } from 'react';
 
-const LOCALHOST_URL = process.env.NEXT_PUBLIC_LOCALHOST_URL || '';
+const CLIENT_BASE_URL = process.env.NEXT_PUBLIC_CLIENT_BASE_URL || '';
 
 /**
  * This component displays dialog which has copy button.
@@ -20,7 +20,7 @@ const LOCALHOST_URL = process.env.NEXT_PUBLIC_LOCALHOST_URL || '';
  * Its state is controlled by the `isDialogOpen` prop, which is passed from the parent component.
  *
  * @param props.isDialogOpen - state to control the visibility of dialog, if it is open => true, if not => false, this state is used to switch the text in button.
- * @param groupId - a unique Id as identfier of a group
+ * @param groupId - a unique Id as identifier of a group
  * @returns - The JSX code for rendering the dialog component.
  */
 export const InviteMemberDialogContent = ({
@@ -44,7 +44,7 @@ export const InviteMemberDialogContent = ({
     setIsLinkButtonClicked(true);
     const hash = result.value;
 
-    return navigator.clipboard.writeText(LOCALHOST_URL + '/groups/join/' + hash);
+    return navigator.clipboard.writeText(CLIENT_BASE_URL + '/groups/join/' + hash);
   };
 
   /**
@@ -73,7 +73,7 @@ export const InviteMemberDialogContent = ({
             onClick={handleLinkCopy}
             className="w-40 px-3.5"
           >
-            <Icon icon={LinkIcon} size={5} color="white" />
+            <Icon icon={IconLink} size={5} color="white" />
             {isLinkButtonClicked ? 'Copied!' : 'Copy link'}
           </Button>
           <p className="text-center text-sm text-gray-dark">Your invite link expires in a day.</p>

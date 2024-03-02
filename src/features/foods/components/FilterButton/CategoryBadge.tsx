@@ -1,4 +1,4 @@
-import { CrossIcon } from '@/assets/images/icons';
+import { IconCross } from '@/assets/images/icons';
 import { Badge, Icon } from '@/components/ui';
 import { cn } from '@/lib/tailwind/utils';
 
@@ -23,7 +23,7 @@ export const CategoryBadge = ({
       </div>
       {text}
       <button className="h-full w-6 flex items-center relative" onClick={onCrossClick}>
-        <Icon icon={CrossIcon} size={2} className="absolute right-2" />
+        <Icon icon={IconCross} size={2} className="absolute right-2" />
       </button>
     </Badge>
   );
