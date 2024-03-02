@@ -85,6 +85,7 @@ describe('API Function Tests', () => {
       const result = await getUserById(mockUserId);
 
       // Assert
+      expect(result.ok).toBeTruthy();
       /**
        * The API client is suppose to modify the {@link ITemporaryGetUserByIdResponse} to {@link IGetUserByIdResponse} and return it .
        * This modification will not be needed once the API is fixed.
@@ -105,6 +106,7 @@ describe('API Function Tests', () => {
       const result = await getUserById(mockUserId);
 
       // Assert
+      expect(result.err).toBeTruthy();
       expect(result.unwrapError()).toEqual(mockError.message);
     });
   });

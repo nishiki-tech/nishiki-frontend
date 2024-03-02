@@ -28,6 +28,7 @@ describe('authApiClient', () => {
       const result = await getCurrentUserId();
 
       // Assert
+      expect(result.ok).toBeTruthy();
       expect(result.unwrap()).toEqual(mockResponse);
       expect(request).toHaveBeenCalledWith({
         url: expect.stringContaining('/auth/me'),
@@ -44,6 +45,7 @@ describe('authApiClient', () => {
       const result = await getCurrentUserId();
 
       // Assert
+      expect(result.err).toBeTruthy();
       expect(result.unwrapError()).toEqual(mockError.message);
     });
   });
