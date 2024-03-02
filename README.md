@@ -1,7 +1,10 @@
-# Welcome to Nishiki
+# Nishiki
 
-<!-- TODO: Add a welcome message here -->
-<!-- ISSUE: #279 -->
+**An app for tracking and sharing food inventories within groups for better pantry management.**
+
+Nishiki simplifies group food management by offering features for tracking, categorizing, and sharing food inventories, ensuring that households, roommates, and friends can seamlessly coordinate grocery shopping and pantry organization, leading to smarter consumption and less waste.
+
+---
 
 ## Getting Started
 
