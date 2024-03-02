@@ -5,8 +5,14 @@ import { z } from 'zod';
  */
 export const createFoodFormSchema = z.object({
   name: z.string().min(1, { message: 'Name is required' }),
-  group: z.string().min(1, { message: 'Group is required' }),
-  container: z.string().min(1, { message: 'Container is required' }),
+  group: z
+    .string()
+    .min(1, { message: 'Group must be selected' })
+    .uuid({ message: 'Selected group is invalid' }),
+  container: z
+    .string()
+    .min(1, { message: 'Container must be selected' })
+    .uuid({ message: 'Selected container is invalid' }),
   quantity: z.string().optional(),
   unit: z.string().optional(),
   expiry: z.coerce.date().optional(),
@@ -35,10 +41,16 @@ export const createFoodDefaultValues: CreateFoodInputs = {
  * The schema for the user's inputs to validate the inputs when updating a food.
  */
 export const updateFoodFormSchema = z.object({
-  id: z.string().uuid(),
+  id: z.string().uuid({ message: 'Food ID is invalid' }),
   name: z.string().min(1, { message: 'Name is required' }),
-  group: z.string().min(1, { message: 'Group is required' }),
-  container: z.string().min(1, { message: 'Container is required' }),
+  group: z
+    .string()
+    .min(1, { message: 'Group must be selected' })
+    .uuid({ message: 'Selected group is invalid' }),
+  container: z
+    .string()
+    .min(1, { message: 'Container must be selected' })
+    .uuid({ message: 'Selected container is invalid' }),
   quantity: z.string().optional(),
   unit: z.string().optional(),
   expiry: z.coerce.date().optional(),
@@ -49,3 +61,10 @@ export const updateFoodFormSchema = z.object({
  * The type for the user's inputs to update a food.
  */
 export type UpdateFoodInputs = z.infer<typeof updateFoodFormSchema>;
+
+export const deleteFoodFormSchema = z.object({
+  foodId: z.string().uuid({ message: 'Food ID is invalid' }),
+  containerId: z.string().uuid({ message: 'Container ID is invalid' }),
+});
+
+export type DeleteFoodInputs = z.infer<typeof deleteFoodFormSchema>;

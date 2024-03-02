@@ -13,7 +13,7 @@ interface IBottomMenuLinkProps {
 export const BottomMenuLink = ({ name }: IBottomMenuLinkProps) => {
   // Check if the icon is selected based on the current path
   const pathName = usePathname();
-  const isSelected = pathName === mainRoutes[name].path;
+  const isSelected = pathName.startsWith(mainRoutes[name].path);
 
   // Create a URL object based on the path
   const urlObject: UrlObject = {

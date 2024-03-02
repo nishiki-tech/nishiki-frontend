@@ -3,31 +3,39 @@ import { cn } from '@/lib/tailwind/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { FC, SVGAttributes } from 'react';
 
+/**
+ * Style variants for the Icon component.
+ */
 const iconVariants = cva('', {
   variants: {
-    // reference for icon size: https://tailwindcss.com/docs/width
-    // Since some of the icons in the design are not following 4px grid, and to be fixed in the future,
-    // If the size in the design is not in the list, you can assign the closest size from this list.
+    /**
+     * Size of the icon, which is based on the Tailwind CSS size utility.
+     * If you need more sizes, you can add them by following the Tailwind CSS size utility.
+     * If the required size is not available in the default Tailwind CSS, you can add it to the `theme.extend.size` object in the `tailwind.config.ts` file.
+     * @see {@link https://tailwindcss.com/docs/size}
+     */
     size: {
-      2: 'w-2 h-2',
-      2.5: 'w-2.5 h-2.5',
-      3: 'w-3 h-3',
-      3.5: 'w-3.5 h-3.5',
-      4: 'w-4 h-4',
-      4.5: 'w-4.5 h-4.5',
-      5: 'w-5 h-5',
-      6: 'w-6 h-6',
-      7: 'w-7 h-7',
-      8: 'w-8 h-8',
-      9: 'w-9 h-9',
-      10: 'w-10 h-10',
-      11: 'w-11 h-11',
-      12: 'w-12 h-12',
-      13: 'w-13 h-13',
-      14: 'w-14 h-14',
-      15: 'w-15 h-15',
-      16: 'w-16 h-16',
+      2: 'size-2',
+      2.5: 'size-2.5',
+      3: 'size-3',
+      3.5: 'size-3.5',
+      4: 'size-4',
+      4.5: 'size-4.5',
+      5: 'size-5',
+      6: 'size-6',
+      7: 'size-7',
+      8: 'size-8',
+      9: 'size-9',
+      10: 'size-10',
+      11: 'size-11',
+      12: 'size-12',
+      14: 'size-14',
+      16: 'size-16',
     },
+    /**
+     * Color of the icon, which is predefined in the `theme.extend.colors` object in the `tailwind.config.ts` file.
+     * If you need more colors, you can add them from the `theme.extend.colors` object.
+     */
     color: {
       white: 'text-white',
       black: 'text-black',
@@ -37,18 +45,47 @@ const iconVariants = cva('', {
       'gray-dark': 'text-gray-dark',
     },
   },
-  defaultVariants: {
-    size: 3,
-    color: 'black',
-  },
 });
 
+/**
+ * Size of the icon, which is based on the Tailwind CSS "size" utility.
+ */
+type IconSize = VariantProps<typeof iconVariants>['size'];
+
+/**
+ * Color of the icon, which is predefined in the `theme.extend.colors` object in the `tailwind.config.ts` file.
+ */
+type IconColor = VariantProps<typeof iconVariants>['color'];
+
 interface IIconProps extends VariantProps<typeof iconVariants> {
+  /**
+   * SVG icon component. It should typically be an SVG component from the `src/assets/images/icons` directory.
+   */
   icon: FC<SVGAttributes<SVGElement>>;
+  /**
+   * Additional class name to apply to the Icon component.
+   */
   className?: string;
+  /**
+   * Size of the icon, which is based on the Tailwind CSS "size" utility.
+   */
+  size?: IconSize;
+  /**
+   * Color of the icon, which is predefined in the `theme.extend.colors` object in the `tailwind.config.ts` file.
+   */
+  color?: IconColor;
 }
 
-const Icon: FC<IIconProps> = ({ icon, className, size, color }) => {
+/**
+ * Icon component squares and colors the SVG icon based on the provided props.
+ * @param props - IIconProps
+ * @returns JSX.Element
+ * @example
+ * ```tsx
+ * <Icon icon={IconName} size={4} color="primary" className='opacity-80' />
+ * ```
+ */
+const Icon = ({ icon, className, size, color }: IIconProps) => {
   const IconComponent = icon;
 
   return <IconComponent className={cn(iconVariants({ color, size, className }))} />;
