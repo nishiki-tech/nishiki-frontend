@@ -8,7 +8,7 @@ export const ProfilePage = async () => {
   /**
    * Get the user ID of the logged-in user based on the auth token.
    * Using the user ID, fetch the user's information from the server.
-   * @returns  The user's name on success, undefined on error.
+   * @returns  The user's name on success. If the request fails,throws an error.
    */
   const getUserName = async () => {
     /**
@@ -18,10 +18,15 @@ export const ProfilePage = async () => {
      * This issue is mentioned in the issue {@link https://github.com/nishiki-tech/nishiki-frontend/issues/156}
      */
     const getCurrentUserIdResult = await getCurrentUserId();
-    const { userId } = getCurrentUserIdResult.unwrap();
-    const getUserByIdResult = await getUserById(userId);
-    const { name } = getUserByIdResult.unwrap();
-    return name;
+    if (getCurrentUserIdResult.ok) {
+      const { userId } = getCurrentUserIdResult.unwrap();
+      const getUserByIdResult = await getUserById(userId);
+      if (getUserByIdResult.ok) {
+        const { name } = getUserByIdResult.unwrap();
+        return name;
+      }
+    }
+    throw new Error('Failed to get user name');
   };
 
   const name = await getUserName();
