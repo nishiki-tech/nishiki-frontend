@@ -43,6 +43,7 @@ export const ContainerCard = ({ containerId, groupId, containerName }: IContaine
 
   return isRenameFormOpen ? (
     <RenameContainerForm
+      containerId={containerId}
       currentContainerName={containerName}
       isOpen={isRenameFormOpen}
       onClose={handleRenameFormClose}

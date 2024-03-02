@@ -22,14 +22,16 @@ export const ContainerCardList = async ({ groupId }: IContainerListProps) => {
           <CreateContainerButton groupId={groupId} />
         </div>
       </div>
-      {containers.map((container) => (
-        <ContainerCard
-          key={container.id}
-          containerId={container.id}
-          groupId={groupId}
-          containerName={container.name}
-        />
-      ))}
+      <div className="flex flex-col gap-3">
+        {containers.map((container) => (
+          <ContainerCard
+            key={container.id}
+            containerId={container.id}
+            groupId={groupId}
+            containerName={container.name}
+          />
+        ))}
+      </div>
     </>
   );
 };

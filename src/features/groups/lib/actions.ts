@@ -1,6 +1,11 @@
-import { IPostContainerRequestBody, postCreateContainer } from '@/lib/api/container/client';
+import {
+  IPostContainerRequestBody,
+  IPutRenameContainerRequestBody,
+  postCreateContainer,
+  putRenameContainer,
+} from '@/lib/api/container/client';
 import { deleteGroup, deleteMember, postCreateGroup, putRenameGroup } from '@/lib/api/group/client';
-import { IGroup, IUser } from '@/types/definition';
+import { IContainer, IGroup, IUser } from '@/types/definition';
 
 import { Err, Ok, Result } from 'result-ts-type';
 
@@ -11,6 +16,8 @@ import {
   CreateGroupInputs,
   deleteGroupSchema,
   deleteMemberSchema,
+  renameContainerFormSchema,
+  RenameContainerInputs,
   renameGroupFormSchema,
   RenameGroupInputs,
 } from './schemas';
@@ -105,6 +112,28 @@ export const createContainer = async (
 
   const result = await postCreateContainer(newContainer);
 
+  if (result.ok) return Ok(undefined);
+  return Err(result.error);
+};
+
+/**
+ * Function to validate input, if valid, call the API client to rename the container
+ * @param containerId - An identifier of a container which a user is willing to change the name of
+ * @param inputs - A user input {@link RenameContainerInputs} to be validated
+ * @returns Undefined for success, or an error message if the validation or request fails
+ */
+export const renameContainer = async (
+  containerId: IContainer['id'],
+  inputs: RenameContainerInputs,
+): Promise<Result<undefined, string>> => {
+  const validatedData = renameContainerFormSchema.safeParse(inputs);
+  if (!validatedData.success) return Err('Validation failed');
+
+  const containerRenameRequestBody: IPutRenameContainerRequestBody = {
+    containerName: validatedData.data.containerName,
+  };
+
+  const result = await putRenameContainer(containerId, containerRenameRequestBody);
   if (result.ok) return Ok(undefined);
   return Err(result.error);
 };
