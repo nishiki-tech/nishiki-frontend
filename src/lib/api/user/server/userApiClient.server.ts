@@ -41,13 +41,14 @@ export interface IGetUserByIdResponse {
 }
 
 /**
- * Interface representing the temporary API response, which should be fixed in the future.
- * It's different from how it's defined in the web API document.
- * Mentioned in the issue {@link https://github.com/nishiki-tech/nishiki-frontend/issues/255#issuecomment-1973752756}
+ * The API response object type is  currently different from how it's defined in the web API document.
+ * We named current response object as {@link ITemporaryGetUserByIdResponse.}
+ * Once the API is fixed, we need to update the response object type of the function to {@link IGetUserByIdResponse}
+ * This issue is mentioned in the issue {@link https://github.com/nishiki-tech/nishiki-frontend/issues/255}
  * @property userId - {@link IUser} The unique identifier of the user to get.
  * @property username - {@link IUser} The name of the user.
  */
-interface ITemporaryGetUserByIdResponse {
+export interface ITemporaryGetUserByIdResponse {
   status: string;
   statusCode: number;
   body: {
@@ -78,7 +79,8 @@ export const getUserById = async (
     const parsedData = JSON.parse(data) as ITemporaryGetUserByIdResponse;
 
     /**
-     * The data modified to match the interface {@link IGetUserByIdResponse}, which is defined in the web API document.
+     * The data modified to match the interface {@link IGetUserByIdResponse},
+     * which is defined in the web API document.
      */
     const modifiedData: IGetUserByIdResponse = {
       id: parsedData.body.userId,
