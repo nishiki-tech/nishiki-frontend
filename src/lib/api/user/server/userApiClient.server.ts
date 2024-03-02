@@ -22,7 +22,7 @@ interface IUsersResponse {
 export const fetchUserList = async (id: string): Promise<IUser[]> => {
   try {
     const response: IUsersResponse = await request<IUsersResponse>({
-      url: API_BASE_URL + '/groups/' + id + '/users',
+      url: `${API_BASE_URL}/groups/${id}/users`,
       method: 'GET',
     });
     return response.users;
@@ -71,7 +71,7 @@ export const getUserById = async (
 ): Promise<Result<IGetUserByIdResponse, string>> => {
   try {
     const data = await request<string>({
-      url: API_BASE_URL + '/users/' + userId,
+      url: `${API_BASE_URL}/users/${userId}`,
       method: 'GET',
     });
 
