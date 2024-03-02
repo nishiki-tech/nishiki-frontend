@@ -91,7 +91,7 @@ describe('API Function Tests', () => {
        * */
       expect(result.unwrap()).toEqual(mockResponse);
       expect(request).toHaveBeenCalledWith({
-        url: expect.stringContaining('/users/' + mockUserId),
+        url: expect.stringContaining(`/users/${mockUserId}`),
         method: 'GET',
       });
     });
