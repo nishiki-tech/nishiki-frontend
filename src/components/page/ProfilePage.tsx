@@ -10,6 +10,11 @@ export const ProfilePage = async () => {
    * @return {Promise<string | undefined>} - The user's name on success, undefined on error.
    */
   const getUserName = async () => {
+    /**
+     * TODO: Error handling in here.
+     * Since we haven't decided about how to handle server side data fetching error,
+     * we don't have error handling in here for now.
+     */
     const getCurrentUserIdResult = await getCurrentUserId();
     const { userId } = getCurrentUserIdResult.unwrap();
     const getUserByIdResult = await getUserById(userId);
@@ -17,7 +22,6 @@ export const ProfilePage = async () => {
     return name;
   };
 
-  // Get the user's name in here.
   const name = await getUserName();
 
   return (
