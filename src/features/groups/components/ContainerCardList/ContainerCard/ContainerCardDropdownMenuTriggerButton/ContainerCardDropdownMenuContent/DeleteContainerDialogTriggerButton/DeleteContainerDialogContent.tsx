@@ -39,7 +39,9 @@ export const DeleteContainerDialogContent = ({
   };
 
   /**
-   * The function to close the dialog and dropdown menu when delete button clicked
+   * Handle the delete button click.
+   * If the DELETE request is successful, show a success message, and if failed, show an error message
+   * the dialog and dropdown menu will be disappeared after processing either case
    */
   const handleDelete = async () => {
     const result = await removeContainer(containerId);
