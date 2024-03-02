@@ -1,5 +1,9 @@
 <div align="center">
-  <img src="./src/assets/images/logos/logo_horizontal_primary.svg">
+  <picture>
+    <source media="(prefers-color-scheme: light)" srcset="./src/assets/images/logos/logo_horizontal_primary_black_text.svg" />
+    <source media="(prefers-color-scheme: dark)" srcset="./src/assets/images/logos/logo_horizontal_primary_white_text.svg" />
+    <img src="./src/assets/images/logos/logo_horizontal_primary_black_text.svg" />
+  </picture>
 </div>
 
 # Nishiki
