@@ -8,7 +8,7 @@ export const ProfilePage = async () => {
   /**
    * Get the user ID of the logged-in user based on the auth token.
    * Using the user ID, fetch the user's information from the server.
-   * @returns {Promise<string>} - The user's name on success, undefined on error.
+   * @returns  The user's name on success, undefined on error.
    */
   const getUserName = async () => {
     /**

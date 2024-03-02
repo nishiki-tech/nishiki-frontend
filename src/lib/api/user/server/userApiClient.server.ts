@@ -64,7 +64,7 @@ export interface ITemporaryGetUserByIdResponse {
 /**
  * Fetch a user by userId.
  * @param userId - The unique identifier of the user.
- * @returns {Promise<Result<IGetCurrentUserResponse | string>>} - Id of current logged in user.
+ * @returns The information of the user.
  */
 export const getUserById = async (
   userId: IUser['id'],
