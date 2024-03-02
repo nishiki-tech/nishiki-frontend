@@ -30,13 +30,19 @@ export const fetchUserList = async (id: string): Promise<IUser[]> => {
     throw new Error('API response is invalid'); // TODO: display error page
   }
 };
+
 /**
  * Interface representing the API response for the function to get a user by userId.
- * @property id - {@link IUser} The unique identifier of the user to get.
- * @property name - {@link IUser} The name of the user.
  */
 export interface IGetUserByIdResponse {
+  /**
+   * The unique identifier of the user to get.
+   */
   id: IUser['id'];
+
+  /**
+   * The name of the user.
+   */
   name: IUser['name'];
 }
 
@@ -45,8 +51,6 @@ export interface IGetUserByIdResponse {
  * We named current response object as {@link ITemporaryGetUserByIdResponse.}
  * Once the API is fixed, we need to update the response object type of the function to {@link IGetUserByIdResponse}
  * This issue is mentioned in the issue {@link https://github.com/nishiki-tech/nishiki-frontend/issues/255}
- * @property userId - {@link IUser} The unique identifier of the user to get.
- * @property username - {@link IUser} The name of the user.
  */
 export interface ITemporaryGetUserByIdResponse {
   status: string;

@@ -8,9 +8,11 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || '';
 
 /**
  * Interface representing the API response for auth/me API endpoint.
- * @property userId - Id of current logged in user.
  */
 export interface IGetCurrentUserResponse {
+  /**
+   * The unique identifier of the current logged in user.
+   */
   userId: IUser['id'];
 }
 
