@@ -2,7 +2,7 @@ import { request } from '@/lib/api/common/server';
 
 import { getCurrentUserId, IGetCurrentUserResponse } from './authApiClient.server';
 
-jest.mock('../../common/server', () => ({
+jest.mock('@/lib/api/common/server', () => ({
   request: jest.fn(),
 }));
 
