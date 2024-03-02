@@ -7,7 +7,7 @@ import { getUserById } from '@/lib/api/user/server';
 export const ProfilePage = async () => {
   /**
    * Get the user's name.
-   * @return {Promise<string | undefined>} - The user's name on success, undefined on error.
+   * @returns {Promise<string>} - The user's name on success, undefined on error.
    */
   const getUserName = async () => {
     /**
