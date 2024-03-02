@@ -6,6 +6,18 @@
   </picture>
 </div>
 
+<br>
+<br>
+
+<div align="center">
+  <img src="./public/images/app_screenshot_signin.png" height="300">
+  <img src="./public/images/app_screenshot_groups.png" height="300">
+  <img src="./public/images/app_screenshot_group_single.png" height="300">
+  <img src="./public/images/app_screenshot_foods.png" height="300">
+</div>
+
+<br>
+
 # Nishiki
 
 **An app for tracking and sharing food inventories within groups for better pantry management.**
