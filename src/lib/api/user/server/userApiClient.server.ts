@@ -1,8 +1,7 @@
+import { request } from '@/lib/api/common/server';
 import { IUser } from '@/types/definition';
 
 import { Err, Ok, Result } from 'result-ts-type';
-
-import { request } from '../../common/server';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || '';
 
