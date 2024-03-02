@@ -28,7 +28,7 @@ Nishiki is composed of three main repositories, each serving a unique purpose wi
     <td>Contains all back-end and infrastructure code, covering server logic, database operations, and API services.</td>
   </tr>
   <tr>
-    <td width="150"><a href="https://github.com/nishiki-tech/nishiki-documents" target="_blank"><strong>nishiki-documents</strong></a></td>
+    <td width="200px"><a href="https://github.com/nishiki-tech/nishiki-documents" target="_blank"><strong>nishiki-documents</strong></a></td>
     <td>Maintains GUI documentation code, including a project guide developed with Docusaurus and a Web API specification using OpenAPI.</td>
   </tr>
 </table>
