@@ -67,3 +67,4 @@ export {
   SelectionDrawerTrigger,
   SelectionDrawerVariants,
 } from './SelectionDrawer';
+export { WhiteOverlay } from './WhiteOverlay';
