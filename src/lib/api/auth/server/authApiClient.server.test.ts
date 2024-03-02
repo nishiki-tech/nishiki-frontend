@@ -1,4 +1,5 @@
-import { request } from '../../common/server';
+import { request } from '@/lib/api/common/server';
+
 import { getCurrentUserId, IGetCurrentUserResponse } from './authApiClient.server';
 
 jest.mock('../../common/server', () => ({
