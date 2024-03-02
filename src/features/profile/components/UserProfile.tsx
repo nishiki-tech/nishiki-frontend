@@ -1,8 +1,11 @@
 'use client';
-import React from 'react';
+import { IUser } from '@/types/definition';
 
 interface IUserProfileProps {
-  name: string;
+  /**
+   * The name of the user to display.
+   */
+  name: IUser['name'];
 }
 
 export const UserProfile = ({ name }: IUserProfileProps) => {
