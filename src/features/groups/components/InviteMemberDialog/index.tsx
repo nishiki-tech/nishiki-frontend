@@ -2,12 +2,20 @@
 
 import { IconPlus } from '@/assets/images/icons';
 import { Button, DialogRoot, DialogTrigger, Icon } from '@/components/ui';
+import { IGroup } from '@/types/definition';
 
 import { useState } from 'react';
 
 import { InviteMemberDialogContent } from './InviteMemberDialogContent';
 
-export const InviteMemberDialog = ({ groupId }: { groupId: string }) => {
+interface IInviteMemberDialogProps {
+  /**
+   * an identifier of a group which is passed to child component
+   */
+  groupId: IGroup['id'];
+}
+
+export const InviteMemberDialog = ({ groupId }: IInviteMemberDialogProps) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   return (

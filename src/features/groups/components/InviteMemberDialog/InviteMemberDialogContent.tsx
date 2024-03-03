@@ -8,32 +8,33 @@ import {
   Icon,
 } from '@/components/ui';
 import { putGenerateInvitationLinkHash } from '@/lib/api/group/client/groupApiClient.client';
+import { IGroup } from '@/types/definition';
 
 import { useEffect, useState } from 'react';
 
 const CLIENT_BASE_URL = process.env.NEXT_PUBLIC_CLIENT_BASE_URL || '';
 
-/**
- * This component displays dialog which has copy button.
- * When it is clicked, the text changes to "Copied!"
- *
- * Its state is controlled by the `isDialogOpen` prop, which is passed from the parent component.
- *
- * @param props.isDialogOpen - state to control the visibility of dialog, if it is open => true, if not => false, this state is used to switch the text in button.
- * @param groupId - a unique Id as identifier of a group
- * @returns - The JSX code for rendering the dialog component.
- */
+interface IInviteMemberDialogContentProps {
+  /**
+   * Props which is state to control the the dialog,true means open, false is closed.
+   */
+  isDialogOpen: boolean;
+  /**
+   * an identifier of a group which an invited user will belong to
+   */
+  groupId: IGroup['id'];
+}
+
 export const InviteMemberDialogContent = ({
   isDialogOpen,
   groupId,
-}: {
-  isDialogOpen: boolean;
-  groupId: string;
-}) => {
+}: IInviteMemberDialogContentProps) => {
   const [isLinkButtonClicked, setIsLinkButtonClicked] = useState(false);
 
   /**
-   * this function is onClick function when the `Button` clicked
+   * Handle the link copy button click.
+   * If the generatedLink is not valid, return.
+   * If success, generated invitation link URL is copied to clipboard and close the dialog whose state is controlled by `isLinkButtonClicked`
    */
   const handleLinkCopy = async () => {
     const result = await putGenerateInvitationLinkHash(groupId);
@@ -42,6 +43,7 @@ export const InviteMemberDialogContent = ({
     if (!result.ok) return;
 
     setIsLinkButtonClicked(true);
+
     const hash = result.value;
 
     return navigator.clipboard.writeText(CLIENT_BASE_URL + '/groups/join/' + hash);
