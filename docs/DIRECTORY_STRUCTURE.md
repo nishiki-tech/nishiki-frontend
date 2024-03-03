@@ -27,6 +27,10 @@ Welcome to our project! This document outlines our project's directory structure
     - [`features/<feature_name>/utils/`](#featuresfeature_nameutils)
     - [`hooks/`](#hooks)
     - [`lib/`](#lib)
+    - [`lib/api/`](#libapi)
+    - [`lib/api/<resource_name>/`](#libapiresource_name)
+    - [`lib/api/<resource_name>/client/`](#libapiresource_nameclient)
+    - [`lib/api/<resource_name>/server/`](#libapiresource_nameserver)
     - [`styles/`](#styles)
     - [`types/`](#types)
     - [`utils/`](#utils)
@@ -118,6 +122,22 @@ Stores all [custom hooks](https://react.dev/learn/reusing-logic-with-custom-hook
 ### `lib/`
 
 Stores code modules or external libraries used across the project.
+
+### `lib/api/`
+
+Stores API client modules for each API resource.
+
+### `lib/api/<resource_name>/`
+
+Stores API client modules for a specific API resource. They must match the API resources defined in our [Web API documentation](https://nishiki-tech.github.io/nishiki-documents/web-api/index.html).
+
+### `lib/api/<resource_name>/client/`
+
+Stores API client modules for a specific API resource used in client components.
+
+### `lib/api/<resource_name>/server/`
+
+Stores API client modules for a specific API resource used in server components.
 
 ### `styles/`
 
