@@ -60,6 +60,7 @@ Nishiki is composed of three main repositories, each serving a unique purpose wi
 - Testing: [Jest](https://jestjs.io/)
 - Authentication: [Amazon Cognito](https://aws.amazon.com/cognito/), [AWS Amplify](https://aws.amazon.com/amplify/)
 - CI/CD: [GitHub Actions](https://github.com/features/actions), [Vercel](https://vercel.com/docs)
+- Monitoring: [Vercel](https://vercel.com/docs)
 
 ## Getting Started
 
