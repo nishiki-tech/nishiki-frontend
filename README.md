@@ -7,6 +7,11 @@
 </div>
 
 <br>
+
+<p align="center"><strong>An app for tracking and sharing food inventories within groups for better pantry management.</strong></p>
+
+<p align="center">Nishiki simplifies group food management by offering features for tracking, categorizing, and sharing food inventories, ensuring that households, roommates, and friends can seamlessly coordinate grocery shopping and pantry organization, leading to smarter consumption and less waste.</p>
+
 <br>
 
 <div align="center">
@@ -17,14 +22,6 @@
 </div>
 
 <br>
-
-# Nishiki
-
-**An app for tracking and sharing food inventories within groups for better pantry management.**
-
-Nishiki simplifies group food management by offering features for tracking, categorizing, and sharing food inventories, ensuring that households, roommates, and friends can seamlessly coordinate grocery shopping and pantry organization, leading to smarter consumption and less waste.
-
----
 
 ## Repository Structure
 
