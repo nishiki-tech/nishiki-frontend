@@ -59,6 +59,10 @@ Nishiki is composed of three main repositories, each serving a unique purpose wi
 - CI/CD: [GitHub Actions](https://github.com/features/actions), [Vercel](https://vercel.com/docs)
 - Monitoring: [Vercel](https://vercel.com/docs)
 
+## Documentation
+
+Visit [https://nishiki-tech.github.io/nishiki-documents](https://nishiki-tech.github.io/nishiki-documents/project-document/) to view the full documentation.
+
 ## Getting Started
 
 Please refer to the [Setup Documentation](./docs/SETUP.md) for instructions on how to set up the development environment locally.
@@ -90,29 +94,63 @@ We have a list of [good first issues](https://github.com/nishiki-tech/nishiki-fr
     <td width="80px" align="center">
       <img src="https://avatars.githubusercontent.com/u/25422441?v=4" width="50" height="50" alt="Kota Kawaguchi" >
     </td>
-    <td><strong>Kota Kawaguchi</strong></td>
-    <td><a href="https://github.com/kotaaaa" target="_blank">@kotaaaa</a></td>
-  </tr>
-    <tr>
-    <td width="80px" align="center">
-      <img src="https://avatars.githubusercontent.com/u/99148565?v=4" width="50" height="50" alt="Nick Y. Ito" >
+    <td width="150px"><strong>Kota Kawaguchi</strong></td>
+    <td width="200px"><a href="https://github.com/kotaaaa" target="_blank">@kotaaaa</a></td>
+    <td>
+      <a href="https://github.com/nishiki-tech/nishiki-frontend" target="_blank">nishiki-frontend</a>
     </td>
-    <td width="200px"><strong>Nick Y. Ito</strong></td>
-    <td width="200px"><a href="https://github.com/nick-y-ito" target="_blank">@nick-y-ito</a></td>
   </tr>
   <tr>
-    <td width="80px" align="center">
+    <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/99148565?v=4" width="50" height="50" alt="Nick Y. Ito" >
+    </td>
+    <td ><strong>Nick Y. Ito</strong></td>
+    <td><a href="https://github.com/nick-y-ito" target="_blank">@nick-y-ito</a></td>
+    <td>
+      <a href="https://github.com/nishiki-tech/nishiki-frontend" target="_blank">nishiki-frontend</a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
       <img src="https://avatars.githubusercontent.com/u/99339182?v=4" width="50" height="50" alt="Kanta Sakai" >
     </td>
     <td><strong>Kanta Sakai</strong></td>
     <td><a href="https://github.com/kanta1207" target="_blank">@kanta1207</a></td>
+    <td>
+      <a href="https://github.com/nishiki-tech/nishiki-frontend" target="_blank">nishiki-frontend</a>
+    </td>
   </tr>
   <tr>
-    <td width="80px" align="center">
+    <td align="center">
       <img src="https://avatars.githubusercontent.com/u/142355969?v=4" width="50" height="50" alt="Shuhei Ota" >
     </td>
     <td><strong>Shuhei Ota</strong></td>
     <td><a href="https://github.com/ShoeheyOt" target="_blank">@ShoeheyOt</a></td>
+    <td>
+      <a href="https://github.com/nishiki-tech/nishiki-frontend" target="_blank">nishiki-frontend</a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/43802663?v=4" width="50" height="50" alt="Taro Hirohata" >
+    </td>
+    <td><strong>Taro Hirohata</strong></td>
+    <td><a href="https://github.com/hitohata" target="_blank">@hitohata</a></td>
+    <td>
+      <a href="https://github.com/nishiki-tech/nishiki-backend" target="_blank">nishiki-backend</a>,
+      <a href="https://github.com/nishiki-tech/nishiki-documents" target="_blank">nishiki-documents</a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/70570221?v=4" width="50" height="50" alt="Shuhei Ota" >
+    </td>
+    <td><strong>Yuki Taniguchi</strong></td>
+    <td><a href="https://github.com/taniguchiiqqq" target="_blank">@taniguchiiqqq</a></td>
+    <td>
+      <a href="https://github.com/nishiki-tech/nishiki-backend" target="_blank">nishiki-backend</a>,
+      <a href="https://github.com/nishiki-tech/nishiki-documents" target="_blank">nishiki-documents</a>
+    </td>
   </tr>
 </table>
 
