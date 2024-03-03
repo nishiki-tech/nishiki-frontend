@@ -311,7 +311,7 @@ describe('Group actions', () => {
         const result = await removeContainer(mockContainerId);
 
         /* Assert */
-        expect(result.unwrap()).toBe(undefined);
+        expect(result.ok).toBeTruthy();
         expect(deleteContainer).toHaveBeenCalled();
       });
 
@@ -320,10 +320,11 @@ describe('Group actions', () => {
         const invalidContainerId = '';
 
         /* Act */
-        const result = removeContainer(invalidContainerId);
+        const result = await removeContainer(invalidContainerId);
 
         /* Assert */
-        expect((await result).unwrapError()).toBe('Validation failed');
+        expect(result.err).toBeTruthy();
+        expect(result.unwrapError()).toBe('Validation failed');
       });
 
       it('should successful with OK response ', async () => {
@@ -335,6 +336,7 @@ describe('Group actions', () => {
         const result = await removeContainer(mockContainerId);
 
         /* Assert */
+        expect(result.err).toBeTruthy();
         expect(result.unwrapError()).toBe(mockErrorMessage);
       });
     });

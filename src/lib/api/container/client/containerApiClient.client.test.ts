@@ -106,7 +106,7 @@ describe('containerApiClient', () => {
         const result = await deleteContainer(mockContainerId);
 
         /* Assert */
-        expect(result.unwrap()).toBe(undefined);
+        expect(result.ok).toBeTruthy();
         expect(request).toHaveBeenCalledWith({
           url: expect.stringContaining(`/containers/${mockContainerId}`),
           method: 'DELETE',
@@ -122,6 +122,7 @@ describe('containerApiClient', () => {
         const result = await deleteContainer(mockContainerId);
 
         /* Assert */
+        expect(result.err).toBeTruthy();
         expect(result.unwrapError()).toBe(mockError.message);
       });
     });
