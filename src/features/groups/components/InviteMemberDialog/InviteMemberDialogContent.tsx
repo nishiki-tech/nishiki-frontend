@@ -20,7 +20,7 @@ const CLIENT_BASE_URL = process.env.NEXT_PUBLIC_CLIENT_BASE_URL || '';
  * Its state is controlled by the `isDialogOpen` prop, which is passed from the parent component.
  *
  * @param props.isDialogOpen - state to control the visibility of dialog, if it is open => true, if not => false, this state is used to switch the text in button.
- * @param groupId - a unique Id as identfier of a group
+ * @param groupId - a unique Id as identifier of a group
  * @returns - The JSX code for rendering the dialog component.
  */
 export const InviteMemberDialogContent = ({
