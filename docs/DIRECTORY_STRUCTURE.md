@@ -11,6 +11,7 @@ Welcome to our project! This document outlines our project's directory structure
     - [`assets/images/`](#assetsimages)
     - [`assets/images/icons/`](#assetsimagesicons)
     - [`assets/images/logos/`](#assetsimageslogos)
+    - [`assets/images/ui/`](#assetsimagesui)
     - [`components/`](#components)
     - [`components/layouts/`](#componentslayouts)
     - [`components/pages/`](#componentspages)
@@ -51,6 +52,10 @@ Stores all icon images (typically in SVG format) used in the project.
 ### `assets/images/logos/`
 
 Stores all logo images used in the project.
+
+### `assets/images/ui/`
+
+Stores all images to create UI, such as background images, patterns, or other UI-related images.
 
 ### `components/`
 
