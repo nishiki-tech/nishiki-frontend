@@ -1,4 +1,5 @@
 import {
+  deleteContainer,
   IPostContainerRequestBody,
   IPutRenameContainerRequestBody,
   postCreateContainer,
@@ -14,6 +15,7 @@ import {
   CreateContainerInputs,
   createGroupFormSchema,
   CreateGroupInputs,
+  deleteContainerSchema,
   deleteGroupSchema,
   deleteMemberSchema,
   renameContainerFormSchema,
@@ -134,6 +136,23 @@ export const renameContainer = async (
   };
 
   const result = await putRenameContainer(containerId, containerRenameRequestBody);
+  if (result.ok) return Ok(undefined);
+  return Err(result.error);
+};
+
+/**
+ * Function to validate containerId and if valid, call the API client to delete the container
+ * @param containerId - an identifier of a container which a user is willing to delete
+ * @returns Undefined for success, or an error message if the validation or request fails
+ */
+export const removeContainer = async (
+  containerId: IContainer['id'],
+): Promise<Result<undefined, string>> => {
+  const validatedData = deleteContainerSchema.safeParse({ containerId });
+  if (!validatedData.success) return Err('Validation failed');
+
+  const result = await deleteContainer(containerId);
+
   if (result.ok) return Ok(undefined);
   return Err(result.error);
 };
