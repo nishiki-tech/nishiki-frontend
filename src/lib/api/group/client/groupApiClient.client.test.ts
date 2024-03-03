@@ -162,7 +162,7 @@ describe('API Function Tests', () => {
       /* Assert */
       expect(result.ok).toBeTruthy();
       expect(result.unwrap()).toBe(expectedValue);
-      expect(mockRequest).toHaveBeenCalled();
+      expect(mockRequest).toHaveBeenCalledTimes(1);
     });
 
     it('throws an error on API failure', async () => {
