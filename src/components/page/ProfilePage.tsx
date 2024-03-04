@@ -6,8 +6,8 @@ import { getUserById } from '@/lib/api/user/server';
 
 export const ProfilePage = async () => {
   /**
-   * Get the user ID of the logged-in user based on the auth token.
-   * Using the user ID, fetch the user's information from the server.
+   * Get the id of the logged-in user based on the auth token.
+   * Using the id, fetch the user's information from the server.
    * @returns  The user's id and name on success. If the request fails,throws an error.
    */
   const getUserInfo = async () => {
