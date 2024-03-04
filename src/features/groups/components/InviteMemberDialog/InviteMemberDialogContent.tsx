@@ -33,7 +33,7 @@ export const InviteMemberDialogContent = ({
 
   /**
    * Handle the link copy button click.
-   * If the generatedLink is not valid, return.
+   * If the generatedLink is not valid, do nothing.
    * If success, generated invitation link URL is copied to clipboard and change the text of button to 'Copied!'
    */
   const handleLinkCopy = async () => {
@@ -46,7 +46,8 @@ export const InviteMemberDialogContent = ({
 
     const hash = result.value;
 
-    return navigator.clipboard.writeText(CLIENT_BASE_URL + '/groups/join/' + hash);
+    navigator.clipboard.writeText(CLIENT_BASE_URL + '/groups/join/' + hash);
+    return;
   };
 
   /**
