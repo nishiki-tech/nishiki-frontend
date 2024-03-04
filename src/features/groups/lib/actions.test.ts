@@ -1,4 +1,8 @@
-import { postCreateContainer, putRenameContainer } from '@/lib/api/container/client';
+import {
+  deleteContainer,
+  postCreateContainer,
+  putRenameContainer,
+} from '@/lib/api/container/client';
 import { deleteGroup, deleteMember, postCreateGroup, putRenameGroup } from '@/lib/api/group/client';
 
 import { Err, Ok } from 'result-ts-type';
@@ -6,6 +10,7 @@ import { Err, Ok } from 'result-ts-type';
 import {
   createContainer,
   createGroup,
+  removeContainer,
   removeGroup,
   removeMember,
   renameContainer,
@@ -23,6 +28,7 @@ jest.mock('@/lib/api/group/client', () => ({
 jest.mock('@/lib/api/container/client', () => ({
   postCreateContainer: jest.fn(),
   putRenameContainer: jest.fn(),
+  deleteContainer: jest.fn(),
 }));
 
 // Clear mocks after each test
@@ -290,6 +296,48 @@ describe('Group actions', () => {
 
         /* Assert */
         expect(result.unwrapError()).toBe('API request failed');
+      });
+    });
+
+    describe('removeContainer', () => {
+      /* Arrange common mock data */
+      const mockContainerId = '0bfe2c43-865b-4d8a-9ad8-9a0bf54f5e2f';
+
+      it('should successfully remove container ', async () => {
+        /* Arrange */
+        (deleteContainer as jest.Mock).mockResolvedValue(Ok(undefined));
+
+        /* Act */
+        const result = await removeContainer(mockContainerId);
+
+        /* Assert */
+        expect(result.ok).toBeTruthy();
+        expect(deleteContainer).toHaveBeenCalled();
+      });
+
+      it('should return Err if validation fails', async () => {
+        /* Arrange */
+        const invalidContainerId = '';
+
+        /* Act */
+        const result = await removeContainer(invalidContainerId);
+
+        /* Assert */
+        expect(result.err).toBeTruthy();
+        expect(result.unwrapError()).toBe('Validation failed');
+      });
+
+      it('should successful with OK response ', async () => {
+        /* Arrange */
+        const mockErrorMessage = 'API error';
+        (deleteContainer as jest.Mock).mockResolvedValue(Err(mockErrorMessage));
+
+        /* Act */
+        const result = await removeContainer(mockContainerId);
+
+        /* Assert */
+        expect(result.err).toBeTruthy();
+        expect(result.unwrapError()).toBe(mockErrorMessage);
       });
     });
   });

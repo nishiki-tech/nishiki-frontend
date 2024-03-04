@@ -28,6 +28,10 @@ export const renameContainerFormSchema = z.object({
 
 export type RenameContainerInputs = z.infer<typeof renameContainerFormSchema>;
 
+export const deleteContainerSchema = z.object({
+  containerId: z.string().uuid({ message: 'Container ID is invalid' }),
+});
+
 export const deleteMemberSchema = z.object({
   groupId: z.string().uuid({ message: 'Group ID is invalid' }),
   userId: z.string().uuid({ message: 'User ID is invalid' }),
