@@ -11,6 +11,12 @@ import {
   DrawerRoot,
   DrawerTitle,
   DrawerTrigger,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
   Input,
   NumberInput,
   Select,
@@ -19,14 +25,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/Form';
 import { CategorySelect } from '@/features/foods/components/Form';
 
 import { zodResolver } from '@hookform/resolvers/zod';

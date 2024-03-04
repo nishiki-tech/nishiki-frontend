@@ -1,3 +1,4 @@
+'use client';
 import { IconExclamation } from '@/assets/images/icons';
 import { Icon, Label } from '@/components/ui';
 import { cn } from '@/lib/tailwind/utils';
