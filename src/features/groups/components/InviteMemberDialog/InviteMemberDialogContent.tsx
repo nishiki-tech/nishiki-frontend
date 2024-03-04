@@ -16,7 +16,7 @@ const CLIENT_BASE_URL = process.env.NEXT_PUBLIC_CLIENT_BASE_URL || '';
 
 interface IInviteMemberDialogContentProps {
   /**
-   * Props which is state to control the the dialog,true means open, false is closed.
+   * State to control the the dialog,true means open, false is closed.
    */
   isDialogOpen: boolean;
   /**
