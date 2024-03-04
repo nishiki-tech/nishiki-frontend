@@ -26,7 +26,7 @@ export const ProfilePage = async () => {
         return { userId, name };
       }
     }
-    throw new Error('Failed to get user name');
+    throw new Error('Failed to get user info');
   };
 
   const { userId, name } = await getUserInfo();
