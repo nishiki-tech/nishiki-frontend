@@ -5,7 +5,7 @@ import { IGroup, IUser } from '@/types/definition';
 
 import Link from 'next/link';
 
-import { InviteMemberDialog } from './InviteMemberDialog';
+import { InviteMemberDialogTrigger } from './InviteMemberDialogTrigger';
 
 interface IMemberListProps {
   /**
@@ -21,7 +21,7 @@ export const MemberList = async ({ groupId }: IMemberListProps) => {
     <div className="mb-6">
       <div className="flex items-center justify-between mb-2 h-12">
         <h2 className="text-xl">Members</h2>
-        <InviteMemberDialog groupId={groupId} />
+        <InviteMemberDialogTrigger groupId={groupId} />
       </div>
       <Link href={`/groups/${groupId}/members`} className="flex flex-row gap-2">
         {users.map((_, idx) => (

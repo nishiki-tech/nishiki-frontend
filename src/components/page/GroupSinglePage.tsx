@@ -1,7 +1,7 @@
 import { MobileLayout } from '@/components/layouts/MobileLayout';
 import { HeaderBackButton, HeaderMenuCircleButton } from '@/components/parts/Header';
 import { ContainerCardList } from '@/features/groups/components/ContainerCardList';
-import { MemberList } from '@/features/groups/components/MemberList';
+import { MemberList } from '@/features/groups/components/MemberList/';
 import { getGroup } from '@/lib/api/group/server';
 import { IGroup } from '@/types/definition';
 
