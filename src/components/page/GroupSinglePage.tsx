@@ -1,6 +1,7 @@
 import { MobileLayout } from '@/components/layouts/MobileLayout';
-import { HeaderBackButton, HeaderMenuCircleButton } from '@/components/parts/Header';
+import { HeaderBackButton } from '@/components/parts/Header';
 import { ContainerCardList } from '@/features/groups/components/ContainerCardList';
+import { GroupMeatballMenu } from '@/features/groups/components/GroupMeaballMenu';
 import { MemberList } from '@/features/groups/components/MemberList';
 import { getGroup } from '@/lib/api/group/server';
 import { IGroup } from '@/types/definition';
@@ -19,7 +20,7 @@ export const GroupSinglePage = async ({ groupId }: IGroupSinglePageProps) => {
     <MobileLayout
       heading={group.name}
       headerLeft={<HeaderBackButton href={{ pathname: '/groups' }} />}
-      headerRight={<HeaderMenuCircleButton />}
+      headerRight={<GroupMeatballMenu />}
     >
       <div className="px-4 pt-6 pb-16">
         <MemberList id={groupId} />
