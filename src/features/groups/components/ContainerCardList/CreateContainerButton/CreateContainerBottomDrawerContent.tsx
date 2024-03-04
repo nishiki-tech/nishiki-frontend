@@ -61,7 +61,7 @@ export const CreateContainerDrawerContent = ({
   ) => {
     const result = await createContainer(values, groupId);
     if (!result.ok) {
-      alert('Something went wrong. Please try again');
+      alert('Something went wrong. Please try again.');
     } else {
       alert('Successfully created');
       onClose();

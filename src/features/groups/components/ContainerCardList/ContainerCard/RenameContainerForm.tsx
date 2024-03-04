@@ -1,6 +1,7 @@
 import { IconContainer } from '@/assets/images/icons';
 import { Card, Icon, SquareTextInput } from '@/components/ui';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/Form';
+import { renameContainer } from '@/features/groups/lib/actions';
 import { renameContainerFormSchema, RenameContainerInputs } from '@/features/groups/lib/schemas';
 import { IContainer } from '@/types/definition';
 
@@ -10,6 +11,10 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 interface IRenameContainerFormProps {
+  /**
+   * The current container ID whose name the user is willing to change
+   */
+  containerId: IContainer['id'];
   /**
    * The current container name, which a user willing to change from
    */
@@ -25,6 +30,7 @@ interface IRenameContainerFormProps {
 }
 
 export const RenameContainerForm = ({
+  containerId,
   currentContainerName,
   isOpen,
   onClose,
@@ -37,11 +43,24 @@ export const RenameContainerForm = ({
     },
   });
 
+  /**
+   * Process when the form is submitted
+   * @param values - The form values {@link RenameContainerInputs}
+   */
   const processSubmit: SubmitHandler<RenameContainerInputs> = async (
     values: RenameContainerInputs,
   ) => {
     const { containerName } = values;
     if (containerName === currentContainerName) return;
+
+    const result = await renameContainer(containerId, values);
+    if (!result.ok) {
+      alert('Something went wrong. Please try again.');
+    } else {
+      alert('Successfully renamed the container');
+      form.reset();
+      onClose();
+    }
   };
 
   /**
@@ -90,8 +109,8 @@ export const RenameContainerForm = ({
 
   return (
     <Card asChild>
-      <div className="flex gap-2 items-center px-4 py-2">
-        <div className="flex items-center justify-center bg-accent rounded-full min-w-11 h-11">
+      <div className="flex items-center gap-2 px-4 py-2">
+        <div className="flex items-center justify-center self-start bg-accent rounded-full min-w-11 h-11">
           <Icon icon={IconContainer} color="black" size={6} />
         </div>
         <Form {...form}>
