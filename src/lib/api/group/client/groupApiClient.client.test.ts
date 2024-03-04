@@ -151,7 +151,7 @@ describe('API Function Tests', () => {
       /* Arrange */
       const mockInvitationLinkHash = 'e8ee3bc535b0c569276a801de8a3fd88';
       const mockResponse = JSON.stringify({
-        invitationLinkHash: 'mockInvitationLinkHash',
+        invitationLinkHash: mockInvitationLinkHash,
       });
       const mockRequest = setUpMockSuccessRequest(mockResponse);
       const expectedValue = mockInvitationLinkHash;
