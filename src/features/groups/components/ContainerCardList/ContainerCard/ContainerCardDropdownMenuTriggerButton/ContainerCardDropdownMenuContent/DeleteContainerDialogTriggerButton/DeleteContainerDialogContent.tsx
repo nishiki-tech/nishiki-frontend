@@ -7,29 +7,29 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui';
-import { removeGroup } from '@/features/groups/lib/actions';
-import { IGroup } from '@/types/definition';
+import { removeContainer } from '@/features/groups/lib/actions';
+import { IContainer } from '@/types/definition';
 
-interface IDeleteGroupDialogContentProps {
+interface IDeleteContainerDialogContentProps {
   /**
-   * The ID of the group to delete.
+   * An identifier of a container which a user is willing to delete
    */
-  groupId: IGroup['id'];
+  containerId: IContainer['id'];
   /**
-   * The function to close the parent UI component.
+   * The function to close parent UI component
    */
-  onParentClose?: () => void;
+  onParentClose: () => void;
   /**
-   * The function to close this delete dialog.
+   * The function to close this dialog
    */
   onDialogClose: () => void;
 }
 
-export const DeleteGroupDialogContent = ({
-  groupId,
+export const DeleteContainerDialogContent = ({
+  containerId,
   onParentClose,
   onDialogClose,
-}: IDeleteGroupDialogContentProps) => {
+}: IDeleteContainerDialogContentProps) => {
   /**
    * Handle the cancel button click.
    * It closes the parent UI component, if specified
@@ -37,34 +37,34 @@ export const DeleteGroupDialogContent = ({
   const handleCancel = () => {
     onParentClose?.();
   };
+
   /**
    * Handle the delete button click.
-   * If the DELETE request is successful, show a success message and close the dialog and drawer.
-   * If the DELETE request is failed, show an error message and close the dialog.
-   * @returns void
+   * If the DELETE request is successful, show a success message, and if failed, show an error message
+   * the dialog and dropdown menu will be disappeared after processing either case
    */
   const handleDelete = async () => {
-    const result = await removeGroup(groupId);
+    const result = await removeContainer(containerId);
     if (!result.ok) {
       alert('Something went wrong. Please try again.');
     } else {
-      alert('Successfully deleted!');
+      alert('Successfully deleted');
     }
-    onParentClose?.();
     onDialogClose();
+    onParentClose?.();
   };
 
   return (
     <DialogContent>
       <DialogHeader>
-        <DialogTitle>Delete Group</DialogTitle>
+        <DialogTitle>Delete Container</DialogTitle>
       </DialogHeader>
       <DialogBody>
-        <p>Are you sure you want to delete this group?</p>
+        <p>Are you sure you want to delete the container?</p>
       </DialogBody>
       <DialogFooter>
         <DialogClose asChild>
-          <Button variant="cancel" size="sm" onClick={handleCancel}>
+          <Button type="button" variant="cancel" size="sm" onClick={handleCancel}>
             Cancel
           </Button>
         </DialogClose>
