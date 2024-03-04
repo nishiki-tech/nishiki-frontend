@@ -7,14 +7,14 @@ import { useState } from 'react';
 
 import { InviteMemberDialogContent } from '../InviteMemberDialog/InviteMemberDialogContent';
 
-interface IInviteMemberDialogTrigger {
+interface IInviteMemberDialogTriggerProps {
   /**
    * An identifier of a group which a new invited user will belong to
    */
   groupId: IGroup['id'];
 }
 
-export const InviteMemberDialogTrigger = ({ groupId }: IInviteMemberDialogTrigger) => {
+export const InviteMemberDialogTrigger = ({ groupId }: IInviteMemberDialogTriggerProps) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   return (
