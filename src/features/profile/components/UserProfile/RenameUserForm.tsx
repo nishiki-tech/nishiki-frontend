@@ -6,15 +6,13 @@ import {
   FormMessage,
   SquareTextInput,
 } from '@/components/ui';
-import { cn } from '@/lib/tailwind/utils';
+import { renameUserFormSchema, RenameUserInputs } from '@/features/profile/lib/schemas';
 import { IUser } from '@/types/definition';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { KeyboardEvent, useEffect, useRef } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
-
-import { renameUserFormSchema, RenameUserInputs } from '../../lib/schemas';
 
 interface IRenameUserFormProps {
   /**
@@ -54,7 +52,6 @@ export const RenameUserForm = ({ currentUserName, isOpen, onClose }: IRenameUser
   const processSubmit: SubmitHandler<RenameUserInputs> = async (values: RenameUserInputs) => {
     const { userName } = values;
     if (userName === currentUserName) return;
-
     alert('Successfully renamed the group');
     onClose();
   };
@@ -113,7 +110,7 @@ export const RenameUserForm = ({ currentUserName, isOpen, onClose }: IRenameUser
                   onKeyDown={handleKeyDown}
                   handleClearInput={handleClearInput}
                   handleOutsideClick={handleOutsideClick}
-                  className={cn(form.formState.errors.userName && 'border-danger', 'text-lg')}
+                  className={form.formState.errors.userName && 'border-danger'}
                 />
               </FormControl>
               <FormMessage />

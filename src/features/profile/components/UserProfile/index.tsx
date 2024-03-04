@@ -30,21 +30,23 @@ export const UserProfile = ({ userId, name }: IUserProfileProps) => {
   return (
     <div className="flex flex-col items-center gap-4 pt-6">
       <Icon icon={IconPersonCircle} size={32} color="gray" />
-      {isRenameUserFormOpen ? (
-        <RenameUserForm
-          userId={userId}
-          currentUserName={name}
-          isOpen={isRenameUserFormOpen}
-          onClose={() => setIsRenameUserFormOpen(false)}
-        />
-      ) : (
-        <div className="w-32 flex items-center justify-end gap-4 px-1">
-          <span className="text-xl truncate">{name}</span>
-          <Button variant="ghost" className="w-5 h-5" onClick={handlePenIconClick}>
-            <Icon icon={IconPen} color="primary" size={5} />
-          </Button>
-        </div>
-      )}
+      <div className="px-24">
+        {isRenameUserFormOpen ? (
+          <RenameUserForm
+            userId={userId}
+            currentUserName={name}
+            isOpen={isRenameUserFormOpen}
+            onClose={() => setIsRenameUserFormOpen(false)}
+          />
+        ) : (
+          <div className="flex items-center gap-4">
+            <span className="text-xl truncate">{name}</span>
+            <Button variant="ghost" className="w-5 h-5" onClick={handlePenIconClick}>
+              <Icon icon={IconPen} color="primary" size={5} />
+            </Button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
