@@ -37,12 +37,11 @@ export const InviteMemberDialogContent = ({
    * If success, generated invitation link URL is copied to clipboard and change the text of button to 'Copied!'
    */
   const handleLinkCopy = async () => {
+    setIsLinkButtonClicked(true);
     const result = await putGenerateInvitationLinkHash(groupId);
 
     //narrowing if result is invalid, no implementation for now
     if (!result.ok) return;
-
-    setIsLinkButtonClicked(true);
 
     const hash = result.value;
 
