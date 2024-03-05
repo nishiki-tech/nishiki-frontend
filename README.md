@@ -159,3 +159,15 @@ We have a list of [good first issues](https://github.com/nishiki-tech/nishiki-fr
 ## License
 
 This project is licensed under the terms of the [MIT License](./LICENSE).
+
+<br>
+<br>
+<br>
+
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: light)" srcset="./src/assets/images/logos/logo_horizontal_primary_black_text.svg" />
+    <source media="(prefers-color-scheme: dark)" srcset="./src/assets/images/logos/logo_horizontal_primary_white_text.svg" />
+    <img width="150" src="./src/assets/images/logos/logo_horizontal_primary_black_text.svg" />
+  </picture>
+</div>
