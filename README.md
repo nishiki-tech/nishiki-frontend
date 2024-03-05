@@ -156,6 +156,6 @@ We have a list of [good first issues](https://github.com/nishiki-tech/nishiki-fr
 
 <br>
 
-<!-- TODO: Add License Section -->
-<!-- ISSUE: #233 -->
-<!-- ## License -->
+## License
+
+This project is licensed under the terms of the [MIT License](./LICENSE).
