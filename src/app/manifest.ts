@@ -13,6 +13,7 @@ export default function manifest(): MetadataRoute.Manifest {
     orientation: 'portrait',
     background_color: '#abd4cf',
     theme_color: '#6ab3ab',
+    prefer_related_applications: false,
     shortcuts: [
       {
         name: 'Group list',
