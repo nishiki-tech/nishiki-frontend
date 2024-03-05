@@ -7,6 +7,7 @@ import {
   SquareTextInput,
 } from '@/components/ui';
 import { renameUserFormSchema, RenameUserInputs } from '@/features/profile/lib/schemas';
+import { cn } from '@/lib/tailwind/utils';
 import { IUser } from '@/types/definition';
 
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -110,7 +111,10 @@ export const RenameUserForm = ({ currentUserName, isOpen, onClose }: IRenameUser
                   onKeyDown={handleKeyDown}
                   handleClearInput={handleClearInput}
                   handleOutsideClick={handleOutsideClick}
-                  className={form.formState.errors.userName && 'border-danger'}
+                  className={cn(
+                    form.formState.errors.userName && 'border-danger',
+                    'text-xl leading-6',
+                  )}
                 />
               </FormControl>
               <FormMessage />
