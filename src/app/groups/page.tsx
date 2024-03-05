@@ -1,4 +1,4 @@
-import { GroupsPage } from '@/components/page/GroupsPage';
+import { GroupsPage } from '@/components/pages/GroupsPage';
 
 export const dynamic = 'force-dynamic';
 

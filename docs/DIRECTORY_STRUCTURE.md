@@ -1,28 +1,36 @@
-# Project Directory Structure
+# Directory Structure
 
 Welcome to our project! This document outlines our project's directory structure, adhering to a "Feature-Driven Folder Structure" approach. The structure is inspired by insights from both an [English article](https://dev.to/profydev/screaming-architecture-evolution-of-a-react-folder-structure-4g25#indexjs-as-public-api) and a [Japanese article](https://zenn.dev/necscat/articles/d5d9b7a3f859d7).
 
-## Directory Structure Overview
+## Overview
 
-- [Project Directory Structure](#project-directory-structure)
-  - [Directory Structure Overview](#directory-structure-overview)
+- [Directory Structure](#directory-structure)
+  - [Overview](#overview)
     - [`app/`](#app)
+    - [`assets/`](#assets)
+    - [`assets/images/`](#assetsimages)
+    - [`assets/images/icons/`](#assetsimagesicons)
+    - [`assets/images/logos/`](#assetsimageslogos)
+    - [`assets/images/ui/`](#assetsimagesui)
     - [`components/`](#components)
     - [`components/layouts/`](#componentslayouts)
-    - [`components/icons/`](#componentsicons)
     - [`components/pages/`](#componentspages)
     - [`components/parts/`](#componentsparts)
+    - [`components/typography/`](#componentstypography)
     - [`components/ui/`](#componentsui)
     - [`const/`](#const)
     - [`features/`](#features)
     - [`features/<feature_name>/`](#featuresfeature_name)
-    - [`features/<feature_name>/api/`](#featuresfeature_nameapi)
     - [`features/<feature_name>/components/`](#featuresfeature_namecomponents)
-    - [`features/<feature_name>/hooks/`](#featuresfeature_namehooks)
+    - [`features/<feature_name>/lib/`](#featuresfeature_namelib)
     - [`features/<feature_name>/types/`](#featuresfeature_nametypes)
     - [`features/<feature_name>/utils/`](#featuresfeature_nameutils)
     - [`hooks/`](#hooks)
     - [`lib/`](#lib)
+    - [`lib/api/`](#libapi)
+    - [`lib/api/<resource_name>/`](#libapiresource_name)
+    - [`lib/api/<resource_name>/client/`](#libapiresource_nameclient)
+    - [`lib/api/<resource_name>/server/`](#libapiresource_nameserver)
     - [`styles/`](#styles)
     - [`types/`](#types)
     - [`utils/`](#utils)
@@ -33,78 +41,112 @@ The following is a brief overview of the project's directory structure under the
 
 Handles routing, shared layouts, loading, and error displays, using the [Next.js app router](https://nextjs.org/docs/app). Minimal code is written here, focusing on routing and layout management.
 
+### `assets/`
+
+Stores all static assets, such as images or other media files.
+
+### `assets/images/`
+
+Stores all image files used in the project.
+
+### `assets/images/icons/`
+
+Stores all icon images (typically in SVG format) used in the project.
+
+### `assets/images/logos/`
+
+Stores all logo images used in the project.
+
+### `assets/images/ui/`
+
+Stores all images to create UI, such as background images, patterns, or other UI-related images.
+
 ### `components/`
 
-Houses all shared components used across different features.
+Stores non-feature-specific components.
 
 ### `components/layouts/`
 
-Combines parts from the 'parts/' directory to create various layouts.
-
-### `components/icons/`
-
-Houses icon components, primarily as SVG wrappers or components.
+Stores shared layout components composed of other components from the `parts/` directory.
 
 ### `components/pages/`
 
-Implements actual pages, which are then imported into 'page.tsx' files in the 'app/' directory.
+Stores page components that implement actual pages, which are then imported into 'page.tsx' files in the `app/` directory.
 
 ### `components/parts/`
 
-Features shared components that are larger than basic UI components, such as headers and footers.
+Stores generic parts, such as headers, footers, and navigation bars.
+
+### `components/typography/`
+
+<!-- https://ui.shadcn.com/docs/components/typography -->
+
+Stores shared typography components, such as headings, paragraphs, and lists. Recommended to use the components exampled in [shadcnUI](https://ui.shadcn.com/docs/components/typography).
 
 ### `components/ui/`
 
-Includes shared UI components, such as buttons, cards, text fields. Recommended to use [shadcnUI](https://ui.shadcn.com/docs) components.
+Stores shared UI components, such as buttons, cards, text fields. Recommended to use [shadcnUI](https://ui.shadcn.com/docs) components.
 
 ### `const/`
 
-Stores all constant values utilized in the project.
+Stores constants used across the project.
 
 ### `features/`
 
-Each application feature has a dedicated directory, following a feature-driven structure.
+Each application feature has a dedicated directory, following a "feature-driven structure". Inspired by [this article](https://dev.to/profydev/screaming-architecture-evolution-of-a-react-folder-structure-4g25#indexjs-as-public-api).
 
 ### `features/<feature_name>/`
 
-Directories specific to each feature.
-
-### `features/<feature_name>/api/`
-
-Contains API related files.
+Stores all directories and files related to a specific feature.
 
 ### `features/<feature_name>/components/`
 
-Houses non-shared components unique to the feature.
+Stores feature-specific components.
 
-### `features/<feature_name>/hooks/`
+### `features/<feature_name>/lib/`
 
-Includes non-shared custom hooks relevant to the feature.
+Stores feature-specific code modules or external libraries.
 
 ### `features/<feature_name>/types/`
 
-Stores non-shared types specific to the feature.
+Stores feature-specific types.
 
 ### `features/<feature_name>/utils/`
 
-Contains non-shared utility functions relevant to the feature.
+Stores feature-specific utility functions.
 
 ### `hooks/`
 
-Shared custom hooks utilized across various features.
+Stores all [custom hooks](https://react.dev/learn/reusing-logic-with-custom-hooks) used across the project.
 
 ### `lib/`
 
-Manages files related to third-party libraries, with a separate directory for each library.
+Stores code modules or external libraries used across the project.
+
+### `lib/api/`
+
+Stores API client modules for each API resource.
+
+### `lib/api/<resource_name>/`
+
+Stores API client modules for a specific API resource. They must match the API resources defined in our [Web API documentation](https://nishiki-tech.github.io/nishiki-documents/web-api/index.html).
+
+### `lib/api/<resource_name>/client/`
+
+Stores API client modules for a specific API resource used in client components.
+
+### `lib/api/<resource_name>/server/`
+
+Stores API client modules for a specific API resource used in server components.
 
 ### `styles/`
 
-Global CSS files for the project.
+Stores all global styles.
 
 ### `types/`
 
-Shared types used across different features.
+Stores types used across the project.
 
 ### `utils/`
 
-Contains shared utility functions used across different features.
+Stores utility functions used across the project.
