@@ -30,7 +30,7 @@ export const UserProfile = ({ userId, name }: IUserProfileProps) => {
   return (
     <div className="flex flex-col items-center gap-4 pt-6">
       <Icon icon={IconPersonCircle} size={32} color="gray" />
-      <div className="w-full px-24">
+      <div className="min-w-52">
         {isRenameUserFormOpen ? (
           <RenameUserForm
             userId={userId}
