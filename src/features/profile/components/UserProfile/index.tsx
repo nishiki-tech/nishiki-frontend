@@ -41,7 +41,7 @@ export const UserProfile = ({ userId, name }: IUserProfileProps) => {
           />
         ) : (
           <div className="flex items-center justify-center gap-4">
-            <span className="text-xl truncate">AAAA AAAA AAAA</span>
+            <span className="text-xl truncate">{name}</span>
             <Button variant="ghost" className="min-w-5 h-5" onClick={handlePenIconClick}>
               <Icon icon={IconPen} color="primary" size={5} />
             </Button>
