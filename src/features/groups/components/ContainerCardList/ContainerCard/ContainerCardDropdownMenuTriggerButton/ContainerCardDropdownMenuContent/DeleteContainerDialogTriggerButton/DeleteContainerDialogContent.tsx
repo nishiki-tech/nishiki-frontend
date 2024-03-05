@@ -7,8 +7,14 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui';
+import { removeContainer } from '@/features/groups/lib/actions';
+import { IContainer } from '@/types/definition';
 
 interface IDeleteContainerDialogContentProps {
+  /**
+   * An identifier of a container which a user is willing to delete
+   */
+  containerId: IContainer['id'];
   /**
    * The function to close parent UI component
    */
@@ -20,6 +26,7 @@ interface IDeleteContainerDialogContentProps {
 }
 
 export const DeleteContainerDialogContent = ({
+  containerId,
   onParentClose,
   onDialogClose,
 }: IDeleteContainerDialogContentProps) => {
@@ -32,9 +39,17 @@ export const DeleteContainerDialogContent = ({
   };
 
   /**
-   * The function to close the dialog and dropdown menu when delete button clicked
+   * Handle the delete button click.
+   * If the DELETE request is successful, show a success message, and if failed, show an error message
+   * the dialog and dropdown menu will be disappeared after processing either case
    */
-  const handleDelete = () => {
+  const handleDelete = async () => {
+    const result = await removeContainer(containerId);
+    if (!result.ok) {
+      alert('Something went wrong. Please try again.');
+    } else {
+      alert('Successfully deleted');
+    }
     onDialogClose();
     onParentClose?.();
   };
