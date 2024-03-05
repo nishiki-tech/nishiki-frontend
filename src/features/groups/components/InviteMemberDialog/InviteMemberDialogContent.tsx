@@ -48,7 +48,7 @@ export const InviteMemberDialogContent = ({
 
     const hash = result.value;
 
-    navigator.clipboard.writeText(CLIENT_BASE_URL + '/groups/join/' + hash);
+    navigator.clipboard.writeText(`${CLIENT_BASE_URL}/groups/join/${hash}`);
     return;
   };
 
