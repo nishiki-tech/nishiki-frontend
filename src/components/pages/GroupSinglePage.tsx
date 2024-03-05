@@ -23,7 +23,7 @@ export const GroupSinglePage = async ({ groupId }: IGroupSinglePageProps) => {
       headerRight={<GroupSingleHeaderDropdownMenuTriggerButton />}
     >
       <div className="px-4 pt-6 pb-16">
-        <MemberList id={groupId} />
+        <MemberList groupId={groupId} />
         <ContainerCardList groupId={groupId} />
       </div>
     </MobileLayout>

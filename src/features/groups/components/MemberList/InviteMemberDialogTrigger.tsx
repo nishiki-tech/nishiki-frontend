@@ -1,21 +1,20 @@
 'use client';
-
 import { IconPlus } from '@/assets/images/icons';
 import { Button, DialogRoot, DialogTrigger, Icon } from '@/components/ui';
 import { IGroup } from '@/types/definition';
 
 import { useState } from 'react';
 
-import { InviteMemberDialogContent } from './InviteMemberDialogContent';
+import { InviteMemberDialogContent } from '../InviteMemberDialog/InviteMemberDialogContent';
 
-interface IInviteMemberDialogProps {
+interface IInviteMemberDialogTriggerProps {
   /**
-   * an identifier of a group which is passed to child component
+   * An identifier of a group which a new invited user will belong to
    */
   groupId: IGroup['id'];
 }
 
-export const InviteMemberDialog = ({ groupId }: IInviteMemberDialogProps) => {
+export const InviteMemberDialogTrigger = ({ groupId }: IInviteMemberDialogTriggerProps) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   return (
