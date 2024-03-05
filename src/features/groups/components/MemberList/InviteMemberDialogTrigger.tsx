@@ -21,7 +21,7 @@ export const InviteMemberDialogTrigger = ({ groupId }: IInviteMemberDialogTrigge
     <>
       <DialogRoot open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogTrigger asChild>
-          <Button>
+          <Button className="flex justify-center items-center w-12 h-12">
             <Icon icon={IconPlus} size={4.5} />
           </Button>
         </DialogTrigger>
