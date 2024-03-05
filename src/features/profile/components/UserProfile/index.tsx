@@ -27,6 +27,7 @@ export const UserProfile = ({ userId, name }: IUserProfileProps) => {
   const handlePenIconClick = () => {
     setIsRenameUserFormOpen(true);
   };
+
   return (
     <div className="flex flex-col items-center gap-4 pt-6">
       <Icon icon={IconPersonCircle} size={32} color="gray" />
