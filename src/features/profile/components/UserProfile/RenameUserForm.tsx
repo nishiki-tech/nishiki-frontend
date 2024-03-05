@@ -96,6 +96,7 @@ export const RenameUserForm = ({ currentUserName, isOpen, onClose }: IRenameUser
       inputRef.current?.focus();
     }
   }, [isOpen]);
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(processSubmit)}>
