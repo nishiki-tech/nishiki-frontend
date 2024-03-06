@@ -1,22 +1,39 @@
 import '@/styles/globals.css';
 
 import { fontOutfit } from '@/const/fonts';
-import { siteConfig } from '@/const/site/siteConfig';
 import { cn } from '@/lib/tailwind/utils';
 
 import type { Viewport } from 'next';
 import { Metadata } from 'next';
 import { ReactNode } from 'react';
 
+const CLIENT_BASE_URL = process.env.NEXT_PUBLIC_CLIENT_BASE_URL;
+
 export const metadata: Metadata = {
   title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
+    default: 'Nishiki',
+    template: '%s | Nishiki',
   },
-  description: siteConfig.description,
+  description:
+    'Nishiki is an app for tracking and sharing food inventories within groups for better pantry management.',
   icons: {
     icon: '/favicon.svg?v=0',
     apple: '/apple-icon.svg?v=0',
+  },
+  openGraph: {
+    title: 'Nishiki',
+    description:
+      'Nishiki is an app for tracking and sharing food inventories within groups for better pantry management.',
+    type: 'website',
+    url: CLIENT_BASE_URL,
+    images: [
+      {
+        url: `${CLIENT_BASE_URL}/og.svg`,
+        width: 1200,
+        height: 630,
+        alt: 'Nishiki',
+      },
+    ],
   },
 };
 
