@@ -146,24 +146,35 @@ describe('API Function Tests', () => {
   describe('putGenerateInvitationLink', () => {
     //mock params and response
     const mockGroupId = '6ec791b9-945c-4c1c-a872-3610521650e4';
-    const mockInvitationLinkHash = 'e8ee3bc535b0c569276a801de8a3fd88';
-    const mockGenerateInvitationLinkResponse = JSON.stringify({
-      invitationLinkHash: mockInvitationLinkHash,
-    });
 
     it('successfully generates invitation link', async () => {
-      const mockRequest = setUpMockSuccessRequest(mockGenerateInvitationLinkResponse);
+      /* Arrange */
+      const mockInvitationLinkHash = 'e8ee3bc535b0c569276a801de8a3fd88';
+      const mockResponse = JSON.stringify({
+        invitationLinkHash: mockInvitationLinkHash,
+      });
+      const mockRequest = setUpMockSuccessRequest(mockResponse);
       const expectedValue = mockInvitationLinkHash;
+
+      /* Act */
       const result = await putGenerateInvitationLinkHash(mockGroupId);
+
+      /* Assert */
       expect(result.ok).toBeTruthy();
       expect(result.unwrap()).toBe(expectedValue);
       expect(mockRequest).toHaveBeenCalledTimes(1);
     });
 
     it('throws an error on API failure', async () => {
+      /* Arrange */
       const mockError = new Error('API response is invalid');
       setUpMockErrorRequest(mockError);
+
+      /* Act */
       const result = await putGenerateInvitationLinkHash(mockGroupId);
+
+      /* Assert */
+      expect(result.err).toBeTruthy();
       expect(result.unwrapError()).toBe(mockError.message);
     });
   });
