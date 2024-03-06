@@ -37,12 +37,12 @@ export interface IGetUserByIdResponse {
   /**
    * The unique identifier of the user to get.
    */
-  id: IUser['id'];
+  userId: IUser['id'];
 
   /**
    * The name of the user.
    */
-  name: IUser['name'];
+  username: IUser['name'];
 }
 
 /**
