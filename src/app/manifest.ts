@@ -31,7 +31,28 @@ export default function manifest(): MetadataRoute.Manifest {
         url: '/profile',
       },
     ],
-    screenshots: [],
+    screenshots: [
+      {
+        src: 'images/screenshots/app_screenshot_signin.png',
+        sizes: '1215x605',
+        type: 'image/png',
+      },
+      {
+        src: 'images/screenshots/app_screenshot_foods.png',
+        sizes: '1215x605',
+        type: 'image/png',
+      },
+      {
+        src: 'images/screenshots/app_screenshot_group_single.png',
+        sizes: '1215x605',
+        type: 'image/png',
+      },
+      {
+        src: 'images/screenshots/app_screenshot_groups.png',
+        sizes: '1215x605',
+        type: 'image/png',
+      },
+    ],
     icons: [
       {
         src: 'images/icons/icon-72x72.png',
