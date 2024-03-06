@@ -25,11 +25,7 @@ export const getCurrentUserId = async (): Promise<Result<IGetCurrentUserResponse
       url: API_BASE_URL + '/auth/me',
       method: 'GET',
     });
-    /**
-     * The API currently returns a JSON string instead of object
-     * This issue is mentioned in the issue {@link https://github.com/nishiki-tech/nishiki-frontend/issues/255}
-     * Thus, fow now, we need to parse the response in here.
-     */
+
     return Ok(data);
   } catch (err) {
     if (err instanceof Error) {
