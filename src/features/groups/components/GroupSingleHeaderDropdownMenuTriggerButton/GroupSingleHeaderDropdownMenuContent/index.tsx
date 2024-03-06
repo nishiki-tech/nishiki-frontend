@@ -1,31 +1,26 @@
-import { IconDelete, IconPen } from '@/assets/images/icons';
-import {
-  DropdownMenuButton,
-  DropdownMenuButtonIcon,
-  DropdownMenuButtonText,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  Icon,
-} from '@/components/ui';
+import { DropdownMenuContent, DropdownMenuItem } from '@/components/ui';
+import { IGroup } from '@/types/definition';
 
-export const GroupSingleHeaderDropdownMenuContent = () => {
+import { DeleteGroupDialogTriggerButton } from './DeleteGroupDialogTriggerButton';
+import { RenameGroupDrawerTriggerButton } from './RenameGroupDrawerTriggerButton';
+
+export const GroupSingleHeaderDropdownMenuContent = ({
+  groupId,
+  onDropdownMenuClose,
+}: {
+  groupId: IGroup['id'];
+  onDropdownMenuClose: () => void;
+}) => {
+  const handleSelect = (e: Event) => {
+    e.preventDefault();
+  };
   return (
     <DropdownMenuContent>
       <DropdownMenuItem>
-        <DropdownMenuButton>
-          <DropdownMenuButtonIcon>
-            <Icon icon={IconPen} size={5} color="primary" />
-          </DropdownMenuButtonIcon>
-          <DropdownMenuButtonText>Rename</DropdownMenuButtonText>
-        </DropdownMenuButton>
+        <RenameGroupDrawerTriggerButton />
       </DropdownMenuItem>
-      <DropdownMenuItem>
-        <DropdownMenuButton>
-          <DropdownMenuButtonIcon>
-            <Icon icon={IconDelete} size={5} color="danger" />
-          </DropdownMenuButtonIcon>
-          <DropdownMenuButtonText>Delete</DropdownMenuButtonText>
-        </DropdownMenuButton>
+      <DropdownMenuItem onSelect={handleSelect}>
+        <DeleteGroupDialogTriggerButton groupId={groupId} onParentClose={onDropdownMenuClose} />
       </DropdownMenuItem>
     </DropdownMenuContent>
   );

@@ -23,12 +23,15 @@ interface IDeleteGroupDialogContentProps {
    * The function to close this delete dialog.
    */
   onDialogClose: () => void;
+
+  onPageTransit?: () => void;
 }
 
 export const DeleteGroupDialogContent = ({
   groupId,
   onParentClose,
   onDialogClose,
+  onPageTransit,
 }: IDeleteGroupDialogContentProps) => {
   /**
    * Handle the cancel button click.
@@ -52,6 +55,7 @@ export const DeleteGroupDialogContent = ({
     }
     onParentClose?.();
     onDialogClose();
+    onPageTransit?.();
   };
 
   return (
