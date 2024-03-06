@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: 'var(--color-primary)',
+  themeColor: '#6ab3ab', // --color-primary
 };
 
 interface IRootLayoutProps {
