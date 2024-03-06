@@ -4,6 +4,7 @@ import { fontOutfit } from '@/const/fonts';
 import { siteConfig } from '@/const/site/siteConfig';
 import { cn } from '@/lib/tailwind/utils';
 
+import type { Viewport } from 'next';
 import { Metadata } from 'next';
 import { ReactNode } from 'react';
 
@@ -17,6 +18,9 @@ export const metadata: Metadata = {
     icon: '/favicon.svg?v=0',
     apple: '/apple-icon.svg?v=0',
   },
+};
+
+export const viewport: Viewport = {
   themeColor: 'var(--color-primary)',
 };
 
