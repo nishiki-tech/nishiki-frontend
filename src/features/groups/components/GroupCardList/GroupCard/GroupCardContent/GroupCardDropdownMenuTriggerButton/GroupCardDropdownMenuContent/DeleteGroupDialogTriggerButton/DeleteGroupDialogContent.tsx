@@ -23,7 +23,9 @@ interface IDeleteGroupDialogContentProps {
    * The function to close this delete dialog.
    */
   onDialogClose: () => void;
-
+  /**
+   * The function to transition to groupCollection page
+   */
   onPageTransit?: () => void;
 }
 
@@ -42,7 +44,7 @@ export const DeleteGroupDialogContent = ({
   };
   /**
    * Handle the delete button click.
-   * If the DELETE request is successful, show a success message and close the dialog and drawer.
+   * If the DELETE request is successful, show a success message and close the dialog and drawer, and if the function executes in groupSinglePage, transitions to groupCollection page
    * If the DELETE request is failed, show an error message and close the dialog.
    * @returns void
    */
@@ -52,10 +54,10 @@ export const DeleteGroupDialogContent = ({
       alert('Something went wrong. Please try again.');
     } else {
       alert('Successfully deleted!');
+      onPageTransit?.();
     }
     onParentClose?.();
     onDialogClose();
-    onPageTransit?.();
   };
 
   return (
