@@ -1,9 +1,7 @@
 'use client';
 
-import { IconMenuMeatball } from '@/assets/images/icons';
 import { MobileLayout } from '@/components/layouts/MobileLayout';
 import { HeaderBackButton } from '@/components/parts/Header';
-import { Icon } from '@/components/ui';
 import {
   AddButton,
   BadgeList,
@@ -112,9 +110,6 @@ export const FoodsPage = ({ containers }: { containers: IContainer[] }) => {
         />
         <div className="flex items-center justify-end">
           <FoodSort />
-          <button className="h-12 w-12 flex justify-center items-center">
-            <Icon icon={IconMenuMeatball} size={4} />
-          </button>
         </div>
         <FoodCardList
           foods={displayedFoods}
