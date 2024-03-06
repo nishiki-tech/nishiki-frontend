@@ -40,6 +40,18 @@ export const metadata: Metadata = {
     title: 'Nishiki',
     description:
       'Nishiki is an app for tracking and sharing food inventories within groups for better pantry management.',
+    images: [
+      {
+        /**
+         * SVG is not supported by Twitter.
+         * @see {@link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary}
+         */
+        url: `${CLIENT_BASE_URL}/og.png?v=0`,
+        width: 1200,
+        height: 630,
+        alt: 'Nishiki',
+      },
+    ],
   },
 };
 
