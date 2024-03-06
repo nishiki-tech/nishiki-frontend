@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     apple: '/apple-icon.svg?v=0',
   },
   openGraph: {
+    siteName: 'Nishiki',
     title: 'Nishiki',
     description:
       'Nishiki is an app for tracking and sharing food inventories within groups for better pantry management.',
