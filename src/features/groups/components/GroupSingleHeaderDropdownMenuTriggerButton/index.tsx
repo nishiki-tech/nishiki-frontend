@@ -7,11 +7,16 @@ import { useState } from 'react';
 
 import { GroupSingleHeaderDropdownMenuContent } from './GroupSingleHeaderDropdownMenuContent';
 
+interface IGroupSingleHeaderDropdownMenuTriggerButton {
+  /**
+   * an identifier of a group which a user is willing to either delete or rename
+   */
+  groupId: IGroup['id'];
+}
+
 export const GroupSingleHeaderDropdownMenuTriggerButton = ({
   groupId,
-}: {
-  groupId: IGroup['id'];
-}) => {
+}: IGroupSingleHeaderDropdownMenuTriggerButton) => {
   const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
 
   return (
