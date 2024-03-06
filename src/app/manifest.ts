@@ -16,14 +16,14 @@ export default function manifest(): MetadataRoute.Manifest {
     prefer_related_applications: false,
     shortcuts: [
       {
-        name: 'Group list',
-        short_name: 'Groups',
-        url: '/groups',
-      },
-      {
-        name: 'Add foods',
+        name: 'Foods',
         short_name: 'Foods',
         url: '/foods',
+      },
+      {
+        name: 'Groups',
+        short_name: 'Groups',
+        url: '/groups',
       },
       {
         name: 'Profile',
