@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     icon: '/favicon.svg?v=0',
     apple: '/apple-icon.svg?v=0',
   },
+  themeColor: 'var(--color-primary)',
 };
 
 interface IRootLayoutProps {
