@@ -28,12 +28,18 @@ export const metadata: Metadata = {
     url: CLIENT_BASE_URL,
     images: [
       {
-        url: `${CLIENT_BASE_URL}/og.svg`,
+        url: `${CLIENT_BASE_URL}/og.svg?v=0`,
         width: 1200,
         height: 630,
         alt: 'Nishiki',
       },
     ],
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Nishiki',
+    description:
+      'Nishiki is an app for tracking and sharing food inventories within groups for better pantry management.',
   },
 };
 
