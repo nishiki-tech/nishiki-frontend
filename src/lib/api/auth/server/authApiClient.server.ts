@@ -21,7 +21,7 @@ export interface IGetCurrentUserResponse {
  */
 export const getCurrentUserId = async (): Promise<Result<IGetCurrentUserResponse, string>> => {
   try {
-    const data = await request<string>({
+    const data = await request<IGetCurrentUserResponse>({
       url: API_BASE_URL + '/auth/me',
       method: 'GET',
     });
@@ -30,8 +30,7 @@ export const getCurrentUserId = async (): Promise<Result<IGetCurrentUserResponse
      * This issue is mentioned in the issue {@link https://github.com/nishiki-tech/nishiki-frontend/issues/255}
      * Thus, fow now, we need to parse the response in here.
      */
-    const parsedData = JSON.parse(data) as IGetCurrentUserResponse;
-    return Ok(parsedData);
+    return Ok(data);
   } catch (err) {
     if (err instanceof Error) {
       return Err(err.message);
