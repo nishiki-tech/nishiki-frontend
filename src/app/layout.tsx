@@ -38,9 +38,7 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    // card: 'summary',
     card: 'summary_large_image',
-    title: APP_CONST.NAME,
     description: APP_CONST.DESCRIPTION,
   },
 };
