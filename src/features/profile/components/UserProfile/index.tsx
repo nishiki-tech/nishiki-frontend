@@ -32,7 +32,7 @@ export const UserProfile = ({ userId, name }: IUserProfileProps) => {
   return (
     <div className="flex flex-col items-center gap-4 pt-6">
       <Image src="/images/avatar.png" width={128} height={128} alt="avatar" priority />
-      <div className="min-w-52 max-w-52">
+      <div className="max-w-52">
         {isRenameUserFormOpen ? (
           <RenameUserForm
             userId={userId}
@@ -41,9 +41,13 @@ export const UserProfile = ({ userId, name }: IUserProfileProps) => {
             onClose={() => setIsRenameUserFormOpen(false)}
           />
         ) : (
-          <div className="flex items-center justify-center gap-4">
+          <div className="flex items-center justify-between gap-4 relative">
             <span className="text-xl leading-6 truncate py-2">{name}</span>
-            <Button variant="ghost" className="min-w-5 h-5" onClick={handlePenIconClick}>
+            <Button
+              variant="ghost"
+              className="min-w-5 h-5 absolute -right-9"
+              onClick={handlePenIconClick}
+            >
               <Icon icon={IconPen} color="primary" size={5} />
             </Button>
           </div>
