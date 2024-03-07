@@ -55,102 +55,102 @@ export default function manifest(): MetadataRoute.Manifest {
     ],
     icons: [
       {
-        src: 'images/icons/icon-72x72.png',
+        src: 'images/icons/manifest/icon-72x72.png',
         sizes: '72x72',
         type: 'image/png',
         purpose: 'maskable',
       },
       {
-        src: 'images/icons/icon-rounded-72x72.png',
+        src: 'images/icons/manifest/icon-rounded-72x72.png',
         sizes: '72x72',
         type: 'image/png',
         purpose: 'any',
       },
       {
-        src: 'images/icons/icon-96x96.png',
+        src: 'images/icons/manifest/icon-96x96.png',
         sizes: '96x96',
         type: 'image/png',
         purpose: 'maskable',
       },
       {
-        src: 'images/icons/icon-rounded-96x96.png',
+        src: 'images/icons/manifest/icon-rounded-96x96.png',
         sizes: '96x96',
         type: 'image/png',
         purpose: 'any',
       },
       {
-        src: 'images/icons/icon-128x128.png',
+        src: 'images/icons/manifest/icon-128x128.png',
         sizes: '128x128',
         type: 'image/png',
         purpose: 'maskable',
       },
       {
-        src: 'images/icons/icon-rounded-128x128.png',
+        src: 'images/icons/manifest/icon-rounded-128x128.png',
         sizes: '128x128',
         type: 'image/png',
         purpose: 'any',
       },
 
       {
-        src: 'images/icons/icon-144x144.png',
+        src: 'images/icons/manifest/icon-144x144.png',
         sizes: '144x144',
         type: 'image/png',
         purpose: 'maskable',
       },
       {
-        src: 'images/icons/icon-rounded-144x144.png',
+        src: 'images/icons/manifest/icon-rounded-144x144.png',
         sizes: '144x144',
         type: 'image/png',
         purpose: 'any',
       },
 
       {
-        src: 'images/icons/icon-152x152.png',
+        src: 'images/icons/manifest/icon-152x152.png',
         sizes: '152x152',
         type: 'image/png',
         purpose: 'maskable',
       },
       {
-        src: 'images/icons/icon-rounded-152x152.png',
+        src: 'images/icons/manifest/icon-rounded-152x152.png',
         sizes: '152x152',
         type: 'image/png',
         purpose: 'any',
       },
 
       {
-        src: 'images/icons/icon-192x192.png',
+        src: 'images/icons/manifest/icon-192x192.png',
         sizes: '192x192',
         type: 'image/png',
         purpose: 'maskable',
       },
       {
-        src: 'images/icons/icon-rounded-192x192.png',
+        src: 'images/icons/manifest/icon-rounded-192x192.png',
         sizes: '192x192',
         type: 'image/png',
         purpose: 'any',
       },
 
       {
-        src: 'images/icons/icon-384x384.png',
+        src: 'images/icons/manifest/icon-384x384.png',
         sizes: '384x384',
         type: 'image/png',
         purpose: 'maskable',
       },
       {
-        src: 'images/icons/icon-rounded-384x384.png',
+        src: 'images/icons/manifest/icon-rounded-384x384.png',
         sizes: '384x384',
         type: 'image/png',
         purpose: 'any',
       },
 
       {
-        src: 'images/icons/icon-512x512.png',
+        src: 'images/icons/manifest/icon-512x512.png',
         sizes: '512x512',
         type: 'image/png',
         purpose: 'maskable',
       },
       {
-        src: 'images/icons/icon-rounded-512x512.png',
+        src: 'images/icons/manifest/icon-rounded-512x512.png',
         sizes: '512x512',
         type: 'image/any',
         purpose: 'any',
