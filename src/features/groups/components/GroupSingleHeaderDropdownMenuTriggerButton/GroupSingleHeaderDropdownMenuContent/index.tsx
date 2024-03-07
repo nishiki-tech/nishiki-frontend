@@ -9,6 +9,7 @@ interface IGroupSingleHeaderDropdownMenuContent {
    * an identifier of a group which a user is willing to either delete or rename
    */
   groupId: IGroup['id'];
+  currentGroupName: IGroup['name'];
   /**
    * Function to close this dropdown menu
    */
@@ -17,6 +18,7 @@ interface IGroupSingleHeaderDropdownMenuContent {
 
 export const GroupSingleHeaderDropdownMenuContent = ({
   groupId,
+  currentGroupName,
   onDropdownMenuClose,
 }: IGroupSingleHeaderDropdownMenuContent) => {
   /**
@@ -34,7 +36,7 @@ export const GroupSingleHeaderDropdownMenuContent = ({
   return (
     <DropdownMenuContent>
       <DropdownMenuItem onSelect={handleSelect}>
-        <RenameGroupDrawerTriggerButton />
+        <RenameGroupDrawerTriggerButton currentGroupName={currentGroupName} />
       </DropdownMenuItem>
       <DropdownMenuItem onSelect={handleSelect}>
         <DeleteGroupDialogTriggerButton groupId={groupId} onParentClose={onDropdownMenuClose} />

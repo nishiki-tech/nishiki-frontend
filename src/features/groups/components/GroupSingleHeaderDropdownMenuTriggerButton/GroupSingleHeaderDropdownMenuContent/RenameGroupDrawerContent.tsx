@@ -6,21 +6,39 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
+  Input,
 } from '@/components/ui';
-import { Form } from '@/components/ui/Form';
-import { renameGroupFormSchema } from '@/features/groups/lib/schemas';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/Form';
+import { renameGroupFormSchema, RenameGroupInputs } from '@/features/groups/lib/schemas';
+import { IGroup } from '@/types/definition';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-export const RenameGroupDrawerContent = () => {
+export const RenameGroupDrawerContent = ({
+  currentGroupName,
+}: {
+  currentGroupName: IGroup['name'];
+}) => {
   const form = useForm<z.infer<typeof renameGroupFormSchema>>({
     resolver: zodResolver(renameGroupFormSchema),
     defaultValues: {
-      groupName: '',
+      groupName: currentGroupName,
     },
   });
+  const processSubmit: SubmitHandler<RenameGroupInputs> = (values) => {
+    console.log({ values });
+    alert('Submitted!');
+    form.reset();
+  };
 
   return (
     <DrawerContent side="bottom">
@@ -28,21 +46,21 @@ export const RenameGroupDrawerContent = () => {
         <DrawerTitle>Rename Group</DrawerTitle>
       </DrawerHeader>
       <Form {...form}>
-        <form>
+        <form onSubmit={form.handleSubmit(processSubmit)}>
           <DrawerBody>
-            {/* <FormField 
-            control={form.control}
-            groupName="name"
-            render={({ field}) =>(
-              <FormItem>
-                <FormLabel required> Group Name</FormLabel>
-                <FormControl>
-                  <Input {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-            /> */}
+            <FormField
+              control={form.control}
+              name="groupName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel required>Group Name</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
           </DrawerBody>
           <DrawerFooter>
             <DrawerClose asChild>

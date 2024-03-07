@@ -7,10 +7,15 @@ import {
   DropdownMenuButtonText,
   Icon,
 } from '@/components/ui';
+import { IGroup } from '@/types/definition';
 
 import { RenameGroupDrawerContent } from './RenameGroupDrawerContent';
 
-export const RenameGroupDrawerTriggerButton = () => {
+export const RenameGroupDrawerTriggerButton = ({
+  currentGroupName,
+}: {
+  currentGroupName: IGroup['name'];
+}) => {
   return (
     <DrawerRoot>
       <DrawerTrigger asChild>
@@ -21,7 +26,7 @@ export const RenameGroupDrawerTriggerButton = () => {
           <DropdownMenuButtonText>Rename</DropdownMenuButtonText>
         </DropdownMenuButton>
       </DrawerTrigger>
-      <RenameGroupDrawerContent />
+      <RenameGroupDrawerContent currentGroupName={currentGroupName} />
     </DrawerRoot>
   );
 };

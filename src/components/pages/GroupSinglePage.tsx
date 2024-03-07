@@ -20,7 +20,12 @@ export const GroupSinglePage = async ({ groupId }: IGroupSinglePageProps) => {
     <MobileLayout
       heading={group.name}
       headerLeft={<HeaderBackButton href={{ pathname: '/groups' }} />}
-      headerRight={<GroupSingleHeaderDropdownMenuTriggerButton groupId={groupId} />}
+      headerRight={
+        <GroupSingleHeaderDropdownMenuTriggerButton
+          groupId={groupId}
+          currentGroupName={group.name}
+        />
+      }
     >
       <div className="px-4 pt-6 pb-16">
         <MemberList groupId={groupId} />
