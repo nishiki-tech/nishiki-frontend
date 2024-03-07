@@ -20,10 +20,7 @@ export const metadata: Metadata = {
   },
   description: APP_CONST.DESCRIPTION,
   icons: {
-    icon: {
-      url: '/images/icons/favicon.ico?v=0',
-      type: 'image/svg+xml',
-    },
+    icon: '/images/icons/favicon.ico?v=0',
     apple: '/images/icons/apple-touch-icon.png?v=0',
   },
   openGraph: {
