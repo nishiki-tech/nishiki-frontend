@@ -2,21 +2,22 @@
  * This file is used to generate the web app manifest file.
  * @see {@link https://nextjs.org/docs/app/api-reference/file-conventions/metadata/manifest}
  */
+import { APP_CONST } from '@/const/appConst';
+
 import { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Nishiki',
-    short_name: 'Nishiki',
-    description:
-      'An app for tracking and sharing food inventories within groups for better pantry management.',
+    name: APP_CONST.NAME,
+    short_name: APP_CONST.NAME,
+    description: APP_CONST.DESCRIPTION,
     categories: ['food', 'lifestyle'],
     lang: 'en',
     start_url: '/groups',
     display: 'standalone',
     orientation: 'portrait',
-    background_color: '#abd4cf',
-    theme_color: '#6ab3ab',
+    background_color: APP_CONST.BG_COLOR,
+    theme_color: APP_CONST.THEME_COLOR,
     prefer_related_applications: false,
     /**
      * The `shortcut` property defines the shortcuts displayed

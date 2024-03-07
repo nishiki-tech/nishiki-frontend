@@ -1,5 +1,6 @@
 import '@/styles/globals.css';
 
+import { APP_CONST } from '@/const/appConst';
 import { fontOutfit } from '@/const/fonts';
 import { cn } from '@/lib/tailwind/utils';
 
@@ -7,60 +8,47 @@ import type { Viewport } from 'next';
 import { Metadata } from 'next';
 import { ReactNode } from 'react';
 
-const CLIENT_BASE_URL = process.env.NEXT_PUBLIC_CLIENT_BASE_URL;
-
 /**
- * This object is used to configure the metadata and generate meta tags for the app.
+ * This object configures the metadata and generate meta tags for the app.
  * @see {@link https://nextjs.org/docs/app/api-reference/functions/generate-metadata}
  */
 export const metadata: Metadata = {
   title: {
-    default: 'Nishiki',
-    template: '%s | Nishiki',
+    default: APP_CONST.NAME,
+    template: `%s | ${APP_CONST.NAME}`,
   },
-  description:
-    'Nishiki is an app for tracking and sharing food inventories within groups for better pantry management.',
+  description: APP_CONST.DESCRIPTION,
   icons: {
     icon: 'images/icons/favicon.svg?v=0',
     apple: 'images/icons/apple-touch-icon.svg?v=0',
   },
   openGraph: {
-    siteName: 'Nishiki',
-    description:
-      'Nishiki is an app for tracking and sharing food inventories within groups for better pantry management.',
+    siteName: APP_CONST.NAME,
+    description: APP_CONST.DESCRIPTION,
     type: 'website',
-    url: CLIENT_BASE_URL,
+    url: APP_CONST.BASE_URL,
     images: [
       {
-        url: `${CLIENT_BASE_URL}/images/og.png?v=0`,
+        url: `${APP_CONST.BASE_URL}/images/og.png?v=0`,
         width: 1200,
         height: 630,
-        alt: 'Nishiki',
+        alt: APP_CONST.NAME,
       },
     ],
   },
   twitter: {
     card: 'summary',
-    title: 'Nishiki',
-    description:
-      'Nishiki is an app for tracking and sharing food inventories within groups for better pantry management.',
-    images: [
-      {
-        url: `${CLIENT_BASE_URL}/images/og.png?v=0`,
-        width: 1200,
-        height: 630,
-        alt: 'Nishiki',
-      },
-    ],
+    title: APP_CONST.NAME,
+    description: APP_CONST.DESCRIPTION,
   },
 };
 
 /**
- * This object is used to configure the viewport and generate meta tags for the app.
+ * This object configures the viewport and generate meta tags for the app.s
  * @see {@link https://nextjs.org/docs/app/api-reference/functions/generate-viewport}
  */
 export const viewport: Viewport = {
-  themeColor: '#6ab3ab', // --color-primary
+  themeColor: APP_CONST.THEME_COLOR, // --color-primary
 };
 
 interface IRootLayoutProps {
