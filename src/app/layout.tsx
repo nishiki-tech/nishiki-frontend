@@ -4,8 +4,9 @@ import { APP_CONST } from '@/const/appConst';
 import { fontOutfit } from '@/const/fonts';
 import { cn } from '@/lib/tailwind/utils';
 
-import type { Viewport } from 'next';
-import { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Metadata, Viewport } from 'next';
 import { ReactNode } from 'react';
 
 /**
@@ -64,6 +65,8 @@ export default function RootLayout({ children }: IRootLayoutProps) {
         <head />
         <body className={cn('min-h-screen bg-primary-lightest antialiased font-outfit')}>
           {children}
+          <Analytics />
+          <SpeedInsights />
         </body>
       </html>
     </>
