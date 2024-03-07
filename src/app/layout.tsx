@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   description: APP_CONST.DESCRIPTION,
   icons: {
     icon: {
-      url: '/images/icons/favicon.svg?v=0',
+      url: '/images/icons/favicon.ico?v=0',
       type: 'image/svg+xml',
     },
     apple: '/images/icons/apple-touch-icon.png?v=0',
