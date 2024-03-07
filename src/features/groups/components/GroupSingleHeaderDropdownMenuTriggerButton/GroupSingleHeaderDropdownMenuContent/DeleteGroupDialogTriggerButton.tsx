@@ -7,12 +7,11 @@ import {
   DropdownMenuButtonText,
   Icon,
 } from '@/components/ui';
+import { DeleteGroupDialogContent } from '@/features/groups/components/GroupCardList/GroupCard/GroupCardContent/GroupCardDropdownMenuTriggerButton/GroupCardDropdownMenuContent/DeleteGroupDialogTriggerButton/DeleteGroupDialogContent';
 import { IGroup } from '@/types/definition';
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-
-import { DeleteGroupDialogContent } from '../../GroupCardList/GroupCard/GroupCardContent/GroupCardDropdownMenuTriggerButton/GroupCardDropdownMenuContent/DeleteGroupDialogTriggerButton/DeleteGroupDialogContent';
 
 interface IDeleteGroupDialogTriggerButton {
   /**
@@ -35,7 +34,7 @@ export const DeleteGroupDialogTriggerButton = ({
   /**
    * Function to transition to groupCollection page
    */
-  const handlePageTransit = () => {
+  const navigateToGroupPage = () => {
     router.push('/groups');
   };
 
@@ -53,7 +52,7 @@ export const DeleteGroupDialogTriggerButton = ({
         groupId={groupId}
         onParentClose={onParentClose}
         onDialogClose={() => setIsDialogOpen(false)}
-        onPageTransit={handlePageTransit}
+        navigateOnSuccess={navigateToGroupPage}
       />
     </DialogRoot>
   );
