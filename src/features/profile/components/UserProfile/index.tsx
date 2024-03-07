@@ -1,8 +1,9 @@
 'use client';
-import { IconPen, IconPersonCircle } from '@/assets/images/icons';
+import { IconPen } from '@/assets/images/icons';
 import { Button, Icon } from '@/components/ui';
 import { IUser } from '@/types/definition';
 
+import Image from 'next/image';
 import { useState } from 'react';
 
 import { RenameUserForm } from './RenameUserForm';
@@ -30,7 +31,7 @@ export const UserProfile = ({ userId, name }: IUserProfileProps) => {
 
   return (
     <div className="flex flex-col items-center gap-4 pt-6">
-      <Icon icon={IconPersonCircle} size={32} color="gray" />
+      <Image src="/images/avatar.png" width={128} height={128} alt="avatar" />
       <div className="min-w-52 max-w-52">
         {isRenameUserFormOpen ? (
           <RenameUserForm
