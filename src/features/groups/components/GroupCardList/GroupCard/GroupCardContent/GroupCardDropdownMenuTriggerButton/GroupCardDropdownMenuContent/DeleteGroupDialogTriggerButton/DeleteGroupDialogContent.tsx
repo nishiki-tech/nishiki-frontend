@@ -44,7 +44,7 @@ export const DeleteGroupDialogContent = ({
   };
   /**
    * Handle the delete button click.
-   * If the DELETE request is successful, show a success message and close the dialog and drawer, and if the function executes in groupSinglePage, transitions to groupCollection page
+   * If the DELETE request is successful, show a success message, close the dialog and drawer, and navigate to a different page if the function is passed from parent
    * If the DELETE request is failed, show an error message and close the dialog.
    * @returns void
    */
