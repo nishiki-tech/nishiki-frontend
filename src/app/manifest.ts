@@ -1,3 +1,7 @@
+/**
+ * This file is used to generate the web app manifest file.
+ * @see {@link https://nextjs.org/docs/app/api-reference/file-conventions/metadata/manifest}
+ */
 import { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
@@ -14,6 +18,10 @@ export default function manifest(): MetadataRoute.Manifest {
     background_color: '#abd4cf',
     theme_color: '#6ab3ab',
     prefer_related_applications: false,
+    /**
+     * The `shortcut` property defines the shortcuts displayed
+     * when long-pressing the app icon on Android devices.
+     */
     shortcuts: [
       {
         name: 'Foods',
@@ -31,6 +39,10 @@ export default function manifest(): MetadataRoute.Manifest {
         url: '/profile',
       },
     ],
+    /**
+     * The `screenshots` property defines the screenshots displayed
+     * when installing the app on Android devices.
+     */
     screenshots: [
       {
         src: 'images/screenshots/app_screenshot_signin.png',
@@ -53,6 +65,12 @@ export default function manifest(): MetadataRoute.Manifest {
         type: 'image/png',
       },
     ],
+    /**
+     * `maskable` icons are used for PWA icons for Android
+     * `any` icons are used for PWA icons for other platforms, such as Desktop
+     * @see {@link https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/How_to/Define_app_icons#support_masking}
+     * @see {@link https://web.dev/articles/maskable-icon}
+     */
     icons: [
       {
         src: 'images/icons/manifest/icon-72x72.png',

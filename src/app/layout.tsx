@@ -9,6 +9,10 @@ import { ReactNode } from 'react';
 
 const CLIENT_BASE_URL = process.env.NEXT_PUBLIC_CLIENT_BASE_URL;
 
+/**
+ * This object is used to configure the metadata and generate meta tags for the app.
+ * @see {@link https://nextjs.org/docs/app/api-reference/functions/generate-metadata}
+ */
 export const metadata: Metadata = {
   title: {
     default: 'Nishiki',
@@ -42,10 +46,6 @@ export const metadata: Metadata = {
       'Nishiki is an app for tracking and sharing food inventories within groups for better pantry management.',
     images: [
       {
-        /**
-         * SVG is not supported by Twitter.
-         * @see {@link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary}
-         */
         url: `${CLIENT_BASE_URL}/images/og.png?v=0`,
         width: 1200,
         height: 630,
@@ -55,6 +55,10 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * This object is used to configure the viewport and generate meta tags for the app.
+ * @see {@link https://nextjs.org/docs/app/api-reference/functions/generate-viewport}
+ */
 export const viewport: Viewport = {
   themeColor: '#6ab3ab', // --color-primary
 };
