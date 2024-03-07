@@ -19,8 +19,8 @@ export const metadata: Metadata = {
   },
   description: APP_CONST.DESCRIPTION,
   icons: {
-    icon: 'images/icons/favicon.svg?v=0',
-    apple: 'images/icons/apple-touch-icon.svg?v=0',
+    icon: '/images/icons/favicon.svg?v=0',
+    apple: '/images/icons/apple-touch-icon.svg?v=0',
   },
   openGraph: {
     siteName: APP_CONST.NAME,
