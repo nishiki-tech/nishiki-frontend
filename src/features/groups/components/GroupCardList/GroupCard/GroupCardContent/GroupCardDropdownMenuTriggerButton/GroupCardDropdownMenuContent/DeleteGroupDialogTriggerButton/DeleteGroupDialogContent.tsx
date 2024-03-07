@@ -24,16 +24,16 @@ interface IDeleteGroupDialogContentProps {
    */
   onDialogClose: () => void;
   /**
-   * The function to transition to groupCollection page
+   * The function to navigate the user to a different page
    */
-  onPageTransit?: () => void;
+  navigateOnSuccess?: () => void;
 }
 
 export const DeleteGroupDialogContent = ({
   groupId,
   onParentClose,
   onDialogClose,
-  onPageTransit,
+  navigateOnSuccess,
 }: IDeleteGroupDialogContentProps) => {
   /**
    * Handle the cancel button click.
@@ -54,7 +54,7 @@ export const DeleteGroupDialogContent = ({
       alert('Something went wrong. Please try again.');
     } else {
       alert('Successfully deleted!');
-      onPageTransit?.();
+      navigateOnSuccess?.();
     }
     onParentClose?.();
     onDialogClose();
