@@ -8,6 +8,8 @@ import {
   Icon,
 } from '@/components/ui';
 
+import { RenameGroupDrawerContent } from './RenameGroupDrawerContent';
+
 export const RenameGroupDrawerTriggerButton = () => {
   return (
     <DrawerRoot>
@@ -19,6 +21,7 @@ export const RenameGroupDrawerTriggerButton = () => {
           <DropdownMenuButtonText>Rename</DropdownMenuButtonText>
         </DropdownMenuButton>
       </DrawerTrigger>
+      <RenameGroupDrawerContent />
     </DrawerRoot>
   );
 };

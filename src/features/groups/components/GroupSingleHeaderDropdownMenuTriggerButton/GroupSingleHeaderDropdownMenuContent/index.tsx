@@ -33,7 +33,7 @@ export const GroupSingleHeaderDropdownMenuContent = ({
 
   return (
     <DropdownMenuContent>
-      <DropdownMenuItem>
+      <DropdownMenuItem onSelect={handleSelect}>
         <RenameGroupDrawerTriggerButton />
       </DropdownMenuItem>
       <DropdownMenuItem onSelect={handleSelect}>
