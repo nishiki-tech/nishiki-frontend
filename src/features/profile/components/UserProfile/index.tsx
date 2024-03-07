@@ -31,7 +31,7 @@ export const UserProfile = ({ userId, name }: IUserProfileProps) => {
 
   return (
     <div className="flex flex-col items-center gap-4 pt-6">
-      <Image src="/images/avatar.png" width={128} height={128} alt="avatar" />
+      <Image src="/images/avatar.png" width={128} height={128} alt="avatar" priority />
       <div className="min-w-52 max-w-52">
         {isRenameUserFormOpen ? (
           <RenameUserForm
