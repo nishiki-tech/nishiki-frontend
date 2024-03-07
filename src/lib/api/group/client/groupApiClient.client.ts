@@ -114,15 +114,14 @@ export interface IPutGenerateInvitationLink {
  */
 export const putGenerateInvitationLinkHash = async (
   groupId: string,
-): Promise<Result<string, string>> => {
+): Promise<Result<IPutGenerateInvitationLink, string>> => {
   try {
-    const data = await request<string>({
+    const data = await request<IPutGenerateInvitationLink>({
       url: API_BASE_URL + '/groups/' + groupId + '?Action=generateInvitationLink',
       method: 'PUT',
     });
 
-    const parsedData = JSON.parse(data) as IPutGenerateInvitationLink;
-    return Ok(parsedData.invitationLinkHash);
+    return Ok(data);
   } catch (err) {
     if (err instanceof Error) {
     }
