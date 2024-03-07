@@ -22,7 +22,6 @@ export const metadata: Metadata = {
   },
   openGraph: {
     siteName: 'Nishiki',
-    title: 'Nishiki App',
     description:
       'Nishiki is an app for tracking and sharing food inventories within groups for better pantry management.',
     type: 'website',
