@@ -40,14 +40,12 @@ export const InviteMemberDialogContent = ({
     setIsLinkButtonClicked(true);
     const result = await putGenerateInvitationLinkHash(groupId);
 
-    //narrowing if result is invalid, no implementation for now
     if (!result.ok) {
       alert('Something went wrong. Please try again');
       return;
     }
 
-    const hash = result.value;
-
+    const hash = result.value.invitationLinkHash;
     navigator.clipboard.writeText(`${CLIENT_BASE_URL}/groups/join/${hash}`);
     return;
   };
