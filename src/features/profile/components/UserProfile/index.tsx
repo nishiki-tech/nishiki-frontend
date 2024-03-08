@@ -1,9 +1,9 @@
 'use client';
 import { IconPen } from '@/assets/images/icons';
+import { Avatar } from '@/assets/images/ui';
 import { Button, Icon } from '@/components/ui';
 import { IUser } from '@/types/definition';
 
-import Image from 'next/image';
 import { useState } from 'react';
 
 import { RenameUserForm } from './RenameUserForm';
@@ -31,7 +31,7 @@ export const UserProfile = ({ userId, name }: IUserProfileProps) => {
 
   return (
     <div className="flex flex-col items-center gap-4 pt-6">
-      <Image src="/images/avatar.png" width={128} height={128} alt="avatar" priority />
+      <Avatar className="size-32" />
       <div className="max-w-52">
         {isRenameUserFormOpen ? (
           <RenameUserForm

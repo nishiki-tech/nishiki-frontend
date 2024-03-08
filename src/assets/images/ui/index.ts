@@ -1,2 +1,3 @@
+import Avatar from './avatar.svg';
 import Spinner from './spinner.svg';
-export { Spinner };
+export { Avatar, Spinner };
