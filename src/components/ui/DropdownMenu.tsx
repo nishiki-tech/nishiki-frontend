@@ -9,7 +9,7 @@
  * "DropdownMenuRadioGroup"
  * See the official docs for more info:
  * shadcn/ui: https://ui.shadcn.com/docs/components/dropdown-menu
- * Radix UI: https://www.radix-ui.com/themes/docs/components/dropdown-menu
+ * Radix UI: https://www.radix-ui.com/primitives/docs/components/dropdown-menu
  */
 
 'use client';
