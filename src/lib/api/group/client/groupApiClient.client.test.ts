@@ -150,11 +150,11 @@ describe('API Function Tests', () => {
     it('successfully generates invitation link', async () => {
       /* Arrange */
       const mockInvitationLinkHash = 'e8ee3bc535b0c569276a801de8a3fd88';
-      const mockResponse = JSON.stringify({
+      const mockResponse = {
         invitationLinkHash: mockInvitationLinkHash,
-      });
+      };
       const mockRequest = setUpMockSuccessRequest(mockResponse);
-      const expectedValue = mockInvitationLinkHash;
+      const expectedValue = mockResponse;
 
       /* Act */
       const result = await putGenerateInvitationLinkHash(mockGroupId);
