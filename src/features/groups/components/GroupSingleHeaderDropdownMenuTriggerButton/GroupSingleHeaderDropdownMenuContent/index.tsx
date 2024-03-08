@@ -9,6 +9,9 @@ interface IGroupSingleHeaderDropdownMenuContent {
    * an identifier of a group which a user is willing to either delete or rename
    */
   groupId: IGroup['id'];
+  /**
+   * The current group name which a user is willing to change
+   */
   currentGroupName: IGroup['name'];
   /**
    * Function to close this dropdown menu

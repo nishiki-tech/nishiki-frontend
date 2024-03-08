@@ -13,20 +13,32 @@ import { useState } from 'react';
 
 import { RenameGroupDrawerContent } from './RenameGroupDrawerContent';
 
+interface IRenameGroupDrawerTriggerButton {
+  /**
+   * an identifier of a group which a user is willing to rename/delete
+   */
+  groupId: IGroup['id'];
+  /**
+   * The current group name which a user is willing to change
+   */
+  currentGroupName: IGroup['name'];
+  /**
+   * the function to close the dialog
+   */
+  onParentClose: () => void;
+}
+
 export const RenameGroupDrawerTriggerButton = ({
   groupId,
   currentGroupName,
   onParentClose,
-}: {
-  groupId: IGroup['id'];
-  currentGroupName: IGroup['name'];
-  onParentClose: () => void;
-}) => {
+}: IRenameGroupDrawerTriggerButton) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const handleClose = () => {
     setIsDrawerOpen(false);
   };
+
   return (
     <DrawerRoot open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
       <DrawerTrigger asChild>

@@ -26,19 +26,36 @@ import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
+interface IRenameGroupDrawerContent {
+  /**
+   * an identifier of a group a use is willing to rename
+   */
+  groupId: IGroup['id'];
+  /**
+   * The current group name which a user is willing to change
+   */
+  currentGroupName: IGroup['name'];
+  /**
+   * the function to close the dialog
+   */
+  onClose: () => void;
+  /**
+   * the state of a drawer true is open, false is closed
+   */
+  isDrawerOpen: boolean;
+  /**
+   * the function to close the parent component
+   */
+  onParentClose: () => void;
+}
+
 export const RenameGroupDrawerContent = ({
   groupId,
   currentGroupName,
   onClose,
   isDrawerOpen,
   onParentClose,
-}: {
-  groupId: IGroup['id'];
-  currentGroupName: IGroup['name'];
-  onClose: () => void;
-  isDrawerOpen: boolean;
-  onParentClose: () => void;
-}) => {
+}: IRenameGroupDrawerContent) => {
   const form = useForm<z.infer<typeof renameGroupFormSchema>>({
     resolver: zodResolver(renameGroupFormSchema),
     defaultValues: {
@@ -57,11 +74,14 @@ export const RenameGroupDrawerContent = ({
     } else {
       alert('Successfully renamed the group');
       form.reset();
+      onParentClose();
+      onClose();
     }
-    onParentClose();
-    onClose();
   };
 
+  /**
+   * Reset the form when the drawer is closed
+   */
   useEffect(() => {
     !isDrawerOpen && form.reset();
   }, [isDrawerOpen, form]);
