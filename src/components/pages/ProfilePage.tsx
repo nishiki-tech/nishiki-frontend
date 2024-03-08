@@ -19,11 +19,11 @@ export const ProfilePage = async () => {
      */
     const getCurrentUserIdResult = await getCurrentUserId();
     if (getCurrentUserIdResult.ok) {
-      const { userId } = getCurrentUserIdResult.unwrap();
+      const { userId } = getCurrentUserIdResult.value;
       const getUserByIdResult = await getUserById(userId);
       if (getUserByIdResult.ok) {
-        const { username } = getUserByIdResult.unwrap();
-        return username;
+        const { name } = getUserByIdResult.value;
+        return name;
       }
     }
     throw new Error('Failed to get user name');
