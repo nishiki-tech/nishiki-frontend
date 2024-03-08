@@ -40,7 +40,7 @@ interface IRenameGroupDrawerContent {
    */
   onClose: () => void;
   /**
-   * The state of a drawer if true, opened, false is closed
+   * The state of a drawer if true, opened, and close if false
    */
   isDrawerOpen: boolean;
   /**
