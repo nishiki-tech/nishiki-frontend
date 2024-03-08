@@ -28,7 +28,7 @@ import { z } from 'zod';
 
 interface IRenameGroupDrawerContent {
   /**
-   * an identifier of a group a use is willing to rename
+   * An identifier of a group a user is willing to rename
    */
   groupId: IGroup['id'];
   /**
@@ -36,15 +36,15 @@ interface IRenameGroupDrawerContent {
    */
   currentGroupName: IGroup['name'];
   /**
-   * the function to close the dialog
+   * The function to close the dialog
    */
   onClose: () => void;
   /**
-   * the state of a drawer true is open, false is closed
+   * The state of a drawer if true, opened, false is closed
    */
   isDrawerOpen: boolean;
   /**
-   * the function to close the parent component
+   * The function to close the parent component
    */
   onParentClose: () => void;
 }
