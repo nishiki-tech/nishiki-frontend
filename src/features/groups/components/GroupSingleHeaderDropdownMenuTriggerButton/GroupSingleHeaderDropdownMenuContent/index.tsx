@@ -36,7 +36,11 @@ export const GroupSingleHeaderDropdownMenuContent = ({
   return (
     <DropdownMenuContent>
       <DropdownMenuItem onSelect={handleSelect}>
-        <RenameGroupDrawerTriggerButton currentGroupName={currentGroupName} />
+        <RenameGroupDrawerTriggerButton
+          groupId={groupId}
+          currentGroupName={currentGroupName}
+          onParentClose={onDropdownMenuClose}
+        />
       </DropdownMenuItem>
       <DropdownMenuItem onSelect={handleSelect}>
         <DeleteGroupDialogTriggerButton groupId={groupId} onParentClose={onDropdownMenuClose} />

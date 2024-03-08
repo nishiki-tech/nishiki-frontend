@@ -16,17 +16,28 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/Form';
+import { renameGroup } from '@/features/groups/lib/actions';
 import { renameGroupFormSchema, RenameGroupInputs } from '@/features/groups/lib/schemas';
 import { IGroup } from '@/types/definition';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useEffect } from 'react';
+// import { KeyboardEvent } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 export const RenameGroupDrawerContent = ({
+  groupId,
   currentGroupName,
+  onClose,
+  isDrawerOpen,
+  onParentClose,
 }: {
+  groupId: IGroup['id'];
   currentGroupName: IGroup['name'];
+  onClose: () => void;
+  isDrawerOpen: boolean;
+  onParentClose: () => void;
 }) => {
   const form = useForm<z.infer<typeof renameGroupFormSchema>>({
     resolver: zodResolver(renameGroupFormSchema),
@@ -34,11 +45,26 @@ export const RenameGroupDrawerContent = ({
       groupName: currentGroupName,
     },
   });
-  const processSubmit: SubmitHandler<RenameGroupInputs> = (values) => {
-    console.log({ values });
-    alert('Submitted!');
-    form.reset();
+
+  const processSubmit: SubmitHandler<RenameGroupInputs> = async (values: RenameGroupInputs) => {
+    const { groupName } = values;
+    if (groupName === currentGroupName) return;
+
+    const result = await renameGroup(groupId, values);
+
+    if (!result.ok) {
+      alert('Something went wrong. Please try again.');
+    } else {
+      alert('Successfully renamed the group');
+      form.reset();
+    }
+    onParentClose();
+    onClose();
   };
+
+  useEffect(() => {
+    !isDrawerOpen && form.reset();
+  }, [isDrawerOpen, form]);
 
   return (
     <DrawerContent side="bottom">

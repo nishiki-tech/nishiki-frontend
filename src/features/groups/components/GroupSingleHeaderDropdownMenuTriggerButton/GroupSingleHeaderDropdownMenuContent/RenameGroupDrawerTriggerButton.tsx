@@ -9,15 +9,26 @@ import {
 } from '@/components/ui';
 import { IGroup } from '@/types/definition';
 
+import { useState } from 'react';
+
 import { RenameGroupDrawerContent } from './RenameGroupDrawerContent';
 
 export const RenameGroupDrawerTriggerButton = ({
+  groupId,
   currentGroupName,
+  onParentClose,
 }: {
+  groupId: IGroup['id'];
   currentGroupName: IGroup['name'];
+  onParentClose: () => void;
 }) => {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const handleClose = () => {
+    setIsDrawerOpen(false);
+  };
   return (
-    <DrawerRoot>
+    <DrawerRoot open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
       <DrawerTrigger asChild>
         <DropdownMenuButton>
           <DropdownMenuButtonIcon>
@@ -26,7 +37,13 @@ export const RenameGroupDrawerTriggerButton = ({
           <DropdownMenuButtonText>Rename</DropdownMenuButtonText>
         </DropdownMenuButton>
       </DrawerTrigger>
-      <RenameGroupDrawerContent currentGroupName={currentGroupName} />
+      <RenameGroupDrawerContent
+        groupId={groupId}
+        currentGroupName={currentGroupName}
+        onClose={handleClose}
+        isDrawerOpen={isDrawerOpen}
+        onParentClose={onParentClose}
+      />
     </DrawerRoot>
   );
 };
