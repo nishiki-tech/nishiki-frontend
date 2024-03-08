@@ -117,7 +117,7 @@ export const putGenerateInvitationLinkHash = async (
 ): Promise<Result<IPutGenerateInvitationLink, string>> => {
   try {
     const data = await request<IPutGenerateInvitationLink>({
-      url: API_BASE_URL + '/groups/' + groupId + '?Action=generateInvitationLink',
+      url: `${API_BASE_URL}/groups/${groupId}?Action=generateInvitationLink`,
       method: 'PUT',
     });
 

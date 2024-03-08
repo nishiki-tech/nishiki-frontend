@@ -40,7 +40,6 @@ export const InviteMemberDialogContent = ({
     setIsLinkButtonClicked(true);
     const result = await putGenerateInvitationLinkHash(groupId);
 
-    //narrowing if result is invalid, no implementation for now
     if (!result.ok) {
       alert('Something went wrong. Please try again');
       return;
