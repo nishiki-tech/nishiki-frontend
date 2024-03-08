@@ -1,6 +1,5 @@
 import { MobileLayout } from '@/components/layouts/MobileLayout';
-import { HeaderMenuCircleButton } from '@/components/parts/Header';
-import { UserProfile } from '@/features/profile/components';
+import { ProfileHeaderDropdownMenuTriggerButton, UserProfile } from '@/features/profile/components';
 import { getCurrentUserId } from '@/lib/api/auth/server';
 import { getUserById } from '@/lib/api/user/server';
 
@@ -32,7 +31,7 @@ export const ProfilePage = async () => {
   const name = await getUserName();
 
   return (
-    <MobileLayout heading="Profile" headerRight={<HeaderMenuCircleButton />}>
+    <MobileLayout heading="Profile" headerRight={<ProfileHeaderDropdownMenuTriggerButton />}>
       <UserProfile name={name} />
     </MobileLayout>
   );
