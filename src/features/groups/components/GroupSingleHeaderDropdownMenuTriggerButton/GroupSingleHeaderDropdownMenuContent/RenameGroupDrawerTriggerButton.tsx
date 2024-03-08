@@ -35,6 +35,9 @@ export const RenameGroupDrawerTriggerButton = ({
 }: IRenameGroupDrawerTriggerButton) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
+  /**
+   * the function to close the drawer
+   */
   const handleClose = () => {
     setIsDrawerOpen(false);
   };
