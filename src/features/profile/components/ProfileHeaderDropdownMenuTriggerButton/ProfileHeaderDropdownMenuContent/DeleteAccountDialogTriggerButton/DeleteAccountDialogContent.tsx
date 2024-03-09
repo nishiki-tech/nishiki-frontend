@@ -16,7 +16,7 @@ interface IDeleteAccountDialogContentProps {
   /**
    * The function to close the parent UI component.
    */
-  onParentClose?: () => void;
+  onParentClose: () => void;
 }
 
 export const DeleteAccountDialogContent = ({ onParentClose }: IDeleteAccountDialogContentProps) => {
@@ -24,10 +24,10 @@ export const DeleteAccountDialogContent = ({ onParentClose }: IDeleteAccountDial
 
   /**
    * Handle the cancel button click.
-   * It closes the parent UI component, if specified
+   * It closes the parent UI component
    */
   const handleCancel = () => {
-    onParentClose?.();
+    onParentClose();
   };
 
   /**

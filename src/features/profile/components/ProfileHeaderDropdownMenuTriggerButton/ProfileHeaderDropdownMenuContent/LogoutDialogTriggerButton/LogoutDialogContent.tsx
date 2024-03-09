@@ -12,16 +12,16 @@ interface ILogoutDialogContentProps {
   /**
    * The function to close the parent UI component.
    */
-  onParentClose?: () => void;
+  onParentClose: () => void;
 }
 
 export const LogoutDialogContent = ({ onParentClose }: ILogoutDialogContentProps) => {
   /**
    * Handle the cancel button click.
-   * It closes the parent UI component, if specified
+   * It closes the parent UI component.
    */
   const handleCancel = () => {
-    onParentClose?.();
+    onParentClose();
   };
 
   /**
