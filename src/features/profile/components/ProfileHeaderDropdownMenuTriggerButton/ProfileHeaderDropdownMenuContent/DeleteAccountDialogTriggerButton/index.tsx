@@ -27,7 +27,7 @@ export const DeleteAccountDialogTriggerButton = ({
           <DropdownMenuButtonIcon>
             <Icon icon={IconDelete} size={5} color="danger" />
           </DropdownMenuButtonIcon>
-          <DropdownMenuButtonText>Delete</DropdownMenuButtonText>
+          <DropdownMenuButtonText className="text-muted">Delete</DropdownMenuButtonText>
         </DropdownMenuButton>
       </DialogTrigger>
       <DeleteAccountDialogContent onParentClose={onParentClose} />
