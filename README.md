@@ -15,10 +15,10 @@
 <br>
 
 <div align="center">
-  <img src="./public/images/app_screenshot_signin.png" height="400">
-  <img src="./public/images/app_screenshot_groups.png" height="400">
-  <img src="./public/images/app_screenshot_group_single.png" height="400">
-  <img src="./public/images/app_screenshot_foods.png" height="400">
+  <img src="./public/images/screenshots/app_screenshot_signin.png" height="400">
+  <img src="./public/images/screenshots/app_screenshot_groups.png" height="400">
+  <img src="./public/images/screenshots/app_screenshot_group_single.png" height="400">
+  <img src="./public/images/screenshots/app_screenshot_foods.png" height="400">
 </div>
 
 <br>
