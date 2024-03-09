@@ -6,16 +6,14 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
-  Input,
-} from '@/components/ui';
-import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/Form';
+  Input,
+} from '@/components/ui';
 import { createGroup } from '@/features/groups/lib/actions';
 import { createGroupFormSchema, CreateGroupInputs } from '@/features/groups/lib/schemas';
 
