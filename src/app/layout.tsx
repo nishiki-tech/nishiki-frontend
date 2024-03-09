@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     icon: '/images/icons/favicon.ico?v=0',
     apple: '/images/icons/apple-touch-icon.png?v=0',
   },
+  metadataBase: new URL(APP_CONST.BASE_URL),
   openGraph: {
     siteName: APP_CONST.NAME,
     description: APP_CONST.DESCRIPTION,
