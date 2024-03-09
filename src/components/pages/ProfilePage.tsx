@@ -6,11 +6,11 @@ import { getUserById } from '@/lib/api/user/server';
 
 export const ProfilePage = async () => {
   /**
-   * Get the user ID of the logged-in user based on the auth token.
-   * Using the user ID, fetch the user's information from the server.
-   * @returns  The user's name on success. If the request fails,throws an error.
+   * Get the id of the logged-in user based on the auth token.
+   * Using the id, fetch the user's information from the server.
+   * @returns  The user's id and name on success. If the request fails,throws an error.
    */
-  const getUserName = async () => {
+  const getUserInfo = async () => {
     /**
      * TODO: Error handling in here.
      * Since we haven't decided about how to handle server side data fetching error,
@@ -23,17 +23,17 @@ export const ProfilePage = async () => {
       const getUserByIdResult = await getUserById(userId);
       if (getUserByIdResult.ok) {
         const { username } = getUserByIdResult.unwrap();
-        return username;
+        return { userId, username };
       }
     }
-    throw new Error('Failed to get user name');
+    throw new Error('Failed to get user info');
   };
 
-  const name = await getUserName();
+  const { userId, username } = await getUserInfo();
 
   return (
     <MobileLayout heading="Profile" headerRight={<HeaderMenuCircleButton />}>
-      <UserProfile name={name} />
+      <UserProfile userId={userId} name={username} />
     </MobileLayout>
   );
 };

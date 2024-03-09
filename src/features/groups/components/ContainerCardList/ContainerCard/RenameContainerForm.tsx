@@ -1,6 +1,14 @@
 import { IconContainer } from '@/assets/images/icons';
-import { Card, Icon, SquareTextInput } from '@/components/ui';
-import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/Form';
+import {
+  Card,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+  Icon,
+  SquareTextInput,
+} from '@/components/ui';
 import { renameContainer } from '@/features/groups/lib/actions';
 import { renameContainerFormSchema, RenameContainerInputs } from '@/features/groups/lib/schemas';
 import { IContainer } from '@/types/definition';
