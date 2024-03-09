@@ -6,20 +6,15 @@ import { useState } from 'react';
 
 import { ProfileHeaderDropdownMenuContent } from './ProfileHeaderDropdownMenuContent';
 
-interface IProfileSingleHeaderDropdownMenuTriggerButton {}
+export const ProfileHeaderDropdownMenuTriggerButton = () => {
+  const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
 
-export const ProfileHeaderDropdownMenuTriggerButton =
-  ({}: IProfileSingleHeaderDropdownMenuTriggerButton) => {
-    const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
-
-    return (
-      <DropdownMenu open={isDropdownMenuOpen} onOpenChange={setIsDropdownMenuOpen}>
-        <DropdownMenuTrigger asChild>
-          <HeaderMenuCircleButton />
-        </DropdownMenuTrigger>
-        <ProfileHeaderDropdownMenuContent
-          onDropdownMenuClose={() => setIsDropdownMenuOpen(false)}
-        />
-      </DropdownMenu>
-    );
-  };
+  return (
+    <DropdownMenu open={isDropdownMenuOpen} onOpenChange={setIsDropdownMenuOpen}>
+      <DropdownMenuTrigger asChild>
+        <HeaderMenuCircleButton />
+      </DropdownMenuTrigger>
+      <ProfileHeaderDropdownMenuContent onDropdownMenuClose={() => setIsDropdownMenuOpen(false)} />
+    </DropdownMenu>
+  );
+};
