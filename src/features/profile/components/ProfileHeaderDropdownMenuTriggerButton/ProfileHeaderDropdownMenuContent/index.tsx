@@ -28,7 +28,7 @@ export const ProfileHeaderDropdownMenuContent = ({
   return (
     <DropdownMenuContent alignOffset={16}>
       <DropdownMenuItem onSelect={handleSelect}>
-        <LogoutDialogTriggerButton onParentClose={() => {}} />
+        <LogoutDialogTriggerButton onParentClose={onDropdownMenuClose} />
       </DropdownMenuItem>
       <DropdownMenuItem onSelect={handleSelect}>
         <DeleteUserDialogTriggerButton onParentClose={onDropdownMenuClose} />

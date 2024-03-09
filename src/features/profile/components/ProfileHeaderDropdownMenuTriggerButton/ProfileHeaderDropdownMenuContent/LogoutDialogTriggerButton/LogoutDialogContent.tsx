@@ -53,10 +53,10 @@ export const LogoutDialogContent = ({
   return (
     <DialogContent>
       <DialogHeader>
-        <DialogTitle>Delete User</DialogTitle>
+        <DialogTitle>Log out</DialogTitle>
       </DialogHeader>
       <DialogBody>
-        <p>Are you sure you want to delete this user?</p>
+        <p>Are you sure you want to log out?</p>
       </DialogBody>
       <DialogFooter>
         <DialogClose asChild>
@@ -64,8 +64,8 @@ export const LogoutDialogContent = ({
             Cancel
           </Button>
         </DialogClose>
-        <Button variant="error" size="sm" onClick={handleDelete}>
-          Delete
+        <Button variant="danger-outline" size="sm" onClick={handleDelete}>
+          Log Out
         </Button>
       </DialogFooter>
     </DialogContent>

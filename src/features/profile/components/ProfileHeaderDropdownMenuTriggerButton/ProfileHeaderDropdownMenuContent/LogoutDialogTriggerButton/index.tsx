@@ -37,7 +37,7 @@ export const LogoutDialogTriggerButton = ({ onParentClose }: ILogoutDialogTrigge
           <DropdownMenuButtonIcon>
             <Icon icon={IconLogout} size={5} color="gray-dark" />
           </DropdownMenuButtonIcon>
-          <DropdownMenuButtonText>Logout</DropdownMenuButtonText>
+          <DropdownMenuButtonText>Log out</DropdownMenuButtonText>
         </DropdownMenuButton>
       </DialogTrigger>
       <LogoutDialogContent
