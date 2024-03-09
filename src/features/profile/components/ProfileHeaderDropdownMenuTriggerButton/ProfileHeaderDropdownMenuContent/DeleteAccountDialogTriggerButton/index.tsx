@@ -8,8 +8,6 @@ import {
   Icon,
 } from '@/components/ui';
 
-import { useState } from 'react';
-
 import { DeleteAccountDialogContent } from './DeleteAccountDialogContent';
 
 interface IDeleteAccountDialogTriggerButtonProps {
@@ -22,10 +20,8 @@ interface IDeleteAccountDialogTriggerButtonProps {
 export const DeleteAccountDialogTriggerButton = ({
   onParentClose,
 }: IDeleteAccountDialogTriggerButtonProps) => {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-
   return (
-    <DialogRoot open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+    <DialogRoot>
       <DialogTrigger asChild>
         <DropdownMenuButton>
           <DropdownMenuButtonIcon>
@@ -34,10 +30,7 @@ export const DeleteAccountDialogTriggerButton = ({
           <DropdownMenuButtonText>Delete</DropdownMenuButtonText>
         </DropdownMenuButton>
       </DialogTrigger>
-      <DeleteAccountDialogContent
-        onParentClose={onParentClose}
-        onDialogClose={() => setIsDialogOpen(false)}
-      />
+      <DeleteAccountDialogContent onParentClose={onParentClose} />
     </DialogRoot>
   );
 };

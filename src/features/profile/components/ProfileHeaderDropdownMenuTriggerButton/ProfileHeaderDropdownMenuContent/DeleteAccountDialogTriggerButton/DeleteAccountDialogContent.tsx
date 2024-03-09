@@ -17,17 +17,11 @@ interface IDeleteAccountDialogContentProps {
    * The function to close the parent UI component.
    */
   onParentClose?: () => void;
-  /**
-   * The function to close this delete account dialog.
-   */
-  onDialogClose: () => void;
 }
 
-export const DeleteAccountDialogContent = ({
-  onParentClose,
-  onDialogClose,
-}: IDeleteAccountDialogContentProps) => {
+export const DeleteAccountDialogContent = ({ onParentClose }: IDeleteAccountDialogContentProps) => {
   const [isChecked, setIsChecked] = useState(false);
+
   /**
    * Handle the cancel button click.
    * It closes the parent UI component, if specified
@@ -35,17 +29,19 @@ export const DeleteAccountDialogContent = ({
   const handleCancel = () => {
     onParentClose?.();
   };
+
   /**
    * Handle the delete button click.
-   * If the DELETE request is successful, show a success message, close the dialog and drawer, and navigate to a different page if the function is passed from parent
-   * If the DELETE request is failed, show an error message and close the dialog.
    * @returns void
    */
   const handleDelete = async () => {
-    onParentClose?.();
-    onDialogClose();
+    alert('delete account');
   };
 
+  /**
+   * Handle the checkbox change.
+   * @returns void
+   */
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };

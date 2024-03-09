@@ -13,16 +13,9 @@ interface ILogoutDialogContentProps {
    * The function to close the parent UI component.
    */
   onParentClose?: () => void;
-  /**
-   * The function to close this delete dialog.
-   */
-  onDialogClose: () => void;
 }
 
-export const LogoutDialogContent = ({
-  onParentClose,
-  onDialogClose,
-}: ILogoutDialogContentProps) => {
+export const LogoutDialogContent = ({ onParentClose }: ILogoutDialogContentProps) => {
   /**
    * Handle the cancel button click.
    * It closes the parent UI component, if specified
@@ -30,15 +23,13 @@ export const LogoutDialogContent = ({
   const handleCancel = () => {
     onParentClose?.();
   };
+
   /**
-   * Handle the delete button click.
-   * If the DELETE request is successful, show a success message, close the dialog and drawer, and navigate to a different page if the function is passed from parent
-   * If the DELETE request is failed, show an error message and close the dialog.
+   * Handle the logout button click.
    * @returns void
    */
-  const handleDelete = async () => {
-    onParentClose?.();
-    onDialogClose();
+  const handleLogout = async () => {
+    alert('log out');
   };
 
   return (
@@ -55,7 +46,7 @@ export const LogoutDialogContent = ({
             Cancel
           </Button>
         </DialogClose>
-        <Button variant="danger-outline" size="sm" onClick={handleDelete}>
+        <Button variant="danger-outline" size="sm" onClick={handleLogout}>
           Log Out
         </Button>
       </DialogFooter>

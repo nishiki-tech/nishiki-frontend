@@ -8,8 +8,6 @@ import {
   Icon,
 } from '@/components/ui';
 
-import { useState } from 'react';
-
 import { LogoutDialogContent } from './LogoutDialogContent';
 
 interface ILogoutDialogTriggerButtonProps {
@@ -20,10 +18,8 @@ interface ILogoutDialogTriggerButtonProps {
 }
 
 export const LogoutDialogTriggerButton = ({ onParentClose }: ILogoutDialogTriggerButtonProps) => {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-
   return (
-    <DialogRoot open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+    <DialogRoot>
       <DialogTrigger asChild>
         <DropdownMenuButton>
           <DropdownMenuButtonIcon>
@@ -32,10 +28,7 @@ export const LogoutDialogTriggerButton = ({ onParentClose }: ILogoutDialogTrigge
           <DropdownMenuButtonText>Log out</DropdownMenuButtonText>
         </DropdownMenuButton>
       </DialogTrigger>
-      <LogoutDialogContent
-        onParentClose={onParentClose}
-        onDialogClose={() => setIsDialogOpen(false)}
-      />
+      <LogoutDialogContent onParentClose={onParentClose} />
     </DialogRoot>
   );
 };
