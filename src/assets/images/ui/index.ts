@@ -1,3 +1,2 @@
-import Avatar from './avatar.svg';
-import Spinner from './spinner.svg';
-export { Avatar, Spinner };
+export { default as Avatar } from './avatar.svg';
+export { default as Spinner } from './spinner.svg';
