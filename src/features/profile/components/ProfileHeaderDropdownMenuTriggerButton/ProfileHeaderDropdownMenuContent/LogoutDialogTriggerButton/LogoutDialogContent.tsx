@@ -53,7 +53,7 @@ export const LogoutDialogContent = ({
   return (
     <DialogContent>
       <DialogHeader>
-        <DialogTitle>Log out</DialogTitle>
+        <DialogTitle>Log Out</DialogTitle>
       </DialogHeader>
       <DialogBody>
         <p>Are you sure you want to log out?</p>
