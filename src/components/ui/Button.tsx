@@ -18,6 +18,8 @@ const buttonVariants = cva(
         none: '',
         primary: 'bg-primary text-white enabled:hover:bg-primary-dark disabled:opacity-50',
         error: 'bg-danger text-white enabled:hover:bg-danger-dark disabled:opacity-50',
+        'danger-outline':
+          'bg-transparent text-danger border border-danger hover:bg-danger hover:text-white',
         cancel: 'bg-transparent text-black hover:bg-gray-light',
         ghost: 'bg-transparent',
       },
