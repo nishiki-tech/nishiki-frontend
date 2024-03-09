@@ -22,7 +22,6 @@ import { IGroup } from '@/types/definition';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect } from 'react';
-// import { KeyboardEvent } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -114,7 +113,7 @@ export const RenameGroupDrawerContent = ({
           </DrawerBody>
           <DrawerFooter>
             <DrawerClose asChild>
-              <Button variant="cancel" size="md">
+              <Button type="button" variant="cancel" size="md">
                 Cancel
               </Button>
             </DrawerClose>
