@@ -1,6 +1,6 @@
 import { DropdownMenuContent, DropdownMenuItem } from '@/components/ui';
 
-import { DeleteUserDialogTriggerButton } from './DeleteUserDialogTriggerButton';
+import { DeleteAccountDialogTriggerButton } from './DeleteAccountDialogTriggerButton';
 import { LogoutDialogTriggerButton } from './LogoutDialogTriggerButton';
 
 interface IProfileHeaderDropdownMenuContentProps {
@@ -31,7 +31,7 @@ export const ProfileHeaderDropdownMenuContent = ({
         <LogoutDialogTriggerButton onParentClose={onDropdownMenuClose} />
       </DropdownMenuItem>
       <DropdownMenuItem onSelect={handleSelect}>
-        <DeleteUserDialogTriggerButton onParentClose={onDropdownMenuClose} />
+        <DeleteAccountDialogTriggerButton onParentClose={onDropdownMenuClose} />
       </DropdownMenuItem>
     </DropdownMenuContent>
   );

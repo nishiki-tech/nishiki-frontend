@@ -11,18 +11,18 @@ import {
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-import { DeleteUserDialogContent } from './DeleteUserDialogContent';
+import { DeleteAccountDialogContent } from './DeleteAccountDialogContent';
 
-interface IDeleteUserDialogTriggerButtonProps {
+interface IDeleteAccountDialogTriggerButtonProps {
   /**
    * Function to close the parent component
    */
   onParentClose: () => void;
 }
 
-export const DeleteUserDialogTriggerButton = ({
+export const DeleteAccountDialogTriggerButton = ({
   onParentClose,
-}: IDeleteUserDialogTriggerButtonProps) => {
+}: IDeleteAccountDialogTriggerButtonProps) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const router = useRouter();
@@ -43,7 +43,7 @@ export const DeleteUserDialogTriggerButton = ({
           <DropdownMenuButtonText>Delete</DropdownMenuButtonText>
         </DropdownMenuButton>
       </DialogTrigger>
-      <DeleteUserDialogContent
+      <DeleteAccountDialogContent
         userId={''}
         onParentClose={onParentClose}
         onDialogClose={() => setIsDialogOpen(false)}

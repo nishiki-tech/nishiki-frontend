@@ -1,15 +1,19 @@
 import {
   Button,
+  Checkbox,
   DialogBody,
   DialogClose,
   DialogContent,
   DialogFooter,
   DialogHeader,
   DialogTitle,
+  Label,
 } from '@/components/ui';
 import { IUser } from '@/types/definition';
 
-interface IDeleteUserDialogContentProps {
+import { useState } from 'react';
+
+interface IDeleteAccountDialogContentProps {
   /**
    * The ID of the user to delete.
    */
@@ -28,10 +32,11 @@ interface IDeleteUserDialogContentProps {
   navigateOnSuccess?: () => void;
 }
 
-export const DeleteUserDialogContent = ({
+export const DeleteAccountDialogContent = ({
   onParentClose,
   onDialogClose,
-}: IDeleteUserDialogContentProps) => {
+}: IDeleteAccountDialogContentProps) => {
+  const [isChecked, setIsChecked] = useState(false);
   /**
    * Handle the cancel button click.
    * It closes the parent UI component, if specified
@@ -50,13 +55,27 @@ export const DeleteUserDialogContent = ({
     onDialogClose();
   };
 
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
+
   return (
     <DialogContent>
       <DialogHeader>
-        <DialogTitle>Delete User</DialogTitle>
+        <DialogTitle>Delete account</DialogTitle>
       </DialogHeader>
-      <DialogBody>
-        <p>Are you sure you want to delete this user?</p>
+      <DialogBody className="pt-6 pb-9">
+        <div className="flex flex-col gap-9 text-left">
+          <p>Are you sure you want to delete account?</p>
+          <div className="flex items-center gap-3 justify-center">
+            <Checkbox
+              id="delete-account-confirm"
+              checked={isChecked}
+              onCheckedChange={handleCheckboxChange}
+            />
+            <Label htmlFor="delete-account-confirm">Yes, I want to delete my account</Label>
+          </div>
+        </div>
       </DialogBody>
       <DialogFooter>
         <DialogClose asChild>
@@ -64,7 +83,7 @@ export const DeleteUserDialogContent = ({
             Cancel
           </Button>
         </DialogClose>
-        <Button variant="error" size="sm" onClick={handleDelete}>
+        <Button variant="error" size="sm" onClick={handleDelete} disabled={!isChecked}>
           Delete
         </Button>
       </DialogFooter>
