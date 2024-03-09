@@ -32,7 +32,7 @@ export const GroupSingleHeaderDropdownMenuContent = ({
   };
 
   return (
-    <DropdownMenuContent>
+    <DropdownMenuContent alignOffset={16}>
       <DropdownMenuItem>
         <RenameGroupDrawerTriggerButton />
       </DropdownMenuItem>
