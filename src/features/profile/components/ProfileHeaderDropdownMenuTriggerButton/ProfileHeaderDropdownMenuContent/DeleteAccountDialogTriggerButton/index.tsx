@@ -8,7 +8,6 @@ import {
   Icon,
 } from '@/components/ui';
 
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import { DeleteAccountDialogContent } from './DeleteAccountDialogContent';
@@ -25,14 +24,6 @@ export const DeleteAccountDialogTriggerButton = ({
 }: IDeleteAccountDialogTriggerButtonProps) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const router = useRouter();
-  /**
-   * Function to transition to groupCollection page
-   */
-  const navigateToGroupPage = () => {
-    router.push('/groups');
-  };
-
   return (
     <DialogRoot open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogTrigger asChild>
@@ -44,10 +35,8 @@ export const DeleteAccountDialogTriggerButton = ({
         </DropdownMenuButton>
       </DialogTrigger>
       <DeleteAccountDialogContent
-        userId={''}
         onParentClose={onParentClose}
         onDialogClose={() => setIsDialogOpen(false)}
-        navigateOnSuccess={navigateToGroupPage}
       />
     </DialogRoot>
   );

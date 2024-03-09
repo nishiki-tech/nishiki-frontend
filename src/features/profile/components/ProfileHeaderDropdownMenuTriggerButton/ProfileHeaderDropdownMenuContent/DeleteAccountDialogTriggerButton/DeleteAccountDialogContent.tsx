@@ -9,27 +9,18 @@ import {
   DialogTitle,
   Label,
 } from '@/components/ui';
-import { IUser } from '@/types/definition';
 
 import { useState } from 'react';
 
 interface IDeleteAccountDialogContentProps {
   /**
-   * The ID of the user to delete.
-   */
-  userId: IUser['id'];
-  /**
    * The function to close the parent UI component.
    */
   onParentClose?: () => void;
   /**
-   * The function to close this delete dialog.
+   * The function to close this delete account dialog.
    */
   onDialogClose: () => void;
-  /**
-   * The function to navigate the user to a different page
-   */
-  navigateOnSuccess?: () => void;
 }
 
 export const DeleteAccountDialogContent = ({
