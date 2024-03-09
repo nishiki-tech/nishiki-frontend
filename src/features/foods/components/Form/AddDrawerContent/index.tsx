@@ -7,8 +7,8 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
+  Form,
 } from '@/components/ui';
-import { Form } from '@/components/ui/Form';
 import { createFood } from '@/features/foods/lib/actions';
 import {
   createFoodDefaultValues,

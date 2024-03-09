@@ -1,5 +1,12 @@
-import { Card, SquareTextInput } from '@/components/ui';
-import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/Form';
+import {
+  Card,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+  SquareTextInput,
+} from '@/components/ui';
 import { renameGroup } from '@/features/groups/lib/actions';
 import { renameGroupFormSchema, RenameGroupInputs } from '@/features/groups/lib/schemas';
 import { cn } from '@/lib/tailwind/utils';
