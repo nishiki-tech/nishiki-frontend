@@ -8,7 +8,6 @@ import {
   Icon,
 } from '@/components/ui';
 
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import { LogoutDialogContent } from './LogoutDialogContent';
@@ -23,13 +22,6 @@ interface ILogoutDialogTriggerButtonProps {
 export const LogoutDialogTriggerButton = ({ onParentClose }: ILogoutDialogTriggerButtonProps) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const router = useRouter();
-  /**
-   * Function to transition to home page
-   */
-  const navigateToHomePage = () => {
-    router.push('/');
-  };
   return (
     <DialogRoot open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogTrigger asChild>
@@ -41,10 +33,8 @@ export const LogoutDialogTriggerButton = ({ onParentClose }: ILogoutDialogTrigge
         </DropdownMenuButton>
       </DialogTrigger>
       <LogoutDialogContent
-        userId={''}
         onParentClose={onParentClose}
         onDialogClose={() => setIsDialogOpen(false)}
-        navigateOnSuccess={navigateToHomePage}
       />
     </DialogRoot>
   );
