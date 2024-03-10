@@ -2,10 +2,11 @@
 import { HeaderMenuCircleButton } from '@/components/parts/Header';
 import { DialogRoot, DrawerRoot, DropdownMenu, DropdownMenuTrigger } from '@/components/ui';
 import { DeleteGroupDialogContent } from '@/features/groups/components/DeleteGroupDialogContent';
+import { useAutoFocus } from '@/hooks';
 import { IGroup } from '@/types/definition';
 
 import { useRouter } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 
 import { GroupSingleHeaderDropdownMenuContent } from './GroupSingleHeaderDropdownMenuContent';
 import { RenameGroupDrawerContent } from './RenameGroupDrawerContent';
@@ -25,16 +26,12 @@ export const GroupSingleHeaderDropdownMenuTriggerButton = ({
   groupId,
   currentGroupName,
 }: IGroupSingleHeaderDropdownMenuTriggerButton) => {
-  const meatballRef = useRef<HTMLButtonElement>(null);
-
   const [isRenameGroupDrawerOpen, setIsRenameGroupDrawerOpen] = useState(false);
   const [isDeleteGroupDialogOpen, setIsDeleteGroupDialogOpen] = useState(false);
 
-  useEffect(() => {
-    if (!isRenameGroupDrawerOpen && !isDeleteGroupDialogOpen) {
-      meatballRef.current?.focus();
-    }
-  }, [meatballRef, isRenameGroupDrawerOpen, isDeleteGroupDialogOpen]);
+  const meatballRef = useAutoFocus<HTMLButtonElement>(
+    !isRenameGroupDrawerOpen && !isDeleteGroupDialogOpen,
+  );
 
   const router = useRouter();
 
