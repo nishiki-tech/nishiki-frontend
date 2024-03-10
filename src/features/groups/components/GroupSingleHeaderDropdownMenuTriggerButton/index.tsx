@@ -12,10 +12,15 @@ interface IGroupSingleHeaderDropdownMenuTriggerButton {
    * an identifier of a group which a user is willing to either delete or rename
    */
   groupId: IGroup['id'];
+  /**
+   * the current group name which a user is willing to change
+   */
+  currentGroupName: IGroup['name'];
 }
 
 export const GroupSingleHeaderDropdownMenuTriggerButton = ({
   groupId,
+  currentGroupName,
 }: IGroupSingleHeaderDropdownMenuTriggerButton) => {
   const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
 
@@ -26,6 +31,7 @@ export const GroupSingleHeaderDropdownMenuTriggerButton = ({
       </DropdownMenuTrigger>
       <GroupSingleHeaderDropdownMenuContent
         groupId={groupId}
+        currentGroupName={currentGroupName}
         onDropdownMenuClose={() => setIsDropdownMenuOpen(false)}
       />
     </DropdownMenu>

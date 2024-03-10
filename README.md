@@ -15,10 +15,10 @@
 <br>
 
 <div align="center">
-  <img src="./public/images/app_screenshot_signin.png" height="400">
-  <img src="./public/images/app_screenshot_groups.png" height="400">
-  <img src="./public/images/app_screenshot_group_single.png" height="400">
-  <img src="./public/images/app_screenshot_foods.png" height="400">
+  <img src="./public/images/screenshots/app_screenshot_signin.png" height="400">
+  <img src="./public/images/screenshots/app_screenshot_groups.png" height="400">
+  <img src="./public/images/screenshots/app_screenshot_group_single.png" height="400">
+  <img src="./public/images/screenshots/app_screenshot_foods.png" height="400">
 </div>
 
 <br>
@@ -156,6 +156,18 @@ We have a list of [good first issues](https://github.com/nishiki-tech/nishiki-fr
 
 <br>
 
-<!-- TODO: Add License Section -->
-<!-- ISSUE: #233 -->
-<!-- ## License -->
+## License
+
+This project is licensed under the terms of the [MIT License](./LICENSE).
+
+<br>
+<br>
+<br>
+
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: light)" srcset="./src/assets/images/logos/logo_horizontal_primary_black_text.svg" />
+    <source media="(prefers-color-scheme: dark)" srcset="./src/assets/images/logos/logo_horizontal_primary_white_text.svg" />
+    <img width="150" src="./src/assets/images/logos/logo_horizontal_primary_black_text.svg" />
+  </picture>
+</div>
