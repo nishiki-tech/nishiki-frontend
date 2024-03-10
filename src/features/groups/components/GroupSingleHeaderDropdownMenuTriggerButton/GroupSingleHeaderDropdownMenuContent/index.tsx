@@ -1,8 +1,17 @@
-import { DropdownMenuContent, DropdownMenuItem } from '@/components/ui';
+import { IconPen } from '@/assets/images/icons';
+import {
+  DropdownMenuButton,
+  DropdownMenuButtonIcon,
+  DropdownMenuButtonText,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  Icon,
+} from '@/components/ui';
+// import { useRenameGroupContext } from '@/features/groups/hooks/useRenameGroupProvider';
 import { IGroup } from '@/types/definition';
 
 import { DeleteGroupDialogTriggerButton } from './DeleteGroupDialogTriggerButton';
-import { RenameGroupDrawerTriggerButton } from './RenameGroupDrawerTriggerButton';
+// import { RenameGroupDrawerTriggerButton } from './RenameGroupDrawerTriggerButton';
 
 interface IGroupSingleHeaderDropdownMenuContent {
   /**
@@ -17,13 +26,21 @@ interface IGroupSingleHeaderDropdownMenuContent {
    * Function to close this dropdown menu
    */
   onDropdownMenuClose: () => void;
+  onRenameGroupDrawerOpen: () => void;
 }
 
 export const GroupSingleHeaderDropdownMenuContent = ({
   groupId,
-  currentGroupName,
+  // currentGroupName,
   onDropdownMenuClose,
+  onRenameGroupDrawerOpen,
 }: IGroupSingleHeaderDropdownMenuContent) => {
+  // const { setIsRenameGroupDrawerOpen } = useRenameGroupContext();
+
+  const handleRenameClick = () => {
+    onRenameGroupDrawerOpen();
+  };
+
   /**
    * The function that is called when the dropdown menu item is selected.
    * e.preventDefault() prevents the dropdown menu from closing when selecting that item.
@@ -38,12 +55,13 @@ export const GroupSingleHeaderDropdownMenuContent = ({
 
   return (
     <DropdownMenuContent>
-      <DropdownMenuItem onSelect={handleSelect}>
-        <RenameGroupDrawerTriggerButton
-          groupId={groupId}
-          currentGroupName={currentGroupName}
-          onParentClose={onDropdownMenuClose}
-        />
+      <DropdownMenuItem>
+        <DropdownMenuButton onClick={handleRenameClick}>
+          <DropdownMenuButtonIcon>
+            <Icon icon={IconPen} size={5} color="primary" />
+          </DropdownMenuButtonIcon>
+          <DropdownMenuButtonText>Rename</DropdownMenuButtonText>
+        </DropdownMenuButton>
       </DropdownMenuItem>
       <DropdownMenuItem onSelect={handleSelect}>
         <DeleteGroupDialogTriggerButton groupId={groupId} onParentClose={onDropdownMenuClose} />
