@@ -5,7 +5,7 @@ import { DeleteGroupDialogContent } from '@/features/groups/components/DeleteGro
 import { IGroup } from '@/types/definition';
 
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { GroupSingleHeaderDropdownMenuContent } from './GroupSingleHeaderDropdownMenuContent';
 import { RenameGroupDrawerContent } from './RenameGroupDrawerContent';
@@ -25,8 +25,16 @@ export const GroupSingleHeaderDropdownMenuTriggerButton = ({
   groupId,
   currentGroupName,
 }: IGroupSingleHeaderDropdownMenuTriggerButton) => {
+  const meatballRef = useRef<HTMLButtonElement>(null);
+
   const [isRenameGroupDrawerOpen, setIsRenameGroupDrawerOpen] = useState(false);
   const [isDeleteGroupDialogOpen, setIsDeleteGroupDialogOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isRenameGroupDrawerOpen && !isDeleteGroupDialogOpen) {
+      meatballRef.current?.focus();
+    }
+  }, [meatballRef, isRenameGroupDrawerOpen, isDeleteGroupDialogOpen]);
 
   const router = useRouter();
 
@@ -42,7 +50,7 @@ export const GroupSingleHeaderDropdownMenuTriggerButton = ({
       {/* Meatball Button */}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <HeaderMenuCircleButton />
+          <HeaderMenuCircleButton ref={meatballRef} />
         </DropdownMenuTrigger>
         <GroupSingleHeaderDropdownMenuContent
           onRenameGroupDrawerOpen={() => setIsRenameGroupDrawerOpen(true)}

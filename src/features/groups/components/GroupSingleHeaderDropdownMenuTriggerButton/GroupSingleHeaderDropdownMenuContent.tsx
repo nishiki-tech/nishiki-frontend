@@ -25,7 +25,7 @@ export const GroupSingleHeaderDropdownMenuContent = ({
 }: IGroupSingleHeaderDropdownMenuContent) => {
   return (
     <DropdownMenuContent>
-      <DropdownMenuItem>
+      <DropdownMenuItem asChild>
         <DropdownMenuButton onClick={onRenameGroupDrawerOpen}>
           <DropdownMenuButtonIcon>
             <Icon icon={IconPen} size={5} color="primary" />
@@ -33,7 +33,7 @@ export const GroupSingleHeaderDropdownMenuContent = ({
           <DropdownMenuButtonText>Rename</DropdownMenuButtonText>
         </DropdownMenuButton>
       </DropdownMenuItem>
-      <DropdownMenuItem>
+      <DropdownMenuItem asChild>
         <DropdownMenuButton onClick={onDeleteGroupDialogOpen}>
           <DropdownMenuButtonIcon>
             <Icon icon={IconDelete} size={5} color="danger" />
