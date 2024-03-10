@@ -1,7 +1,7 @@
 'use client';
 import { HeaderMenuCircleButton } from '@/components/parts/Header';
 import { DialogRoot, DrawerRoot, DropdownMenu, DropdownMenuTrigger } from '@/components/ui';
-import { DeleteGroupDialogContent } from '@/features/groups/components/GroupCardList/GroupCard/GroupCardContent/GroupCardDropdownMenuTriggerButton/GroupCardDropdownMenuContent/DeleteGroupDialogTriggerButton/DeleteGroupDialogContent';
+import { DeleteGroupDialogContent } from '@/features/groups/components/DeleteGroupDialogContent';
 import { IGroup } from '@/types/definition';
 
 import { useRouter } from 'next/navigation';

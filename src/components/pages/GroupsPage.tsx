@@ -1,5 +1,6 @@
 import { MobileLayout } from '@/components/layouts/MobileLayout';
-import { CreateGroupButton, GroupCardList } from '@/features/groups/components';
+import { CreateGroupButton } from '@/features/groups/components/CreateGroupButton';
+import { GroupCardList } from '@/features/groups/components/GroupCardList';
 
 export const GroupsPage = () => {
   return (
