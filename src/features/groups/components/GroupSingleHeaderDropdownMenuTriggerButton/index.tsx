@@ -1,16 +1,14 @@
 'use client';
 import { HeaderMenuCircleButton } from '@/components/parts/Header';
-import { DrawerRoot, DropdownMenu, DropdownMenuTrigger } from '@/components/ui';
-import { RenameGroupDrawerContent } from '@/features/groups/components/GroupSingleHeaderDropdownMenuTriggerButton/RenameGroupDrawerContent';
-// import {
-//   RenameGroupProvider,
-//   useRenameGroupContext,
-// } from '@/features/groups/hooks/useRenameGroupProvider';
+import { DialogRoot, DrawerRoot, DropdownMenu, DropdownMenuTrigger } from '@/components/ui';
+import { DeleteGroupDialogContent } from '@/features/groups/components/GroupCardList/GroupCard/GroupCardContent/GroupCardDropdownMenuTriggerButton/GroupCardDropdownMenuContent/DeleteGroupDialogTriggerButton/DeleteGroupDialogContent';
 import { IGroup } from '@/types/definition';
 
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import { GroupSingleHeaderDropdownMenuContent } from './GroupSingleHeaderDropdownMenuContent';
+import { RenameGroupDrawerContent } from './RenameGroupDrawerContent';
 
 interface IGroupSingleHeaderDropdownMenuTriggerButton {
   /**
@@ -27,24 +25,28 @@ export const GroupSingleHeaderDropdownMenuTriggerButton = ({
   groupId,
   currentGroupName,
 }: IGroupSingleHeaderDropdownMenuTriggerButton) => {
-  // const { isRenameGroupDrawerOpen, setIsRenameGroupDrawerOpen } = useRenameGroupContext();
-
-  const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
   const [isRenameGroupDrawerOpen, setIsRenameGroupDrawerOpen] = useState(false);
+  const [isDeleteGroupDialogOpen, setIsDeleteGroupDialogOpen] = useState(false);
+
+  const router = useRouter();
+
+  /**
+   * Function to transition to the GroupsPage
+   */
+  const navigateToGroupPage = () => {
+    router.push('/groups');
+  };
 
   return (
     <>
-      {/* <RenameGroupProvider> */}
       {/* Meatball Button */}
-      <DropdownMenu open={isDropdownMenuOpen} onOpenChange={setIsDropdownMenuOpen}>
+      <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <HeaderMenuCircleButton />
         </DropdownMenuTrigger>
         <GroupSingleHeaderDropdownMenuContent
-          groupId={groupId}
-          currentGroupName={currentGroupName}
-          onDropdownMenuClose={() => setIsDropdownMenuOpen(false)}
           onRenameGroupDrawerOpen={() => setIsRenameGroupDrawerOpen(true)}
+          onDeleteGroupDialogOpen={() => setIsDeleteGroupDialogOpen(true)}
         />
       </DropdownMenu>
       {/* Rename Group Drawer */}
@@ -56,7 +58,14 @@ export const GroupSingleHeaderDropdownMenuTriggerButton = ({
           isDrawerOpen={isRenameGroupDrawerOpen}
         />
       </DrawerRoot>
-      {/* </RenameGroupProvider> */}
+      {/* Delete Group Dialog */}
+      <DialogRoot open={isDeleteGroupDialogOpen} onOpenChange={setIsDeleteGroupDialogOpen}>
+        <DeleteGroupDialogContent
+          groupId={groupId}
+          onDialogClose={() => setIsDeleteGroupDialogOpen(false)}
+          navigateOnSuccess={navigateToGroupPage}
+        />
+      </DialogRoot>
     </>
   );
 };
