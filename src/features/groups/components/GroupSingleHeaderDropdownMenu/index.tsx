@@ -11,21 +11,21 @@ import { useState } from 'react';
 import { GroupSingleHeaderDropdownMenuContent } from './GroupSingleHeaderDropdownMenuContent';
 import { RenameGroupDrawerContent } from './RenameGroupDrawerContent';
 
-interface IGroupSingleHeaderDropdownMenuTriggerButton {
+interface IGroupSingleHeaderDropdownMenu {
   /**
-   * an identifier of a group which a user is willing to either delete or rename
+   * The ID of the group to modify.
    */
   groupId: IGroup['id'];
   /**
-   * the current group name which a user is willing to change
+   * The current group name which a user is willing to change
    */
   currentGroupName: IGroup['name'];
 }
 
-export const GroupSingleHeaderDropdownMenuTriggerButton = ({
+export const GroupSingleHeaderDropdownMenu = ({
   groupId,
   currentGroupName,
-}: IGroupSingleHeaderDropdownMenuTriggerButton) => {
+}: IGroupSingleHeaderDropdownMenu) => {
   const [isRenameGroupDrawerOpen, setIsRenameGroupDrawerOpen] = useState(false);
   const [isDeleteGroupDialogOpen, setIsDeleteGroupDialogOpen] = useState(false);
 
@@ -36,7 +36,7 @@ export const GroupSingleHeaderDropdownMenuTriggerButton = ({
   const router = useRouter();
 
   /**
-   * Function to transition to the GroupsPage
+   * Navigate to the GroupsPage
    */
   const navigateToGroupPage = () => {
     router.push('/groups');
