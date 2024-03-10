@@ -8,16 +8,16 @@ import {
   Icon,
 } from '@/components/ui';
 
-import { LogoutDialogContent } from './LogoutDialogContent';
+import { SignOutDialogContent } from './SignOutDialogContent';
 
-interface ILogoutDialogTriggerButtonProps {
+interface ISignOutDialogTriggerButtonProps {
   /**
    * Function to close the parent component
    */
   onParentClose: () => void;
 }
 
-export const LogoutDialogTriggerButton = ({ onParentClose }: ILogoutDialogTriggerButtonProps) => {
+export const SignOutDialogTriggerButton = ({ onParentClose }: ISignOutDialogTriggerButtonProps) => {
   return (
     <DialogRoot>
       <DialogTrigger asChild>
@@ -28,7 +28,7 @@ export const LogoutDialogTriggerButton = ({ onParentClose }: ILogoutDialogTrigge
           <DropdownMenuButtonText>Log out</DropdownMenuButtonText>
         </DropdownMenuButton>
       </DialogTrigger>
-      <LogoutDialogContent onParentClose={onParentClose} />
+      <SignOutDialogContent onParentClose={onParentClose} />
     </DialogRoot>
   );
 };

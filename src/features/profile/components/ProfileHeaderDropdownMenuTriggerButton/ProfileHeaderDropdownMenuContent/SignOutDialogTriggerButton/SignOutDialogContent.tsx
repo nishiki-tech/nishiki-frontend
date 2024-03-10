@@ -8,14 +8,14 @@ import {
   DialogTitle,
 } from '@/components/ui';
 
-interface ILogoutDialogContentProps {
+interface ISignOutDialogContentProps {
   /**
    * The function to close the parent UI component.
    */
   onParentClose: () => void;
 }
 
-export const LogoutDialogContent = ({ onParentClose }: ILogoutDialogContentProps) => {
+export const SignOutDialogContent = ({ onParentClose }: ISignOutDialogContentProps) => {
   /**
    * Handle the cancel button click.
    * It closes the parent UI component.
