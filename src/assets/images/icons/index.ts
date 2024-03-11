@@ -24,4 +24,4 @@ export { default as IconPlus } from './icon_plus.svg';
 export { default as IconProfileOff } from './icon_profile-off.svg';
 export { default as IconProfileOn } from './icon_profile-on.svg';
 export { default as IconSearch } from './icon_search.svg';
-export { default as IconSignOut } from './icon_SignOut.svg';
+export { default as IconSignOut } from './icon_signout.svg';
