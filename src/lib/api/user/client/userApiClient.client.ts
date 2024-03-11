@@ -20,7 +20,7 @@ interface IPutUpdateUserRequestBody {
  * @param requestBody - The payload for the function.
  */
 
-export const putUpdateGroup = async (
+export const putUpdateUser = async (
   userId: IUser['id'],
   requestBody: IPutUpdateUserRequestBody,
 ): Promise<Result<undefined, string>> => {
