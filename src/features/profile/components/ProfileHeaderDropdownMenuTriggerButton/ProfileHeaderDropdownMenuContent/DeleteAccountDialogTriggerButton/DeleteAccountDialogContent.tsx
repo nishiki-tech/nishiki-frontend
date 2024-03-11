@@ -70,7 +70,7 @@ export const DeleteAccountDialogContent = ({ onParentClose }: IDeleteAccountDial
             Cancel
           </Button>
         </DialogClose>
-        <Button variant="error" size="sm" onClick={handleDelete} disabled={!isChecked}>
+        <Button variant="danger" size="sm" onClick={handleDelete} disabled={!isChecked}>
           Delete
         </Button>
       </DialogFooter>

@@ -57,7 +57,7 @@ export const ExampleDrawerUsageExample = () => {
           </ol>
         </ExampleDrawerBody>
         <ExampleDrawerFooter>
-          <Button variant="error" size="md" onClick={handleDelete}>
+          <Button variant="danger" size="md" onClick={handleDelete}>
             Delete
           </Button>
         </ExampleDrawerFooter>

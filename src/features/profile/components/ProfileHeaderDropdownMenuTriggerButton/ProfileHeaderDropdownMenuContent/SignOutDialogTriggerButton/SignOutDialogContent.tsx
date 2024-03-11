@@ -46,7 +46,7 @@ export const SignOutDialogContent = ({ onParentClose }: ISignOutDialogContentPro
             Cancel
           </Button>
         </DialogClose>
-        <Button variant="error-outline" size="sm" onClick={handleSignOut}>
+        <Button variant="danger-outline" size="sm" onClick={handleSignOut}>
           Log Out
         </Button>
       </DialogFooter>
