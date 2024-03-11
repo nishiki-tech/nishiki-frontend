@@ -15,6 +15,8 @@ import { KeyboardEvent, useEffect, useRef } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
+import { renameUser } from '../../lib/actions';
+
 interface IRenameUserFormProps {
   /**
    * The id of the user to rename.
@@ -35,7 +37,7 @@ interface IRenameUserFormProps {
   onClose: () => void;
 }
 
-export const RenameUserForm = ({ currentName, isOpen, onClose }: IRenameUserFormProps) => {
+export const RenameUserForm = ({ userId, currentName, isOpen, onClose }: IRenameUserFormProps) => {
   // input ref
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -53,8 +55,13 @@ export const RenameUserForm = ({ currentName, isOpen, onClose }: IRenameUserForm
   const processSubmit: SubmitHandler<RenameUserInputs> = async (values: RenameUserInputs) => {
     const { name } = values;
     if (name === currentName) return;
-    alert('Successfully renamed the group');
-    onClose();
+    const result = await renameUser(userId, { name });
+    if (!result.ok) {
+      alert('Something went wrong. Please try again.');
+    } else {
+      alert('Successfully renamed the user');
+      onClose();
+    }
   };
 
   /**
