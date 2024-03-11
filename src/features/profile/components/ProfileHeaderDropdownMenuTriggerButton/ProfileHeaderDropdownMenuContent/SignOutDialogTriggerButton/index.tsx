@@ -1,4 +1,4 @@
-import { IconLogout } from '@/assets/images/icons';
+import { IconSignOut } from '@/assets/images/icons';
 import {
   DialogRoot,
   DialogTrigger,
@@ -23,7 +23,7 @@ export const SignOutDialogTriggerButton = ({ onParentClose }: ISignOutDialogTrig
       <DialogTrigger asChild>
         <DropdownMenuButton>
           <DropdownMenuButtonIcon>
-            <Icon icon={IconLogout} size={5} color="gray-dark" />
+            <Icon icon={IconSignOut} size={5} color="gray-dark" />
           </DropdownMenuButtonIcon>
           <DropdownMenuButtonText>Log out</DropdownMenuButtonText>
         </DropdownMenuButton>
