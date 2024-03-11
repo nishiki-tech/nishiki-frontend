@@ -45,7 +45,7 @@ interface IRenameGroupDrawerContent {
   /**
    * The function to close the parent component
    */
-  onParentClose: () => void;
+  onParentClose?: () => void;
 }
 
 export const RenameGroupDrawerContent = ({
@@ -77,7 +77,7 @@ export const RenameGroupDrawerContent = ({
     } else {
       alert('Successfully renamed the group');
       form.reset();
-      onParentClose();
+      onParentClose?.();
       onClose();
     }
   };
