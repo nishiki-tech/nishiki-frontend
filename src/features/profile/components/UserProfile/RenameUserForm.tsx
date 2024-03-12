@@ -6,6 +6,7 @@ import {
   FormMessage,
   SquareTextInput,
 } from '@/components/ui';
+import { renameUser } from '@/features/profile/lib/actions';
 import { renameUserFormSchema, RenameUserInputs } from '@/features/profile/lib/schemas';
 import { cn } from '@/lib/tailwind/utils';
 import { IUser } from '@/types/definition';
@@ -14,8 +15,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { KeyboardEvent, useEffect, useRef } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
-
-import { renameUser } from '../../lib/actions';
 
 interface IRenameUserFormProps {
   /**
