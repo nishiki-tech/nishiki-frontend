@@ -29,16 +29,16 @@ export const SignOutDialogContent = ({ onParentClose }: ISignOutDialogContentPro
    * @returns void
    */
   const handleSignOut = async () => {
-    alert('log out');
+    alert('sign out');
   };
 
   return (
     <DialogContent>
       <DialogHeader>
-        <DialogTitle>Log Out</DialogTitle>
+        <DialogTitle>Sign out</DialogTitle>
       </DialogHeader>
       <DialogBody>
-        <p>Are you sure you want to log out?</p>
+        <p>Are you sure you want to sign out?</p>
       </DialogBody>
       <DialogFooter>
         <DialogClose asChild>
@@ -47,7 +47,7 @@ export const SignOutDialogContent = ({ onParentClose }: ISignOutDialogContentPro
           </Button>
         </DialogClose>
         <Button variant="danger-outline" size="sm" onClick={handleSignOut}>
-          Log Out
+          Sign out
         </Button>
       </DialogFooter>
     </DialogContent>
