@@ -9,9 +9,11 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || '';
 
 /**
  * Interface representing the request body for the function to update user's data.
- * @property name - The name of the user.
  */
 interface IPutUpdateUserRequestBody {
+  /**
+   * The new name of the user.
+   */
   name: IUser['name'];
 }
 
