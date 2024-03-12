@@ -6,6 +6,7 @@ import {
   FormMessage,
   SquareTextInput,
 } from '@/components/ui';
+import { renameUser } from '@/features/profile/lib/actions';
 import { renameUserFormSchema, RenameUserInputs } from '@/features/profile/lib/schemas';
 import { cn } from '@/lib/tailwind/utils';
 import { IUser } from '@/types/definition';
@@ -23,7 +24,7 @@ interface IRenameUserFormProps {
   /**
    * The current name of the user to rename.
    */
-  currentUserName: IUser['name'];
+  currentName: IUser['name'];
   /**
    * The state to handle if the form is open or not.
    */
@@ -35,14 +36,14 @@ interface IRenameUserFormProps {
   onClose: () => void;
 }
 
-export const RenameUserForm = ({ currentUserName, isOpen, onClose }: IRenameUserFormProps) => {
+export const RenameUserForm = ({ userId, currentName, isOpen, onClose }: IRenameUserFormProps) => {
   // input ref
   const inputRef = useRef<HTMLInputElement>(null);
 
   const form = useForm<z.infer<typeof renameUserFormSchema>>({
     resolver: zodResolver(renameUserFormSchema),
     defaultValues: {
-      userName: currentUserName,
+      name: currentName,
     },
   });
 
@@ -51,10 +52,15 @@ export const RenameUserForm = ({ currentUserName, isOpen, onClose }: IRenameUser
    * @param values - The form values
    */
   const processSubmit: SubmitHandler<RenameUserInputs> = async (values: RenameUserInputs) => {
-    const { userName } = values;
-    if (userName === currentUserName) return;
-    alert('Successfully renamed the group');
-    onClose();
+    const { name } = values;
+    if (name === currentName) return;
+    const result = await renameUser(userId, { name });
+    if (!result.ok) {
+      alert('Something went wrong. Please try again.');
+    } else {
+      alert('Successfully renamed the user');
+      onClose();
+    }
   };
 
   /**
@@ -72,7 +78,7 @@ export const RenameUserForm = ({ currentUserName, isOpen, onClose }: IRenameUser
    * Clear the input value.
    */
   const handleClearInput = () => {
-    form.setValue('userName', '');
+    form.setValue('name', '');
   };
 
   /**
@@ -102,7 +108,7 @@ export const RenameUserForm = ({ currentUserName, isOpen, onClose }: IRenameUser
       <form onSubmit={form.handleSubmit(processSubmit)}>
         <FormField
           control={form.control}
-          name="userName"
+          name="name"
           render={({ field }) => (
             <FormItem>
               <FormControl>
@@ -112,10 +118,7 @@ export const RenameUserForm = ({ currentUserName, isOpen, onClose }: IRenameUser
                   onKeyDown={handleKeyDown}
                   handleClearInput={handleClearInput}
                   handleOutsideClick={handleOutsideClick}
-                  className={cn(
-                    form.formState.errors.userName && 'border-danger',
-                    'text-xl leading-6',
-                  )}
+                  className={cn(form.formState.errors.name && 'border-danger', 'text-xl leading-6')}
                 />
               </FormControl>
               <FormMessage />
