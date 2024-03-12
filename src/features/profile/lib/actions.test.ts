@@ -14,7 +14,7 @@ afterEach(() => {
 });
 
 describe('Profile page actions', () => {
-  describe('renameGroup', () => {
+  describe('renameUser', () => {
     // Arrange common mock data
     const mockUserId = 'a3kdifut-a520-c2cb-1be7-d90710691861';
     const mockInputs = {
