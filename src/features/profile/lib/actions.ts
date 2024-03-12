@@ -1,4 +1,5 @@
 import { putUpdateUser } from '@/lib/api/user/client';
+import { IUser } from '@/types/definition';
 
 import { Err, Ok, Result } from 'result-ts-type';
 
@@ -11,7 +12,7 @@ import { renameUserFormSchema, RenameUserInputs } from './schemas';
  * @returns undefined on success, or an error message if the validation or request fails
  */
 export const renameUser = async (
-  userId: string,
+  userId: IUser['id'],
   inputs: RenameUserInputs,
 ): Promise<Result<undefined, string>> => {
   const validatedData = renameUserFormSchema.safeParse(inputs);
