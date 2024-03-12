@@ -6,6 +6,7 @@ import { removeUser, renameUser } from './actions';
 
 jest.mock('@/lib/api/user/client', () => ({
   putUpdateUser: jest.fn(),
+  deleteUser: jest.fn(),
 }));
 
 // Clear mocks after each test
