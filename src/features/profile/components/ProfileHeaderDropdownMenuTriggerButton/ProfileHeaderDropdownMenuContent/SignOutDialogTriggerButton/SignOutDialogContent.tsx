@@ -28,7 +28,8 @@ export const SignOutDialogContent = ({ onParentClose }: ISignOutDialogContentPro
 
   /**
    * Handle the SignOut button click.
-   * Trigger the AWS Amplify Auth.signOut() method to sign out the user.
+   * Trigger the signOut() API aws-amplify/auth.
+   * @see {@link https://docs.amplify.aws/javascript/build-a-backend/auth/enable-sign-up/#sign-out}
    * @returns void
    */
   const handleSignOut = async () => {
