@@ -19,7 +19,6 @@ interface IPutUpdateUserRequestBody {
  * Function to update user's data
  * @param requestBody - The payload for the function.
  */
-
 export const putUpdateUser = async (
   userId: IUser['id'],
   requestBody: IPutUpdateUserRequestBody,
