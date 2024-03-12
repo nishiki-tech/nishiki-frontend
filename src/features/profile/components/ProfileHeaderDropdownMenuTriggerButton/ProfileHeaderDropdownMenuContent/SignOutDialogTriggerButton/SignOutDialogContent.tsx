@@ -8,6 +8,8 @@ import {
   DialogTitle,
 } from '@/components/ui';
 
+import { signOut } from 'aws-amplify/auth';
+
 interface ISignOutDialogContentProps {
   /**
    * The function to close the parent UI component.
@@ -26,10 +28,12 @@ export const SignOutDialogContent = ({ onParentClose }: ISignOutDialogContentPro
 
   /**
    * Handle the SignOut button click.
+   * Trigger the signOut() API from aws-amplify/auth.
+   * @see {@link https://docs.amplify.aws/javascript/build-a-backend/auth/enable-sign-up/#sign-out}
    * @returns void
    */
   const handleSignOut = async () => {
-    alert('sign out');
+    signOut();
   };
 
   return (
