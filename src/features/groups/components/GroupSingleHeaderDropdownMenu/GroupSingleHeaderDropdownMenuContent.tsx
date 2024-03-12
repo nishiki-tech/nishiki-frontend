@@ -23,8 +23,13 @@ export const GroupSingleHeaderDropdownMenuContent = ({
   onRenameGroupDrawerOpen,
   onDeleteGroupDialogOpen,
 }: IGroupSingleHeaderDropdownMenuContent) => {
+  /**
+   * The offset to align the dropdown menu content with the trigger button.
+   * The number 16 is based on the side padding in the body element.
+   */
+  const dropdownMenuAlignOffset = 16;
   return (
-    <DropdownMenuContent>
+    <DropdownMenuContent alignOffset={dropdownMenuAlignOffset}>
       <DropdownMenuItem asChild>
         <DropdownMenuButton onClick={onRenameGroupDrawerOpen}>
           <DropdownMenuButtonIcon>

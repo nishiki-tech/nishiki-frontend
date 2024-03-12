@@ -94,7 +94,7 @@ export const SelectionDrawerWithButtons = () => {
     <>
       <SelectionDrawerRoot open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
         <SelectionDrawerTrigger asChild>
-          <Button variant="error" size="md">
+          <Button variant="danger" size="md">
             SelectionDrawerButtons
           </Button>
         </SelectionDrawerTrigger>

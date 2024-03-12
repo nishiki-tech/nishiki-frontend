@@ -6,7 +6,7 @@
  *
  * See the official docs for more info:
  * shadcn/ui: https://ui.shadcn.com/docs/components/checkbox
- *  * Radix UI: https://www.radix-ui.com/themes/docs/components/checkbox
+ *  * Radix UI: https://www.radix-ui.com/primitives/docs/components/checkbox
  *
  */
 
