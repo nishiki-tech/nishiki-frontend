@@ -38,3 +38,22 @@ export const putUpdateUser = async (
     return Err('API response is invalid');
   }
 };
+
+/**
+ *  Function to delete a user
+ * @param userId - The id of the user to delete.
+ */
+export const deleteUser = async (userId: IUser['id']): Promise<Result<undefined, string>> => {
+  try {
+    await request({
+      url: `${API_BASE_URL}/users/${userId}`,
+      method: 'DELETE',
+    });
+    return Ok(undefined);
+  } catch (err) {
+    if (err instanceof Error) {
+      return Err(err.message);
+    }
+    return Err('API response is invalid');
+  }
+};
