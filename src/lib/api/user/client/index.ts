@@ -1,1 +1,1 @@
-export { putUpdateUser } from './userApiClient.client';
+export { deleteUser, putUpdateUser } from './userApiClient.client';
