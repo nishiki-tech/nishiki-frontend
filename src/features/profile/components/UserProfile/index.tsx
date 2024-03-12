@@ -36,7 +36,7 @@ export const UserProfile = ({ userId, name }: IUserProfileProps) => {
         {isRenameUserFormOpen ? (
           <RenameUserForm
             userId={userId}
-            currentUserName={name}
+            currentName={name}
             isOpen={isRenameUserFormOpen}
             onClose={() => setIsRenameUserFormOpen(false)}
           />
