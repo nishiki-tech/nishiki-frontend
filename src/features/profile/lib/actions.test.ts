@@ -21,7 +21,7 @@ describe('Profile page actions', () => {
       name: 'New Name',
     };
 
-    it('should rename a user successfully   ', async () => {
+    it('should rename a user successfully', async () => {
       // Arrange
       (putUpdateUser as jest.Mock).mockResolvedValue(Ok(undefined));
 
