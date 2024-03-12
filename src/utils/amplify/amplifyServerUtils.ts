@@ -17,7 +17,7 @@ export const { runWithAmplifyServerContext } = createServerRunner({
             scopes: ['openid'],
             responseType: 'code',
             redirectSignIn: [CLIENT_BASE_URL + '/login'],
-            redirectSignOut: [CLIENT_BASE_URL, `https://${OAUTH_DOMAIN}`],
+            redirectSignOut: [`${CLIENT_BASE_URL}/login`, `https://${OAUTH_DOMAIN}`],
           },
         },
         userPoolId: USER_POOL_ID,
