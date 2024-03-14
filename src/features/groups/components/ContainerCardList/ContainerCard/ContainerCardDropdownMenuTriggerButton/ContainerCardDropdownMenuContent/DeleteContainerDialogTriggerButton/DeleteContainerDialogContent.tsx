@@ -50,11 +50,12 @@ export const DeleteContainerDialogContent = ({
     const result = await removeContainer(containerId);
     if (!result.ok) {
       alert('Something went wrong. Please try again.');
+      onDialogClose();
     } else {
-      router.refresh();
       alert('Successfully deleted');
+      onDialogClose();
+      router.refresh();
     }
-    onDialogClose();
     onParentClose?.();
   };
 
