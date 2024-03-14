@@ -1,8 +1,7 @@
 import { Amplify } from 'aws-amplify';
 
 const OAUTH_DOMAIN = process.env.NEXT_PUBLIC_OAUTH_DOMAIN || '';
-const LOCALHOST_URL = process.env.NEXT_PUBLIC_LOCALHOST_URL || '';
-const OAUTH_REDIRECT_URL = process.env.NEXT_PUBLIC_OAUTH_REDIRECT_URL || '';
+const CLIENT_BASE_URL = process.env.NEXT_PUBLIC_CLIENT_BASE_URL || '';
 const USER_POOL_ID = process.env.NEXT_PUBLIC_USER_POOL_ID || '';
 const USER_POOL_CLIENT_ID = process.env.NEXT_PUBLIC_USER_POOL_CLIENT_ID || '';
 
@@ -19,8 +18,8 @@ export const configureClientAmplify = () => {
               domain: OAUTH_DOMAIN,
               scopes: ['openid'],
               responseType: 'code',
-              redirectSignIn: [LOCALHOST_URL + '/login'],
-              redirectSignOut: [LOCALHOST_URL, OAUTH_REDIRECT_URL],
+              redirectSignIn: [`${CLIENT_BASE_URL}/login`],
+              redirectSignOut: [`${CLIENT_BASE_URL}/login`],
             },
           },
           userPoolId: USER_POOL_ID,

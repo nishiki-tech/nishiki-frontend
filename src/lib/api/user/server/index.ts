@@ -1,1 +1,1 @@
-export { fetchUserList } from './userApiClient.server';
+export { fetchUserList, getUserById, type IGetUserByIdResponse } from './userApiClient.server';

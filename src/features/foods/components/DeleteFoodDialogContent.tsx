@@ -45,8 +45,8 @@ export const DeleteFoodDialogContent = ({
   const router = useRouter();
   /**
    * Handle the cancel button click.
-   * If the parentClose is true, close the parent dialog together with this dialog.
-   * If the parentClose is false, close only this dialog.
+   * If the closeParentOnCancel is true, close the parent together with this dialog.
+   * If the closeParentOnCancel is false, close only this dialog.
    * @returns void
    */
   const handleCancel = () => {
@@ -86,7 +86,7 @@ export const DeleteFoodDialogContent = ({
             Cancel
           </Button>
         </DialogClose>
-        <Button variant="error" size="sm" onClick={handleDelete}>
+        <Button variant="danger" size="sm" onClick={handleDelete}>
           Delete
         </Button>
       </DialogFooter>

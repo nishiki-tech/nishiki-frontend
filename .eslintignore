@@ -10,3 +10,4 @@ postcss.config.js
 commitlint.config.js
 docs
 coverage
+scripts

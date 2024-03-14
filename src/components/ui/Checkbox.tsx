@@ -6,11 +6,11 @@
  *
  * See the official docs for more info:
  * shadcn/ui: https://ui.shadcn.com/docs/components/checkbox
- *  * Radix UI: https://www.radix-ui.com/themes/docs/components/checkbox
+ *  * Radix UI: https://www.radix-ui.com/primitives/docs/components/checkbox
  *
  */
 
-import { CheckIcon } from '@/assets/images/icons';
+import { IconCheck } from '@/assets/images/icons';
 import { cn } from '@/lib/tailwind/utils';
 
 import { Indicator as CheckboxIndicator, Root as CheckboxRoot } from '@radix-ui/react-checkbox';
@@ -32,7 +32,7 @@ const Checkbox = forwardRef<
     {...props}
   >
     <CheckboxIndicator className={cn('flex items-center justify-center')}>
-      <Icon icon={CheckIcon} color="white" size={3.5} />
+      <Icon icon={IconCheck} color="white" size={3.5} />
     </CheckboxIndicator>
   </CheckboxRoot>
 ));

@@ -1,4 +1,4 @@
-import { FoodsPage } from '@/components/page/FoodsPage';
+import { FoodsPage } from '@/components/pages/FoodsPage';
 import { fetchAllContainerList } from '@/lib/api/container/server';
 import { IContainer } from '@/types/definition';
 

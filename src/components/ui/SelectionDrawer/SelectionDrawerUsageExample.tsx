@@ -4,7 +4,7 @@
  */
 'use client';
 
-import { DeleteIcon, PenIcon } from '@/assets/images/icons';
+import { IconDelete, IconPen } from '@/assets/images/icons';
 import {
   Button,
   Icon,
@@ -94,14 +94,14 @@ export const SelectionDrawerWithButtons = () => {
     <>
       <SelectionDrawerRoot open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
         <SelectionDrawerTrigger asChild>
-          <Button variant="error" size="md">
+          <Button variant="danger" size="md">
             SelectionDrawerButtons
           </Button>
         </SelectionDrawerTrigger>
         <SelectionDrawerContent>
           <SelectionDrawerButton onClick={handleRenameClick}>
             <SelectionDrawerButtonIcon>
-              <Icon icon={PenIcon} size={5} color="primary" />
+              <Icon icon={IconPen} size={5} color="primary" />
             </SelectionDrawerButtonIcon>
             <SelectionDrawerButtonText>Rename Containers</SelectionDrawerButtonText>
           </SelectionDrawerButton>
@@ -110,7 +110,7 @@ export const SelectionDrawerWithButtons = () => {
             onClick={handleDeleteClick}
           >
             <SelectionDrawerButtonIcon>
-              <Icon icon={DeleteIcon} size={5} color="danger" />
+              <Icon icon={IconDelete} size={5} color="danger" />
             </SelectionDrawerButtonIcon>
             <SelectionDrawerButtonText>Delete Containers</SelectionDrawerButtonText>
           </SelectionDrawerButton>

@@ -1,7 +1,6 @@
 'use client';
 
-import { DrawerContent, DrawerHeader, DrawerTitle } from '@/components/ui';
-import { Form } from '@/components/ui/Form';
+import { DrawerContent, DrawerHeader, DrawerTitle, Form } from '@/components/ui';
 import { EditDrawerFooter } from '@/features/foods/components/Form/EditDrawerContent/EditDrawerFooter';
 import { updateFood } from '@/features/foods/lib/actions';
 import { updateFoodFormSchema, UpdateFoodInputs } from '@/features/foods/lib/schema';
@@ -71,7 +70,7 @@ export const EditDrawerContent = ({
   const processSubmit: SubmitHandler<UpdateFoodInputs> = async (values: UpdateFoodInputs) => {
     const result = await updateFood(values);
     if (!result.ok) {
-      alert('Failed to update');
+      alert('Something went wrong. Please try again.');
     } else {
       alert('Successfully updated');
       router.refresh();

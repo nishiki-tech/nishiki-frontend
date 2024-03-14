@@ -7,8 +7,8 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
+  Form,
 } from '@/components/ui';
-import { Form } from '@/components/ui/Form';
 import { createFood } from '@/features/foods/lib/actions';
 import {
   createFoodDefaultValues,
@@ -75,7 +75,7 @@ export const AddDrawerContent = ({
   const processSubmit: SubmitHandler<CreateFoodInputs> = async (values: CreateFoodInputs) => {
     const result = await createFood(values);
     if (!result.ok) {
-      alert('Failed to create');
+      alert('Something went wrong. Please try again.');
     } else {
       alert('Successfully created');
       router.refresh();

@@ -1,4 +1,5 @@
 import { runWithAmplifyServerContext } from '@/utils/amplify';
+import { authRequired } from '@/utils/authUtils';
 
 import { fetchAuthSession } from 'aws-amplify/auth/server';
 import { NextRequest, NextResponse } from 'next/server';
@@ -10,6 +11,10 @@ import { NextRequest, NextResponse } from 'next/server';
  */
 export const middleware = async (request: NextRequest) => {
   const response = NextResponse.next();
+  const isOnLoginPage = request.nextUrl.pathname.startsWith('/login');
+
+  // If authentication is not required, skip the following authentication process.
+  if (!authRequired()) return response;
 
   const authenticated = await runWithAmplifyServerContext({
     nextServerContext: { request, response },
@@ -24,8 +29,6 @@ export const middleware = async (request: NextRequest) => {
     },
   });
 
-  const isOnLoginPage = request.nextUrl.pathname.startsWith('/login');
-
   // If user is authenticated
   if (authenticated) {
     // if user is in login page, redirect to '/groups'
@@ -38,7 +41,7 @@ export const middleware = async (request: NextRequest) => {
 
 export const config = {
   matcher: [
-    /*
+    /**
      * Match all request paths except for the ones starting with:
      * - api (API routes)
      * - _next/static (static files)

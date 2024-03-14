@@ -1,7 +1,15 @@
-import { Card, SquareTextInput } from '@/components/ui';
-import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/Form';
+import {
+  Card,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+  SquareTextInput,
+} from '@/components/ui';
 import { renameGroup } from '@/features/groups/lib/actions';
 import { renameGroupFormSchema, RenameGroupInputs } from '@/features/groups/lib/schemas';
+import { cn } from '@/lib/tailwind/utils';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
@@ -43,13 +51,13 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
    * Process the form submission.
    * @param values - The form values
    */
-  const processSubmit: SubmitHandler<RenameGroupInputs> = async (values) => {
+  const processSubmit: SubmitHandler<RenameGroupInputs> = async (values: RenameGroupInputs) => {
     const { groupName } = values;
     if (groupName === currentGroupName) return;
 
     const result = await renameGroup(groupId, values);
     if (!result.ok) {
-      alert('Failed to rename the group');
+      alert('Something went wrong. Please try again.');
     } else {
       router.refresh();
       alert('Successfully renamed the group');
@@ -114,7 +122,7 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
                       onKeyDown={handleKeyDown}
                       handleClearInput={handleClearInput}
                       handleOutsideClick={handleOutsideClick}
-                      className={form.formState.errors.groupName && 'border-danger'}
+                      className={cn(form.formState.errors.groupName && 'border-danger', 'text-lg')}
                     />
                   </FormControl>
                   <FormMessage />

@@ -1,4 +1,4 @@
-import { CaretDownIcon } from '@/assets/images/icons';
+import { IconCaretDown } from '@/assets/images/icons';
 import {
   Icon,
   Label,
@@ -51,9 +51,11 @@ export const FoodSort = () => {
     <>
       <SelectionDrawerRoot open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
         <SelectionDrawerTrigger asChild>
-          <button className="flex items-center">
-            {sortOptions[selectedOption as keyof typeof sortOptions]}
-            <Icon icon={CaretDownIcon} className="m-5" size={2.5} color="gray-dark" />
+          <button className="flex items-center max-w-full">
+            <span className="truncate">
+              {sortOptions[selectedOption as keyof typeof sortOptions]}
+            </span>
+            <Icon icon={IconCaretDown} className="m-5" size={2.5} color="gray-dark" />
           </button>
         </SelectionDrawerTrigger>
         <SelectionDrawerContent>

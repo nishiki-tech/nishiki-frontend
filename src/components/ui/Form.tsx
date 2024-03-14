@@ -1,4 +1,5 @@
-import { ExclamationIcon } from '@/assets/images/icons';
+'use client';
+import { IconExclamation } from '@/assets/images/icons';
 import { Icon, Label } from '@/components/ui';
 import { cn } from '@/lib/tailwind/utils';
 
@@ -134,7 +135,7 @@ const FormMessage = forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLParagrap
       <div className="mt-1 flex items-start gap-1.5">
         {/* The heights of this <div> must be match the line-height of the following <p>. */}
         <div className="h-5 flex items-center">
-          <Icon icon={ExclamationIcon} size={3.5} color="danger" />
+          <Icon icon={IconExclamation} size={3.5} color="danger" />
         </div>
         <p
           ref={ref}

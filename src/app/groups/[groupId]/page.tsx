@@ -1,4 +1,4 @@
-import { GroupSinglePage } from '@/components/page/GroupSingle';
+import { GroupSinglePage } from '@/components/pages/GroupSinglePage';
 
 export const dynamic = 'force-dynamic';
 
