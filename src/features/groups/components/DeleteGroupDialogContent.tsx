@@ -10,6 +10,8 @@ import {
 import { removeGroup } from '@/features/groups/lib/actions';
 import { IGroup } from '@/types/definition';
 
+import { useRouter } from 'next/navigation';
+
 interface IDeleteGroupDialogContentProps {
   /**
    * The ID of the group to delete.
@@ -35,6 +37,7 @@ export const DeleteGroupDialogContent = ({
   onDialogClose,
   navigateOnSuccess,
 }: IDeleteGroupDialogContentProps) => {
+  const router = useRouter();
   /**
    * Handle the cancel button click.
    * It closes the parent UI component, if specified
@@ -53,6 +56,7 @@ export const DeleteGroupDialogContent = ({
     if (!result.ok) {
       alert('Something went wrong. Please try again.');
     } else {
+      router.refresh();
       alert('Successfully deleted!');
       navigateOnSuccess?.();
     }
