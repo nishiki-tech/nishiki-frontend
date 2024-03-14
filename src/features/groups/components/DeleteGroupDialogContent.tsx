@@ -55,13 +55,14 @@ export const DeleteGroupDialogContent = ({
     const result = await removeGroup(groupId);
     if (!result.ok) {
       alert('Something went wrong. Please try again.');
+      onDialogClose();
     } else {
-      router.refresh();
-      alert('Successfully deleted!');
+      alert('Successfully deleted');
+      onDialogClose();
       navigateOnSuccess?.();
+      router.refresh();
     }
     onParentClose?.();
-    onDialogClose();
   };
 
   return (
