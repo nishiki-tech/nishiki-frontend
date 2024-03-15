@@ -67,10 +67,10 @@ export const RenameContainerForm = ({
     if (!result.ok) {
       alert('Something went wrong. Please try again.');
     } else {
-      router.refresh();
       alert('Successfully renamed the container');
       form.reset();
       onClose();
+      router.refresh();
     }
   };
 
