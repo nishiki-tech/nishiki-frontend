@@ -38,7 +38,7 @@ export const DeleteContainerDialogContent = ({
    * It closes the parent UI component, if specified
    */
   const handleCancel = () => {
-    onParentClose?.();
+    onParentClose();
   };
 
   /**
@@ -51,12 +51,13 @@ export const DeleteContainerDialogContent = ({
     if (!result.ok) {
       alert('Something went wrong. Please try again.');
       onDialogClose();
+      onParentClose();
     } else {
       alert('Successfully deleted');
       onDialogClose();
+      onParentClose();
       router.refresh();
     }
-    onParentClose?.();
   };
 
   return (
