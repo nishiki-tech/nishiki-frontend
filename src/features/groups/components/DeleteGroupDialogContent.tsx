@@ -56,13 +56,14 @@ export const DeleteGroupDialogContent = ({
     if (!result.ok) {
       alert('Something went wrong. Please try again.');
       onDialogClose();
+      onParentClose?.();
     } else {
       alert('Successfully deleted');
       onDialogClose();
       navigateOnSuccess?.();
+      onParentClose?.();
       router.refresh();
     }
-    onParentClose?.();
   };
 
   return (
