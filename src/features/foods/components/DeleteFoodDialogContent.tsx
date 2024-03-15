@@ -65,7 +65,7 @@ export const DeleteFoodDialogContent = ({
     if (!result.ok) {
       alert('Something went wrong. Please try again.');
     } else {
-      alert('Successfully deleted');
+      alert('Successfully deleted!');
       onDialogClose();
       onParentClose?.();
       router.refresh();
