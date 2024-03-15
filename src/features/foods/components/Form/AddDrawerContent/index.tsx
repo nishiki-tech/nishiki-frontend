@@ -77,9 +77,9 @@ export const AddDrawerContent = ({
     if (!result.ok) {
       alert('Something went wrong. Please try again.');
     } else {
-      router.refresh();
       alert('Successfully created');
       setIsDrawerOpen(false);
+      router.refresh();
     }
   };
 
