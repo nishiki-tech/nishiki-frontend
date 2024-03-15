@@ -72,9 +72,9 @@ export const EditDrawerContent = ({
     if (!result.ok) {
       alert('Something went wrong. Please try again.');
     } else {
-      router.refresh();
       alert('Successfully updated');
       onDrawerClose();
+      router.refresh();
     }
   };
 
