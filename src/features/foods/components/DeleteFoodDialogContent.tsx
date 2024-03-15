@@ -64,8 +64,6 @@ export const DeleteFoodDialogContent = ({
     const result = await removeFood(containerId, foodId);
     if (!result.ok) {
       alert('Something went wrong. Please try again.');
-      onDialogClose();
-      onParentClose?.();
     } else {
       alert('Successfully deleted');
       onDialogClose();
