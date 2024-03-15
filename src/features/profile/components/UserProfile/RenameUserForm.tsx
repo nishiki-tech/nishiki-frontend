@@ -61,8 +61,8 @@ export const RenameUserForm = ({ userId, currentName, isOpen, onClose }: IRename
       alert('Something went wrong. Please try again.');
     } else {
       alert('Successfully renamed the user');
-      router.refresh();
       onClose();
+      router.refresh();
     }
   };
 
