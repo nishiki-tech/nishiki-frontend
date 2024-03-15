@@ -63,9 +63,9 @@ export const CreateContainerDrawerContent = ({
     if (!result.ok) {
       alert('Something went wrong. Please try again.');
     } else {
-      router.refresh();
       alert('Successfully created');
       onClose();
+      router.refresh();
     }
   };
 
