@@ -47,10 +47,10 @@ export const CreateGroupDrawerContent = ({ isOpen, onClose }: ICreateGroupDrawer
     if (!result.ok) {
       alert('Something went wrong. Please try again.');
     } else {
-      router.refresh();
       alert('Successfully created the group');
       form.reset();
       onClose();
+      router.refresh();
     }
   };
 
