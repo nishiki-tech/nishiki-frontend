@@ -18,16 +18,23 @@ import { createGroup } from '@/features/groups/lib/actions';
 import { createGroupFormSchema, CreateGroupInputs } from '@/features/groups/lib/schemas';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useEffect } from 'react';
+import { Dispatch, SetStateAction, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 interface ICreateGroupDrawerContentProps {
   isOpen: boolean;
   onClose: () => void;
+  isLoading: boolean;
+  setIsLoading: Dispatch<SetStateAction<boolean>>;
 }
 
-export const CreateGroupDrawerContent = ({ isOpen, onClose }: ICreateGroupDrawerContentProps) => {
+export const CreateGroupDrawerContent = ({
+  isOpen,
+  onClose,
+  isLoading,
+  setIsLoading,
+}: ICreateGroupDrawerContentProps) => {
   const form = useForm<z.infer<typeof createGroupFormSchema>>({
     resolver: zodResolver(createGroupFormSchema),
     defaultValues: {
@@ -40,6 +47,8 @@ export const CreateGroupDrawerContent = ({ isOpen, onClose }: ICreateGroupDrawer
    * @param values - The form values
    */
   const processSubmit: SubmitHandler<CreateGroupInputs> = async (values: CreateGroupInputs) => {
+    if (isLoading) return;
+    setIsLoading(true);
     const { groupName } = values;
     const result = await createGroup({ groupName });
     if (!result.ok) {
@@ -49,6 +58,7 @@ export const CreateGroupDrawerContent = ({ isOpen, onClose }: ICreateGroupDrawer
       form.reset();
       onClose();
     }
+    setIsLoading(false);
   };
 
   /**
@@ -86,7 +96,7 @@ export const CreateGroupDrawerContent = ({ isOpen, onClose }: ICreateGroupDrawer
                 Cancel
               </Button>
             </DrawerClose>
-            <Button type="submit" variant="primary" size="md">
+            <Button type="submit" variant="primary" size="md" disabled={isLoading}>
               Create
             </Button>
           </DrawerFooter>

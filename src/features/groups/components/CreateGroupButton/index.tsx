@@ -9,6 +9,7 @@ import { CreateGroupDrawerContent } from './CreateGroupDrawerContent';
 
 export const CreateGroupButton = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onClose = () => {
     setIsOpen(false);
@@ -21,7 +22,12 @@ export const CreateGroupButton = () => {
           <Icon icon={IconPlus} size={4.5} />
         </Button>
       </DrawerTrigger>
-      <CreateGroupDrawerContent isOpen={isOpen} onClose={onClose} />
+      <CreateGroupDrawerContent
+        isOpen={isOpen}
+        onClose={onClose}
+        isLoading={isLoading}
+        setIsLoading={setIsLoading}
+      />
     </DrawerRoot>
   );
 };
