@@ -38,6 +38,7 @@ export const DeleteAccountDialogContent = ({ onParentClose }: IDeleteAccountDial
   const handleDelete = async () => {
     if (isLoading) return;
     setIsLoading(true);
+    //need to add delete api here
     alert('delete account');
     setIsLoading(false);
   };
