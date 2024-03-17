@@ -21,6 +21,7 @@ interface IDeleteAccountDialogContentProps {
 
 export const DeleteAccountDialogContent = ({ onParentClose }: IDeleteAccountDialogContentProps) => {
   const [isChecked, setIsChecked] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   /**
    * Handle the cancel button click.
@@ -35,7 +36,10 @@ export const DeleteAccountDialogContent = ({ onParentClose }: IDeleteAccountDial
    * @returns void
    */
   const handleDelete = async () => {
+    if (isLoading) return;
+    setIsLoading(true);
     alert('delete account');
+    setIsLoading(false);
   };
 
   /**
@@ -70,7 +74,12 @@ export const DeleteAccountDialogContent = ({ onParentClose }: IDeleteAccountDial
             Cancel
           </Button>
         </DialogClose>
-        <Button variant="danger" size="sm" onClick={handleDelete} disabled={!isChecked}>
+        <Button
+          variant="danger"
+          size="sm"
+          onClick={handleDelete}
+          disabled={!isChecked || isLoading}
+        >
           Delete
         </Button>
       </DialogFooter>

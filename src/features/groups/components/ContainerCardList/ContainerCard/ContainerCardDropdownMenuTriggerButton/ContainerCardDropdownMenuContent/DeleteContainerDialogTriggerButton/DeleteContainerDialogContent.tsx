@@ -10,6 +10,8 @@ import {
 import { removeContainer } from '@/features/groups/lib/actions';
 import { IContainer } from '@/types/definition';
 
+import { useState } from 'react';
+
 interface IDeleteContainerDialogContentProps {
   /**
    * An identifier of a container which a user is willing to delete
@@ -30,6 +32,7 @@ export const DeleteContainerDialogContent = ({
   onParentClose,
   onDialogClose,
 }: IDeleteContainerDialogContentProps) => {
+  const [isLoading, setIsLoading] = useState(false);
   /**
    * Handle the cancel button click.
    * It closes the parent UI component, if specified
@@ -44,12 +47,15 @@ export const DeleteContainerDialogContent = ({
    * the dialog and dropdown menu will be disappeared after processing either case
    */
   const handleDelete = async () => {
+    if (isLoading) return;
+    setIsLoading(true);
     const result = await removeContainer(containerId);
     if (!result.ok) {
       alert('Something went wrong. Please try again.');
     } else {
       alert('Successfully deleted');
     }
+    setIsLoading(false);
     onDialogClose();
     onParentClose?.();
   };
@@ -68,7 +74,7 @@ export const DeleteContainerDialogContent = ({
             Cancel
           </Button>
         </DialogClose>
-        <Button variant="danger" size="sm" onClick={handleDelete}>
+        <Button variant="danger" size="sm" onClick={handleDelete} disabled={isLoading}>
           Delete
         </Button>
       </DialogFooter>

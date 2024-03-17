@@ -10,6 +10,8 @@ import {
 import { removeMember } from '@/features/groups/lib/actions';
 import { IGroup, IUser } from '@/types/definition';
 
+import { useState } from 'react';
+
 interface IMemberCardDeleteDialogProps {
   /**
    * The function to close the parent UI component which is dropdown menu
@@ -35,6 +37,7 @@ export const MemberCardDeleteDialog = ({
   userId,
   groupId,
 }: IMemberCardDeleteDialogProps) => {
+  const [isLoading, setIsLoading] = useState(false);
   /**
    * Handle the delete button click.
    * Being successful DELETE request, the success message is shown, and close dialog and dropdown menu.
@@ -42,6 +45,8 @@ export const MemberCardDeleteDialog = ({
    * @returns void
    */
   const handleDelete = async () => {
+    if (isLoading) return;
+    setIsLoading(true);
     if (!groupId || !userId) return;
     const result = await removeMember(groupId, userId);
     if (!result.ok) {
@@ -49,6 +54,7 @@ export const MemberCardDeleteDialog = ({
     } else {
       alert('Successfully deleted!');
     }
+    setIsLoading(false);
     onDialogClose();
     onParentClose();
   };
@@ -67,7 +73,7 @@ export const MemberCardDeleteDialog = ({
             Cancel
           </Button>
         </DialogClose>
-        <Button variant="danger" size="sm" onClick={handleDelete}>
+        <Button variant="danger" size="sm" onClick={handleDelete} disabled={isLoading}>
           Delete
         </Button>
       </DialogFooter>

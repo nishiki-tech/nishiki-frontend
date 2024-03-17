@@ -10,6 +10,8 @@ import {
 import { removeFood } from '@/features/foods/lib/actions';
 import { IContainer, IFood } from '@/types/definition';
 
+import { useState } from 'react';
+
 interface IDeleteFoodDialogContentProps {
   /**
    * If true, close the parent UI component, such as Dialog, DropdownMenu, Drawer, etc., on cancel button click.
@@ -40,6 +42,8 @@ export const DeleteFoodDialogContent = ({
   containerId,
   foodId,
 }: IDeleteFoodDialogContentProps) => {
+  const [isLoading, setIsLoading] = useState(false);
+
   /**
    * Handle the cancel button click.
    * If the closeParentOnCancel is true, close the parent together with this dialog.
@@ -57,6 +61,8 @@ export const DeleteFoodDialogContent = ({
    * @returns void
    */
   const handleDelete = async () => {
+    if (isLoading) return;
+    setIsLoading(true);
     if (!containerId || !foodId) return;
     const result = await removeFood(containerId, foodId);
     if (!result.ok) {
@@ -65,6 +71,7 @@ export const DeleteFoodDialogContent = ({
       alert('Successfully deleted!');
       onParentClose?.();
     }
+    setIsLoading(false);
     onDialogClose();
   };
 
@@ -82,7 +89,7 @@ export const DeleteFoodDialogContent = ({
             Cancel
           </Button>
         </DialogClose>
-        <Button variant="danger" size="sm" onClick={handleDelete}>
+        <Button variant="danger" size="sm" onClick={handleDelete} disabled={isLoading}>
           Delete
         </Button>
       </DialogFooter>

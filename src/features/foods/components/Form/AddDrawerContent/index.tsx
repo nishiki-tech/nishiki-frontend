@@ -101,11 +101,11 @@ export const AddDrawerContent = ({
           />
           <DrawerFooter>
             <DrawerClose asChild>
-              <Button variant="cancel" size="sm" onClick={handleCancelClick} disabled={isLoading}>
+              <Button variant="cancel" size="sm" onClick={handleCancelClick}>
                 Cancel
               </Button>
             </DrawerClose>
-            <Button type="submit" variant="primary" size="sm">
+            <Button type="submit" variant="primary" size="sm" disabled={isLoading}>
               Add food
             </Button>
           </DrawerFooter>

@@ -14,7 +14,7 @@ import { renameContainerFormSchema, RenameContainerInputs } from '@/features/gro
 import { IContainer } from '@/types/definition';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { KeyboardEvent, useEffect, useRef } from 'react';
+import { KeyboardEvent, useEffect, useRef, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -44,6 +44,8 @@ export const RenameContainerForm = ({
   onClose,
 }: IRenameContainerFormProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const [isLoading, setIsLoading] = useState(false);
+
   const form = useForm<z.infer<typeof renameContainerFormSchema>>({
     resolver: zodResolver(renameContainerFormSchema),
     defaultValues: {
@@ -58,6 +60,8 @@ export const RenameContainerForm = ({
   const processSubmit: SubmitHandler<RenameContainerInputs> = async (
     values: RenameContainerInputs,
   ) => {
+    if (isLoading) return;
+    setIsLoading(true);
     const { containerName } = values;
     if (containerName === currentContainerName) return;
 
@@ -69,6 +73,7 @@ export const RenameContainerForm = ({
       form.reset();
       onClose();
     }
+    setIsLoading(false);
   };
 
   /**
@@ -77,6 +82,9 @@ export const RenameContainerForm = ({
    * @param event - The keyboard event
    */
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (isLoading) {
+      return; // Do nothing if isLoading is true
+    }
     if (event.key === 'Escape') {
       onClose();
     }

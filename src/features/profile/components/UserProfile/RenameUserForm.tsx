@@ -12,7 +12,7 @@ import { cn } from '@/lib/tailwind/utils';
 import { IUser } from '@/types/definition';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { KeyboardEvent, useEffect, useRef } from 'react';
+import { KeyboardEvent, useEffect, useRef, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -39,6 +39,7 @@ interface IRenameUserFormProps {
 export const RenameUserForm = ({ userId, currentName, isOpen, onClose }: IRenameUserFormProps) => {
   // input ref
   const inputRef = useRef<HTMLInputElement>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof renameUserFormSchema>>({
     resolver: zodResolver(renameUserFormSchema),
@@ -52,6 +53,8 @@ export const RenameUserForm = ({ userId, currentName, isOpen, onClose }: IRename
    * @param values - The form values
    */
   const processSubmit: SubmitHandler<RenameUserInputs> = async (values: RenameUserInputs) => {
+    if (isLoading) return;
+    setIsLoading(true);
     const { name } = values;
     if (name === currentName) return;
     const result = await renameUser(userId, { name });
@@ -61,6 +64,7 @@ export const RenameUserForm = ({ userId, currentName, isOpen, onClose }: IRename
       alert('Successfully renamed the user');
       onClose();
     }
+    setIsLoading(false);
   };
 
   /**
@@ -69,6 +73,9 @@ export const RenameUserForm = ({ userId, currentName, isOpen, onClose }: IRename
    * @param event - The keyboard event
    */
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (isLoading) {
+      return; // Do nothing if isLoading is true
+    }
     if (event.key === 'Escape') {
       onClose();
     }

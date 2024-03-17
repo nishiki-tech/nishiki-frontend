@@ -18,23 +18,17 @@ import { createGroup } from '@/features/groups/lib/actions';
 import { createGroupFormSchema, CreateGroupInputs } from '@/features/groups/lib/schemas';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Dispatch, SetStateAction, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 interface ICreateGroupDrawerContentProps {
   isOpen: boolean;
   onClose: () => void;
-  isLoading: boolean;
-  setIsLoading: Dispatch<SetStateAction<boolean>>;
 }
 
-export const CreateGroupDrawerContent = ({
-  isOpen,
-  onClose,
-  isLoading,
-  setIsLoading,
-}: ICreateGroupDrawerContentProps) => {
+export const CreateGroupDrawerContent = ({ isOpen, onClose }: ICreateGroupDrawerContentProps) => {
+  const [isLoading, setIsLoading] = useState(false);
   const form = useForm<z.infer<typeof createGroupFormSchema>>({
     resolver: zodResolver(createGroupFormSchema),
     defaultValues: {

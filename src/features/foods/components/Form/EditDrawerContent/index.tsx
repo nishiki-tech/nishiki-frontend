@@ -114,6 +114,7 @@ export const EditDrawerContent = ({
             onDrawerClose={onDrawerClose}
             containerId={food?.containerId}
             foodId={food?.id}
+            isLoading={isLoading}
           />
         </form>
       </Form>

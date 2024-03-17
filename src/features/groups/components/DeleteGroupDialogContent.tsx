@@ -10,6 +10,8 @@ import {
 import { removeGroup } from '@/features/groups/lib/actions';
 import { IGroup } from '@/types/definition';
 
+import { useState } from 'react';
+
 interface IDeleteGroupDialogContentProps {
   /**
    * The ID of the group to delete.
@@ -35,6 +37,7 @@ export const DeleteGroupDialogContent = ({
   onDialogClose,
   navigateOnSuccess,
 }: IDeleteGroupDialogContentProps) => {
+  const [isLoading, setIsLoading] = useState(false);
   /**
    * Handle the cancel button click.
    * It closes the parent UI component, if specified
@@ -49,6 +52,8 @@ export const DeleteGroupDialogContent = ({
    * @returns void
    */
   const handleDelete = async () => {
+    if (isLoading) return;
+    setIsLoading(true);
     const result = await removeGroup(groupId);
     if (!result.ok) {
       alert('Something went wrong. Please try again.');
@@ -56,6 +61,7 @@ export const DeleteGroupDialogContent = ({
       alert('Successfully deleted!');
       navigateOnSuccess?.();
     }
+    setIsLoading(false);
     onParentClose?.();
     onDialogClose();
   };
@@ -74,7 +80,7 @@ export const DeleteGroupDialogContent = ({
             Cancel
           </Button>
         </DialogClose>
-        <Button variant="danger" size="sm" onClick={handleDelete}>
+        <Button variant="danger" size="sm" onClick={handleDelete} disabled={isLoading}>
           Delete
         </Button>
       </DialogFooter>
