@@ -1,5 +1,6 @@
 import { IconMenuKebab } from '@/assets/images/icons';
 import { Button, DialogRoot, DropdownMenu, DropdownMenuTrigger, Icon } from '@/components/ui';
+import { useAutoFocus } from '@/hooks';
 import { IContainer } from '@/types/definition';
 
 import { useState } from 'react';
@@ -12,6 +13,7 @@ interface IContainerCardDropdownMenuProps {
    * An identifier of a container which a user is willing to delete
    */
   containerId: IContainer['id'];
+  isRenameFormOpen: boolean;
   /**
    * A function to open rename form input field
    */
@@ -20,16 +22,21 @@ interface IContainerCardDropdownMenuProps {
 
 export const ContainerCardDropdownMenuTriggerButton = ({
   containerId,
+  isRenameFormOpen,
   onRenameContainerClick,
 }: IContainerCardDropdownMenuProps) => {
   const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
   const [isDeleteContainerDialogOpen, setIsDeleteContainerDialogOpen] = useState(false);
 
+  const kebabRef = useAutoFocus<HTMLButtonElement>(
+    !isDeleteContainerDialogOpen && !isRenameFormOpen,
+  );
+
   return (
     <>
       <DropdownMenu open={isDropdownMenuOpen} onOpenChange={setIsDropdownMenuOpen}>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost" className="w-12">
+          <Button variant="ghost" className="w-12" ref={kebabRef}>
             <Icon icon={IconMenuKebab} size={4.5} />
           </Button>
         </DropdownMenuTrigger>

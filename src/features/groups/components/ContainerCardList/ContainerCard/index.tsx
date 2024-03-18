@@ -49,6 +49,7 @@ export const ContainerCard = ({ containerId, groupId, containerName }: IContaine
       </Link>
       <ContainerCardDropdownMenuTriggerButton
         containerId={containerId}
+        isRenameFormOpen={isRenameFormOpen}
         onRenameContainerClick={() => {
           setIsRenameFormOpen(true);
         }}
