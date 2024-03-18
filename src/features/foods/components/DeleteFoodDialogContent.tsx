@@ -11,6 +11,7 @@ import { removeFood } from '@/features/foods/lib/actions';
 import { IContainer, IFood } from '@/types/definition';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 interface IDeleteFoodDialogContentProps {
   /**
@@ -43,7 +44,7 @@ export const DeleteFoodDialogContent = ({
   foodId,
 }: IDeleteFoodDialogContentProps) => {
   const [isLoading, setIsLoading] = useState(false);
-
+  const router = useRouter();
   /**
    * Handle the cancel button click.
    * If the closeParentOnCancel is true, close the parent together with this dialog.
@@ -67,9 +68,13 @@ export const DeleteFoodDialogContent = ({
     const result = await removeFood(containerId, foodId);
     if (!result.ok) {
       alert('Something went wrong. Please try again.');
+      onDialogClose();
+      onParentClose?.();
     } else {
       alert('Successfully deleted!');
+      onDialogClose();
       onParentClose?.();
+      router.refresh();
     }
     setIsLoading(false);
     onDialogClose();

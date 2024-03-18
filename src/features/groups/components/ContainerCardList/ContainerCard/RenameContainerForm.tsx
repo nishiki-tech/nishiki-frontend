@@ -14,6 +14,7 @@ import { renameContainerFormSchema, RenameContainerInputs } from '@/features/gro
 import { IContainer } from '@/types/definition';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 import { KeyboardEvent, useEffect, useRef, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -43,6 +44,7 @@ export const RenameContainerForm = ({
   isOpen,
   onClose,
 }: IRenameContainerFormProps) => {
+  const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -72,6 +74,7 @@ export const RenameContainerForm = ({
       alert('Successfully renamed the container');
       form.reset();
       onClose();
+      router.refresh();
     }
     setIsLoading(false);
   };

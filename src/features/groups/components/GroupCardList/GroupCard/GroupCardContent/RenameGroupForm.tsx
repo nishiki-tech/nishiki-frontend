@@ -12,6 +12,7 @@ import { renameGroupFormSchema, RenameGroupInputs } from '@/features/groups/lib/
 import { cn } from '@/lib/tailwind/utils';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 import React, { FC, KeyboardEvent, useEffect, useRef, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -32,13 +33,14 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
   groupId,
   currentGroupName,
   isOpen,
-  onClose,
   containerCount,
   userCount,
+  onClose,
 }) => {
   // input ref
   const inputRef = useRef<HTMLInputElement>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof renameGroupFormSchema>>({
     resolver: zodResolver(renameGroupFormSchema),
@@ -62,8 +64,8 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
       alert('Something went wrong. Please try again.');
     } else {
       alert('Successfully renamed the group');
-      form.reset();
       onClose();
+      router.refresh();
     }
     setIsLoading(false);
   };

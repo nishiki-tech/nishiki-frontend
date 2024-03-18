@@ -19,7 +19,8 @@ import { createContainerFormSchema, CreateContainerInputs } from '@/features/gro
 import { IGroup } from '@/types/definition';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useEffect,useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -44,6 +45,7 @@ export const CreateContainerDrawerContent = ({
   groupId,
 }: ICreateContainerDrawerContentProps) => {
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
   const form = useForm<z.infer<typeof createContainerFormSchema>>({
     resolver: zodResolver(createContainerFormSchema),
     defaultValues: {
@@ -66,6 +68,7 @@ export const CreateContainerDrawerContent = ({
     } else {
       alert('Successfully created');
       onClose();
+      router.refresh();
     }
     setIsLoading(false);
   };

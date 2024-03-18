@@ -21,6 +21,7 @@ import { renameGroupFormSchema, RenameGroupInputs } from '@/features/groups/lib/
 import { IGroup } from '@/types/definition';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -56,6 +57,7 @@ export const RenameGroupDrawerContent = ({
   onParentClose,
 }: IRenameGroupDrawerContent) => {
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof renameGroupFormSchema>>({
     resolver: zodResolver(renameGroupFormSchema),
@@ -83,6 +85,7 @@ export const RenameGroupDrawerContent = ({
       form.reset();
       onParentClose?.();
       onClose();
+      router.refresh();
     }
     setIsLoading(false);
   };
