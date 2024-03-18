@@ -59,7 +59,10 @@ export const RenameContainerForm = ({
     values: RenameContainerInputs,
   ) => {
     const { containerName } = values;
-    if (containerName === currentContainerName) return;
+    if (containerName === currentContainerName) {
+      onClose();
+      return;
+    }
 
     const result = await renameContainer(containerId, values);
     if (!result.ok) {

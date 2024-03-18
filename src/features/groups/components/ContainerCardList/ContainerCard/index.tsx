@@ -27,26 +27,14 @@ interface IContainerCardProps {
 export const ContainerCard = ({ containerId, groupId, containerName }: IContainerCardProps) => {
   const [isRenameFormOpen, setIsRenameFormOpen] = useState(false);
 
-  /**
-   * the function to change the state of rename form to true( = open the form input field)
-   */
-  const handleRenameClick = () => {
-    setIsRenameFormOpen(true);
-  };
-
-  /**
-   * The function to change the state of rename form to false ( = close the form input field)
-   */
-  const handleRenameFormClose = () => {
-    setIsRenameFormOpen(false);
-  };
-
   return isRenameFormOpen ? (
     <RenameContainerForm
       containerId={containerId}
       currentContainerName={containerName}
       isOpen={isRenameFormOpen}
-      onClose={handleRenameFormClose}
+      onClose={() => {
+        setIsRenameFormOpen(false);
+      }}
     />
   ) : (
     <Card key={containerId} className="flex justify-between gap-2">
@@ -61,7 +49,9 @@ export const ContainerCard = ({ containerId, groupId, containerName }: IContaine
       </Link>
       <ContainerCardDropdownMenuTriggerButton
         containerId={containerId}
-        onRenameClick={handleRenameClick}
+        onRenameContainerClick={() => {
+          setIsRenameFormOpen(true);
+        }}
       />
     </Card>
   );

@@ -15,12 +15,12 @@ interface IContainerCardDropdownMenuProps {
   /**
    * A function to open rename form input field
    */
-  onRenameClick: () => void;
+  onRenameContainerClick: () => void;
 }
 
 export const ContainerCardDropdownMenuTriggerButton = ({
   containerId,
-  onRenameClick,
+  onRenameContainerClick,
 }: IContainerCardDropdownMenuProps) => {
   const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
   const [isDeleteContainerDialogOpen, setIsDeleteContainerDialogOpen] = useState(false);
@@ -34,7 +34,7 @@ export const ContainerCardDropdownMenuTriggerButton = ({
           </Button>
         </DropdownMenuTrigger>
         <ContainerCardDropdownMenuContent
-          onRenameContainerClick={onRenameClick}
+          onRenameContainerClick={onRenameContainerClick}
           onDeleteContainerDialogOpen={() => {
             setIsDeleteContainerDialogOpen(true);
           }}
