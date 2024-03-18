@@ -12,7 +12,7 @@ interface IContainerCardDropdownMenuContent {
   /**
    * The function to open rename form input field
    */
-  onRenameClick: () => void;
+  onRenameContainerClick: () => void;
   /**
    * The function to close dropdown menu
    */
@@ -20,13 +20,13 @@ interface IContainerCardDropdownMenuContent {
 }
 
 export const ContainerCardDropdownMenuContent = ({
-  onRenameClick,
+  onRenameContainerClick,
   onDeleteContainerDialogOpen,
 }: IContainerCardDropdownMenuContent) => {
   return (
     <DropdownMenuContent>
       <DropdownMenuItem asChild>
-        <DropdownMenuButton onClick={onRenameClick}>
+        <DropdownMenuButton onClick={onRenameContainerClick}>
           <DropdownMenuButtonIcon>
             <Icon icon={IconPen} size={5} color="primary" />
           </DropdownMenuButtonIcon>
