@@ -1,10 +1,11 @@
 import { IconMenuKebab } from '@/assets/images/icons';
-import { Button, DropdownMenu, DropdownMenuTrigger, Icon } from '@/components/ui';
+import { Button, DialogRoot, DropdownMenu, DropdownMenuTrigger, Icon } from '@/components/ui';
 import { IContainer } from '@/types/definition';
 
 import { useState } from 'react';
 
 import { ContainerCardDropdownMenuContent } from './ContainerCardDropdownMenuContent';
+import { DeleteContainerDialogContent } from './ContainerCardDropdownMenuContent/DeleteContainerDialogContent';
 
 interface IContainerCardDropdownMenuProps {
   /**
@@ -22,19 +23,35 @@ export const ContainerCardDropdownMenuTriggerButton = ({
   onRenameClick,
 }: IContainerCardDropdownMenuProps) => {
   const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
+  const [isDeleteContainerDialogOpen, setIsDeleteContainerDialogOpen] = useState(false);
 
   return (
-    <DropdownMenu open={isDropdownMenuOpen} onOpenChange={setIsDropdownMenuOpen}>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="w-12">
-          <Icon icon={IconMenuKebab} size={4.5} />
-        </Button>
-      </DropdownMenuTrigger>
-      <ContainerCardDropdownMenuContent
-        containerId={containerId}
-        onRenameClick={onRenameClick}
-        onDropdownMenuClose={() => setIsDropdownMenuOpen(false)}
-      />
-    </DropdownMenu>
+    <>
+      <DropdownMenu open={isDropdownMenuOpen} onOpenChange={setIsDropdownMenuOpen}>
+        <DropdownMenuTrigger asChild>
+          <Button variant="ghost" className="w-12">
+            <Icon icon={IconMenuKebab} size={4.5} />
+          </Button>
+        </DropdownMenuTrigger>
+        <ContainerCardDropdownMenuContent
+          onRenameClick={onRenameClick}
+          onDropdownMenuClose={() => setIsDropdownMenuOpen(false)}
+          onDeleteContainerDialogOpen={() => {
+            setIsDeleteContainerDialogOpen(true);
+          }}
+        />
+      </DropdownMenu>
+      <DialogRoot open={isDeleteContainerDialogOpen} onOpenChange={setIsDeleteContainerDialogOpen}>
+        <DeleteContainerDialogContent
+          containerId={containerId}
+          onParentClose={() => {
+            setIsDropdownMenuOpen(false);
+          }}
+          onDialogClose={() => {
+            setIsDeleteContainerDialogOpen(false);
+          }}
+        />
+      </DialogRoot>
+    </>
   );
 };

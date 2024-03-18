@@ -1,4 +1,4 @@
-import { IconPen } from '@/assets/images/icons';
+import { IconDelete, IconPen } from '@/assets/images/icons';
 import {
   DropdownMenuButton,
   DropdownMenuButtonIcon,
@@ -7,15 +7,8 @@ import {
   DropdownMenuItem,
   Icon,
 } from '@/components/ui';
-import { IContainer } from '@/types/definition';
-
-import { DeleteContainerDialogTriggerButton } from './DeleteContainerDialogTriggerButton';
 
 interface IContainerCardDropdownMenuContent {
-  /**
-   * An identifier of a container which a user willing to delete
-   */
-  containerId: IContainer['id'];
   /**
    * The function to open rename form input field
    */
@@ -24,12 +17,15 @@ interface IContainerCardDropdownMenuContent {
    * The function to close dropdown menu
    */
   onDropdownMenuClose: () => void;
+  /**
+   * The function to close dropdown menu
+   */
+  onDeleteContainerDialogOpen: () => void;
 }
 
 export const ContainerCardDropdownMenuContent = ({
-  containerId,
   onRenameClick,
-  onDropdownMenuClose,
+  onDeleteContainerDialogOpen,
 }: IContainerCardDropdownMenuContent) => {
   /**
    * The function that is called when the dropdown menu is selected
@@ -39,9 +35,9 @@ export const ContainerCardDropdownMenuContent = ({
    * @param e - The event object
    * @returns void
    * */
-  const handleSelect = (e: Event) => {
-    e.preventDefault();
-  };
+  // const handleSelect = (e: Event) => {
+  //   e.preventDefault();
+  // };
 
   return (
     <DropdownMenuContent>
@@ -53,11 +49,13 @@ export const ContainerCardDropdownMenuContent = ({
           <DropdownMenuButtonText>Rename</DropdownMenuButtonText>
         </DropdownMenuButton>
       </DropdownMenuItem>
-      <DropdownMenuItem onSelect={handleSelect}>
-        <DeleteContainerDialogTriggerButton
-          containerId={containerId}
-          onDropdownMenuClose={onDropdownMenuClose}
-        />
+      <DropdownMenuItem asChild>
+        <DropdownMenuButton onClick={onDeleteContainerDialogOpen}>
+          <DropdownMenuButtonIcon>
+            <Icon icon={IconDelete} size={5} color="danger" />
+          </DropdownMenuButtonIcon>
+          <DropdownMenuButtonText>Delete</DropdownMenuButtonText>
+        </DropdownMenuButton>
       </DropdownMenuItem>
     </DropdownMenuContent>
   );
