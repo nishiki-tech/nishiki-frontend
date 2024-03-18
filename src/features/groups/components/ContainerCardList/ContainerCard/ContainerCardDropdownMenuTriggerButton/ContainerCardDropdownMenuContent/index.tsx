@@ -16,10 +16,6 @@ interface IContainerCardDropdownMenuContent {
   /**
    * The function to close dropdown menu
    */
-  onDropdownMenuClose: () => void;
-  /**
-   * The function to close dropdown menu
-   */
   onDeleteContainerDialogOpen: () => void;
 }
 
@@ -27,18 +23,6 @@ export const ContainerCardDropdownMenuContent = ({
   onRenameClick,
   onDeleteContainerDialogOpen,
 }: IContainerCardDropdownMenuContent) => {
-  /**
-   * The function that is called when the dropdown menu is selected
-   * e.preventDefault() prevents the dropdown menu from closing when selecting that item
-   * This is necessary because closing dropdown menu also closes the dialog unintentionally
-   * @see {@link https://www.radix-ui.com/primitives/docs/components/dropdown-menu#item}
-   * @param e - The event object
-   * @returns void
-   * */
-  // const handleSelect = (e: Event) => {
-  //   e.preventDefault();
-  // };
-
   return (
     <DropdownMenuContent>
       <DropdownMenuItem asChild>

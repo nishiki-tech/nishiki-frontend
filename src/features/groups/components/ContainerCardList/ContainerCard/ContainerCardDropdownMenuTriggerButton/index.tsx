@@ -35,7 +35,6 @@ export const ContainerCardDropdownMenuTriggerButton = ({
         </DropdownMenuTrigger>
         <ContainerCardDropdownMenuContent
           onRenameClick={onRenameClick}
-          onDropdownMenuClose={() => setIsDropdownMenuOpen(false)}
           onDeleteContainerDialogOpen={() => {
             setIsDeleteContainerDialogOpen(true);
           }}
