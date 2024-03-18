@@ -10,6 +10,7 @@ import {
 import { removeGroup } from '@/features/groups/lib/actions';
 import { IGroup } from '@/types/definition';
 
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 interface IDeleteGroupDialogContentProps {
@@ -37,6 +38,7 @@ export const DeleteGroupDialogContent = ({
   onDialogClose,
   navigateOnSuccess,
 }: IDeleteGroupDialogContentProps) => {
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   /**
    * Handle the cancel button click.
@@ -52,6 +54,8 @@ export const DeleteGroupDialogContent = ({
    * @returns void
    */
   const handleDelete = async () => {
+    if (isLoading) return;
+    setIsLoading(true);
     const result = await removeGroup(groupId);
     if (!result.ok) {
       alert('Something went wrong. Please try again.');
@@ -64,6 +68,9 @@ export const DeleteGroupDialogContent = ({
       onParentClose?.();
       router.refresh();
     }
+    setIsLoading(false);
+    onParentClose?.();
+    onDialogClose();
   };
 
   return (
@@ -80,7 +87,7 @@ export const DeleteGroupDialogContent = ({
             Cancel
           </Button>
         </DialogClose>
-        <Button variant="danger" size="sm" onClick={handleDelete}>
+        <Button variant="danger" size="sm" onClick={handleDelete} disabled={isLoading}>
           Delete
         </Button>
       </DialogFooter>

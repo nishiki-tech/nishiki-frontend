@@ -13,7 +13,7 @@ import { cn } from '@/lib/tailwind/utils';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
-import React, { FC, KeyboardEvent, useEffect, useRef } from 'react';
+import React, { FC, KeyboardEvent, useEffect, useRef, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -39,7 +39,9 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
 }) => {
   // input ref
   const inputRef = useRef<HTMLInputElement>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+
   const form = useForm<z.infer<typeof renameGroupFormSchema>>({
     resolver: zodResolver(renameGroupFormSchema),
     defaultValues: {
@@ -52,6 +54,8 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
    * @param values - The form values
    */
   const processSubmit: SubmitHandler<RenameGroupInputs> = async (values: RenameGroupInputs) => {
+    if (isLoading) return;
+    setIsLoading(true);
     const { groupName } = values;
     if (groupName === currentGroupName) return;
 
@@ -63,6 +67,7 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
       onClose();
       router.refresh();
     }
+    setIsLoading(false);
   };
 
   /**
@@ -71,6 +76,9 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
    * @param event - The keyboard event
    */
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (isLoading) {
+      return; // Do nothing if isLoading is true
+    }
     if (event.key === 'Escape') {
       onClose();
     }

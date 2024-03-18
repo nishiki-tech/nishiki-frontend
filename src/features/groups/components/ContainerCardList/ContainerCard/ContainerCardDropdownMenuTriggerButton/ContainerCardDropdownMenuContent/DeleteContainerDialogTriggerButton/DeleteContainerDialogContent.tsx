@@ -10,6 +10,7 @@ import {
 import { removeContainer } from '@/features/groups/lib/actions';
 import { IContainer } from '@/types/definition';
 
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 interface IDeleteContainerDialogContentProps {
@@ -32,6 +33,7 @@ export const DeleteContainerDialogContent = ({
   onParentClose,
   onDialogClose,
 }: IDeleteContainerDialogContentProps) => {
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   /**
    * Handle the cancel button click.
@@ -47,6 +49,8 @@ export const DeleteContainerDialogContent = ({
    * the dialog and dropdown menu will be disappeared after processing either case
    */
   const handleDelete = async () => {
+    if (isLoading) return;
+    setIsLoading(true);
     const result = await removeContainer(containerId);
     if (!result.ok) {
       alert('Something went wrong. Please try again.');
@@ -58,6 +62,9 @@ export const DeleteContainerDialogContent = ({
       onParentClose();
       router.refresh();
     }
+    setIsLoading(false);
+    onDialogClose();
+    onParentClose?.();
   };
 
   return (
@@ -74,7 +81,7 @@ export const DeleteContainerDialogContent = ({
             Cancel
           </Button>
         </DialogClose>
-        <Button variant="danger" size="sm" onClick={handleDelete}>
+        <Button variant="danger" size="sm" onClick={handleDelete} disabled={isLoading}>
           Delete
         </Button>
       </DialogFooter>

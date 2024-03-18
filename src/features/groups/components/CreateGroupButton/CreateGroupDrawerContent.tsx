@@ -19,7 +19,7 @@ import { createGroupFormSchema, CreateGroupInputs } from '@/features/groups/lib/
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -29,6 +29,7 @@ interface ICreateGroupDrawerContentProps {
 }
 
 export const CreateGroupDrawerContent = ({ isOpen, onClose }: ICreateGroupDrawerContentProps) => {
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const form = useForm<z.infer<typeof createGroupFormSchema>>({
     resolver: zodResolver(createGroupFormSchema),
@@ -42,6 +43,8 @@ export const CreateGroupDrawerContent = ({ isOpen, onClose }: ICreateGroupDrawer
    * @param values - The form values
    */
   const processSubmit: SubmitHandler<CreateGroupInputs> = async (values: CreateGroupInputs) => {
+    if (isLoading) return;
+    setIsLoading(true);
     const { groupName } = values;
     const result = await createGroup({ groupName });
     if (!result.ok) {
@@ -52,6 +55,7 @@ export const CreateGroupDrawerContent = ({ isOpen, onClose }: ICreateGroupDrawer
       onClose();
       router.refresh();
     }
+    setIsLoading(false);
   };
 
   /**
@@ -89,7 +93,7 @@ export const CreateGroupDrawerContent = ({ isOpen, onClose }: ICreateGroupDrawer
                 Cancel
               </Button>
             </DrawerClose>
-            <Button type="submit" variant="primary" size="md">
+            <Button type="submit" variant="primary" size="md" disabled={isLoading}>
               Create
             </Button>
           </DrawerFooter>

@@ -22,7 +22,7 @@ import { IGroup } from '@/types/definition';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -56,7 +56,9 @@ export const RenameGroupDrawerContent = ({
   isDrawerOpen,
   onParentClose,
 }: IRenameGroupDrawerContent) => {
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+
   const form = useForm<z.infer<typeof renameGroupFormSchema>>({
     resolver: zodResolver(renameGroupFormSchema),
     defaultValues: {
@@ -69,6 +71,8 @@ export const RenameGroupDrawerContent = ({
    * @param values The form values
    */
   const processSubmit: SubmitHandler<RenameGroupInputs> = async (values: RenameGroupInputs) => {
+    if (isLoading) return;
+    setIsLoading(true);
     const { groupName } = values;
     if (groupName === currentGroupName) return;
 
@@ -83,6 +87,7 @@ export const RenameGroupDrawerContent = ({
       onClose();
       router.refresh();
     }
+    setIsLoading(false);
   };
 
   /**
@@ -120,7 +125,7 @@ export const RenameGroupDrawerContent = ({
                 Cancel
               </Button>
             </DrawerClose>
-            <Button type="submit" variant="primary" size="md">
+            <Button type="submit" variant="primary" size="md" disabled={isLoading}>
               Rename
             </Button>
           </DrawerFooter>

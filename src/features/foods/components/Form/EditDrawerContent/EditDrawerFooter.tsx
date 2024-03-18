@@ -21,12 +21,17 @@ interface IEditDrawerFooterProps {
    * The ID of the food this drawer is for.
    */
   foodId?: IFood['id'];
+  /**
+   * isLoading is for controlling loading state.
+   */
+  isLoading: boolean;
 }
 
 export const EditDrawerFooter = ({
   onDrawerClose,
   containerId,
   foodId,
+  isLoading,
 }: IEditDrawerFooterProps) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -49,7 +54,7 @@ export const EditDrawerFooter = ({
           foodId={foodId}
         />
       </DialogRoot>
-      <Button type="submit" variant="primary" size="sm">
+      <Button type="submit" variant="primary" size="sm" disabled={isLoading}>
         Update
       </Button>
     </DrawerFooter>
