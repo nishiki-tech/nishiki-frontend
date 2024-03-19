@@ -12,6 +12,7 @@ import { cn } from '@/lib/tailwind/utils';
 import { IUser } from '@/types/definition';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 import { KeyboardEvent, useEffect, useRef } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -37,6 +38,7 @@ interface IRenameUserFormProps {
 }
 
 export const RenameUserForm = ({ userId, currentName, isOpen, onClose }: IRenameUserFormProps) => {
+  const router = useRouter();
   // input ref
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -60,6 +62,7 @@ export const RenameUserForm = ({ userId, currentName, isOpen, onClose }: IRename
     } else {
       alert('Successfully renamed the user');
       onClose();
+      router.refresh();
     }
   };
 
