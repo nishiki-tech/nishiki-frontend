@@ -53,6 +53,8 @@ export const deleteUser = async (userId: IUser['id']): Promise<Result<undefined,
     return Ok(undefined);
   } catch (err) {
     if (err instanceof Error) {
+      console.log(err);
+
       return Err(err.message);
     }
     return Err('API response is invalid');

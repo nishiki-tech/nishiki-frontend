@@ -31,7 +31,10 @@ export const ProfilePage = async () => {
   const { userId, username } = await getUserInfo();
 
   return (
-    <MobileLayout heading="Profile" headerRight={<ProfileHeaderDropdownMenuTriggerButton />}>
+    <MobileLayout
+      heading="Profile"
+      headerRight={<ProfileHeaderDropdownMenuTriggerButton userId={userId} />}
+    >
       <UserProfile userId={userId} name={username} />
     </MobileLayout>
   );

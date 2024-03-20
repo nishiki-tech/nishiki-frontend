@@ -9,17 +9,26 @@ import {
   DialogTitle,
   Label,
 } from '@/components/ui';
+import { removeUser } from '@/features/profile/lib/actions';
+import { IUser } from '@/types/definition';
 
 import { useState } from 'react';
 
 interface IDeleteAccountDialogContentProps {
+  /**
+   * The ID of the user to delete.
+   */
+  userId: IUser['id'];
   /**
    * The function to close the parent UI component.
    */
   onParentClose: () => void;
 }
 
-export const DeleteAccountDialogContent = ({ onParentClose }: IDeleteAccountDialogContentProps) => {
+export const DeleteAccountDialogContent = ({
+  userId,
+  onParentClose,
+}: IDeleteAccountDialogContentProps) => {
   const [isChecked, setIsChecked] = useState(false);
 
   /**
@@ -35,7 +44,14 @@ export const DeleteAccountDialogContent = ({ onParentClose }: IDeleteAccountDial
    * @returns void
    */
   const handleDelete = async () => {
-    alert('delete account');
+    const result = await removeUser(userId);
+    if (!result.ok) {
+      console.log(result.error);
+
+      alert('Something went wrong. Please try again.');
+    } else {
+      alert('Successfully deleted!');
+    }
   };
 
   /**

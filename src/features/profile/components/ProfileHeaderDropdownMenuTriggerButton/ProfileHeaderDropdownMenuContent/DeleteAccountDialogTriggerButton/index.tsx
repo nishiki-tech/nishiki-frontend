@@ -7,10 +7,15 @@ import {
   DropdownMenuButtonText,
   Icon,
 } from '@/components/ui';
+import { IUser } from '@/types/definition';
 
 import { DeleteAccountDialogContent } from './DeleteAccountDialogContent';
 
 interface IDeleteAccountDialogTriggerButtonProps {
+  /**
+   * The ID of the user to delete.
+   */
+  userId: IUser['id'];
   /**
    * Function to close the parent component
    */
@@ -18,6 +23,7 @@ interface IDeleteAccountDialogTriggerButtonProps {
 }
 
 export const DeleteAccountDialogTriggerButton = ({
+  userId,
   onParentClose,
 }: IDeleteAccountDialogTriggerButtonProps) => {
   return (
@@ -30,7 +36,7 @@ export const DeleteAccountDialogTriggerButton = ({
           <DropdownMenuButtonText className="text-gray-dark">Delete</DropdownMenuButtonText>
         </DropdownMenuButton>
       </DialogTrigger>
-      <DeleteAccountDialogContent onParentClose={onParentClose} />
+      <DeleteAccountDialogContent userId={userId} onParentClose={onParentClose} />
     </DialogRoot>
   );
 };
