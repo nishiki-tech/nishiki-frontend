@@ -29,11 +29,9 @@ export const renameUser = async (
  * @returns undefined on success, or an error message if the request fails
  */
 export const removeUser = async (userId: IUser['id']): Promise<Result<undefined, string>> => {
-  console.log('userId', userId);
-
   const validatedData = deleteUserFormSchema.safeParse({ userId });
 
-  if (!validatedData.success) console.log(validatedData.error);
+  if (!validatedData.success) return Err('Validation failed');
   const result = await deleteUser(userId);
 
   if (result.ok) return Ok(undefined);

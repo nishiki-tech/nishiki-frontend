@@ -46,8 +46,6 @@ export const DeleteAccountDialogContent = ({
   const handleDelete = async () => {
     const result = await removeUser(userId);
     if (!result.ok) {
-      console.log(result.error);
-
       alert('Something went wrong. Please try again.');
     } else {
       alert('Successfully deleted!');
