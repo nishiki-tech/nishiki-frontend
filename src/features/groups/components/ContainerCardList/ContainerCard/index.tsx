@@ -6,7 +6,7 @@ import { IContainer, IGroup } from '@/types/definition';
 import Link from 'next/link';
 import { useState } from 'react';
 
-import { ContainerCardDropdownMenu } from './ContainerCardDropdownMenuTriggerButton';
+import { ContainerCardDropdownMenu } from './ContainerCardDropdownMenu';
 import { RenameContainerForm } from './RenameContainerForm';
 
 interface IContainerCardProps {
