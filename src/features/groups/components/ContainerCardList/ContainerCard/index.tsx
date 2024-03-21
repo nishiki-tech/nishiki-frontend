@@ -6,7 +6,7 @@ import { IContainer, IGroup } from '@/types/definition';
 import Link from 'next/link';
 import { useState } from 'react';
 
-import { ContainerCardDropdownMenuTriggerButton } from './ContainerCardDropdownMenuTriggerButton';
+import { ContainerCardDropdownMenu } from './ContainerCardDropdownMenuTriggerButton';
 import { RenameContainerForm } from './RenameContainerForm';
 
 interface IContainerCardProps {
@@ -47,7 +47,7 @@ export const ContainerCard = ({ containerId, groupId, containerName }: IContaine
         </div>
         <span className="leading-5">{containerName}</span>
       </Link>
-      <ContainerCardDropdownMenuTriggerButton
+      <ContainerCardDropdownMenu
         containerId={containerId}
         isRenameFormOpen={isRenameFormOpen}
         onRenameContainerClick={() => {

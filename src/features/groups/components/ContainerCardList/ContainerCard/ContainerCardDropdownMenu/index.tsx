@@ -20,7 +20,7 @@ interface IContainerCardDropdownMenuProps {
   onRenameContainerClick: () => void;
 }
 
-export const ContainerCardDropdownMenuTriggerButton = ({
+export const ContainerCardDropdownMenu = ({
   containerId,
   isRenameFormOpen,
   onRenameContainerClick,
