@@ -13,6 +13,9 @@ interface IContainerCardDropdownMenuProps {
    * An identifier of a container which a user is willing to delete
    */
   containerId: IContainer['id'];
+  /**
+   * A state of renaming input field to be opened (=true) or closed(=false)
+   */
   isRenameFormOpen: boolean;
   /**
    * A function to open rename form input field
