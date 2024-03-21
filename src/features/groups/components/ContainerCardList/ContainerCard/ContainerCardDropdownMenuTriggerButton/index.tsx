@@ -5,8 +5,8 @@ import { IContainer } from '@/types/definition';
 
 import { useState } from 'react';
 
-import { ContainerCardDropdownMenuContent } from './ContainerCardDropdownMenuContent';
-import { DeleteContainerDialogContent } from './ContainerCardDropdownMenuContent/DeleteContainerDialogContent';
+import { ContainerCardDropdownMenuContent } from './ContainerCardDropdownMenuTriggerButton';
+import { DeleteContainerDialogContent } from './DeleteContainerDialogContent';
 
 interface IContainerCardDropdownMenuProps {
   /**
