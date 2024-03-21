@@ -54,9 +54,9 @@ export const MemberCardDeleteDialog = ({
     } else {
       alert('Successfully deleted!');
     }
-    setIsLoading(false);
     onDialogClose();
     onParentClose();
+    setIsLoading(false);
   };
 
   return (

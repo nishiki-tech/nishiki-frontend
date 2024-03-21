@@ -74,9 +74,6 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
    * @param event - The keyboard event
    */
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (isLoading) {
-      return; // Do nothing if isLoading is true
-    }
     if (event.key === 'Escape') {
       onClose();
     }

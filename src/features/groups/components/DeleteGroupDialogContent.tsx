@@ -61,9 +61,9 @@ export const DeleteGroupDialogContent = ({
       alert('Successfully deleted!');
       navigateOnSuccess?.();
     }
-    setIsLoading(false);
     onParentClose?.();
     onDialogClose();
+    setIsLoading(false);
   };
 
   return (

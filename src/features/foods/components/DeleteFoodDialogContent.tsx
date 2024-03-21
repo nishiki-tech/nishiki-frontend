@@ -71,8 +71,8 @@ export const DeleteFoodDialogContent = ({
       alert('Successfully deleted!');
       onParentClose?.();
     }
-    setIsLoading(false);
     onDialogClose();
+    setIsLoading(false);
   };
 
   return (
