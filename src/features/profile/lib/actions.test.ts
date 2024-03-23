@@ -103,6 +103,7 @@ describe('Profile page actions', () => {
 
       // Act
       const result = await removeUser(mockUserId);
+
       // Assert
       expect(result.err).toBeTruthy();
       expect(result.unwrapError()).toEqual(mockErrorMessage);
