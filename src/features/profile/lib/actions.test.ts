@@ -74,7 +74,6 @@ describe('Profile page actions', () => {
       (deleteUser as jest.Mock).mockResolvedValue(Ok(undefined));
 
       // Act
-
       const result = await removeUser(mockUserId);
 
       // Assert
