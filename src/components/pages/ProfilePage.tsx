@@ -18,21 +18,21 @@ export const ProfilePage = async () => {
      */
     const getCurrentUserIdResult = await getCurrentUserId();
     if (getCurrentUserIdResult.ok) {
-      const { userId } = getCurrentUserIdResult.unwrap();
+      const { userId } = getCurrentUserIdResult.value;
       const getUserByIdResult = await getUserById(userId);
       if (getUserByIdResult.ok) {
-        const { username } = getUserByIdResult.unwrap();
-        return { userId, username };
+        const { name } = getUserByIdResult.value;
+        return { userId, name };
       }
     }
     throw new Error('Failed to get user info');
   };
 
-  const { userId, username } = await getUserInfo();
+  const { userId, name } = await getUserInfo();
 
   return (
     <MobileLayout heading="Profile" headerRight={<ProfileHeaderDropdownMenuTriggerButton />}>
-      <UserProfile userId={userId} name={username} />
+      <UserProfile userId={userId} name={name} />
     </MobileLayout>
   );
 };
