@@ -12,6 +12,7 @@ import {
 import { removeUser } from '@/features/profile/lib/actions';
 import { IUser } from '@/types/definition';
 
+import { signOut } from 'aws-amplify/auth';
 import { useState } from 'react';
 
 interface IDeleteAccountDialogContentProps {
@@ -48,6 +49,11 @@ export const DeleteAccountDialogContent = ({
     if (!result.ok) {
       alert('Something went wrong. Please try again.');
     } else {
+      /**
+       * On delete success, trigger the signOut() API from aws-amplify/auth
+       * {@link https://docs.amplify.aws/javascript/build-a-backend/auth/enable-sign-up/#sign-out}
+       */
+      signOut();
       alert('Successfully deleted!');
     }
   };
