@@ -52,7 +52,7 @@ export const DrawerUsageExample = () => {
               Cancel
             </Button>
           </DrawerClose>
-          <Button variant="error" size="sm" onClick={handleDelete}>
+          <Button variant="danger" size="sm" onClick={handleDelete}>
             Delete
           </Button>
         </DrawerFooter>

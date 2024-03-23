@@ -1,3 +1,4 @@
+'use client';
 import { IconDelete } from '@/assets/images/icons';
 import {
   DialogRoot,
@@ -7,11 +8,10 @@ import {
   DropdownMenuButtonText,
   Icon,
 } from '@/components/ui';
+import { DeleteGroupDialogContent } from '@/features/groups/components/DeleteGroupDialogContent';
 import { IGroup } from '@/types/definition';
 
 import { useState } from 'react';
-
-import { DeleteGroupDialogContent } from './DeleteGroupDialogContent';
 
 interface IGroupCardDropdownMenuDeleteButtonProps {
   /**
