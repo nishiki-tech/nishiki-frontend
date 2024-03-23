@@ -42,7 +42,7 @@ export interface IGetUserByIdResponse {
   /**
    * The name of the user.
    */
-  username: IUser['name'];
+  name: IUser['name'];
 }
 
 /**

@@ -56,7 +56,7 @@ describe('API Function Tests', () => {
     it('successfully fetches user by id', async () => {
       // Arrange
 
-      const mockResponse: IGetUserByIdResponse = { userId: mockUserId, username: mockUserName };
+      const mockResponse: IGetUserByIdResponse = { userId: mockUserId, name: mockUserName };
 
       (request as jest.Mock).mockResolvedValue(mockResponse);
 
