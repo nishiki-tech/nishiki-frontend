@@ -10,6 +10,7 @@ import {
 import { removeGroup } from '@/features/groups/lib/actions';
 import { IGroup } from '@/types/definition';
 
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 interface IDeleteGroupDialogContentProps {
@@ -38,6 +39,7 @@ export const DeleteGroupDialogContent = ({
   navigateOnSuccess,
 }: IDeleteGroupDialogContentProps) => {
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
   /**
    * Handle the cancel button click.
    * It closes the parent UI component, if specified
@@ -57,13 +59,19 @@ export const DeleteGroupDialogContent = ({
     const result = await removeGroup(groupId);
     if (!result.ok) {
       alert('Something went wrong. Please try again.');
+      onDialogClose();
+      onParentClose?.();
+      setIsLoading(false);
     } else {
-      alert('Successfully deleted!');
+      alert('Successfully deleted');
+      onDialogClose();
       navigateOnSuccess?.();
+      onParentClose?.();
+      setIsLoading(false);
+      router.refresh();
     }
     onParentClose?.();
     onDialogClose();
-    setIsLoading(false);
   };
 
   return (

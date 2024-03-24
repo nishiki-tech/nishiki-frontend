@@ -10,6 +10,7 @@ import {
 import { removeMember } from '@/features/groups/lib/actions';
 import { IGroup, IUser } from '@/types/definition';
 
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 interface IMemberCardDeleteDialogProps {
@@ -38,6 +39,7 @@ export const MemberCardDeleteDialog = ({
   groupId,
 }: IMemberCardDeleteDialogProps) => {
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
   /**
    * Handle the delete button click.
    * Being successful DELETE request, the success message is shown, and close dialog and dropdown menu.
@@ -51,12 +53,18 @@ export const MemberCardDeleteDialog = ({
     const result = await removeMember(groupId, userId);
     if (!result.ok) {
       alert('Something went wrong, please try again');
+      onDialogClose();
+      onParentClose();
+      setIsLoading(false);
     } else {
       alert('Successfully deleted!');
+      onDialogClose();
+      onParentClose();
+      setIsLoading(false);
+      router.refresh();
     }
     onDialogClose();
     onParentClose();
-    setIsLoading(false);
   };
 
   return (

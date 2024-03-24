@@ -10,6 +10,7 @@ import {
 import { removeContainer } from '@/features/groups/lib/actions';
 import { IContainer } from '@/types/definition';
 
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 interface IDeleteContainerDialogContentProps {
@@ -33,12 +34,13 @@ export const DeleteContainerDialogContent = ({
   onDialogClose,
 }: IDeleteContainerDialogContentProps) => {
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
   /**
    * Handle the cancel button click.
    * It closes the parent UI component, if specified
    */
   const handleCancel = () => {
-    onParentClose?.();
+    onParentClose();
   };
 
   /**
@@ -52,12 +54,18 @@ export const DeleteContainerDialogContent = ({
     const result = await removeContainer(containerId);
     if (!result.ok) {
       alert('Something went wrong. Please try again.');
+      onDialogClose();
+      onParentClose();
+      setIsLoading(false);
     } else {
       alert('Successfully deleted');
+      onDialogClose();
+      onParentClose();
+      setIsLoading(false);
+      router.refresh();
     }
     onDialogClose();
     onParentClose?.();
-    setIsLoading(false);
   };
 
   return (

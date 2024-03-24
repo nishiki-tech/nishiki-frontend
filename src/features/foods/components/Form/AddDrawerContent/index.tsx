@@ -23,6 +23,7 @@ import {
 } from '@/features/foods/utils/containerMapping';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -46,6 +47,7 @@ export const AddDrawerContent = ({
   groupIdNameMap,
 }: IAddDrawerContentProps) => {
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
   /**
    * Process when the cancel button is clicked
    */
@@ -77,12 +79,13 @@ export const AddDrawerContent = ({
     const result = await createFood(values);
     if (!result.ok) {
       alert('Something went wrong. Please try again.');
+      setIsLoading(false);
     } else {
       alert('Successfully created');
-      form.reset();
       setIsDrawerOpen(false);
+      setIsLoading(false);
+      router.refresh();
     }
-    setIsLoading(false);
   };
 
   return (
