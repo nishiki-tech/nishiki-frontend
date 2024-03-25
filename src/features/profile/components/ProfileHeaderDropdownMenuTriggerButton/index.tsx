@@ -1,12 +1,22 @@
 'use client';
 import { HeaderMenuCircleButton } from '@/components/parts/Header';
 import { DropdownMenu, DropdownMenuTrigger } from '@/components/ui';
+import { IUser } from '@/types/definition';
 
 import { useState } from 'react';
 
 import { ProfileHeaderDropdownMenuContent } from './ProfileHeaderDropdownMenuContent';
 
-export const ProfileHeaderDropdownMenuTriggerButton = () => {
+interface IProfileHeaderDropdownMenuTriggerButtonProps {
+  /**
+   * The ID of the user to delete.
+   */
+  userId: IUser['id'];
+}
+
+export const ProfileHeaderDropdownMenuTriggerButton = ({
+  userId,
+}: IProfileHeaderDropdownMenuTriggerButtonProps) => {
   const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
 
   return (
@@ -14,7 +24,10 @@ export const ProfileHeaderDropdownMenuTriggerButton = () => {
       <DropdownMenuTrigger asChild>
         <HeaderMenuCircleButton />
       </DropdownMenuTrigger>
-      <ProfileHeaderDropdownMenuContent onDropdownMenuClose={() => setIsDropdownMenuOpen(false)} />
+      <ProfileHeaderDropdownMenuContent
+        userId={userId}
+        onDropdownMenuClose={() => setIsDropdownMenuOpen(false)}
+      />
     </DropdownMenu>
   );
 };

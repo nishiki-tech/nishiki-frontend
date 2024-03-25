@@ -5,3 +5,7 @@ export const renameUserFormSchema = z.object({
 });
 
 export type RenameUserInputs = z.infer<typeof renameUserFormSchema>;
+
+export const deleteUserFormSchema = z.object({
+  userId: z.string().uuid({ message: 'User ID is invalid' }),
+});

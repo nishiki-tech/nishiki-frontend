@@ -1,9 +1,14 @@
 import { DropdownMenuContent, DropdownMenuItem } from '@/components/ui';
+import { IUser } from '@/types/definition';
 
 import { DeleteAccountDialogTriggerButton } from './DeleteAccountDialogTriggerButton';
 import { SignOutDialogTriggerButton } from './SignOutDialogTriggerButton';
 
 interface IProfileHeaderDropdownMenuContentProps {
+  /**
+   * The ID of the user to delete.
+   */
+  userId: IUser['id'];
   /**
    * Function to close this dropdown menu
    */
@@ -11,6 +16,7 @@ interface IProfileHeaderDropdownMenuContentProps {
 }
 
 export const ProfileHeaderDropdownMenuContent = ({
+  userId,
   onDropdownMenuClose,
 }: IProfileHeaderDropdownMenuContentProps) => {
   /**
@@ -37,7 +43,7 @@ export const ProfileHeaderDropdownMenuContent = ({
         <SignOutDialogTriggerButton onParentClose={onDropdownMenuClose} />
       </DropdownMenuItem>
       <DropdownMenuItem onSelect={handleSelect}>
-        <DeleteAccountDialogTriggerButton onParentClose={onDropdownMenuClose} />
+        <DeleteAccountDialogTriggerButton userId={userId} onParentClose={onDropdownMenuClose} />
       </DropdownMenuItem>
     </DropdownMenuContent>
   );
