@@ -1,10 +1,5 @@
 import { request } from '@/lib/api/common/server';
-import {
-  fetchUserList,
-  getUserById,
-  IGetUserByIdResponse,
-  ITemporaryGetUserByIdResponse,
-} from '@/lib/api/user/server';
+import { fetchUserList, getUserById, IGetUserByIdResponse } from '@/lib/api/user/server';
 
 jest.mock('@/lib/api/common/server/commonUtils.server', () => ({
   request: jest.fn(),
@@ -61,35 +56,15 @@ describe('API Function Tests', () => {
     it('successfully fetches user by id', async () => {
       // Arrange
 
-      const mockResponse: IGetUserByIdResponse = { id: mockUserId, name: mockUserName };
-      /**
-       * The API response object type is  currently different from how it's defined in the web API document.
-       * We named current response object as {@link ITemporaryGetUserByIdResponse.}
-       * Once the API is fixed, we need to update the response object type to {@link IGetUserByIdResponse}
-       * This issue is mentioned in the issue {@link https://github.com/nishiki-tech/nishiki-frontend/issues/255}
-       */
-      const mockTemporallyResponse: ITemporaryGetUserByIdResponse = {
-        status: 'success',
-        statusCode: 200,
-        body: { userId: mockUserId, username: mockUserName },
-      };
-      /**
-       * The API currently returns a JSON string instead of object
-       * This issue is mentioned in the issue {@link https://github.com/nishiki-tech/nishiki-frontend/issues/255}
-       * Thus,for now, we need to stringify the response here to mock request function.
-       */
-      const mockRequestFunctionResponse = JSON.stringify(mockTemporallyResponse);
-      (request as jest.Mock).mockResolvedValue(mockRequestFunctionResponse);
+      const mockResponse: IGetUserByIdResponse = { userId: mockUserId, name: mockUserName };
+
+      (request as jest.Mock).mockResolvedValue(mockResponse);
 
       // Act
       const result = await getUserById(mockUserId);
 
       // Assert
       expect(result.ok).toBeTruthy();
-      /**
-       * The API client is suppose to modify the {@link ITemporaryGetUserByIdResponse} to {@link IGetUserByIdResponse} and return it .
-       * This modification will not be needed once the API is fixed.
-       * */
       expect(result.unwrap()).toEqual(mockResponse);
       expect(request).toHaveBeenCalledWith({
         url: expect.stringContaining(`/users/${mockUserId}`),

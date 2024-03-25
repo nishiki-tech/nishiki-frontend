@@ -7,8 +7,8 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
+  Form,
 } from '@/components/ui';
-import { Form } from '@/components/ui/Form';
 import { createFood } from '@/features/foods/lib/actions';
 import {
   createFoodDefaultValues,
@@ -23,6 +23,7 @@ import {
 } from '@/features/foods/utils/containerMapping';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -45,6 +46,7 @@ export const AddDrawerContent = ({
   containerIdNameMap,
   groupIdNameMap,
 }: IAddDrawerContentProps) => {
+  const router = useRouter();
   /**
    * Process when the cancel button is clicked
    */
@@ -76,8 +78,8 @@ export const AddDrawerContent = ({
       alert('Something went wrong. Please try again.');
     } else {
       alert('Successfully created');
-      form.reset();
       setIsDrawerOpen(false);
+      router.refresh();
     }
   };
 

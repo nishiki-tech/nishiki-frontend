@@ -1,10 +1,18 @@
-import { Card, SquareTextInput } from '@/components/ui';
-import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/Form';
+import {
+  Card,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+  SquareTextInput,
+} from '@/components/ui';
 import { renameGroup } from '@/features/groups/lib/actions';
 import { renameGroupFormSchema, RenameGroupInputs } from '@/features/groups/lib/schemas';
 import { cn } from '@/lib/tailwind/utils';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 import React, { FC, KeyboardEvent, useEffect, useRef } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -25,13 +33,13 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
   groupId,
   currentGroupName,
   isOpen,
-  onClose,
   containerCount,
   userCount,
+  onClose,
 }) => {
   // input ref
   const inputRef = useRef<HTMLInputElement>(null);
-
+  const router = useRouter();
   const form = useForm<z.infer<typeof renameGroupFormSchema>>({
     resolver: zodResolver(renameGroupFormSchema),
     defaultValues: {
@@ -52,8 +60,8 @@ export const RenameGroupForm: FC<IRenameGroupFormProps> = ({
       alert('Something went wrong. Please try again.');
     } else {
       alert('Successfully renamed the group');
-      form.reset();
       onClose();
+      router.refresh();
     }
   };
 

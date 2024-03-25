@@ -6,20 +6,19 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
-  Input,
-} from '@/components/ui';
-import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/Form';
+  Input,
+} from '@/components/ui';
 import { createGroup } from '@/features/groups/lib/actions';
 import { createGroupFormSchema, CreateGroupInputs } from '@/features/groups/lib/schemas';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -30,6 +29,7 @@ interface ICreateGroupDrawerContentProps {
 }
 
 export const CreateGroupDrawerContent = ({ isOpen, onClose }: ICreateGroupDrawerContentProps) => {
+  const router = useRouter();
   const form = useForm<z.infer<typeof createGroupFormSchema>>({
     resolver: zodResolver(createGroupFormSchema),
     defaultValues: {
@@ -50,6 +50,7 @@ export const CreateGroupDrawerContent = ({ isOpen, onClose }: ICreateGroupDrawer
       alert('Successfully created the group');
       form.reset();
       onClose();
+      router.refresh();
     }
   };
 

@@ -6,7 +6,7 @@ import { IContainer, IGroup } from '@/types/definition';
 import Link from 'next/link';
 import { useState } from 'react';
 
-import { ContainerCardDropdownMenuTriggerButton } from './ContainerCardDropdownMenuTriggerButton';
+import { ContainerCardDropdownMenu } from './ContainerCardDropdownMenu';
 import { RenameContainerForm } from './RenameContainerForm';
 
 interface IContainerCardProps {
@@ -27,26 +27,14 @@ interface IContainerCardProps {
 export const ContainerCard = ({ containerId, groupId, containerName }: IContainerCardProps) => {
   const [isRenameFormOpen, setIsRenameFormOpen] = useState(false);
 
-  /**
-   * the function to change the state of rename form to true( = open the form input field)
-   */
-  const handleRenameClick = () => {
-    setIsRenameFormOpen(true);
-  };
-
-  /**
-   * The function to change the state of rename form to false ( = close the form input field)
-   */
-  const handleRenameFormClose = () => {
-    setIsRenameFormOpen(false);
-  };
-
   return isRenameFormOpen ? (
     <RenameContainerForm
       containerId={containerId}
       currentContainerName={containerName}
       isOpen={isRenameFormOpen}
-      onClose={handleRenameFormClose}
+      onClose={() => {
+        setIsRenameFormOpen(false);
+      }}
     />
   ) : (
     <Card key={containerId} className="flex justify-between gap-2">
@@ -59,7 +47,13 @@ export const ContainerCard = ({ containerId, groupId, containerName }: IContaine
         </div>
         <span className="leading-5">{containerName}</span>
       </Link>
-      <ContainerCardDropdownMenuTriggerButton onRenameClick={handleRenameClick} />
+      <ContainerCardDropdownMenu
+        containerId={containerId}
+        isRenameFormOpen={isRenameFormOpen}
+        onRenameContainerClick={() => {
+          setIsRenameFormOpen(true);
+        }}
+      />
     </Card>
   );
 };
