@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     url: APP_CONST.BASE_URL,
     images: [
       {
-        url: `${APP_CONST.BASE_URL}/images/og.png?v=0`,
+        url: `${APP_CONST.BASE_URL}/images/og.jpg?v=0`,
         width: 1200,
         height: 630,
         alt: APP_CONST.NAME,
