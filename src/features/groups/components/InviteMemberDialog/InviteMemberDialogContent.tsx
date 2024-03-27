@@ -33,7 +33,7 @@ export const InviteMemberDialogContent = ({
   const [isHash, setHash] = useState('');
 
   /**
-   * This useEffect is fired when the `isDialogOpen` state is changed(true/false) if true, the setup is is fired.
+   * This useEffect is fired when the `isDialogOpen` state is changed(true/false). if true, the setup is fired.
    * generating the invitation link hash and put it as state `isHash`
    */
   useEffect(() => {
