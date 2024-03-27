@@ -24,7 +24,7 @@ import {
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { AddDrawerBody } from './AddDrawerBody';
@@ -46,6 +46,7 @@ export const AddDrawerContent = ({
   containerIdNameMap,
   groupIdNameMap,
 }: IAddDrawerContentProps) => {
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   /**
    * Process when the cancel button is clicked
@@ -73,12 +74,16 @@ export const AddDrawerContent = ({
    * @param values The form values
    */
   const processSubmit: SubmitHandler<CreateFoodInputs> = async (values: CreateFoodInputs) => {
+    if (isLoading) return;
+    setIsLoading(true);
     const result = await createFood(values);
     if (!result.ok) {
       alert('Something went wrong. Please try again.');
+      setIsLoading(false);
     } else {
       alert('Successfully created');
       setIsDrawerOpen(false);
+      setIsLoading(false);
       router.refresh();
     }
   };
@@ -103,7 +108,7 @@ export const AddDrawerContent = ({
                 Cancel
               </Button>
             </DrawerClose>
-            <Button type="submit" variant="primary" size="sm">
+            <Button type="submit" variant="primary" size="sm" disabled={isLoading}>
               Add food
             </Button>
           </DrawerFooter>

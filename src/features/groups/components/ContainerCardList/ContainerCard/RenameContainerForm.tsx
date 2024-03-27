@@ -15,7 +15,7 @@ import { IContainer } from '@/types/definition';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
-import { KeyboardEvent, useEffect, useRef } from 'react';
+import { KeyboardEvent, useEffect, useRef, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -46,6 +46,8 @@ export const RenameContainerForm = ({
 }: IRenameContainerFormProps) => {
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
+  const [isLoading, setIsLoading] = useState(false);
+
   const form = useForm<z.infer<typeof renameContainerFormSchema>>({
     resolver: zodResolver(renameContainerFormSchema),
     defaultValues: {
@@ -60,6 +62,8 @@ export const RenameContainerForm = ({
   const processSubmit: SubmitHandler<RenameContainerInputs> = async (
     values: RenameContainerInputs,
   ) => {
+    if (isLoading) return;
+    setIsLoading(true);
     const { containerName } = values;
     if (containerName === currentContainerName) {
       onClose();
@@ -69,10 +73,12 @@ export const RenameContainerForm = ({
     const result = await renameContainer(containerId, values);
     if (!result.ok) {
       alert('Something went wrong. Please try again.');
+      setIsLoading(false);
     } else {
       alert('Successfully renamed the container');
       form.reset();
       onClose();
+      setIsLoading(false);
       router.refresh();
     }
   };

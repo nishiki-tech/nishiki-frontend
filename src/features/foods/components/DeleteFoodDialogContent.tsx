@@ -11,6 +11,7 @@ import { removeFood } from '@/features/foods/lib/actions';
 import { IContainer, IFood } from '@/types/definition';
 
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 interface IDeleteFoodDialogContentProps {
   /**
@@ -42,6 +43,7 @@ export const DeleteFoodDialogContent = ({
   containerId,
   foodId,
 }: IDeleteFoodDialogContentProps) => {
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   /**
    * Handle the cancel button click.
@@ -60,16 +62,20 @@ export const DeleteFoodDialogContent = ({
    * @returns void
    */
   const handleDelete = async () => {
+    if (isLoading) return;
+    setIsLoading(true);
     if (!containerId || !foodId) return;
     const result = await removeFood(containerId, foodId);
     if (!result.ok) {
       alert('Something went wrong. Please try again.');
       onDialogClose();
       onParentClose?.();
+      setIsLoading(false);
     } else {
       alert('Successfully deleted!');
       onDialogClose();
       onParentClose?.();
+      setIsLoading(false);
       router.refresh();
     }
   };
@@ -88,7 +94,7 @@ export const DeleteFoodDialogContent = ({
             Cancel
           </Button>
         </DialogClose>
-        <Button variant="danger" size="sm" onClick={handleDelete}>
+        <Button variant="danger" size="sm" onClick={handleDelete} disabled={isLoading}>
           Delete
         </Button>
       </DialogFooter>

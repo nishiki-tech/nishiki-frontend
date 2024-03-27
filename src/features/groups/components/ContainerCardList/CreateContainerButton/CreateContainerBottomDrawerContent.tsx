@@ -20,7 +20,7 @@ import { IGroup } from '@/types/definition';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -44,6 +44,7 @@ export const CreateContainerDrawerContent = ({
   onClose,
   groupId,
 }: ICreateContainerDrawerContentProps) => {
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const form = useForm<z.infer<typeof createContainerFormSchema>>({
     resolver: zodResolver(createContainerFormSchema),
@@ -59,12 +60,16 @@ export const CreateContainerDrawerContent = ({
   const processSubmit: SubmitHandler<CreateContainerInputs> = async (
     values: CreateContainerInputs,
   ) => {
+    if (isLoading) return;
+    setIsLoading(true);
     const result = await createContainer(values, groupId);
     if (!result.ok) {
       alert('Something went wrong. Please try again.');
+      setIsLoading(false);
     } else {
       alert('Successfully created');
       onClose();
+      setIsLoading(false);
       router.refresh();
     }
   };
@@ -104,7 +109,7 @@ export const CreateContainerDrawerContent = ({
                 Cancel
               </Button>
             </DrawerClose>
-            <Button type="submit" variant="primary" size="md">
+            <Button type="submit" variant="primary" size="md" disabled={isLoading}>
               Create
             </Button>
           </DrawerFooter>
