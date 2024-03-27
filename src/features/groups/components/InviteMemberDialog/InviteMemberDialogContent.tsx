@@ -52,10 +52,8 @@ export const InviteMemberDialogContent = ({
    */
   const handleLinkCopy = async () => {
     setIsLinkButtonClicked(true);
-
     try {
-      await navigator.clipboard.writeText(`${CLIENT_BASE_URL}/groups/join/${isHash}`);
-      return;
+      return await navigator.clipboard.writeText(`${CLIENT_BASE_URL}/groups/join/${isHash}`);
     } catch (err) {
       console.error(
         'Error occurred while copying the link:',
@@ -63,6 +61,7 @@ export const InviteMemberDialogContent = ({
       );
       alert('Error occurred while copying the link. Please try again.');
     }
+    setHash('');
     return;
   };
 
