@@ -11,6 +11,7 @@ import { removeMember } from '@/features/groups/lib/actions';
 import { IGroup, IUser } from '@/types/definition';
 
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 interface IMemberCardDeleteDialogProps {
   /**
@@ -37,6 +38,7 @@ export const MemberCardDeleteDialog = ({
   userId,
   groupId,
 }: IMemberCardDeleteDialogProps) => {
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   /**
    * Handle the delete button click.
@@ -45,16 +47,20 @@ export const MemberCardDeleteDialog = ({
    * @returns void
    */
   const handleDelete = async () => {
+    if (isLoading) return;
+    setIsLoading(true);
     if (!groupId || !userId) return;
     const result = await removeMember(groupId, userId);
     if (!result.ok) {
       alert('Something went wrong, please try again');
       onDialogClose();
       onParentClose();
+      setIsLoading(false);
     } else {
       alert('Successfully deleted!');
       onDialogClose();
       onParentClose();
+      setIsLoading(false);
       router.refresh();
     }
   };
@@ -73,7 +79,7 @@ export const MemberCardDeleteDialog = ({
             Cancel
           </Button>
         </DialogClose>
-        <Button variant="danger" size="sm" onClick={handleDelete}>
+        <Button variant="danger" size="sm" onClick={handleDelete} disabled={isLoading}>
           Delete
         </Button>
       </DialogFooter>

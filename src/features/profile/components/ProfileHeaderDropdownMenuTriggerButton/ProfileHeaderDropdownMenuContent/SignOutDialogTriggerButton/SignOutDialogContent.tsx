@@ -9,6 +9,7 @@ import {
 } from '@/components/ui';
 
 import { signOut } from 'aws-amplify/auth';
+import { useState } from 'react';
 
 interface ISignOutDialogContentProps {
   /**
@@ -18,6 +19,7 @@ interface ISignOutDialogContentProps {
 }
 
 export const SignOutDialogContent = ({ onParentClose }: ISignOutDialogContentProps) => {
+  const [isLoading, setIsLoading] = useState(false);
   /**
    * Handle the cancel button click.
    * It closes the parent UI component.
@@ -33,7 +35,10 @@ export const SignOutDialogContent = ({ onParentClose }: ISignOutDialogContentPro
    * @returns void
    */
   const handleSignOut = async () => {
+    if (isLoading) return;
+    setIsLoading(true);
     signOut();
+    setIsLoading(false);
   };
 
   return (
@@ -50,7 +55,7 @@ export const SignOutDialogContent = ({ onParentClose }: ISignOutDialogContentPro
             Cancel
           </Button>
         </DialogClose>
-        <Button variant="danger-outline" size="sm" onClick={handleSignOut}>
+        <Button variant="danger-outline" size="sm" onClick={handleSignOut} disabled={isLoading}>
           Sign out
         </Button>
       </DialogFooter>

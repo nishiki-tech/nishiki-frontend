@@ -13,7 +13,7 @@ import { IUser } from '@/types/definition';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
-import { KeyboardEvent, useEffect, useRef } from 'react';
+import { KeyboardEvent, useEffect, useRef, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -41,6 +41,7 @@ export const RenameUserForm = ({ userId, currentName, isOpen, onClose }: IRename
   const router = useRouter();
   // input ref
   const inputRef = useRef<HTMLInputElement>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof renameUserFormSchema>>({
     resolver: zodResolver(renameUserFormSchema),
@@ -54,14 +55,18 @@ export const RenameUserForm = ({ userId, currentName, isOpen, onClose }: IRename
    * @param values - The form values
    */
   const processSubmit: SubmitHandler<RenameUserInputs> = async (values: RenameUserInputs) => {
+    if (isLoading) return;
+    setIsLoading(true);
     const { name } = values;
     if (name === currentName) return;
     const result = await renameUser(userId, { name });
     if (!result.ok) {
       alert('Something went wrong. Please try again.');
+      setIsLoading(false);
     } else {
       alert('Successfully renamed the user');
       onClose();
+      setIsLoading(false);
       router.refresh();
     }
   };

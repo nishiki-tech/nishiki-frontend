@@ -31,6 +31,7 @@ export const DeleteAccountDialogContent = ({
   onParentClose,
 }: IDeleteAccountDialogContentProps) => {
   const [isChecked, setIsChecked] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   /**
    * Handle the cancel button click.
@@ -45,6 +46,8 @@ export const DeleteAccountDialogContent = ({
    * @returns void
    */
   const handleDelete = async () => {
+    if (isLoading) return;
+    setIsLoading(true);
     const result = await removeUser(userId);
     if (!result.ok) {
       alert('Something went wrong. Please try again.');
@@ -56,6 +59,7 @@ export const DeleteAccountDialogContent = ({
       signOut();
       alert('Successfully deleted!');
     }
+    setIsLoading(false);
   };
 
   /**
@@ -90,7 +94,12 @@ export const DeleteAccountDialogContent = ({
             Cancel
           </Button>
         </DialogClose>
-        <Button variant="danger" size="sm" onClick={handleDelete} disabled={!isChecked}>
+        <Button
+          variant="danger"
+          size="sm"
+          onClick={handleDelete}
+          disabled={!isChecked || isLoading}
+        >
           Delete
         </Button>
       </DialogFooter>
