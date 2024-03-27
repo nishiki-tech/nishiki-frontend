@@ -32,6 +32,10 @@ export const InviteMemberDialogContent = ({
   const [isLinkButtonClicked, setIsLinkButtonClicked] = useState(false);
   const [isHash, setHash] = useState('');
 
+  /**
+   * This useEffect is fired when the `isDialogOpen` state is changed(true/false) if true, the setup is is fired.
+   * generating the invitation link hash and put it as state `isHash`
+   */
   useEffect(() => {
     const getHash = async () => {
       if (isDialogOpen) {
@@ -47,8 +51,8 @@ export const InviteMemberDialogContent = ({
   }, [isDialogOpen, groupId]);
   /**
    * Handle the link copy button click.
-   * If the generatedLink is not valid, do nothing.
    * If success, generated invitation link URL is copied to clipboard and change the text of button to 'Copied!'
+   * *hash is already generated when the dialog open
    */
   const handleLinkCopy = async () => {
     setIsLinkButtonClicked(true);
