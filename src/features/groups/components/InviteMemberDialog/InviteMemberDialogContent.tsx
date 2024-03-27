@@ -30,7 +30,21 @@ export const InviteMemberDialogContent = ({
   groupId,
 }: IInviteMemberDialogContentProps) => {
   const [isLinkButtonClicked, setIsLinkButtonClicked] = useState(false);
+  const [isHash, setHash] = useState('');
 
+  useEffect(() => {
+    const getHash = async () => {
+      if (isDialogOpen) {
+        const result = await putGenerateInvitationLinkHash(groupId);
+        if (!result.ok) {
+          alert('Something went wrong. Please try again');
+          return;
+        }
+        setHash(result.value.invitationLinkHash);
+      }
+    };
+    getHash();
+  }, [isDialogOpen, groupId]);
   /**
    * Handle the link copy button click.
    * If the generatedLink is not valid, do nothing.
@@ -38,15 +52,18 @@ export const InviteMemberDialogContent = ({
    */
   const handleLinkCopy = async () => {
     setIsLinkButtonClicked(true);
-    const result = await putGenerateInvitationLinkHash(groupId);
 
-    if (!result.ok) {
-      alert('Something went wrong. Please try again');
+    try {
+      await navigator.clipboard.writeText(`${CLIENT_BASE_URL}/groups/join/${isHash}`);
       return;
+    } catch (err) {
+      console.error(
+        'Error occurred while copying the link:',
+        err instanceof Error ? err.message : err,
+      );
+      alert('Error occurred while copying the link. Please try again.');
     }
-
-    const hash = result.value.invitationLinkHash;
-    return await navigator.clipboard.writeText(`${CLIENT_BASE_URL}/groups/join/${hash}`);
+    return;
   };
 
   /**
