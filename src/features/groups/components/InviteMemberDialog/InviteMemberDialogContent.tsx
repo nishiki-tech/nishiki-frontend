@@ -30,34 +30,36 @@ export const InviteMemberDialogContent = ({
   groupId,
 }: IInviteMemberDialogContentProps) => {
   const [isLinkButtonClicked, setIsLinkButtonClicked] = useState(false);
-  const [isHash, setHash] = useState('');
+  const [hash, setHash] = useState('');
 
   /**
-   * This useEffect is fired when the `isDialogOpen` state is changed(true/false). if true, the setup is fired.
-   * generating the invitation link hash and put it as state `isHash`
+   * This useEffect has two dependencies. When one of them,`isDialogOpen` state, is changed to true, the setup is fired
+   * which is generating the invitation link hash and put it as state `hash`
    */
   useEffect(() => {
     const getHash = async () => {
-      if (isDialogOpen) {
-        const result = await putGenerateInvitationLinkHash(groupId);
-        if (!result.ok) {
-          alert('Something went wrong. Please try again');
-          return;
-        }
-        setHash(result.value.invitationLinkHash);
+      if (!isDialogOpen) return;
+
+      const result = await putGenerateInvitationLinkHash(groupId);
+      if (!result.ok) {
+        alert('Something went wrong. Please try again');
+        return;
       }
+      setHash(result.value.invitationLinkHash);
     };
+
     getHash();
   }, [isDialogOpen, groupId]);
   /**
    * Handle the link copy button click.
    * If success, generated invitation link URL is copied to clipboard and change the text of button to 'Copied!'
-   * *hash is already generated when the dialog open
+   * *A hash, which is part of the URL, is already generated when the dialog open
    */
   const handleLinkCopy = async () => {
     setIsLinkButtonClicked(true);
     try {
-      return await navigator.clipboard.writeText(`${CLIENT_BASE_URL}/groups/join/${isHash}`);
+      if (!hash) throw new Error('Invitation link hash is not set.');
+      return await navigator.clipboard.writeText(`${CLIENT_BASE_URL}/groups/join/${hash}`);
     } catch (err) {
       console.error(
         'Error occurred while copying the link:',
@@ -65,7 +67,6 @@ export const InviteMemberDialogContent = ({
       );
       alert('Error occurred while copying the link. Please try again.');
     }
-    setHash('');
     return;
   };
 
