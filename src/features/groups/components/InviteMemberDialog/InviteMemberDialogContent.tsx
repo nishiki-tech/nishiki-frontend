@@ -30,23 +30,43 @@ export const InviteMemberDialogContent = ({
   groupId,
 }: IInviteMemberDialogContentProps) => {
   const [isLinkButtonClicked, setIsLinkButtonClicked] = useState(false);
+  const [hash, setHash] = useState('');
 
   /**
+   * This useEffect has two dependencies. When one of them,`isDialogOpen` state, is changed to true, the setup is fired
+   * which is generating the invitation link hash and put it as state `hash`
+   */
+  useEffect(() => {
+    const getHash = async () => {
+      if (!isDialogOpen) return;
+
+      const result = await putGenerateInvitationLinkHash(groupId);
+      if (!result.ok) {
+        alert('Something went wrong. Please try again');
+        return;
+      }
+      setHash(result.value.invitationLinkHash);
+    };
+
+    getHash();
+  }, [isDialogOpen, groupId]);
+  /**
    * Handle the link copy button click.
-   * If the generatedLink is not valid, do nothing.
    * If success, generated invitation link URL is copied to clipboard and change the text of button to 'Copied!'
+   * *A hash, which is part of the URL, is already generated when the dialog open
    */
   const handleLinkCopy = async () => {
     setIsLinkButtonClicked(true);
-    const result = await putGenerateInvitationLinkHash(groupId);
-
-    if (!result.ok) {
-      alert('Something went wrong. Please try again');
-      return;
+    try {
+      if (!hash) throw new Error('Invitation link hash is not set.');
+      return await navigator.clipboard.writeText(`${CLIENT_BASE_URL}/groups/join/${hash}`);
+    } catch (err) {
+      console.error(
+        'Error occurred while copying the link:',
+        err instanceof Error ? err.message : err,
+      );
+      alert('Error occurred while copying the link. Please try again.');
     }
-
-    const hash = result.value.invitationLinkHash;
-    navigator.clipboard.writeText(`${CLIENT_BASE_URL}/groups/join/${hash}`);
     return;
   };
 
