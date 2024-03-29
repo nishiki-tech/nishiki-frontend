@@ -22,7 +22,7 @@ interface IEditDrawerFooterProps {
    */
   foodId?: IFood['id'];
   /**
-   * isLoading is for controlling loading state.
+   * Loading state of the form submission.
    */
   isLoading: boolean;
 }
