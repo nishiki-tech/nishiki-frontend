@@ -65,9 +65,9 @@ export const DeleteGroupDialogContent = ({
     } else {
       alert('Successfully deleted');
       onDialogClose();
-      navigateOnSuccess?.();
       onParentClose?.();
       setIsLoading(false);
+      navigateOnSuccess?.();
       router.refresh();
     }
   };
