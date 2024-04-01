@@ -24,20 +24,6 @@ export const GroupCardDropdownMenuContent = ({
   handleRenameClick,
   handleDeleteClick,
 }: IGroupCardDropdownMenuContentProps) => {
-  /**
-   * The function that is called when the dropdown menu item is selected.
-   * e.preventDefault() prevents the dropdown menu from closing when selecting that item.
-   * This is necessary because closing dropdown menu also closes the dialog unintentionally.
-   * @see {@link https://www.radix-ui.com/primitives/docs/components/dropdown-menu#item}
-   *
-   * @param e - The event object
-   * @returns void
-   */
-  const handleSelect = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault();
-    handleDeleteClick();
-  };
-
   return (
     <DropdownMenuContent>
       <DropdownMenuItem>
@@ -49,7 +35,7 @@ export const GroupCardDropdownMenuContent = ({
         </DropdownMenuButton>
       </DropdownMenuItem>
       <DropdownMenuItem asChild>
-        <DropdownMenuButton onClick={(e) => handleSelect(e)}>
+        <DropdownMenuButton onClick={handleDeleteClick}>
           <DropdownMenuButtonIcon>
             <Icon icon={IconDelete} size={5} color="danger" />
           </DropdownMenuButtonIcon>
