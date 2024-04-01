@@ -1,6 +1,7 @@
 'use client';
 import { IconMenuKebab } from '@/assets/images/icons';
-import { Button, DropdownMenu, DropdownMenuTrigger, Icon } from '@/components/ui';
+import { Button, DialogRoot, DropdownMenu, DropdownMenuTrigger, Icon } from '@/components/ui';
+import { DeleteGroupDialogContent } from '@/features/groups/components/DeleteGroupDialogContent';
 import { IGroup } from '@/types/definition';
 
 import { useState } from 'react';
@@ -23,18 +24,32 @@ export const GroupCardDropdownMenuTriggerButton = ({
   handleRenameClick,
 }: IGroupCardMenuButtonProps) => {
   const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
+  const [isDeleteGroupDialogOpen, setIsDeleteGroupDialogOpen] = useState(false);
+
+  const handleDeleteClick = () => {
+    setIsDropdownMenuOpen(false);
+    setIsDeleteGroupDialogOpen(true);
+  };
   return (
-    <DropdownMenu open={isDropdownMenuOpen} onOpenChange={setIsDropdownMenuOpen}>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="w-12">
-          <Icon icon={IconMenuKebab} size={4.5} />
-        </Button>
-      </DropdownMenuTrigger>
-      <GroupCardDropdownMenuContent
-        groupId={groupId}
-        handleRenameClick={handleRenameClick}
-        onDropdownMenuClose={() => setIsDropdownMenuOpen(false)}
-      />
-    </DropdownMenu>
+    <>
+      <DropdownMenu open={isDropdownMenuOpen} onOpenChange={setIsDropdownMenuOpen}>
+        <DropdownMenuTrigger asChild>
+          <Button variant="ghost" className="w-12">
+            <Icon icon={IconMenuKebab} size={4.5} />
+          </Button>
+        </DropdownMenuTrigger>
+        <GroupCardDropdownMenuContent
+          handleRenameClick={handleRenameClick}
+          onDropdownMenuClose={handleDeleteClick}
+        />
+      </DropdownMenu>
+      <DialogRoot open={isDeleteGroupDialogOpen} onOpenChange={setIsDeleteGroupDialogOpen}>
+        <DeleteGroupDialogContent
+          groupId={groupId}
+          onParentClose={() => setIsDropdownMenuOpen(false)}
+          onDialogClose={() => setIsDeleteGroupDialogOpen(false)}
+        />
+      </DialogRoot>
+    </>
   );
 };

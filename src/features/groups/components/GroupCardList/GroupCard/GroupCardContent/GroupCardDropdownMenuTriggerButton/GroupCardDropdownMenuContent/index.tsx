@@ -1,4 +1,4 @@
-import { IconPen } from '@/assets/images/icons';
+import { IconDelete, IconPen } from '@/assets/images/icons';
 import {
   DropdownMenuButton,
   DropdownMenuButtonIcon,
@@ -7,15 +7,8 @@ import {
   DropdownMenuItem,
   Icon,
 } from '@/components/ui';
-import { IGroup } from '@/types/definition';
-
-import { DeleteGroupDialogTriggerButton } from './DeleteGroupDialogTriggerButton';
 
 interface IGroupCardDropdownMenuContentProps {
-  /**
-   * The ID of the group to delete.
-   */
-  groupId: IGroup['id'];
   /**
    * Function to handle the rename button click.
    */
@@ -28,7 +21,6 @@ interface IGroupCardDropdownMenuContentProps {
 }
 
 export const GroupCardDropdownMenuContent = ({
-  groupId,
   handleRenameClick,
   onDropdownMenuClose,
 }: IGroupCardDropdownMenuContentProps) => {
@@ -41,8 +33,9 @@ export const GroupCardDropdownMenuContent = ({
    * @param e - The event object
    * @returns void
    */
-  const handleSelect = (e: Event) => {
+  const handleSelect = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
+    onDropdownMenuClose();
   };
 
   return (
@@ -55,11 +48,13 @@ export const GroupCardDropdownMenuContent = ({
           <DropdownMenuButtonText>Rename</DropdownMenuButtonText>
         </DropdownMenuButton>
       </DropdownMenuItem>
-      <DropdownMenuItem onSelect={handleSelect}>
-        <DeleteGroupDialogTriggerButton
-          groupId={groupId}
-          onDropdownMenuClose={onDropdownMenuClose}
-        />
+      <DropdownMenuItem asChild>
+        <DropdownMenuButton onClick={(e) => handleSelect(e)}>
+          <DropdownMenuButtonIcon>
+            <Icon icon={IconDelete} size={5} color="danger" />
+          </DropdownMenuButtonIcon>
+          <DropdownMenuButtonText>Delete</DropdownMenuButtonText>
+        </DropdownMenuButton>
       </DropdownMenuItem>
     </DropdownMenuContent>
   );
