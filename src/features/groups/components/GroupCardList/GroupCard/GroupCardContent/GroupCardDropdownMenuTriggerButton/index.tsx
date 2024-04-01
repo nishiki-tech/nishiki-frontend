@@ -10,7 +10,7 @@ import { GroupCardDropdownMenuContent } from './GroupCardDropdownMenuContent';
 
 interface IGroupCardMenuButtonProps {
   /**
-   * The ID of the group to delete.
+   * The ID of the group to be deleted.
    */
   groupId: IGroup['id'];
   /**

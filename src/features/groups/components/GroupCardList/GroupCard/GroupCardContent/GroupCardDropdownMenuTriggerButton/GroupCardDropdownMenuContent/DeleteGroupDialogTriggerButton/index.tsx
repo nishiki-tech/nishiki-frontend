@@ -18,7 +18,6 @@ interface IGroupCardDropdownMenuDeleteButtonProps {
    * The ID of the group to delete.
    */
   groupId: IGroup['id'];
-
   /**
    * The function to close the dropdown menu.
    */

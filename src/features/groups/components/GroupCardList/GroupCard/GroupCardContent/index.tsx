@@ -1,5 +1,6 @@
 'use client';
 import { Card } from '@/components/ui';
+import { IGroup } from '@/types/definition';
 
 import Link from 'next/link';
 import { FC, useState } from 'react';
@@ -10,9 +11,21 @@ import { RenameGroupForm } from './RenameGroupForm';
 import { UserCount } from './UserCount';
 
 interface IGroupCardContentProps {
-  groupId: string;
-  groupName: string;
+  /**
+   * an identifier of a group
+   */
+  groupId: IGroup['id'];
+  /**
+   * a group name used to display on each card
+   */
+  groupName: IGroup['name'];
+  /**
+   * a number of container which belongs to a group
+   */
   containerCount: number;
+  /**
+   * a number of user who belongs to a group
+   */
   userCount: number;
 }
 
