@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { FC, useState } from 'react';
 
 import { ContainerCount } from './ContainerCount';
-import { GroupCardDropdownMenu } from './GroupCardDropdownMenuTriggerButton';
+import { GroupCardDropdownMenu } from './GroupCardDropdownMenu';
 import { RenameGroupForm } from './RenameGroupForm';
 import { UserCount } from './UserCount';
 
