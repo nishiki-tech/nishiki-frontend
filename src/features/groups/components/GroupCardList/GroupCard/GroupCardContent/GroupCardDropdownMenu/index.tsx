@@ -18,6 +18,9 @@ interface IGroupCardMenuButtonProps {
    * Function to handle the rename button click.
    */
   handleRenameClick: () => void;
+  /**
+   * A state of renaming input field to be opened (=true) or closed(=false)
+   */
   isRenameFormOpen: boolean;
 }
 
