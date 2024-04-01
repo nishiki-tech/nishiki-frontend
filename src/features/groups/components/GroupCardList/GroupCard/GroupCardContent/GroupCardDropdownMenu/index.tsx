@@ -2,6 +2,7 @@
 import { IconMenuKebab } from '@/assets/images/icons';
 import { Button, DialogRoot, DropdownMenu, DropdownMenuTrigger, Icon } from '@/components/ui';
 import { DeleteGroupDialogContent } from '@/features/groups/components/DeleteGroupDialogContent';
+import { useAutoFocus } from '@/hooks';
 import { IGroup } from '@/types/definition';
 
 import { useState } from 'react';
@@ -17,14 +18,18 @@ interface IGroupCardMenuButtonProps {
    * Function to handle the rename button click.
    */
   handleRenameClick: () => void;
+  isRenameFormOpen: boolean;
 }
 
 export const GroupCardDropdownMenu = ({
   groupId,
   handleRenameClick,
+  isRenameFormOpen,
 }: IGroupCardMenuButtonProps) => {
   const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
   const [isDeleteGroupDialogOpen, setIsDeleteGroupDialogOpen] = useState(false);
+
+  const kebabRef = useAutoFocus<HTMLButtonElement>(!isDeleteGroupDialogOpen && !isRenameFormOpen);
 
   const handleDeleteClick = () => {
     setIsDropdownMenuOpen(false);
@@ -34,7 +39,7 @@ export const GroupCardDropdownMenu = ({
     <>
       <DropdownMenu open={isDropdownMenuOpen} onOpenChange={setIsDropdownMenuOpen}>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost" className="w-12">
+          <Button variant="ghost" className="w-12" ref={kebabRef}>
             <Icon icon={IconMenuKebab} size={4.5} />
           </Button>
         </DropdownMenuTrigger>

@@ -13,7 +13,6 @@ interface IGroupCardDropdownMenuContentProps {
    * Function to handle the rename button click.
    */
   handleRenameClick: () => void;
-
   /**
    * The function to close the dropdown menu.
    */

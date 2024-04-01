@@ -63,7 +63,11 @@ export const GroupCardContent: FC<IGroupCardContentProps> = ({
           <UserCount userCount={userCount} />
         </div>
       </Link>
-      <GroupCardDropdownMenu groupId={groupId} handleRenameClick={handleRenameClick} />
+      <GroupCardDropdownMenu
+        groupId={groupId}
+        handleRenameClick={handleRenameClick}
+        isRenameFormOpen={isRenameFormOpen}
+      />
     </Card>
   );
 };
