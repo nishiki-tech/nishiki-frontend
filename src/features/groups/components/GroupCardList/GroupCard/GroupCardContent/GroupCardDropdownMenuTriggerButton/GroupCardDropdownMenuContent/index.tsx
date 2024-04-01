@@ -17,12 +17,12 @@ interface IGroupCardDropdownMenuContentProps {
   /**
    * The function to close the dropdown menu.
    */
-  onDropdownMenuClose: () => void;
+  handleDeleteClick: () => void;
 }
 
 export const GroupCardDropdownMenuContent = ({
   handleRenameClick,
-  onDropdownMenuClose,
+  handleDeleteClick,
 }: IGroupCardDropdownMenuContentProps) => {
   /**
    * The function that is called when the dropdown menu item is selected.
@@ -35,7 +35,7 @@ export const GroupCardDropdownMenuContent = ({
    */
   const handleSelect = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    onDropdownMenuClose();
+    handleDeleteClick();
   };
 
   return (

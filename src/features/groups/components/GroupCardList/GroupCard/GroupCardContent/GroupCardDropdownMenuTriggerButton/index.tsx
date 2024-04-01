@@ -19,7 +19,7 @@ interface IGroupCardMenuButtonProps {
   handleRenameClick: () => void;
 }
 
-export const GroupCardDropdownMenuTriggerButton = ({
+export const GroupCardDropdownMenu = ({
   groupId,
   handleRenameClick,
 }: IGroupCardMenuButtonProps) => {
@@ -40,7 +40,7 @@ export const GroupCardDropdownMenuTriggerButton = ({
         </DropdownMenuTrigger>
         <GroupCardDropdownMenuContent
           handleRenameClick={handleRenameClick}
-          onDropdownMenuClose={handleDeleteClick}
+          handleDeleteClick={handleDeleteClick}
         />
       </DropdownMenu>
       <DialogRoot open={isDeleteGroupDialogOpen} onOpenChange={setIsDeleteGroupDialogOpen}>
