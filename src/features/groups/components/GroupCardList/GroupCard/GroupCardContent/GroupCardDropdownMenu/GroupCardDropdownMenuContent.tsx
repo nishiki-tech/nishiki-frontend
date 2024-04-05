@@ -25,7 +25,7 @@ export const GroupCardDropdownMenuContent = ({
 }: IGroupCardDropdownMenuContentProps) => {
   return (
     <DropdownMenuContent>
-      <DropdownMenuItem>
+      <DropdownMenuItem asChild>
         <DropdownMenuButton onClick={handleRenameClick}>
           <DropdownMenuButtonIcon>
             <Icon icon={IconPen} size={5} color="primary" />

@@ -20,11 +20,11 @@ interface IGroupCardContentProps {
    */
   groupName: IGroup['name'];
   /**
-   * a number of container which belongs to a group
+   * the number of container which belongs to a group
    */
   containerCount: number;
   /**
-   * a number of user who belongs to a group
+   * the number of user who belongs to a group
    */
   userCount: number;
 }
