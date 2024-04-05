@@ -12,7 +12,7 @@ import { UserCount } from './UserCount';
 
 interface IGroupCardContentProps {
   /**
-   * an identifier of a group
+   * the identifier of a group
    */
   groupId: IGroup['id'];
   /**
